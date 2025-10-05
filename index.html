@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kopaper - 大学生论文工具站 | 论文比对与收录查询</title>
+    <meta name="description" content="Kopaper是专为大学生设计的论文工具站，提供论文比对、知网/万方/维普收录查询等功能，助力高效完成论文写作。">
+    <meta name="keywords" content="论文比对,论文收录查询,知网查询,万方收录,维普检索,论文工具">
+    
+    <!-- 引入外部资源 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <!-- Tailwind配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563EB', // 主色调：专业蓝
+                        secondary: '#10B981', // 辅助色：成功绿
+                        danger: '#EF4444', // 强调色：删除红
+                        neutral: '#475569', // 中性色：文本灰
+                        light: '#F8FAFC', // 浅色背景
+                        dark: '#1E293B'  // 深色文本
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-balance {
+                text-wrap: balance;
+            }
+            .shadow-soft {
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            }
+            .transition-all-300 {
+                transition: all 0.3s ease;
+            }
+        }
+    </style>
+</head>
+<body class="bg-light font-sans text-dark min-h-screen flex flex-col">
+    <!-- 导航栏 -->
+    <header class="bg-white shadow-sm sticky top-0 z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center space-x-2">
+                        <i class="fa fa-file-text-o text-primary text-2xl"></i>
+                        <span class="text-xl font-bold text-primary">Kopaper</span>
+                    </a>
+                </div>
+                
+                <!-- 桌面导航 -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="/" class="text-primary font-medium flex items-center">
+                        <i class="fa fa-home mr-1.5"></i>首页
+                    </a>
+                    <a href="/compare.html" class="text-neutral hover:text-primary transition-colors flex items-center">
+                        <i class="fa fa-exchange mr-1.5"></i>论文比对
+                    </a>
+                    <a href="/check.html" class="text-neutral hover:text-primary transition-colors flex items-center">
+                        <i class="fa fa-search mr-1.5"></i>收录查询
+                    </a>
+                    <a href="/help.html" class="text-neutral hover:text-primary transition-colors flex items-center">
+                        <i class="fa fa-question-circle mr-1.5"></i>使用帮助
+                    </a>
+                </nav>
+                
+                <!-- 移动端菜单按钮 -->
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-neutral hover:text-primary focus:outline-none">
+                        <i class="fa fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 移动端导航菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="container mx-auto px-4 py-3 space-y-3">
+                <a href="/" class="block py-2 text-primary font-medium">
+                    <i class="fa fa-home mr-2"></i>首页
+                </a>
+                <a href="/compare.html" class="block py-2 text-neutral hover:text-primary transition-colors">
+                    <i class="fa fa-exchange mr-2"></i>论文比对
+                </a>
+                <a href="/check.html" class="block py-2 text-neutral hover:text-primary transition-colors">
+                    <i class="fa fa-search mr-2"></i>收录查询
+                </a>
+                <a href="/help.html" class="block py-2 text-neutral hover:text-primary transition-colors">
+                    <i class="fa fa-question-circle mr-2"></i>使用帮助
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="flex-grow">
+        <!-- 英雄区域 -->
+        <section class="bg-gradient-to-br from-primary/5 to-primary/10 py-16 md:py-24">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 md:pr-12 mb-10 md:mb-0">
+                        <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight text-dark mb-6">
+                            让论文写作<br>
+                            <span class="text-primary">更简单高效</span>
+                        </h1>
+                        <p class="text-lg text-neutral mb-8 max-w-lg text-balance">
+                            专为大学生设计的论文工具站，提供论文比对和多数据库收录查询功能，
+                            让你专注于内容创作，不再为格式和检索烦恼。
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="/compare.html" class="px-8 py-3 bg-primary hover:bg-primary/90 text-white rounded-lg font-medium shadow-md hover:shadow-lg transition-all text-center">
+                                <i class="fa fa-exchange mr-2"></i>论文比对
+                            </a>
+                            <a href="/check.html" class="px-8 py-3 bg-white hover:bg-gray-50 text-primary border border-primary rounded-lg font-medium shadow-sm hover:shadow transition-all text-center">
+                                <i class="fa fa-search mr-2"></i>收录查询
+                            </a>
+                        </div>
+                        <div class="mt-6 flex items-center text-neutral text-sm">
+                            <i class="fa fa-lock text-secondary mr-2"></i>
+                            <span>所有操作均在本地完成，保护你的论文安全</span>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <div class="relative">
+                            <div class="absolute -inset-1 bg-gradient-to-r from-primary to-blue-400 rounded-2xl blur opacity-30"></div>
+                            <img src="https://picsum.photos/id/180/600/400" alt="论文写作工具展示" class="relative rounded-xl shadow-lg w-full object-cover h-[300px] md:h-[400px]">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 功能亮点 -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4">强大功能，简单操作</h2>
+                    <p class="text-neutral max-w-2xl mx-auto">我们聚焦论文写作中的实际需求，提供精准实用的工具，帮你节省时间和精力</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-10 lg:gap-16">
+                    <!-- 功能1：论文比对 -->
+                    <div class="bg-light rounded-xl p-8 shadow-soft hover:shadow-lg transition-all-300 flex flex-col h-full">
+                        <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                            <i class="fa fa-exchange text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">论文比对</h3>
+                        <p class="text-neutral mb-6 flex-grow">快速比对两篇论文的差异，清晰标记新增、删除和修改内容，支持文件上传和文本粘贴两种模式。</p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>绿色高亮显示新增内容</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>红色删除线标记删除内容</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>支持Word和PDF格式文件</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>生成比对报告并导出</span>
+                            </li>
+                        </ul>
+                        <a href="/compare.html" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors">
+                            <span>立即使用</span>
+                            <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- 功能2：收录查询 -->
+                    <div class="bg-light rounded-xl p-8 shadow-soft hover:shadow-lg transition-all-300 flex flex-col h-full">
+                        <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                            <i class="fa fa-search text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">收录查询</h3>
+                        <p class="text-neutral mb-6 flex-grow">一键查询论文在知网、万方、维普等数据库的收录情况，获取详细信息和直接访问链接。</p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>支持DOI、标题、作者多方式查询</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>覆盖知网、万方、维普等主流数据库</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>显示被引量和期刊影响因子</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>提供直接访问数据库的链接</span>
+                            </li>
+                        </ul>
+                        <a href="/check.html" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors">
+                            <span>立即使用</span>
+                            <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 使用流程 -->
+        <section class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4">简单三步，搞定论文难题</h2>
+                    <p class="text-neutral max-w-2xl mx-auto">无需复杂操作，轻松上手使用我们的工具</p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- 步骤1 -->
+                    <div class="text-center">
+                        <div class="relative w-20 h-20 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">
+                            1
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">选择工具</h3>
+                        <p class="text-neutral">根据你的需求，选择论文比对或收录查询功能</p>
+                    </div>
+                    
+                    <!-- 步骤2 -->
+                    <div class="text-center">
+                        <div class="relative w-20 h-20 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">
+                            2
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">输入内容</h3>
+                        <p class="text-neutral">上传文件或输入论文信息，支持多种格式和查询方式</p>
+                    </div>
+                    
+                    <!-- 步骤3 -->
+                    <div class="text-center">
+                        <div class="relative w-20 h-20 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">
+                            3
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">获取结果</h3>
+                        <p class="text-neutral">查看处理结果，支持导出报告或直接访问相关资源</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 用户评价 -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4">用户怎么说</h2>
+                    <p class="text-neutral max-w-2xl mx-auto">来自全国各高校学生的真实反馈</p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- 评价1 -->
+                    <div class="bg-light rounded-xl p-6 shadow-soft">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400 flex">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-neutral mb-6">"论文比对功能帮了我大忙，导师修改后的版本和我的原稿对比一目了然，再也不用逐字逐句找差异了。"</p>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center mr-3">
+                                <i class="fa fa-user text-neutral"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium">张同学</p>
+                                <p class="text-sm text-gray-500">某985高校 研究生</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 评价2 -->
+                    <div class="bg-light rounded-xl p-6 shadow-soft">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400 flex">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-neutral mb-6">"查收录功能特别方便，以前要分别登录知网、万方一个个查，现在一个平台就能搞定，还能看到被引量，太实用了！"</p>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center mr-3">
+                                <i class="fa fa-user text-neutral"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium">李同学</p>
+                                <p class="text-sm text-gray-500">某211高校 本科生</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 评价3 -->
+                    <div class="bg-light rounded-xl p-6 shadow-soft">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400 flex">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                            </div>
+                        </div>
+                        <p class="text-neutral mb-6">"作为经常修改论文的人，这个工具大大提高了我的效率。导出的比对报告还能直接发给导师，非常方便！"</p>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center mr-3">
+                                <i class="fa fa-user text-neutral"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium">王同学</p>
+                                <p class="text-sm text-gray-500">某双一流高校 博士生</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 行动召唤 -->
+        <section class="py-16 bg-gradient-to-r from-primary to-blue-600 text-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-6">开始提升你的论文写作效率</h2>
+                <p class="max-w-2xl mx-auto mb-8 text-blue-100">无需注册，立即使用所有功能，让论文写作变得更简单</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="/compare.html" class="px-8 py-3 bg-white text-primary hover:bg-gray-100 rounded-lg font-medium shadow-md hover:shadow-lg transition-all">
+                        <i class="fa fa-exchange mr-2"></i>开始比对论文
+                    </a>
+                    <a href="/check.html" class="px-8 py-3 bg-transparent border-2 border-white text-white hover:bg-white/10 rounded-lg font-medium transition-all">
+                        <i class="fa fa-search mr-2"></i>查询论文收录
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-gray-400 py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fa fa-file-text-o text-primary text-2xl"></i>
+                        <span class="text-xl font-bold text-white">Kopaper</span>
+                    </div>
+                    <p class="mb-4">专为大学生打造的论文工具站，让论文写作更简单高效。</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fa fa-weibo text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fa fa-wechat text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fa fa-github text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-white font-semibold mb-4">功能导航</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/compare.html" class="hover:text-primary transition-colors">论文比对</a></li>
+                        <li><a href="/check.html" class="hover:text-primary transition-colors">收录查询</a></li>
+                        <li><a href="/help.html" class="hover:text-primary transition-colors">使用指南</a></li>
+                        <li><a href="/faq.html" class="hover:text-primary transition-colors">常见问题</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-white font-semibold mb-4">关于我们</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/about.html" class="hover:text-primary transition-colors">网站介绍</a></li>
+                        <li><a href="/contact.html" class="hover:text-primary transition-colors">联系我们</a></li>
+                        <li><a href="/privacy.html" class="hover:text-primary transition-colors">隐私政策</a></li>
+                        <li><a href="/terms.html" class="hover:text-primary transition-colors">使用条款</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-white font-semibold mb-4">联系我们</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fa fa-envelope-o mt-1 mr-3"></i>
+                            <span>support@kopaper.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-question-circle mt-1 mr-3"></i>
+                            <span>工作时间: 周一至周五 9:00-18:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center text-sm">
+                <p>© 2023 Kopaper.com 版权所有 | 本工具仅用于学术研究辅助，禁止用于学术不端行为</p>
+                <p class="mt-2">京ICP备12345678号-1</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单切换
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow');
+            } else {
+                navbar.classList.remove('shadow');
+            }
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+    
