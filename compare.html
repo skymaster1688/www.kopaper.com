@@ -12,7 +12,10 @@
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/diff-match-patch@1.0.5/index.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/pdf-parse@1.1.1/build/pdf-parse.min.js"></script>
+    <!-- 更新PDF解析库链接，使用完整UMD版本 -->
+    <script src="https://cdn.jsdelivr.net/npm/pdf-parse@1.1.1/pdf-parse.min.js"></script>
+    <!-- 添加PDF.js作为备用解析方案 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
     
     <!-- Tailwind配置 -->
     <script>
@@ -682,33 +685,58 @@
                 };
                 reader.readAsArrayBuffer(file);
             } else if (fileName.endsWith('.pdf')) {
-                // 解析pdf文件
+                // 解析pdf文件，使用pdf-parse，如果失败则使用pdf.js作为备用
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     const data = new Uint8Array(e.target.result);
-                    pdfjsLib.getDocument(data).promise.then(function(pdf) {
-                        let textContent = '';
-                        const totalPages = pdf.numPages;
-                        let countPromises = [];
-                        
-                        for (let i = 1; i <= totalPages; i++) {
-                            countPromises.push(pdf.getPage(i).then(function(page) {
-                                return page.getTextContent().then(function(text) {
-                                    return text.items.map(item => item.str).join(' ');
-                                });
-                            }));
-                        }
-                        
-                        Promise.all(countPromises).then(function(texts) {
-                            textContent = texts.join('\n\n');
-                            callback(textContent);
+                    
+                    // 尝试使用pdf-parse解析
+                    try {
+                        // 使用pdf-parse库
+                        pdfParse(data).then(function(result) {
+                            callback(result.text);
+                        }).catch(function(err) {
+                            console.error('pdf-parse解析失败，尝试使用pdf.js:', err);
+                            // 备用方案：使用pdf.js解析
+                            parsePdfWithPdfJs(data, callback);
                         });
-                    }).catch(function(err) {
-                        console.error('解析pdf文件出错:', err);
-                        callback(null);
-                    });
+                    } catch (err) {
+                        console.error('pdf-parse初始化失败，使用pdf.js:', err);
+                        // 备用方案：使用pdf.js解析
+                        parsePdfWithPdfJs(data, callback);
+                    }
                 };
                 reader.readAsArrayBuffer(file);
+            }
+        }
+        
+        // 使用pdf.js解析PDF文件（备用方案）
+        function parsePdfWithPdfJs(data, callback) {
+            try {
+                pdfjsLib.getDocument({data: data}).promise.then(function(pdf) {
+                    let textContent = '';
+                    const totalPages = pdf.numPages;
+                    let countPromises = [];
+                    
+                    for (let i = 1; i <= totalPages; i++) {
+                        countPromises.push(pdf.getPage(i).then(function(page) {
+                            return page.getTextContent().then(function(text) {
+                                return text.items.map(item => item.str).join(' ');
+                            });
+                        }));
+                    }
+                    
+                    Promise.all(countPromises).then(function(texts) {
+                        textContent = texts.join('\n\n');
+                        callback(textContent);
+                    });
+                }).catch(function(err) {
+                    console.error('pdf.js解析失败:', err);
+                    callback(null);
+                });
+            } catch (err) {
+                console.error('pdf.js初始化失败:', err);
+                callback(null);
             }
         }
         
