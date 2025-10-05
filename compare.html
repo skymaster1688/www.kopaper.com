@@ -554,6 +554,32 @@
             }
         });
         
+        // 处理文件解析成功后的状态更新
+        function handleFile1Success(file) {
+            // 恢复上传区域显示
+            resetDropzone1();
+            
+            // 显示文件信息
+            fileName1.textContent = file.name;
+            fileInfo1.classList.remove('hidden');
+            
+            // 解析成功通知
+            showNotification(`文件 "${file.name}" 解析成功`, 'success');
+        }
+        
+        // 处理文件2解析成功后的状态更新
+        function handleFile2Success(file) {
+            // 恢复上传区域显示
+            resetDropzone2();
+            
+            // 显示文件信息
+            fileName2.textContent = file.name;
+            fileInfo2.classList.remove('hidden');
+            
+            // 解析成功通知
+            showNotification(`文件 "${file.name}" 解析成功`, 'success');
+        }
+        
         // 处理文件
         function handleFile1(file) {
             // 验证文件类型和大小
@@ -567,10 +593,6 @@
                 return;
             }
             
-            // 显示文件信息
-            fileName1.textContent = file.name;
-            fileInfo1.classList.remove('hidden');
-            
             // 显示加载中状态
             fileDropzone1.innerHTML = '<div class="flex flex-col items-center justify-center"><div class="w-8 h-8 border-4 border-gray-200 border-t-primary rounded-full animate-spin mb-3"></div><p class="text-neutral">正在解析文件...</p></div>';
             
@@ -578,6 +600,7 @@
             parseFileContent(file, (content) => {
                 if (content) {
                     fileContent1 = content;
+                    handleFile1Success(file); // 处理成功状态
                     updateCompareButtonState();
                 } else {
                     // 解析失败，重置
@@ -602,10 +625,6 @@
                 return;
             }
             
-            // 显示文件信息
-            fileName2.textContent = file.name;
-            fileInfo2.classList.remove('hidden');
-            
             // 显示加载中状态
             fileDropzone2.innerHTML = '<div class="flex flex-col items-center justify-center"><div class="w-8 h-8 border-4 border-gray-200 border-t-primary rounded-full animate-spin mb-3"></div><p class="text-neutral">正在解析文件...</p></div>';
             
@@ -613,6 +632,7 @@
             parseFileContent(file, (content) => {
                 if (content) {
                     fileContent2 = content;
+                    handleFile2Success(file); // 处理成功状态
                     updateCompareButtonState();
                 } else {
                     // 解析失败，重置
@@ -728,6 +748,27 @@
             compareBtn.disabled = !canCompare;
         }
         
+        // 智能字数统计（区分中英文）
+        function countWords(text) {
+            if (!text) return 0;
+            
+            // 匹配中文字符
+            const chineseChars = text.match(/[\u4e00-\u9fa5]/g);
+            const chineseCount = chineseChars ? chineseChars.length : 0;
+            
+            // 匹配英文单词（连续字母数字组合）
+            const englishWords = text.match(/[a-zA-Z0-9]+/g);
+            const englishCount = englishWords ? englishWords.length : 0;
+            
+            // 中文按单个字符计数，英文按单词计数
+            return chineseCount + englishCount;
+        }
+        
+        // 计算文本中的字符数（用于差异计算）
+        function countChars(text) {
+            return text ? text.length : 0;
+        }
+        
         // 开始比对
         compareBtn.addEventListener('click', startComparison);
         
@@ -777,33 +818,37 @@
         function calculateStatistics(diffs, text1, text2) {
             let addedChars = 0;
             let deletedChars = 0;
-            let totalChars = text1.length;
+            let addedWords = 0;
+            let deletedWords = 0;
             
-            // 统计新增和删除的字符数
+            // 统计新增和删除的字符数和字数
             diffs.forEach(diff => {
                 const [type, content] = diff;
                 if (type === 1) { // 新增
-                    addedChars += content.length;
+                    addedChars += countChars(content);
+                    addedWords += countWords(content);
                 } else if (type === -1) { // 删除
-                    deletedChars += content.length;
+                    deletedChars += countChars(content);
+                    deletedWords += countWords(content);
                 }
             });
             
-            // 计算相似度 (简化版)
-            const similarity = totalChars > 0 
-                ? Math.max(0, 100 - (addedChars + deletedChars) / totalChars * 100) 
+            // 计算相似度 (基于字符数)
+            const totalChars1 = countChars(text1);
+            const similarity = totalChars1 > 0 
+                ? Math.max(0, 100 - (addedChars + deletedChars) / totalChars1 * 100) 
                 : 0;
             
-            // 计算总字数 (大致估算)
-            const wordCount1 = text1.split(/\s+/).filter(word => word.length > 0).length;
-            const wordCount2 = text2.split(/\s+/).filter(word => word.length > 0).length;
-            const totalWordCount = Math.max(wordCount1, wordCount2);
+            // 计算总字数 (取两篇文章的最大字数)
+            const totalWordCount1 = countWords(text1);
+            const totalWordCount2 = countWords(text2);
+            const totalWordCount = Math.max(totalWordCount1, totalWordCount2);
             
             // 更新统计数据显示
             similarityScore.textContent = `${Math.round(similarity)}%`;
             totalWords.textContent = totalWordCount;
-            addedCount.textContent = Math.round(addedChars / (text2.length / wordCount2 || 1)); // 估算新增字数
-            deletedCount.textContent = Math.round(deletedChars / (text1.length / wordCount1 || 1)); // 估算删除字数
+            addedCount.textContent = addedWords;
+            deletedCount.textContent = deletedWords;
         }
         
         // 渲染比对结果
@@ -1078,4 +1123,3 @@
     </script>
 </body>
 </html>
-    
