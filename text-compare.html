@@ -3,18 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Online Paper Compare Tool | Compare Two Papers for Differences</title>
-    <meta name="description" content="Our free online paper compare tool helps you easily compare two papers, documents or texts to find differences. Identify changes, additions and deletions instantly - no registration required.">
-    <meta name="keywords" content="free online paper compare tool, compare two papers, document comparison">
+    <title>Free Online Text Compare Tool | Compare Text Differences</title>
+    <meta name="description" content="Compare two text documents online for free. Our text compare tool instantly finds differences, highlights changes, and shows additions and deletions between texts.">
+    <meta name="keywords" content="free online text compare tool, text difference checker, compare two texts, online text comparison, find text changes, text diff tool">
     
     <!-- External resources -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/diff-match-patch@1.0.5/index.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js"></script>
-    <!-- PDF parsing libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/pdf-parse@1.1.1/pdf-parse.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
     
     <!-- Tailwind configuration -->
     <script>
@@ -44,12 +40,6 @@
         @layer utilities {
             .content-auto {
                 content-visibility: auto;
-            }
-            .text-shadow {
-                text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-            }
-            .transition-height {
-                transition: max-height 0.3s ease-in-out;
             }
             .scrollbar-thin {
                 scrollbar-width: thin;
@@ -87,7 +77,7 @@
                 <div class="flex items-center">
                     <a href="/" class="flex items-center space-x-2">
                         <i class="fa fa-file-text-o text-primary text-2xl"></i>
-                        <span class="text-xl font-bold text-primary">KoPaper</span>
+                        <span class="text-xl font-bold text-primary">TextCompare</span>
                     </a>
                 </div>
                 
@@ -96,11 +86,11 @@
                     <a href="/" class="text-neutral hover:text-primary transition-colors flex items-center">
                         <i class="fa fa-home mr-1.5"></i>Home
                     </a>
-                    <a href="/compare.html" class="text-primary font-medium flex items-center">
-                        <i class="fa fa-exchange mr-1.5"></i>Compare Papers
-                    </a>
-                    <a href="/text-compare.html" class="text-neutral hover:text-primary transition-colors flex items-center">
+                    <a href="/text-compare.html" class="text-primary font-medium flex items-center">
                         <i class="fa fa-exchange mr-1.5"></i>Text Compare
+                    </a>
+                    <a href="/compare.html" class="text-neutral hover:text-primary transition-colors flex items-center">
+                        <i class="fa fa-exchange mr-1.5"></i>Paper Comparison
                     </a>
                     <a href="/help.html" class="text-neutral hover:text-primary transition-colors flex items-center">
                         <i class="fa fa-question-circle mr-1.5"></i>Help
@@ -122,11 +112,11 @@
                 <a href="/" class="block py-2 text-neutral hover:text-primary transition-colors">
                     <i class="fa fa-home mr-2"></i>Home
                 </a>
-                <a href="/compare.html" class="block py-2 text-primary font-medium">
-                    <i class="fa fa-exchange mr-2"></i>Compare Papers
-                </a>
-                <a href="/text-compare.html" class="block py-2 text-neutral hover:text-primary transition-colors">
+                <a href="/text-compare.html" class="block py-2 text-primary font-medium">
                     <i class="fa fa-exchange mr-2"></i>Text Compare
+                </a>
+                <a href="/tools.html" class="block py-2 text-neutral hover:text-primary transition-colors">
+                    <i class="fa fa-wrench mr-2"></i>More Tools
                 </a>
                 <a href="/help.html" class="block py-2 text-neutral hover:text-primary transition-colors">
                     <i class="fa fa-question-circle mr-2"></i>Help
@@ -141,12 +131,12 @@
         <section class="mb-10">
             <div class="flex flex-col md:flex-row md:items-center md:justify-between">
                 <div>
-                    <h1 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-2">Free Online Paper Compare Tool</h1>
-                    <p class="text-neutral">Quickly compare two papers to find differences. Identify changes, additions and deletions with our easy-to-use tool.</p>
+                    <h1 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-2">Free Online Text Compare Tool</h1>
+                    <p class="text-neutral">Easily compare two text documents to find differences. Instantly identify changes, additions and deletions with our powerful comparison tool.</p>
                 </div>
                 <div class="mt-4 md:mt-0">
-                    <a href="/help.html#compare" class="inline-flex items-center text-primary hover:text-primary/80 text-sm font-medium transition-colors">
-                        <i class="fa fa-question-circle mr-1.5"></i>View Instructions
+                    <a href="/help.html#text-compare" class="inline-flex items-center text-primary hover:text-primary/80 text-sm font-medium transition-colors">
+                        <i class="fa fa-question-circle mr-1.5"></i>How to Use
                     </a>
                 </div>
             </div>
@@ -161,7 +151,7 @@
                     </div>
                     <div class="ml-3">
                         <p class="text-sm text-blue-700">
-                            All comparisons are performed locally in your browser. Your documents will never be uploaded to our servers, ensuring complete privacy.
+                            All text comparisons are done locally in your browser. Your content never leaves your device, ensuring complete privacy and security.
                         </p>
                     </div>
                 </div>
@@ -172,30 +162,63 @@
         <section class="mb-8">
             <div class="bg-white rounded-lg shadow-sm overflow-hidden">
                 <div class="flex flex-wrap border-b border-gray-200">
-                    <button id="fileModeBtn" class="flex-1 px-6 py-4 font-medium text-primary border-b-2 border-primary transition-all">
-                        <i class="fa fa-upload mr-2"></i>Upload Files
-                    </button>
-                    <button id="textModeBtn" class="flex-1 px-6 py-4 font-medium text-neutral hover:text-primary transition-all">
+                    <button id="textModeBtn" class="flex-1 px-6 py-4 font-medium text-primary border-b-2 border-primary transition-all">
                         <i class="fa fa-paste mr-2"></i>Paste Text
+                    </button>
+                    <button id="fileModeBtn" class="flex-1 px-6 py-4 font-medium text-neutral hover:text-primary transition-all">
+                        <i class="fa fa-upload mr-2"></i>Upload Files
                     </button>
                 </div>
             </div>
         </section>
 
-        <!-- File upload mode -->
-        <section id="fileMode" class="mb-10">
+        <!-- Text paste mode (default) -->
+        <section id="textMode" class="mb-10">
             <div class="grid md:grid-cols-2 gap-6">
-                <!-- Original version -->
+                <!-- Original text -->
                 <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200 transform hover:shadow-md transition-all">
                     <h3 class="text-lg font-semibold mb-4 flex items-center">
                         <span class="w-2 h-2 rounded-full bg-neutral mr-2"></span>
-                        Original Version
+                        Original Text
+                    </h3>
+                    <div>
+                        <textarea id="originalText" rows="15" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-all resize-none scrollbar-thin" placeholder="Paste your original text here..."></textarea>
+                        <div class="mt-3 text-right text-sm text-gray-500">
+                            <span id="originalWordCount">0 words</span> | <span id="originalCharCount">0 characters</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modified text -->
+                <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200 transform hover:shadow-md transition-all">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <span class="w-2 h-2 rounded-full bg-primary mr-2"></span>
+                        Modified Text
+                    </h3>
+                    <div>
+                        <textarea id="modifiedText" rows="15" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-all resize-none scrollbar-thin" placeholder="Paste your modified text here..."></textarea>
+                        <div class="mt-3 text-right text-sm text-gray-500">
+                            <span id="modifiedWordCount">0 words</span> | <span id="modifiedCharCount">0 characters</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- File upload mode -->
+        <section id="fileMode" class="mb-10 hidden">
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Original file -->
+                <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200 transform hover:shadow-md transition-all">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <span class="w-2 h-2 rounded-full bg-neutral mr-2"></span>
+                        Original File
                     </h3>
                     <div id="fileDropzone1" class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-primary transition-colors cursor-pointer min-h-[200px] flex flex-col items-center justify-center">
-                        <i class="fa fa-file-word-o text-4xl text-neutral mb-3"></i>
+                        <i class="fa fa-file-text-o text-4xl text-neutral mb-3"></i>
                         <p class="mb-2 text-neutral">Drag file here, or <span class="text-primary font-medium">click to upload</span></p>
-                        <p class="text-xs text-gray-400">Supports .docx or .pdf (max 20MB)</p>
-                        <input type="file" id="fileInput1" class="hidden" accept=".docx,.pdf">
+                        <p class="text-xs text-gray-400">Supports .txt, .docx or .pdf (max 20MB)</p>
+                        <input type="file" id="fileInput1" class="hidden" accept=".txt,.docx,.pdf">
                     </div>
                     <div id="fileInfo1" class="mt-4 hidden">
                         <div class="flex items-center justify-between p-3 bg-light rounded-lg border border-gray-200">
@@ -210,17 +233,17 @@
                     </div>
                 </div>
 
-                <!-- Modified version -->
+                <!-- Modified file -->
                 <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200 transform hover:shadow-md transition-all">
                     <h3 class="text-lg font-semibold mb-4 flex items-center">
                         <span class="w-2 h-2 rounded-full bg-primary mr-2"></span>
-                        Modified Version
+                        Modified File
                     </h3>
                     <div id="fileDropzone2" class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-primary transition-colors cursor-pointer min-h-[200px] flex flex-col items-center justify-center">
-                        <i class="fa fa-file-word-o text-4xl text-neutral mb-3"></i>
+                        <i class="fa fa-file-text-o text-4xl text-neutral mb-3"></i>
                         <p class="mb-2 text-neutral">Drag file here, or <span class="text-primary font-medium">click to upload</span></p>
-                        <p class="text-xs text-gray-400">Supports .docx or .pdf (max 20MB)</p>
-                        <input type="file" id="fileInput2" class="hidden" accept=".docx,.pdf">
+                        <p class="text-xs text-gray-400">Supports .txt, .docx or .pdf (max 20MB)</p>
+                        <input type="file" id="fileInput2" class="hidden" accept=".txt,.docx,.pdf">
                     </div>
                     <div id="fileInfo2" class="mt-4 hidden">
                         <div class="flex items-center justify-between p-3 bg-light rounded-lg border border-gray-200">
@@ -237,37 +260,10 @@
             </div>
         </section>
 
-        <!-- Text paste mode -->
-        <section id="textMode" class="mb-10 hidden">
-            <div class="grid md:grid-cols-2 gap-6">
-                <!-- Original version -->
-                <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200 transform hover:shadow-md transition-all">
-                    <h3 class="text-lg font-semibold mb-4 flex items-center">
-                        <span class="w-2 h-2 rounded-full bg-neutral mr-2"></span>
-                        Original Text
-                    </h3>
-                    <div>
-                        <textarea id="originalText" rows="12" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-all resize-none scrollbar-thin" placeholder="Paste original paper content here..."></textarea>
-                    </div>
-                </div>
-
-                <!-- Modified version -->
-                <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200 transform hover:shadow-md transition-all">
-                    <h3 class="text-lg font-semibold mb-4 flex items-center">
-                        <span class="w-2 h-2 rounded-full bg-primary mr-2"></span>
-                        Modified Text
-                    </h3>
-                    <div>
-                        <textarea id="modifiedText" rows="12" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-all resize-none scrollbar-thin" placeholder="Paste modified paper content here..."></textarea>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Compare button -->
         <section class="text-center mb-10">
             <button id="compareBtn" class="px-8 py-3 bg-primary hover:bg-primary/90 text-white rounded-lg font-medium shadow-md hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-md">
-                <i class="fa fa-exchange mr-2"></i>Compare Papers
+                <i class="fa fa-exchange mr-2"></i>Compare Texts
             </button>
         </section>
 
@@ -275,8 +271,8 @@
         <section id="loadingSection" class="text-center mb-10 hidden">
             <div class="flex flex-col items-center p-8 bg-white rounded-lg shadow-sm">
                 <div class="w-12 h-12 border-4 border-gray-200 border-t-primary rounded-full animate-spin mb-4"></div>
-                <p class="text-neutral">Comparing documents, please wait...</p>
-                <p class="text-sm text-gray-500 mt-2">Larger files may take longer to process</p>
+                <p class="text-neutral">Comparing texts, please wait...</p>
+                <p class="text-sm text-gray-500 mt-2">Large texts may take longer to process</p>
             </div>
         </section>
 
@@ -297,11 +293,11 @@
                         <p id="totalWords" class="text-2xl font-bold text-primary">0</p>
                     </div>
                     <div class="bg-light p-4 rounded-lg text-center border border-gray-200 transform hover:shadow-sm transition-all">
-                        <p class="text-neutral text-sm mb-1">Added Content</p>
+                        <p class="text-neutral text-sm mb-1">Added Words</p>
                         <p id="addedCount" class="text-2xl font-bold text-secondary">0</p>
                     </div>
                     <div class="bg-light p-4 rounded-lg text-center border border-gray-200 transform hover:shadow-sm transition-all">
-                        <p class="text-neutral text-sm mb-1">Removed Content</p>
+                        <p class="text-neutral text-sm mb-1">Removed Words</p>
                         <p id="deletedCount" class="text-2xl font-bold text-danger">0</p>
                     </div>
                 </div>
@@ -316,7 +312,7 @@
                         <i class="fa fa-download mr-2"></i>Export Report
                     </button>
                     <button id="restartBtn" class="px-4 py-2 bg-light hover:bg-gray-200 text-neutral rounded-lg text-sm flex items-center transition-colors border border-gray-200">
-                        <i class="fa fa-refresh mr-2"></i>Compare New Files
+                        <i class="fa fa-refresh mr-2"></i>New Comparison
                     </button>
                 </div>
             </div>
@@ -326,18 +322,48 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 border-b border-gray-200">
                     <div class="p-4 bg-original font-medium flex items-center">
                         <span class="w-2 h-2 rounded-full bg-neutral mr-2"></span>
-                        Original Version
+                        Original Text
                     </div>
                     <div class="p-4 bg-modified font-medium text-primary flex items-center">
                         <span class="w-2 h-2 rounded-full bg-primary mr-2"></span>
-                        Modified Version
+                        Modified Text
                     </div>
                 </div>
                 <div id="comparisonContent" class="grid grid-cols-1 md:grid-cols-2">
-                    <!-- Original content with improved styling -->
+                    <!-- Original content -->
                     <div id="originalContent" class="bg-original border-r border-gray-200 p-6 max-h-[600px] overflow-y-auto scrollbar-thin"></div>
-                    <!-- Modified content with improved styling -->
+                    <!-- Modified content -->
                     <div id="modifiedContent" class="bg-modified p-6 max-h-[600px] overflow-y-auto scrollbar-thin"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features section -->
+        <section class="bg-white rounded-lg shadow-sm p-6 mb-10 border border-gray-200">
+            <h3 class="text-lg font-semibold mb-6 flex items-center">
+                <i class="fa fa-star text-warning mr-2"></i>Why Use Our Text Compare Tool
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="flex flex-col items-center text-center p-4 hover:bg-light rounded-lg transition-all">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa fa-bolt text-primary text-xl"></i>
+                    </div>
+                    <h4 class="font-medium mb-2">Instant Results</h4>
+                    <p class="text-neutral text-sm">Compare texts in seconds and get immediate feedback on differences</p>
+                </div>
+                <div class="flex flex-col items-center text-center p-4 hover:bg-light rounded-lg transition-all">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa fa-lock text-primary text-xl"></i>
+                    </div>
+                    <h4 class="font-medium mb-2">100% Private</h4>
+                    <p class="text-neutral text-sm">All comparisons happen in your browser - your text never leaves your device</p>
+                </div>
+                <div class="flex flex-col items-center text-center p-4 hover:bg-light rounded-lg transition-all">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa fa-free-code-camp text-primary text-xl"></i>
+                    </div>
+                    <h4 class="font-medium mb-2">Completely Free</h4>
+                    <p class="text-neutral text-sm">No hidden costs, no limits on usage, and no need to create an account</p>
                 </div>
             </div>
         </section>
@@ -345,26 +371,15 @@
         <!-- Help tips -->
         <section class="bg-white rounded-lg shadow-sm p-6 mb-10 border border-gray-200">
             <h3 class="text-lg font-semibold mb-4 flex items-center">
-                <i class="fa fa-lightbulb-o text-warning mr-2"></i>How to Use
+                <i class="fa fa-lightbulb-o text-warning mr-2"></i>How to Compare Texts
             </h3>
-            <ul class="space-y-3 text-neutral">
-                <li class="flex items-start">
-                    <i class="fa fa-check-circle text-secondary mt-1 mr-3"></i>
-                    <span>Green highlighted sections indicate added content, while strikethrough text shows removed content</span>
-                </li>
-                <li class="flex items-start">
-                    <i class="fa fa-check-circle text-secondary mt-1 mr-3"></i>
-                    <span>Similarity percentage is for reference only and not equivalent to plagiarism checking</span>
-                </li>
-                <li class="flex items-start">
-                    <i class="fa fa-check-circle text-secondary mt-1 mr-3"></i>
-                    <span>Complex formatting (equations, charts) may affect comparison accuracy - plain text is recommended</span>
-                </li>
-                <li class="flex items-start">
-                    <i class="fa fa-check-circle text-secondary mt-1 mr-3"></i>
-                    <span>All operations are performed locally in your browser to ensure document security</span>
-                </li>
-            </ul>
+            <ol class="space-y-3 text-neutral list-decimal pl-5">
+                <li class="pl-2">Paste your original text in the left box and modified text in the right box</li>
+                <li class="pl-2">Or upload two files using the file upload tab</li>
+                <li class="pl-2">Click the "Compare Texts" button to see the differences</li>
+                <li class="pl-2">Added content will be highlighted in green, removed content in red strikethrough</li>
+                <li class="pl-2">Use the options to collapse identical content or export your comparison report</li>
+            </ol>
         </section>
     </main>
 
@@ -375,9 +390,9 @@
                 <div>
                     <div class="flex items-center space-x-2 mb-4">
                         <i class="fa fa-file-text-o text-primary text-2xl"></i>
-                        <span class="text-xl font-bold text-white">PaperCompare</span>
+                        <span class="text-xl font-bold text-white">TextCompare</span>
                     </div>
-                    <p class="mb-4">Free online tools for academic writing. Make paper comparison simple and efficient.</p>
+                    <p class="mb-4">Free online text comparison tool. Easily find differences between two texts, documents or files.</p>
                     <div class="flex space-x-4">
                         <a href="#" class="text-gray-400 hover:text-primary transition-colors">
                             <i class="fa fa-twitter text-xl"></i>
@@ -394,10 +409,10 @@
                 <div>
                     <h3 class="text-white font-semibold mb-4">Tools</h3>
                     <ul class="space-y-2">
-                        <li><a href="/compare.html" class="hover:text-primary transition-colors">Paper Comparison</a></li>
-                        <li><a href="/checker.html" class="hover:text-primary transition-colors">Plagiarism Checker</a></li>
-                        <li><a href="/wordcount.html" class="hover:text-primary transition-colors">Word Counter</a></li>
-                        <li><a href="/formatter.html" class="hover:text-primary transition-colors">Text Formatter</a></li>
+                        <li><a href="/text-compare.html" class="hover:text-primary transition-colors">Text Compare</a></li>
+                        <li><a href="/word-count.html" class="hover:text-primary transition-colors">Word Counter</a></li>
+                        <li><a href="/text-diff.html" class="hover:text-primary transition-colors">Text Difference</a></li>
+                        <li><a href="/file-compare.html" class="hover:text-primary transition-colors">File Compare</a></li>
                     </ul>
                 </div>
                 
@@ -427,8 +442,8 @@
             </div>
             
             <div class="border-t border-gray-800 pt-8 text-center text-sm">
-                <p>© 2025 KoPaper.com | Free online paper comparison tool for academic use</p>
-                <p class="mt-2">Use our tools responsibly and in accordance with academic integrity policies</p>
+                <p>© 2025 KoPaper.com | Free online text comparison tool</p>
+                <p class="mt-2">All text processing occurs locally in your browser. Your content remains private.</p>
             </div>
         </div>
     </footer>
@@ -455,6 +470,10 @@
         const removeFile2 = document.getElementById('removeFile2');
         const originalText = document.getElementById('originalText');
         const modifiedText = document.getElementById('modifiedText');
+        const originalWordCount = document.getElementById('originalWordCount');
+        const originalCharCount = document.getElementById('originalCharCount');
+        const modifiedWordCount = document.getElementById('modifiedWordCount');
+        const modifiedCharCount = document.getElementById('modifiedCharCount');
         const compareBtn = document.getElementById('compareBtn');
         const loadingSection = document.getElementById('loadingSection');
         const resultSection = document.getElementById('resultSection');
@@ -488,6 +507,25 @@
                 navbar.classList.remove('shadow');
             }
         });
+        
+        // Update word and character counts
+        function updateTextCounts() {
+            const originalWords = countWords(originalText.value);
+            const originalChars = countChars(originalText.value);
+            const modifiedWords = countWords(modifiedText.value);
+            const modifiedChars = countChars(modifiedText.value);
+            
+            originalWordCount.textContent = `${originalWords} word${originalWords !== 1 ? 's' : ''}`;
+            originalCharCount.textContent = `${originalChars} character${originalChars !== 1 ? 's' : ''}`;
+            modifiedWordCount.textContent = `${modifiedWords} word${modifiedWords !== 1 ? 's' : ''}`;
+            modifiedCharCount.textContent = `${modifiedChars} character${modifiedChars !== 1 ? 's' : ''}`;
+            
+            updateCompareButtonState();
+        }
+        
+        // Add event listeners for text input
+        originalText.addEventListener('input', updateTextCounts);
+        modifiedText.addEventListener('input', updateTextCounts);
         
         // Switch comparison modes
         fileModeBtn.addEventListener('click', () => {
@@ -572,35 +610,25 @@
         
         // Handle successful file1 parsing
         function handleFile1Success(file) {
-            // Restore upload area display
             resetDropzone1();
-            
-            // Show file information
             fileName1.textContent = file.name;
             fileInfo1.classList.remove('hidden');
-            
-            // Show success notification
-            showNotification(`File "${file.name}" parsed successfully`, 'success');
+            showNotification(`File "${file.name}" loaded successfully`, 'success');
         }
         
         // Handle successful file2 parsing
         function handleFile2Success(file) {
-            // Restore upload area display
             resetDropzone2();
-            
-            // Show file information
             fileName2.textContent = file.name;
             fileInfo2.classList.remove('hidden');
-            
-            // Show success notification
-            showNotification(`File "${file.name}" parsed successfully`, 'success');
+            showNotification(`File "${file.name}" loaded successfully`, 'success');
         }
         
         // Process files
         function handleFile1(file) {
             // Validate file type and size
-            if (!file.name.match(/\.(docx|pdf)$/i)) {
-                showNotification('Please upload .docx or .pdf files only', 'error');
+            if (!file.name.match(/\.(txt|docx|pdf)$/i)) {
+                showNotification('Please upload .txt, .docx or .pdf files only', 'error');
                 return;
             }
             
@@ -624,15 +652,15 @@
                     fileInput1.value = '';
                     fileInfo1.classList.add('hidden');
                     resetDropzone1();
-                    showNotification('Failed to parse file. Please try another file.', 'error');
+                    showNotification('Failed to process file. Please try another file.', 'error');
                 }
             });
         }
         
         function handleFile2(file) {
             // Validate file type and size
-            if (!file.name.match(/\.(docx|pdf)$/i)) {
-                showNotification('Please upload .docx or .pdf files only', 'error');
+            if (!file.name.match(/\.(txt|docx|pdf)$/i)) {
+                showNotification('Please upload .txt, .docx or .pdf files only', 'error');
                 return;
             }
             
@@ -656,7 +684,7 @@
                     fileInput2.value = '';
                     fileInfo2.classList.add('hidden');
                     resetDropzone2();
-                    showNotification('Failed to parse file. Please try another file.', 'error');
+                    showNotification('Failed to process file. Please try another file.', 'error');
                 }
             });
         }
@@ -664,17 +692,17 @@
         // Reset upload areas
         function resetDropzone1() {
             fileDropzone1.innerHTML = `
-                <i class="fa fa-file-word-o text-4xl text-neutral mb-3"></i>
+                <i class="fa fa-file-text-o text-4xl text-neutral mb-3"></i>
                 <p class="mb-2 text-neutral">Drag file here, or <span class="text-primary font-medium">click to upload</span></p>
-                <p class="text-xs text-gray-400">Supports .docx or .pdf (max 20MB)</p>
+                <p class="text-xs text-gray-400">Supports .txt, .docx or .pdf (max 20MB)</p>
             `;
         }
         
         function resetDropzone2() {
             fileDropzone2.innerHTML = `
-                <i class="fa fa-file-word-o text-4xl text-neutral mb-3"></i>
+                <i class="fa fa-file-text-o text-4xl text-neutral mb-3"></i>
                 <p class="mb-2 text-neutral">Drag file here, or <span class="text-primary font-medium">click to upload</span></p>
-                <p class="text-xs text-gray-400">Supports .docx or .pdf (max 20MB)</p>
+                <p class="text-xs text-gray-400">Supports .txt, .docx or .pdf (max 20MB)</p>
             `;
         }
         
@@ -682,7 +710,15 @@
         function parseFileContent(file, callback) {
             const fileName = file.name;
             
-            if (fileName.endsWith('.docx')) {
+            if (fileName.endsWith('.txt')) {
+                // Parse text files
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    callback(e.target.result);
+                };
+                reader.readAsText(file);
+            }
+            else if (fileName.endsWith('.docx')) {
                 // Parse docx files
                 const reader = new FileReader();
                 reader.onload = function(e) {
@@ -767,10 +803,6 @@
             updateCompareButtonState();
         });
         
-        // Text area input events
-        originalText.addEventListener('input', updateCompareButtonState);
-        modifiedText.addEventListener('input', updateCompareButtonState);
-        
         // Update compare button state
         function updateCompareButtonState() {
             let canCompare = false;
@@ -789,7 +821,6 @@
         // Word counting function
         function countWords(text) {
             if (!text) return 0;
-            
             // Split on whitespace and count non-empty tokens
             return text.split(/\s+/).filter(word => word.length > 0).length;
         }
@@ -840,7 +871,7 @@
                 resultSection.scrollIntoView({ behavior: 'smooth' });
                 
                 // Show notification
-                showNotification('Comparison complete. Results displayed below.', 'success');
+                showNotification('Text comparison complete. Results displayed below.', 'success');
             }, 600);
         }
         
@@ -869,7 +900,7 @@
                 ? Math.max(0, 100 - (addedChars + deletedChars) / totalChars1 * 100) 
                 : 0;
             
-            // Total words (max of both documents)
+            // Total words (max of both texts)
             const totalWordCount1 = countWords(text1);
             const totalWordCount2 = countWords(text2);
             const totalWordCount = Math.max(totalWordCount1, totalWordCount2);
@@ -1004,7 +1035,7 @@
                 <!DOCTYPE html>
                 <html>
                 <head>
-                    <title>Paper Comparison Report</title>
+                    <title>Text Comparison Report</title>
                     <style>
                         body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; max-width: 1200px; margin: 0 auto; }
                         h1 { color: #2563EB; text-align: center; }
@@ -1026,7 +1057,7 @@
                     </style>
                 </head>
                 <body>
-                    <h1>Paper Comparison Report</h1>
+                    <h1>Text Comparison Report</h1>
                     <div class="stats">
                         <div class="stat-item">
                             <div>Similarity</div>
@@ -1037,21 +1068,21 @@
                             <div class="stat-value">${totalWords.textContent}</div>
                         </div>
                         <div class="stat-item">
-                            <div>Added Content</div>
+                            <div>Added Words</div>
                             <div class="stat-value" style="color: #10B981;">${addedCount.textContent}</div>
                         </div>
                         <div class="stat-item">
-                            <div>Removed Content</div>
+                            <div>Removed Words</div>
                             <div class="stat-value" style="color: #EF4444;">${deletedCount.textContent}</div>
                         </div>
                     </div>
                     <div class="comparison">
                         <div>
-                            <div class="column-title">Original Version</div>
+                            <div class="column-title">Original Text</div>
                             <div class="content original-content">${originalContent.innerHTML}</div>
                         </div>
                         <div>
-                            <div class="column-title">Modified Version</div>
+                            <div class="column-title">Modified Text</div>
                             <div class="content modified-content">${modifiedContent.innerHTML}</div>
                         </div>
                     </div>
@@ -1086,6 +1117,9 @@
             resetDropzone1();
             resetDropzone2();
             
+            // Update counts
+            updateTextCounts();
+            
             // Hide results, show input area
             resultSection.classList.add('hidden');
             loadingSection.classList.add('hidden');
@@ -1097,7 +1131,7 @@
             updateCompareButtonState();
             
             // Show notification
-            showNotification('Ready to start a new comparison', 'info');
+            showNotification('Ready to start a new text comparison', 'info');
         });
         
         // Show notifications
@@ -1151,6 +1185,7 @@
         }
         
         // Initialize page
+        updateTextCounts();
         updateCompareButtonState();
     </script>
 </body>
