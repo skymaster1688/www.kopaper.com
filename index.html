@@ -347,7 +347,7 @@
             <h3 class="text-lg font-semibold mb-4 flex items-center">
                 <i class="fa fa-lightbulb-o text-warning mr-2"></i>How to Use
             </h3>
-            <ul class="space-y-3 text-neutral">
+            <ul class="space-y-3 text-neutral mb-8">
                 <li class="flex items-start">
                     <i class="fa fa-check-circle text-secondary mt-1 mr-3"></i>
                     <span>Green highlighted sections indicate added content, while strikethrough text shows removed content</span>
@@ -365,7 +365,43 @@
                     <span>All operations are performed locally in your browser to ensure document security</span>
                 </li>
             </ul>
+
+            <h3 class="text-lg font-semibold mb-4 flex items-center">
+                <i class="fa fa-image text-primary mr-2"></i>Feature Preview
+            </h3>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition-all">
+                    <div class="bg-light p-3 border-b border-gray-200 font-medium">
+                        <i class="fa fa-exchange text-primary mr-2"></i>Comparison Result Example
+                    </div>
+                    <div class="p-2">
+                        <img src="/style/enjg.png" 
+                            alt="Comparison result example showing added and deleted content" 
+                            class="w-full h-auto rounded-md object-cover"
+                            loading="lazy">
+                        <p class="text-xs text-gray-500 mt-2 text-center">
+                            Example: Green = Added content, Strikethrough = Deleted content
+                        </p>
+                    </div>
+                </div>
+
+                <div class="border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition-all">
+                    <div class="bg-light p-3 border-b border-gray-200 font-medium">
+                        <i class="fa fa-download text-primary mr-2"></i>Exported Report Example
+                    </div>
+                    <div class="p-2">
+                        <img src="/style/enbg.png" 
+                            alt="Exported report example with statistics and formatted content" 
+                            class="w-full h-auto rounded-md object-cover"
+                            loading="lazy">
+                        <p class="text-xs text-gray-500 mt-2 text-center">
+                            Example: Exported PDF/print report with comparison statistics
+                        </p>
+                    </div>
+                </div>
+            </div>
         </section>
+        
     </main>
 
     <!-- Footer -->

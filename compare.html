@@ -332,26 +332,64 @@
         <!-- 帮助提示 -->
         <section class="bg-white rounded-lg shadow-sm p-6 mb-10 border border-gray-200">
             <h3 class="text-lg font-semibold mb-4 flex items-center">
-                <i class="fa fa-lightbulb-o text-warning mr-2"></i>使用提示
+                <i class="fa fa-lightbulb-o text-warning mr-2"></i>使用说明
             </h3>
-            <ul class="space-y-3 text-neutral">
+            <ul class="space-y-3 text-neutral mb-8">
                 <li class="flex items-start">
                     <i class="fa fa-check-circle text-secondary mt-1 mr-3"></i>
-                    <span>绿色高亮部分表示新增内容，红色删除线部分表示删除内容</span>
+                    <span>绿色高亮部分代表新增内容，删除线文本代表已删除内容</span>
                 </li>
                 <li class="flex items-start">
                     <i class="fa fa-check-circle text-secondary mt-1 mr-3"></i>
-                    <span>相似度仅供参考，不代表学术查重结果</span>
+                    <span>相似度百分比仅供参考，不等同于查重检测结果</span>
                 </li>
                 <li class="flex items-start">
                     <i class="fa fa-check-circle text-secondary mt-1 mr-3"></i>
-                    <span>复杂格式（如公式、图表）可能影响比对精度，建议先转为纯文本</span>
+                    <span>复杂格式（公式、图表等）可能影响比对准确性，建议优先使用纯文本</span>
                 </li>
                 <li class="flex items-start">
                     <i class="fa fa-check-circle text-secondary mt-1 mr-3"></i>
-                    <span>所有操作均在本地完成，确保您的论文内容安全</span>
+                    <span>所有操作均在浏览器本地完成，确保文档数据安全不泄露</span>
                 </li>
             </ul>
+
+            <!-- 新增：功能样例展示 -->
+            <h3 class="text-lg font-semibold mb-4 flex items-center">
+                <i class="fa fa-image text-primary mr-2"></i>功能预览
+            </h3>
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- 比对结果样例图 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition-all">
+                    <div class="bg-light p-3 border-b border-gray-200 font-medium">
+                        <i class="fa fa-exchange text-primary mr-2"></i>比对结果样例
+                    </div>
+                    <div class="p-2">
+                        <img src="/style/cnjg.png" 
+                            alt="展示新增和删除内容的比对结果样例" 
+                            class="w-full h-auto rounded-md object-cover"
+                            loading="lazy">
+                        <p class="text-xs text-gray-500 mt-2 text-center">
+                            说明：绿色=新增内容，删除线=已删除内容
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 导出报告样例图 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition-all">
+                    <div class="bg-light p-3 border-b border-gray-200 font-medium">
+                        <i class="fa fa-download text-primary mr-2"></i>导出报告样例
+                    </div>
+                    <div class="p-2">
+                        <img src="/style/cnbg.png" 
+                            alt="包含统计数据和格式化内容的导出报告样例" 
+                            class="w-full h-auto rounded-md object-cover"
+                            loading="lazy">
+                        <p class="text-xs text-gray-500 mt-2 text-center">
+                            说明：包含比对统计数据的PDF/打印版报告
+                        </p>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
