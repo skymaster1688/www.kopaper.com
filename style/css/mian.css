@@ -775,55 +775,68 @@
       }
     }
 
-    
+/* Language switcher style - Keyword optimized version (koPaper core keywords) */
 .language-switcher {
   margin-top: 20px;
   padding-top: 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-wrap: wrap; /* Support text wrapping for long keyword text */
+  align-items: center;
+  gap: 8px; /* Optimize spacing to avoid text crowding */
 }
 
 .language-switcher .lang-label {
   color: #999;
-  margin-right: 10px;
+  white-space: nowrap; /* Keep label from wrapping */
 }
 
 .language-switcher .lang-link {
   text-decoration: none;
-  margin: 0 8px;
-  transition: color 0.2s ease;
+  padding: 4px 8px; /* Increase padding for better click area and visual comfort */
+  border-radius: 4px; /* Slight rounding for better interaction */
+  transition: all 0.2s ease;
 }
 
-
+/* Active language link style */
 .language-switcher .lang-link.active {
   color: #fff;
   font-weight: 500;
+  background-color: rgba(255, 255, 255, 0.1); /* Light background to highlight active state */
 }
 
-
+/* Inactive language link style */
 .language-switcher .lang-link.inactive {
   color: #ccc;
 }
 
-
+/* Hover effect for inactive links */
 .language-switcher .lang-link.inactive:hover {
   color: #fff;
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
-
+/* Responsive adaptation - Long text optimization */
 @media (max-width: 768px) {
   .language-switcher {
     margin-top: 15px;
     padding-top: 15px;
-  }
-  
-  .language-switcher .lang-label {
-    display: block;
-    margin-bottom: 8px;
-    margin-right: 0;
+    flex-direction: column; /* Vertical layout on mobile */
+    align-items: flex-start;
+    gap: 10px;
   }
   
   .language-switcher .lang-link {
-    display: inline-block;
-    margin: 0 6px;
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 6px 10px;
+  }
+}
+
+/* Extra adaptation for small screens (avoid text overflow) */
+@media (max-width: 375px) {
+  .language-switcher .lang-link {
+    font-size: 0.9rem; /* Reduce font size for ultra-small screens */
   }
 }
