@@ -1,2 +1,6 @@
+# robots.txt for kopaper.com
 User-agent: *
 Allow: /
+
+Disallow: /style/css/
+Disallow: /style/js/
