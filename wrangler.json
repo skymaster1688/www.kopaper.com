@@ -2,6 +2,16 @@
   "name": "www-kopaper-com",
   "compatibility_date": "2025-12-08",
   "assets": {
-    "directory": "./"
-  }
+    "directory": "."
+  },
+  "vars": {
+    "GEMINI_API_KEY": ""
+  },
+  "kv_namespaces": [
+    {
+      "binding": "USAGE_TRACKER",
+      "id": "",
+      "preview_id": ""
+    }
+  ]
 }

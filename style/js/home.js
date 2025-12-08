@@ -17,6 +17,67 @@
     const toast = document.getElementById('toast');
     const toastMessage = document.getElementById('toastMessage');
     
+    // 使用次数限制配置
+    const DAILY_LIMIT = 2; // 每天最多使用2次
+    const MAX_TEXT_LENGTH = 300; // 每次最多300字
+    
+    // Add usage counter display to the UI
+    function addUsageCounter() {
+      const converterContainer = document.querySelector('.converter-container');
+      const usageCounter = document.createElement('div');
+      usageCounter.id = 'usageCounter';
+      usageCounter.style.cssText = `
+        text-align: center;
+        color: #666;
+        margin-bottom: 15px;
+        font-size: 14px;
+      `;
+      converterContainer.insertBefore(usageCounter, converterContainer.firstChild);
+      updateUsageCounter();
+    }
+    
+    // Get current date in YYYY-MM-DD format
+    function getCurrentDate() {
+      const now = new Date();
+      return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    }
+    
+    // Check if user has reached daily limit
+    function checkUsageLimit() {
+      const today = getCurrentDate();
+      const usageData = JSON.parse(localStorage.getItem('kopaper_usage')) || {};
+      
+      if (usageData.date !== today) {
+        // Reset usage for new day
+        usageData.date = today;
+        usageData.count = 0;
+        localStorage.setItem('kopaper_usage', JSON.stringify(usageData));
+        return false;
+      }
+      
+      return usageData.count >= DAILY_LIMIT;
+    }
+    
+    // Increment usage counter
+    function incrementUsage() {
+      const usageData = JSON.parse(localStorage.getItem('kopaper_usage')) || {};
+      usageData.count = (usageData.count || 0) + 1;
+      localStorage.setItem('kopaper_usage', JSON.stringify(usageData));
+      updateUsageCounter();
+    }
+    
+    // Update usage counter display
+    function updateUsageCounter() {
+      const today = getCurrentDate();
+      const usageData = JSON.parse(localStorage.getItem('kopaper_usage')) || { date: today, count: 0 };
+      const remaining = Math.max(0, DAILY_LIMIT - usageData.count);
+      
+      const usageCounter = document.getElementById('usageCounter');
+      if (usageCounter) {
+        usageCounter.textContent = `Daily Usage: ${usageData.count}/${DAILY_LIMIT} | Remaining: ${remaining}`;
+      }
+    }
+    
     // FAQ Elements
     const faqQuestions = document.querySelectorAll('.faq-question');
     
@@ -34,7 +95,20 @@
     // Count input characters
     textarea.addEventListener('input', () => {
       const charCount = textarea.value.length;
-      wordCountSpan.textContent = charCount;
+      wordCountSpan.textContent = `${charCount} / ${MAX_TEXT_LENGTH}`;
+      
+      // Apply visual feedback and disable button when limit exceeded
+      if (charCount > MAX_TEXT_LENGTH) {
+        wordCountSpan.style.color = '#ef4444'; // Red color for over limit
+        convertBtn.disabled = true;
+        convertBtn.style.opacity = '0.5';
+        convertBtn.style.cursor = 'not-allowed';
+      } else {
+        wordCountSpan.style.color = ''; // Reset to default color
+        convertBtn.disabled = false;
+        convertBtn.style.opacity = '';
+        convertBtn.style.cursor = '';
+      }
       
       // Clear output if input is empty
       if (charCount === 0) {
@@ -172,12 +246,79 @@
       return humanizedSentences.join(' ');
     }
 
+    // Call Cloudflare Workers API proxy for text humanization
+    async function callGeminiAPI(text) {
+      try {
+        // 调用我们的Cloudflare Workers代理API
+        const response = await fetch('/api/humanize', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            text: text
+          })
+        });
+        
+        if (!response.ok) {
+          // 处理API错误
+          const errorData = await response.json().catch(() => ({
+            error: `API请求失败: ${response.statusText}`
+          }));
+          
+          // 如果是使用次数超限，显示友好的错误信息
+          if (response.status === 429) {
+            showToast(errorData.error || '今日使用次数已达上限，请明天再试！', 'error');
+          } else if (response.status === 413) {
+            showToast(errorData.error || '文本过长，请缩短文本后重试！', 'error');
+          } else {
+            showToast(errorData.error || '处理失败，请稍后重试！', 'error');
+          }
+          
+          throw new Error(errorData.error);
+        }
+        
+        const data = await response.json();
+        
+        // 更新前端使用次数显示
+        if (data.usage) {
+          // 更新localStorage以保持前端和后端一致
+          const today = getCurrentDate();
+          localStorage.setItem('kopaper_usage', JSON.stringify({
+            date: today,
+            count: data.usage.limit - data.usage.remaining
+          }));
+          
+          // 更新UI显示
+          updateUsageCounter();
+        }
+        
+        // 解析Gemini API的响应（通过代理转发）
+        if (data.candidates && data.candidates.length > 0 && 
+            data.candidates[0].content && data.candidates[0].content.parts) {
+          return data.candidates[0].content.parts[0].text;
+        }
+        
+        throw new Error('API响应格式不正确');
+      } catch (error) {
+        console.error('API调用错误:', error);
+        // 如果API调用失败，回退到本地模拟转换
+        return humanizeText(text);
+      }
+    }
+
     // Handle conversion process when button is clicked
-    convertBtn.addEventListener('click', () => {
+    convertBtn.addEventListener('click', async () => {
       // Validate input
       if (!textarea.value.trim()) {
         showToast('Please paste your AI-generated text first', 'error');
         textarea.focus();
+        return;
+      }
+      
+      // Check usage limit
+      if (checkUsageLimit()) {
+        showToast('You have reached your daily usage limit (3 times). Please try again tomorrow.', 'error');
         return;
       }
       
@@ -199,15 +340,24 @@
       humanizedTextarea.value = 'Humanizing your text...';
       updateOutputWordCount();
 
-      // Simulate API call with timeout
-      setTimeout(() => {
-        // In production, replace this with actual API call
-        // const humanized = humanizeText(textarea.value);
-        const humanized = 'Humanizing your text...';
+      try {
+        // Call Gemini API for actual text humanization
+        const humanized = await callGeminiAPI(textarea.value);
         
         humanizedTextarea.value = humanized;
         updateOutputWordCount();
         
+        // Increment usage counter
+        incrementUsage();
+        
+        // Show success message
+        showToast('Text humanized successfully!');
+      } catch (error) {
+        console.error('Conversion error:', error);
+        humanizedTextarea.value = 'An error occurred during text humanization. Please try again.';
+        updateOutputWordCount();
+        showToast('An error occurred. Please try again later.', 'error');
+      } finally {
         // Reset state
         textarea.disabled = false;
         convertBtn.disabled = false;
@@ -218,10 +368,7 @@
         // Generate new captcha for next use
         generateCaptcha();
         captchaInput.value = '';
-        
-        // Show success message
-        showToast('Text humanized successfully!');
-      }, 2000);
+      }
     });
 
     // Initialize FAQ - open first item by default
@@ -250,4 +397,9 @@
           }
         }
       });
+    });
+    
+    // Initialize usage counter on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      addUsageCounter();
     });
