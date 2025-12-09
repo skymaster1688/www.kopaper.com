@@ -17,9 +17,9 @@
     const toast = document.getElementById('toast');
     const toastMessage = document.getElementById('toastMessage');
     
-    // 使用次数限制配置
-    const DAILY_LIMIT = 2; // 每天最多使用2次
-    const MAX_TEXT_LENGTH = 300; // 每次最多300字
+    // Usage limit configuration
+    const DAILY_LIMIT = 2; // Maximum 2 uses per day
+    const MAX_TEXT_LENGTH = 300; // Maximum 300 characters per use
     
     // Add usage counter display to the UI
     function addUsageCounter() {
@@ -249,8 +249,8 @@
     // Call Cloudflare Workers API proxy for text humanization
     async function callGeminiAPI(text) {
       try {
-        // 调用我们的Cloudflare Workers代理API
-        const response = await fetch('https://humanize-api.1628582080.workers.dev/', {
+        // Call our Cloudflare Workers proxy API
+        const response = await fetch('https://humanize-api.1628582080.workers.dev/humanizeai', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -261,18 +261,18 @@
         });
         
         if (!response.ok) {
-          // 处理API错误
+          // Handle API errors
           const errorData = await response.json().catch(() => ({
-            error: `API请求失败: ${response.statusText}`
+            error: `API request failed: ${response.statusText}`
           }));
           
-          // 如果是使用次数超限，显示友好的错误信息
+          // If usage limit is exceeded, show a friendly error message
           if (response.status === 429) {
-            showToast(errorData.error || '今日使用次数已达上限，请明天再试！', 'error');
+            showToast(errorData.error || 'Daily usage limit reached, please try again tomorrow!', 'error');
           } else if (response.status === 413) {
-            showToast(errorData.error || '文本过长，请缩短文本后重试！', 'error');
+            showToast(errorData.error || 'Text too long, please shorten and try again!', 'error');
           } else {
-            showToast(errorData.error || '处理失败，请稍后重试！', 'error');
+            showToast(errorData.error || 'Processing failed, please try again later!', 'error');
           }
           
           throw new Error(errorData.error);
@@ -280,29 +280,29 @@
         
         const data = await response.json();
         
-        // 更新前端使用次数显示
+        // Update frontend usage display
         if (data.usage) {
-          // 更新localStorage以保持前端和后端一致
+          // Update localStorage to keep frontend and backend consistent
           const today = getCurrentDate();
           localStorage.setItem('kopaper_usage', JSON.stringify({
             date: today,
             count: data.usage.limit - data.usage.remaining
           }));
           
-          // 更新UI显示
+          // Update UI display
           updateUsageCounter();
         }
         
-        // 解析Gemini API的响应（通过代理转发）
+        // Parse Gemini API response (forwarded through proxy)
         if (data.candidates && data.candidates.length > 0 && 
             data.candidates[0].content && data.candidates[0].content.parts) {
           return data.candidates[0].content.parts[0].text;
         }
         
-        throw new Error('API响应格式不正确');
+        throw new Error('API response format is incorrect');
       } catch (error) {
-        console.error('API调用错误:', error);
-        // 如果API调用失败，回退到本地模拟转换
+        console.error('API call error:', error);
+        // If API call fails, fall back to local simulation conversion
         return humanizeText(text);
       }
     }
@@ -318,7 +318,7 @@
       
       // Check usage limit
       if (checkUsageLimit()) {
-        showToast('You have reached your daily usage limit (3 times). Please try again tomorrow.', 'error');
+        showToast('You have reached your daily usage limit (2 times). Please try again tomorrow.', 'error');
         return;
       }
       
