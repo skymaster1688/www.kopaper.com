@@ -250,7 +250,7 @@
     async function callGeminiAPI(text) {
       try {
         // 调用我们的Cloudflare Workers代理API
-        const response = await fetch('/api/humanize', {
+        const response = await fetch('https://humanize-api.1628582080.workers.dev/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

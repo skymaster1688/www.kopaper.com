@@ -3,15 +3,5 @@
   "compatibility_date": "2025-12-09",
   "assets": {
     "directory": "."
-  },
-  "vars": {
-    "GEMINI_API_KEY": ""
-  },
-  "kv_namespaces": [
-    {
-      "binding": "USAGE_TRACKER",
-      "id": "444e26f4f05b4bf0b1519a29c75f3960",
-      "preview_id": ""
-    }
-  ]
+  }
 }
