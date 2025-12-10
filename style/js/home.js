@@ -16,6 +16,8 @@
     const mainNav = document.getElementById('mainNav');
     const toast = document.getElementById('toast');
     const toastMessage = document.getElementById('toastMessage');
+    const writingStyleSelect = document.getElementById('writingStyle');
+    
     
     // Usage limit configuration
     const DAILY_LIMIT = 2; // Maximum 2 uses per day
@@ -202,29 +204,94 @@
 
     // Simulate AI text humanization process
     // In a production environment, this would call a backend API
-    function humanizeText(aiText) {
-      // Simple simulation - replace with actual AI processing in production
-      const replacements = [
-        { from: 'AI', to: 'artificial intelligence' },
-        { from: 'generated', to: 'created' },
-        { from: 'text', to: 'content' },
-        { from: 'will', to: 'will likely' },
-        { from: 'can', to: 'is able to' },
-        { from: 'make', to: 'create' },
-        { from: 'use', to: 'utilize' },
-        { from: 'help', to: 'assist' },
-        { from: 'very', to: 'extremely' },
-        { from: 'good', to: 'excellent' },
-        { from: 'important', to: 'crucial' },
-        { from: 'many', to: 'numerous' },
-        { from: 'often', to: 'frequently' },
-        { from: 'show', to: 'demonstrate' },
-        { from: 'get', to: 'obtain' }
-      ];
+    function humanizeText(aiText, style = 'default') {
+      // Define style-specific replacement rules
+      const styleRules = {
+        default: [
+          { from: 'AI', to: 'artificial intelligence' },
+          { from: 'generated', to: 'created' },
+          { from: 'text', to: 'content' },
+          { from: 'will', to: 'will likely' },
+          { from: 'can', to: 'is able to' },
+          { from: 'make', to: 'create' },
+          { from: 'use', to: 'utilize' },
+          { from: 'help', to: 'assist' },
+          { from: 'very', to: 'extremely' },
+          { from: 'good', to: 'excellent' },
+          { from: 'important', to: 'crucial' },
+          { from: 'many', to: 'numerous' },
+          { from: 'often', to: 'frequently' },
+          { from: 'show', to: 'demonstrate' },
+          { from: 'get', to: 'obtain' }
+        ],
+        simple: [
+          { from: 'AI', to: 'computer' },
+          { from: 'generated', to: 'made' },
+          { from: 'utilize', to: 'use' },
+          { from: 'implement', to: 'use' },
+          { from: 'utilize', to: 'use' },
+          { from: 'optimize', to: 'improve' },
+          { from: 'facilitate', to: 'help' },
+          { from: 'analyze', to: 'look at' },
+          { from: 'synthesize', to: 'put together' },
+          { from: 'methodology', to: 'way' },
+          { from: 'paradigm', to: 'idea' },
+          { from: 'framework', to: 'structure' }
+        ],
+        creative: [
+          { from: 'AI', to: 'digital brain' },
+          { from: 'generated', to: 'crafted' },
+          { from: 'text', to: 'tale' },
+          { from: 'write', to: 'weave' },
+          { from: 'use', to: 'harness' },
+          { from: 'make', to: 'forge' },
+          { from: 'good', to: 'stunning' },
+          { from: 'important', to: 'vital' },
+          { from: 'many', to: 'countless' },
+          { from: 'show', to: 'reveal' },
+          { from: 'get', to: 'uncover' },
+          { from: 'find', to: 'discover' }
+        ],
+        academic: [
+          { from: 'AI', to: 'artificial intelligence systems' },
+          { from: 'generated', to: 'produced' },
+          { from: 'text', to: 'discourse' },
+          { from: 'use', to: 'employ' },
+          { from: 'make', to: 'construct' },
+          { from: 'good', to: 'robust' },
+          { from: 'important', to: 'significant' },
+          { from: 'many', to: 'a plethora of' },
+          { from: 'often', to: 'frequently' },
+          { from: 'show', to: 'exhibit' },
+          { from: 'get', to: 'attain' },
+          { from: 'find', to: 'ascertain' },
+          { from: 'see', to: 'observe' },
+          { from: 'think', to: 'hypothesize' }
+        ],
+        casual: [
+          { from: 'AI', to: 'AI' },
+          { from: 'generated', to: 'made' },
+          { from: 'text', to: 'stuff' },
+          { from: 'utilize', to: 'use' },
+          { from: 'implement', to: 'do' },
+          { from: 'optimize', to: 'tweak' },
+          { from: 'facilitate', to: 'make easier' },
+          { from: 'analyze', to: 'check out' },
+          { from: 'synthesize', to: 'put together' },
+          { from: 'methodology', to: 'way' },
+          { from: 'paradigm', to: 'idea' },
+          { from: 'framework', to: 'plan' },
+          { from: 'very', to: 'super' },
+          { from: 'good', to: 'great' },
+          { from: 'important', to: 'big deal' }
+        ]
+      };
+      
+      const replacements = styleRules[style] || styleRules.default;
       
       let humanized = aiText;
       
-      // Replace certain words to make text more natural
+      // Replace certain words based on selected style
       replacements.forEach(replacement => {
         const regex = new RegExp(`\\b${replacement.from}\\b`, 'gi');
         humanized = humanized.replace(regex, replacement.to);
@@ -247,7 +314,7 @@
     }
 
     // Call Cloudflare Workers API proxy for text humanization
-    async function callGeminiAPI(text) {
+    async function callGeminiAPI(text, style) {
       try {
         // Call our Cloudflare Workers proxy API
         const response = await fetch('https://humanize-api.1628582080.workers.dev/humanizeai', {
@@ -256,7 +323,8 @@
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            text: text
+            text: text,
+            style: style
           })
         });
         
@@ -303,7 +371,7 @@
       } catch (error) {
         console.error('API call error:', error);
         // If API call fails, fall back to local simulation conversion
-        return humanizeText(text);
+        return humanizeText(text, style);
       }
     }
 
@@ -341,8 +409,10 @@
       updateOutputWordCount();
 
       try {
+        // Get selected writing style
+        const selectedStyle = writingStyleSelect.value;
         // Call Gemini API for actual text humanization
-        const humanized = await callGeminiAPI(textarea.value);
+        const humanized = await callGeminiAPI(textarea.value, selectedStyle);
         
         humanizedTextarea.value = humanized;
         updateOutputWordCount();
