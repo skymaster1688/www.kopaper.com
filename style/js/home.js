@@ -4,95 +4,23 @@
     const humanizedTextarea = document.getElementById('humanizedText');
     const wordCountSpan = document.getElementById('wordCount');
     const outputWordCountSpan = document.getElementById('outputWordCount');
-    const captchaSpan = document.getElementById('captcha');
-    const captchaInput = document.getElementById('captchaInput');
     const convertBtn = document.getElementById('convertBtn');
     const loader = document.getElementById('loader');
     const clearInputBtn = document.getElementById('clearInputBtn');
     const pasteInputBtn = document.getElementById('pasteInputBtn');
     const copyOutputBtn = document.getElementById('copyOutputBtn');
-    const refreshCaptchaBtn = document.getElementById('refreshCaptcha');
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mainNav = document.getElementById('mainNav');
     const toast = document.getElementById('toast');
     const toastMessage = document.getElementById('toastMessage');
     const writingStyleSelect = document.getElementById('writingStyle');
     
-    
-    // Usage limit configuration
-    const DAILY_LIMIT = 2; // Maximum 2 uses per day
-    const MAX_TEXT_LENGTH = 300; // Maximum 300 characters per use
-    
-    // Add usage counter display to the UI
-    function addUsageCounter() {
-      const converterContainer = document.querySelector('.converter-container');
-      const usageCounter = document.createElement('div');
-      usageCounter.id = 'usageCounter';
-      usageCounter.style.cssText = `
-        text-align: center;
-        color: #666;
-        margin-bottom: 15px;
-        font-size: 14px;
-      `;
-      converterContainer.insertBefore(usageCounter, converterContainer.firstChild);
-      updateUsageCounter();
-    }
-    
-    // Get current date in YYYY-MM-DD format
-    function getCurrentDate() {
-      const now = new Date();
-      return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
-    }
-    
-    // Check if user has reached daily limit
-    function checkUsageLimit() {
-      const today = getCurrentDate();
-      const usageData = JSON.parse(localStorage.getItem('kopaper_usage')) || {};
-      
-      if (usageData.date !== today) {
-        // Reset usage for new day
-        usageData.date = today;
-        usageData.count = 0;
-        localStorage.setItem('kopaper_usage', JSON.stringify(usageData));
-        return false;
-      }
-      
-      return usageData.count >= DAILY_LIMIT;
-    }
-    
-    // Increment usage counter
-    function incrementUsage() {
-      const usageData = JSON.parse(localStorage.getItem('kopaper_usage')) || {};
-      usageData.count = (usageData.count || 0) + 1;
-      localStorage.setItem('kopaper_usage', JSON.stringify(usageData));
-      updateUsageCounter();
-    }
-    
-    // Update usage counter display
-    function updateUsageCounter() {
-      const today = getCurrentDate();
-      const usageData = JSON.parse(localStorage.getItem('kopaper_usage')) || { date: today, count: 0 };
-      const remaining = Math.max(0, DAILY_LIMIT - usageData.count);
-      
-      const usageCounter = document.getElementById('usageCounter');
-      if (usageCounter) {
-        usageCounter.textContent = `Daily Usage: ${usageData.count}/${DAILY_LIMIT} | Remaining: ${remaining}`;
-      }
-    }
+    // Character limit configuration
+    const MAX_TEXT_LENGTH = 600; // Maximum 600 characters per use
     
     // FAQ Elements
     const faqQuestions = document.querySelectorAll('.faq-question');
-    
-    let currentCaptcha = '';
 
-    // Generate random 4-digit captcha
-    function generateCaptcha() {
-      currentCaptcha = Math.floor(1000 + Math.random() * 9000).toString();
-      captchaSpan.textContent = currentCaptcha;
-    }
-
-    // Initialize captcha on page load
-    generateCaptcha();
 
     // Count input characters
     textarea.addEventListener('input', () => {
@@ -171,11 +99,6 @@
       }
     });
 
-    // Refresh captcha
-    refreshCaptchaBtn.addEventListener('click', () => {
-      generateCaptcha();
-      captchaInput.value = '';
-    });
 
     // Mobile menu toggle
     mobileMenuBtn.addEventListener('click', () => {
@@ -334,10 +257,8 @@
             error: `API request failed: ${response.statusText}`
           }));
           
-          // If usage limit is exceeded, show a friendly error message
-          if (response.status === 429) {
-            showToast(errorData.error || 'Daily usage limit reached, please try again tomorrow!', 'error');
-          } else if (response.status === 413) {
+          // Handle API errors
+          if (response.status === 413) {
             showToast(errorData.error || 'Text too long, please shorten and try again!', 'error');
           } else {
             showToast(errorData.error || 'Processing failed, please try again later!', 'error');
@@ -347,19 +268,6 @@
         }
         
         const data = await response.json();
-        
-        // Update frontend usage display
-        if (data.usage) {
-          // Update localStorage to keep frontend and backend consistent
-          const today = getCurrentDate();
-          localStorage.setItem('kopaper_usage', JSON.stringify({
-            date: today,
-            count: data.usage.limit - data.usage.remaining
-          }));
-          
-          // Update UI display
-          updateUsageCounter();
-        }
         
         // Parse Gemini API response (forwarded through proxy)
         if (data.candidates && data.candidates.length > 0 && 
@@ -383,21 +291,6 @@
         textarea.focus();
         return;
       }
-      
-      // Check usage limit
-      if (checkUsageLimit()) {
-        showToast('You have reached your daily usage limit (2 times). Please try again tomorrow.', 'error');
-        return;
-      }
-      
-      // Validate captcha
-      if (captchaInput.value.trim() !== currentCaptcha) {
-        showToast('Captcha incorrect, please try again.', 'error');
-        generateCaptcha();
-        captchaInput.value = '';
-        captchaInput.focus();
-        return;
-      }
 
       // Set loading state
       textarea.disabled = true;
@@ -417,9 +310,6 @@
         humanizedTextarea.value = humanized;
         updateOutputWordCount();
         
-        // Increment usage counter
-        incrementUsage();
-        
         // Show success message
         showToast('Text humanized successfully!');
       } catch (error) {
@@ -434,10 +324,6 @@
         convertBtn.querySelector('i').style.display = 'inline-block';
         convertBtn.querySelector('span').style.display = 'inline-block';
         loader.style.display = 'none';
-        
-        // Generate new captcha for next use
-        generateCaptcha();
-        captchaInput.value = '';
       }
     });
 
@@ -467,9 +353,4 @@
           }
         }
       });
-    });
-    
-    // Initialize usage counter on page load
-    document.addEventListener('DOMContentLoaded', () => {
-      addUsageCounter();
     });
