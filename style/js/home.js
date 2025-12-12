@@ -22,13 +22,52 @@
     const faqQuestions = document.querySelectorAll('.faq-question');
 
 
-    // Count input characters
+    // Enhanced word count function for different languages
+    function calculateWordCount(text) {
+      if (!text) return 0;
+      
+      // Remove whitespace and normalize
+      const cleanedText = text.trim();
+      if (cleanedText === '') return 0;
+      
+      let totalWords = 0;
+      const MAX_ENGLISH_WORD_LENGTH = 20; // Maximum length for a single English word
+      
+      // Check if text contains mainly Chinese/Japanese/Korean characters
+      const hasCJKChars = /[\u4e00-\u9fff\u3040-\u30ff\uac00-\ud7af]/.test(cleanedText);
+      
+      if (hasCJKChars) {
+        // For CJK languages: count each character as 1 word
+        // Exclude whitespace and common punctuation
+        totalWords = cleanedText.replace(/[\s\p{P}]/gu, '').length;
+      } else {
+        // For other languages (mainly English): count words
+        const words = cleanedText.split(/\s+/).filter(word => word.length > 0);
+        
+        words.forEach(word => {
+          // Remove punctuation from the word
+          const wordWithoutPunc = word.replace(/[\p{P}]/gu, '');
+          if (wordWithoutPunc.length === 0) return;
+          
+          // If word is longer than max allowed, calculate proportionally
+          if (wordWithoutPunc.length > MAX_ENGLISH_WORD_LENGTH) {
+            totalWords += Math.ceil(wordWithoutPunc.length / MAX_ENGLISH_WORD_LENGTH);
+          } else {
+            totalWords += 1;
+          }
+        });
+      }
+      
+      return totalWords;
+    }
+    
+    // Count input characters with enhanced rules
     textarea.addEventListener('input', () => {
-      const charCount = textarea.value.length;
-      wordCountSpan.textContent = `${charCount} / ${MAX_TEXT_LENGTH}`;
+      const wordCount = calculateWordCount(textarea.value);
+      wordCountSpan.textContent = `${wordCount} / ${MAX_TEXT_LENGTH}`;
       
       // Apply visual feedback and disable button when limit exceeded
-      if (charCount > MAX_TEXT_LENGTH) {
+      if (wordCount > MAX_TEXT_LENGTH) {
         wordCountSpan.style.color = '#ef4444'; // Red color for over limit
         convertBtn.disabled = true;
         convertBtn.style.opacity = '0.5';
@@ -41,18 +80,18 @@
       }
       
       // Clear output if input is empty
-      if (charCount === 0) {
+      if (wordCount === 0) {
         humanizedTextarea.value = '';
         outputWordCountSpan.textContent = '0';
         copyOutputBtn.disabled = true;
       }
     });
 
-    // Update output character count
+    // Update output character count with enhanced rules
     function updateOutputWordCount() {
-      const charCount = humanizedTextarea.value.length;
-      outputWordCountSpan.textContent = charCount;
-      copyOutputBtn.disabled = charCount === 0;
+      const wordCount = calculateWordCount(humanizedTextarea.value);
+      outputWordCountSpan.textContent = wordCount;
+      copyOutputBtn.disabled = wordCount === 0;
     }
 
     // Show toast notification
@@ -69,7 +108,7 @@
     // Clear input textarea
     clearInputBtn.addEventListener('click', () => {
       textarea.value = '';
-      wordCountSpan.textContent = '0';
+      wordCountSpan.textContent = '0 / ' + MAX_TEXT_LENGTH;
       humanizedTextarea.value = '';
       outputWordCountSpan.textContent = '0';
       copyOutputBtn.disabled = true;
@@ -80,7 +119,8 @@
       try {
         const text = await navigator.clipboard.readText();
         textarea.value = text;
-        wordCountSpan.textContent = text.length;
+        // Trigger input event to update word count with new rules
+        textarea.dispatchEvent(new Event('input'));
         showToast('Text pasted successfully');
       } catch (err) {
         showToast('Failed to paste text', 'error');
@@ -289,6 +329,13 @@
       if (!textarea.value.trim()) {
         showToast('Please paste your AI-generated text first', 'error');
         textarea.focus();
+        return;
+      }
+      
+      // Check if input exceeds word count limit using enhanced rules
+      const wordCount = calculateWordCount(textarea.value);
+      if (wordCount > MAX_TEXT_LENGTH) {
+        showToast(`Text too long (${wordCount} words), please shorten to ${MAX_TEXT_LENGTH} words or less`, 'error');
         return;
       }
 
