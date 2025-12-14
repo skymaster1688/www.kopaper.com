@@ -300,6 +300,8 @@
           // Handle API errors
           if (response.status === 413) {
             showToast(errorData.error || 'Text too long, please shorten and try again!', 'error');
+          } else if (response.status === 429) {
+            showToast(errorData.error || 'Daily usage limit reached!', 'error');
           } else {
             showToast(errorData.error || 'Processing failed, please try again later!', 'error');
           }
@@ -309,9 +311,18 @@
         
         const data = await response.json();
         
-        // Parse Gemini API response (forwarded through proxy)
-        if (data.candidates && data.candidates.length > 0 && 
-            data.candidates[0].content && data.candidates[0].content.parts) {
+        // Parse new API response format from Cloudflare Workers
+        if (data.text) {
+          // Show remaining uses if available
+          if (data.remainingUses !== undefined) {
+            console.log(`Remaining uses today: ${data.remainingUses}`);
+            // Optional: show remaining uses to user
+            // showToast(`Remaining uses today: ${data.remainingUses}`, 'info');
+          }
+          return data.text;
+        } else if (data.candidates && data.candidates.length > 0 && 
+                   data.candidates[0].content && data.candidates[0].content.parts) {
+          // Fallback to old Gemini API response format
           return data.candidates[0].content.parts[0].text;
         }
         
