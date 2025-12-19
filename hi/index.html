@@ -64,7 +64,7 @@
     </div>
     <nav id="mainNav">
       <a href="#tool">AI टेक्स्ट ह्यूमनाइजर</a>
-      <a href="#features">विशेषताएं</a>
+      <!-- Features link removed -->
       <a href="#how-it-works">कैसे काम करता है</a>
       <a href="#faq">अक्सर पूछे जाने वाले प्रश्न</a>
     </nav>
@@ -84,7 +84,8 @@
 
   <section id="tool" class="section">
     <h2>AI टेक्स्ट ह्यूमनाइजर टूल</h2>
-    <p class="section-description">नीचे दिए गए बॉक्स में अपना AI जनरेटेड कंटेंट पेस्ट करें, और koPaper इसे सूक्ष्म मानव टोन, सुचारू संक्रमणों और प्राकृतिक अर्थ पैटर्न के साथ पुनर्लेख करेगा जो AI डिटेक्टर्स को बायपास करता है।</p>
+    <p class="section-description">नीचे दिए गए बॉक्स में अपना AI जनरेटेड कंटेंट (ChatGPT, GPT-4, Gemini, Claude या किसी अन्य मॉडल से) पेस्ट करें, और koPaper इसे सूक्ष्म मानव टोन, सुचारू संक्रमणों और प्राकृतिक अर्थ पैटर्न के साथ पुनर्लेख करेगा।</p>
+    <p class="section-description">हमारा उन्नत AI भाषाई मॉडलिंग, लेखन-शैली सिमुलेशन और संदर्भual रीराइटिंग को संयोजित करता है ताकि यह सुनिश्चित हो सके कि प्रत्येक टेक्स्ट एक वास्तविक इंसान द्वारा लिखा गया लगता है—न कि मशीन द्वारा।</p>
     
     <div class="converter-container">
       <div class="textareas-wrapper">
@@ -122,13 +123,15 @@
         </div>
       </div>
       
-      <div class="captcha-container">
-        <span class="captcha-label">कैप्चा दर्ज करें:</span>
-        <span class="captcha-code" id="captcha"></span>
-        <button class="captcha-refresh" id="refreshCaptcha">
-          <i class="fas fa-sync-alt"></i>
-        </button>
-        <input type="text" class="captcha-input" id="captchaInput" placeholder="4-अंकीय कोड दर्ज करें" maxlength="4">
+      <div class="style-selector-container">
+        <span class="style-label">शैली चुनें (वैकल्पिक):</span>
+        <select id="writingStyle">
+          <option value="default">डिफ़ॉल्ट</option>
+          <option value="simple">सरल</option>
+          <option value="creative">रचनात्मक</option>
+          <option value="academic">शैक्षणिक</option>
+          <option value="casual">आपात्कालीन</option>
+        </select>
       </div>
       
       <button class="convert-btn" id="convertBtn">
@@ -254,7 +257,7 @@
           <i class="fas fa-chevron-down faq-icon" id="faqIcon3"></i>
         </div>
         <div class="faq-answer" id="faq3">
-          <p>हां। रोबोटिक पैटर्न्स, दोहराव वाली संरचनाओं और पूर्वानुमेय वाक्यांशों को हटाकर, koPaper आपके टेक्स्ट को अधिक मानव जैसा बनाता है, जो AI डिटेक्टर्स द्वारा खोजे जाने वाले विशिष्ट हस्ताक्षरों को काफी हद तक कम करता है। हालांकि कोई भी टूल सभी मामलों में 100% अडिटेक्टेबिलिटी गारंटी नहीं दे सकता है, लेकिन koPaper AI डिटेक्शन सिस्टमों को बायपास करने की आपकी संभावनाओं को काफी बढ़ा देता है।</p>
+          <p>हां। रोबोटिक पैटर्न्स, दोहराव वाली संरचनाओं और पूर्वानुमेय संक्रमण मार्कर्स को हटाकर, koPaper आपके टेक्स्ट को अधिक मानव जैसा बनाता है, जो AI डिटेक्टर्स द्वारा खोजे जाने वाले विशिष्ट हस्ताक्षरों को काफी हद तक कम करता है। हालांकि कोई भी टूल सभी मामलों में 100% अडिटेक्टेबिलिटी गारंटी नहीं दे सकता है, लेकिन koPaper AI डिटेक्शन सिस्टमों को बायपास करने की आपकी संभावनाओं को काफी बढ़ा देता है।</p>
         </div>
       </div>
       
@@ -290,6 +293,59 @@
     </div>
   </section>
 
+  <section class="section blog-recommend">
+  <h2>अनुशंसित पढ़ाई</h2>
+  <p class="section-description">
+    AI टेक्स्ट ह्यूमनाइजेशन, सर्वोत्तम प्रथाओं और लेखन तकनीकों के बारे में अधिक जानें।
+  </p>
+
+  <div class="blog-cards">
+
+    <article class="blog-card">
+      <h3>
+        <a href="/blog/what-is-an-ai-humanizer.html">
+          AI ह्यूमनाइजर क्या है? 2025 के लिए पूर्ण गाइड
+        </a>
+      </h3>
+      <p>
+        AI ह्यूमनाइजर क्या हैं, वे कैसे काम करते हैं और आधुनिक लेखन के लिए वे क्यों महत्वपूर्ण हैं, इसकी पूरी व्याख्या।
+      </p>
+      <a class="read-more" href="/blog/what-is-an-ai-humanizer.html">
+        पूरा गाइड पढ़ें →
+      </a>
+    </article>
+
+    <article class="blog-card">
+      <h3>
+        <a href="/blog/how-to-humanize-ai-text-without-losing-meaning.html">
+          अर्थ खोए बिना AI टेक्स्ट को कैसे ह्यूमनाइज़ करें
+        </a>
+      </h3>
+      <p>
+        AI जनरेटेड टेक्स्ट को मूल इरादे को बनाए रखते हुए स्वाभाविक लगने के लिए चरण-दर-चरण तकनीकें।
+      </p>
+      <a class="read-more" href="/blog/how-to-humanize-ai-text-without-losing-meaning.html">
+        कैसे करें जानें →
+      </a>
+    </article>
+
+    <article class="blog-card">
+      <h3>
+        <a href="/blog/how-to-humanize-ai-text.html">
+          2025 में AI टेक्स्ट को कैसे ह्यूमनाइज़ करें: पूर्ण गाइड
+        </a>
+      </h3>
+      <p>
+        इरादा, टोन या तथ्यों को बदले बिना AI जनरेटेड टेक्स्ट को ह्यूमनाइज़ करने के लिए व्यावहारिक तकनीकें।
+      </p>
+      <a class="read-more" href="/blog/how-to-humanize-ai-text.html">
+        गाइड पढ़ें →
+      </a>
+    </article>
+
+  </div>
+</section>
+
  <footer>
   <div class="footer-content">
     <div class="footer-brand">
@@ -310,7 +366,7 @@
       <h3>प्रोडक्ट</h3>
       <ul>
         <li><a href="#tool">AI टेक्स्ट ह्यूमनाइजर</a></li>
-        <li><a href="#features">विशेषताएं</a></li>
+        <!-- Features link removed -->
         <li><a href="#how-it-works">कैसे काम करता है</a></li>
         <li><a href="#faq">अक्सर पूछे जाने वाले प्रश्न</a></li>
       </ul>

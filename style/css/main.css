@@ -1220,3 +1220,47 @@
     font-size: 14px;
   }
 }
+.blog-recommend {
+  background: #fafafa;
+}
+
+.blog-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.blog-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+.blog-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.blog-card a {
+  color: #111;
+  text-decoration: none;
+}
+
+.blog-card a:hover {
+  text-decoration: underline;
+}
+
+.blog-card p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: 600;
+  color: #6b4eff;
+}
