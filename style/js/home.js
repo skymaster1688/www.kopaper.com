@@ -280,7 +280,7 @@
     async function callGeminiAPI(text, style) {
       try {
         // Call our Cloudflare Workers proxy API
-        const response = await fetch('https://hmzapi.kopaper.com/', {
+        const response = await fetch('/api/humanize', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -412,3 +412,51 @@
         }
       });
     });
+
+    // ===== Paper Craft Generator Homepage Functions =====
+    const searchInput = document.getElementById('searchInput');
+    const generateBtn = document.getElementById('generateBtn');
+    
+    if (searchInput && generateBtn) {
+      // Chip click handlers
+      document.querySelectorAll('.chip').forEach(chip => {
+        chip.addEventListener('click', function() {
+          const query = this.dataset.query;
+          searchInput.value = query;
+          goToGenerate();
+        });
+      });
+      
+      // Search on Enter key
+      searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          goToGenerate();
+        }
+      });
+      
+      // Generate button click
+      generateBtn.addEventListener('click', goToGenerate);
+      
+      function goToGenerate() {
+        const query = searchInput.value.trim();
+        if (query) {
+          window.location.href = '/generate/?q=' + encodeURIComponent(query.replace(/\s+/g, '+'));
+        } else {
+          searchInput.focus();
+          // Simple shake animation
+          searchInput.style.animation = 'shake 0.5s';
+          setTimeout(() => searchInput.style.animation = '', 500);
+        }
+      }
+    }
+    
+    // Add shake animation style dynamically
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-10px); }
+        75% { transform: translateX(10px); }
+      }
+    `;
+    document.head.appendChild(style);

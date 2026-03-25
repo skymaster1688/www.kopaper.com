@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>पेपर क्राफ्ट जनरेट करें - koPaper AI</title>
+  <meta name="description" content="AI के साथ कस्टम ओरिगामी निर्देश, पेपर टेम्पलेट और लेटर पेपर डिज़ाइन बनाएं।" />
+  <link rel="canonical" href="https://kopaper.com/hi/generate/" />
+  <meta name="robots" content="index, follow" />
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="manifest" href="/images/site.webmanifest">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/style/css/main.css?08" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QVKPRKCBW8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-QVKPRKCBW8');
+  </script>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <a href="/hi/" style="text-decoration: none; color: inherit;">
+        <i class="fas fa-scroll"></i>
+        koPaper
+      </a>
+    </div>
+    <nav id="mainNav">
+      <a href="/hi/">होम</a>
+      <a href="/hi/generate/" class="active">जनरेट</a>
+      <a href="/hi/category/origami.html">ओरिगामी</a>
+      <a href="/hi/category/templates.html">टेम्पलेट</a>
+      <a href="/hi/category/letter-paper.html">लेटर पेपर</a>
+    </nav>
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+      <i class="fas fa-bars"></i>
+    </button>
+  </header>
+
+  <main class="generate-page">
+    <div class="generate-container">
+      <div class="generate-sidebar">
+        <div class="sidebar-section">
+          <h2><i class="fas fa-wand-magic-sparkles"></i> पेपर क्राफ्ट बनाएं</h2>
+          
+          <div class="input-group">
+            <label for="keywordInput">आप क्या बनाना चाहते हैं?</label>
+            <input type="text" id="keywordInput" placeholder="जैसे: पेपर एयरप्लेन, ओरिगामी क्रेन..." />
+          </div>
+          
+          <div class="input-group">
+            <label for="difficulty">कठिनाई</label>
+            <select id="difficulty">
+              <option value="easy">आसान (शुरुआती)</option>
+              <option value="medium">मध्यम (मध्यवर्ती)</option>
+              <option value="hard">कठिन (उन्नत)</option>
+            </select>
+          </div>
+          
+          <div class="input-group">
+            <label for="style">स्टाइल</label>
+            <select id="style">
+              <option value="cute">प्यारा और मैत्रीपूर्ण</option>
+              <option value="realistic">यथार्थवादी</option>
+              <option value="minimal">न्यूनतम</option>
+            </select>
+          </div>
+          
+          <div class="input-group">
+            <label for="type">प्रकार</label>
+            <select id="type">
+              <option value="origami">ओरिगामी</option>
+              <option value="template">पेपर टेम्पलेट</option>
+              <option value="letter-paper">लेटर पेपर</option>
+            </select>
+          </div>
+          
+          <button class="generate-btn" id="generateBtn">
+            <i class="fas fa-wand-magic-sparkles"></i>
+            पेपर क्राफ्ट जनरेट करें
+            <span class="loader" id="loader" style="display: none;"></span>
+          </button>
+          
+          <div class="quick-options">
+            <h4>उदाहरण</h4>
+            <div class="quick-chips">
+              <button class="quick-chip" data-q="paper airplane">✈️ एयरप्लेन</button>
+              <button class="quick-chip" data-q="origami crane">🦢 क्रेन</button>
+              <button class="quick-chip" data-q="paper boat">⛵ नाव</button>
+              <button class="quick-chip" data-q="paper flower">🌸 फूल</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="sidebar-section history-section">
+          <h3><i class="fas fa-history"></i> हाल के जनरेशन</h3>
+          <div class="history-list" id="historyList">
+            <p class="no-history">कोई हाल का जनरेशन नहीं</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="generate-result">
+        <div class="result-placeholder" id="placeholder">
+          <i class="fas fa-scroll"></i>
+          <h3>आपका पेपर क्राफ्ट यहाँ दिखाई देगा</h3>
+          <p>कीवर्ड दर्ज करें और जनरेट पर क्लिक करें</p>
+        </div>
+        
+        <div class="result-content" id="resultContent" style="display: none;">
+          <div class="result-header">
+            <h2 id="resultTitle">पेपर क्राफ्ट टाइटल</h2>
+            <div class="result-badges">
+              <span class="badge" id="badgeDifficulty">आसान</span>
+              <span class="badge" id="badgeStyle">प्यारा</span>
+              <span class="badge" id="badgeType">ओरिगामी</span>
+            </div>
+          </div>
+          
+          <div class="result-image" id="resultImage">
+            <div class="image-placeholder">
+              <i class="fas fa-image"></i>
+              <button class="generate-image-btn" id="generateImageBtn">
+                <i class="fas fa-wand-magic-sparkles"></i> इमेज जनरेट करें
+              </button>
+            </div>
+          </div>
+          
+          <div class="result-section">
+            <h3><i class="fas fa-list-ul"></i> आवश्यक सामग्री</h3>
+            <ul class="materials-list" id="materialsList"></ul>
+          </div>
+          
+          <div class="result-section">
+            <h3><i class="fas fa-steps"></i> चरण-दर-चरण निर्देश</h3>
+            <div class="steps-list" id="stepsList"></div>
+          </div>
+          
+          <div class="result-section">
+            <h3><i class="fas fa-lightbulb"></i> सुझाव</h3>
+            <ul class="tips-list" id="tipsList"></ul>
+          </div>
+          
+          <div class="result-actions">
+            <button class="action-btn primary" id="downloadPdfBtn">
+              <i class="fas fa-file-pdf"></i> PDF डाउनलोड
+            </button>
+            <button class="action-btn" id="shareBtn">
+              <i class="fas fa-share-alt"></i> शेयर
+            </button>
+            <button class="action-btn" id="copyBtn">
+              <i class="fas fa-copy"></i> निर्देश कॉपी
+            </button>
+          </div>
+        </div>
+        
+        <div class="result-loading" id="resultLoading" style="display: none;">
+          <div class="loading-spinner"></div>
+          <h3>आपका पेपर क्राफ्ट जनरेट हो रहा है...</h3>
+          <p>AI आपके लिए अनोखे निर्देश बना रहा है</p>
+        </div>
+        
+        <div class="result-error" id="resultError" style="display: none;">
+          <i class="fas fa-exclamation-triangle"></i>
+          <h3>उफ़! कुछ गलत हो गया</h3>
+          <p id="errorMessage">कृपया पुनः प्रयास करें</p>
+          <button class="retry-btn" id="retryBtn">पुनः प्रयास</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <a href="/hi/" style="text-decoration: none; color: inherit;">
+            <i class="fas fa-scroll"></i>
+            koPaper
+          </a>
+        </div>
+        <p class="footer-about">AI-संचालित पेपर क्राफ्ट जनरेटर।</p>
+      </div>
+      <div class="footer-links">
+        <h3>श्रेणियाँ</h3>
+        <ul>
+          <li><a href="/hi/category/origami.html">ओरिगामी</a></li>
+          <li><a href="/hi/category/templates.html">टेम्पलेट</a></li>
+          <li><a href="/hi/category/letter-paper.html">लेटर पेपर</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="language-switcher">
+      <span class="lang-label">भाषा:</span>
+      English - <a href="/generate/" class="lang-link inactive">Generate</a>
+      हिंदी - <a href="/hi/generate/" class="lang-link active">जनरेट</a>
+    </div>
+    
+    <div class="footer-bottom">
+      © 2025 koPaper. सर्वाधिकार सुरक्षित।
+    </div>
+  </footer>
+
+  <div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toastMessage"></span>
+  </div>
+  
+  <script src="/style/js/generate.js?01"></script>
+</body>
+</html>

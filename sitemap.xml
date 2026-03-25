@@ -1,72 +1,128 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Home Page -->
+  <!-- Home Pages -->
   <url>
     <loc>https://kopaper.com/</loc>
-    <lastmod>2025-12-10</lastmod>
+    <lastmod>2025-12-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>https://kopaper.com/hi/</loc>
+    <lastmod>2025-12-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
   
-  <!-- Blog Pages -->
+  <!-- Generator Pages -->
+  <url>
+    <loc>https://kopaper.com/generate/</loc>
+    <lastmod>2025-12-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://kopaper.com/hi/generate/</loc>
+    <lastmod>2025-12-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Category Pages - English -->
+  <url>
+    <loc>https://kopaper.com/category/origami.html</loc>
+    <lastmod>2025-12-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kopaper.com/category/templates.html</loc>
+    <lastmod>2025-12-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kopaper.com/category/letter-paper.html</loc>
+    <lastmod>2025-12-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Category Pages - Hindi -->
+  <url>
+    <loc>https://kopaper.com/hi/category/origami.html</loc>
+    <lastmod>2025-12-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kopaper.com/hi/category/templates.html</loc>
+    <lastmod>2025-12-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kopaper.com/hi/category/letter-paper.html</loc>
+    <lastmod>2025-12-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Blog Pages (Legacy - preserved) -->
   <url>
     <loc>https://kopaper.com/blog/</loc>
     <lastmod>2025-12-10</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://kopaper.com/blog/what-is-an-ai-humanizer.html</loc>
     <lastmod>2025-12-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://kopaper.com/blog/how-to-humanize-ai-text-without-losing-meaning.html</loc>
     <lastmod>2025-12-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://kopaper.com/blog/how-to-humanize-ai-text.html</loc>
     <lastmod>2025-12-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://kopaper.com/blog/ai-humanizer-vs-paraphraser.html</loc>
     <lastmod>2025-12-21</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://kopaper.com/blog/is-humanized-ai-text-detectable.html</loc>
     <lastmod>2025-12-21</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   
-  <!-- Compare Page -->
+  <!-- Tool Pages (Legacy - preserved) -->
   <url>
     <loc>https://kopaper.com/compare/</loc>
     <lastmod>2025-12-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <!-- Hindi Version -->
-  <url>
-    <loc>https://kopaper.com/hi/</loc>
-    <lastmod>2025-12-10</lastmod>
-    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-  
-  <!-- Text Compare Page -->
   <url>
     <loc>https://kopaper.com/text-compare/</loc>
     <lastmod>2025-12-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kopaper.com/check/</loc>
+    <lastmod>2025-12-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>
