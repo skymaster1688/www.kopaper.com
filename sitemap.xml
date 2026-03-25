@@ -28,7 +28,7 @@
     <priority>0.8</priority>
   </url>
   
-  <!-- Category Pages - English -->
+  <!-- Category Pages -->
   <url>
     <loc>https://kopaper.com/category/origami.html</loc>
     <lastmod>2025-12-21</lastmod>
@@ -48,7 +48,7 @@
     <priority>0.8</priority>
   </url>
   
-  <!-- Category Pages - Hindi -->
+  <!-- Hindi Category Pages -->
   <url>
     <loc>https://kopaper.com/hi/category/origami.html</loc>
     <lastmod>2025-12-21</lastmod>
@@ -68,60 +68,192 @@
     <priority>0.7</priority>
   </url>
   
-  <!-- Blog Pages (Legacy - preserved) -->
+  <!-- Origami Static Pages (SEO Optimized) -->
   <url>
-    <loc>https://kopaper.com/blog/</loc>
-    <lastmod>2025-12-10</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://kopaper.com/paper-airplane-craft.html</loc>
+    <lastmod>2025-12-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kopaper.com/origami-crane-tutorial.html</loc>
+    <lastmod>2025-12-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kopaper.com/paper-boat-instructions.html</loc>
+    <lastmod>2025-12-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kopaper.com/paper-flower-design.html</loc>
+    <lastmod>2025-12-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kopaper.com/origami-heart.html</loc>
+    <lastmod>2025-12-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kopaper.com/paper-hat-craft.html</loc>
+    <lastmod>2025-12-21</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://kopaper.com/blog/what-is-an-ai-humanizer.html</loc>
-    <lastmod>2025-12-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://kopaper.com/blog/how-to-humanize-ai-text-without-losing-meaning.html</loc>
-    <lastmod>2025-12-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://kopaper.com/blog/how-to-humanize-ai-text.html</loc>
-    <lastmod>2025-12-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://kopaper.com/blog/ai-humanizer-vs-paraphraser.html</loc>
+    <loc>https://kopaper.com/origami-frog-jumping.html</loc>
     <lastmod>2025-12-21</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://kopaper.com/blog/is-humanized-ai-text-detectable.html</loc>
+    <loc>https://kopaper.com/paper-fox-simple.html</loc>
     <lastmod>2025-12-21</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kopaper.com/paper-butterfly-easy.html</loc>
+    <lastmod>2025-12-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kopaper.com/paper-fish-origami.html</loc>
+    <lastmod>2025-12-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   
-  <!-- Tool Pages (Legacy - preserved) -->
+  <!-- Template Static Pages -->
+  <url>
+    <loc>https://kopaper.com/paper-car-template.html</loc>
+    <lastmod>2025-12-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kopaper.com/dragon-craft-template.html</loc>
+    <lastmod>2025-12-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kopaper.com/robot-paper-toy.html</loc>
+    <lastmod>2025-12-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kopaper.com/cat-paper-craft.html</loc>
+    <lastmod>2025-12-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kopaper.com/house-paper-model.html</loc>
+    <lastmod>2025-12-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Letter Paper Static Pages -->
+  <url>
+    <loc>https://kopaper.com/cute-animal-letter-paper.html</loc>
+    <lastmod>2025-12-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kopaper.com/floral-letter-paper.html</loc>
+    <lastmod>2025-12-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kopaper.com/starry-night-letter-paper.html</loc>
+    <lastmod>2025-12-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kopaper.com/cloud-sky-letter-paper.html</loc>
+    <lastmod>2025-12-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kopaper.com/minimal-letter-paper.html</loc>
+    <lastmod>2025-12-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Tool Pages -->
+  <url>
+    <loc>https://kopaper.com/humanizer/</loc>
+    <lastmod>2025-12-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
   <url>
     <loc>https://kopaper.com/compare/</loc>
     <lastmod>2025-12-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://kopaper.com/text-compare/</loc>
     <lastmod>2025-12-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://kopaper.com/check/</loc>
     <lastmod>2025-12-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <!-- Blog Pages (Legacy) -->
+  <url>
+    <loc>https://kopaper.com/blog/</loc>
+    <lastmod>2025-12-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kopaper.com/blog/what-is-an-ai-humanizer.html</loc>
+    <lastmod>2025-12-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://kopaper.com/blog/how-to-humanize-ai-text-without-losing-meaning.html</loc>
+    <lastmod>2025-12-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://kopaper.com/blog/how-to-humanize-ai-text.html</loc>
+    <lastmod>2025-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://kopaper.com/blog/ai-humanizer-vs-paraphraser.html</loc>
+    <lastmod>2025-12-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://kopaper.com/blog/is-humanized-ai-text-detectable.html</loc>
+    <lastmod>2025-12-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
