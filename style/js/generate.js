@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loader.style.display = 'inline-block';
     
     try {
-      const response = await fetch('/api/generate-text', {
+      const response = await fetch('https://humanize-api.1628582080.workers.dev/api/generate-text', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function() {
     imageContainer.innerHTML = '<div class="loading-spinner"></div><p>Generating image...</p>';
     
     try {
-      const response = await fetch('/api/generate-image', {
+      const response = await fetch('https://humanize-api.1628582080.workers.dev/api/generate-image', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

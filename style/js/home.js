@@ -280,7 +280,7 @@
     async function callGeminiAPI(text, style) {
       try {
         // Call our Cloudflare Workers proxy API
-        const response = await fetch('/api/humanize', {
+        const response = await fetch('https://humanize-api.1628582080.workers.dev/api/humanize', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
