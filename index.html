@@ -3,29 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Paper Craft AI - Origami & Templates Generator | koPaper</title>
-  <meta name="description" content="Generate origami instructions, paper craft templates, and letter paper with AI. Turn any idea into printable paper crafts. Free, easy, and instant." />
+  <title>Paper to PPT - Free Text to PowerPoint Generator | koPaper</title>
+  <meta name="description" content="Try for free! Convert any paper, essay, or document into a professional PowerPoint presentation. Paste your text, choose a style, download your PPT - no signup, no watermark." />
+  <meta name="keywords" content="paper to ppt, text to powerpoint, paper to powerpoint, document to slides, free ppt generator, text to slides, essay to presentation, research paper to ppt" />
   <link rel="canonical" href="https://kopaper.com/" />
-  <link rel="alternate" hreflang="en" href="https://kopaper.com/" />
-  <link rel="alternate" hreflang="hi" href="https://kopaper.com/hi/" />
-  <link rel="alternate" hreflang="x-default" href="https://kopaper.com/" />
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="author" content="koPaper" />
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
   <link rel="manifest" href="/images/site.webmanifest">
-  
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "koPaper Paper Craft AI",
-    "description": "AI-powered paper craft generator - create origami instructions, printable templates, and letter paper designs",
-    "applicationCategory": "CreativeWork",
+    "name": "koPaper - Paper to PPT Converter",
+    "description": "Free online tool to convert text, papers, and documents into professional PowerPoint presentations. No signup, no watermark.",
+    "applicationCategory": "ProductivityApplication",
     "operatingSystem": "All",
     "url": "https://kopaper.com/",
-    "keywords": "paper craft generator, origami maker, printable paper crafts, AI paper craft",
     "offers": {
       "@type": "Offer",
       "price": "0.00",
@@ -38,9 +35,9 @@
     }
   }
   </script>
-  
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="/style/css/main.css?08" />
+  <link rel="stylesheet" href="/style/css/main.css?19" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-QVKPRKCBW8"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -49,235 +46,338 @@
     gtag('config', 'G-QVKPRKCBW8');
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6279178382144076" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js" defer></script>
 </head>
 <body>
   <header>
     <div class="logo">
-      <i class="fas fa-scroll"></i>
-      koPaper
+      <a href="/" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px;">
+        <span class="logo-icon">
+          <i class="fas fa-layer-group"></i>
+        </span>
+        <span class="logo-text"><span style="color: var(--primary); font-weight: 800;">ko</span><span style="color: #000000; font-weight: 700;">Paper</span></span>
+      </a>
     </div>
     <nav id="mainNav">
-      <a href="/">Home</a>
-      <a href="/generate/">Generate</a>
-      <a href="/category/origami">Origami</a>
-      <a href="/category/templates">Templates</a>
-      <a href="/category/letter-paper">Letter Paper</a>
+      <a href="#paper-to-ppt" class="nav-link">
+        Paper to PPT
+        <span class="nav-free-badge">Free</span>
+      </a>
+      <a href="/text-compare/" class="nav-link">
+        Text Compare
+        <span class="nav-free-badge">Free</span>
+      </a>
+      <a href="/humanizer/" class="nav-link">
+        AI Humanizer
+        <span class="nav-free-badge">Free</span>
+      </a>
+      <a href="/generate/" class="nav-link">
+        Paper Craft
+        <span class="nav-free-badge">Free</span>
+      </a>
     </nav>
     <button class="mobile-menu-btn" id="mobileMenuBtn">
       <i class="fas fa-bars"></i>
     </button>
   </header>
 
-  <section class="hero">
-    <h1>Turn Any Idea Into Printable Paper Crafts</h1>
-    <p>Enter a keyword and get instant origami instructions, paper templates, and letter paper designs. Free, AI-powered, and ready to print.</p>
-    
-    <div class="search-container">
-      <div class="search-box">
-        <i class="fas fa-magic search-icon"></i>
-        <input type="text" id="searchInput" placeholder="Try: paper airplane, origami crane, letter paper..." />
-        <button class="search-btn" id="generateBtn">
-          <i class="fas fa-wand-magic-sparkles"></i> Generate
-        </button>
+  <!-- HERO / MAIN TOOL SECTION -->
+  <section class="hero" id="paper-to-ppt">
+    <h1>Paper to PPT: Turn Boring Documents Into Presentations</h1>
+    <p class="hero-subtitle">Tired of manually creating slides? Paste your essay, research paper, or notes — get a professional PowerPoint instantly. Choose your style, download, and present with confidence.</p>
+
+    <a href="#paper-to-ppt-tool" style="text-decoration: none;">
+      <button class="hero-cta-btn">
+        <i class="fas fa-arrow-down"></i> Start Converting Now
+      </button>
+    </a>
+    <p class="trust-badge">Free, No Sign Up, No Credit Card!</p>
+
+    <!-- Related tools bar -->
+    <div class="tools-bar">
+      <a href="/text-compare/" class="tool-chip">
+        <i class="fas fa-code-compare"></i>
+        Text Compare
+        <span class="chip-free">Free</span>
+      </a>
+      <a href="/humanizer/" class="tool-chip">
+        <i class="fas fa-robot"></i>
+        AI Text Humanizer
+        <span class="chip-free">Free</span>
+      </a>
+      <a href="/generate/" class="tool-chip">
+        <i class="fas fa-paper-plane"></i>
+        Paper Craft AI
+        <span class="chip-free">Free</span>
+      </a>
+    </div>
+
+    <!-- Converter Tool -->
+    <div class="converter-container" id="paper-to-ppt-tool">
+      <div class="tool-header">
+        <div class="tool-tabs">
+          <div class="tab"><i class="fas fa-file-alt"></i> Paste Text</div>
+        </div>
+        <div class="tool-actions">
+          <button class="quick-btn" id="pptSampleBtn"><i class="fas fa-magic"></i> Try with Sample</button>
+        </div>
       </div>
-      
-      <div class="example-chips">
-        <a href="/paper-airplane-craft" class="chip">✈️ Paper Airplane</a>
-        <a href="/origami-crane-tutorial" class="chip">🦢 Origami Crane</a>
-        <a href="/cute-animal-letter-paper" class="chip">🐱 Letter Paper</a>
-        <a href="/paper-flower-design" class="chip">🌸 Paper Flower</a>
-        <a href="/paper-boat-instructions" class="chip">⛵ Paper Boat</a>
+
+      <div class="options-grid">
+        <div class="option-card">
+          <label><i class="fas fa-palette"></i> Style</label>
+          <select id="pptStyle">
+            <option value="business">📊 Business</option>
+            <option value="minimal">⚪ Minimal</option>
+            <option value="creative">🎨 Creative</option>
+            <option value="academic">📚 Academic</option>
+            <option value="simple">📝 Outline</option>
+          </select>
+        </div>
+        <div class="option-card">
+          <label><i class="fas fa-expand"></i> Ratio</label>
+          <select id="pptAspect">
+            <option value="LAYOUT_WIDE">16:9 Widescreen</option>
+            <option value="LAYOUT_STANDARD">4:3 Standard</option>
+          </select>
+        </div>
+        <div class="option-card option-wide">
+          <label><i class="fas fa-heading"></i> Presentation Title <span class="optional">(optional)</span></label>
+          <input type="text" id="pptTitle" placeholder="e.g., Introduction to Machine Learning" />
+        </div>
+      </div>
+
+      <div class="textbox">
+        <div class="textbox-label">
+          <span><i class="fas fa-file-lines"></i> Your Content</span>
+          <div class="textbox-actions">
+            <button class="textbox-btn" id="pptClearBtn"><i class="fas fa-trash"></i> Clear</button>
+            <button class="textbox-btn" id="pptPasteBtn"><i class="fas fa-clipboard"></i> Paste</button>
+          </div>
+        </div>
+        <textarea id="pptText" placeholder="Paste your essay, research paper, article, or notes here...&#10;&#10;✨ Each paragraph becomes a slide&#10;✨ First line = slide title&#10;✨ Rest = bullet points"></textarea>
+        <div class="word-count">
+          <span>📝 <span id="pptCharCount">0</span> chars</span>
+          <span>📄 <span id="pptParaCount">0</span> paragraphs</span>
+          <span>🎯 ~<span id="pptSlideCount">0</span> slides</span>
+        </div>
+      </div>
+
+      <button class="convert-btn" id="pptGenerateBtn">
+        <i class="fas fa-wand-magic-sparkles"></i>
+        Generate & Download PowerPoint
+        <span class="loader" id="pptLoader" style="display: none;"></span>
+      </button>
+
+      <div class="trust-row">
+        <span><i class="fas fa-lock"></i> Your content stays in your browser</span>
+        <span><i class="fas fa-infinity"></i> Unlimited generations</span>
+        <span><i class="fas fa-ban"></i> No signup required</span>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <h2>Popular Paper Crafts</h2>
-    <p class="section-description">Discover trending paper craft ideas generated by our AI</p>
-    
-    <div class="craft-grid" id="popularCrafts">
-      <div class="craft-card">
-        <div class="craft-image" style="background: linear-gradient(135deg, #e0f2fe, #bae6fd);">
-          <i class="fas fa-plane"></i>
-        </div>
-        <div class="craft-info">
-          <h3><a href="/paper-airplane-craft">Paper Airplane</a></h3>
-          <p>Classic flying paper craft</p>
-        </div>
+  <!-- HOW IT WORKS -->
+  <section class="section how-section">
+    <div class="section-badge">How It Works</div>
+    <h2 class="section-title">From Boring Text to Beautiful Slides in 3 Steps</h2>
+    <p class="section-description">No design skills needed. Our tool handles the formatting — you focus on your content.</p>
+
+    <div class="steps-container">
+      <div class="step-card">
+        <div class="step-number">01</div>
+        <div class="step-icon"><i class="fas fa-paste"></i></div>
+        <h3>Paste Your Content</h3>
+        <p>Copy your essay, research paper, article, or notes. Each paragraph automatically becomes a slide.</p>
       </div>
-      
-      <div class="craft-card">
-        <div class="craft-image" style="background: linear-gradient(135deg, #fce7f3, #fbcfe8);">
-          <i class="fas fa-dove"></i>
-        </div>
-        <div class="craft-info">
-          <h3><a href="/origami-crane-tutorial">Origami Crane</a></h3>
-          <p>Traditional Japanese art</p>
-        </div>
+
+      <div class="step-card">
+        <div class="step-number">02</div>
+        <div class="step-icon"><i class="fas fa-palette"></i></div>
+        <h3>Pick Your Style</h3>
+        <p>Choose from 5 professional designs — Business, Minimal, Creative, Academic, or Outline.</p>
       </div>
-      
-      <div class="craft-card">
-        <div class="craft-image" style="background: linear-gradient(135deg, #dcfce7, #bbf7d0);">
-          <i class="fas fa-leaf"></i>
-        </div>
-        <div class="craft-info">
-          <h3><a href="/paper-flower-design">Paper Flower</a></h3>
-          <p>Beautiful paper blooms</p>
-        </div>
-      </div>
-      
-      <div class="craft-card">
-        <div class="craft-image" style="background: linear-gradient(135deg, #fef3c7, #fde68a);">
-          <i class="fas fa-anchor"></i>
-        </div>
-        <div class="craft-info">
-          <h3><a href="/paper-boat-instructions">Paper Boat</a></h3>
-          <p>Classic floating boat</p>
-        </div>
+
+      <div class="step-card">
+        <div class="step-number">03</div>
+        <div class="step-icon"><i class="fas fa-download"></i></div>
+        <h3>Download & Edit</h3>
+        <p>Get a real .pptx file. Open in PowerPoint, Google Slides, Keynote — fully editable.</p>
       </div>
     </div>
   </section>
 
+  <!-- FEATURES GRID -->
   <section class="section features-section">
-    <h2>Why Use koPaper?</h2>
-    
+    <div class="section-badge">Features</div>
+    <h2 class="section-title">Everything You Need to Present Better</h2>
     <div class="features-grid">
       <div class="feature-card">
-        <div class="feature-icon">
-          <i class="fas fa-robot"></i>
-        </div>
-        <h3>AI-Powered Generation</h3>
-        <p>Advanced AI creates unique paper craft instructions tailored to your needs in seconds.</p>
+        <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+        <h3>Lightning Fast</h3>
+        <p>Generate a complete presentation in under 10 seconds. No waiting, no queues.</p>
       </div>
-      
       <div class="feature-card">
-        <div class="feature-icon">
-          <i class="fas fa-print"></i>
-        </div>
-        <h3>Printable Templates</h3>
-        <p>Get clean, downloadable templates ready to print on A4 or Letter paper.</p>
+        <div class="feature-icon"><i class="fas fa-shield-halved"></i></div>
+        <h3>Private & Secure</h3>
+        <p>Everything runs in your browser. Your text is never uploaded or stored anywhere.</p>
       </div>
-      
       <div class="feature-card">
-        <div class="feature-icon">
-          <i class="fas fa-palette"></i>
-        </div>
-        <h3>Multiple Styles</h3>
-        <p>Choose from cute, realistic, or minimal styles to match your preference.</p>
+        <div class="feature-icon"><i class="fas fa-file-powerpoint"></i></div>
+        <h3>Real PowerPoint</h3>
+        <p>Standard .pptx files that work with PowerPoint, Google Slides, and Keynote.</p>
       </div>
-      
       <div class="feature-card">
-        <div class="feature-icon">
-          <i class="fas fa-graduation-cap"></i>
-        </div>
-        <h3>Step-by-Step Tutorials</h3>
-        <p>Clear instructions suitable for beginners and experts alike.</p>
+        <div class="feature-icon"><i class="fas fa-pen-to-square"></i></div>
+        <h3>Fully Editable</h3>
+        <p>Every slide, font, color, and layout is customizable. Make it yours.</p>
       </div>
-      
       <div class="feature-card">
-        <div class="feature-icon">
-          <i class="fas fa-infinity"></i>
-        </div>
-        <h3>Free & Unlimited</h3>
-        <p>No signup required. Generate as many paper crafts as you want.</p>
+        <div class="feature-icon"><i class="fas fa-gift"></i></div>
+        <h3>Free to Use</h3>
+        <p>No signup, no trials, no watermarks. Generate as many presentations as you need.</p>
       </div>
-      
       <div class="feature-card">
-        <div class="feature-icon">
-          <i class="fas fa-mobile-alt"></i>
-        </div>
-        <h3>Works Everywhere</h3>
-        <p>Access on desktop, tablet, or mobile. Perfect for classroom and home use.</p>
+        <div class="feature-icon"><i class="fas fa-mobile-screen"></i></div>
+        <h3>Works Anywhere</h3>
+        <p>Laptop, tablet, or phone. Chrome, Safari, Firefox, Edge. All supported.</p>
       </div>
     </div>
   </section>
 
-  <section id="how-it-works" class="section">
-    <h2>How It Works</h2>
-    <p class="section-description">Create your paper craft in three simple steps</p>
-    
-    <div class="how-it-works">
-      <div class="process-steps">
-        <div class="process-step">
-          <h3>1. Enter Your Idea</h3>
-          <p>Type any paper craft idea - "paper airplane", "origami crane", "heart envelope", or describe your own creation.</p>
-        </div>
-        
-        <div class="process-step">
-          <h3>2. Choose Options</h3>
-          <p>Select difficulty level (easy/medium/hard), style (cute/realistic/minimal), and type (origami/template/letter paper).</p>
-        </div>
-        
-        <div class="process-step">
-          <h3>3. Get Your Craft</h3>
-          <p>Receive instant step-by-step instructions with images. Download templates or print directly.</p>
-        </div>
+  <!-- USE CASES / WHO IS THIS FOR -->
+  <section class="section">
+    <div class="section-badge">Use Cases</div>
+    <h2 class="section-title">Built for Everyone Who Presents</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-graduation-cap"></i></div>
+        <h3>Students & Researchers</h3>
+        <p>Turn essays, research papers, and notes into polished presentations — fast.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-briefcase"></i></div>
+        <h3>Business Professionals</h3>
+        <p>Transform reports, meeting notes, and proposals into clean, winning decks.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-chalkboard-user"></i></div>
+        <h3>Teachers & Educators</h3>
+        <p>Create lesson slides and lecture materials from your existing content in seconds.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-laptop-code"></i></div>
+        <h3>Developers & Writers</h3>
+        <p>Convert documentation, tutorials, and technical content into shareable slides.</p>
       </div>
     </div>
   </section>
 
-  <section class="section cta-section">
-    <h2>Ready to Create?</h2>
-    <p class="section-description">Start generating your paper crafts now. No signup required.</p>
-    <button class="cta-btn" onclick="document.getElementById('searchInput').focus()">
-      <i class="fas fa-wand-magic-sparkles"></i> Start Creating
-    </button>
+  <!-- MORE TOOLS -->
+  <section class="section features-section">
+    <div class="section-badge">More Tools</div>
+    <h2 class="section-title">Your Free Productivity Suite</h2>
+    <div class="features-grid">
+      <a href="/text-compare/" style="text-decoration: none; color: inherit;" class="tool-card-link">
+        <div class="feature-card tool-card">
+          <div class="feature-icon"><i class="fas fa-code-compare"></i></div>
+          <h3>Text Compare <span class="card-free-badge">Free</span></h3>
+          <p>Compare two documents side-by-side to find differences instantly.</p>
+        </div>
+      </a>
+      <a href="/humanizer/" style="text-decoration: none; color: inherit;" class="tool-card-link">
+        <div class="feature-card tool-card">
+          <div class="feature-icon"><i class="fas fa-robot"></i></div>
+          <h3>AI Text Humanizer <span class="card-free-badge">Free</span></h3>
+          <p>Convert AI-generated text into natural, human-sounding writing.</p>
+        </div>
+      </a>
+      <a href="/generate/" style="text-decoration: none; color: inherit;" class="tool-card-link">
+        <div class="feature-card tool-card">
+          <div class="feature-icon"><i class="fas fa-paper-plane"></i></div>
+          <h3>Paper Craft AI <span class="card-free-badge">Free</span></h3>
+          <p>Generate origami, paper templates, and craft designs from keywords.</p>
+        </div>
+      </a>
+    </div>
   </section>
 
+  <!-- FAQ -->
   <section id="faq" class="section">
-    <h2>Frequently Asked Questions</h2>
-    <p class="section-description">Find answers to common questions about koPaper</p>
-    
+    <div class="section-badge">FAQ</div>
+    <h2 class="section-title">Questions? We've Got Answers</h2>
+
     <div class="faq-container">
       <div class="faq-item">
         <div class="faq-question" data-target="faq1">
-          <span>What is koPaper?</span>
+          <span>Is this Paper to PPT tool really free?</span>
           <i class="fas fa-chevron-down faq-icon" id="faqIcon1"></i>
         </div>
         <div class="faq-answer" id="faq1">
-          <p>koPaper is an AI-powered paper craft generator that creates origami instructions, printable templates, and letter paper designs based on your keywords. Simply enter what you want to make, and our AI will generate step-by-step instructions.</p>
+          <p>Yes! koPaper's Paper to PPT converter is free to use. No signup required, no watermarks on your downloaded presentations.</p>
         </div>
       </div>
-      
+
       <div class="faq-item">
         <div class="faq-question" data-target="faq2">
-          <span>Is koPaper free to use?</span>
+          <span>How does the Paper to PPT conversion work?</span>
           <i class="fas fa-chevron-down faq-icon" id="faqIcon2"></i>
         </div>
         <div class="faq-answer" id="faq2">
-          <p>Yes! koPaper is completely free to use. No signup required, no hidden fees. You can generate unlimited paper crafts without any cost.</p>
+          <p>Paste your text, paper, or article into the text box. Each paragraph becomes an individual slide. The first line of each paragraph becomes the slide title, and the rest becomes bullet points. Choose your style and click generate to download a real .pptx file.</p>
         </div>
       </div>
-      
+
       <div class="faq-item">
         <div class="faq-question" data-target="faq3">
-          <span>What types of paper crafts can I create?</span>
+          <span>Can I edit the PPT after downloading?</span>
           <i class="fas fa-chevron-down faq-icon" id="faqIcon3"></i>
         </div>
         <div class="faq-answer" id="faq3">
-          <p>You can create various paper crafts including origami (paper folding), paper templates for models, decorative letter paper, paper flowers, envelopes, and more. Just describe your idea and our AI will generate instructions.</p>
+          <p>Absolutely! The downloaded .pptx file is a fully standard PowerPoint file. Open in Microsoft PowerPoint, Google Slides, Apple Keynote, or WPS Office and edit everything — text, colors, images, layouts, and more.</p>
         </div>
       </div>
-      
+
       <div class="faq-item">
         <div class="faq-question" data-target="faq4">
-          <span>Can I print the templates?</span>
+          <span>Is my content stored or sent to a server?</span>
           <i class="fas fa-chevron-down faq-icon" id="faqIcon4"></i>
         </div>
         <div class="faq-answer" id="faq4">
-          <p>Yes! Our templates are designed to be print-ready. You can download them as images or PDFs and print on standard A4 or Letter size paper.</p>
+          <p>No. Your content stays private. The entire PPT generation process happens locally in your browser using JavaScript. Your text is never uploaded to any server or stored in any database.</p>
         </div>
       </div>
-      
+
       <div class="faq-item">
         <div class="faq-question" data-target="faq5">
-          <span>Are the instructions suitable for beginners?</span>
+          <span>What presentation styles are available?</span>
           <i class="fas fa-chevron-down faq-icon" id="faqIcon5"></i>
         </div>
         <div class="faq-answer" id="faq5">
-          <p>Absolutely! You can choose the difficulty level when generating. Easy mode provides simple 3-5 step instructions perfect for children and beginners. Medium and Hard modes offer more detailed instructions for experienced crafters.</p>
+          <p>We offer 5 styles: Business (blue theme), Clean & Minimal (white with accents), Creative (gradient design), Academic (formal layout), and Simple Outline (text-focused). Each has unique colors and typography.</p>
         </div>
       </div>
+
+      <div class="faq-item">
+        <div class="faq-question" data-target="faq6">
+          <span>Can I convert PDFs or Word documents?</span>
+          <i class="fas fa-chevron-down faq-icon" id="faqIcon6"></i>
+        </div>
+        <div class="faq-answer" id="faq6">
+          <p>Currently, paste your text directly into the text box. For PDFs and Word documents, simply copy the text from your document and paste it here. We're working on direct file upload support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <div class="cta-content">
+      <h2>Ready to Transform Your Paper Into a Presentation?</h2>
+      <p>Save hours on slide creation. Paste your text and get your PowerPoint in seconds.</p>
+      <a href="#paper-to-ppt-tool" class="cta-btn-primary">
+        <i class="fas fa-arrow-up"></i> Try It Free
+      </a>
     </div>
   </section>
 
@@ -285,54 +385,41 @@
     <div class="footer-content">
       <div class="footer-brand">
         <div class="footer-logo">
-          <i class="fas fa-scroll"></i>
-          koPaper
+          <a href="/" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px;">
+            <span class="logo-icon" style="width: 32px; height: 32px; background: linear-gradient(135deg, #2563eb 0%, #6b4eff 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+              <i class="fas fa-layer-group" style="color: white; font-size: 16px;"></i>
+            </span>
+            <span style="font-size: 20px; font-weight: 700; letter-spacing: -0.5px;">
+              <span style="color: #3b82f6;">ko</span><span style="color: #ffffff;">Paper</span>
+            </span>
+          </a>
         </div>
-        <p class="footer-about">AI-powered paper craft generator. Create origami, printable templates, and letter paper designs instantly. Perfect for teachers, parents, and craft enthusiasts.</p>
-        <div class="footer-social">
-          <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="social-icon" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
-          <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        </div>
+        <p class="footer-about">Free productivity tools for students, professionals, and creators. Transform your content — no signup required.</p>
       </div>
-      
-      <div class="footer-links">
-        <h3>Categories</h3>
-        <ul>
-          <li><a href="/category/origami">Origami</a></li>
-          <li><a href="/category/templates">Templates</a></li>
-          <li><a href="/category/letter-paper">Letter Paper</a></li>
-        </ul>
-      </div>
-      
+
       <div class="footer-links">
         <h3>Tools</h3>
         <ul>
-          <li><a href="/generate/">AI Generator</a></li>
-          <li><a href="/humanizer/">AI Text Humanizer</a></li>
-          <li><a href="/compare/">Compare Text</a></li>
+          <li><a href="#paper-to-ppt">Paper to PPT</a></li>
+          <li><a href="/text-compare/">Text Compare</a></li>
+          <li><a href="/humanizer/">AI Humanizer</a></li>
+          <li><a href="/generate/">Paper Craft AI</a></li>
         </ul>
       </div>
-      
+
       <div class="footer-links">
-        <h3>Company</h3>
+        <h3>Support</h3>
         <ul>
-          <li><a href="#">About Us</a></li>
+          <li><a href="#faq">FAQ</a></li>
           <li><a href="#">Contact</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
         </ul>
       </div>
     </div>
 
-    <div class="language-switcher">
-      <span class="lang-label">Language:</span>
-      English - <a href="/" class="lang-link active">Paper Craft AI</a>
-      हिंदी - <a href="/hi/" class="lang-link inactive">AI पेपर क्राफ्ट</a>
-    </div>
-    
     <div class="footer-bottom">
-      © 2025 koPaper — Paper Craft AI Generator. All rights reserved.
+      © 2025 koPaper — Free Tools. Made with <span style="color: #ef4444;">♥</span> for presenters everywhere.
     </div>
   </footer>
 
@@ -340,7 +427,287 @@
     <i class="fas fa-check-circle"></i>
     <span id="toastMessage"></span>
   </div>
-  
-  <script src="/style/js/home.js?10"></script>
+
+  <script src="/style/js/home.js?14"></script>
+  <script>
+    // ===== Paper to PPT Tool =====
+    const pptText = document.getElementById('pptText');
+    const pptCharCount = document.getElementById('pptCharCount');
+    const pptParaCount = document.getElementById('pptParaCount');
+    const pptSlideCount = document.getElementById('pptSlideCount');
+    const pptTitle = document.getElementById('pptTitle');
+    const pptStyle = document.getElementById('pptStyle');
+    const pptAspect = document.getElementById('pptAspect');
+    const pptGenerateBtn = document.getElementById('pptGenerateBtn');
+    const pptLoader = document.getElementById('pptLoader');
+    const pptClearBtn = document.getElementById('pptClearBtn');
+    const pptPasteBtn = document.getElementById('pptPasteBtn');
+    const pptSampleBtn = document.getElementById('pptSampleBtn');
+
+    function updatePptStats() {
+      const text = pptText.value;
+      const chars = text.length;
+      const paragraphs = text.split(/\n\s*\n/).filter(p => p.trim().length > 0).length;
+      const slides = paragraphs + (pptTitle.value.trim() ? 1 : 0) + 1; // content paras + title slide + closing
+      pptCharCount.textContent = chars;
+      pptParaCount.textContent = paragraphs;
+      pptSlideCount.textContent = slides;
+    }
+
+    pptText.addEventListener('input', updatePptStats);
+    pptTitle.addEventListener('input', updatePptStats);
+
+    pptClearBtn.addEventListener('click', () => {
+      pptText.value = '';
+      pptTitle.value = '';
+      updatePptStats();
+      pptText.focus();
+    });
+
+    pptPasteBtn.addEventListener('click', async () => {
+      try {
+        const text = await navigator.clipboard.readText();
+        pptText.value = text;
+        updatePptStats();
+        showToast('Text pasted successfully');
+      } catch (err) {
+        showToast('Failed to paste text. Please paste manually.', 'error');
+      }
+    });
+
+    pptSampleBtn.addEventListener('click', () => {
+      pptTitle.value = 'Introduction to Renewable Energy';
+      pptText.value = `What is Renewable Energy?
+Renewable energy comes from natural sources that are constantly replenished. These include sunlight, wind, water, and geothermal heat. Unlike fossil fuels, renewable energy produces zero greenhouse gas emissions.
+
+Solar Power
+Solar energy is the most abundant energy source on Earth. Photovoltaic panels convert sunlight directly into electricity. Solar farms can now be found in nearly every country around the world.
+
+Wind Energy
+Wind power is one of the fastest-growing renewable energy sources. Modern wind turbines can produce enough electricity to power hundreds of homes. Offshore wind farms are particularly efficient due to consistent ocean winds.
+
+Hydroelectric Power
+Hydropower is the oldest and most established renewable energy source. Water flowing through turbines generates electricity. Dams, rivers, and tidal systems all contribute to global hydropower production.
+
+Benefits for the Environment
+Renewable energy dramatically reduces carbon dioxide emissions. It also reduces air and water pollution from coal and gas plants. Transitioning to renewables is critical for combating climate change.
+
+The Future of Energy
+Renewable energy is becoming increasingly affordable and efficient. Battery storage technology is advancing rapidly. Experts predict renewables will supply a significant portion of global electricity in the coming decades.`;
+      updatePptStats();
+      showToast('Sample content loaded. Click Generate to see it in action!');
+    });
+
+    function parseContentForSlides(text) {
+      const paragraphs = text.split(/\n\s*\n/).map(p => p.trim()).filter(p => p.length > 0);
+      const slides = [];
+
+      for (const para of paragraphs) {
+        const lines = para.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+        if (lines.length === 0) continue;
+
+        const title = lines[0].replace(/^[\#\*\-\d\.]+\s*/, '').substring(0, 60);
+        const bullets = lines.slice(1).map(l => l.replace(/^[\#\*\-\d\.]+\s*/, '').substring(0, 120)).filter(l => l.length > 0);
+
+        slides.push({ title, bullets });
+      }
+
+      return slides;
+    }
+
+    const styleThemes = {
+      business: {
+        titleBg: '1e40af',
+        titleTextColor: 'FFFFFF',
+        bodyBg: 'F8FAFC',
+        bodyTextColor: '1E293B',
+        accentColor: '3B82F6',
+        titleFontSize: 36,
+        bodyFontSize: 20
+      },
+      minimal: {
+        titleBg: 'FFFFFF',
+        titleTextColor: '111827',
+        bodyBg: 'FFFFFF',
+        bodyTextColor: '374151',
+        accentColor: '6B7280',
+        titleFontSize: 40,
+        bodyFontSize: 22
+      },
+      creative: {
+        titleBg: '6D28D9',
+        titleTextColor: 'FFFFFF',
+        bodyBg: 'FAF5FF',
+        bodyTextColor: '4C1D95',
+        accentColor: 'EC4899',
+        titleFontSize: 38,
+        bodyFontSize: 20
+      },
+      academic: {
+        titleBg: '065F46',
+        titleTextColor: 'FFFFFF',
+        bodyBg: 'F0FDF4',
+        bodyTextColor: '14532D',
+        accentColor: '10B981',
+        titleFontSize: 34,
+        bodyFontSize: 20
+      },
+      simple: {
+        titleBg: '1F2937',
+        titleTextColor: 'F9FAFB',
+        bodyBg: 'F9FAFB',
+        bodyTextColor: '1F2937',
+        accentColor: 'F59E0B',
+        titleFontSize: 38,
+        bodyFontSize: 22
+      }
+    };
+
+    pptGenerateBtn.addEventListener('click', async () => {
+      if (!pptText.value.trim()) {
+        showToast('Please enter some text or content first', 'error');
+        pptText.focus();
+        return;
+      }
+
+      if (typeof PptxGenJS === 'undefined') {
+        showToast('PPT generator still loading, please wait...', 'error');
+        return;
+      }
+
+      pptGenerateBtn.disabled = true;
+      pptLoader.style.display = 'inline-block';
+
+      try {
+        const theme = styleThemes[pptStyle.value] || styleThemes.business;
+        const slides = parseContentForSlides(pptText.value);
+
+        if (slides.length === 0) {
+          showToast('Please add at least one paragraph', 'error');
+          return;
+        }
+
+        const pptx = new PptxGenJS();
+        pptx.layout = pptAspect.value === 'LAYOUT_STANDARD' ? 'LAYOUT_4x3' : 'LAYOUT_WIDE';
+        pptx.author = 'koPaper';
+        pptx.company = 'koPaper';
+
+        // Title Slide
+        const titleSlide = pptx.addSlide();
+        titleSlide.background = { color: theme.titleBg };
+
+        const mainTitle = pptTitle.value.trim() || 'Your Presentation';
+        titleSlide.addText(mainTitle, {
+          x: 0.5, y: 2.0, w: 9, h: 1.5,
+          fontSize: 44,
+          bold: true,
+          color: theme.titleTextColor,
+          align: 'center',
+          valign: 'middle'
+        });
+
+        titleSlide.addText('Generated with koPaper.com', {
+          x: 0.5, y: 3.8, w: 9, h: 0.5,
+          fontSize: 18,
+          italic: true,
+          color: theme.titleTextColor,
+          align: 'center',
+          transparency: 50
+        });
+
+        // Content Slides
+        for (let i = 0; i < slides.length; i++) {
+          const slide = slides[i];
+          const s = pptx.addSlide();
+          s.background = { color: theme.bodyBg };
+
+          // Title bar
+          s.addShape('rect', {
+            x: 0, y: 0, w: 10, h: 0.8,
+            fill: { color: theme.titleBg },
+            line: { color: theme.titleBg }
+          });
+
+          s.addText(slide.title, {
+            x: 0.4, y: 0.1, w: 9.2, h: 0.6,
+            fontSize: theme.titleFontSize,
+            bold: true,
+            color: theme.titleTextColor,
+            valign: 'middle'
+          });
+
+          // Bullet points
+          if (slide.bullets.length > 0) {
+            const bulletText = slide.bullets.map(b => ({
+              text: b,
+              bullet: true,
+              fontSize: theme.bodyFontSize,
+              color: theme.bodyTextColor,
+              indentLevel: 0
+            }));
+
+            s.addText(bulletText, {
+              x: 0.5, y: 1.1, w: 9, h: 4.5,
+              valign: 'top',
+              lineSpacing: 1.4
+            });
+          } else {
+            // If no bullets, show preview text
+            const firstPara = (pptText.value.split(/\n\s*\n/)[i] || '').substring(0, 300);
+            s.addText(firstPara, {
+              x: 0.5, y: 1.1, w: 9, h: 4.5,
+              fontSize: theme.bodyFontSize,
+              color: theme.bodyTextColor,
+              valign: 'top',
+              lineSpacing: 1.5
+            });
+          }
+
+          // Slide number
+          s.addText(`${i + 1}`, {
+            x: 9.3, y: 5.3, w: 0.5, h: 0.3,
+            fontSize: 12,
+            color: theme.accentColor,
+            align: 'right',
+            bold: true
+          });
+        }
+
+        // Closing Slide
+        const closingSlide = pptx.addSlide();
+        closingSlide.background = { color: theme.titleBg };
+        closingSlide.addText('Thank You', {
+          x: 0.5, y: 2.3, w: 9, h: 1.5,
+          fontSize: 54,
+          bold: true,
+          color: theme.titleTextColor,
+          align: 'center',
+          valign: 'middle'
+        });
+        closingSlide.addText('Generated with koPaper.com', {
+          x: 0.5, y: 4.0, w: 9, h: 0.5,
+          fontSize: 16,
+          italic: true,
+          color: theme.titleTextColor,
+          align: 'center',
+          transparency: 50
+        });
+
+        const filename = mainTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-').substring(0, 50) + '-kopaper.pptx';
+        await pptx.writeFile({ fileName: filename });
+
+        showToast(`Success! ${slides.length + 2} slides downloaded.`);
+      } catch (err) {
+        console.error('PPT generation error:', err);
+        showToast('Error generating PPT. Please try again.', 'error');
+      } finally {
+        pptGenerateBtn.disabled = false;
+        pptLoader.style.display = 'none';
+      }
+    });
+
+    // Initialize
+    updatePptStats();
+  </script>
 </body>
 </html>

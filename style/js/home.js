@@ -1,5 +1,5 @@
 // Home Page JavaScript
-    // DOM Elements
+    // DOM Elements - with safe access
     const textarea = document.getElementById('aiText');
     const humanizedTextarea = document.getElementById('humanizedText');
     const wordCountSpan = document.getElementById('wordCount');
@@ -61,41 +61,46 @@
       return totalWords;
     }
     
-    // Count input characters with enhanced rules
-    textarea.addEventListener('input', () => {
-      const wordCount = calculateWordCount(textarea.value);
-      wordCountSpan.textContent = `${wordCount} / ${MAX_TEXT_LENGTH}`;
-      
-      // Apply visual feedback and disable button when limit exceeded
-      if (wordCount > MAX_TEXT_LENGTH) {
-        wordCountSpan.style.color = '#ef4444'; // Red color for over limit
-        convertBtn.disabled = true;
-        convertBtn.style.opacity = '0.5';
-        convertBtn.style.cursor = 'not-allowed';
-      } else {
-        wordCountSpan.style.color = ''; // Reset to default color
-        convertBtn.disabled = false;
-        convertBtn.style.opacity = '';
-        convertBtn.style.cursor = '';
-      }
-      
-      // Clear output if input is empty
-      if (wordCount === 0) {
-        humanizedTextarea.value = '';
-        outputWordCountSpan.textContent = '0';
-        copyOutputBtn.disabled = true;
-      }
-    });
+    // Count input characters with enhanced rules (only for humanizer page)
+    if (textarea && wordCountSpan && convertBtn) {
+      textarea.addEventListener('input', () => {
+        const wordCount = calculateWordCount(textarea.value);
+        wordCountSpan.textContent = `${wordCount} / ${MAX_TEXT_LENGTH}`;
+        
+        // Apply visual feedback and disable button when limit exceeded
+        if (wordCount > MAX_TEXT_LENGTH) {
+          wordCountSpan.style.color = '#ef4444'; // Red color for over limit
+          convertBtn.disabled = true;
+          convertBtn.style.opacity = '0.5';
+          convertBtn.style.cursor = 'not-allowed';
+        } else {
+          wordCountSpan.style.color = ''; // Reset to default color
+          convertBtn.disabled = false;
+          convertBtn.style.opacity = '';
+          convertBtn.style.cursor = '';
+        }
+        
+        // Clear output if input is empty
+        if (wordCount === 0 && humanizedTextarea) {
+          humanizedTextarea.value = '';
+          if (outputWordCountSpan) outputWordCountSpan.textContent = '0';
+          if (copyOutputBtn) copyOutputBtn.disabled = true;
+        }
+      });
+    }
 
     // Update output character count with enhanced rules
     function updateOutputWordCount() {
-      const wordCount = calculateWordCount(humanizedTextarea.value);
-      outputWordCountSpan.textContent = wordCount;
-      copyOutputBtn.disabled = wordCount === 0;
+      if (humanizedTextarea && outputWordCountSpan) {
+        const wordCount = calculateWordCount(humanizedTextarea.value);
+        outputWordCountSpan.textContent = wordCount;
+        if (copyOutputBtn) copyOutputBtn.disabled = wordCount === 0;
+      }
     }
 
     // Show toast notification
     function showToast(message, type = 'success') {
+      if (!toastMessage || !toast) return;
       toastMessage.textContent = message;
       toast.className = `toast ${type}`;
       toast.classList.add('show');
@@ -105,65 +110,74 @@
       }, 3000);
     }
 
-    // Clear input textarea
-    clearInputBtn.addEventListener('click', () => {
-      textarea.value = '';
-      wordCountSpan.textContent = '0 / ' + MAX_TEXT_LENGTH;
-      humanizedTextarea.value = '';
-      outputWordCountSpan.textContent = '0';
-      copyOutputBtn.disabled = true;
-    });
+    // Clear input textarea (humanizer page only)
+    if (clearInputBtn && textarea) {
+      clearInputBtn.addEventListener('click', () => {
+        textarea.value = '';
+        if (wordCountSpan) wordCountSpan.textContent = '0 / ' + MAX_TEXT_LENGTH;
+        if (humanizedTextarea) humanizedTextarea.value = '';
+        if (outputWordCountSpan) outputWordCountSpan.textContent = '0';
+        if (copyOutputBtn) copyOutputBtn.disabled = true;
+      });
+    }
 
-    // Paste from clipboard
-    pasteInputBtn.addEventListener('click', async () => {
-      try {
-        const text = await navigator.clipboard.readText();
-        textarea.value = text;
-        // Trigger input event to update word count with new rules
-        textarea.dispatchEvent(new Event('input'));
-        showToast('Text pasted successfully');
-      } catch (err) {
-        showToast('Failed to paste text', 'error');
-        console.error('Failed to read clipboard:', err);
-      }
-    });
+    // Paste from clipboard (humanizer page only)
+    if (pasteInputBtn && textarea) {
+      pasteInputBtn.addEventListener('click', async () => {
+        try {
+          const text = await navigator.clipboard.readText();
+          textarea.value = text;
+          textarea.dispatchEvent(new Event('input'));
+          showToast('Text pasted successfully');
+        } catch (err) {
+          showToast('Failed to paste text', 'error');
+          console.error('Failed to read clipboard:', err);
+        }
+      });
+    }
 
-    // Copy output text to clipboard
-    copyOutputBtn.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(humanizedTextarea.value);
-        showToast('Humanized text copied to clipboard');
-      } catch (err) {
-        showToast('Failed to copy text', 'error');
-        console.error('Failed to write clipboard:', err);
-      }
-    });
-
+    // Copy output text to clipboard (humanizer page only)
+    if (copyOutputBtn && humanizedTextarea) {
+      copyOutputBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(humanizedTextarea.value);
+          showToast('Humanized text copied to clipboard');
+        } catch (err) {
+          showToast('Failed to copy text', 'error');
+          console.error('Failed to write clipboard:', err);
+        }
+      });
+    }
 
     // Mobile menu toggle
-    mobileMenuBtn.addEventListener('click', () => {
-      mainNav.classList.toggle('active');
-      const icon = mobileMenuBtn.querySelector('i');
-      if (mainNav.classList.contains('active')) {
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-times');
-      } else {
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-      }
-    });
+    if (mobileMenuBtn && mainNav) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mainNav.classList.toggle('active');
+        const icon = mobileMenuBtn.querySelector('i');
+        if (mainNav.classList.contains('active')) {
+          icon.classList.remove('fa-bars');
+          icon.classList.add('fa-times');
+        } else {
+          icon.classList.remove('fa-times');
+          icon.classList.add('fa-bars');
+        }
+      });
+    }
 
     // FAQ toggle functionality
-    faqQuestions.forEach(question => {
-      question.addEventListener('click', () => {
-        const targetId = question.getAttribute('data-target');
-        const answer = document.getElementById(targetId);
-        const icon = document.getElementById(`faqIcon${targetId.replace('faq', '')}`);
-        
-        answer.classList.toggle('active');
-        icon.classList.toggle('active');
+    if (faqQuestions && faqQuestions.length > 0) {
+      faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+          const targetId = question.getAttribute('data-target');
+          const answer = document.getElementById(targetId);
+          const iconId = `faqIcon${targetId.replace('faq', '')}`;
+          const icon = document.getElementById(iconId);
+          
+          if (answer) answer.classList.toggle('active');
+          if (icon) icon.classList.toggle('active');
+        });
       });
-    });
+    }
 
     // Simulate AI text humanization process
     // In a production environment, this would call a backend API
@@ -334,67 +348,74 @@
       }
     }
 
-    // Handle conversion process when button is clicked
-    convertBtn.addEventListener('click', async () => {
-      // Validate input
-      if (!textarea.value.trim()) {
-        showToast('Please paste your AI-generated text first', 'error');
-        textarea.focus();
-        return;
-      }
-      
-      // Check if input exceeds word count limit using enhanced rules
-      const wordCount = calculateWordCount(textarea.value);
-      if (wordCount > MAX_TEXT_LENGTH) {
-        showToast(`Text too long (${wordCount} words), please shorten to ${MAX_TEXT_LENGTH} words or less`, 'error');
-        return;
-      }
-
-      // Set loading state
-      textarea.disabled = true;
-      convertBtn.disabled = true;
-      convertBtn.querySelector('i').style.display = 'none';
-      convertBtn.querySelector('span').style.display = 'none';
-      loader.style.display = 'inline-block';
-      humanizedTextarea.value = 'Humanizing your text...';
-      updateOutputWordCount();
-
-      try {
-        // Get selected writing style
-        const selectedStyle = writingStyleSelect.value;
-        // Call Gemini API for actual text humanization
-        const humanized = await callGeminiAPI(textarea.value, selectedStyle);
+    // Handle conversion process when button is clicked (humanizer page only)
+    if (convertBtn && textarea && humanizedTextarea && loader) {
+      convertBtn.addEventListener('click', async () => {
+        // Validate input
+        if (!textarea.value.trim()) {
+          showToast('Please paste your AI-generated text first', 'error');
+          textarea.focus();
+          return;
+        }
         
-        humanizedTextarea.value = humanized;
+        // Check if input exceeds word count limit using enhanced rules
+        const wordCount = calculateWordCount(textarea.value);
+        if (wordCount > MAX_TEXT_LENGTH) {
+          showToast(`Text too long (${wordCount} words), please shorten to ${MAX_TEXT_LENGTH} words or less`, 'error');
+          return;
+        }
+
+        // Set loading state
+        textarea.disabled = true;
+        convertBtn.disabled = true;
+        const btnIcon = convertBtn.querySelector('i');
+        const btnSpan = convertBtn.querySelector('span');
+        if (btnIcon) btnIcon.style.display = 'none';
+        if (btnSpan) btnSpan.style.display = 'none';
+        loader.style.display = 'inline-block';
+        humanizedTextarea.value = 'Humanizing your text...';
         updateOutputWordCount();
-        
-        // Show success message
-        showToast('Text humanized successfully!');
-      } catch (error) {
-        console.error('Conversion error:', error);
-        humanizedTextarea.value = 'An error occurred during text humanization. Please try again.';
-        updateOutputWordCount();
-        showToast('An error occurred. Please try again later.', 'error');
-      } finally {
-        // Reset state
-        textarea.disabled = false;
-        convertBtn.disabled = false;
-        convertBtn.querySelector('i').style.display = 'inline-block';
-        convertBtn.querySelector('span').style.display = 'inline-block';
-        loader.style.display = 'none';
-      }
-    });
+
+        try {
+          // Get selected writing style
+          const selectedStyle = writingStyleSelect ? writingStyleSelect.value : 'default';
+          // Call Gemini API for actual text humanization
+          const humanized = await callGeminiAPI(textarea.value, selectedStyle);
+          
+          humanizedTextarea.value = humanized;
+          updateOutputWordCount();
+          
+          // Show success message
+          showToast('Text humanized successfully!');
+        } catch (error) {
+          console.error('Conversion error:', error);
+          humanizedTextarea.value = 'An error occurred during text humanization. Please try again.';
+          updateOutputWordCount();
+          showToast('An error occurred. Please try again later.', 'error');
+        } finally {
+          // Reset state
+          textarea.disabled = false;
+          convertBtn.disabled = false;
+          if (btnIcon) btnIcon.style.display = 'inline-block';
+          if (btnSpan) btnSpan.style.display = 'inline-block';
+          loader.style.display = 'none';
+        }
+      });
+    }
 
     // Initialize FAQ - open first item by default
-    document.getElementById('faq1').classList.add('active');
-    document.getElementById('faqIcon1').classList.add('active');
+    const faq1 = document.getElementById('faq1');
+    const faqIcon1 = document.getElementById('faqIcon1');
+    if (faq1) faq1.classList.add('active');
+    if (faqIcon1) faqIcon1.classList.add('active');
     
     // Add event listener for smooth scrolling on anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        
         const targetId = this.getAttribute('href');
+        if (!targetId || targetId === '#') return;
+        
+        e.preventDefault();
         const targetElement = document.querySelector(targetId);
         
         if (targetElement) {
@@ -403,11 +424,13 @@
           });
           
           // Close mobile menu if open
-          if (mainNav.classList.contains('active')) {
+          if (mainNav && mainNav.classList.contains('active')) {
             mainNav.classList.remove('active');
             const icon = mobileMenuBtn.querySelector('i');
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
+            if (icon) {
+              icon.classList.remove('fa-times');
+              icon.classList.add('fa-bars');
+            }
           }
         }
       });
