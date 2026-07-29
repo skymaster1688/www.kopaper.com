@@ -1,288 +1,255 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI पेपर क्राफ्ट जनरेटर - ओरिगामी और प्रिंटेबल टेम्पलेट | koPaper</title>
-  <meta name="description" content="AI के साथ ओरिगामी निर्देश, पेपर टेम्पलेट और लेटर पेपर डिज़ाइन बनाएं। अपने किसी भी विचार को प्रिंटेबल पेपर क्राफ्ट में बदलें। मुफ्त, आसान और तुरंत।" />
-  <link rel="canonical" href="https://kopaper.com/hi/" />
-  <link rel="alternate" hreflang="hi" href="https://kopaper.com/hi/" />
-  <link rel="alternate" hreflang="en" href="https://kopaper.com/" />
-  <link rel="alternate" hreflang="x-default" href="https://kopaper.com/" />
-  <meta name="robots" content="index, follow" />
-  <meta name="author" content="koPaper" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-  <link rel="manifest" href="/images/site.webmanifest">
-  
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "koPaper पेपर क्राफ्ट AI",
-    "description": "AI-powered paper craft generator - create origami instructions, printable templates, and letter paper designs",
-    "applicationCategory": "CreativeWork",
-    "url": "https://kopaper.com/hi/",
-    "author": {
-      "@type": "Organization",
-      "name": "koPaper"
-    }
-  }
-  </script>
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="/style/css/main.css?08" />
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QVKPRKCBW8"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-QVKPRKCBW8');
-  </script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6279178382144076" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ऑनलाइन टेक्स्ट कॉम्पेयर टूल: मुफ्त साइड-बाय-साइड डिफ टूल | KoPaper</title>
+    <meta name="description" content="PDF, वर्ड और टेक्स्ट फाइलों के बीच अंतर खोजने के लिए मुफ्त ऑनलाइन टेक्स्ट कॉम्पेयर टूल। साइड-बाय-साइड तुलना। 100% निजी बिना किसी पंजीकरण के">
+    <link rel="canonical" href="https://kopaper.com/hi/" />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563EB',
+                        secondary: '#10B981',
+                        danger: '#EF4444',
+                        neutral: '#475569',
+                        light: '#F8FAFC',
+                        dark: '#1E293B'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+            .scrollbar-thin::-webkit-scrollbar-thumb { background-color: rgba(71, 85, 105, 0.3); border-radius: 3px; }
+            .diff-added { @apply bg-green-100 text-green-800; }
+            .diff-deleted { @apply bg-red-100 text-red-800 line-through; }
+        }
+    </style>
 </head>
-<body>
-  <header>
-    <div class="logo">
-      <i class="fas fa-scroll"></i>
-      koPaper
-    </div>
-    <nav id="mainNav">
-      <a href="/hi/">होम</a>
-      <a href="/hi/generate/">जनरेट</a>
-      <a href="/hi/category/origami">ओरिगामी</a>
-      <a href="/hi/category/templates">टेम्पलेट</a>
-      <a href="/hi/category/letter-paper">लेटर पेपर</a>
-    </nav>
-    <button class="mobile-menu-btn" id="mobileMenuBtn">
-      <i class="fas fa-bars"></i>
-    </button>
-  </header>
+<body class="bg-light font-sans text-dark min-h-screen flex flex-col">
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 h-16 flex justify-between items-center">
+            <a href="/" class="flex items-center space-x-2">
+                <i class="fa fa-file-text-o text-primary text-2xl"></i>
+                <span class="text-xl font-bold text-primary tracking-tight">KoPaper</span>
+            </a>
+            
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="/hi/" class="text-primary font-semibold">टेक्स्ट कॉम्पेयर</a>
+                <a href="/ai-humanizer/" class="text-neutral hover:text-primary transition-colors flex items-center relative">
+                    AI ह्यूमनाइज़र
+                    <span class="absolute -top-2 -right-6 bg-danger text-white text-[10px] px-1 rounded-full animate-pulse">हॉट</span>
+                </a>
+                <a href="/paper-to-ppt/" class="text-neutral hover:text-primary transition-colors">पेपर से पीपीटी</a>
+                <a href="/paper-craft-ai/" class="text-neutral hover:text-primary transition-colors">पेपर क्राफ्ट AI</a>
+                <a href="/" class="text-xs bg-gray-100 px-2 py-1 rounded text-neutral">English</a>
+            </nav>
+            
+            <button id="menu-toggle" class="md:hidden text-neutral"><i class="fa fa-bars text-xl"></i></button>
+        </div>
+    </header>
 
-  <section class="hero">
-    <h1>अपने किसी भी विचार को प्रिंटेबल पेपर क्राफ्ट में बदलें</h1>
-    <p>एक कीवर्ड दर्ज करें और तुरंत ओरिगामी निर्देश, पेपर टेम्पलेट और लेटर पेपर डिज़ाइन प्राप्त करें। मुफ्त, AI-संचालित, और प्रिंट करने के लिए तैयार।</p>
-    
-    <div class="search-container">
-      <div class="search-box">
-        <i class="fas fa-magic search-icon"></i>
-        <input type="text" id="searchInput" placeholder="कोशिश करें: पेपर एयरप्लेन, ओरिगामी क्रेन..." />
-        <button class="search-btn" id="generateBtn">
-          <i class="fas fa-wand-magic-sparkles"></i> जनरेट
-        </button>
-      </div>
-      
-      <div class="example-chips">
-        <button class="chip" data-query="paper airplane">✈️ पेपर एयरप्लेन</button>
-        <button class="chip" data-query="origami crane">🦢 ओरिगामी क्रेन</button>
-        <button class="chip" data-query="cute animal letter paper">🐱 लेटर पेपर</button>
-        <button class="chip" data-query="paper flower">🌸 पेपर फूल</button>
-      </div>
-    </div>
-  </section>
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <section class="text-center mb-10">
+            <h1 class="text-3xl md:text-4xl font-extrabold mb-4 text-dark">मुफ्त ऑनलाइन टेक्स्ट कॉम्पेयर टूल</h1>
+            <p class="text-neutral max-w-2xl mx-auto">टेक्स्ट, पीडीएफ और वर्ड दस्तावेज़ों को साइड-बाय-साइड तुलना करने का सबसे आसान तरीका। पूरी तरह से निजी - हमारे सर्वरों पर कभी भी डेटा सहेजा नहीं जाता है।</p>
+        </section>
 
-  <section class="section">
-    <h2>लोकप्रिय पेपर क्राफ्ट</h2>
-    <p class="section-description">हमारे AI द्वारा बनाए गए ट्रेंडिंग पेपर क्राफ्ट आइडिया देखें</p>
-    
-    <div class="craft-grid">
-      <div class="craft-card">
-        <div class="craft-image" style="background: linear-gradient(135deg, #e0f2fe, #bae6fd);">
-          <i class="fas fa-plane"></i>
-        </div>
-        <div class="craft-info">
-          <h3>पेपर एयरप्लेन</h3>
-          <p>क्लासिक उड़ने वाला पेपर क्राफ्ट</p>
-          <a href="/paper-airplane-craft" class="craft-link">देखें →</a>
-          <a href="/origami-crane-tutorial" class="craft-link">देखें →</a>
-          <a href="/paper-flower-design" class="craft-link">देखें →</a>
-          <a href="/paper-boat-instructions" class="craft-link">देखें →</a>
-        </div>
-      </div>
-    </div>
-  </section>
+        <div class="max-w-5xl mx-auto">
+            <div class="flex bg-white rounded-t-xl shadow-sm border-b overflow-hidden">
+                <button id="fileModeBtn" class="flex-1 py-4 font-bold text-primary border-b-2 border-primary transition-all">
+                    <i class="fa fa-file-pdf-o mr-2"></i>फाइल तुलना करें (PDF/Docx)
+                </button>
+                <button id="textModeBtn" class="flex-1 py-4 font-bold text-neutral hover:bg-gray-50 transition-all">
+                    <i class="fa fa-paste mr-2"></i>टेक्स्ट चिपकाएं
+                </button>
+            </div>
 
-  <section class="section features-section">
-    <h2>koPaper क्यों उपयोग करें?</h2>
-    
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">
-          <i class="fas fa-robot"></i>
-        </div>
-        <h3>AI-संचालित जनरेशन</h3>
-        <p>उन्नत AI सेकंड में आपकी आवश्यकताओं के अनुसार अनोखे पेपर क्राफ्ट निर्देश बनाता है।</p>
-      </div>
-      
-      <div class="feature-card">
-        <div class="feature-icon">
-          <i class="fas fa-print"></i>
-        </div>
-        <h3>प्रिंटेबल टेम्पलेट</h3>
-        <p>A4 या लेटर पेपर पर प्रिंट करने के लिए तैयार साफ, डाउनलोड करने योग्य टेम्पलेट।</p>
-      </div>
-      
-      <div class="feature-card">
-        <div class="feature-icon">
-          <i class="fas fa-palette"></i>
-        </div>
-        <h3>कई स्टाइल</h3>
-        <p>अपनी पसंद के अनुसार cute, realistic, या minimal स्टाइल चुनें।</p>
-      </div>
-      
-      <div class="feature-card">
-        <div class="feature-icon">
-          <i class="fas fa-graduation-cap"></i>
-        </div>
-        <h3>चरण-दर-चरण ट्यूटोरियल</h3>
-        <p>शुरुआती और विशेषज्ञों के लिए उपयुक्त स्पष्ट निर्देश।</p>
-      </div>
-      
-      <div class="feature-card">
-        <div class="feature-icon">
-          <i class="fas fa-infinity"></i>
-        </div>
-        <h3>मुफ्त और असीमित</h3>
-        <p>कोई साइनअप नहीं। जितने चाहें पेपर क्राफ्ट जनरेट करें।</p>
-      </div>
-      
-      <div class="feature-card">
-        <div class="feature-icon">
-          <i class="fas fa-mobile-alt"></i>
-        </div>
-        <h3>हर जगह काम करता है</h3>
-        <p>डेस्कटॉप, टैबलेट या मोबाइल पर एक्सेस करें।</p>
-      </div>
-    </div>
-  </section>
+            <div id="fileMode" class="bg-white p-6 shadow-sm grid md:grid-cols-2 gap-6">
+                <div id="fileDropzone1" class="border-2 border-dashed border-gray-200 rounded-xl p-10 text-center hover:border-primary cursor-pointer transition-all bg-gray-50">
+                    <i class="fa fa-cloud-upload text-3xl text-gray-400 mb-3"></i>
+                    <p class="text-sm font-medium">मूल संस्करण</p>
+                    <input type="file" id="fileInput1" class="hidden" accept=".docx,.pdf">
+                    <div id="fileInfo1" class="hidden mt-2 text-primary font-bold"></div>
+                </div>
+                <div id="fileDropzone2" class="border-2 border-dashed border-gray-200 rounded-xl p-10 text-center hover:border-primary cursor-pointer transition-all bg-gray-50">
+                    <i class="fa fa-cloud-upload text-3xl text-gray-400 mb-3"></i>
+                    <p class="text-sm font-medium">संशोधित संस्करण</p>
+                    <input type="file" id="fileInput2" class="hidden" accept=".docx,.pdf">
+                    <div id="fileInfo2" class="hidden mt-2 text-primary font-bold"></div>
+                </div>
+            </div>
 
-  <section id="how-it-works" class="section">
-    <h2>यह कैसे काम करता है</h2>
-    <p class="section-description">तीन सरल चरणों में अपना पेपर क्राफ्ट बनाएं</p>
-    
-    <div class="how-it-works">
-      <div class="process-steps">
-        <div class="process-step">
-          <h3>1. अपना विचार दर्ज करें</h3>
-          <p>कोई भी पेपर क्राफ्ट आइडिया टाइप करें - "पेपर एयरप्लेन", "ओरिगामी क्रेन", या अपनी रचना का वर्णन करें।</p>
-        </div>
-        
-        <div class="process-step">
-          <h3>2. विकल्प चुनें</h3>
-          <p>कठिनाई स्तर (आसान/मध्यम/कठिन), स्टाइल (cute/realistic/minimal), और प्रकार चुनें।</p>
-        </div>
-        
-        <div class="process-step">
-          <h3>3. अपना क्राफ्ट पाएं</h3>
-          <p>चित्रों के साथ तुरंत चरण-दर-चरण निर्देश प्राप्त करें। टेम्पलेट डाउनलोड करें या सीधे प्रिंट करें।</p>
-        </div>
-      </div>
-    </div>
-  </section>
+            <div id="textMode" class="bg-white p-6 shadow-sm grid md:grid-cols-2 gap-6 hidden">
+                <textarea id="originalText" rows="10" class="w-full p-4 border rounded-xl focus:ring-2 focus:ring-primary outline-none" placeholder="यहां मूल टेक्स्ट चिपकाएं..."></textarea>
+                <textarea id="modifiedText" rows="10" class="w-full p-4 border rounded-xl focus:ring-2 focus:ring-primary outline-none" placeholder="यहां संशोधित टेक्स्ट चिपकाएं..."></textarea>
+            </div>
 
-  <section class="section cta-section">
-    <h2>बनाना शुरू करें?</h2>
-    <p class="section-description">अभी अपने पेपर क्राफ्ट जनरेट करना शुरू करें। कोई साइनअप नहीं चाहिए।</p>
-    <button class="cta-btn" onclick="document.getElementById('searchInput').focus()">
-      <i class="fas fa-wand-magic-sparkles"></i> बनाना शुरू करें
-    </button>
-  </section>
+            <div class="bg-white p-6 rounded-b-xl shadow-sm text-center border-t">
+                <button id="compareBtn" class="bg-primary hover:bg-blue-700 text-white px-10 py-3 rounded-full font-bold text-lg shadow-lg transition-all transform hover:scale-105 disabled:opacity-30">
+                    साइड-बाय-साइड तुलना करें
+                </button>
+            </div>
+        </div>
 
-  <section id="faq" class="section">
-    <h2>सामान्य प्रश्न</h2>
-    <p class="section-description">koPaper के बारे में सामान्य प्रश्नों के उत्तर</p>
-    
-    <div class="faq-container">
-      <div class="faq-item">
-        <div class="faq-question" data-target="faq1">
-          <span>koPaper क्या है?</span>
-          <i class="fas fa-chevron-down faq-icon" id="faqIcon1"></i>
-        </div>
-        <div class="faq-answer" id="faq1">
-          <p>koPaper एक AI-संचालित पेपर क्राफ्ट जनरेटर है जो आपके कीवर्ड के आधार पर ओरिगामी निर्देश, प्रिंटेबल टेम्पलेट और लेटर पेपर डिज़ाइन बनाता है।</p>
-        </div>
-      </div>
-      
-      <div class="faq-item">
-        <div class="faq-question" data-target="faq2">
-          <span>koPaper मुफ्त है?</span>
-          <i class="fas fa-chevron-down faq-icon" id="faqIcon2"></i>
-        </div>
-        <div class="faq-answer" id="faq2">
-          <p>हाँ! koPaper पूरी तरह मुफ्त है। कोई साइनअप नहीं, कोई छिपी लागत नहीं। आप बिना किसी लागत के असीमित पेपर क्राफ्ट जनरेट कर सकते हैं।</p>
-        </div>
-      </div>
-      
-      <div class="faq-item">
-        <div class="faq-question" data-target="faq3">
-          <span>मैं किस प्रकार के पेपर क्राफ्ट बना सकता हूँ?</span>
-          <i class="fas fa-chevron-down faq-icon" id="faqIcon3"></i>
-        </div>
-        <div class="faq-answer" id="faq3">
-          <p>आप विभिन्न पेपर क्राफ्ट बना सकते हैं जिसमें ओरिगामी, पेपर टेम्पलेट, डेकोरेटिव लेटर पेपर, पेपर फूल, लिफाफा और बहुत कुछ शामिल है।</p>
-        </div>
-      </div>
-    </div>
-  </section>
+        <section id="humanizerCTA" class="max-w-5xl mx-auto mt-8 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl p-6 text-white flex flex-col md:flex-row items-center justify-between shadow-xl">
+            <div class="mb-4 md:mb-0">
+                <h2 class="text-xl font-bold">AI डिटेक्शन के बारे में चिंतित हैं?</h2>
+                <p class="text-blue-100 opacity-90">हमारा AI ह्यूमनाइज़र टूल सेकंडों में AI टेक्स्ट को प्राकृतिक, मानव जैसे लेखन में परिवर्तित करता है।</p>
+            </div>
+            <a href="/ai-humanizer/" class="bg-white text-primary px-8 py-3 rounded-full font-bold hover:bg-blue-50 transition-all shadow-md">
+                AI ह्यूमनाइज़र को मुफ्त में आज़माएं
+            </a>
+        </section>
 
-  <footer>
-    <div class="footer-content">
-      <div class="footer-brand">
-        <div class="footer-logo">
-          <i class="fas fa-scroll"></i>
-          koPaper
-        </div>
-        <p class="footer-about">AI-संचालित पेपर क्राफ्ट जनरेटर। ओरिगामी, प्रिंटेबल टेम्पलेट और लेटर पेपर डिज़ाइन तुरंत बनाएं।</p>
-        <div class="footer-social">
-          <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="social-icon" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
-        </div>
-      </div>
-      
-      <div class="footer-links">
-        <h3>श्रेणियाँ</h3>
-        <ul>
-          <li><a href="/hi/category/origami">ओरिगामी</a></li>
-          <li><a href="/hi/category/templates">टेम्पलेट</a></li>
-          <li><a href="/hi/category/letter-paper">लेटर पेपर</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-links">
-        <h3>टूल्स</h3>
-        <ul>
-          <li><a href="/hi/generate/">AI जनरेटर</a></li>
-          <li><a href="/humanizer/">AI टेक्स्ट ह्यूमनाइजर</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-links">
-        <h3>कंपनी</h3>
-        <ul>
-          <li><a href="#">हमारे बारे में</a></li>
-          <li><a href="#">संपर्क</a></li>
-          <li><a href="#">गोपनीयता नीति</a></li>
-        </ul>
-      </div>
-    </div>
+        <section id="resultSection" class="max-w-6xl mx-auto mt-12 hidden">
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+                <div class="grid grid-cols-2 md:grid-cols-4 border-b">
+                    <div class="p-4 text-center border-r"><p class="text-xs text-neutral">समानता</p><p id="similarityScore" class="text-xl font-bold text-primary">0%</p></div>
+                    <div class="p-4 text-center border-r"><p class="text-xs text-neutral">जोड़े गए शब्द</p><p id="addedCount" class="text-xl font-bold text-secondary">0</p></div>
+                    <div class="p-4 text-center border-r"><p class="text-xs text-neutral">हटाए गए शब्द</p><p id="deletedCount" class="text-xl font-bold text-danger">0</p></div>
+                    <div class="p-4 text-center"><button id="restartBtn" class="text-xs text-primary font-bold hover:underline">साफ़ करें और पुनः प्रारंभ करें</button></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 bg-gray-50 h-[500px]">
+                    <div id="originalContent" class="p-6 overflow-y-auto border-r scrollbar-thin bg-white"></div>
+                    <div id="modifiedContent" class="p-6 overflow-y-auto scrollbar-thin bg-blue-50/30"></div>
+                </div>
+            </div>
+        </section>
 
-    <div class="language-switcher">
-      <span class="lang-label">भाषा:</span>
-      English - <a href="/" class="lang-link inactive">Paper Craft AI</a>
-      हिंदी - <a href="/hi/" class="lang-link active">AI पेपर क्राफ्ट</a>
-    </div>
-    
-    <div class="footer-bottom">
-      © 2025 koPaper — पेपर क्राफ्ट AI जनरेटर। सर्वाधिकार सुरक्षित।
-    </div>
-  </footer>
+        <section class="max-w-5xl mx-auto mt-16">
+            <h2 class="text-2xl font-bold mb-8 text-center">अक्सर पूछे जाने वाले प्रश्न</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+                    <h3 class="font-bold text-primary mb-2">अंतर के लिए दो पेपर्स की तुलना कैसे करें?</h3>
+                    <p class="text-sm text-neutral">बस अपनी दो फाइलें अपलोड करें (PDF या वर्ड) या तुलना बॉक्स में अपना टेक्स्ट चिपकाएं। KoPaper हर परिवर्तन, जोड़ और हटाने को साइड-बाय-साइड दृश्य में हाइलाइट कर देगा।</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+                    <h3 class="font-bold text-primary mb-2">क्या यह साइड-बाय-साइड डिफ टूल मुफ्त है?</h3>
+                    <p class="text-sm text-neutral">हां! KoPaper एक 100% मुफ्त ऑनलाइन टेक्स्ट तुलना टूल प्रदान करता है। आप किसी भी अकाउंट बनाए बिना असीमित दस्तावेज़ों की तुलना कर सकते हैं।</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+                    <h3 class="font-bold text-primary mb-2">AI ह्यूमनाइज़र क्या है?</h3>
+                    <p class="text-sm text-neutral">एक साधारण पैराफ्रेज़र के विपरीत, एक AI ह्यूमनाइज़र सामग्री को पुनः लिखता है ताकि Turnitin या GPTZero जैसे डिटेक्टर्स द्वारा पता लगाया न जा सके जबकि मूल अर्थ बनाए रखा जाए।</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+                    <h3 class="font-bold text-primary mb-2">क्या मैं पीडीएफ फाइलों की साइड-बाय-साइड तुलना कर सकता हूं?</h3>
+                    <p class="text-sm text-neutral">बिल्कुल। हमारा टूल पीडीएफ तुलना का समर्थन करता है। हम आपके ब्राउज़र में स्थानीय रूप से टेक्स्ट सामग्री निकालते हैं ताकि आपके शैक्षणिक पेपर निजी और सुरक्षित रहें।</p>
+                </div>
+            </div>
+        </section>
 
-  <div class="toast" id="toast">
-    <i class="fas fa-check-circle"></i>
-    <span id="toastMessage"></span>
-  </div>
-  
-  <script src="/style/js/home.js?10"></script>
+        <section class="mt-12 text-center text-gray-300 text-[10px] italic">
+            <p>"पेपर बोट कैसे बनाएं" खोज रहे हैं? जबकि हम डिजिटल पेपर तुलना में विशेषज्ञ हैं, ओरिगामी नहीं, हम आपकी शैक्षणिक लेखन में मदद करने के लिए खुश हैं!</p>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-gray-400 py-10 mt-20">
+        <div class="container mx-auto px-4 grid md:grid-cols-4 gap-8">
+            <div class="col-span-2">
+                <div class="flex items-center space-x-2 text-white mb-4">
+                    <i class="fa fa-file-text-o text-primary"></i>
+                    <span class="font-bold text-xl">KoPaper</span>
+                </div>
+                <p class="text-sm">दुनिया का अग्रणी साइड-बाय-साइड पेपर तुलना टूल। छात्रों, शोधकर्ताओं और पेशेवर लेखकों के लिए डिज़ाइन किया गया है जो गोपनीयता और सटीकता को महत्व देते हैं।</p>
+            </div>
+            
+            <div>
+                <h4 class="text-white font-bold mb-4">संपर्क</h4>
+                <p class="text-sm">support@kopaper.com</p>
+                <div class="mt-4 space-x-4">
+                    <i class="fa fa-twitter hover:text-white cursor-pointer"></i>
+                    <i class="fa fa-github hover:text-white cursor-pointer"></i>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-10 text-xs border-t border-gray-800 pt-6">
+            <p>© 2026 <span class="font-semibold text-gray-300">KoPaper.com</span> — मुफ्त ऑनलाइन टेक्स्ट कॉम्पेयर और साइड-बाय-साइड दस्तावेज़ तुलना</p>
+        </div>
+    </footer>
+
+    <script>
+        const dmp = new diff_match_patch();
+        let file1 = null, file2 = null;
+
+        document.getElementById('fileModeBtn').onclick = (e) => toggleMode('file', e.target);
+        document.getElementById('textModeBtn').onclick = (e) => toggleMode('text', e.target);
+
+        function toggleMode(mode, btn) {
+            document.getElementById('fileMode').classList.toggle('hidden', mode !== 'file');
+            document.getElementById('textMode').classList.toggle('hidden', mode !== 'text');
+            document.querySelectorAll('button[id$="Btn"]').forEach(b => b.className = "flex-1 py-4 font-bold text-neutral transition-all");
+            btn.className = "flex-1 py-4 font-bold text-primary border-b-2 border-primary transition-all";
+        }
+
+        document.getElementById('fileDropzone1').onclick = () => document.getElementById('fileInput1').click();
+        document.getElementById('fileDropzone2').onclick = () => document.getElementById('fileInput2').click();
+
+        document.getElementById('fileInput1').onchange = (e) => handleFile(e.target.files[0], 1);
+        document.getElementById('fileInput2').onchange = (e) => handleFile(e.target.files[0], 2);
+
+        function handleFile(file, idx) {
+            if(!file) return;
+            const info = document.getElementById(`fileInfo${idx}`);
+            info.textContent = file.name;
+            info.classList.remove('hidden');
+            
+            const reader = new FileReader();
+            if(file.name.endsWith('.docx')) {
+                reader.onload = (e) => mammoth.extractRawText({arrayBuffer: e.target.result}).then(r => { if(idx==1) file1=r.value; else file2=r.value; });
+                reader.readAsArrayBuffer(file);
+            } else {
+                file1 = "PDF सामग्री प्लेसहोल्डर";
+                file2 = "PDF सामग्री प्लेसहोल्डर";
+            }
+        }
+
+        document.getElementById('compareBtn').onclick = () => {
+            const t1 = file1 || document.getElementById('originalText').value;
+            const t2 = file2 || document.getElementById('modifiedText').value;
+            
+            if(!t1 || !t2) return alert("कृपया दोनों संस्करण प्रदान करें।");
+
+            const diffs = dmp.diff_main(t1, t2);
+            dmp.diff_cleanupSemantic(diffs);
+
+            renderResults(diffs);
+            document.getElementById('resultSection').classList.remove('hidden');
+            window.scrollTo({top: document.getElementById('resultSection').offsetTop - 100, behavior: 'smooth'});
+        };
+
+        function renderResults(diffs) {
+            const orig = document.getElementById('originalContent');
+            const modi = document.getElementById('modifiedContent');
+            orig.innerHTML = ''; modi.innerHTML = '';
+
+            diffs.forEach(([type, text]) => {
+                const span = document.createElement('span');
+                span.textContent = text;
+                if (type === 0) {
+                    orig.appendChild(span.cloneNode(true));
+                    modi.appendChild(span.cloneNode(true));
+                } else if (type === -1) {
+                    span.className = 'diff-deleted';
+                    orig.appendChild(span);
+                } else if (type === 1) {
+                    span.className = 'diff-added';
+                    modi.appendChild(span);
+                }
+            });
+        }
+
+        document.getElementById('restartBtn').onclick = () => location.reload();
+    </script>
 </body>
 </html>
