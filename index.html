@@ -7,7 +7,16 @@
     <meta name="description" content="Free online text compare tool to find differences between PDF, Word, and text files. Side-by-side comparison. 100% private with no registration. Try KoPaper!">
     <link rel="canonical" href="https://kopaper.com/" />
     
-
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QVKPRKCBW8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-QVKPRKCBW8');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6279178382144076" crossorigin="anonymous"></script>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/diff-match-patch@1.0.5/index.min.js"></script>
@@ -65,7 +74,7 @@
         </div>
     </header>
 
-    <main class="flex-grow container mx-auto px-4 py-8">
+    <main class="flex-grow w-full px-4 py-8">
 
         <section class="text-center mb-10">
             <h1 class="text-3xl md:text-4xl font-extrabold mb-4 text-dark">Free Online Text Compare Tool</h1>
@@ -73,7 +82,7 @@
         </section>
 
 
-        <div class="max-w-5xl mx-auto">
+        <div class="w-full">
             <div class="flex bg-white rounded-t-xl shadow-sm border-b overflow-hidden">
                 <button id="fileModeBtn" class="flex-1 py-4 font-bold text-primary border-b-2 border-primary transition-all">
                     <i class="fa fa-file-pdf-o mr-2"></i>Compare Files (PDF/Docx)
@@ -112,7 +121,7 @@
             </div>
         </div>
 
-        <section id="humanizerCTA" class="max-w-5xl mx-auto mt-8 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl p-6 text-white flex flex-col md:flex-row items-center justify-between shadow-xl">
+        <section id="humanizerCTA" class="w-full max-w-5xl mx-auto mt-8 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl p-6 text-white flex flex-col md:flex-row items-center justify-between shadow-xl">
             <div class="mb-4 md:mb-0">
                 <h2 class="text-xl font-bold">Worried about AI Detection?</h2>
                 <p class="text-blue-100 opacity-90">Our AI Humanizer tool converts AI text to natural, human-like writing in seconds.</p>
@@ -122,7 +131,7 @@
             </a>
         </section>
 
-        <section id="resultSection" class="max-w-6xl mx-auto mt-12 hidden">
+        <section id="resultSection" class="w-full max-w-6xl mx-auto mt-12 hidden">
             <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
                 <div class="grid grid-cols-2 md:grid-cols-4 border-b">
                     <div class="p-4 text-center border-r"><p class="text-xs text-neutral">Similarity</p><p id="similarityScore" class="text-xl font-bold text-primary">0%</p></div>
@@ -137,7 +146,7 @@
             </div>
         </section>
 
-        <section class="max-w-5xl mx-auto mt-16">
+        <section class="w-full max-w-5xl mx-auto mt-16">
             <h2 class="text-2xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
