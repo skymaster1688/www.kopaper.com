@@ -1,807 +1,274 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Text Compare Online: Free Side by Side Diff Tool | KoPaper</title>
-    <meta name="description" content="Free online text compare tool to find differences between PDF, Word, and text files. Side-by-side comparison. 100% private with no registration. Try KoPaper!">
+    <title>Text Compare Online: Free Text Difference Checker | KoPaper</title>
+    <meta name="description" content="Compare two texts instantly with KoPaper's free online text compare tool. Detect differences, highlight changes, and analyze documents side-by-side with ease.">
     <link rel="canonical" href="https://kopaper.com/" />
-    
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QVKPRKCBW8"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-QVKPRKCBW8');
-    </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6279178382144076" crossorigin="anonymous"></script>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            slate: {
-              950: '#020617',
-            }
-          }
-        }
-      }
-    }
-  </script>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236366f1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='18' cy='18' r='3'/%3E%3Ccircle cx='6' cy='6' r='3'/%3E%3Cpath d='M13 6h3a2 2 0 0 1 2 2v7'/%3E%3Cpath d='M11 18H8a2 2 0 0 1-2-2V9'/%3E%3C/svg%3E" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Text Compare Online: Free Text Difference Checker" />
+    <meta property="og:description" content="Free online text compare tool with side-by-side diff view. Compare code, JSON, markdown, and plain text instantly. 100% private and client-side processing." />
+    <meta property="og:url" content="https://kopaper.com/" />
+    <meta property="og:site_name" content="KoPaper Text Compare" />
+    <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 630'%3E%3Crect width='1200' height='630' fill='%23020617'/%3E%3Crect x='100' y='100' width='440' height='430' rx='16' fill='%230f172a' stroke='%23475569' stroke-width='2'/%3E%3Crect x='660' y='100' width='440' height='430' rx='16' fill='%230f172a' stroke='%23475569' stroke-width='2'/%3E%3Crect x='100' y='100' width='440' height='48' rx='16' fill='%231e293b'/%3E%3Crect x='660' y='100' width='440' height='48' rx='16' fill='%231e293b'/%3E%3Ccircle cx='124' cy='124' r='10' fill='%23f87171'/%3E%3Ccircle cx='684' cy='124' r='10' fill='%234ade80'/%3E%3Ctext x='600' y='60' text-anchor='middle' font-family='system-ui, sans-serif' font-size='44' font-weight='bold' fill='%236366f1'%3EText Compare — Free Online Diff Tool%3C/text%3E%3C/svg%3E" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Text Compare Online: Free Text Difference Checker" />
+    <meta name="twitter:description" content="Free online text compare tool with side-by-side diff view. Compare code, JSON, markdown instantly. 100% private, no signup required." />
+    <meta name="twitter:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 630'%3E%3Crect width='1200' height='630' fill='%23020617'/%3E%3Crect x='100' y='100' width='440' height='430' rx='16' fill='%230f172a' stroke='%23475569' stroke-width='2'/%3E%3Crect x='660' y='100' width='440' height='430' rx='16' fill='%230f172a' stroke='%23475569' stroke-width='2'/%3E%3Crect x='100' y='100' width='440' height='48' rx='16' fill='%231e293b'/%3E%3Crect x='660' y='100' width='440' height='48' rx='16' fill='%231e293b'/%3E%3Ccircle cx='124' cy='124' r='10' fill='%23f87171'/%3E%3Ccircle cx='684' cy='124' r='10' fill='%234ade80'/%3E%3Ctext x='600' y='60' text-anchor='middle' font-family='system-ui, sans-serif' font-size='44' font-weight='bold' fill='%236366f1'%3EText Compare — Free Online Diff Tool%3C/text%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="style/css/main.css">
 </head>
-
 <body>
-  <div id="root">
-    <div class="min-h-screen flex flex-col font-sans antialiased transition-colors bg-slate-950 text-slate-100">
-      <div class="flex flex-col flex-1">
-        <header
-          class="border-b px-4 py-2.5 select-none sticky top-0 z-30 shadow-sm transition-colors bg-slate-900 border-slate-800 text-slate-100">
-          <div class="w-full flex flex-col md:flex-row items-center justify-between gap-2.5">
-            <div class="flex items-center justify-between w-full md:w-auto gap-3">
-              <div class="flex items-center gap-2.5">
-                <div
-                  class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center shadow-md text-white">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="lucide lucide-git-compare w-5 h-5" aria-hidden="true">
-                    <circle cx="18" cy="18" r="3"></circle>
-                    <circle cx="6" cy="6" r="3"></circle>
-                    <path d="M13 6h3a2 2 0 0 1 2 2v7"></path>
-                    <path d="M11 18H8a2 2 0 0 1-2-2V9"></path>
-                  </svg></div>
-                <div>
-                  <h1 class="text-base font-bold tracking-tight flex items-center gap-2 text-white">Text Compare<span
-                      class="text-[10px] uppercase tracking-wider font-mono px-2 py-0.5 rounded-full bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 border border-indigo-500/30">PRO</span>
-                  </h1>
-                  <p class="text-xs text-slate-500 dark:text-slate-400 font-sans hidden sm:block">Side-by-side &amp;
-                    inline diff tool</p>
-                </div>
-              </div>
-              <div class="flex items-center gap-1.5 md:hidden"><button title="Switch to Light Mode"
-                  class="p-2 rounded-lg border text-xs font-medium transition-colors bg-slate-800 border-slate-700 text-amber-400 hover:bg-slate-700"><svg
-                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="lucide lucide-sun w-4 h-4" aria-hidden="true">
-                    <circle cx="12" cy="12" r="4"></circle>
-                    <path d="M12 2v2"></path>
-                    <path d="M12 20v2"></path>
-                    <path d="m4.93 4.93 1.41 1.41"></path>
-                    <path d="m17.66 17.66 1.41 1.41"></path>
-                    <path d="M2 12h2"></path>
-                    <path d="M20 12h2"></path>
-                    <path d="m6.34 17.66-1.41 1.41"></path>
-                    <path d="m19.07 4.93-1.41 1.41"></path>
-                  </svg></button>
-                <div class="flex items-center p-1 rounded-lg border bg-slate-800 border-slate-700"><button
-                    class="px-2.5 py-1 rounded text-xs font-medium transition-all text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200">Edit</button><button
-                    class="px-2.5 py-1 rounded text-xs font-medium transition-all bg-indigo-600 text-white shadow">Diff</button>
-                </div>
-              </div>
-            </div>
-            <div class="flex items-center gap-2.5 flex-wrap justify-center w-full md:w-auto">
-              <div class="relative flex items-center">
-                <div
-                  class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border text-xs bg-slate-800 border-slate-700 text-slate-200">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="lucide lucide-sparkles w-3.5 h-3.5 text-amber-500" aria-hidden="true">
-                    <path
-                      d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z">
-                    </path>
-                    <path d="M20 2v4"></path>
-                    <path d="M22 4h-4"></path>
-                    <circle cx="4" cy="20" r="2"></circle>
-                  </svg><span class="text-slate-500 dark:text-slate-400 hidden sm:inline">Samples:</span><select
-                    class="bg-transparent text-slate-800 dark:text-slate-100 font-medium focus:outline-none cursor-pointer pr-1">
-                    <option value="" disabled="" class="bg-slate-800" selected="">Load Preset...</option>
-                    <option value="text-compare-overview" class="bg-slate-800 text-slate-100">Text Compare Product
-                      Feature Overview (TEXT)</option>
-                    <option value="text-diff-release-notes" class="bg-slate-800 text-slate-100">Text Compare Release
-                      Notes (Markdown) (MARKDOWN)</option>
-                    <option value="text-compare-json-config" class="bg-slate-800 text-slate-100">Text Compare Diff
-                      Settings (JSON) (JSON)</option>
-                    <option value="text-compare-algorithm-code" class="bg-slate-800 text-slate-100">Text Diff Algorithm
-                      (TypeScript) (CODE)</option>
-                  </select></div>
-              </div>
-              <div class="hidden md:flex items-center p-1 rounded-lg border bg-slate-800 border-slate-700"><button
-                  class="px-3 py-1 rounded-md text-xs font-medium transition-all flex items-center gap-1.5 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200"><svg
-                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="lucide lucide-file-code w-3.5 h-3.5" aria-hidden="true">
-                    <path d="M10 12.5 8 15l2 2.5"></path>
-                    <path d="m14 12.5 2 2.5-2 2.5"></path>
-                    <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
-                    <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"></path>
-                  </svg>Edit Inputs</button><button
-                  class="px-3 py-1 rounded-md text-xs font-medium transition-all flex items-center gap-1.5 bg-indigo-600 text-white shadow-sm"><svg
-                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="lucide lucide-git-compare w-3.5 h-3.5" aria-hidden="true">
-                    <circle cx="18" cy="18" r="3"></circle>
-                    <circle cx="6" cy="6" r="3"></circle>
-                    <path d="M13 6h3a2 2 0 0 1 2 2v7"></path>
-                    <path d="M11 18H8a2 2 0 0 1-2-2V9"></path>
-                  </svg>Diff View</button></div>
-            </div>
-            <div class="flex items-center gap-2 flex-wrap justify-end w-full md:w-auto"><button
-                title="Switch to Light Mode"
-                class="hidden md:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border text-xs font-medium transition-all bg-slate-800 border-slate-700 text-amber-400 hover:bg-slate-700"><svg
-                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  class="lucide lucide-sun w-3.5 h-3.5" aria-hidden="true">
-                  <circle cx="12" cy="12" r="4"></circle>
-                  <path d="M12 2v2"></path>
-                  <path d="M12 20v2"></path>
-                  <path d="m4.93 4.93 1.41 1.41"></path>
-                  <path d="m17.66 17.66 1.41 1.41"></path>
-                  <path d="M2 12h2"></path>
-                  <path d="M20 12h2"></path>
-                  <path d="m6.34 17.66-1.41 1.41"></path>
-                  <path d="m19.07 4.93-1.41 1.41"></path>
-                </svg><span>Light</span></button><button title="Swap Original &amp; Modified texts (Alt+S)"
-                class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium border transition-colors bg-slate-800 hover:bg-slate-700 text-slate-300 border-slate-700"><svg
-                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  class="lucide lucide-arrow-right-left w-3.5 h-3.5 text-indigo-500" aria-hidden="true">
-                  <path d="m16 3 4 4-4 4"></path>
-                  <path d="M20 7H4"></path>
-                  <path d="m8 21-4-4 4-4"></path>
-                  <path d="M4 17h16"></path>
-                </svg><span class="hidden sm:inline">Swap</span></button><button title="Clear both sides"
-                class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium border transition-colors bg-slate-800 hover:bg-rose-950/40 text-slate-300 hover:text-rose-300 border-slate-700 hover:border-rose-800"><svg
-                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  class="lucide lucide-trash2 lucide-trash-2 w-3.5 h-3.5 text-slate-400 hover:text-rose-500"
-                  aria-hidden="true">
-                  <path d="M10 11v6"></path>
-                  <path d="M14 11v6"></path>
-                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path>
-                  <path d="M3 6h18"></path>
-                  <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                </svg><span class="hidden sm:inline">Clear</span></button><button title="Export Patch or HTML"
-                class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-medium shadow-sm transition-all"><svg
-                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  class="lucide lucide-download w-3.5 h-3.5" aria-hidden="true">
-                  <path d="M12 15V3"></path>
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                  <path d="m7 10 5 5 5-5"></path>
-                </svg><span>Export</span></button><button title="Shortcuts &amp; Help"
-                class="p-1.5 rounded-lg border transition-colors bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-slate-200 border-slate-700"><svg
-                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  class="lucide lucide-circle-question-mark w-4 h-4" aria-hidden="true">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-                  <path d="M12 17h.01"></path>
-                </svg></button></div>
-          </div>
-        </header>
-        <div
-          class="border-b px-4 py-2 text-xs flex flex-wrap items-center justify-between gap-3 select-none transition-colors bg-slate-950 text-slate-200 border-slate-800/80">
-          <div class="flex items-center gap-2 sm:gap-3 flex-wrap">
-            <div
-              class="flex items-center gap-1.5 px-2.5 py-1 rounded-full font-mono font-semibold border text-[11px] sm:text-xs bg-emerald-500/15 text-emerald-400 border-emerald-500/30"
-              title="Text similarity ratio based on match analysis"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-percent w-3.5 h-3.5"
-                aria-hidden="true">
-                <line x1="19" x2="5" y1="5" y2="19"></line>
-                <circle cx="6.5" cy="6.5" r="2.5"></circle>
-                <circle cx="17.5" cy="17.5" r="2.5"></circle>
-              </svg><span>100% Match</span></div>
-            <div
-              class="flex items-center gap-1 px-2.5 py-1 rounded-full font-mono text-[11px] sm:text-xs border bg-emerald-950/50 text-emerald-400 border-emerald-800/60">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-plus w-3.5 h-3.5 stroke-[2.5]" aria-hidden="true">
-                <path d="M5 12h14"></path>
-                <path d="M12 5v14"></path>
-              </svg><span>0 added</span></div>
-            <div
-              class="flex items-center gap-1 px-2.5 py-1 rounded-full font-mono text-[11px] sm:text-xs border bg-rose-950/50 text-rose-400 border-rose-800/60">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-minus w-3.5 h-3.5 stroke-[2.5]" aria-hidden="true">
-                <path d="M5 12h14"></path>
-              </svg><span>0 removed</span></div>
-            <div
-              class="flex items-center gap-1 px-2.5 py-1 rounded-full font-mono text-[11px] sm:text-xs border hidden sm:flex bg-slate-900 text-slate-400 border-slate-800">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-circle-check-big w-3.5 h-3.5" aria-hidden="true">
-                <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
-                <path d="m9 11 3 3L22 4"></path>
-              </svg><span>0 unchanged</span></div>
-          </div>
-          <div class="flex items-center gap-2 sm:gap-3 w-full sm:w-auto justify-between sm:justify-end">
-            <div class="relative flex items-center flex-1 sm:flex-initial"><svg xmlns="http://www.w3.org/2000/svg"
-                width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-search w-3.5 h-3.5 absolute left-2.5 text-slate-400 pointer-events-none"
-                aria-hidden="true">
-                <path d="m21 21-4.34-4.34"></path>
-                <circle cx="11" cy="11" r="8"></circle>
-              </svg><input placeholder="Search diff..."
-                class="pl-8 pr-7 py-1 rounded-md border text-xs focus:outline-none focus:ring-1 focus:ring-indigo-500 w-full sm:w-44 bg-slate-900 text-slate-200 border-slate-800"
-                type="text" value=""></div>
-            <div class="flex items-center rounded-md p-0.5 border bg-slate-900 border-slate-800"><span
-                class="px-2 font-mono text-slate-500 dark:text-slate-400 text-[11px] whitespace-nowrap">No
-                diffs</span><button title="Previous Difference (Alt+P)"
-                class="p-1.5 disabled:opacity-30 rounded transition-colors hover:bg-slate-800 text-slate-300"
-                disabled=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  class="lucide lucide-chevron-up w-3.5 h-3.5" aria-hidden="true">
-                  <path d="m18 15-6-6-6 6"></path>
-                </svg></button><button title="Next Difference (Alt+N)"
-                class="p-1.5 disabled:opacity-30 rounded transition-colors hover:bg-slate-800 text-slate-300"
-                disabled=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  class="lucide lucide-chevron-down w-3.5 h-3.5" aria-hidden="true">
-                  <path d="m6 9 6 6 6-6"></path>
-                </svg></button></div>
+<div class="app">
+  <!-- ===== Header ===== -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-l">
+          <div class="logo"><i class="ic" data-icon="git-compare"></i></div>
+          <div>
+            <h1>Text Compare <span class="pro-badge">PRO</span></h1>
+            <p class="sub">Side-by-side &amp; inline diff tool</p>
           </div>
         </div>
-        <div
-          class="border-b px-4 py-2 text-xs flex flex-wrap items-center justify-between gap-3 select-none transition-colors bg-slate-900 border-slate-800 text-slate-200">
-          <div class="flex items-center gap-2 sm:gap-3 flex-wrap">
-            <div class="flex items-center p-1 rounded-lg border bg-slate-950 border-slate-800"><button
-                class="flex items-center gap-1.5 px-2.5 py-1 rounded-md transition-all font-medium bg-indigo-600 text-white shadow-sm"><svg
-                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  class="lucide lucide-columns2 lucide-columns-2 w-3.5 h-3.5" aria-hidden="true">
-                  <rect width="18" height="18" x="3" y="3" rx="2"></rect>
-                  <path d="M12 3v18"></path>
-                </svg><span>Split View</span></button><button
-                class="flex items-center gap-1.5 px-2.5 py-1 rounded-md transition-all font-medium text-slate-400 hover:text-slate-200"><svg
-                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  class="lucide lucide-rows3 lucide-rows-3 w-3.5 h-3.5" aria-hidden="true">
-                  <rect width="18" height="18" x="3" y="3" rx="2"></rect>
-                  <path d="M21 9H3"></path>
-                  <path d="M21 15H3"></path>
-                </svg><span>Unified View</span></button></div>
-            <div class="flex items-center gap-1 p-1 rounded-lg border bg-slate-950 border-slate-800"><span
-                class="text-slate-400 font-medium px-1.5 hidden sm:inline">Diff:</span><button
-                class="px-2 py-1 rounded-md text-xs font-medium transition-all text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200">By
-                Line</button><button
-                class="px-2 py-1 rounded-md text-xs font-medium transition-all bg-slate-800 text-indigo-300 font-semibold">By
-                Word</button><button
-                class="px-2 py-1 rounded-md text-xs font-medium transition-all text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200">By
-                Char</button></div>
-          </div>
-          <div class="flex items-center gap-1.5 flex-wrap"><button
-              class="flex items-center gap-1 px-2 py-1 rounded-md border text-xs transition-all bg-slate-950 text-slate-400 border-slate-800 hover:text-slate-200"
-              title="Ignore trailing spaces and whitespace differences"><svg xmlns="http://www.w3.org/2000/svg"
-                width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-text-align-start w-3.5 h-3.5"
-                aria-hidden="true">
-                <path d="M21 5H3"></path>
-                <path d="M15 12H3"></path>
-                <path d="M17 19H3"></path>
-              </svg><span>Ignore Space</span></button><button
-              class="flex items-center gap-1 px-2 py-1 rounded-md border text-xs transition-all bg-slate-950 text-slate-400 border-slate-800 hover:text-slate-200"
-              title="Case-insensitive comparison"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" class="lucide lucide-case-sensitive w-3.5 h-3.5" aria-hidden="true">
-                <path d="m2 16 4.039-9.69a.5.5 0 0 1 .923 0L11 16"></path>
-                <path d="M22 9v7"></path>
-                <path d="M3.304 13h6.392"></path>
-                <circle cx="18.5" cy="12.5" r="3.5"></circle>
-              </svg><span>Ignore Case</span></button><button
-              class="flex items-center gap-1 px-2 py-1 rounded-md border text-xs transition-all bg-slate-800 text-slate-200 border-slate-700 font-medium"
-              title="Toggle line numbers column"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" class="lucide lucide-hash w-3.5 h-3.5" aria-hidden="true">
-                <line x1="4" x2="20" y1="9" y2="9"></line>
-                <line x1="4" x2="20" y1="15" y2="15"></line>
-                <line x1="10" x2="8" y1="3" y2="21"></line>
-                <line x1="16" x2="14" y1="3" y2="21"></line>
-              </svg><span class="hidden sm:inline">Line #</span></button><button
-              class="flex items-center gap-1 px-2 py-1 rounded-md border text-xs transition-all bg-slate-950 text-slate-500 border-slate-800 hover:text-slate-300"
-              title="Wrap long lines"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-text-wrap w-3.5 h-3.5" aria-hidden="true">
-                <path d="m16 16-3 3 3 3"></path>
-                <path d="M3 12h14.5a1 1 0 0 1 0 7H13"></path>
-                <path d="M3 19h6"></path>
-                <path d="M3 5h18"></path>
-              </svg><span class="hidden sm:inline">Wrap</span></button><button
-              class="flex items-center gap-1 px-2 py-1 rounded-md border text-xs transition-all bg-slate-950 text-slate-400 border-slate-800 hover:text-slate-200"
-              title="Only display lines with changes"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" class="lucide lucide-eye w-3.5 h-3.5" aria-hidden="true">
-                <path
-                  d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0">
-                </path>
-                <circle cx="12" cy="12" r="3"></circle>
-              </svg><span>Only Diffs</span></button></div>
-        </div>
-        <main
-          class="h-[calc(100vh-170px)] min-h-[450px] flex flex-col relative overflow-hidden border-b border-slate-200 dark:border-slate-800">
-          <div class="flex-1 flex flex-col min-h-0 overflow-hidden">
-            <div
-              class="flex-1 grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x font-mono text-[13px] leading-relaxed overflow-hidden select-text min-h-0 divide-slate-800 bg-slate-950 text-slate-100">
-              <div class="flex flex-col h-full overflow-hidden">
-                <div
-                  class="text-xs px-3 py-1.5 border-b flex items-center justify-between select-none bg-slate-900/90 border-slate-800 text-slate-400">
-                  <span class="font-semibold text-rose-600 dark:text-rose-400 flex items-center gap-1.5"><span
-                      class="w-2 h-2 rounded-full bg-rose-500"></span>Original (Left)</span><span
-                    class="text-[11px] font-mono">0 lines</span></div>
-                <div
-                  class="flex-1 overflow-auto p-0 scrollbar-thin scrollbar-thumb-slate-400 dark:scrollbar-thumb-slate-800">
-                </div>
-              </div>
-              <div class="flex flex-col h-full overflow-hidden">
-                <div
-                  class="text-xs px-3 py-1.5 border-b flex items-center justify-between select-none bg-slate-900/90 border-slate-800 text-slate-400">
-                  <span class="font-semibold text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5"><span
-                      class="w-2 h-2 rounded-full bg-emerald-500"></span>Modified (Right)</span><span
-                    class="text-[11px] font-mono">0 lines</span></div>
-                <div
-                  class="flex-1 overflow-auto p-0 scrollbar-thin scrollbar-thumb-slate-400 dark:scrollbar-thumb-slate-800">
-                </div>
-              </div>
-            </div>
-          </div>
-        </main>
-        <section
-          class="py-12 px-4 md:px-8 border-t transition-colors select-text bg-slate-900/60 border-slate-800 text-slate-200">
-          <div class="w-full space-y-12">
-            <div class="text-center max-w-3xl mx-auto space-y-3">
-              <div
-                class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-indigo-500/10 text-indigo-500 border border-indigo-500/20">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  class="lucide lucide-sparkles w-3.5 h-3.5" aria-hidden="true">
-                  <path
-                    d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z">
-                  </path>
-                  <path d="M20 2v4"></path>
-                  <path d="M22 4h-4"></path>
-                  <circle cx="4" cy="20" r="2"></circle>
-                </svg><span>Fast, Secure &amp; Free Online Diff Tool</span></div>
-              <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">Powerful Online Text &amp; Code
-                Comparison Utility</h2>
-              <p class="text-sm sm:text-base leading-relaxed text-slate-500 dark:text-slate-400">Compare raw text,
-                source code, JSON payloads, and markdown documentation instantly. Identify line, word, and
-                character-level differences side-by-side or inline with synchronized scrolling and precision formatting.
-              </p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div
-                class="p-5 rounded-2xl border transition-all bg-slate-900/90 border-slate-800/90 hover:border-slate-700">
-                <div
-                  class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="lucide lucide-zap w-5 h-5" aria-hidden="true">
-                    <path
-                      d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z">
-                    </path>
-                  </svg></div>
-                <h3 class="font-bold text-sm mb-1.5 text-white">Real-time Highlighting</h3>
-                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Granular side-by-side or unified
-                  view with line, word, and character-level change highlighting.</p>
-              </div>
-              <div
-                class="p-5 rounded-2xl border transition-all bg-slate-900/90 border-slate-800/90 hover:border-slate-700">
-                <div
-                  class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="lucide lucide-file-code2 lucide-file-code-2 w-5 h-5" aria-hidden="true">
-                    <path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4"></path>
-                    <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
-                    <path d="m5 12-3 3 3 3"></path>
-                    <path d="m9 18 3-3-3-3"></path>
-                  </svg></div>
-                <h3 class="font-bold text-sm mb-1.5 text-white">JSON &amp; Code Formatting</h3>
-                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Auto-format JSON, sort lines
-                  alphabetically, trim blank lines, and clean up formatting before comparing.</p>
-              </div>
-              <div
-                class="p-5 rounded-2xl border transition-all bg-slate-900/90 border-slate-800/90 hover:border-slate-700">
-                <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="lucide lucide-lock w-5 h-5" aria-hidden="true">
-                    <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
-                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                  </svg></div>
-                <h3 class="font-bold text-sm mb-1.5 text-white">100% Client-Side Privacy</h3>
-                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Your sensitive data and source
-                  code are processed entirely inside your browser and never uploaded to any remote server.</p>
-              </div>
-              <div
-                class="p-5 rounded-2xl border transition-all bg-slate-900/90 border-slate-800/90 hover:border-slate-700">
-                <div class="w-10 h-10 rounded-xl bg-teal-500/10 text-teal-500 flex items-center justify-center mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="lucide lucide-download w-5 h-5" aria-hidden="true">
-                    <path d="M12 15V3"></path>
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                    <path d="m7 10 5 5 5-5"></path>
-                  </svg></div>
-                <h3 class="font-bold text-sm mb-1.5 text-white">Export Patches &amp; Reports</h3>
-                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Download standard Git Unified
-                  Patch (.patch) files, HTML reports, or copy structured JSON diff metadata.</p>
-              </div>
-            </div>
-            <div class="p-6 sm:p-8 rounded-2xl border bg-slate-900/80 border-slate-800">
-              <h3 class="text-lg font-bold mb-6 flex items-center gap-2 text-white"><svg
-                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  class="lucide lucide-circle-check w-5 h-5 text-indigo-500" aria-hidden="true">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <path d="m9 12 2 2 4-4"></path>
-                </svg>How to Compare Text Online (3 Simple Steps)</h3>
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="flex gap-4">
-                  <div
-                    class="w-8 h-8 rounded-full bg-indigo-600 text-white font-mono font-bold text-sm flex items-center justify-center shrink-0">
-                    1</div>
-                  <div class="space-y-1">
-                    <h4 class="text-sm font-semibold text-slate-100">Input or Upload Text</h4>
-                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Paste original text in the
-                      left pane and modified text in the right pane, or drag &amp; drop files (.txt, .json, .js, .md)
-                      directly into the fields.</p>
-                  </div>
-                </div>
-                <div class="flex gap-4">
-                  <div
-                    class="w-8 h-8 rounded-full bg-indigo-600 text-white font-mono font-bold text-sm flex items-center justify-center shrink-0">
-                    2</div>
-                  <div class="space-y-1">
-                    <h4 class="text-sm font-semibold text-slate-100">Customize Options</h4>
-                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Toggle ignore whitespace, case
-                      sensitivity, or line numbers. Switch between Split and Unified view, or select word/character diff
-                      granularity.</p>
-                  </div>
-                </div>
-                <div class="flex gap-4">
-                  <div
-                    class="w-8 h-8 rounded-full bg-indigo-600 text-white font-mono font-bold text-sm flex items-center justify-center shrink-0">
-                    3</div>
-                  <div class="space-y-1">
-                    <h4 class="text-sm font-semibold text-slate-100">Review &amp; Export Results</h4>
-                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Use the diff stepper (Alt+N /
-                      Alt+P) or search bar to jump between modifications, then export patch files or copy the report.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="space-y-4 w-full">
-              <h3 class="text-lg font-bold text-center mb-6 flex items-center justify-center gap-2 text-white"><svg
-                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  class="lucide lucide-circle-question-mark w-5 h-5 text-indigo-500" aria-hidden="true">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-                  <path d="M12 17h.01"></path>
-                </svg>Frequently Asked Questions</h3>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="p-4 rounded-xl border bg-slate-900/60 border-slate-800">
-                  <h4 class="text-sm font-semibold mb-1.5 text-slate-200">Is my data safe and confidential?</h4>
-                  <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Yes. All diff computations take
-                    place locally inside your client web browser. Zero text or file content is sent to external servers.
-                  </p>
-                </div>
-                <div class="p-4 rounded-xl border bg-slate-900/60 border-slate-800">
-                  <h4 class="text-sm font-semibold mb-1.5 text-slate-200">Can I compare formatted JSON files?</h4>
-                  <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Absolutely! Click the "Format
-                    JSON" button on either editor pane to format raw JSON strings into pretty-printed structures before
-                    comparing.</p>
-                </div>
-                <div class="p-4 rounded-xl border bg-slate-900/60 border-slate-800">
-                  <h4 class="text-sm font-semibold mb-1.5 text-slate-200">What formats are supported for export?</h4>
-                  <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">You can export Git-compatible
-                    Unified Patch (.patch) files, downloadable HTML visual diff reports, or JSON metadata objects.</p>
-                </div>
-                <div class="p-4 rounded-xl border bg-slate-900/60 border-slate-800">
-                  <h4 class="text-sm font-semibold mb-1.5 text-slate-200">Are keyboard shortcuts available?</h4>
-                  <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Yes! Press Alt+N for next diff,
-                    Alt+P for previous diff, Alt+S to swap panes, and Alt+E to open export options.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <footer
-          class="border-t py-8 px-4 md:px-8 text-xs select-none transition-colors bg-slate-950 border-slate-800/80 text-slate-400">
-          <div class="w-full flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
-              <div class="flex items-center gap-2">
-                <div
-                  class="w-7 h-7 rounded-lg bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center text-white shadow-sm">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="lucide lucide-git-compare w-4 h-4" aria-hidden="true">
-                    <circle cx="18" cy="18" r="3"></circle>
-                    <circle cx="6" cy="6" r="3"></circle>
-                    <path d="M13 6h3a2 2 0 0 1 2 2v7"></path>
-                    <path d="M11 18H8a2 2 0 0 1-2-2V9"></path>
-                  </svg></div><span class="font-bold tracking-tight text-sm text-white">Text Compare PRO</span>
-              </div><span class="hidden sm:inline text-slate-500">•</span>
-              <p class="text-slate-500 dark:text-slate-400 text-xs">© 2026 KoPaper.com — Free Online Text Compare & Side-by-Side Document Comparison.</p>
-            </div>
-            <div
-              class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 text-[11px] font-medium">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-shield-check w-3.5 h-3.5" aria-hidden="true">
-                <path
-                  d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z">
-                </path>
-                <path d="m9 12 2 2 4-4"></path>
-              </svg><span>Browser Local &amp; Client-Side Execution</span></div>
-            <div class="flex items-center gap-4 flex-wrap justify-center"><button
-                class="flex items-center gap-1.5 hover:text-indigo-500 transition-colors"><svg
-                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  class="lucide lucide-keyboard w-3.5 h-3.5" aria-hidden="true">
-                  <path d="M10 8h.01"></path>
-                  <path d="M12 12h.01"></path>
-                  <path d="M14 8h.01"></path>
-                  <path d="M16 12h.01"></path>
-                  <path d="M18 8h.01"></path>
-                  <path d="M6 8h.01"></path>
-                  <path d="M7 16h10"></path>
-                  <path d="M8 12h.01"></path>
-                  <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                </svg><span>Shortcuts (Alt+H)</span></button><button
-                class="hover:text-indigo-500 transition-colors">Export Patch</button><span
-                class="text-slate-500">•</span>
-              <div class="flex items-center gap-1 text-slate-500 text-[11px]"><span>Crafted with</span><svg
-                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  class="lucide lucide-heart w-3 h-3 text-rose-500 fill-rose-500" aria-hidden="true">
-                  <path
-                    d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5">
-                  </path>
-                </svg><span>for Developers</span></div>
-            </div>
-          </div>
-        </footer>
-      </div>
-      <div class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4">
-        <div
-          class="border rounded-2xl max-w-lg w-full p-6 shadow-2xl relative transition-colors bg-slate-900 border-slate-800 text-slate-100">
-          <div class="flex items-center justify-between border-b pb-4 mb-5 border-slate-800">
-            <div class="flex items-center gap-2">
-              <div class="p-2 rounded-lg bg-indigo-500/10 text-indigo-500"><svg xmlns="http://www.w3.org/2000/svg"
-                  width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download w-5 h-5"
-                  aria-hidden="true">
-                  <path d="M12 15V3"></path>
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                  <path d="m7 10 5 5 5-5"></path>
-                </svg></div>
-              <div>
-                <h3 class="text-base font-bold text-white">Export Diff Results</h3>
-                <p class="text-xs text-slate-500 dark:text-slate-400">Download patch files or copy report metadata</p>
-              </div>
-            </div><button
-              class="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"><svg
-                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-x w-5 h-5" aria-hidden="true">
-                <path d="M18 6 6 18"></path>
-                <path d="m6 6 12 12"></path>
-              </svg></button>
-          </div>
-          <div class="space-y-3 mb-6"><button
-              class="w-full flex items-center justify-between p-3.5 rounded-xl border transition-all text-left group bg-indigo-950/40 hover:bg-indigo-900/50 border-indigo-500/40 ">
-              <div class="flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round" class="lucide lucide-laptop w-5 h-5 text-indigo-500" aria-hidden="true">
-                  <path
-                    d="M18 5a2 2 0 0 1 2 2v8.526a2 2 0 0 0 .212.897l1.068 2.127a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45l1.068-2.127A2 2 0 0 0 4 15.526V7a2 2 0 0 1 2-2z">
-                  </path>
-                  <path d="M20.054 15.987H3.946"></path>
-                </svg>
-                <div>
-                  <div
-                    class="text-xs font-bold group-hover:text-indigo-600 dark:group-hover:text-indigo-300 text-indigo-200">
-                    Download Standalone Offline App (100% Single .html)</div>
-                  <div class="text-[11px] text-slate-500 dark:text-slate-400">Full text compare application in 1 file.
-                    Double-click to run offline anywhere without internet!</div>
-                </div>
-              </div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-download w-4 h-4 text-indigo-500 transition-transform group-hover:scale-110"
-                aria-hidden="true">
-                <path d="M12 15V3"></path>
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <path d="m7 10 5 5 5-5"></path>
-              </svg>
-            </button><button
-              class="w-full flex items-center justify-between p-3.5 rounded-xl border transition-all text-left group bg-slate-800/80 hover:bg-slate-800 border-slate-700">
-              <div class="flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round" class="lucide lucide-code w-5 h-5 text-indigo-500" aria-hidden="true">
-                  <path d="m16 18 6-6-6-6"></path>
-                  <path d="m8 6-6 6 6 6"></path>
-                </svg>
-                <div>
-                  <div
-                    class="text-xs font-semibold group-hover:text-indigo-600 dark:group-hover:text-indigo-300 text-white">
-                    Download Unified Patch (.patch)</div>
-                  <div class="text-[11px] text-slate-500 dark:text-slate-400">Standard Git diff format readable by patch
-                    command</div>
-                </div>
-              </div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-download w-4 h-4 text-slate-400 group-hover:text-indigo-500" aria-hidden="true">
-                <path d="M12 15V3"></path>
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <path d="m7 10 5 5 5-5"></path>
-              </svg>
-            </button><button
-              class="w-full flex items-center justify-between p-3.5 rounded-xl border transition-all text-left group bg-slate-800/80 hover:bg-slate-800 border-slate-700">
-              <div class="flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round" class="lucide lucide-file-text w-5 h-5 text-emerald-500" aria-hidden="true">
-                  <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
-                  <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
-                  <path d="M10 9H8"></path>
-                  <path d="M16 13H8"></path>
-                  <path d="M16 17H8"></path>
-                </svg>
-                <div>
-                  <div
-                    class="text-xs font-semibold group-hover:text-emerald-600 dark:group-hover:text-emerald-300 text-white">
-                    Download HTML Report (.html)</div>
-                  <div class="text-[11px] text-slate-500 dark:text-slate-400">Standalone formatted HTML file ready for
-                    sharing</div>
-                </div>
-              </div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-download w-4 h-4 text-slate-400 group-hover:text-emerald-500" aria-hidden="true">
-                <path d="M12 15V3"></path>
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <path d="m7 10 5 5 5-5"></path>
-              </svg>
-            </button><button
-              class="w-full flex items-center justify-between p-3.5 rounded-xl border transition-all text-left group bg-slate-800/80 hover:bg-slate-800 border-slate-700">
-              <div class="flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round" class="lucide lucide-copy w-5 h-5 text-amber-500" aria-hidden="true">
-                  <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
-                  <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
-                </svg>
-                <div>
-                  <div
-                    class="text-xs font-semibold group-hover:text-amber-600 dark:group-hover:text-amber-300 text-white">
-                    Copy Raw Patch String</div>
-                  <div class="text-[11px] text-slate-500 dark:text-slate-400">Copies unified patch text directly to
-                    clipboard</div>
-                </div>
-              </div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-copy w-4 h-4 text-slate-400 group-hover:text-amber-500" aria-hidden="true">
-                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
-                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
-              </svg>
-            </button><button
-              class="w-full flex items-center justify-between p-3.5 rounded-xl border transition-all text-left group bg-slate-800/80 hover:bg-slate-800 border-slate-700">
-              <div class="flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round" class="lucide lucide-code w-5 h-5 text-teal-500" aria-hidden="true">
-                  <path d="m16 18 6-6-6-6"></path>
-                  <path d="m8 6-6 6 6 6"></path>
-                </svg>
-                <div>
-                  <div
-                    class="text-xs font-semibold group-hover:text-teal-600 dark:group-hover:text-teal-300 text-white">
-                    Copy JSON Metadata Report</div>
-                  <div class="text-[11px] text-slate-500 dark:text-slate-400">Includes stats, similarity score, and
-                    patch data</div>
-                </div>
-              </div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-copy w-4 h-4 text-slate-400 group-hover:text-teal-500" aria-hidden="true">
-                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
-                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
-              </svg>
-            </button></div>
-          <div
-            class="p-3 rounded-xl border max-h-40 overflow-auto font-mono text-[11px] leading-normal bg-slate-950 border-slate-800 text-slate-400">
-            <pre>Index: original.txt
-===================================================================
---- original.txt	Original
-+++ original.txt	Modified
-</pre>
-          </div>
-          <div class="mt-5 flex justify-end"><button
-              class="px-4 py-2 text-xs font-medium rounded-lg transition-colors bg-slate-800 hover:bg-slate-700 text-slate-200">Close</button>
+        <div class="mobile-ctrls">
+          <button class="icon-btn" id="mThemeBtn" title="Toggle Theme"><i class="ic" data-icon="moon"></i></button>
+          <div class="segmented">
+            <button id="mEditBtn">Edit</button>
+            <button id="mDiffBtn" class="active">Diff</button>
           </div>
         </div>
       </div>
-      <div class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4 select-none">
-        <div
-          class="border rounded-2xl max-w-md w-full p-6 shadow-2xl relative transition-colors bg-slate-900 border-slate-800 text-slate-100">
-          <div class="flex items-center justify-between border-b pb-4 mb-4 border-slate-800">
-            <div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" class="lucide lucide-keyboard w-5 h-5 text-indigo-500" aria-hidden="true">
-                <path d="M10 8h.01"></path>
-                <path d="M12 12h.01"></path>
-                <path d="M14 8h.01"></path>
-                <path d="M16 12h.01"></path>
-                <path d="M18 8h.01"></path>
-                <path d="M6 8h.01"></path>
-                <path d="M7 16h10"></path>
-                <path d="M8 12h.01"></path>
-                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-              </svg>
-              <h3 class="text-base font-bold text-white">Keyboard Shortcuts &amp; Help</h3>
-            </div><button
-              class="p-1 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"><svg
-                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-x w-5 h-5" aria-hidden="true">
-                <path d="M18 6 6 18"></path>
-                <path d="m6 6 12 12"></path>
-              </svg></button>
-          </div>
-          <div class="space-y-2 mb-5">
-            <div
-              class="flex items-center justify-between px-3 py-2 rounded-lg border text-xs bg-slate-950 border-slate-800/80">
-              <span class="text-slate-300 font-medium">Jump to Next Difference</span><kbd
-                class="px-2 py-1 rounded font-mono text-[11px] font-semibold border bg-slate-800 text-indigo-300 border-slate-700">Alt
-                + N</kbd></div>
-            <div
-              class="flex items-center justify-between px-3 py-2 rounded-lg border text-xs bg-slate-950 border-slate-800/80">
-              <span class="text-slate-300 font-medium">Jump to Previous Difference</span><kbd
-                class="px-2 py-1 rounded font-mono text-[11px] font-semibold border bg-slate-800 text-indigo-300 border-slate-700">Alt
-                + P</kbd></div>
-            <div
-              class="flex items-center justify-between px-3 py-2 rounded-lg border text-xs bg-slate-950 border-slate-800/80">
-              <span class="text-slate-300 font-medium">Swap Original &amp; Modified texts</span><kbd
-                class="px-2 py-1 rounded font-mono text-[11px] font-semibold border bg-slate-800 text-indigo-300 border-slate-700">Alt
-                + S</kbd></div>
-            <div
-              class="flex items-center justify-between px-3 py-2 rounded-lg border text-xs bg-slate-950 border-slate-800/80">
-              <span class="text-slate-300 font-medium">Open Export modal</span><kbd
-                class="px-2 py-1 rounded font-mono text-[11px] font-semibold border bg-slate-800 text-indigo-300 border-slate-700">Alt
-                + E</kbd></div>
-            <div
-              class="flex items-center justify-between px-3 py-2 rounded-lg border text-xs bg-slate-950 border-slate-800/80">
-              <span class="text-slate-300 font-medium">Clear both text panes</span><kbd
-                class="px-2 py-1 rounded font-mono text-[11px] font-semibold border bg-slate-800 text-indigo-300 border-slate-700">Alt
-                + C</kbd></div>
-            <div
-              class="flex items-center justify-between px-3 py-2 rounded-lg border text-xs bg-slate-950 border-slate-800/80">
-              <span class="text-slate-300 font-medium">Open Shortcuts &amp; Help</span><kbd
-                class="px-2 py-1 rounded font-mono text-[11px] font-semibold border bg-slate-800 text-indigo-300 border-slate-700">Alt
-                + H</kbd></div>
-          </div>
-          <div class="p-3 rounded-xl border text-xs leading-relaxed bg-slate-950/60 border-slate-800/60 text-slate-400">
-            <strong class="text-slate-200 block mb-1">Tips for best diff performance:</strong>
-            <ul class="list-disc list-inside space-y-1 text-[11px]">
-              <li>Use <strong>By Word</strong> or <strong>By Character</strong> for intra-line text edits.</li>
-              <li>Use <strong>Only Diffs</strong> to hide identical rows in large files.</li>
-              <li>Drag &amp; drop files directly onto input panels or click <strong>Upload</strong>.</li>
-            </ul>
-          </div>
-          <div class="mt-5 flex justify-end"><button
-              class="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-medium rounded-lg transition-colors">Got
-              it</button></div>
+
+      <div class="center-ctrls">
+        <div class="preset-wrap">
+          <i class="ic" data-icon="sparkles"></i>
+          <span class="hide-sm" style="color:var(--muted)">Samples:</span>
+          <select id="presetSelect">
+            <option value="" disabled selected>Load Preset...</option>
+          </select>
         </div>
+        <div class="segmented pc-only" id="modeSeg">
+          <button id="editBtn"><i class="ic" data-icon="file-code"></i> Edit Inputs</button>
+          <button id="diffBtn" class="active"><i class="ic" data-icon="git-compare"></i> Diff View</button>
+        </div>
+      </div>
+
+      <div class="right-ctrls">
+        <button class="btn pc-only" id="themeBtn"><i class="ic" data-icon="moon"></i><span>Dark</span></button>
+        <button class="btn" id="swapBtn" title="Swap Original & Modified (Alt+S)"><i class="ic" data-icon="swap"></i><span class="hide-sm">Swap</span></button>
+        <button class="btn" id="clearBtn" title="Clear both sides"><i class="ic" data-icon="trash"></i><span class="hide-sm">Clear</span></button>
+        <button class="btn btn-primary" id="exportBtn" title="Export Patch or HTML"><i class="ic" data-icon="download"></i><span>Export</span></button>
+        <button class="icon-btn" id="helpBtn" title="Shortcuts & Help"><i class="ic" data-icon="help"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Stats bar ===== -->
+  <div class="statsbar">
+    <div class="stats-left">
+      <div class="pill pill-match" title="Text similarity ratio"><i class="ic" data-icon="percent"></i><span id="statMatch">100% Match</span></div>
+      <div class="pill pill-add"><i class="ic" data-icon="plus"></i><span id="statAdd">0 added</span></div>
+      <div class="pill pill-del"><i class="ic" data-icon="minus"></i><span id="statDel">0 removed</span></div>
+      <div class="pill pill-unchanged"><i class="ic" data-icon="check"></i><span id="statUnch">0 unchanged</span></div>
+    </div>
+    <div class="stats-right">
+      <div class="search-wrap">
+        <i class="ic s-ic" data-icon="search"></i>
+        <input type="text" id="searchInput" placeholder="Search diff...">
+        <button class="clear" id="searchClear" hidden><i class="ic" data-icon="x"></i></button>
+      </div>
+      <div class="stepper">
+        <span class="lbl" id="stepperLbl">No diffs</span>
+        <button id="prevDiff" title="Previous Difference (Alt+P)" disabled><i class="ic" data-icon="chev-up"></i></button>
+        <button id="nextDiff" title="Next Difference (Alt+N)" disabled><i class="ic" data-icon="chev-down"></i></button>
       </div>
     </div>
   </div>
-  <script src="js/app.js"></script>
 
+  <!-- ===== Options bar ===== -->
+  <div class="optionsbar">
+    <div class="opt-group">
+      <div class="segmented">
+        <button id="splitBtn" class="active"><i class="ic" data-icon="columns"></i><span>Split View</span></button>
+        <button id="unifiedBtn"><i class="ic" data-icon="rows"></i><span>Unified View</span></button>
+      </div>
+      <div class="segmented plain">
+        <span class="seg-label">Diff:</span>
+        <button id="gLine"><span>By Line</span></button>
+        <button id="gWord" class="active"><span>By Word</span></button>
+        <button id="gChar"><span>By Char</span></button>
+      </div>
+    </div>
+    <div class="opt-group">
+      <button class="opt-btn" id="optWs"><i class="ic" data-icon="align"></i><span>Ignore Space</span></button>
+      <button class="opt-btn" id="optCase"><i class="ic" data-icon="case"></i><span>Ignore Case</span></button>
+      <button class="opt-btn on" id="optNum"><i class="ic" data-icon="hash"></i><span class="hide-sm">Line #</span></button>
+      <button class="opt-btn" id="optWrap"><i class="ic" data-icon="wrap"></i><span class="hide-sm">Wrap</span></button>
+      <button class="opt-btn" id="optOnly"><i class="ic" data-icon="eye"></i><span>Only Diffs</span></button>
+    </div>
+  </div>
 
+  <!-- ===== Main ===== -->
+  <main class="workspace">
+    <!-- Edit mode -->
+    <div class="edit-grid" id="editGrid" style="display:none">
+      <div class="mobile-tabs">
+        <button id="tabLeft" class="left active">Original (Left)</button>
+        <button id="tabRight" class="right">Modified (Right)</button>
+      </div>
+      <div class="panel" id="panelLeft">
+        <div class="panel-head">
+          <span class="panel-title left">Original (Left)</span>
+          <span class="panel-stat" id="leftStat">0 lines • 0 chars</span>
+          <div class="panel-actions">
+            <button class="tbtn" data-fmt="left"><i class="ic" data-icon="code2"></i><span class="hide-md">Format JSON</span></button>
+            <button class="tbtn" data-sort="left"><i class="ic" data-icon="updown"></i><span class="hide-md">Sort</span></button>
+            <button class="tbtn" data-trim="left"><i class="ic" data-icon="filter"></i><span class="hide-md">Trim Blanks</span></button>
+            <button class="tbtn" data-up="left"><i class="ic" data-icon="upload"></i><span>Upload</span></button>
+            <button class="tbtn" data-copy="left"><i class="ic" data-icon="copy"></i><span>Copy</span></button>
+            <input type="file" class="file-in" data-side="left" accept=".txt,.json,.js,.ts,.jsx,.tsx,.py,.md,.html,.css,.csv,.xml,.sql,.log,.jsonld" hidden>
+          </div>
+        </div>
+        <textarea class="editor" id="leftInput" placeholder="Paste or type original text here..." spellcheck="false"></textarea>
+      </div>
+      <div class="panel hide-m" id="panelRight">
+        <div class="panel-head">
+          <span class="panel-title right">Modified (Right)</span>
+          <span class="panel-stat" id="rightStat">0 lines • 0 chars</span>
+          <div class="panel-actions">
+            <button class="tbtn" data-fmt="right"><i class="ic" data-icon="code2"></i><span class="hide-md">Format JSON</span></button>
+            <button class="tbtn" data-sort="right"><i class="ic" data-icon="updown"></i><span class="hide-md">Sort</span></button>
+            <button class="tbtn" data-trim="right"><i class="ic" data-icon="filter"></i><span class="hide-md">Trim Blanks</span></button>
+            <button class="tbtn" data-up="right"><i class="ic" data-icon="upload"></i><span>Upload</span></button>
+            <button class="tbtn" data-copy="right"><i class="ic" data-icon="copy"></i><span>Copy</span></button>
+            <input type="file" class="file-in" data-side="right" accept=".txt,.json,.js,.ts,.jsx,.tsx,.py,.md,.html,.css,.csv,.xml,.sql,.log,.jsonld" hidden>
+          </div>
+        </div>
+        <textarea class="editor" id="rightInput" placeholder="Paste or type modified text here..." spellcheck="false"></textarea>
+      </div>
+    </div>
 
+    <!-- Diff mode -->
+    <div class="split-grid" id="splitView" style="display:none">
+      <div class="pane">
+        <div class="pane-head"><span class="dot l">Original (Left)</span><span id="leftLines">0 lines</span></div>
+        <div class="pane-scroll" id="leftScroll" onscroll="syncScroll('left')"></div>
+      </div>
+      <div class="pane">
+        <div class="pane-head"><span class="dot r">Modified (Right)</span><span id="rightLines">0 lines</span></div>
+        <div class="pane-scroll" id="rightScroll" onscroll="syncScroll('right')"></div>
+      </div>
+    </div>
+
+    <div class="uni-scroll" id="unifiedView" style="display:none">
+      <div class="uni-inner" id="unifiedInner"></div>
+    </div>
+  </main>
+
+  <!-- ===== SEO ===== -->
+  <section class="seo">
+    <div class="seo-inner">
+      <div class="seo-intro">
+        <span class="badge-pill"><i class="ic" data-icon="sparkles"></i> Fast, Secure &amp; Free Online Diff Tool</span>
+        <h2>Powerful Online Text &amp; Code Comparison Utility</h2>
+        <p>Compare raw text, source code, JSON payloads, and markdown documentation instantly. Identify line, word, and character-level differences side-by-side or inline with synchronized scrolling and precision formatting.</p>
+      </div>
+      <div class="feat-grid">
+        <div class="feat"><div class="fic ind"><i class="ic" data-icon="zap"></i></div><h3>Real-time Highlighting</h3><p>Granular side-by-side or unified view with line, word, and character-level change highlighting.</p></div>
+        <div class="feat"><div class="fic em"><i class="ic" data-icon="file-code"></i></div><h3>JSON &amp; Code Formatting</h3><p>Auto-format JSON, sort lines alphabetically, trim blank lines, and clean up formatting before comparing.</p></div>
+        <div class="feat"><div class="fic am"><i class="ic" data-icon="lock"></i></div><h3>100% Client-Side Privacy</h3><p>Your sensitive data and source code are processed entirely inside your browser and never uploaded to any remote server.</p></div>
+        <div class="feat"><div class="fic te"><i class="ic" data-icon="download"></i></div><h3>Export Patches &amp; Reports</h3><p>Download standard Git Unified Patch (.patch) files, HTML reports, or copy structured JSON diff metadata.</p></div>
+      </div>
+      <div class="howto">
+        <h3><i class="ic" data-icon="check2"></i> How to Compare Text Online (3 Simple Steps)</h3>
+        <div class="steps">
+          <div class="step"><div class="num">1</div><div><h4>Input or Upload Text</h4><p>Paste original text in the left pane and modified text in the right pane, or drag &amp; drop files (.txt, .json, .js, .md) directly into the fields.</p></div></div>
+          <div class="step"><div class="num">2</div><div><h4>Customize Options</h4><p>Toggle ignore whitespace, case sensitivity, or line numbers. Switch between Split and Unified view, or select word/character diff granularity.</p></div></div>
+          <div class="step"><div class="num">3</div><div><h4>Review &amp; Export Results</h4><p>Use the diff stepper (Alt+N / Alt+P) or search bar to jump between modifications, then export patch files or copy the report.</p></div></div>
+        </div>
+      </div>
+      <div class="faq">
+        <h3><i class="ic" data-icon="help"></i> Frequently Asked Questions</h3>
+        <div class="faq-grid">
+          <div class="faq-item"><h4>Is my data safe and confidential?</h4><p>Yes. All diff computations take place locally inside your client web browser. Zero text or file content is sent to external servers.</p></div>
+          <div class="faq-item"><h4>Can I compare formatted JSON files?</h4><p>Absolutely! Click the "Format JSON" button on either editor pane to format raw JSON strings into pretty-printed structures before comparing.</p></div>
+          <div class="faq-item"><h4>What formats are supported for export?</h4><p>You can export Git-compatible Unified Patch (.patch) files, downloadable HTML visual diff reports, or JSON metadata objects.</p></div>
+          <div class="faq-item"><h4>Are keyboard shortcuts available?</h4><p>Yes! Press Alt+N for next diff, Alt+P for previous diff, Alt+S to swap panes, and Alt+E to open export options.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site">
+    <div class="foot-inner">
+      <div class="foot-brand">
+        <div class="logo"><i class="ic" data-icon="git-compare"></i></div>
+        <span class="b">Text Compare PRO</span>
+        <span class="dot">•</span>
+        <p style="margin:0">© <span id="year"></span> Online Text &amp; Code Diff Tool. All rights reserved.</p>
+      </div>
+      <div class="foot-sec"><i class="ic" data-icon="shield"></i> Browser Local &amp; Client-Side Execution</div>
+      <div class="foot-actions">
+        <button id="footHelp"><i class="ic" data-icon="keyboard"></i> Shortcuts (Alt+H)</button>
+        <button id="footExport">Export Patch</button>
+        <span class="dot">•</span>
+        <span class="foot-love">Crafted with <i class="ic" data-icon="heart"></i> for Developers</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ===== Export Modal ===== -->
+<div class="modal-overlay" id="exportModal" hidden>
+  <div class="modal">
+    <div class="m-head">
+      <div class="m-head-l">
+        <div class="m-ic"><i class="ic" data-icon="download"></i></div>
+        <div>
+          <h3>Export Diff Results</h3>
+          <p>Download patch files or copy report metadata</p>
+        </div>
+      </div>
+      <button class="modal-close" data-close="export"><i class="ic" data-icon="x"></i></button>
+    </div>
+    <div class="export-list">
+      <button class="export-item primary" id="dlApp"><div class="ei-l"><div class="ei-ic"><i class="ic" data-icon="laptop"></i></div><div><div class="ei-t">Download Standalone Offline App (100% Single .html)</div><div class="ei-d">Full text compare application in 1 file. Double-click to run offline anywhere.</div></div></div><div class="ei-arrow"><i class="ic" data-icon="download"></i></div></button>
+      <button class="export-item" id="dlPatch"><div class="ei-l"><div class="ei-ic"><i class="ic" data-icon="code2"></i></div><div><div class="ei-t">Download Unified Patch (.patch)</div><div class="ei-d">Standard Git diff format readable by patch command</div></div></div><div class="ei-arrow"><i class="ic" data-icon="download"></i></div></button>
+      <button class="export-item" id="dlHtml"><div class="ei-l"><div class="ei-ic"><i class="ic" data-icon="file-text"></i></div><div><div class="ei-t">Download HTML Report (.html)</div><div class="ei-d">Standalone formatted HTML file ready for sharing</div></div></div><div class="ei-arrow"><i class="ic" data-icon="download"></i></div></button>
+      <button class="export-item" id="cpPatch"><div class="ei-l"><div class="ei-ic"><i class="ic" data-icon="copy"></i></div><div><div class="ei-t">Copy Raw Patch String</div><div class="ei-d">Copies unified patch text directly to clipboard</div></div></div><div class="ei-arrow" id="cpPatchIc"><i class="ic" data-icon="copy"></i></div></button>
+      <button class="export-item" id="cpJson"><div class="ei-l"><div class="ei-ic"><i class="ic" data-icon="code2"></i></div><div><div class="ei-t">Copy JSON Metadata Report</div><div class="ei-d">Includes stats, similarity score, and patch data</div></div></div><div class="ei-arrow" id="cpJsonIc"><i class="ic" data-icon="copy"></i></div></button>
+    </div>
+    <div class="patch-preview"><pre id="patchPreview"></pre></div>
+    <div class="modal-foot"><button class="btn" data-close="export">Close</button></div>
+  </div>
+</div>
+
+<!-- ===== Shortcuts Modal ===== -->
+<div class="modal-overlay" id="helpModal" hidden>
+  <div class="modal" style="max-width:28rem">
+    <div class="m-head">
+      <div class="m-head-l">
+        <div class="m-ic"><i class="ic" data-icon="keyboard"></i></div>
+        <div><h3>Keyboard Shortcuts &amp; Help</h3></div>
+      </div>
+      <button class="modal-close" data-close="help"><i class="ic" data-icon="x"></i></button>
+    </div>
+    <div class="sc-list" id="scList"></div>
+    <div class="tips">
+      <strong>Tips for best diff performance:</strong>
+      <ul>
+        <li>Use <strong>By Word</strong> or <strong>By Character</strong> for intra-line text edits.</li>
+        <li>Use <strong>Only Diffs</strong> to hide identical rows in large files.</li>
+        <li>Drag &amp; drop files directly onto input panels or click <strong>Upload</strong>.</li>
+      </ul>
+    </div>
+    <div class="modal-foot"><button class="btn btn-primary" data-close="help" style="background:var(--accent);color:#fff;border:none">Got it</button></div>
+  </div>
+</div>
+
+<script src="style/js/diff.js"></script>
 </body>
-
 </html>
