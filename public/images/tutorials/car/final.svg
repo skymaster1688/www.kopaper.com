@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 360" role="img" aria-label="Finished paper car">
+  <rect width="420" height="360" fill="#ffffff"/>
+  <!-- body -->
+  <path d="M55 215 L55 188 Q55 172 88 172 L150 172 L188 120 L292 120 Q330 120 352 152 L378 184 Q390 192 390 210 L390 215 Z" fill="#fff7ed" stroke="#334155" stroke-width="3"/>
+  <!-- window -->
+  <path d="M165 170 L192 128 L286 128 L286 170 Z" fill="#ffedd5" stroke="#334155" stroke-width="2"/>
+  <!-- wheels -->
+  <circle cx="140" cy="232" r="30" fill="#334155"/>
+  <circle cx="140" cy="232" r="12" fill="#fff7ed"/>
+  <circle cx="305" cy="232" r="30" fill="#334155"/>
+  <circle cx="305" cy="232" r="12" fill="#fff7ed"/>
+</svg>
