@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 380" role="img" aria-label="Step 6: open the wings and shape the finished paper crane">
+  <rect width="420" height="380" fill="#ffffff"/>
+  <polygon points="210,210 70,165 70,255" fill="#fff7ed" stroke="#334155" stroke-width="3"/>
+  <polygon points="210,210 350,165 350,255" fill="#fff7ed" stroke="#334155" stroke-width="3"/>
+  <polygon points="210,175 180,210 210,245 240,210" fill="#ffedd5" stroke="#334155" stroke-width="2"/>
+  <polygon points="200,195 120,95 140,90 215,195" fill="#fff7ed" stroke="#334155" stroke-width="3"/>
+  <polygon points="120,95 96,92 104,118" fill="#ffedd5" stroke="#334155" stroke-width="2"/>
+  <polygon points="220,195 300,120 318,128 225,200" fill="#fff7ed" stroke="#334155" stroke-width="3"/>
+  <polygon points="300,120 322,108 314,134" fill="#ffedd5" stroke="#334155" stroke-width="2"/>
+  <circle cx="40" cy="40" r="22" fill="#7c3aed"/>
+  <text x="40" y="47" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="20" font-weight="700">6</text>
+</svg>

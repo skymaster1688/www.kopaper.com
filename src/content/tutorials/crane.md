@@ -26,21 +26,27 @@ featured: true
 ## Step-by-step Instructions
 
 ### 1. Start with a Square Base
+![Step 1 — square sheet with diagonal and midline creases](/images/tutorials/crane/step1.svg)
 Begin with a square piece of paper, colored side down. Fold in half diagonally both ways, then unfold. Flip over and fold in half horizontally and vertically, then unfold.
 
 ### 2. Form the Preliminary Base
+![Step 2 — preliminary base with four flaps](/images/tutorials/crane/step2.svg)
 Using the creases, collapse the paper into a preliminary base (a small square with four flaps).
 
 ### 3. Make a Bird Base
+![Step 3 — bird base, a long diamond shape](/images/tutorials/crane/step3.svg)
 With one flap facing you, fold the bottom edges to the center line. Fold the top triangle down. Unfold the last three folds and lift the bottom flap up along the creases to form a long diamond. Repeat on the other side.
 
 ### 4. Create the Body
+![Step 4 — fold the two lower points up to form the body](/images/tutorials/crane/step4.svg)
 Fold the bottom points of the diamond up to the top point on both sides. This creates the bird base.
 
 ### 5. Form the Head and Tail
+![Step 5 — fold up the neck and tail, then fold the head down](/images/tutorials/crane/step5.svg)
 Fold one of the lower flaps upward at an angle to create the neck. Fold the tip down to form the head. Repeat on the other side for the tail, folding upward.
 
 ### 6. Open the Wings
+![Step 6 — open the wings and shape the finished crane](/images/tutorials/crane/step6.svg)
 Gently pull the wings apart to open the body. Blow gently into the small hole at the bottom to inflate the body. Shape the wings and tail to finish your crane.
 
 ## Pro Tips
