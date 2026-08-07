@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 360" role="img" aria-label="Step 5: shape the fish and add an eye">
+  <rect width="420" height="360" fill="#ffffff"/>
+  <!-- body -->
+  <polygon points="80,180 250,130 250,230" fill="#ffedd5" stroke="#334155" stroke-width="3"/>
+  <!-- tail -->
+  <polygon points="250,130 320,110 290,180 320,250 250,230" fill="#fed7aa" stroke="#334155" stroke-width="3"/>
+  <!-- eye -->
+  <circle cx="120" cy="170" r="9" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+  <circle cx="120" cy="170" r="4" fill="#334155"/>
+  <circle cx="40" cy="40" r="22" fill="#7c3aed"/>
+  <text x="40" y="47" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="20" font-weight="700">5</text>
+</svg>

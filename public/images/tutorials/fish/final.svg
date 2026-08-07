@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 360" role="img" aria-label="Finished origami fish">
+  <rect width="420" height="360" fill="#ffffff"/>
+  <!-- body -->
+  <ellipse cx="190" cy="180" rx="115" ry="72" fill="#ffedd5" stroke="#334155" stroke-width="3"/>
+  <!-- top fin -->
+  <polygon points="150,112 210,112 180,80" fill="#fed7aa" stroke="#334155" stroke-width="2"/>
+  <!-- forked tail -->
+  <polygon points="300,180 365,130 345,180 365,230" fill="#fed7aa" stroke="#334155" stroke-width="3"/>
+  <!-- eye -->
+  <circle cx="120" cy="168" r="12" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+  <circle cx="120" cy="168" r="5" fill="#334155"/>
+  <!-- smile -->
+  <path d="M95 200 Q120 215 150 200" fill="none" stroke="#334155" stroke-width="2"/>
+</svg>
