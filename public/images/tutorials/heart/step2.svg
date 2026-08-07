@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 380" role="img" aria-label="Step 2: square with both diagonal valley creases marked">
+  <rect width="420" height="380" fill="#ffffff"/>
+  <rect x="70" y="70" width="280" height="280" fill="#fff7ed" stroke="#334155" stroke-width="3"/>
+  <line x1="70" y1="70" x2="350" y2="350" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 5"/>
+  <line x1="350" y1="70" x2="70" y2="350" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 5"/>
+  <circle cx="40" cy="40" r="22" fill="#7c3aed"/>
+  <text x="40" y="47" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="20" font-weight="700">2</text>
+</svg>

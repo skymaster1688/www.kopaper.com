@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 380" role="img" aria-label="Step 5: bottom point folded up to round the bottom of the heart">
+  <rect width="420" height="380" fill="#ffffff"/>
+  <path d="M 210 140 C 180 90, 100 90, 100 160 C 100 215, 210 285, 210 285 C 210 285, 320 215, 320 160 C 320 90, 240 90, 210 140 Z" fill="#fff7ed" stroke="#334155" stroke-width="3"/>
+  <line x1="100" y1="210" x2="320" y2="210" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 5"/>
+  <circle cx="40" cy="40" r="22" fill="#7c3aed"/>
+  <text x="40" y="47" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="20" font-weight="700">5</text>
+</svg>
