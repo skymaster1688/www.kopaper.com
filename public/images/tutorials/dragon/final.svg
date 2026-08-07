@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 360" role="img" aria-label="Finished paper dragon">
+  <rect width="420" height="360" fill="#ffffff"/>
+  <!-- wings -->
+  <path d="M210 185 Q120 120 88 178 Q150 172 182 202 Z" fill="#ffedd5" stroke="#334155" stroke-width="3"/>
+  <path d="M210 185 Q300 120 332 178 Q270 172 238 202 Z" fill="#ffedd5" stroke="#334155" stroke-width="3"/>
+  <!-- body -->
+  <path d="M150 205 Q210 162 272 205 Q282 252 230 272 Q210 292 190 272 Q140 252 150 205 Z" fill="#fff7ed" stroke="#334155" stroke-width="3"/>
+  <!-- head -->
+  <circle cx="210" cy="172" r="34" fill="#fff7ed" stroke="#334155" stroke-width="3"/>
+  <!-- horns -->
+  <polygon points="194,142 186,110 208,136" fill="#fed7aa" stroke="#334155" stroke-width="2"/>
+  <polygon points="226,142 234,110 212,136" fill="#fed7aa" stroke="#334155" stroke-width="2"/>
+  <!-- eye -->
+  <circle cx="200" cy="166" r="5" fill="#334155"/>
+  <!-- tail -->
+  <path d="M272 232 Q332 232 352 272" fill="none" stroke="#334155" stroke-width="5"/>
+</svg>
