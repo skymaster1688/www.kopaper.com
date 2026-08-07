@@ -1,0 +1,231 @@
+---
+import { getCollection } from 'astro:content';
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CraftCard from '../../components/CraftCard.astro';
+
+// Parse `### N. Title` steps out of a tutorial's raw markdown body
+// so we can emit a fully-populated HowTo JSON-LD block (better SEO).
+function parseHowToSteps(body) {
+  const steps = [];
+  const re = /^###\s+(\d+)\.\s+(.+)$/;
+  const lines = body.split(/\r?\n/);
+  let current = null;
+  for (const line of lines) {
+    const m = line.match(re);
+    if (m) {
+      if (current) steps.push(current);
+      current = { position: Number(m[1]), name: m[2].trim(), text: '' };
+    } else if (current && line.trim() && !line.startsWith('#') && !line.startsWith('!')) {
+      current.text = (current.text ? current.text + ' ' : '') + line.trim();
+    }
+  }
+  if (current) steps.push(current);
+  // Renumber positions sequentially in case the source numbering is off.
+  return steps.map((s, i) => ({ ...s, position: i + 1 }));
+}
+
+export async function getStaticPaths() {
+  const tutorials = await getCollection('tutorials', ({ data }) => !data.draft);
+  return tutorials.map(t => {
+    const heroPath = join(process.cwd(), 'public', 'images', 'tutorials', t.slug, 'final.png');
+    return {
+      params: { slug: t.slug },
+      props: {
+        tutorial: t,
+        heroImage: existsSync(heroPath) ? `/images/tutorials/${t.slug}/final.png` : null,
+      },
+    };
+  });
+}
+
+const { tutorial, heroImage } = Astro.props;
+const { Content } = await tutorial.render();
+
+const allTutorials = await getCollection('tutorials', ({ data }) => !data.draft);
+const related = allTutorials
+  .filter(t => t.slug !== tutorial.slug && t.data.category === tutorial.data.category)
+  .slice(0, 3);
+
+const badgeClass = tutorial.data.difficulty === 'Easy' ? 'badge-easy'
+  : tutorial.data.difficulty === 'Medium' ? 'badge-medium' : 'badge-hard';
+
+const steps = parseHowToSteps(tutorial.body);
+
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: tutorial.data.title,
+  description: tutorial.data.description,
+  totalTime: `PT${tutorial.data.time.replace(/[^0-9]/g, '')}M`,
+  supply: tutorial.data.materials.map(m => ({ '@type': 'HowToSupply', name: m })),
+  step: steps.map(s => ({
+    '@type': 'HowToStep',
+    position: s.position,
+    name: s.name,
+    text: s.text,
+  })),
+};
+---
+<BaseLayout
+  title={`${tutorial.data.title} — Step-by-Step Tutorial | koPaper`}
+  description={tutorial.data.description}
+  ogType="article"
+>
+  <article class="container" style="max-width:800px; padding-top:40px">
+    <nav class="breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      <a href="/origami/">Crafts</a>
+      <span>/</span>
+      <span>{tutorial.data.title}</span>
+    </nav>
+
+    <h1 style="margin-bottom:12px">{tutorial.data.title}</h1>
+    <p style="font-size:1.15rem; color:var(--text-muted); margin-bottom:20px">{tutorial.data.description}</p>
+
+    <div class="tutorial-meta">
+      <span><span class={`badge ${badgeClass}`}>{tutorial.data.difficulty}</span></span>
+      <span>&#9201;&#xFE0F; {tutorial.data.time}</span>
+      <span>&#128101; Age: {tutorial.data.age}</span>
+    </div>
+
+    {heroImage && (
+      <figure class="tutorial-hero reveal">
+        <img src={heroImage} alt={`Finished ${tutorial.data.title}`} loading="lazy" width="680" height="600" />
+      </figure>
+    )}
+
+    <div class="tutorial-content">
+      <Content />
+    </div>
+
+    {related.length > 0 && (
+      <section style="margin-top:60px; padding-top:40px; border-top:1px solid var(--border)">
+        <h2 style="font-size:1.3rem; margin-bottom:20px">Related Crafts</h2>
+        <div class="grid-3">
+          {related.map(t => (
+            <CraftCard
+              href={`/origami/${t.slug}/`}
+              emoji={t.data.emoji}
+              title={t.data.title}
+              description={t.data.description}
+              difficulty={t.data.difficulty}
+              time={t.data.time}
+            />
+          ))}
+        </div>
+      </section>
+    )}
+  </article>
+
+  <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
+
+  <style is:global>
+    .tutorial-hero {
+      margin: 24px 0 8px;
+      text-align: center;
+    }
+    .tutorial-hero img {
+      display: block;
+      max-width: min(100%, 520px);
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+      background: #fff;
+    }
+    .tutorial-content { margin-top: 32px; }
+    .tutorial-content h2 {
+      font-size: 1.35rem;
+      margin-top: 40px;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .tutorial-content h2:first-child { margin-top: 0; }
+    .tutorial-content h3 {
+      counter-increment: step-counter;
+      margin-top: 28px;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .tutorial-content h3::before {
+      content: counter(step-counter);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+    .tutorial-content { counter-reset: step-counter; }
+    .tutorial-content p {
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      margin-left: 40px;
+    }
+    .tutorial-content p:has(img) {
+      margin-left: 0;
+      text-align: center;
+    }
+    .tutorial-content img {
+      display: block;
+      max-width: min(100%, 440px);
+      width: 100%;
+      height: auto;
+      margin: 18px auto 8px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      box-shadow: 0 6px 22px rgba(15, 23, 42, 0.10);
+      background: #fff;
+    }
+    .step-figure {
+      margin: 22px 0 26px;
+      text-align: center;
+    }
+    .step-figure img {
+      display: block;
+      max-width: min(100%, 440px);
+      width: 100%;
+      height: auto;
+      margin: 0 auto 8px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      box-shadow: 0 6px 22px rgba(15, 23, 42, 0.10);
+      background: #fff;
+    }
+    .step-figure figcaption {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      opacity: 0.75;
+      font-style: italic;
+    }
+    .tutorial-content ul {
+      padding-left: 0;
+      margin-bottom: 20px;
+      margin-left: 40px;
+    }
+    .tutorial-content li {
+      padding: 6px 0 6px 24px;
+      position: relative;
+      color: var(--text-muted);
+    }
+    .tutorial-content li::before {
+      content: '\2713';
+      position: absolute;
+      left: 0;
+      color: var(--secondary);
+      font-weight: 700;
+    }
+  </style>
+</BaseLayout>

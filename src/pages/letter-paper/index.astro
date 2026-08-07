@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const letterPapers = (await getCollection('letter-paper', ({ data }) => !data.draft))
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout
+  title="Free Printable Letter Paper Designs | koPaper"
+  description="Browse beautiful free printable letter paper designs. Floral, starry night, cute animals, and more. Print and use for any occasion."
+>
+  <section class="hero container" style="padding-bottom:20px">
+    <h1 class="reveal">Letter Paper Designs</h1>
+    <p class="reveal">Free printable letter paper for every occasion. Just print and write.</p>
+  </section>
+
+  <section class="section container" style="padding-top:20px">
+    <div class="grid-4">
+      {letterPapers.map(p => (
+        <a href={`/letter-paper/${p.slug}/`} class="craft-card card reveal">
+          <div class="card-emoji">{p.data.emoji}</div>
+          <div class="card-body">
+            <h3>{p.data.title}</h3>
+            <p>{p.data.description}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

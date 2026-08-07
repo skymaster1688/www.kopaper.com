@@ -1,0 +1,24 @@
+---
+interface Props {
+  href: string;
+  emoji: string;
+  title: string;
+  description: string;
+  difficulty: string;
+  time: string;
+}
+const { href, emoji, title, description, difficulty, time } = Astro.props;
+const badgeClass = difficulty === 'Easy' ? 'badge-easy' : difficulty === 'Medium' ? 'badge-medium' : 'badge-hard';
+---
+
+<a href={href} class="craft-card card reveal">
+  <div class="card-emoji">{emoji}</div>
+  <div class="card-body">
+    <h3>{title}</h3>
+    <p>{description}</p>
+    <div class="card-meta">
+      <span class={`badge ${badgeClass}`}>{difficulty}</span>
+      <span>&#9201;&#xFE0F; {time}</span>
+    </div>
+  </div>
+</a>

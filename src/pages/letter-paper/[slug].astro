@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const papers = await getCollection('letter-paper', ({ data }) => !data.draft);
+  return papers.map(p => ({
+    params: { slug: p.slug },
+    props: { paper: p },
+  }));
+}
+
+const { paper } = Astro.props;
+const { Content } = await paper.render();
+---
+
+<BaseLayout
+  title={`${paper.data.title} — Free Printable Letter Paper | koPaper`}
+  description={paper.data.description}
+  ogType="article"
+>
+  <article class="container" style="max-width:800px; padding-top:40px">
+    <nav class="breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      <a href="/letter-paper/">Letter Paper</a>
+      <span>/</span>
+      <span>{paper.data.title}</span>
+    </nav>
+
+    <h1 style="margin-bottom:12px">{paper.data.title}</h1>
+    <p style="font-size:1.15rem; color:var(--text-muted); margin-bottom:24px">{paper.data.description}</p>
+
+    <div class="tutorial-content">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

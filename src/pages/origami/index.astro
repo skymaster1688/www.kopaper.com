@@ -1,0 +1,49 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CraftCard from '../../components/CraftCard.astro';
+
+const tutorials = (await getCollection('tutorials', ({ data }) => !data.draft))
+  .sort((a, b) => a.data.order - b.data.order);
+
+const categories = [
+  { key: 'classic', label: 'Classic', emoji: '\u2708\uFE0F' },
+  { key: 'animals', label: 'Animals', emoji: '\uD83D\uDC30' },
+  { key: 'flowers', label: 'Flowers', emoji: '\uD83C\uDF38' },
+  { key: 'vehicles', label: 'Vehicles', emoji: '\uD83D\uDE97' },
+  { key: 'models', label: '3D Models', emoji: '\uD83C\uDFD5\uFE0F' },
+  { key: 'holiday', label: 'Holiday', emoji: '\uD83C\uDF84' },
+];
+---
+
+<BaseLayout
+  title="All Paper Crafts & Origami Tutorials | koPaper"
+  description="Browse all paper craft tutorials. Origami animals, flowers, airplanes, 3D models, and holiday crafts with step-by-step instructions for all skill levels."
+>
+  <section class="hero container" style="padding-bottom:20px">
+    <h1 class="reveal">All Paper Crafts</h1>
+    <p class="reveal">Step-by-step tutorials for every skill level. Find your next paper project.</p>
+  </section>
+
+  {categories.map(cat => {
+    const items = tutorials.filter(t => t.data.category === cat.key);
+    if (items.length === 0) return null;
+    return (
+      <section class="section container" style="padding-top:20px; padding-bottom:20px">
+        <h2 class="section-title reveal">{cat.emoji} {cat.label}</h2>
+        <div class="grid-4" style="margin-top:20px">
+          {items.map(t => (
+            <CraftCard
+              href={`/origami/${t.slug}/`}
+              emoji={t.data.emoji}
+              title={t.data.title}
+              description={t.data.description}
+              difficulty={t.data.difficulty}
+              time={t.data.time}
+            />
+          ))}
+        </div>
+      </section>
+    );
+  })}
+</BaseLayout>

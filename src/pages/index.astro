@@ -1,0 +1,165 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CraftCard from '../components/CraftCard.astro';
+
+const tutorials = (await getCollection('tutorials', ({ data }) => !data.draft))
+  .sort((a, b) => a.data.order - b.data.order);
+
+const featured = tutorials.filter(t => t.data.featured).slice(0, 8);
+const beginners = tutorials.filter(t => t.data.difficulty === 'Easy').slice(0, 3);
+const templates = tutorials.filter(t => t.data.category === 'models').slice(0, 3);
+
+const letterPapers = (await getCollection('letterPaper', ({ data }) => !data.draft))
+  .sort((a, b) => a.data.order - b.data.order).slice(0, 4);
+
+const faqs = [
+  { q: 'What is origami?', a: 'Origami is the traditional Japanese art of paper folding. By making precise folds, you can transform a flat sheet of paper into sculptures like animals, flowers, and geometric shapes — no scissors or glue required.' },
+  { q: 'Do I need special paper?', a: 'No. Most of our tutorials work with standard A4 or Letter size printer paper. For more advanced models like the crane, slightly thinner origami paper (kami) is easier to fold, but not required.' },
+  { q: 'Are these tutorials suitable for kids?', a: 'Yes. Every tutorial is labeled with a difficulty level (Easy, Medium, Hard) and an age recommendation. Easy crafts are perfect for ages 6+ with minimal adult help. Medium and Hard projects are great for older kids and adults.' },
+  { q: 'Can I download printable templates?', a: 'Yes. Our template section includes printable PDF templates for 3D paper models like dragons, houses, and robots. Simply download, print on sturdy paper, cut, fold, and assemble.' },
+  { q: 'How do I print the letter paper designs?', a: 'Open any letter paper design page, then use your browser\'s print function (Ctrl+P or Cmd+P) on the design preview. For best results, use Letter or A4 size paper and set margins to "None" in your print settings.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(f => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a }
+  }))
+};
+---
+
+<BaseLayout
+  title="koPaper — Free Paper Crafts, Origami & Printable Templates"
+  description="Discover free paper craft tutorials, origami guides, and printable templates for all ages. Learn how to make paper airplanes, origami cranes, paper flowers, and more."
+>
+  <!-- 1. Hero -->
+  <section class="hero container">
+    <h1 class="reveal">Turn Paper Into <span>Something Amazing</span></h1>
+    <p class="reveal">Free step-by-step origami tutorials, printable craft templates, and beautiful letter paper designs for all ages.</p>
+    <div class="hero-actions reveal">
+      <a href="/origami/" class="btn btn-primary btn-large">Browse All Crafts</a>
+      <a href="/templates/" class="btn btn-outline btn-large">Printable Templates</a>
+    </div>
+    <div class="hero-tags reveal">
+      <a href="/origami/classic/" class="tag">Origami</a>
+      <a href="/origami/flowers/" class="tag">Paper Flowers</a>
+      <a href="/origami/vehicles/" class="tag">Paper Airplanes</a>
+      <a href="/origami/holiday/" class="tag">Holiday Crafts</a>
+      <a href="/letter-paper/" class="tag">Letter Paper</a>
+    </div>
+  </section>
+
+  <!-- 2. Beginner's Guide -->
+  {beginners.length > 0 && (
+    <section class="section container">
+      <h2 class="section-title reveal">First time? Start with these</h2>
+      <p class="section-subtitle reveal">Three easy paper crafts perfect for beginners. No experience needed.</p>
+      <div class="grid-3">
+        {beginners.map(t => (
+          <CraftCard
+            href={`/origami/${t.slug}/`}
+            emoji={t.data.emoji}
+            title={t.data.title}
+            description={t.data.description}
+            difficulty={t.data.difficulty}
+            time={t.data.time}
+          />
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- 3. Popular Crafts -->
+  {featured.length > 0 && (
+    <section class="section container">
+      <h2 class="section-title reveal">Popular Paper Crafts</h2>
+      <p class="section-subtitle reveal">Most-loved tutorials from Easy to Hard — pick your next project.</p>
+      <div class="grid-4">
+        {featured.map(t => (
+          <CraftCard
+            href={`/origami/${t.slug}/`}
+            emoji={t.data.emoji}
+            title={t.data.title}
+            description={t.data.description}
+            difficulty={t.data.difficulty}
+            time={t.data.time}
+          />
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- 4. Templates -->
+  {templates.length > 0 && (
+    <section class="section container">
+      <h2 class="section-title reveal">Printable Templates</h2>
+      <p class="section-subtitle reveal">Download, print, and assemble 3D paper models at home.</p>
+      <div class="grid-3">
+        {templates.map(t => (
+          <CraftCard
+            href={`/origami/${t.slug}/`}
+            emoji={t.data.emoji}
+            title={t.data.title}
+            description={t.data.description}
+            difficulty={t.data.difficulty}
+            time={t.data.time}
+          />
+        ))}
+      </div>
+      <div style="text-align:center; margin-top:28px" class="reveal">
+        <a href="/templates/" class="btn btn-outline">View all templates</a>
+      </div>
+    </section>
+  )}
+
+  <!-- 5. Letter Paper Gallery -->
+  {letterPapers.length > 0 && (
+    <section class="section container">
+      <h2 class="section-title reveal">Beautiful Letter Paper Designs</h2>
+      <p class="section-subtitle reveal">Free printable letter paper for every occasion.</p>
+      <div class="grid-4">
+        {letterPapers.map(p => (
+          <a href={`/letter-paper/${p.slug}/`} class="craft-card card reveal">
+            <div class="card-emoji">{p.data.emoji}</div>
+            <div class="card-body">
+              <h3>{p.data.title}</h3>
+              <p>{p.data.description}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- 6. Text Compare Tool -->
+  <section class="section container">
+    <div class="tool-card reveal">
+      <div class="tool-icon">&#128193;</div>
+      <div style="flex:1">
+        <h3>Text Compare Tool</h3>
+        <p>Compare two texts side by side and highlight differences instantly. Free, private, and works right in your browser.</p>
+        <a href="/text-compare/" class="btn btn-primary">Open Text Compare</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. FAQ -->
+  <section class="section container">
+    <h2 class="section-title reveal">Frequently Asked Questions</h2>
+    <p class="section-subtitle reveal">Everything you need to know to get started with paper crafts.</p>
+    <div class="reveal">
+      {faqs.map(f => (
+        <details class="faq-item">
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</BaseLayout>
