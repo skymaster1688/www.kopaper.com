@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 360" role="img" aria-label="Step 4: squash fold the flaps into two kite-shaped petals">
+  <rect width="420" height="360" fill="#ffffff"/>
+  <polygon points="210,70 120,185 210,300 300,185" fill="#fff7ed" stroke="#334155" stroke-width="3"/>
+  <!-- opened kite petals -->
+  <polygon points="210,70 112,150 150,205 200,150" fill="#ffedd5" stroke="#334155" stroke-width="2"/>
+  <polygon points="210,70 308,150 270,205 220,150" fill="#ffedd5" stroke="#334155" stroke-width="2"/>
+  <circle cx="40" cy="40" r="22" fill="#7c3aed"/>
+  <text x="40" y="47" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="20" font-weight="700">4</text>
+</svg>

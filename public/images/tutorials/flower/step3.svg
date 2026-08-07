@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 360" role="img" aria-label="Step 3: fold the two top flaps down, then unfold">
+  <rect width="420" height="360" fill="#ffffff"/>
+  <polygon points="210,70 120,185 210,300 300,185" fill="#fff7ed" stroke="#334155" stroke-width="3"/>
+  <line x1="210" y1="70" x2="210" y2="300" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 5"/>
+  <!-- flaps folded down -->
+  <polygon points="210,70 120,185 162,150" fill="#ffedd5" stroke="#334155" stroke-width="2"/>
+  <polygon points="210,70 300,185 258,150" fill="#ffedd5" stroke="#334155" stroke-width="2"/>
+  <circle cx="40" cy="40" r="22" fill="#7c3aed"/>
+  <text x="40" y="47" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="20" font-weight="700">3</text>
+</svg>

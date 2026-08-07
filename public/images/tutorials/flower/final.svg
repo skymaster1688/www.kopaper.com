@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 360" role="img" aria-label="Finished paper flower">
+  <rect width="420" height="360" fill="#ffffff"/>
+  <g fill="#fce7f3" stroke="#334155" stroke-width="3">
+    <ellipse cx="210" cy="95" rx="32" ry="52"/>
+    <ellipse cx="210" cy="265" rx="32" ry="52"/>
+    <ellipse cx="125" cy="180" rx="52" ry="32"/>
+    <ellipse cx="295" cy="180" rx="52" ry="32"/>
+    <ellipse cx="145" cy="115" rx="42" ry="42" transform="rotate(45 145 115)"/>
+    <ellipse cx="275" cy="245" rx="42" ry="42" transform="rotate(45 275 245)"/>
+  </g>
+  <circle cx="210" cy="180" r="30" fill="#fed7aa" stroke="#334155" stroke-width="3"/>
+</svg>
