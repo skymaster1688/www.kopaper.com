@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 360" role="img" aria-label="Step 4: tuck the side corners inward to form the brim">
+  <rect width="420" height="360" fill="#ffffff"/>
+  <polygon points="60,140 210,80 360,140 360,260 60,260" fill="#fff7ed" stroke="#334155" stroke-width="3"/>
+  <polygon points="60,260 120,260 90,212" fill="#ffedd5" stroke="#334155" stroke-width="2"/>
+  <polygon points="360,260 300,260 330,212" fill="#ffedd5" stroke="#334155" stroke-width="2"/>
+  <!-- tucked corners -->
+  <polygon points="60,260 95,260 78,232" fill="#fed7aa" stroke="#334155" stroke-width="2"/>
+  <polygon points="360,260 325,260 342,232" fill="#fed7aa" stroke="#334155" stroke-width="2"/>
+  <circle cx="40" cy="40" r="22" fill="#7c3aed"/>
+  <text x="40" y="47" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="20" font-weight="700">4</text>
+</svg>

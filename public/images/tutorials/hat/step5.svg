@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 360" role="img" aria-label="Step 5: open the hat and round the crown">
+  <rect width="420" height="360" fill="#ffffff"/>
+  <!-- crown -->
+  <polygon points="160,120 260,120 215,235 205,235" fill="#fff7ed" stroke="#334155" stroke-width="3"/>
+  <!-- brim -->
+  <polygon points="110,235 310,235 285,262 135,262" fill="#ffedd5" stroke="#334155" stroke-width="3"/>
+  <circle cx="40" cy="40" r="22" fill="#7c3aed"/>
+  <text x="40" y="47" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="20" font-weight="700">5</text>
+</svg>
