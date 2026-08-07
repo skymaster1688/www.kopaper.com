@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 360" role="img" aria-label="Step 5: fold the bottom corners up to the top on both sides">
+  <rect width="420" height="360" fill="#ffffff"/>
+  <polygon points="210,80 340,180 210,280 80,180" fill="#fff7ed" stroke="#334155" stroke-width="3"/>
+  <line x1="210" y1="80" x2="210" y2="280" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 5"/>
+  <polygon points="80,180 150,180 115,235" fill="#ffedd5" stroke="#334155" stroke-width="2"/>
+  <polygon points="340,180 270,180 305,235" fill="#ffedd5" stroke="#334155" stroke-width="2"/>
+  <circle cx="40" cy="40" r="22" fill="#7c3aed"/>
+  <text x="40" y="47" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="20" font-weight="700">5</text>
+</svg>

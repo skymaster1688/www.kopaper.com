@@ -28,20 +28,32 @@ featured: false
 ### 1. Fold in Half
 Start with a rectangular paper. Fold it in half from top to bottom (short edges together).
 
+![Step 1 — fold the rectangle in half](/images/tutorials/boat/step1.svg)
+
 ### 2. Fold Corners Down
 Fold the top two corners down to meet at the center, forming a triangle at the top with a rectangle below.
+
+![Step 2 — fold the top corners to the center](/images/tutorials/boat/step2.svg)
 
 ### 3. Fold Bottom Flaps
 Fold the bottom rectangle flaps upward on both sides, one on front and one on back.
 
+![Step 3 — fold the bottom flaps up both sides](/images/tutorials/boat/step3.svg)
+
 ### 4. Form the Hat Shape
 Tuck the corner flaps into each other. Then open the shape from the bottom and squash it into a square diamond.
+
+![Step 4 — open and squash into a square diamond](/images/tutorials/boat/step4.svg)
 
 ### 5. Fold Up Again
 Fold the bottom corner of the diamond up to the top on both sides, creating a smaller triangle. Open and squash again into a smaller square.
 
+![Step 5 — fold the bottom corners up both sides](/images/tutorials/boat/step5.svg)
+
 ### 6. Open the Boat
 Gently pull the two top flaps apart to open the boat shape. Flatten the bottom slightly so it stands upright. Your boat is ready to float!
+
+![Step 6 — open the boat shape](/images/tutorials/boat/step6.svg)
 
 ## Pro Tips
 
