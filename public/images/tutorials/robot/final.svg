@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 360" role="img" aria-label="Finished paper robot">
+  <rect width="420" height="360" fill="#ffffff"/>
+  <!-- legs -->
+  <rect x="170" y="270" width="28" height="48" fill="#ffedd5" stroke="#334155" stroke-width="3"/>
+  <rect x="222" y="270" width="28" height="48" fill="#ffedd5" stroke="#334155" stroke-width="3"/>
+  <!-- arms -->
+  <rect x="118" y="170" width="24" height="82" rx="10" fill="#ffedd5" stroke="#334155" stroke-width="3"/>
+  <rect x="278" y="170" width="24" height="82" rx="10" fill="#ffedd5" stroke="#334155" stroke-width="3"/>
+  <!-- body -->
+  <rect x="150" y="160" width="120" height="115" rx="10" fill="#fff7ed" stroke="#334155" stroke-width="3"/>
+  <!-- head -->
+  <rect x="160" y="72" width="100" height="80" rx="10" fill="#fff7ed" stroke="#334155" stroke-width="3"/>
+  <!-- eyes -->
+  <circle cx="190" cy="108" r="9" fill="#334155"/>
+  <circle cx="230" cy="108" r="9" fill="#334155"/>
+  <!-- mouth -->
+  <line x1="186" y1="134" x2="234" y2="134" stroke="#334155" stroke-width="3"/>
+  <!-- antenna -->
+  <line x1="210" y1="72" x2="210" y2="48" stroke="#334155" stroke-width="3"/>
+  <circle cx="210" cy="43" r="7" fill="#fed7aa" stroke="#334155" stroke-width="2"/>
+</svg>
