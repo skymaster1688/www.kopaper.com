@@ -1,60 +1,33 @@
 # Old tutorial URLs -> new Astro URLs (301 permanent)
-/paper-airplane-craft        /origami/airplane/      301
-/paper-airplane-craft.html   /origami/airplane/      301
-/paper-boat-instructions     /origami/boat/          301
-/paper-boat-instructions.html /origami/boat/         301
-/paper-butterfly-easy        /origami/butterfly/     301
-/paper-butterfly-easy.html   /origami/butterfly/     301
-/origami-crane-tutorial      /origami/crane/         301
-/origami-crane-tutorial.html /origami/crane/         301
-/origami-frog-jumping        /origami/frog/          301
-/origami-frog-jumping.html   /origami/frog/          301
-/origami-heart               /origami/heart/         301
-/origami-heart.html          /origami/heart/         301
-/paper-fish-origami          /origami/fish/          301
-/paper-fish-origami.html     /origami/fish/          301
-/paper-flower-design         /origami/flower/        301
-/paper-flower-design.html    /origami/flower/        301
-/paper-fox-simple            /origami/fox/           301
-/paper-fox-simple.html       /origami/fox/           301
-/paper-hat-craft             /origami/hat/           301
-/paper-hat-craft.html        /origami/hat/           301
-/paper-car-template          /origami/car/           301
-/paper-car-template.html     /origami/car/           301
-/dragon-craft-template       /origami/dragon/        301
-/dragon-craft-template.html  /origami/dragon/        301
-/house-paper-model           /origami/house/         301
-/house-paper-model.html      /origami/house/         301
-/robot-paper-toy             /origami/robot/         301
-/robot-paper-toy.html        /origami/robot/         301
-/cat-paper-craft             /origami/cat/           301
-/cat-paper-craft.html        /origami/cat/           301
+# Use a trailing * so both "/slug" and "/slug.html" old requests are caught by one rule.
+/paper-airplane-craft*    /origami/airplane/      301
+/paper-boat-instructions* /origami/boat/          301
+/paper-butterfly-easy*    /origami/butterfly/     301
+/origami-crane-tutorial*  /origami/crane/         301
+/origami-frog-jumping*    /origami/frog/          301
+/origami-heart*           /origami/heart/         301
+/paper-fish-origami*      /origami/fish/          301
+/paper-flower-design*     /origami/flower/        301
+/paper-fox-simple*        /origami/fox/           301
+/paper-hat-craft*         /origami/hat/           301
+/paper-car-template*      /origami/car/           301
+/dragon-craft-template*   /origami/dragon/        301
+/house-paper-model*       /origami/house/         301
+/robot-paper-toy*         /origami/robot/         301
+/cat-paper-craft*         /origami/cat/           301
 
 # Old letter paper URLs -> new Astro URLs
-/starry-night-letter-paper        /letter-paper/starry-night/    301
-/starry-night-letter-paper.html   /letter-paper/starry-night/    301
-/floral-letter-paper              /letter-paper/floral/          301
-/floral-letter-paper.html         /letter-paper/floral/          301
-/cloud-sky-letter-paper           /letter-paper/cloud-sky/       301
-/cloud-sky-letter-paper.html      /letter-paper/cloud-sky/       301
-/cute-animal-letter-paper         /letter-paper/cute-animal/     301
-/cute-animal-letter-paper.html    /letter-paper/cute-animal/     301
-/minimal-letter-paper             /letter-paper/minimal/         301
-/minimal-letter-paper.html        /letter-paper/minimal/         301
+/starry-night-letter-paper*  /letter-paper/starry-night/    301
+/floral-letter-paper*        /letter-paper/floral/          301
+/cloud-sky-letter-paper*     /letter-paper/cloud-sky/       301
+/cute-animal-letter-paper*   /letter-paper/cute-animal/     301
+/minimal-letter-paper*       /letter-paper/minimal/         301
 
 # Old category URLs -> new Astro cluster pages
-/category/origami          /origami/          301
-/category/origami.html     /origami/          301
-/category/templates        /templates/        301
-/category/templates.html   /templates/        301
-/category/letter-paper     /letter-paper/     301
-/category/letter-paper.html /letter-paper/    301
+/category/origami*      /origami/          301
+/category/templates*    /templates/        301
+/category/letter-paper* /letter-paper/     301
 
-# Old duplicate compare/check -> text-compare
-/compare                   /text-compare/     301
-/compare.html              /text-compare/     301
-/check                     /text-compare/     301
-/check.html                /text-compare/     301
-
-# Cloud-sky-letter-paper alternative spelling
-/cloud-sky-letter-paper    /letter-paper/cloud-sky/  301
+# Old compare/check -> text-compare
+/compare*    /text-compare/     301
+/check*      /text-compare/     301
