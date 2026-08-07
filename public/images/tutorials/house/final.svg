@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 360" role="img" aria-label="Finished paper house">
+  <rect width="420" height="360" fill="#ffffff"/>
+  <!-- roof -->
+  <polygon points="100,178 210,82 320,178" fill="#ffedd5" stroke="#334155" stroke-width="3"/>
+  <!-- walls -->
+  <rect x="125" y="178" width="170" height="120" fill="#fff7ed" stroke="#334155" stroke-width="3"/>
+  <!-- door -->
+  <rect x="190" y="226" width="42" height="72" fill="#fed7aa" stroke="#334155" stroke-width="2"/>
+  <!-- windows -->
+  <rect x="148" y="200" width="36" height="36" fill="#ffedd5" stroke="#334155" stroke-width="2"/>
+  <rect x="236" y="200" width="36" height="36" fill="#ffedd5" stroke="#334155" stroke-width="2"/>
+</svg>
