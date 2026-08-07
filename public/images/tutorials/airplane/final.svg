@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 280" role="img" aria-label="Finished paper airplane: wings spread with a pointed nose and fuselage">
+  <rect width="420" height="280" fill="#ffffff"/>
+  <polygon points="210,120 50,220 210,220" fill="#fff7ed" stroke="#334155" stroke-width="3"/>
+  <polygon points="210,120 370,220 210,220" fill="#fff7ed" stroke="#334155" stroke-width="3"/>
+  <polygon points="210,50 195,150 210,250 225,150" fill="#ffedd5" stroke="#334155" stroke-width="2"/>
+</svg>

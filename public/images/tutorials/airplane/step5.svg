@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 280" role="img" aria-label="Step 5: fold in half along the center and fold the wings down — finished paper airplane">
+  <rect width="420" height="280" fill="#ffffff"/>
+  <polygon points="210,120 50,220 210,220" fill="#fff7ed" stroke="#334155" stroke-width="3"/>
+  <polygon points="210,120 370,220 210,220" fill="#fff7ed" stroke="#334155" stroke-width="3"/>
+  <polygon points="210,50 195,150 210,250 225,150" fill="#ffedd5" stroke="#334155" stroke-width="2"/>
+  <circle cx="40" cy="40" r="22" fill="#7c3aed"/>
+  <text x="40" y="47" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="20" font-weight="700">5</text>
+</svg>
