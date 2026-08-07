@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 360" role="img" aria-label="Step 5: fold the bottom point up to make the snout">
+  <rect width="420" height="360" fill="#ffffff"/>
+  <polygon points="210,70 70,300 350,300" fill="#fff7ed" stroke="#334155" stroke-width="3"/>
+  <polygon points="70,300 210,150 150,240" fill="#ffedd5" stroke="#334155" stroke-width="2"/>
+  <polygon points="350,300 210,150 270,240" fill="#ffedd5" stroke="#334155" stroke-width="2"/>
+  <!-- snout folded up -->
+  <polygon points="210,300 178,232 242,232" fill="#fed7aa" stroke="#334155" stroke-width="2"/>
+  <circle cx="40" cy="40" r="22" fill="#7c3aed"/>
+  <text x="40" y="47" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="20" font-weight="700">5</text>
+</svg>
