@@ -29,12 +29,16 @@ function parseHowToSteps(body) {
 export async function getStaticPaths() {
   const tutorials = await getCollection('tutorials', ({ data }) => !data.draft);
   return tutorials.map(t => {
-    const heroPath = join(process.cwd(), 'public', 'images', 'tutorials', t.slug, 'final.png');
+    const svgHero = join(process.cwd(), 'public', 'images', 'tutorials', t.slug, 'final.svg');
+    const pngHero = join(process.cwd(), 'public', 'images', 'tutorials', t.slug, 'final.png');
+    const heroImage = existsSync(svgHero) ? `/images/tutorials/${t.slug}/final.svg`
+      : existsSync(pngHero) ? `/images/tutorials/${t.slug}/final.png`
+      : null;
     return {
       params: { slug: t.slug },
       props: {
         tutorial: t,
-        heroImage: existsSync(heroPath) ? `/images/tutorials/${t.slug}/final.png` : null,
+        heroImage,
       },
     };
   });
