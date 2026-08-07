@@ -28,17 +28,27 @@ featured: true
 ### 1. Fold Diagonally
 Start with a square paper, colored side up. Fold in half diagonally to form a triangle.
 
+![Step 1 — fold the square diagonally into a triangle](/images/tutorials/butterfly/step1.svg)
+
 ### 2. Fold the Triangle
 Fold the triangle in half to form a smaller triangle, then unfold back to the larger triangle.
+
+![Step 2 — crease the triangle down the middle, then unfold](/images/tutorials/butterfly/step2.svg)
 
 ### 3. Create Wing Folds
 Take the bottom corner of the triangle and fold it upward past the top edge. Flip the paper over.
 
+![Step 3 — fold the bottom up past the top to begin the wings](/images/tutorials/butterfly/step3.svg)
+
 ### 4. Fold the Body
 Fold the top point down about one centimeter. Then fold the paper in half vertically.
 
+![Step 4 — fold the tip down, then fold in half vertically](/images/tutorials/butterfly/step4.svg)
+
 ### 5. Shape the Wings
 Gently open the two wing flaps. The folded top point creates a pocket that holds the butterfly shape together. Adjust the wings to your liking.
+
+![Step 5 — open the wing flaps to finish the butterfly](/images/tutorials/butterfly/step5.svg)
 
 ## Pro Tips
 

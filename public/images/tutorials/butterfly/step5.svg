@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 380" role="img" aria-label="Step 5: open the two wing flaps to shape the butterfly">
+  <rect width="420" height="380" fill="#ffffff"/>
+  <!-- body -->
+  <rect x="204" y="70" width="12" height="180" rx="6" fill="#334155"/>
+  <!-- upper wings -->
+  <path d="M210 110 C150 70 70 90 90 150 C110 195 200 170 210 140 Z" fill="#ffedd5" stroke="#334155" stroke-width="3"/>
+  <path d="M210 110 C270 70 350 90 330 150 C310 195 220 170 210 140 Z" fill="#ffedd5" stroke="#334155" stroke-width="3"/>
+  <!-- lower wings -->
+  <path d="M210 160 C160 165 110 200 140 235 C175 255 205 205 210 185 Z" fill="#fed7aa" stroke="#334155" stroke-width="3"/>
+  <path d="M210 160 C260 165 310 200 280 235 C245 255 215 205 210 185 Z" fill="#fed7aa" stroke="#334155" stroke-width="3"/>
+  <!-- antennae -->
+  <path d="M210 70 C200 50 190 42 178 40" fill="none" stroke="#334155" stroke-width="2"/>
+  <path d="M210 70 C220 50 230 42 242 40" fill="none" stroke="#334155" stroke-width="2"/>
+  <circle cx="40" cy="40" r="22" fill="#7c3aed"/>
+  <text x="40" y="47" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="20" font-weight="700">5</text>
+</svg>

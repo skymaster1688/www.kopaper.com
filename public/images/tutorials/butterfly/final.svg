@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 360" role="img" aria-label="Finished paper butterfly">
+  <rect width="420" height="360" fill="#ffffff"/>
+  <!-- body -->
+  <rect x="203" y="80" width="14" height="200" rx="7" fill="#334155"/>
+  <!-- upper wings -->
+  <path d="M210 120 C140 70 50 95 75 165 C100 215 200 185 210 150 Z" fill="#ffedd5" stroke="#334155" stroke-width="3"/>
+  <path d="M210 120 C280 70 370 95 345 165 C320 215 220 185 210 150 Z" fill="#ffedd5" stroke="#334155" stroke-width="3"/>
+  <!-- lower wings -->
+  <path d="M210 170 C150 175 95 215 130 255 C170 280 205 225 210 200 Z" fill="#fed7aa" stroke="#334155" stroke-width="3"/>
+  <path d="M210 170 C270 175 325 215 290 255 C250 280 215 225 210 200 Z" fill="#fed7aa" stroke="#334155" stroke-width="3"/>
+  <!-- wing accents -->
+  <circle cx="130" cy="135" r="9" fill="#ffffff" opacity="0.7"/>
+  <circle cx="290" cy="135" r="9" fill="#ffffff" opacity="0.7"/>
+  <circle cx="160" cy="225" r="6" fill="#ffffff" opacity="0.7"/>
+  <circle cx="260" cy="225" r="6" fill="#ffffff" opacity="0.7"/>
+  <!-- antennae -->
+  <path d="M210 80 C196 55 184 46 170 44" fill="none" stroke="#334155" stroke-width="2.5"/>
+  <path d="M210 80 C224 55 236 46 250 44" fill="none" stroke="#334155" stroke-width="2.5"/>
+  <circle cx="168" cy="42" r="4" fill="#334155"/>
+  <circle cx="252" cy="42" r="4" fill="#334155"/>
+</svg>
