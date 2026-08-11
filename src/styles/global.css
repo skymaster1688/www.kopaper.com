@@ -278,6 +278,23 @@ ul { list-style: none; }
 .gen-copy p { margin: 0 0 16px; }
 .gen-copy p em { font-style: normal; color: var(--text); border-bottom: 1px solid var(--warm); }
 .gen-copy h3 { font-family: var(--font-display); font-size: 1.2rem; margin: 26px 0 10px; }
+.gen-grid { display: grid; grid-template-columns: 1fr 1.08fr; gap: 56px; align-items: center; }
+.gen-visual {
+  position: relative;
+  border: none;
+  border-radius: var(--radius);
+  background-color: var(--surface-2);
+  background-image: radial-gradient(var(--line-soft) 1px, transparent 1px);
+  background-size: 16px 16px;
+  padding: 44px;
+  overflow: hidden;
+}
+.gen-visual svg { display: block; width: 100%; height: auto; max-width: 420px; margin: 0 auto; }
+.gen-cta { margin-top: 28px !important; }
+.gen-cta .btn { padding: 13px 22px; }
+@media (max-width: 960px) {
+  .gen-grid { grid-template-columns: 1fr; gap: 32px; }
+}
 
 /* steps — connected row, editorial, no icons */
 .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; border: 1px solid var(--border); border-radius: var(--radius); }

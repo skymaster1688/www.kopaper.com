@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>gen-grid preview - left visual</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#fafafa;--surface:#f4f4f6;--surface-2:#eeeef1;--text:#0a0a0b;--text-muted:#5b5b62;--faint:#8a8a90;
+  --border:#d9d9de;--rule:#e3e3e7;--line-soft:#c9c9cf;
+  --warm:#E0532B;--warm-dark:#b9421f;
+  --max-width:1200px;
+  --radius:4px;--radius-sm:3px;
+  --font-display:'Space Grotesk',system-ui,sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,monospace;
+  --font-body:'Inter',system-ui,sans-serif;
+  --transition:.18s ease;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:16px;transition:background .3s ease, color .3s ease}
+h1,h2,h3,h4{line-height:1.2;font-weight:600;color:var(--text);font-family:var(--font-display);letter-spacing:-0.02em;margin:0}
+a{color:var(--text);text-decoration:none}
+.wrap{max-width:var(--max-width);margin:0 auto;padding:0 32px}
+
+.sec{padding:72px 0;border-top:1px solid var(--rule)}
+.sec-head{max-width:660px;margin-bottom:36px}
+.sec-head .label{display:block;margin-bottom:14px;font-family:var(--font-mono);font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
+.sec-head h2{font-size:2rem;margin-bottom:10px}
+.sec-head p{color:var(--text-muted);font-size:1.02rem;margin:0;line-height:1.6}
+.display{font-family:var(--font-display);font-weight:700;letter-spacing:-.03em;line-height:1.02}
+
+.gen-grid{display:grid;grid-template-columns:1fr 1.08fr;gap:56px;align-items:center}
+.gen-visual{
+  position:relative;border:none;border-radius:var(--radius);
+  background-color:var(--surface-2);
+  background-image:radial-gradient(var(--line-soft) 1px, transparent 1px);
+  background-size:16px 16px;padding:44px;overflow:hidden
+}
+.gen-visual svg{display:block;width:100%;height:auto;max-width:420px;margin:0 auto}
+.gen-copy{max-width:70ch}
+.gen-copy p{margin:0 0 16px;color:var(--text);line-height:1.7}
+.gen-copy p em{font-style:normal;color:var(--text);border-bottom:1px solid var(--warm)}
+.gen-copy h3{font-family:var(--font-display);font-size:1.2rem;margin:26px 0 10px}
+.gen-cta{margin-top:28px !important}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:var(--radius-sm);font-weight:600;font-size:.92rem;cursor:pointer;transition:all var(--transition);border:none;font-family:inherit;text-decoration:none}
+.btn-primary{background:var(--text);color:var(--bg);padding:13px 22px}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(10,10,11,.18)}
+
+@media (max-width:960px){
+  .gen-grid{grid-template-columns:1fr;gap:32px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="sec">
+  <div class="sec-head">
+    <span class="label">The generator</span>
+    <h2 class="display">Meet the AI Papercraft Generator</h2>
+    <p>The AI Papercraft Generator turns a short sentence into original papercraft designs you can print and build at home.</p>
+  </div>
+  <div class="gen-grid">
+    <aside class="gen-visual" aria-label="A folded paper fox you can build from a net">
+      <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Origami paper fox">
+        <g style="stroke: var(--warm)" stroke-width="1.8" stroke-linejoin="round" fill="none">
+          <polygon points="120,140 95,60 175,135"/>
+          <polygon points="200,286 186,262 214,262"/>
+        </g>
+        <g style="stroke: var(--text)" stroke-width="1.8" stroke-linejoin="round" fill="#fff">
+          <polygon points="120,140 95,60 175,135"/>
+          <polygon points="280,140 305,60 225,135"/>
+          <polygon points="120,140 280,140 200,300"/>
+        </g>
+        <g style="stroke: var(--text)" stroke-width="1" stroke-dasharray="6 5" opacity="0.5">
+          <line x1="200" y1="140" x2="200" y2="300"/>
+          <line x1="175" y1="135" x2="200" y2="205"/>
+          <line x1="225" y1="135" x2="200" y2="205"/>
+          <line x1="120" y1="140" x2="200" y2="205"/>
+          <line x1="280" y1="140" x2="200" y2="205"/>
+        </g>
+        <polygon points="158,198 182,208 160,214" style="fill: var(--text)" stroke="none"/>
+        <polygon points="242,198 218,208 240,214" style="fill: var(--text)" stroke="none"/>
+      </svg>
+    </aside>
+    <div class="gen-copy">
+      <p>Type an idea like <em>a cute dragon</em> or <em>a low poly castle</em>, and the AI Papercraft Generator returns four custom papercraft designs in your chosen style. Each one is drawn as clean line art you can print, cut, fold, and glue into a real paper model. No templates to hunt and no folding diagrams to decode.</p>
+      <p>Want paper toys, paper art, or a one of a kind gift? The papercraft generator helps you create papercraft that matches your own idea instead of copying someone else's. Pick Cute, Low Poly, Pixel, or Fantasy, then generate, refine, and download your favorite as an SVG or PDF.</p>
+      <h3>Why use an AI papercraft generator?</h3>
+      <p>A papercraft generator is fastest when you already know what you want but cannot draw it. Describe the subject, set the style, and let the tool handle the artwork. You stay in control of the idea; the generator handles the rendering, so you can move from thought to paper in minutes.</p>
+      <p class="gen-cta"><a class="btn btn-primary" href="#">Open the generator &rarr;</a></p>
+    </div>
+  </div>
+</section>
+</div>
+</body>
+</html>
