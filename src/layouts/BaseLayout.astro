@@ -31,9 +31,14 @@ const ADSENSE_ID = 'ca-pub-6279178382144076';
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonicalURL} />
   <meta property="og:site_name" content="koPaper" />
+  <meta property="og:image" content={new URL('/og-image.png', Astro.site).href} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="koPaper AI Papercraft Generator" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={new URL('/og-image.png', Astro.site).href} />
   <link rel="icon" type="image/png" href="/images/favicon-32x32.png" />
   <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
 
