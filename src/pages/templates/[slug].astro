@@ -1,0 +1,171 @@
+---
+import { getCollection } from 'astro:content';
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CraftCard from '../../components/CraftCard.astro';
+
+export async function getStaticPaths() {
+  const templates = await getCollection('tutorials', ({ data }) => !data.draft && data.kind === 'papercraft');
+  return templates.map(t => {
+    const svg = join(process.cwd(), 'public', 'images', 'tutorials', t.slug, 'final.svg');
+    const png = join(process.cwd(), 'public', 'images', 'tutorials', t.slug, 'final.png');
+    const heroImage = existsSync(svg) ? `/images/tutorials/${t.slug}/final.svg`
+      : existsSync(png) ? `/images/tutorials/${t.slug}/final.png`
+      : null;
+    return {
+      params: { slug: t.slug },
+      props: { template: t, heroImage },
+    };
+  });
+}
+
+const { template, heroImage } = Astro.props;
+const { Content } = await template.render();
+
+const allTemplates = await getCollection('tutorials', ({ data }) => !data.draft && data.kind === 'papercraft');
+const related = allTemplates
+  .filter(t => t.slug !== template.slug)
+  .slice(0, 3);
+
+const badgeClass = template.data.difficulty === 'Easy' ? 'badge-easy'
+  : template.data.difficulty === 'Medium' ? 'badge-medium' : 'badge-hard';
+
+const templateSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: template.data.title,
+  description: template.data.description,
+  image: heroImage ? new URL(heroImage, Astro.site).href : undefined,
+  material: template.data.materials,
+  timeRequired: `PT${template.data.time.replace(/[^0-9]/g, '')}M`,
+};
+---
+
+<BaseLayout
+  title={`${template.data.title} Free Printable koPaper`}
+  description={template.data.description}
+  ogType="article"
+>
+  <article class="container" style="max-width:820px; padding-top:40px">
+    <nav class="breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      <a href="/templates/">Templates</a>
+      <span>/</span>
+      <span>{template.data.title}</span>
+    </nav>
+
+    <h1 style="margin-bottom:12px">{template.data.title}</h1>
+    <p style="font-size:1.15rem; color:var(--text-muted); margin-bottom:20px">{template.data.description}</p>
+
+    <div class="tutorial-meta">
+      <span><span class={`badge ${badgeClass}`}>{template.data.difficulty}</span></span>
+      <span>&#9201;&#xFE0F; {template.data.time}</span>
+      <span>&#128101; Age: {template.data.age}</span>
+    </div>
+
+    {heroImage && (
+      <figure class="tutorial-hero reveal">
+        <img src={heroImage} alt={`Finished ${template.data.title}`} loading="lazy" width="680" height="600" />
+      </figure>
+    )}
+
+    <!-- Download / print actions -->
+    <div class="template-actions reveal">
+      {heroImage && (
+        <a href={heroImage} download class="btn btn-primary btn-large">Download Template (SVG)</a>
+      )}
+      <button type="button" class="btn btn-outline btn-large" id="printBtn">Print or Save as PDF</button>
+    </div>
+
+    <div class="tutorial-content">
+      <Content />
+    </div>
+
+    {related.length > 0 && (
+      <section style="margin-top:60px; padding-top:40px; border-top:1px solid var(--border)">
+        <h2 style="font-size:1.3rem; margin-bottom:20px">More Paper Craft Templates</h2>
+        <div class="grid-3">
+          {related.map(t => (
+            <CraftCard
+              href={`/templates/${t.slug}/`}
+              emoji={t.data.emoji}
+              title={t.data.title}
+              description={t.data.description}
+              difficulty={t.data.difficulty}
+              time={t.data.time}
+            />
+          ))}
+        </div>
+      </section>
+    )}
+  </article>
+
+  <script type="application/ld+json" set:html={JSON.stringify(templateSchema)} />
+
+  <style is:global>
+    .template-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 24px 0 8px;
+    }
+    .tutorial-hero {
+      margin: 24px 0 8px;
+      text-align: center;
+    }
+    .tutorial-hero img {
+      display: block;
+      max-width: min(100%, 520px);
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+      background: #fff;
+    }
+    .tutorial-content { margin-top: 32px; }
+    .tutorial-content h2 {
+      font-size: 1.35rem;
+      margin-top: 40px;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .tutorial-content h2:first-child { margin-top: 0; }
+    .tutorial-content h3 {
+      margin-top: 28px;
+      font-size: 1.1rem;
+    }
+    .tutorial-content p {
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+    .tutorial-content ul {
+      padding-left: 22px;
+      margin-bottom: 20px;
+    }
+    .tutorial-content li {
+      padding: 4px 0;
+      color: var(--text-muted);
+    }
+    /* Print-friendly: hide nav, buttons, related when saving as PDF */
+    @media print {
+      .site-header, .to-top, .breadcrumb, .template-actions,
+      .tutorial-meta, .tutorial-content h2, section { }
+      .template-actions, .to-top, .site-header { display: none !important; }
+      .tutorial-content h2 { display: none; }
+      .breadcrumb { display: none; }
+    }
+  </style>
+
+  <script is:inline>
+    const printBtn = document.getElementById('printBtn');
+    if (printBtn) {
+      printBtn.addEventListener('click', () => window.print());
+    }
+  </script>
+</BaseLayout>

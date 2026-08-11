@@ -16,6 +16,7 @@ const tutorials = defineCollection({
     order: z.number().default(99),
     featured: z.boolean().default(false),
     draft: z.boolean().default(false),
+    kind: z.enum(['origami', 'papercraft']).default('origami'),
   }),
 });
 

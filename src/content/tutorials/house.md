@@ -19,6 +19,7 @@ tips:
 tags: ["paper house", "3D paper model", "printable template", "architecture craft"]
 order: 13
 featured: false
+kind: papercraft
 ---
 
 ## Materials

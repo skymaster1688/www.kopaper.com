@@ -1,0 +1,60 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CraftCard from '../../components/CraftCard.astro';
+
+export async function getStaticPaths() {
+  const categoryMeta = [
+    { key: 'classic', label: 'Classic Origami', emoji: '✈️', description: 'Timeless folds like the paper airplane and crane-inspired classics. Beginner-friendly and endlessly satisfying.' },
+    { key: 'animals', label: 'Origami Animals', emoji: '🐰', description: 'Fold cats, frogs, foxes, fish, and more. Cute paper pets for kids and collectors alike.' },
+    { key: 'flowers', label: 'Origami Flowers', emoji: '🌸', description: 'Paper blooms and plants that never wilt. Perfect for gifts, decor, and handmade cards.' },
+    { key: 'vehicles', label: 'Paper Vehicles', emoji: '🚗', description: 'Airplanes, boats, and cars you can fold and play with. Great for quick, rewarding wins.' },
+    { key: 'models', label: '3D Paper Models', emoji: '🗽', description: 'Printable 3D paper craft templates, dragons, houses, robots. Download, cut, and assemble at home.' },
+    { key: 'holiday', label: 'Holiday Crafts', emoji: '🎄', description: 'Seasonal paper crafts and ornaments for celebrations all year round.' },
+  ];
+  return categoryMeta.map(cat => ({
+    params: { category: cat.key },
+    props: { cat },
+  }));
+}
+
+const { cat } = Astro.props;
+
+const items = (await getCollection('tutorials', ({ data }) => !data.draft && data.category === cat.key))
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout
+  title={`${cat.label} and Paper Craft Tutorials koPaper`}
+  description={cat.description}
+>
+  <section class="hero container" style="padding-bottom:20px">
+    <nav class="breadcrumb reveal" style="justify-content:center">
+      <a href="/">Home</a><span>/</span><a href="/origami/">Origami</a><span>/</span><span>{cat.label}</span>
+    </nav>
+    <h1 class="reveal">{cat.emoji} {cat.label}</h1>
+    <p class="reveal">{cat.description}</p>
+  </section>
+
+  <section class="section container" style="padding-top:20px">
+    {items.length > 0 ? (
+      <div class="grid-4">
+        {items.map(t => (
+          <CraftCard
+            href={`/origami/${t.slug}/`}
+            emoji={t.data.emoji}
+            title={t.data.title}
+            description={t.data.description}
+            difficulty={t.data.difficulty}
+            time={t.data.time}
+          />
+        ))}
+      </div>
+    ) : (
+      <p style="color:var(--text-muted); text-align:center; padding:40px 0">No tutorials in this category yet — check back soon!</p>
+    )}
+    <div style="text-align:center; margin-top:32px" class="reveal">
+      <a href="/origami/" class="btn btn-outline">← All origami tutorials</a>
+    </div>
+  </section>
+</BaseLayout>

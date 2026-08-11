@@ -10,11 +10,11 @@
 /paper-flower-design*     /origami/flower/        301
 /paper-fox-simple*        /origami/fox/           301
 /paper-hat-craft*         /origami/hat/           301
-/paper-car-template*      /origami/car/           301
-/dragon-craft-template*   /origami/dragon/        301
-/house-paper-model*       /origami/house/         301
-/robot-paper-toy*         /origami/robot/         301
-/cat-paper-craft*         /origami/cat/           301
+/paper-car-template*      /templates/car/         301
+/dragon-craft-template*   /templates/dragon/       301
+/house-paper-model*       /templates/house/        301
+/robot-paper-toy*         /templates/robot/        301
+/cat-paper-craft*         /templates/cat/          301
 
 # Old letter paper URLs -> new Astro URLs
 /starry-night-letter-paper*  /letter-paper/starry-night/    301
@@ -27,6 +27,13 @@
 /category/origami*      /origami/          301
 /category/templates*    /templates/        301
 /category/letter-paper* /letter-paper/     301
+
+# 3D papercraft templates moved from /origami/ to /templates/ (kind: papercraft)
+/origami/car*      /templates/car/      301
+/origami/cat*      /templates/cat/      301
+/origami/dragon*   /templates/dragon/   301
+/origami/house*    /templates/house/    301
+/origami/robot*    /templates/robot/    301
 
 # Old compare/check -> text-compare
 /compare*    /text-compare/     301

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>koPaper — Technical Line Redesign v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#FFFFFF;
+    --surface:#FFFFFF;
+    --ink:#0A0A0B;
+    --muted:#6E6E76;
+    --faint:#9A9AA2;
+    --line:rgba(10,10,11,.16);
+    --line-soft:rgba(10,10,11,.07);
+    --rule:rgba(10,10,11,.10);
+    --shadow:0 1px 2px rgba(10,10,11,.04),0 18px 44px rgba(10,10,11,.05);
+    --disp:'Space Grotesk','Inter',sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
+    --r:0;            /* sharp corners everywhere */
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+
+  /* ===== top bar (rectangular, bottom rule) ===== */
+  header.bar{border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:blur(10px)}
+  .bar-in{display:flex;align-items:center;gap:28px;height:64px}
+  .logo{display:flex;align-items:center;gap:11px;font-family:var(--disp);font-weight:700;font-size:1.22rem;letter-spacing:-.02em}
+  .logo .mk{width:22px;height:22px;border:1.6px solid var(--ink);position:relative}
+  .logo .mk::after{content:"";position:absolute;inset:5px;border:1.3px solid var(--ink)}
+  .nav{display:flex;gap:30px;margin-left:14px}
+  .nav a{color:var(--muted);text-decoration:none;font-size:.92rem;font-weight:500;letter-spacing:.01em;transition:.15s}
+  .nav a:hover{color:var(--ink)}
+  .bar-cta{margin-left:auto;display:flex;align-items:center;gap:14px}
+  .btn{display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;font-family:inherit;font-weight:600;text-decoration:none;font-size:.9rem;border-radius:var(--r)}
+  .btn-solid{background:var(--ink);color:#fff;padding:11px 20px;transition:.18s}
+  .btn-solid:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(10,10,11,.18)}
+  .btn-line{background:transparent;color:var(--ink);border:1px solid var(--line);padding:11px 20px}
+  .btn-line:hover{border-color:var(--ink)}
+
+  /* ===== type system ===== */
+  .label{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
+  .display{font-family:var(--disp);font-weight:700;letter-spacing:-.04em;line-height:1.0}
+
+  /* ===== hero with consistent one-point perspective system ===== */
+  .hero{position:relative;display:grid;grid-template-columns:1.02fr .98fr;gap:64px;align-items:center;padding:88px 0 64px}
+  .persp{position:absolute;inset:-30px -200px;z-index:0;pointer-events:none;overflow:visible}
+  .persp svg{width:100%;height:100%}
+  .hero>*{position:relative;z-index:1}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:26px}
+  .eyebrow .tick{width:26px;height:1px;background:var(--ink)}
+  h1{font-size:clamp(2.7rem,5.6vw,4.1rem);margin-bottom:22px}
+  h1 .mark{position:relative}
+  h1 .mark::after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:3px;background:var(--ink)}
+  .sub{color:var(--muted);font-size:1.12rem;max-width:42ch;margin-bottom:32px}
+
+  /* composer — sharp, solid rules */
+  .composer{border:1px solid var(--line);background:var(--surface);padding:0;box-shadow:var(--shadow)}
+  .composer textarea{width:100%;border:none;outline:none;resize:none;font-family:inherit;font-size:1rem;color:var(--ink);background:transparent;min-height:64px;padding:18px 18px 14px}
+  .composer textarea::placeholder{color:#B0B0B6}
+  .composer-bar{display:flex;align-items:center;gap:14px;padding:14px 16px;border-top:1px solid var(--line)}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;flex:1}
+  .chip{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.04em;color:var(--ink);background:transparent;border:1px solid var(--line);padding:7px 13px;cursor:pointer;transition:.14s}
+  .chip:hover{border-color:var(--ink)}
+  .chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .gen{background:var(--ink);color:#fff;border:none;padding:11px 22px;font-weight:600;font-family:inherit;cursor:pointer;white-space:nowrap}
+  .gen:hover{transform:translateY(-1px)}
+
+  /* canvas — line-art nets on blueprint dot grid, sharp */
+  .canvas{position:relative;border:1px solid var(--line);padding:22px;box-shadow:var(--shadow);
+    background-image:radial-gradient(var(--line-soft) 1px,transparent 1px);background-size:16px 16px}
+  .canvas-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+  .canvas-head .t{font-family:var(--disp);font-weight:600;font-size:.95rem}
+  .canvas-head .tag{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;color:var(--faint);text-transform:uppercase}
+  .grid4{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .tile{aspect-ratio:1;border:1px solid var(--line);background:#fff;display:flex;align-items:center;justify-content:center;position:relative}
+  .tile svg{width:60%;height:60%}
+  .tile .cap{position:absolute;left:10px;bottom:10px;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;color:var(--faint);text-transform:uppercase}
+  .tile.t1{animation:fl 5s ease-in-out infinite}
+  .tile.t2{animation:fl 5s ease-in-out infinite .6s}
+  .tile.t3{animation:fl 5s ease-in-out infinite 1.2s}
+  .tile.t4{animation:fl 5s ease-in-out infinite 1.8s}
+  @keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+  /* stats */
+  .stats{display:flex;gap:56px;padding:8px 0 72px;flex-wrap:wrap;border-top:1px solid var(--rule);padding-top:28px}
+  .stat .n{font-family:var(--disp);font-size:1.9rem;font-weight:700;letter-spacing:-.02em}
+  .stat .l{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-top:4px}
+
+  /* section heads — left editorial, top rule */
+  .sec{padding:72px 0;border-top:1px solid var(--rule)}
+  .sec-head{max-width:660px;margin-bottom:48px}
+  .sec-head .label{display:block;margin-bottom:14px}
+  .sec-head h2{font-size:2.2rem;margin-bottom:12px}
+  .sec-head p{color:var(--muted);font-size:1.05rem;color:var(--muted)}
+
+  /* steps — typographic, numbered, no icons */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line)}
+  .step{padding:30px 28px 34px;border-right:1px solid var(--line)}
+  .step:last-child{border-right:none}
+  .step .idx{font-family:var(--mono);font-size:.8rem;letter-spacing:.1em;color:var(--faint);margin-bottom:18px}
+  .step h3{font-family:var(--disp);font-size:1.3rem;font-weight:600;letter-spacing:-.01em;margin-bottom:10px}
+  .step p{color:var(--muted);font-size:.96rem}
+
+  /* explore — rectangular bordered, mono index, no icons */
+  .explore{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .ecard{border:1px solid var(--line);padding:0;background:var(--surface);display:flex;flex-direction:column;min-height:210px;transition:.18s}
+  .ecard:hover{border-color:var(--ink);transform:translateY(-3px)}
+  .ecard .top{display:flex;justify-content:space-between;align-items:center;padding:16px 22px;border-bottom:1px solid var(--line)}
+  .ecard .top .fig{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;color:var(--faint)}
+  .ecard .body{padding:22px;display:flex;flex-direction:column;flex:1}
+  .ecard h3{font-family:var(--disp);font-size:1.4rem;font-weight:600;letter-spacing:-.01em;margin-bottom:8px}
+  .ecard p{color:var(--muted);font-size:.95rem;margin-bottom:18px;flex:1}
+  .ecard .go{font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;color:var(--ink);display:inline-flex;align-items:center;gap:8px}
+  .ecard .go .ar{width:18px;height:1px;background:var(--ink);position:relative}
+  .ecard .go .ar::after{content:"";position:absolute;right:0;top:-3px;width:7px;height:7px;border-top:1px solid var(--ink);border-right:1px solid var(--ink);transform:rotate(45deg)}
+
+  /* cta — solid black block, sharp */
+  .cta{background:var(--ink);padding:64px 56px;color:#fff;margin:24px 0 80px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+  .cta h2{font-family:var(--disp);font-size:2.4rem;letter-spacing:-.03em;font-weight:700}
+  .cta p{color:rgba(255,255,255,.66);margin-top:8px;font-size:1.02rem}
+  .cta .btn-solid{background:#fff;color:var(--ink)}
+
+  footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;padding:34px 0 60px;border-top:1px solid var(--line);
+    font-family:var(--mono);font-size:.74rem;letter-spacing:.06em;color:var(--faint);text-transform:uppercase}
+
+  @media(max-width:880px){
+    .hero{grid-template-columns:1fr;gap:40px;padding:52px 0 36px}
+    .nav{display:none}
+    .steps{grid-template-columns:1fr}
+    .step{border-right:none;border-bottom:1px solid var(--line)}
+    .step:last-child{border-bottom:none}
+    .explore{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in wrap">
+    <div class="logo"><span class="mk"></span>koPaper</div>
+    <nav class="nav">
+      <a href="#">Studio</a>
+      <a href="#">Tutorials</a>
+      <a href="#">Templates</a>
+      <a href="#">Letter Paper</a>
+    </nav>
+    <div class="bar-cta">
+      <a href="#" class="btn btn-line">Sign in</a>
+      <a href="#" class="btn btn-solid">Open Generator →</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="hero">
+    <!-- consistent ONE-POINT perspective system -->
+    <div class="persp">
+      <svg viewBox="0 0 1200 620" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <g fill="none" stroke="#0A0A0B">
+          <!-- floor grid: orthogonals to vanishing point (820,250) -->
+          <g stroke-width="1" opacity="0.07">
+            <line x1="-200" y1="620" x2="820" y2="250"/>
+            <line x1="80"   y1="620" x2="820" y2="250"/>
+            <line x1="360"  y1="620" x2="820" y2="250"/>
+            <line x1="640"  y1="620" x2="820" y2="250"/>
+            <line x1="1000" y1="620" x2="820" y2="250"/>
+            <line x1="1280" y1="620" x2="820" y2="250"/>
+            <line x1="0" y1="620" x2="1200" y2="620"/>
+            <line x1="0" y1="545" x2="1200" y2="545"/>
+            <line x1="0" y1="485" x2="1200" y2="485"/>
+            <line x1="0" y1="438" x2="1200" y2="438"/>
+            <line x1="0" y1="400" x2="1200" y2="400"/>
+            <line x1="0" y1="370" x2="1200" y2="370"/>
+            <line x1="0" y1="347" x2="1200" y2="347"/>
+            <line x1="0" y1="330" x2="1200" y2="330"/>
+          </g>
+          <!-- perspective wireframe box (front rect + receding back face) -->
+          <g stroke-width="1.3" opacity="0.16">
+            <rect x="820" y="330" width="150" height="150"/>
+            <rect x="908" y="300" width="93" height="93"/>
+            <line x1="820" y1="330" x2="908" y2="300"/>
+            <line x1="970" y1="330" x2="1001" y2="300"/>
+            <line x1="970" y1="480" x2="1001" y2="393"/>
+            <line x1="820" y1="480" x2="908" y2="393"/>
+          </g>
+          <!-- wireframe pyramid on the grid -->
+          <g stroke-width="1.3" opacity="0.16">
+            <polygon points="180,505 320,470 460,505 320,540"/>
+            <line x1="320" y1="470" x2="320" y2="380"/>
+            <line x1="320" y1="380" x2="180" y2="505"/>
+            <line x1="320" y1="380" x2="460" y2="505"/>
+            <line x1="320" y1="380" x2="320" y2="540"/>
+          </g>
+          <!-- 3D axis gizmo (viewpoint reference) -->
+          <g stroke-width="1.3" opacity="0.22">
+            <line x1="110" y1="150" x2="200" y2="150"/><polygon points="200,150 188,145 188,155" fill="#0A0A0B" stroke="none"/>
+            <line x1="110" y1="150" x2="110" y2="66"/><polygon points="110,66 105,78 115,78" fill="#0A0A0B" stroke="none"/>
+            <line x1="110" y1="150" x2="168" y2="196"/><polygon points="168,196 156,190 162,179" fill="#0A0A0B" stroke="none"/>
+          </g>
+          <g font-family="JetBrains Mono, monospace" font-size="13" fill="#0A0A0B" opacity="0.30">
+            <text x="206" y="146">X</text>
+            <text x="100" y="58">Y</text>
+            <text x="174" y="212">Z</text>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <div>
+      <div class="eyebrow"><span class="tick"></span><span class="label">AI Papercraft Studio</span></div>
+      <h1 class="display">Turn your idea into <span class="mark">papercraft</span>.</h1>
+      <p class="sub">Describe a character, creature, or object. koPaper draws original papercraft designs as clean line art you can print, cut, and build.</p>
+      <div class="composer">
+        <textarea placeholder="A sleepy fox reading a book, paper toy style…"></textarea>
+        <div class="composer-bar">
+          <div class="chips">
+            <span class="chip on">Cute</span>
+            <span class="chip">Low Poly</span>
+            <span class="chip">Pixel</span>
+            <span class="chip">Fantasy</span>
+          </div>
+          <button class="gen">Generate →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="canvas">
+      <div class="canvas-head">
+        <span class="t">Output</span>
+        <span class="tag">4 variations</span>
+      </div>
+      <div class="grid4">
+        <div class="tile t1">
+          <svg viewBox="0 0 100 100" fill="none" stroke="#0A0A0B" stroke-width="2.2">
+            <rect x="30" y="20" width="40" height="40"/><rect x="30" y="60" width="40" height="40"/>
+            <rect x="0" y="60" width="30" height="40"/><rect x="70" y="60" width="30" height="40"/>
+            <line x1="30" y1="60" x2="30" y2="20"/><line x1="70" y1="60" x2="70" y2="20"/>
+          </svg>
+          <span class="cap">cube</span>
+        </div>
+        <div class="tile t2">
+          <svg viewBox="0 0 100 100" fill="none" stroke="#0A0A0B" stroke-width="2.2">
+            <polygon points="50,15 85,80 15,80"/><polygon points="50,42 70,80 30,80"/>
+          </svg>
+          <span class="cap">pyramid</span>
+        </div>
+        <div class="tile t3">
+          <svg viewBox="0 0 100 100" fill="none" stroke="#0A0A0B" stroke-width="2.2">
+            <circle cx="50" cy="42" r="22"/><path d="M35 60 q15 18 30 0"/>
+          </svg>
+          <span class="cap">toy</span>
+        </div>
+        <div class="tile t4">
+          <svg viewBox="0 0 100 100" fill="none" stroke="#0A0A0B" stroke-width="2.2">
+            <rect x="32" y="18" width="36" height="64"/><line x1="50" y1="18" x2="50" y2="82"/>
+          </svg>
+          <span class="cap">bookmark</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="stat"><div class="n">04</div><div class="l">designs / prompt</div></div>
+    <div class="stat"><div class="n">04</div><div class="l">art styles</div></div>
+    <div class="stat"><div class="n">100%</div><div class="l">free · no sign-up</div></div>
+    <div class="stat"><div class="n">∞</div><div class="l">ideas</div></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <section class="sec">
+    <div class="sec-head">
+      <span class="label">How it works</span>
+      <h2 class="display">From idea to paper in three steps</h2>
+      <p>No templates to hunt, no folding diagrams to decode. Just describe and build.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="idx">01 — INPUT</div><h3>Describe</h3><p>Type what you imagine — a fox, a castle, a gift box. Pick a style if you like.</p></div>
+      <div class="step"><div class="idx">02 — RENDER</div><h3>Generate</h3><p>koPaper draws four original papercraft designs you can preview instantly.</p></div>
+      <div class="step"><div class="idx">03 — BUILD</div><h3>Assemble</h3><p>Print, cut along the lines, fold, and glue. Your idea is now a real paper model.</p></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head">
+      <span class="label">Explore</span>
+      <h2 class="display">Start from a crafted starting point</h2>
+      <p>Prefer a manual project? Browse our guided tutorials and printable templates.</p>
+    </div>
+    <div class="explore">
+      <div class="ecard">
+        <div class="top"><span class="fig">FIG. A</span><span class="fig">MAKE</span></div>
+        <div class="body"><h3>Tutorials</h3><p>Step-by-step origami and paper crafts for all ages.</p><span class="go">Browse <span class="ar"></span></span></div>
+      </div>
+      <div class="ecard">
+        <div class="top"><span class="fig">FIG. B</span><span class="fig">PRINT</span></div>
+        <div class="body"><h3>Templates</h3><p>Printable 3D paper model templates, ready to cut.</p><span class="go">Browse <span class="ar"></span></span></div>
+      </div>
+      <div class="ecard">
+        <div class="top"><span class="fig">FIG. C</span><span class="fig">WRITE</span></div>
+        <div class="body"><h3>Letter Paper</h3><p>Free printable letter paper designs for notes.</p><span class="go">Browse <span class="ar"></span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div>
+      <h2 class="display">What will you create?</h2>
+      <p>Open the studio and turn your first idea into papercraft.</p>
+    </div>
+    <a href="#" class="btn btn-solid">Open Generator →</a>
+  </section>
+
+  <footer>
+    <span>© 2026 koPaper — AI Papercraft Studio</span>
+    <span>Free · No sign-up · Made for makers</span>
+  </footer>
+</div>
+</body>
+</html>

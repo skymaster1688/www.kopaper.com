@@ -27,7 +27,7 @@ function parseHowToSteps(body) {
 }
 
 export async function getStaticPaths() {
-  const tutorials = await getCollection('tutorials', ({ data }) => !data.draft);
+  const tutorials = await getCollection('tutorials', ({ data }) => !data.draft && data.kind !== 'papercraft');
   return tutorials.map(t => {
     const svgHero = join(process.cwd(), 'public', 'images', 'tutorials', t.slug, 'final.svg');
     const pngHero = join(process.cwd(), 'public', 'images', 'tutorials', t.slug, 'final.png');
@@ -73,7 +73,7 @@ const howToSchema = {
 };
 ---
 <BaseLayout
-  title={`${tutorial.data.title} — Step-by-Step Tutorial | koPaper`}
+  title={`${tutorial.data.title} Step-by-Step Tutorial`}
   description={tutorial.data.description}
   ogType="article"
 >
@@ -100,6 +100,13 @@ const howToSchema = {
         <img src={heroImage} alt={`Finished ${tutorial.data.title}`} loading="lazy" width="680" height="600" />
       </figure>
     )}
+
+    <div class="template-actions reveal">
+      <button type="button" class="btn btn-primary btn-large" id="printBtn">Free Printable PDF</button>
+      {heroImage && (
+        <a href={heroImage} download class="btn btn-outline btn-large">Download Image</a>
+      )}
+    </div>
 
     <div class="tutorial-content">
       <Content />
@@ -231,5 +238,25 @@ const howToSchema = {
       color: var(--secondary);
       font-weight: 700;
     }
+    .template-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 24px 0 8px;
+    }
+    /* Print-friendly: hide nav, buttons, related when saving as PDF */
+    @media print {
+      .site-header, .to-top, .breadcrumb, .template-actions { display: none !important; }
+      .tutorial-hero { margin-top: 0; }
+      section { border-top: none !important; }
+    }
   </style>
+
+  <script is:inline>
+    const printBtn = document.getElementById('printBtn');
+    if (printBtn) {
+      printBtn.addEventListener('click', () => window.print());
+    }
+  </script>
 </BaseLayout>

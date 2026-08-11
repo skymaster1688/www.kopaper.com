@@ -3,16 +3,16 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CraftCard from '../../components/CraftCard.astro';
 
-const templates = (await getCollection('tutorials', ({ data }) => !data.draft && data.category === 'models'))
+const templates = (await getCollection('tutorials', ({ data }) => !data.draft && data.kind === 'papercraft'))
   .sort((a, b) => a.data.order - b.data.order);
 ---
 
 <BaseLayout
-  title="Printable Paper Craft Templates | koPaper"
-  description="Download free printable templates for 3D paper models. Dragons, houses, robots, and more — print, cut, fold, and assemble at home."
+  title="Free 3D Paper Craft Templates to Print"
+  description="Download free printable 3D paper craft templates. Build paper dragons, houses, robots, cars, and cats at home. Print, cut, fold, assemble."
 >
   <section class="hero container" style="padding-bottom:20px">
-    <h1 class="reveal">Printable Templates</h1>
+    <h1 class="reveal">Free 3D Paper Craft Templates</h1>
     <p class="reveal">Download, print, and assemble 3D paper models at home. Perfect for craft enthusiasts and kids.</p>
   </section>
 
@@ -21,7 +21,7 @@ const templates = (await getCollection('tutorials', ({ data }) => !data.draft &&
       <div class="grid-3">
         {templates.map(t => (
           <CraftCard
-            href={`/origami/${t.slug}/`}
+            href={`/templates/${t.slug}/`}
             emoji={t.data.emoji}
             title={t.data.title}
             description={t.data.description}

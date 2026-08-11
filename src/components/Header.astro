@@ -1,17 +1,17 @@
 ---
 const currentPath = Astro.url.pathname;
 const navItems = [
+  { label: 'Generator', href: '/tools/papercraft-generator/', match: '/tools' },
   { label: 'Crafts', href: '/origami/', match: '/origami' },
   { label: 'Templates', href: '/templates/', match: '/templates' },
   { label: 'Letter Paper', href: '/letter-paper/', match: '/letter-paper' },
-  { label: 'Text Compare', href: '/text-compare/', match: '/text-compare' },
 ];
 ---
 
 <header class="site-header">
   <div class="header-inner">
     <a href="/" class="logo">
-      <span class="logo-icon">&#128220;</span>
+      <span class="mk"></span>
       koPaper
     </a>
 
@@ -23,6 +23,7 @@ const navItems = [
 
     <div class="header-actions">
       <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">&#127769;</button>
+      <a href="/tools/papercraft-generator/" class="btn btn-primary">Open Generator &rarr;</a>
       <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">&#9776;</button>
     </div>
   </div>

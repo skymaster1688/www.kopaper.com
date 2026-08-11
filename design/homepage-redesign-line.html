@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>koPaper — Line-art / Wireframe Redesign Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#FCFCFC;
+    --surface:#FFFFFF;
+    --ink:#111114;
+    --muted:#6B6B73;
+    --line:rgba(17,17,20,.14);
+    --line-soft:rgba(17,17,20,.07);
+    --radius:18px;
+    --radius-sm:11px;
+    --shadow:0 1px 2px rgba(17,17,20,.04),0 16px 40px rgba(17,17,20,.06);
+    --disp:'Space Grotesk','Inter',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+  /* ===== floating top nav (monochrome, thin border) ===== */
+  nav{position:sticky;top:16px;z-index:50;margin:16px auto 0;max-width:1120px}
+  .nav-inner{display:flex;align-items:center;gap:18px;background:var(--surface);
+    border:1px solid var(--line);border-radius:999px;padding:9px 11px 9px 20px;box-shadow:var(--shadow)}
+  .logo{display:flex;align-items:center;gap:9px;font-family:var(--disp);font-weight:700;font-size:1.18rem;letter-spacing:-.02em}
+  .logo .mk{width:24px;height:24px;border:1.6px solid var(--ink);border-radius:7px;position:relative}
+  .logo .mk::after{content:"";position:absolute;inset:6px;border:1.3px solid var(--ink);border-radius:3px}
+  .nav-links{display:flex;gap:2px;margin-left:auto}
+  .nav-links a{color:var(--muted);text-decoration:none;font-weight:500;font-size:.92rem;padding:9px 14px;border-radius:999px;transition:.16s}
+  .nav-links a:hover{color:var(--ink);background:var(--line-soft)}
+  .btn{display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;font-family:inherit;font-weight:600;text-decoration:none;font-size:.92rem}
+  .btn-solid{background:var(--ink);color:#fff;padding:11px 20px;border-radius:999px;transition:.2s}
+  .btn-solid:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(17,17,20,.18)}
+  .btn-outline{background:transparent;color:var(--ink);border:1px solid var(--line);padding:11px 20px;border-radius:999px}
+  .btn-outline:hover{border-color:var(--ink)}
+
+  /* ===== hero with 3D wireframe background ===== */
+  .hero{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding:78px 0 56px}
+  .wire-bg{position:absolute;inset:-40px -120px;z-index:0;pointer-events:none;overflow:visible}
+  .wire-bg svg{width:100%;height:100%}
+  .hero>*{position:relative;z-index:1}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--disp);font-size:.78rem;font-weight:600;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--ink);border:1px solid var(--line);
+    padding:7px 14px;border-radius:999px;margin-bottom:22px}
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--ink);animation:blink 1.8s infinite}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+  h1{font-family:var(--disp);font-size:clamp(2.5rem,5.4vw,3.8rem);line-height:1.02;letter-spacing:-.035em;font-weight:700}
+  h1 .ul{position:relative;white-space:nowrap}
+  h1 .ul::after{content:"";position:absolute;left:0;right:0;bottom:.06em;height:2px;background:var(--ink)}
+  .sub{color:var(--muted);font-size:1.12rem;margin:20px 0 28px;max-width:44ch}
+
+  /* composer — line art */
+  .composer{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow)}
+  .composer textarea{width:100%;border:none;outline:none;resize:none;font-family:inherit;font-size:1rem;color:var(--ink);background:transparent;min-height:54px;padding:6px 8px}
+  .composer textarea::placeholder{color:#A0A0A8}
+  .composer-bar{display:flex;align-items:center;gap:10px;margin-top:10px;padding-top:12px;border-top:1px dashed var(--line)}
+  .chips{display:flex;gap:7px;flex-wrap:wrap;flex:1}
+  .chip{font-size:.8rem;font-weight:500;color:var(--ink);background:transparent;border:1px solid var(--line);padding:6px 12px;border-radius:999px;cursor:pointer;transition:.15s}
+  .chip:hover{border-color:var(--ink)}
+  .chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .gen{background:var(--ink);color:#fff;border:none;border-radius:var(--radius-sm);padding:11px 20px;font-weight:600;font-family:inherit;cursor:pointer;white-space:nowrap}
+  .gen:hover{transform:translateY(-1px)}
+
+  /* canvas — line-art papercraft nets */
+  .canvas{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:22px;
+    box-shadow:var(--shadow);background-image:radial-gradient(var(--line-soft) 1px,transparent 1px);background-size:18px 18px}
+  .canvas-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+  .canvas-head .t{font-family:var(--disp);font-weight:600;font-size:.9rem}
+  .canvas-head .badge{font-family:var(--disp);font-size:.72rem;font-weight:600;color:var(--ink);border:1px solid var(--line);padding:4px 10px;border-radius:999px}
+  .grid4{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .tile{aspect-ratio:1;border-radius:14px;background:#fff;border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;position:relative}
+  .tile svg{width:62%;height:62%}
+  .tile .tag{position:absolute;left:9px;bottom:9px;font-family:var(--disp);font-size:.68rem;font-weight:600;color:var(--muted);border:1px solid var(--line);padding:2px 7px;border-radius:7px;background:#fff}
+  .tile.t1{animation:fl 5s ease-in-out infinite}
+  .tile.t2{animation:fl 5s ease-in-out infinite .6s}
+  .tile.t3{animation:fl 5s ease-in-out infinite 1.2s}
+  .tile.t4{animation:fl 5s ease-in-out infinite 1.8s}
+  @keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+  /* stats */
+  .stats{display:flex;gap:40px;padding:6px 0 60px;flex-wrap:wrap}
+  .stat .n{font-family:var(--disp);font-size:1.7rem;font-weight:700;letter-spacing:-.02em}
+  .stat .l{color:var(--muted);font-size:.88rem}
+
+  /* section heads */
+  .sec{padding:60px 0}
+  .sec-head{text-align:center;max-width:620px;margin:0 auto 44px}
+  .sec-head .k{font-family:var(--disp);font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
+  .sec-head h2{font-family:var(--disp);font-size:2.1rem;letter-spacing:-.02em;font-weight:700;margin:12px 0 10px}
+  .sec-head p{color:var(--muted)}
+
+  /* steps — thin border, line icons */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .step{border:1px solid var(--line);border-radius:var(--radius);padding:26px;background:var(--surface);box-shadow:var(--shadow)}
+  .step .ico{width:34px;height:34px;margin-bottom:14px}
+  .step .num{font-family:var(--disp);font-weight:700;font-size:.8rem;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:3px 10px;display:inline-block;margin-bottom:14px}
+  .step h3{font-family:var(--disp);font-size:1.18rem;margin-bottom:8px;letter-spacing:-.01em}
+  .step p{color:var(--muted);font-size:.95rem}
+
+  /* explore — monochrome cards */
+  .explore{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .ecard{border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:var(--surface);
+    position:relative;overflow:hidden;min-height:200px;display:flex;flex-direction:column;justify-content:flex-end;box-shadow:var(--shadow);transition:.2s}
+  .ecard:hover{transform:translateY(-3px);border-color:var(--ink)}
+  .ecard .ico{position:absolute;top:22px;right:22px;width:40px;height:40px;color:var(--ink)}
+  .ecard h3{font-family:var(--disp);font-size:1.35rem;margin-bottom:6px;letter-spacing:-.01em}
+  .ecard p{color:var(--muted);font-size:.94rem;margin-bottom:16px}
+  .ecard .go{font-weight:600;display:inline-flex;align-items:center;gap:6px;color:var(--ink)}
+
+  /* cta — solid black */
+  .cta{background:var(--ink);border-radius:24px;padding:56px;text-align:center;color:#fff;margin:24px 0 76px}
+  .cta h2{font-family:var(--disp);font-size:2.3rem;letter-spacing:-.02em;margin-bottom:12px}
+  .cta p{color:rgba(255,255,255,.7);margin-bottom:26px}
+  .cta .btn-solid{background:#fff;color:var(--ink)}
+
+  footer{padding:36px 0 56px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+
+  @media(max-width:860px){
+    .hero{grid-template-columns:1fr;gap:36px;padding:44px 0 30px}
+    .steps,.explore{grid-template-columns:1fr}
+    .nav-links{display:none}
+  }
+</style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner wrap" style="max-width:none">
+      <div class="logo"><span class="mk"></span>koPaper</div>
+      <div class="nav-links">
+        <a href="#">Studio</a>
+        <a href="#">Tutorials</a>
+        <a href="#">Templates</a>
+        <a href="#">Letter Paper</a>
+      </div>
+      <a href="#" class="btn btn-solid">Open Generator →</a>
+    </div>
+  </nav>
+
+  <div class="wrap">
+    <section class="hero">
+      <!-- 3D wireframe background -->
+      <div class="wire-bg">
+        <svg viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g fill="none" stroke="#111114" stroke-width="1.1" opacity="0.13">
+            <!-- big central iso cube -->
+            <g transform="translate(880,150)">
+              <path d="M0,-60 L52,-30 L0,0 L-52,-30 Z"/>
+              <path d="M-52,-30 L0,0 L0,60 L-52,30 Z"/>
+              <path d="M52,-30 L0,0 L0,60 L52,30 Z"/>
+            </g>
+            <!-- mid cube -->
+            <g transform="translate(1010,360) scale(.7)">
+              <path d="M0,-60 L52,-30 L0,0 L-52,-30 Z"/>
+              <path d="M-52,-30 L0,0 L0,60 L-52,30 Z"/>
+              <path d="M52,-30 L0,0 L0,60 L52,30 Z"/>
+            </g>
+            <!-- small cube -->
+            <g transform="translate(760,420) scale(.5)">
+              <path d="M0,-60 L52,-30 L0,0 L-52,-30 Z"/>
+              <path d="M-52,-30 L0,0 L0,60 L-52,30 Z"/>
+              <path d="M52,-30 L0,0 L0,60 L52,30 Z"/>
+            </g>
+            <!-- pyramid wireframe -->
+            <g transform="translate(120,120)">
+              <path d="M0,0 L60,90 L-60,90 Z"/>
+              <path d="M0,0 L0,90"/>
+              <path d="M0,40 L60,90 M0,40 L-60,90"/>
+            </g>
+            <!-- floating lines / constellation -->
+            <path d="M120,210 L760,420 M200,160 L880,150 M1010,360 L760,420" stroke-dasharray="3 6" opacity="0.6"/>
+          </g>
+        </svg>
+      </div>
+
+      <div>
+        <span class="eyebrow"><span class="dot"></span>AI Papercraft Studio</span>
+        <h1>Turn your idea into <span class="ul">papercraft</span>.</h1>
+        <p class="sub">Describe a character, creature, or object. koPaper draws original papercraft designs as clean line art you can print, cut, and build.</p>
+        <div class="composer">
+          <textarea placeholder="A sleepy fox reading a book, paper toy style…"></textarea>
+          <div class="composer-bar">
+            <div class="chips">
+              <span class="chip on">Cute</span>
+              <span class="chip">Low Poly</span>
+              <span class="chip">Pixel</span>
+              <span class="chip">Fantasy</span>
+            </div>
+            <button class="gen">Generate →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="canvas">
+        <div class="canvas-head">
+          <span class="t">Your designs</span>
+          <span class="badge">4 variations</span>
+        </div>
+        <div class="grid4">
+          <div class="tile t1">
+            <svg viewBox="0 0 100 100" fill="none" stroke="#111114" stroke-width="2.4">
+              <rect x="30" y="20" width="40" height="40" rx="4"/><rect x="30" y="60" width="40" height="40" rx="4"/>
+              <rect x="0" y="60" width="30" height="40" rx="4"/><rect x="70" y="60" width="30" height="40" rx="4"/>
+              <line x1="30" y1="60" x2="30" y2="20" stroke-dasharray="4 4"/><line x1="70" y1="60" x2="70" y2="20" stroke-dasharray="4 4"/>
+            </svg>
+            <span class="tag">cube</span>
+          </div>
+          <div class="tile t2">
+            <svg viewBox="0 0 100 100" fill="none" stroke="#111114" stroke-width="2.4">
+              <polygon points="50,15 85,80 15,80"/><polygon points="50,42 70,80 30,80"/>
+            </svg>
+            <span class="tag">pyramid</span>
+          </div>
+          <div class="tile t3">
+            <svg viewBox="0 0 100 100" fill="none" stroke="#111114" stroke-width="2.4">
+              <circle cx="50" cy="42" r="22"/><path d="M35 60 q15 18 30 0"/>
+            </svg>
+            <span class="tag">toy</span>
+          </div>
+          <div class="tile t4">
+            <svg viewBox="0 0 100 100" fill="none" stroke="#111114" stroke-width="2.4">
+              <rect x="32" y="18" width="36" height="64" rx="4"/><line x1="50" y1="18" x2="50" y2="82" stroke-dasharray="4 4"/>
+            </svg>
+            <span class="tag">bookmark</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="stats">
+      <div class="stat"><div class="n">4</div><div class="l">designs per prompt</div></div>
+      <div class="stat"><div class="n">4</div><div class="l">art styles</div></div>
+      <div class="stat"><div class="n">100%</div><div class="l">free, no sign-up</div></div>
+      <div class="stat"><div class="n">∞</div><div class="l">ideas to try</div></div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section class="sec">
+      <div class="sec-head">
+        <div class="k">How it works</div>
+        <h2>From idea to paper in three steps</h2>
+        <p>No templates to hunt, no folding diagrams to decode. Just describe and build.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="num">Step 01</span>
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#111114" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+          <h3>Describe</h3><p>Type what you imagine — a fox, a castle, a gift box. Pick a style if you like.</p>
+        </div>
+        <div class="step">
+          <span class="num">Step 02</span>
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#111114" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+          <h3>Generate</h3><p>koPaper draws four original papercraft designs you can preview instantly.</p>
+        </div>
+        <div class="step">
+          <span class="num">Step 03</span>
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#111114" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v6h6"/><path d="M10 14 4 20M4 20h6M4 20v-6"/></svg>
+          <h3>Build</h3><p>Print, cut along the lines, fold, and glue. Your idea is now a real paper model.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="sec-head">
+        <div class="k">Explore</div>
+        <h2>Start from a crafted starting point</h2>
+        <p>Prefer a manual project? Browse our guided tutorials and printable templates.</p>
+      </div>
+      <div class="explore">
+        <div class="ecard"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M6 9v6M8.5 7.5 20 17M8.5 16.5 20 7"/></svg><h3>Tutorials</h3><p>Step-by-step origami and paper crafts for all ages.</p><span class="go">Browse →</span></div>
+        <div class="ecard"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16"/></svg><h3>Templates</h3><p>Printable 3D paper model templates, ready to cut.</p><span class="go">Browse →</span></div>
+        <div class="ecard"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><h3>Letter Paper</h3><p>Free printable letter paper designs for notes.</p><span class="go">Browse →</span></div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>What will you create?</h2>
+      <p>Open the studio and turn your first idea into papercraft.</p>
+      <a href="#" class="btn btn-solid">Open Generator →</a>
+    </section>
+
+    <footer>
+      <span>© 2026 koPaper — AI Papercraft Studio</span>
+      <span>Free · No sign-up · Made for makers</span>
+    </footer>
+  </div>
+</body>
+</html>
