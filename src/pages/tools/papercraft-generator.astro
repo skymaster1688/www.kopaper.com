@@ -45,7 +45,7 @@ const description = 'Describe an idea, pick a style, and preview papercraft desi
           <button class="btn btn-ghost" id="surprise" type="button">Surprise me</button>
           <button class="btn btn-primary btn-large" id="generateBtn" type="button">Generate</button>
         </div>
-        <p class="note">Preview rendered with koPaper's template engine. Photoreal AI image generation is coming soon.</p>
+        <p class="note">AI-generated papercraft art. By default koPaper uses the free Pollinations backend (no key, zero cost); set <code>IMAGE_PROVIDER=openrouter</code> with an API key to upgrade quality. If generation fails, free printable template nets are shown instead.</p>
       </aside>
 
       <div class="gen-stage">
@@ -251,8 +251,54 @@ const description = 'Describe an idea, pick a style, and preview papercraft desi
     }
 
     let currentSVGs = [];
+    let currentImages = [];
 
-    function generate() {
+    function setLoading(on) {
+      const btn = $('generateBtn');
+      if (btn) { btn.disabled = on; btn.textContent = on ? 'Generating…' : 'Generate'; }
+      const grid = $('resultGrid');
+      if (grid) grid.classList.toggle('loading', on);
+    }
+
+    function renderImages(images, style) {
+      const label = style.charAt(0).toUpperCase() + style.slice(1);
+      images.slice(0, 4).forEach((img, i) => {
+        const card = document.querySelector(`.result-card[data-i="${i}"]`);
+        if (!card) return;
+        card.querySelector('.thumb').innerHTML =
+          `<img class="gen-img" alt="${label} AI papercraft design ${i + 1}" src="data:${img.mediaType};base64,${img.b64}">`;
+        card.querySelector('.title').textContent = `${label} AI design ${i + 1}`;
+      });
+    }
+
+    // Real AI generation via the serverless endpoint. Falls back to SVG nets on any failure.
+    async function generate() {
+      const q = promptEl.value.trim() || 'a papercraft';
+      const style = styleEl.value;
+      setLoading(true);
+      try {
+        const res = await fetch('/api/generate-image', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt: q, style }),
+        });
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.ok && data.images && data.images.length) {
+            currentImages = data.images;
+            currentSVGs = [];
+            renderImages(data.images, style);
+            setLoading(false);
+            return;
+          }
+        }
+      } catch (_) { /* fall through to SVG */ }
+      generateFallback();
+      setLoading(false);
+    }
+
+    // Deterministic, free, printable template nets (first paint + fallback when no API key).
+    function generateFallback() {
       const q = promptEl.value.trim();
       const style = styleEl.value;
       const [paper, line] = STYLE_PALETTES[style] || STYLE_PALETTES.cute;
@@ -261,6 +307,7 @@ const description = 'Describe an idea, pick a style, and preview papercraft desi
       const order = [base, ...SHAPES.filter(s => s !== base)];
       const sBase = parseInt(sizeEl.value, 10);
       currentSVGs = [];
+      currentImages = [];
       order.slice(0, 4).forEach((type, i) => {
         const s = sBase + (i % 2 ? 10 : -6);
         const svgStr = buildCardSVG(type, s, true, 'dashed', paper, line, i);
@@ -282,13 +329,21 @@ const description = 'Describe an idea, pick a style, and preview papercraft desi
       generate();
     }
 
-    function downloadSVG(i) {
+    function downloadAsset(i) {
+      const img = currentImages[i];
+      if (img && img.b64) {
+        const a = document.createElement('a');
+        a.href = `data:${img.mediaType};base64,${img.b64}`;
+        a.download = `kopaper-design-${i + 1}.png`;
+        a.click();
+        return;
+      }
       const data = currentSVGs[i];
       if (!data) return;
       const blob = new Blob(['<?xml version="1.0" encoding="UTF-8"?>\n' + data], { type: 'image/svg+xml' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
-      a.href = url; a.download = `kopaper-design-${i+1}.svg`;
+      a.href = url; a.download = `kopaper-design-${i + 1}.svg`;
       a.click();
       URL.revokeObjectURL(url);
     }
@@ -296,10 +351,10 @@ const description = 'Describe an idea, pick a style, and preview papercraft desi
     // Wire events
     $('generateBtn').addEventListener('click', generate);
     $('surprise').addEventListener('click', surprise);
-    sizeEl.addEventListener('input', () => { sizeVal.textContent = sizeEl.value; generate(); });
+    sizeEl.addEventListener('input', () => { sizeVal.textContent = sizeEl.value; generateFallback(); });
     styleEl.addEventListener('change', generate);
     promptEl.addEventListener('keydown', (e) => { if (e.key === 'Enter') generate(); });
-    $('resultGrid').querySelectorAll('[data-dl]').forEach(b => b.addEventListener('click', () => downloadSVG(parseInt(b.dataset.dl, 10))));
+    $('resultGrid').querySelectorAll('[data-dl]').forEach(b => b.addEventListener('click', () => downloadAsset(parseInt(b.dataset.dl, 10))));
     $('resultGrid').querySelectorAll('[data-print]').forEach(b => b.addEventListener('click', () => window.print()));
     const upload = $('upload');
     if (upload) upload.addEventListener('change', () => { alert('Image to papercraft is planned. For now, describe your idea in the text box and generate.'); upload.value = ''; });
@@ -309,6 +364,7 @@ const description = 'Describe an idea, pick a style, and preview papercraft desi
     if (params.get('q')) promptEl.value = params.get('q');
     if (params.get('style') && STYLE_PALETTES[params.get('style')]) styleEl.value = params.get('style');
 
-    generate();
+    // First paint: free printable nets (no API cost). Real AI images generate on demand.
+    generateFallback();
   </script>
 </BaseLayout>

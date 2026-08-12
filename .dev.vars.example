@@ -1,0 +1,11 @@
+# Copy this file to `.dev.vars` and fill in your values.
+# `.dev.vars` is gitignored and never committed.
+
+# Optional: which image backend the generator uses.
+#   pollinations (default) -> FREE, no key needed.
+#   openrouter             -> PAID, needs the key below (uses your credits).
+IMAGE_PROVIDER=pollinations
+
+# Only needed when IMAGE_PROVIDER=openrouter. Leave blank to use the free
+# Pollinations backend. Get a key at https://openrouter.ai/keys
+OPENROUTER_API_KEY=

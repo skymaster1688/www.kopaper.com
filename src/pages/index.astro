@@ -90,14 +90,14 @@ const faqSchema = {
         <p class="eyebrow"><span class="label">AI Papercraft Generator</span></p>
         <h1 class="display">Create Your Own <span class="mark">Papercraft</span> with AI</h1>
         <p class="sub">Turn your ideas into unique paper craft designs.</p>
-        <form class="composer" action="/tools/papercraft-generator/" method="get">
+        <form class="composer" id="homeComposer" action="/tools/papercraft-generator/" method="get">
           <textarea name="q" id="homePrompt" placeholder="Describe your idea &mdash; e.g. a cute dragon" aria-label="Describe your idea"></textarea>
           <div class="composer-bar">
             <div class="chips" id="homeChips">
-              <button type="button" class="chip on" data-q="a cute papercraft character">Cute</button>
-              <button type="button" class="chip" data-q="a low poly papercraft model">Low Poly</button>
-              <button type="button" class="chip" data-q="a pixel style papercraft">Pixel</button>
-              <button type="button" class="chip" data-q="a fantasy papercraft creature">Fantasy</button>
+              <button type="button" class="chip on" data-style="cute" data-q="a cute papercraft character">Cute</button>
+              <button type="button" class="chip" data-style="lowpoly" data-q="a low poly papercraft model">Low Poly</button>
+              <button type="button" class="chip" data-style="pixel" data-q="a pixel style papercraft">Pixel</button>
+              <button type="button" class="chip" data-style="fantasy" data-q="a fantasy papercraft creature">Fantasy</button>
             </div>
             <button type="submit" class="gen">Generate &rarr;</button>
           </div>
@@ -105,7 +105,7 @@ const faqSchema = {
       </div>
 
       <div class="right">
-        <div class="canvas">
+        <div class="canvas" id="homeCanvas">
           <div class="canvas-head">
             <span class="t">Output</span>
             <span class="tag">4 variations</span>
@@ -353,6 +353,11 @@ const faqSchema = {
   <script>
     const input = document.getElementById('homePrompt');
     const chips = document.getElementById('homeChips');
+    const form = document.getElementById('homeComposer');
+    const canvas = document.getElementById('homeCanvas');
+    const tag = canvas ? canvas.querySelector('.tag') : null;
+    const tiles = canvas ? Array.from(canvas.querySelectorAll('.tile')) : [];
+
     if (input && chips) {
       chips.querySelectorAll('.chip').forEach(chip => {
         chip.addEventListener('click', () => {
@@ -361,6 +366,49 @@ const faqSchema = {
           input.value = chip.getAttribute('data-q') || '';
           input.focus();
         });
+      });
+    }
+
+    const activeChip = () => (chips ? chips.querySelector('.chip.on') : null);
+
+    if (form && canvas) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const chip = activeChip();
+        const style = (chip && chip.getAttribute('data-style')) || 'cute';
+        const styleLabel = (chip && chip.textContent) ? chip.textContent.trim() : 'Cute';
+        const idea = (input.value.trim())
+          || (chip ? (chip.getAttribute('data-q') || '') : '')
+          || 'a papercraft';
+        if (!idea) return;
+
+        canvas.classList.add('is-loading');
+        if (tag) tag.textContent = 'Generating…';
+
+        try {
+          const res = await fetch('/api/generate-image', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ prompt: idea, style }),
+          });
+          if (!res.ok) throw new Error('bad status ' + res.status);
+          const data = await res.json();
+          if (!data || !data.ok || !data.images || !data.images.length) throw new Error('no images');
+          data.images.slice(0, 4).forEach((img, i) => {
+            const tile = tiles[i];
+            if (!tile) return;
+            const mime = img.mediaType || 'image/png';
+            tile.innerHTML = `<img src="data:${mime};base64,${img.b64}" alt="${styleLabel} papercraft variation ${i + 1}"><span class="cap onimg">${styleLabel} ${i + 1}</span>`;
+          });
+          if (tag) tag.textContent = '4 variations';
+        } catch (_) {
+          // API not reachable (e.g. not yet deployed) → land on the full generator tool.
+          window.location.href = '/tools/papercraft-generator/?q='
+            + encodeURIComponent(idea) + '&style=' + encodeURIComponent(style);
+          return;
+        } finally {
+          canvas.classList.remove('is-loading');
+        }
       });
     }
   </script>

@@ -1,0 +1,13 @@
+name = "kopaper"
+pages_build_output_dir = "dist"
+compatibility_date = "2025-06-01"
+
+# Local dev only. Secrets live in .dev.vars (gitignored), not here.
+# Production secrets are set in the Cloudflare Pages dashboard
+# (Settings -> Environment variables).
+#
+# IMAGE_PROVIDER: which image backend to use.
+#   "pollinations" (default) -> FREE, no key needed, zero cost.
+#   "openrouter"              -> PAID, requires OPENROUTER_API_KEY (draws on credits).
+# If "openrouter" is chosen but the key is missing, the function auto-falls
+# back to the free "pollinations" provider.
