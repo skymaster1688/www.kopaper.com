@@ -1,8 +1,10 @@
-import { writeFile } from 'node:fs/promises';
+import { writeFile, readdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
+import { join, relative } from 'node:path';
 
-// 轻量自定义 sitemap 集成：构建结束后把本次所有页面汇总成单个 sitemap.xml
-// 替代 @astrojs/sitemap 默认的「索引 + 分片」结构，输出更干净的单文件。
+// 轻量自定义 sitemap 集成：构建结束后扫描 dist/ 目录，把所有 .html 汇总成单个 sitemap.xml。
+// 采用「直接遍历输出目录」的方式，不依赖 astro:build:done 内部 pages 结构，
+// 因此对任意 Astro 5.x 子版本都稳健。
 export function singleSitemap() {
   let site = '';
 
@@ -12,7 +14,7 @@ export function singleSitemap() {
       'astro:config:done': ({ config }) => {
         site = (config.site || '').replace(/\/$/, '');
       },
-      'astro:build:done': async ({ pages, dir }) => {
+      'astro:build:done': async ({ dir }) => {
         if (!site) {
           console.warn('[single-sitemap] 未设置 config.site，跳过 sitemap 生成');
           return;
@@ -22,24 +24,37 @@ export function singleSitemap() {
           return;
         }
 
-        // Astro 5 中 p.path 是 URL 对象；兼容旧版字符串。
-        // 输出路径可能是目录式(/about/)或带 .html(/about/index.html)，统一规整为目录式 URL。
-        const urls = (pages || [])
-          .map((p) => {
-            const raw = p?.path instanceof URL ? p.path.pathname : String(p?.path ?? '');
-            return raw;
-          })
-          // 只保留真实页面（.html 文件或目录式路由），排除资源/静态文件
-          .filter((raw) => raw === '/' || raw.endsWith('/') || raw.endsWith('.html'))
-          // 规整：去掉 index.html、补尾斜杠
-          .map((raw) => {
-            let path = raw.replace(/index\.html$/, '');
-            if (!path.endsWith('/')) path += '/';
-            return path;
+        const root = fileURLToPath(dir);
+        const htmlFiles = [];
+
+        async function walk(d) {
+          let entries;
+          try {
+            entries = await readdir(d, { withFileTypes: true });
+          } catch {
+            return;
+          }
+          for (const e of entries) {
+            const full = join(d, e.name);
+            if (e.isDirectory()) {
+              await walk(full);
+            } else if (e.isFile() && e.name.endsWith('.html')) {
+              htmlFiles.push(full);
+            }
+          }
+        }
+        await walk(root);
+
+        const urls = htmlFiles
+          .map((f) => {
+            // 转成相对站点的目录式路径
+            let rel = relative(root, f).split('\\').join('/'); // 兼容 Windows 分隔符
+            rel = rel.replace(/\.html$/, '').replace(/\/index$/, '');
+            return rel === 'index' || rel === '' ? '/' : '/' + rel + '/';
           })
           // 排除 404 / sitemap 等非内容页
           .filter((path) => !path.startsWith('/404') && !path.includes('sitemap'))
-          // 去重（根路径可能同时以 / 和 /index.html 出现）
+          // 去重
           .filter((path, i, arr) => arr.indexOf(path) === i)
           .map((path) => `    <url><loc>${site}${path}</loc></url>`)
           .join('\n');
@@ -50,7 +65,7 @@ export function singleSitemap() {
           `${urls}\n` +
           '</urlset>\n';
 
-        const outPath = fileURLToPath(new URL('sitemap.xml', dir));
+        const outPath = join(root, 'sitemap.xml');
         await writeFile(outPath, xml, 'utf-8');
         const count = urls ? urls.split('\n').length : 0;
         console.log(`[single-sitemap] 已生成 ${count} 条 URL -> ${outPath}`);

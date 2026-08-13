@@ -1,23 +1,27 @@
-// Cloudflare Pages Function — image generation proxy for koPaper.
+// Cloudflare Worker image-generation endpoint for koPaper (Astro SSR route).
+// Compiled to a Worker route by @astrojs/cloudflare.
 // Route: POST /api/generate-image
-// Supports multiple providers, selected by:
+//
+// Provider selection:
 //   1. request body field  `provider`  ("pollinations" | "openrouter")
 //   2. environment variable  IMAGE_PROVIDER (default: "pollinations")
-//   3. auto-fallback: if "openrouter" is chosen but OPENROUTER_API_KEY is missing,
-//      it silently falls back to the free "pollinations" provider.
+//   3. auto-fallback: if "openrouter" chosen but OPENROUTER_API_KEY missing,
+//      silently fall back to the free "pollinations" provider.
 //
 // Providers:
-//   - pollinations : FREE, no API key, zero cost. URL-based, 4 variants via distinct seeds.
-//   - openrouter   : PAID, requires OPENROUTER_API_KEY (Cloudflare env var), draws on credits.
+//   - pollinations : FREE, no API key. URL-based, 4 variants via distinct seeds.
+//   - openrouter   : PAID, requires OPENROUTER_API_KEY (Cloudflare env var).
 //
-// Both return the same shape: { ok, model, images: [{ b64, mediaType }] }
-// so the front-end never needs to know which provider answered.
+// Returns { ok, provider, model, images: [{ b64, mediaType }] }.
+
+export const prerender = false;
+
+import type { APIContext } from 'astro';
 
 const DEFAULT_PROVIDER = 'pollinations';
 const DEFAULT_N = 4;
 const TIMEOUT_MS = 60000;
 
-// Maps the site's style chips to prompt adjectives.
 const STYLE_PHRASES: Record<string, string> = {
   cute: 'cute kawaii',
   lowpoly: 'low poly geometric',
@@ -25,19 +29,15 @@ const STYLE_PHRASES: Record<string, string> = {
   fantasy: 'fantasy magical',
 };
 
-// Pollinations model options (free). Flux is the best all-rounder for papercraft.
 const POLLINATIONS_DEFAULT_MODEL = 'flux';
-// Map the site's style chips to the best-fit free Pollinations model.
 const POLLINATIONS_STYLE_MODELS: Record<string, string> = {
-  cute: 'flux-anime', // cute kawaii illustration
-  lowpoly: 'flux', // clean geometric look
-  pixel: 'sdxl', // crisper pixel-art rendering
-  fantasy: 'flux', // magical concept art
+  cute: 'flux-anime',
+  lowpoly: 'flux',
+  pixel: 'sdxl',
+  fantasy: 'flux',
 };
-// OpenRouter default (paid, cheapest tier).
 const OPENROUTER_DEFAULT_MODEL = 'bytedance-seed/seedream-4.5';
 
-// Only allow safe slugs to avoid header/body injection.
 const SAFE_SLUG = /^[\w./-]+$/;
 
 interface GenerateBody {
@@ -69,12 +69,16 @@ function arrayBufferToBase64(buf: ArrayBuffer): string {
   return btoa(binary);
 }
 
-// Decide which provider to actually use, honoring request + env + key availability.
+// Cloudflare env is injected by @astrojs/cloudflare into locals.runtime.env.
+function getEnv(context: APIContext): Record<string, string> {
+  const runtime = (context.locals as { runtime?: { env?: Record<string, string> } }).runtime;
+  return runtime?.env ?? {};
+}
+
 function resolveProvider(requested: string | undefined, env: Record<string, string>): 'pollinations' | 'openrouter' {
   let preferred = (requested || env?.IMAGE_PROVIDER || DEFAULT_PROVIDER).toString().toLowerCase();
   if (preferred !== 'openrouter' && preferred !== 'pollinations') preferred = DEFAULT_PROVIDER;
   if (preferred === 'openrouter' && !env?.OPENROUTER_API_KEY) {
-    // OpenRouter was requested but no key is configured → fall back to free provider.
     return 'pollinations';
   }
   return preferred as 'pollinations' | 'openrouter';
@@ -84,7 +88,6 @@ function buildPrompt(idea: string, stylePhrase: string): string {
   return `${stylePhrase} papercraft of ${idea}, paper art sculpture, cut and fold paper model, clean light background, high detail`;
 }
 
-// ---- Provider: Pollinations (FREE) ---------------------------------------
 async function generatePollinations(
   prompt: string,
   model: string,
@@ -108,7 +111,6 @@ async function generatePollinations(
   return { model: `pollinations:${model}`, images };
 }
 
-// ---- Provider: OpenRouter (PAID) ----------------------------------------
 async function generateOpenRouter(
   prompt: string,
   apiKey: string,
@@ -147,7 +149,7 @@ async function generateOpenRouter(
   return { model, images };
 }
 
-export async function onRequestOptions() {
+export async function OPTIONS() {
   return new Response(null, {
     headers: {
       'access-control-allow-origin': '*',
@@ -157,7 +159,7 @@ export async function onRequestOptions() {
   });
 }
 
-export async function onRequestPost(context: { request: Request; env: Record<string, string> }) {
+export async function POST(context: APIContext) {
   let body: GenerateBody;
   try {
     body = (await context.request.json()) as GenerateBody;
@@ -175,8 +177,9 @@ export async function onRequestPost(context: { request: Request; env: Record<str
   const n = Math.min(Math.max(parseInt(String(body.n ?? DEFAULT_N), 10) || DEFAULT_N, 1), 4);
   const prompt = buildPrompt(idea, stylePhrase);
 
-  const provider = resolveProvider(body.provider, context.env ?? {});
-  const apiKey = context.env?.OPENROUTER_API_KEY;
+  const env = getEnv(context);
+  const provider = resolveProvider(body.provider, env);
+  const apiKey = env?.OPENROUTER_API_KEY;
 
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
