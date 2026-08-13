@@ -1,6 +1,7 @@
-name = "kopaper"
+# wrangler.toml
+name = 'www-kopaper-com'
 pages_build_output_dir = "dist"
-compatibility_date = "2025-06-01"
+compatibility_date = "2026-08-14"
 
 # Local dev only. Secrets live in .dev.vars (gitignored), not here.
 # Production secrets are set in the Cloudflare Pages dashboard
