@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LegacyNotice from '../components/LegacyNotice.astro';
+---
+
+<BaseLayout
+  title="Paper Craft AI"
+  description="koPaper's Paper Craft AI is now the AI Papercraft Generator. Describe an idea and generate printable paper craft designs you can cut, fold and build."
+>
+  <LegacyNotice
+    badge="Now: AI Papercraft Generator"
+    title="Paper Craft AI"
+    intro="Paper Craft AI has become the AI Papercraft Generator. Describe an idea, pick a style, and generate printable paper craft designs you can cut, fold and build at home."
+    links={[
+      { href: '/tools/papercraft-generator/', label: 'Open the AI Papercraft Generator' },
+      { href: '/origami/', label: 'Browse origami tutorials' },
+      { href: '/', label: 'Back to home' },
+    ]}
+  />
+</BaseLayout>

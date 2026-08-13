@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LegacyNotice from '../components/LegacyNotice.astro';
+---
+
+<BaseLayout
+  title="koPaper Hindi Edition"
+  description="koPaper now focuses on its English AI papercraft creation platform. The Hindi edition is no longer maintained, but you can create unique paper crafts with our AI generator in English."
+>
+  <LegacyNotice
+    title="koPaper Hindi Edition"
+    intro="koPaper now focuses on its English AI papercraft creation platform, so the Hindi edition is no longer maintained. You can still create unique paper crafts with our AI generator on the main site."
+    links={[
+      { href: '/tools/papercraft-generator/', label: 'AI Papercraft Generator' },
+      { href: '/origami/', label: 'Origami Tutorials' },
+      { href: '/', label: 'Back to home' },
+    ]}
+  />
+</BaseLayout>

@@ -35,6 +35,14 @@
 /origami/house*    /templates/house/    301
 /origami/robot*    /templates/robot/    301
 
-# Old compare/check -> text-compare
-/compare*    /text-compare/     301
-/check*      /text-compare/     301
+# Old tool URLs -> consolidated new-design pages (preserve link equity)
+/compare*            /text-compare/    301
+/check*              /text-compare/    301
+
+# Old blog articles (AI writing era) -> new-design archived pages
+/blog/index.html*                 /blog/                                 301
+/blog/ai-humanizer-vs-paraphraser* /blog/ai-humanizer-vs-paraphraser/   301
+/blog/how-to-humanize-ai-text-without-losing-meaning* /blog/how-to-humanize-ai-text-without-losing-meaning/ 301
+/blog/how-to-humanize-ai-text*    /blog/how-to-humanize-ai-text/        301
+/blog/is-humanized-ai-text-detectable* /blog/is-humanized-ai-text-detectable/ 301
+/blog/what-is-an-ai-humanizer*    /blog/what-is-an-ai-humanizer/        301

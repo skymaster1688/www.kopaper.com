@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LegacyNotice from '../../components/LegacyNotice.astro';
+---
+<BaseLayout
+  title="AI Humanizer vs Paraphraser - koPaper"
+  description="This koPaper article on AI humanizers and paraphrasers has been archived. koPaper is now an AI papercraft creation platform."
+>
+  <LegacyNotice
+    title="AI Humanizer vs Paraphraser: What's the Difference?"
+    intro="This article belongs to an earlier chapter of koPaper, when we focused on AI writing tools. koPaper has since evolved into an AI papercraft creation platform, and the original post is no longer maintained. Explore our current papercraft tools below."
+    links={[
+      { href: '/tools/papercraft-generator/', label: 'AI Papercraft Generator' },
+      { href: '/origami/', label: 'Origami Tutorials' },
+      { href: '/templates/', label: 'Printable Templates' },
+      { href: '/', label: 'Back to home' },
+    ]}
+  />
+</BaseLayout>

@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LegacyNotice from '../../components/LegacyNotice.astro';
+---
+<BaseLayout
+  title="koPaper Blog - Papercraft Tutorials and Ideas"
+  description="koPaper's blog is being rebuilt around papercraft: origami, printable templates, and AI-generated paper art. Earlier AI writing articles are archived."
+>
+  <LegacyNotice
+    badge="Blog refresh"
+    title="koPaper Blog"
+    intro="koPaper's blog is being rebuilt around papercraft, origami, printable templates, and AI-generated paper art. The earlier articles on AI writing tools have been archived. In the meantime, here's where to start:"
+    links={[
+      { href: '/tools/papercraft-generator/', label: 'AI Papercraft Generator' },
+      { href: '/origami/', label: 'Origami Tutorials' },
+      { href: '/templates/', label: 'Printable Templates' },
+      { href: '/', label: 'Back to home' },
+    ]}
+  />
+</BaseLayout>

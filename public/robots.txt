@@ -2,7 +2,4 @@
 User-agent: *
 Allow: /
 
-Disallow: /style/css/
-Disallow: /style/js/
-
 Sitemap: https://kopaper.com/sitemap.xml
