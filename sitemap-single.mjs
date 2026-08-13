@@ -22,13 +22,26 @@ export function singleSitemap() {
           return;
         }
 
-        // 仅保留目录式页面（directory 格式下真实页面路径以 / 结尾，404.html 等含点号的文件排除）
+        // Astro 5 中 p.path 是 URL 对象；兼容旧版字符串。
+        // 输出路径可能是目录式(/about/)或带 .html(/about/index.html)，统一规整为目录式 URL。
         const urls = (pages || [])
-          .filter((p) => {
-            const path = p.path || '';
-            return path === '/' || (path.endsWith('/') && !path.includes('.'));
+          .map((p) => {
+            const raw = p?.path instanceof URL ? p.path.pathname : String(p?.path ?? '');
+            return raw;
           })
-          .map((p) => `    <url><loc>${site}${p.path}</loc></url>`)
+          // 只保留真实页面（.html 文件或目录式路由），排除资源/静态文件
+          .filter((raw) => raw === '/' || raw.endsWith('/') || raw.endsWith('.html'))
+          // 规整：去掉 index.html、补尾斜杠
+          .map((raw) => {
+            let path = raw.replace(/index\.html$/, '');
+            if (!path.endsWith('/')) path += '/';
+            return path;
+          })
+          // 排除 404 / sitemap 等非内容页
+          .filter((path) => !path.startsWith('/404') && !path.includes('sitemap'))
+          // 去重（根路径可能同时以 / 和 /index.html 出现）
+          .filter((path, i, arr) => arr.indexOf(path) === i)
+          .map((path) => `    <url><loc>${site}${path}</loc></url>`)
           .join('\n');
 
         const xml =
@@ -39,7 +52,8 @@ export function singleSitemap() {
 
         const outPath = fileURLToPath(new URL('sitemap.xml', dir));
         await writeFile(outPath, xml, 'utf-8');
-        console.log(`[single-sitemap] 已生成 ${urls ? urls.split('\n').length : 0} 条 URL -> ${outPath}`);
+        const count = urls ? urls.split('\n').length : 0;
+        console.log(`[single-sitemap] 已生成 ${count} 条 URL -> ${outPath}`);
       },
     },
   };
