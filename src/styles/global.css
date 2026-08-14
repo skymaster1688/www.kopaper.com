@@ -389,7 +389,7 @@ ul { list-style: none; }
 .gen-faq details { border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px 16px; margin-bottom: 10px; background: var(--surface); }
 .gen-faq summary { font-weight: 600; cursor: pointer; }
 .gen-faq p { margin-top: 8px; color: var(--text-muted); }
-.note { display: inline-flex; align-items: center; gap: 8px; font-size: .85rem; color: var(--text-muted); background: var(--warm-soft); border: 1px solid var(--warm); padding: 8px 14px; border-radius: var(--radius-sm); }
+.note { display: block; font-size: .85rem; line-height: 1.6; color: var(--text-muted); background: var(--warm-soft); border: 1px solid var(--warm); padding: 10px 14px; border-radius: var(--radius-sm); margin-top: 12px; }
 
 .result-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; width: 100%; }
 .result-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
