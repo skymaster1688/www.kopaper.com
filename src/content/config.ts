@@ -31,4 +31,28 @@ const letterPaper = defineCollection({
   }),
 });
 
-export const collections = { tutorials, 'letter-paper': letterPaper };
+const learn = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    emoji: z.string(),
+    order: z.number().default(99),
+    draft: z.boolean().default(false),
+    updated: z.string().optional(),
+  }),
+});
+
+const printables = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    emoji: z.string(),
+    category: z.string().optional(),
+    order: z.number().default(99),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { tutorials, 'letter-paper': letterPaper, learn, printables };

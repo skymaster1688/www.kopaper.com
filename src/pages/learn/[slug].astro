@@ -1,0 +1,96 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CraftCard from '../../components/CraftCard.astro';
+
+export async function getStaticPaths() {
+  const guides = await getCollection('learn', ({ data }) => !data.draft);
+  return guides.map(g => ({
+    params: { slug: g.slug },
+    props: { guide: g },
+  }));
+}
+
+const { guide } = Astro.props;
+const { Content } = await guide.render();
+
+const allGuides = await getCollection('learn', ({ data }) => !data.draft);
+const related = allGuides
+  .filter(g => g.slug !== guide.slug)
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3);
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: guide.data.title,
+  description: guide.data.description,
+  mainEntityOfPage: new URL(Astro.url.pathname, Astro.site).href,
+};
+---
+<BaseLayout
+  title={guide.data.title}
+  description={guide.data.description}
+  ogType="article"
+>
+  <article class="container" style="max-width:820px; padding-top:40px">
+    <nav class="breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      <a href="/learn/">Learn</a>
+      <span>/</span>
+      <span>{guide.data.title}</span>
+    </nav>
+
+    <h1 style="margin-bottom:12px">{guide.data.emoji} {guide.data.title}</h1>
+    <p style="font-size:1.15rem; color:var(--text-muted); margin-bottom:24px">{guide.data.description}</p>
+
+    <div class="tutorial-content">
+      <Content />
+    </div>
+
+    <section class="learn-links" style="margin-top:40px; padding:20px 22px; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)">
+      <h2 style="font-size:1.1rem; margin-bottom:10px">Keep exploring</h2>
+      <ul style="margin:0; padding-left:18px; color:var(--text-muted)">
+        <li><a href="/origami/">Step-by-step origami tutorials</a> — fold animals, flowers, and 3D models.</li>
+        <li><a href="/printables/">Free printable templates</a> — cards, gift tags, and paper craft sheets.</li>
+        <li><a href="/tools/papercraft-generator/">AI papercraft generator</a> — turn any idea into a printable craft.</li>
+      </ul>
+    </section>
+
+    {related.length > 0 && (
+      <section style="margin-top:50px; padding-top:36px; border-top:1px solid var(--border)">
+        <h2 style="font-size:1.3rem; margin-bottom:20px">More Guides</h2>
+        <div class="grid-3">
+          {related.map(g => (
+            <CraftCard
+              href={`/learn/${g.slug}/`}
+              emoji={g.data.emoji}
+              title={g.data.title}
+              description={g.data.description}
+            />
+          ))}
+        </div>
+      </section>
+    )}
+  </article>
+
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+
+  <style is:global>
+    .tutorial-content { margin-top: 28px; }
+    .tutorial-content h2 {
+      font-size: 1.35rem;
+      margin-top: 38px;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .tutorial-content h2:first-child { margin-top: 0; }
+    .tutorial-content h3 { margin-top: 26px; font-size: 1.1rem; }
+    .tutorial-content p { color: var(--text-muted); margin-bottom: 14px; }
+    .tutorial-content ul, .tutorial-content ol { padding-left: 22px; margin-bottom: 18px; }
+    .tutorial-content li { padding: 4px 0; color: var(--text-muted); }
+    .tutorial-content a { color: var(--primary); text-decoration: underline; }
+  </style>
+</BaseLayout>

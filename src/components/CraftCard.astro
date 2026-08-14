@@ -4,8 +4,8 @@ interface Props {
   emoji: string;
   title: string;
   description: string;
-  difficulty: string;
-  time: string;
+  difficulty?: string;
+  time?: string;
 }
 const { href, emoji, title, description, difficulty, time } = Astro.props;
 const badgeClass = difficulty === 'Easy' ? 'badge-easy' : difficulty === 'Medium' ? 'badge-medium' : 'badge-hard';
@@ -17,8 +17,8 @@ const badgeClass = difficulty === 'Easy' ? 'badge-easy' : difficulty === 'Medium
     <h3>{title}</h3>
     <p>{description}</p>
     <div class="card-meta">
-      <span class={`badge ${badgeClass}`}>{difficulty}</span>
-      <span>&#9201;&#xFE0F; {time}</span>
+      {difficulty && <span class={`badge ${badgeClass}`}>{difficulty}</span>}
+      {time && <span>&#9201;&#xFE0F; {time}</span>}
     </div>
   </div>
 </a>
