@@ -88,6 +88,32 @@ function buildPrompt(idea: string, stylePhrase: string): string {
   return `${stylePhrase} papercraft of ${idea}, paper art sculpture, cut and fold paper model, clean light background, high detail`;
 }
 
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+// Retry on Pollinations rate-limit (429) and transient 5xx / network errors.
+async function fetchPollinationsWithRetry(url: string, signal: AbortSignal, maxRetries = 3): Promise<Response> {
+  let lastErr: Error | null = null;
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    if (attempt > 0) await sleep(500 * attempt); // backoff: 500ms, 1000ms, 1500ms
+    try {
+      const res = await fetch(url, { signal });
+      if (res.ok) return res;
+      // 429 (rate limit) and 5xx are transient — worth retrying
+      if (res.status === 429 || res.status >= 500) {
+        lastErr = new Error(`Pollinations ${res.status}`);
+        continue;
+      }
+      throw new Error(`Pollinations ${res.status}`); // non-retryable
+    } catch (e) {
+      if ((e as Error)?.name === 'AbortError') throw e;
+      lastErr = e as Error; // network/DNS error -> retry
+    }
+  }
+  throw lastErr ?? new Error('Pollinations retry failed');
+}
+
 async function generatePollinations(
   prompt: string,
   model: string,
@@ -99,8 +125,8 @@ async function generatePollinations(
   const jobs = Array.from({ length: n }, (_, i) => {
     const url = `https://image.pollinations.ai/prompt/${encoded}?width=1024&height=1024&model=${model}&seed=${baseSeed + i}&nologo=true&enhance=false`;
     return (async () => {
-      const res = await fetch(url, { signal });
-      if (!res.ok) throw new Error(`Pollinations ${res.status}`);
+      await sleep(i * 300); // stagger the N requests to avoid bursting the rate limit
+      const res = await fetchPollinationsWithRetry(url, signal);
       const ct = res.headers.get('content-type') || '';
       if (!ct.includes('image')) throw new Error('Pollinations returned non-image body');
       const buf = await res.arrayBuffer();
