@@ -15,8 +15,8 @@
 - [x] make-origami-paper | keyword: "how to make origami paper" | url: /learn/make-origami-paper/ | file: src/content/learn/make-origami-paper.md | emoji: 📄 | order: 6 | 要点: DIY 教程，裁正方形/染色/做双色；内链到 origami-paper-size、printer-paper-for-origami，外链 /origami/crane/、/origami/box/
 
 ### printables（模板类目页 · collection: `printables` · 渲染器: `src/pages/printables/[slug].astro`）
-- [ ] cards | keyword: "free printable cards / greeting cards" | url: /printables/cards/ | file: src/content/printables/cards.md | emoji: ✂️ | order: 1 | 要点: 介绍+使用场景(生日/感谢/节日)，引导用 /tools/papercraft-generator/ 自定，内链到 gift-tags、party，外链 /origami/heart/
-- [ ] gift-tags | keyword: "free printable gift tags" | url: /printables/gift-tags/ | file: src/content/printables/gift-tags.md | emoji: ✂️ | order: 2 | 要点: 介绍+怎么用(礼物/派对)，引导生成器，内链到 cards、party，外链 /templates/
+- [x] cards | keyword: "free printable cards / greeting cards" | url: /printables/cards/ | file: src/content/printables/cards.md | emoji: ✂️ | order: 1 | 要点: 介绍+使用场景(生日/感谢/节日)，引导用 /tools/papercraft-generator/ 自定，内链到 gift-tags、party，外链 /origami/heart/
+- [x] gift-tags | keyword: "free printable gift tags" | url: /printables/gift-tags/ | file: src/content/printables/gift-tags.md | emoji: ✂️ | order: 2 | 要点: 介绍+怎么用(礼物/派对)，引导生成器，内链到 cards、party，外链 /templates/
 - [ ] calendar | keyword: "free printable calendar 2026" | url: /printables/calendar/ | file: src/content/printables/calendar.md | emoji: ✂️ | order: 3 | 要点: 月历/年历介绍，打印提示，内链到 planner，外链 /learn/origami-paper-size/(尺寸参考)
 - [ ] planner | keyword: "free printable planner / planner refills" | url: /printables/planner/ | file: src/content/printables/planner.md | emoji: ✂️ | order: 4 | 要点: 周计划/日计划/ refill 介绍，内链到 calendar，外链 /tools/paper-size-converter/(若存在)
 - [ ] coloring | keyword: "free printable coloring pages for kids" | url: /printables/coloring/ | file: src/content/printables/coloring.md | emoji: ✂️ | order: 5 | 要点: 儿童涂色介绍+益处，内链到 party、gift-tags，外链 /origami/ 动物教程(青蛙/猫)
