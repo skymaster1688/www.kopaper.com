@@ -146,34 +146,50 @@ async function generatePollinations(
   return { model: `pollinations:${model}`, images };
 }
 
+// NOTE on Workers AI:
+// The current schema for @cf/black-forest-labs/flux-1-schnell accepts only
+//   { prompt: string, steps: integer (1..8, default 4) }
+// It does NOT accept a `seed` field. Sending `seed` yields:
+//   5006 Error: Additional or unevaluated properties '/seed' at '/' not allowed
+// There is also no seed-based variation knob, so to get N visibly different
+// images we mutate the prompt per-variant (small, deterministic suffix).
+//
+// Each call returns { image: <base64 string> } per CF docs.
+
 async function generateWorkersAI(
   prompt: string,
   ai: { run: (model: string, inputs: Record<string, unknown>) => Promise<unknown> },
   n: number,
 ): Promise<{ model: string; images: Array<{ b64: string; mediaType: string }> }> {
-  const baseSeed = Math.floor(Math.random() * 1_000_000_000);
+  const variantTags = ['variation 1', 'variation 2', 'variation 3', 'variation 4'];
   const jobs = Array.from({ length: n }, (_, i) => (async () => {
     await sleep(i * 200); // light stagger so N calls don't burst
-    const res = await ai.run(WORKERSAI_MODEL, { prompt, seed: baseSeed + i });
-    // Workers AI may return EITHER { image: <base64> } OR a binary Response/ArrayBuffer/Uint8Array.
+    const variantPrompt = i === 0
+      ? prompt
+      : `${prompt} (${variantTags[i] ?? `variation ${i + 1}`}, unique composition and pose)`;
+    const res = await ai.run(WORKERSAI_MODEL, { prompt: variantPrompt, steps: 4 });
+    // Current Workers AI schema returns { image: <base64 string> }.
+    // Keep fallbacks for older API surface (Response / ArrayBuffer / Uint8Array).
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const r = res as any;
     if (r && typeof r.image === 'string') {
-      return { b64: r.image, mediaType: 'image/jpeg' };
+      // Some endpoints surface image as data URI; strip the prefix if present.
+      const cleaned = r.image.replace(/^data:image\/\w+;base64,/, '');
+      return { b64: cleaned, mediaType: 'image/jpeg' };
     }
     if (r instanceof Response) {
       const buf = await r.arrayBuffer();
-      return { b64: arrayBufferToBase64(buf), mediaType: r.headers.get('content-type') || 'image/png' };
+      return { b64: arrayBufferToBase64(buf), mediaType: r.headers.get('content-type') || 'image/jpeg' };
     }
     if (r instanceof ArrayBuffer) {
-      return { b64: arrayBufferToBase64(r), mediaType: 'image/png' };
+      return { b64: arrayBufferToBase64(r), mediaType: 'image/jpeg' };
     }
     if (r && typeof r.arrayBuffer === 'function') {
       const buf = await r.arrayBuffer();
-      return { b64: arrayBufferToBase64(buf), mediaType: 'image/png' };
+      return { b64: arrayBufferToBase64(buf), mediaType: 'image/jpeg' };
     }
     if (r instanceof Uint8Array) {
-      return { b64: arrayBufferToBase64(r), mediaType: 'image/png' };
+      return { b64: arrayBufferToBase64(r), mediaType: 'image/jpeg' };
     }
     throw new Error('Workers AI returned an unrecognized image format');
   })());
