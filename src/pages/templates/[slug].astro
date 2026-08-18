@@ -28,6 +28,9 @@ const related = allTemplates
   .filter(t => t.slug !== template.slug)
   .slice(0, 3);
 
+const learnGuides = (await getCollection('learn', ({ data }) => !data.draft))
+  .sort((a, b) => a.data.order - b.data.order).slice(0, 4);
+
 const badgeClass = template.data.difficulty === 'Easy' ? 'badge-easy'
   : template.data.difficulty === 'Medium' ? 'badge-medium' : 'badge-hard';
 
@@ -95,6 +98,22 @@ const templateSchema = {
               description={t.data.description}
               difficulty={t.data.difficulty}
               time={t.data.time}
+            />
+          ))}
+        </div>
+      </section>
+    )}
+
+    {learnGuides.length > 0 && (
+      <section style="margin-top:60px; padding-top:40px; border-top:1px solid var(--border)">
+        <h2 style="font-size:1.3rem; margin-bottom:20px">Learn More About Paper</h2>
+        <div class="grid-2">
+          {learnGuides.map(g => (
+            <CraftCard
+              href={`/learn/${g.slug}/`}
+              emoji={g.data.emoji}
+              title={g.data.title}
+              description={g.data.description}
             />
           ))}
         </div>

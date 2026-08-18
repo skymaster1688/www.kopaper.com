@@ -46,3 +46,7 @@
 /blog/how-to-humanize-ai-text*    /blog/how-to-humanize-ai-text/        301
 /blog/is-humanized-ai-text-detectable* /blog/is-humanized-ai-text-detectable/ 301
 /blog/what-is-an-ai-humanizer*    /blog/what-is-an-ai-humanizer/        301
+
+# Old Hindi edition subpages -> Hindi transition page (consolidate link equity)
+/hi/generate*    /hi/    301
+/hi/category/*   /hi/    301

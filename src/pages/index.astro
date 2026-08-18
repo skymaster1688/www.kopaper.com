@@ -12,6 +12,9 @@ const beginners = tutorials.filter(t => t.data.difficulty === 'Easy').slice(0, 3
 const letterPapers = (await getCollection('letterPaper', ({ data }) => !data.draft))
   .sort((a, b) => a.data.order - b.data.order).slice(0, 3);
 
+const learnArticles = (await getCollection('learn', ({ data }) => !data.draft))
+  .sort((a, b) => a.data.order - b.data.order);
+
 const faqs = [
   { q: 'What is koPaper?', a: 'koPaper is an AI papercraft creator. Describe an idea and it generates papercraft designs you can print, cut, fold, and build at home.' },
   { q: 'Do I need special paper?', a: 'No. Most designs work with standard A4 or Letter size printer paper. For sturdier 3D models, cardstock (160 to 220 gsm) gives the best result.' },
@@ -247,6 +250,10 @@ const faqSchema = {
           <div class="top"><span class="fig">FIG. C</span><span class="fig">WRITE</span></div>
           <div class="body"><h3>Letter Paper</h3><p>Free printable letter paper designs for notes.</p><span class="go">Browse <span class="ar"></span></span></div>
         </a>
+        <a href="/learn/" class="ecard">
+          <div class="top"><span class="fig">FIG. D</span><span class="fig">LEARN</span></div>
+          <div class="body"><h3>Learn</h3><p>Paper basics &amp; guides — choose the right sheet for every fold and cut.</p><span class="go">Browse <span class="ar"></span></span></div>
+        </a>
       </div>
     </section>
 
@@ -317,6 +324,30 @@ const faqSchema = {
               </div>
             </a>
           ))}
+        </div>
+      </section>
+    )}
+
+    <!-- 6b. Learn guides (SEO entry) -->
+    {learnArticles.length > 0 && (
+      <section class="sec">
+        <div class="sec-head">
+          <span class="label">Learn</span>
+          <h2 class="display">Paper guides &amp; basics</h2>
+          <p>The paper behind every craft — what to use, why it matters, and how to choose right.</p>
+        </div>
+        <div class="grid-4">
+          {learnArticles.slice(0, 4).map(g => (
+            <CraftCard
+              href={`/learn/${g.slug}/`}
+              emoji={g.data.emoji}
+              title={g.data.title}
+              description={g.data.description}
+            />
+          ))}
+        </div>
+        <div class="reveal" style="text-align:center; margin-top:28px">
+          <a href="/learn/" class="btn btn-outline">View all guides</a>
         </div>
       </section>
     )}

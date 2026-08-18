@@ -5,6 +5,10 @@ import CraftCard from '../../components/CraftCard.astro';
 
 const templates = (await getCollection('tutorials', ({ data }) => !data.draft && data.kind === 'papercraft'))
   .sort((a, b) => a.data.order - b.data.order);
+
+const learnGuides = (await getCollection('learn', ({ data }) => !data.draft))
+  .sort((a, b) => a.data.order - b.data.order).slice(0, 4);
+
 ---
 
 <BaseLayout
@@ -34,4 +38,20 @@ const templates = (await getCollection('tutorials', ({ data }) => !data.draft &&
       <p style="color:var(--text-muted); text-align:center; padding:40px 0">Templates coming soon. Check back shortly!</p>
     )}
   </section>
+
+  {learnGuides.length > 0 && (
+    <section class="section container" style="padding-top:20px">
+      <h2 class="section-title reveal">Paper Guides &amp; Basics</h2>
+      <div class="grid-4" style="margin-top:20px">
+        {learnGuides.map(g => (
+          <CraftCard
+            href={`/learn/${g.slug}/`}
+            emoji={g.data.emoji}
+            title={g.data.title}
+            description={g.data.description}
+          />
+        ))}
+      </div>
+    </section>
+  )}
 </BaseLayout>

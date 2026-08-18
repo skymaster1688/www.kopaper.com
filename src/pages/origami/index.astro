@@ -14,6 +14,10 @@ const categories = [
   { key: 'models', label: '3D Models', emoji: '\uD83C\uDFD5\uFE0F' },
   { key: 'holiday', label: 'Holiday', emoji: '\uD83C\uDF84' },
 ];
+
+const learnGuides = (await getCollection('learn', ({ data }) => !data.draft))
+  .sort((a, b) => a.data.order - b.data.order).slice(0, 4);
+
 ---
 
 <BaseLayout
@@ -46,4 +50,20 @@ const categories = [
       </section>
     );
   })}
+
+  {learnGuides.length > 0 && (
+    <section class="section container" style="padding-top:20px">
+      <h2 class="section-title reveal">Paper Guides &amp; Basics</h2>
+      <div class="grid-4" style="margin-top:20px">
+        {learnGuides.map(g => (
+          <CraftCard
+            href={`/learn/${g.slug}/`}
+            emoji={g.data.emoji}
+            title={g.data.title}
+            description={g.data.description}
+          />
+        ))}
+      </div>
+    </section>
+  )}
 </BaseLayout>
