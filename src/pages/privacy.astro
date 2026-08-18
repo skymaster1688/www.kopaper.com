@@ -33,7 +33,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <h2>Third-Party Services</h2>
         <p>To run the site we rely on a small set of third parties, each with its own privacy policy:</p>
         <ul>
-          <li><strong>Image-generation APIs</strong> — by default Pollinations.ai; OpenRouter when enabled. Your prompt text is sent to the selected provider to generate images.</li>
+          <li><strong>Image-generation APIs</strong> — by default Cloudflare Workers AI (on-platform); Pollinations or OpenRouter may be used as fallbacks. Your prompt text is sent to the active provider to generate images.</li>
           <li><strong>Google Analytics (GA4)</strong> — measures anonymous, aggregated site usage.</li>
           <li><strong>Google AdSense</strong> — serves ads and may use cookies for personalization.</li>
           <li><strong>Font CDNs</strong> — Google Fonts delivers the typefaces used on the site.</li>

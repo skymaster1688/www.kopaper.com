@@ -45,7 +45,7 @@ const description = 'Describe an idea, pick a style, and preview papercraft desi
           <button class="btn btn-ghost" id="surprise" type="button">Surprise me</button>
           <button class="btn btn-primary btn-large" id="generateBtn" type="button">Generate</button>
         </div>
-        <p class="note">AI-generated papercraft art. By default koPaper uses the free Pollinations backend (no key, zero cost); set <code>IMAGE_PROVIDER=openrouter</code> with an API key to upgrade quality. If generation fails, free printable template nets are shown instead.</p>
+        <p class="note">AI-generated papercraft art. By default koPaper runs on Cloudflare Workers AI (on-platform, no external key, no shared-IP limits); Pollinations is the automatic fallback. Set <code>IMAGE_PROVIDER=openrouter</code> with an API key to upgrade quality. If generation fails, free printable template nets are shown instead.</p>
       </aside>
 
       <div class="gen-stage">

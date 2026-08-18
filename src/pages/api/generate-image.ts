@@ -3,13 +3,16 @@
 // Route: POST /api/generate-image
 //
 // Provider selection:
-//   1. request body field  `provider`  ("pollinations" | "openrouter")
-//   2. environment variable  IMAGE_PROVIDER (default: "pollinations")
-//   3. auto-fallback: if "openrouter" chosen but OPENROUTER_API_KEY missing,
-//      silently fall back to the free "pollinations" provider.
+//   1. request body field  `provider`  ("workersai" | "pollinations" | "openrouter")
+//   2. environment variable  IMAGE_PROVIDER (default: "workersai")
+//   3. auto-fallback:
+//      - workersai  without the AI binding -> pollinations
+//      - openrouter without OPENROUTER_API_KEY -> workersai (if AI bound) else pollinations
 //
 // Providers:
-//   - pollinations : FREE, no API key. URL-based, 4 variants via distinct seeds.
+//   - workersai   : FREE (Workers AI daily neuron allowance). Native CF binding, no external
+//                   network, no captcha, no shared-IP 429. Model: flux-1-schnell.
+//   - pollinations : FREE, no API key. URL-based, 4 variants via distinct seeds. (429-prone.)
 //   - openrouter   : PAID, requires OPENROUTER_API_KEY (Cloudflare env var).
 //
 // Returns { ok, provider, model, images: [{ b64, mediaType }] }.
@@ -18,7 +21,7 @@ export const prerender = false;
 
 import type { APIContext } from 'astro';
 
-const DEFAULT_PROVIDER = 'pollinations';
+const DEFAULT_PROVIDER = 'workersai';
 const DEFAULT_N = 4;
 const TIMEOUT_MS = 60000;
 
@@ -37,6 +40,7 @@ const POLLINATIONS_STYLE_MODELS: Record<string, string> = {
   fantasy: 'flux',
 };
 const OPENROUTER_DEFAULT_MODEL = 'bytedance-seed/seedream-4.5';
+const WORKERSAI_MODEL = '@cf/black-forest-labs/flux-1-schnell';
 
 const SAFE_SLUG = /^[\w./-]+$/;
 
@@ -59,8 +63,8 @@ function json(data: unknown, status = 200, extra: Record<string, string> = {}) {
   });
 }
 
-function arrayBufferToBase64(buf: ArrayBuffer): string {
-  const bytes = new Uint8Array(buf);
+function arrayBufferToBase64(buf: ArrayBuffer | Uint8Array): string {
+  const bytes = buf instanceof Uint8Array ? buf : new Uint8Array(buf);
   let binary = '';
   const chunk = 0x8000;
   for (let i = 0; i < bytes.length; i += chunk) {
@@ -70,18 +74,23 @@ function arrayBufferToBase64(buf: ArrayBuffer): string {
 }
 
 // Cloudflare env is injected by @astrojs/cloudflare into locals.runtime.env.
-function getEnv(context: APIContext): Record<string, string> {
-  const runtime = (context.locals as { runtime?: { env?: Record<string, string> } }).runtime;
+// Typed loosely (any) so both string secrets (OPENROUTER_API_KEY) and the AI binding object are accessible.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function getEnv(context: APIContext): Record<string, any> {
+  const runtime = (context.locals as { runtime?: { env?: Record<string, any> } }).runtime;
   return runtime?.env ?? {};
 }
 
-function resolveProvider(requested: string | undefined, env: Record<string, string>): 'pollinations' | 'openrouter' {
-  let preferred = (requested || env?.IMAGE_PROVIDER || DEFAULT_PROVIDER).toString().toLowerCase();
-  if (preferred !== 'openrouter' && preferred !== 'pollinations') preferred = DEFAULT_PROVIDER;
-  if (preferred === 'openrouter' && !env?.OPENROUTER_API_KEY) {
-    return 'pollinations';
-  }
-  return preferred as 'pollinations' | 'openrouter';
+type Provider = 'workersai' | 'pollinations' | 'openrouter';
+
+function resolveProvider(requested: string | undefined, env: Record<string, any>): Provider {
+  const known: Provider[] = ['workersai', 'pollinations', 'openrouter'];
+  let preferred = (requested || env?.IMAGE_PROVIDER || DEFAULT_PROVIDER).toString().toLowerCase() as Provider;
+  if (!known.includes(preferred)) preferred = DEFAULT_PROVIDER;
+  // Fallbacks when the chosen provider's dependency is missing.
+  if (preferred === 'workersai' && !env?.AI) return 'pollinations';
+  if (preferred === 'openrouter' && !env?.OPENROUTER_API_KEY) return env?.AI ? 'workersai' : 'pollinations';
+  return preferred;
 }
 
 function buildPrompt(idea: string, stylePhrase: string): string {
@@ -135,6 +144,41 @@ async function generatePollinations(
   });
   const images = await Promise.all(jobs);
   return { model: `pollinations:${model}`, images };
+}
+
+async function generateWorkersAI(
+  prompt: string,
+  ai: { run: (model: string, inputs: Record<string, unknown>) => Promise<unknown> },
+  n: number,
+): Promise<{ model: string; images: Array<{ b64: string; mediaType: string }> }> {
+  const baseSeed = Math.floor(Math.random() * 1_000_000_000);
+  const jobs = Array.from({ length: n }, (_, i) => (async () => {
+    await sleep(i * 200); // light stagger so N calls don't burst
+    const res = await ai.run(WORKERSAI_MODEL, { prompt, seed: baseSeed + i });
+    // Workers AI may return EITHER { image: <base64> } OR a binary Response/ArrayBuffer/Uint8Array.
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const r = res as any;
+    if (r && typeof r.image === 'string') {
+      return { b64: r.image, mediaType: 'image/jpeg' };
+    }
+    if (r instanceof Response) {
+      const buf = await r.arrayBuffer();
+      return { b64: arrayBufferToBase64(buf), mediaType: r.headers.get('content-type') || 'image/png' };
+    }
+    if (r instanceof ArrayBuffer) {
+      return { b64: arrayBufferToBase64(r), mediaType: 'image/png' };
+    }
+    if (r && typeof r.arrayBuffer === 'function') {
+      const buf = await r.arrayBuffer();
+      return { b64: arrayBufferToBase64(buf), mediaType: 'image/png' };
+    }
+    if (r instanceof Uint8Array) {
+      return { b64: arrayBufferToBase64(r), mediaType: 'image/png' };
+    }
+    throw new Error('Workers AI returned an unrecognized image format');
+  })());
+  const images = await Promise.all(jobs);
+  return { model: 'workersai:flux-1-schnell', images };
 }
 
 async function generateOpenRouter(
@@ -211,7 +255,9 @@ export async function POST(context: APIContext) {
   const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
   try {
     let result: { model: string; images: Array<{ b64: string; mediaType: string }> };
-    if (provider === 'openrouter' && apiKey) {
+    if (provider === 'workersai' && env.AI) {
+      result = await generateWorkersAI(prompt, env.AI, n);
+    } else if (provider === 'openrouter' && apiKey) {
       const model = body.model && SAFE_SLUG.test(body.model) ? body.model : OPENROUTER_DEFAULT_MODEL;
       result = await generateOpenRouter(prompt, apiKey, model, n, controller.signal);
     } else {
