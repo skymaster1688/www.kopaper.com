@@ -58,7 +58,7 @@ const description = 'Describe an idea, pick a style, and preview papercraft desi
         </div>
         <div class="gen-loading" id="genLoading" hidden>
           <div class="spinner" aria-hidden="true"></div>
-          <p>努力生成中，马上就好…</p>
+          <p>Generating your design…</p>
         </div>
       </div>
     </section>
@@ -252,7 +252,7 @@ const description = 'Describe an idea, pick a style, and preview papercraft desi
 
     function setLoading(on) {
       const btn = $('generateBtn');
-      if (btn) { btn.disabled = on; btn.textContent = on ? '努力生成中 马上就好' : 'Generate'; }
+      if (btn) { btn.disabled = on; btn.textContent = on ? 'Generating…' : 'Generate'; }
       const grid = $('resultGrid');
       if (grid) grid.classList.toggle('loading', on);
       const loading = $('genLoading');
@@ -299,7 +299,7 @@ const description = 'Describe an idea, pick a style, and preview papercraft desi
       setLoading(false);
     }
 
-    // Keep the "努力生成中 马上就好" state on screen briefly so it never just flashes.
+    // Keep the "Generating your design" state on screen briefly so it never just flashes.
     function minDelay(start, ms = 3000) {
       const elapsed = Date.now() - start;
       return elapsed < ms ? new Promise(r => setTimeout(r, ms - elapsed)) : Promise.resolve();
