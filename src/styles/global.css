@@ -262,6 +262,8 @@ ul { list-style: none; }
 /* canvas — fills column height */
 .canvas { position: relative; border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow);
   background-image: radial-gradient(var(--line-soft) 1px, transparent 1px); background-size: 16px 16px; height: 100%; }
+.hero-fox { width: 100%; min-height: 360px; display: flex; align-items: center; justify-content: center; }
+.hero-fox svg { width: 100%; height: auto; max-height: 440px; display: block; }
 .canvas-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
 .canvas-head .t { font-family: var(--font-display); font-weight: 600; font-size: .95rem; }
 .canvas-head .tag { font-family: var(--font-mono); font-size: .7rem; letter-spacing: .1em; color: var(--faint); text-transform: uppercase; }

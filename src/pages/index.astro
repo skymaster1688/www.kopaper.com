@@ -95,6 +95,7 @@ const faqSchema = {
         <p class="sub">Turn your ideas into unique paper craft designs.</p>
         <form class="composer" id="homeComposer" action="/tools/papercraft-generator/" method="get">
           <textarea name="q" id="homePrompt" placeholder="Describe your idea &mdash; e.g. a cute dragon" aria-label="Describe your idea"></textarea>
+          <input type="hidden" name="style" id="homeStyle" value="cute" />
           <div class="composer-bar">
             <div class="chips" id="homeChips">
               <button type="button" class="chip on" data-style="cute" data-q="a cute papercraft character">Cute</button>
@@ -108,53 +109,42 @@ const faqSchema = {
       </div>
 
       <div class="right">
-        <div class="canvas" id="homeCanvas">
-          <div class="canvas-head">
-            <span class="t">Output</span>
-            <span class="tag">4 variations</span>
-          </div>
-          <div class="grid4">
-            <div class="tile t1">
-              <svg viewBox="0 0 100 100" fill="none" style="stroke: var(--text)" stroke-width="2.2" stroke-linejoin="round">
-                <polygon points="50,12 61,40 92,40 67,60 79,90 50,70 21,90 33,60 8,40 39,40"/>
-              </svg>
-              <span class="cap">star</span>
-            </div>
-            <div class="tile t2">
-              <svg viewBox="0 0 100 100" fill="none" style="stroke: var(--text)" stroke-width="2.2" stroke-linecap="round">
-                <line x1="50" y1="50" x2="50" y2="14"/><line x1="50" y1="50" x2="83" y2="31"/>
-                <line x1="50" y1="50" x2="83" y2="69"/><line x1="50" y1="50" x2="50" y2="86"/>
-                <line x1="50" y1="50" x2="17" y2="69"/><line x1="50" y1="50" x2="17" y2="31"/>
-                <line x1="50" y1="14" x2="45" y2="20"/><line x1="50" y1="14" x2="55" y2="20"/>
-                <line x1="83" y1="31" x2="77" y2="27"/><line x1="83" y1="31" x2="79" y2="37"/>
-                <line x1="83" y1="69" x2="79" y2="63"/><line x1="83" y1="69" x2="77" y2="73"/>
-                <line x1="50" y1="86" x2="45" y2="80"/><line x1="50" y1="86" x2="55" y2="80"/>
-                <line x1="17" y1="69" x2="23" y2="73"/><line x1="17" y1="69" x2="21" y2="63"/>
-                <line x1="17" y1="31" x2="21" y2="37"/><line x1="17" y1="31" x2="23" y2="27"/>
-                <circle cx="50" cy="50" r="6"/>
-              </svg>
-              <span class="cap">snowflake</span>
-            </div>
-            <div class="tile t3">
-              <svg viewBox="0 0 100 100" fill="none" style="stroke: var(--text)" stroke-width="2.2">
-                <circle cx="50" cy="50" r="8"/>
-                <circle cx="50" cy="26" r="11"/><circle cx="70" cy="38" r="11"/>
-                <circle cx="70" cy="62" r="11"/><circle cx="50" cy="74" r="11"/>
-                <circle cx="30" cy="62" r="11"/><circle cx="30" cy="38" r="11"/>
-              </svg>
-              <span class="cap">flower</span>
-            </div>
-            <div class="tile t4">
-              <svg viewBox="0 0 100 100" fill="none" style="stroke: var(--text)" stroke-width="2.2" stroke-linejoin="round">
-                <path d="M16 66 L84 66 L74 82 L26 82 Z"/>
-                <line x1="16" y1="66" x2="84" y2="66"/>
-                <path d="M50 66 L50 30 L74 66"/>
-                <line x1="50" y1="30" x2="50" y2="66"/>
-                <path d="M50 66 L34 44 L50 52"/>
-              </svg>
-              <span class="cap">boat</span>
-            </div>
-          </div>
+        <div class="hero-fox" aria-hidden="true">
+          <svg viewBox="0 0 460 420" preserveAspectRatio="xMidYMid meet" fill="none">
+            <!-- faint blueprint grid -->
+            <g style="stroke: var(--text)" stroke-width="0.5" opacity="0.06">
+              <line x1="0" y1="90"  x2="460" y2="90"/><line x1="0" y1="170" x2="460" y2="170"/>
+              <line x1="0" y1="250" x2="460" y2="250"/><line x1="0" y1="330" x2="460" y2="330"/>
+              <line x1="80"  y1="0" x2="80"  y2="420"/><line x1="200" y1="0" x2="200" y2="420"/>
+              <line x1="320" y1="0" x2="320" y2="420"/><line x1="420" y1="0" x2="420" y2="420"/>
+            </g>
+            <!-- fox line-art (papercraft blueprint) -->
+            <g style="stroke: var(--text)" stroke-width="1.4" opacity="0.38" stroke-linejoin="round" fill="none">
+              <!-- tail -->
+              <polygon points="30,320 55,180 150,250 120,380"/>
+              <line x1="58" y1="248" x2="128" y2="372" stroke-dasharray="6 5"/>
+              <!-- body -->
+              <polygon points="150,250 310,235 330,400 150,400"/>
+              <!-- hind + front legs -->
+              <polygon points="150,400 150,322 182,322 182,400"/>
+              <polygon points="288,400 288,322 320,322 320,400"/>
+              <!-- head -->
+              <polygon points="310,235 350,110 415,150 400,260 330,265"/>
+              <!-- ears -->
+              <polygon points="350,110 330,30 378,100"/>
+              <polygon points="415,150 438,55 452,150"/>
+              <!-- face crease -->
+              <line x1="352" y1="112" x2="398" y2="262" stroke-dasharray="6 5"/>
+              <!-- eye -->
+              <circle cx="372" cy="186" r="7"/>
+            </g>
+            <!-- warm focus: ear interiors + nose -->
+            <g style="stroke: var(--warm)" stroke-width="1.6" stroke-linejoin="round" fill="none">
+              <polygon points="350,110 338,56 370,102"/>
+              <polygon points="415,150 433,76 449,148"/>
+              <polygon points="388,248 408,248 398,266"/>
+            </g>
+          </svg>
         </div>
       </div>
     </div>
@@ -162,7 +152,7 @@ const faqSchema = {
 
   <div class="wrap">
     <div class="stats">
-      <div class="stat"><div class="n">04</div><div class="l">designs / prompt</div></div>
+      <div class="stat"><div class="n">01</div><div class="l">design / prompt</div></div>
       <div class="stat"><div class="n">04</div><div class="l">art styles</div></div>
       <div class="stat"><div class="n">100%</div><div class="l">free &middot; no sign-up</div></div>
       <div class="stat"><div class="n">&infin;</div><div class="l">ideas</div></div>
@@ -205,7 +195,7 @@ const faqSchema = {
           </svg>
         </aside>
         <div class="gen-copy">
-          <p>Type an idea like <em>a cute dragon</em> or <em>a low poly castle</em>, and the AI Papercraft Generator returns four custom papercraft designs in your chosen style. Each one is drawn as clean line art you can print, cut, fold, and glue into a real paper model. No templates to hunt and no folding diagrams to decode.</p>
+          <p>Type an idea like <em>a cute dragon</em> or <em>a low poly castle</em>, and the AI Papercraft Generator returns a custom papercraft design in your chosen style. Each one is drawn as clean line art you can print, cut, fold, and glue into a real paper model. No templates to hunt and no folding diagrams to decode.</p>
           <p>Want paper toys, paper art, or a one of a kind gift? The papercraft generator helps you create papercraft that matches your own idea instead of copying someone else's. Pick Cute, Low Poly, Pixel, or Fantasy, then generate, refine, and download your favorite as an SVG or PDF.</p>
           <h3>Why use an AI papercraft generator?</h3>
           <p>A papercraft generator is fastest when you already know what you want but cannot draw it. Describe the subject, set the style, and let the tool handle the artwork. You stay in control of the idea; the generator handles the rendering, so you can move from thought to paper in minutes.</p>
@@ -225,7 +215,7 @@ const faqSchema = {
       </div>
       <div class="steps">
         <div class="step"><div class="idx">01 &mdash; INPUT</div><h3>Describe</h3><p>Type what you imagine &mdash; a fox, a castle, a gift box. Pick a style if you like.</p></div>
-        <div class="step"><div class="idx">02 &mdash; RENDER</div><h3>Generate</h3><p>koPaper draws four original papercraft designs you can preview instantly.</p></div>
+        <div class="step"><div class="idx">02 &mdash; RENDER</div><h3>Generate</h3><p>koPaper draws an original papercraft design you can preview instantly.</p></div>
         <div class="step"><div class="idx">03 &mdash; BUILD</div><h3>Assemble</h3><p>Print, cut along the lines, fold, and glue. Your idea is now a real paper model.</p></div>
       </div>
     </section>
@@ -384,62 +374,19 @@ const faqSchema = {
   <script>
     const input = document.getElementById('homePrompt');
     const chips = document.getElementById('homeChips');
-    const form = document.getElementById('homeComposer');
-    const canvas = document.getElementById('homeCanvas');
-    const tag = canvas ? canvas.querySelector('.tag') : null;
-    const tiles = canvas ? Array.from(canvas.querySelectorAll('.tile')) : [];
+    const styleInput = document.getElementById('homeStyle');
 
+    // The homepage does NOT generate images. It only captures the idea + style and
+    // submits (GET) to the generator tool, where generation actually happens.
     if (input && chips) {
       chips.querySelectorAll('.chip').forEach(chip => {
         chip.addEventListener('click', () => {
           chips.querySelectorAll('.chip').forEach(c => c.classList.remove('on'));
           chip.classList.add('on');
           input.value = chip.getAttribute('data-q') || '';
+          if (styleInput) styleInput.value = chip.getAttribute('data-style') || 'cute';
           input.focus();
         });
-      });
-    }
-
-    const activeChip = () => (chips ? chips.querySelector('.chip.on') : null);
-
-    if (form && canvas) {
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const chip = activeChip();
-        const style = (chip && chip.getAttribute('data-style')) || 'cute';
-        const styleLabel = (chip && chip.textContent) ? chip.textContent.trim() : 'Cute';
-        const idea = (input.value.trim())
-          || (chip ? (chip.getAttribute('data-q') || '') : '')
-          || 'a papercraft';
-        if (!idea) return;
-
-        canvas.classList.add('is-loading');
-        if (tag) tag.textContent = 'Generating…';
-
-        try {
-          const res = await fetch('/api/generate-image', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ prompt: idea, style }),
-          });
-          if (!res.ok) throw new Error('bad status ' + res.status);
-          const data = await res.json();
-          if (!data || !data.ok || !data.images || !data.images.length) throw new Error('no images');
-          data.images.slice(0, 4).forEach((img, i) => {
-            const tile = tiles[i];
-            if (!tile) return;
-            const mime = img.mediaType || 'image/png';
-            tile.innerHTML = `<img src="data:${mime};base64,${img.b64}" alt="${styleLabel} papercraft variation ${i + 1}"><span class="cap onimg">${styleLabel} ${i + 1}</span>`;
-          });
-          if (tag) tag.textContent = '4 variations';
-        } catch (_) {
-          // API not reachable (e.g. not yet deployed) → land on the full generator tool.
-          window.location.href = '/tools/papercraft-generator/?q='
-            + encodeURIComponent(idea) + '&style=' + encodeURIComponent(style);
-          return;
-        } finally {
-          canvas.classList.remove('is-loading');
-        }
       });
     }
   </script>

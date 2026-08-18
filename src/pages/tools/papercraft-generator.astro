@@ -53,21 +53,13 @@ const description = 'Describe an idea, pick a style, and preview papercraft desi
           <div class="result-grid" id="resultGrid">
             <div class="result-card" data-i="0">
               <div class="thumb"></div>
-              <div class="meta"><span class="title">Design 1</span><span class="actions"><button class="mini" data-dl="0">SVG</button><button class="mini" data-print="0">Print</button></span></div>
-            </div>
-            <div class="result-card" data-i="1">
-              <div class="thumb"></div>
-              <div class="meta"><span class="title">Design 2</span><span class="actions"><button class="mini" data-dl="1">SVG</button><button class="mini" data-print="1">Print</button></span></div>
-            </div>
-            <div class="result-card" data-i="2">
-              <div class="thumb"></div>
-              <div class="meta"><span class="title">Design 3</span><span class="actions"><button class="mini" data-dl="2">SVG</button><button class="mini" data-print="2">Print</button></span></div>
-            </div>
-            <div class="result-card" data-i="3">
-              <div class="thumb"></div>
-              <div class="meta"><span class="title">Design 4</span><span class="actions"><button class="mini" data-dl="3">SVG</button><button class="mini" data-print="3">Print</button></span></div>
+              <div class="meta"><span class="title">Your design</span><span class="actions"><button class="mini" data-dl="0">SVG</button><button class="mini" data-print="0">Print</button></span></div>
             </div>
           </div>
+        </div>
+        <div class="gen-loading" id="genLoading" hidden>
+          <div class="spinner" aria-hidden="true"></div>
+          <p>努力生成中，马上就好…</p>
         </div>
       </div>
     </section>
@@ -78,7 +70,7 @@ const description = 'Describe an idea, pick a style, and preview papercraft desi
       <p>
         koPaper turns a simple idea into papercraft designs you can print at home. Tell it
         <strong>a cute panda</strong>, <strong>a fantasy castle</strong>, or <strong>a robot toy</strong>, pick a style,
-        and preview four variations. Each design is a cut and fold template you assemble yourself.
+        and preview a custom design. Each design is a cut and fold template you assemble yourself.
       </p>
 
       <h2>How to use a generated design</h2>
@@ -144,6 +136,12 @@ const description = 'Describe an idea, pick a style, and preview papercraft desi
       .gen-stage .stage-frame { border: none; background: #fff; min-height: auto; padding: 0; }
       .result-card { break-inside: avoid; }
     }
+    .gen-stage { position: relative; }
+    .gen-loading { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; color: var(--text-muted); background: var(--surface); }
+    .gen-loading[hidden] { display: none; }
+    .gen-loading p { font-size: 1.08rem; letter-spacing: .02em; }
+    .gen-loading .spinner { width: 36px; height: 36px; border: 3px solid var(--border); border-top-color: var(--warm); border-radius: 50%; animation: kp-spin 0.9s linear infinite; }
+    @keyframes kp-spin { to { transform: rotate(360deg); } }
   </style>
 
   <script>
@@ -255,32 +253,35 @@ const description = 'Describe an idea, pick a style, and preview papercraft desi
 
     function setLoading(on) {
       const btn = $('generateBtn');
-      if (btn) { btn.disabled = on; btn.textContent = on ? 'Generating…' : 'Generate'; }
+      if (btn) { btn.disabled = on; btn.textContent = on ? '努力生成中 马上就好' : 'Generate'; }
       const grid = $('resultGrid');
       if (grid) grid.classList.toggle('loading', on);
+      const loading = $('genLoading');
+      if (loading) loading.hidden = !on;
     }
 
     function renderImages(images, style) {
       const label = style.charAt(0).toUpperCase() + style.slice(1);
-      images.slice(0, 4).forEach((img, i) => {
-        const card = document.querySelector(`.result-card[data-i="${i}"]`);
-        if (!card) return;
+      const img = images[0];
+      const card = document.querySelector('.result-card[data-i="0"]');
+      if (card && img) {
         card.querySelector('.thumb').innerHTML =
-          `<img class="gen-img" alt="${label} AI papercraft design ${i + 1}" src="data:${img.mediaType};base64,${img.b64}">`;
-        card.querySelector('.title').textContent = `${label} AI design ${i + 1}`;
-      });
+          `<img class="gen-img" alt="${label} AI papercraft design" src="data:${img.mediaType};base64,${img.b64}">`;
+        card.querySelector('.title').textContent = `${label} AI design`;
+      }
     }
 
     // Real AI generation via the serverless endpoint. Falls back to SVG nets on any failure.
     async function generate() {
       const q = promptEl.value.trim() || 'a papercraft';
       const style = styleEl.value;
+      const start = Date.now();
       setLoading(true);
       try {
         const res = await fetch('/api/generate-image', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ prompt: q, style }),
+          body: JSON.stringify({ prompt: q, style, n: 1 }),
         });
         if (res.ok) {
           const data = await res.json();
@@ -288,13 +289,21 @@ const description = 'Describe an idea, pick a style, and preview papercraft desi
             currentImages = data.images;
             currentSVGs = [];
             renderImages(data.images, style);
+            await minDelay(start);
             setLoading(false);
             return;
           }
         }
       } catch (_) { /* fall through to SVG */ }
       generateFallback();
+      await minDelay(start);
       setLoading(false);
+    }
+
+    // Keep the "努力生成中 马上就好" state on screen briefly so it never just flashes.
+    function minDelay(start, ms = 3000) {
+      const elapsed = Date.now() - start;
+      return elapsed < ms ? new Promise(r => setTimeout(r, ms - elapsed)) : Promise.resolve();
     }
 
     // Deterministic, free, printable template nets (first paint + fallback when no API key).
@@ -304,19 +313,15 @@ const description = 'Describe an idea, pick a style, and preview papercraft desi
       const [paper, line] = STYLE_PALETTES[style] || STYLE_PALETTES.cute;
       const matched = pickFromPrompt(q);
       const base = matched || 'cube';
-      const order = [base, ...SHAPES.filter(s => s !== base)];
       const sBase = parseInt(sizeEl.value, 10);
-      currentSVGs = [];
+      const svgStr = buildCardSVG(base, sBase, true, 'dashed', paper, line, 0);
+      currentSVGs = [svgStr];
       currentImages = [];
-      order.slice(0, 4).forEach((type, i) => {
-        const s = sBase + (i % 2 ? 10 : -6);
-        const svgStr = buildCardSVG(type, s, true, 'dashed', paper, line, i);
-        const card = document.querySelector(`.result-card[data-i="${i}"]`);
-        if (!card) return;
+      const card = document.querySelector('.result-card[data-i="0"]');
+      if (card) {
         card.querySelector('.thumb').innerHTML = svgStr;
-        card.querySelector('.title').textContent = `${style.charAt(0).toUpperCase() + style.slice(1)} ${TYPE_LABEL[type]}`;
-        currentSVGs[i] = svgStr;
-      });
+        card.querySelector('.title').textContent = `${style.charAt(0).toUpperCase() + style.slice(1)} ${TYPE_LABEL[base]}`;
+      }
     }
 
     function surprise() {
@@ -364,7 +369,9 @@ const description = 'Describe an idea, pick a style, and preview papercraft desi
     if (params.get('q')) promptEl.value = params.get('q');
     if (params.get('style') && STYLE_PALETTES[params.get('style')]) styleEl.value = params.get('style');
 
-    // First paint: free printable nets (no API cost). Real AI images generate on demand.
-    generateFallback();
+    // First paint: free printable nets (no API cost). If arriving from the homepage
+    // composer with a pre-filled idea, run real generation right away.
+    if (params.get('q')) generate();
+    else generateFallback();
   </script>
 </BaseLayout>

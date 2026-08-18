@@ -267,6 +267,12 @@ export async function POST(context: APIContext) {
   const provider = resolveProvider(body.provider, env);
   const apiKey = env?.OPENROUTER_API_KEY;
 
+  // Artificial backend latency: hold the response 10-15s so the "generating"
+  // UX feels real. This is placed BEFORE the ai.run() call on purpose: if the
+  // client aborts during the wait (tab closed / navigated away), we exit early
+  // and never spend the inference. A sleep does NOT consume any AI quota.
+  await sleep(10_000 + Math.floor(Math.random() * 5_000));
+
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
   try {
