@@ -290,6 +290,7 @@ const description = 'Describe an idea, pick a style, and preview papercraft desi
             renderImages(data.images, style);
             await minDelay(start);
             setLoading(false);
+            autoPublish();
             return;
           }
         }
@@ -297,6 +298,7 @@ const description = 'Describe an idea, pick a style, and preview papercraft desi
       generateFallback();
       await minDelay(start);
       setLoading(false);
+      autoPublish();
     }
 
     // Keep the "Generating your design" state on screen briefly so it never just flashes.
@@ -350,6 +352,31 @@ const description = 'Describe an idea, pick a style, and preview papercraft desi
       a.href = url; a.download = `kopaper-design-${i + 1}.svg`;
       a.click();
       URL.revokeObjectURL(url);
+    }
+
+    // Stage the current design into the daily Gallery queue (KV) in the background.
+    // Best-effort: failures are silent so they never interrupt the user. The queue
+    // is flushed to the live site once per day via /api/publish-flush (one deploy).
+    async function autoPublish() {
+      const q = promptEl.value.trim() || 'a papercraft';
+      const style = styleEl.value;
+      const img = currentImages[0];
+      const svg = currentSVGs[0];
+      const payload = { prompt: q, style };
+      if (img && img.b64) {
+        Object.assign(payload, { kind: 'raster', b64: img.b64, mediaType: img.mediaType });
+      } else if (svg) {
+        Object.assign(payload, { kind: 'svg', svg });
+      } else {
+        return;
+      }
+      try {
+        await fetch('/api/publish-queue', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+      } catch (_) { /* queue is best-effort */ }
     }
 
     // Wire events

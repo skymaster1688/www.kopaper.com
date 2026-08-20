@@ -55,4 +55,20 @@ const printables = defineCollection({
   }),
 });
 
-export const collections = { tutorials, 'letter-paper': letterPaper, learn, printables };
+// Gallery: AI-generated papercraft showcase. Each entry is one "idea" (title);
+// multiple generations of the same idea append more images to the same article.
+// Images are stored as markdown image lines in the body (not frontmatter) so the
+// publish endpoint can append without parsing YAML.
+const gallery = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    emoji: z.string().default('🎨'),
+    style: z.string().optional(),
+    order: z.number().default(99),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { tutorials, 'letter-paper': letterPaper, learn, printables, gallery };

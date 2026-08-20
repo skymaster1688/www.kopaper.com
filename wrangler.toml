@@ -14,3 +14,16 @@ binding = "AI"
 # Production secrets live in the Cloudflare dashboard (Settings -> Environment variables):
 #   OPENROUTER_API_KEY  only needed for the paid OpenRouter provider; absent -> free providers
 #   IMAGE_PROVIDER      "workersai" (default) | "pollinations" | "openrouter"
+#
+# Gallery daily-publish pipeline:
+#   GALLERY_KV        Workers KV namespace (binding below) staging drafts from /api/publish-queue
+#   PUBLISH_FLUSH_KEY secret that protects /api/publish-flush (pass as ?key= or x-flush-key header)
+#   GITHUB_TOKEN      token with repo scope (used by /api/publish-flush to write files)
+#   GITHUB_REPO       "owner/repo"
+#   GITHUB_BRANCH     branch to write to (default main)
+
+# Gallery staging namespace — create one in the Cloudflare dashboard (Workers -> KV),
+# then paste its namespace ID into the `id` field below.
+[[kv_namespaces]]
+binding = "GALLERY_KV"
+id = "54d2e5ea278844d49225ad8c7095e89c"

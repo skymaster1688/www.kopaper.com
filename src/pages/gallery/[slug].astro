@@ -1,0 +1,90 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CraftCard from '../../components/CraftCard.astro';
+
+export async function getStaticPaths() {
+  const items = await getCollection('gallery', ({ data }) => !data.draft);
+  return items.map(g => ({
+    params: { slug: g.slug },
+    props: { item: g },
+  }));
+}
+
+const { item } = Astro.props;
+const { Content } = await item.render();
+
+const all = await getCollection('gallery', ({ data }) => !data.draft);
+const related = all
+  .filter(g => g.slug !== item.slug)
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3);
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: item.data.title,
+  description: item.data.description,
+  mainEntityOfPage: new URL(Astro.url.pathname, Astro.site).href,
+};
+---
+<BaseLayout
+  title={item.data.title}
+  description={item.data.description}
+  ogType="article"
+>
+  <article class="container" style="max-width:820px; padding-top:40px">
+    <nav class="breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      <a href="/gallery/">Gallery</a>
+      <span>/</span>
+      <span>{item.data.title}</span>
+    </nav>
+
+    <h1 style="margin-bottom:12px">{item.data.emoji} {item.data.title}</h1>
+    <p style="font-size:1.15rem; color:var(--text-muted); margin-bottom:24px">{item.data.description}</p>
+
+    <div class="gallery-content">
+      <Content />
+    </div>
+
+    <section class="learn-links" style="margin-top:40px; padding:20px 22px; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)">
+      <h2 style="font-size:1.1rem; margin-bottom:10px">Make your own</h2>
+      <ul style="margin:0; padding-left:18px; color:var(--text-muted)">
+        <li><a href="/tools/papercraft-generator/">AI papercraft generator</a> — turn any idea into a printable craft, then publish it here.</li>
+        <li><a href="/origami/">Step-by-step origami tutorials</a> — fold animals, flowers, and 3D models.</li>
+        <li><a href="/templates/">Free printable templates</a> — cards, gift tags, and paper craft sheets.</li>
+      </ul>
+    </section>
+
+    {related.length > 0 && (
+      <section style="margin-top:50px; padding-top:36px; border-top:1px solid var(--border)">
+        <h2 style="font-size:1.3rem; margin-bottom:20px">More from the Gallery</h2>
+        <div class="grid-3">
+          {related.map(g => (
+            <CraftCard
+              href={`/gallery/${g.slug}/`}
+              emoji={g.data.emoji}
+              title={g.data.title}
+              description={g.data.description}
+            />
+          ))}
+        </div>
+      </section>
+    )}
+  </article>
+
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+
+  <style is:global>
+    .gallery-content { margin-top: 28px; }
+    .gallery-content p { color: var(--text-muted); margin-bottom: 16px; line-height: 1.7; }
+    .gallery-content img {
+      display: block; max-width: 100%; height: auto; margin: 22px auto;
+      border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface);
+    }
+    .gallery-content em { display: block; text-align: center; color: var(--text-muted); font-size: 0.92rem; margin: -10px 0 22px; }
+    .gallery-content a { color: var(--warm); text-decoration: underline; }
+  </style>
+</BaseLayout>
