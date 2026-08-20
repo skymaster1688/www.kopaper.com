@@ -19,8 +19,8 @@
 - [x] gift-tags | keyword: "free printable gift tags" | url: /printables/gift-tags/ | file: src/content/printables/gift-tags.md | emoji: ✂️ | order: 2 | 要点: 介绍+怎么用(礼物/派对)，引导生成器，内链到 cards、party，外链 /templates/
 - [x] calendar | keyword: "free printable calendar 2026" | url: /printables/calendar/ | file: src/content/printables/calendar.md | emoji: ✂️ | order: 3 | 要点: 月历/年历介绍，打印提示，内链到 planner，外链 /learn/origami-paper-size/(尺寸参考)
 - [x] planner | keyword: "free printable planner / planner refills" | url: /printables/planner/ | file: src/content/printables/planner.md | emoji: ✂️ | order: 4 | 要点: 周计划/日计划/ refill 介绍，内链到 calendar，外链 /tools/paper-size-converter/(若存在)
-- [ ] coloring | keyword: "free printable coloring pages for kids" | url: /printables/coloring/ | file: src/content/printables/coloring.md | emoji: ✂️ | order: 5 | 要点: 儿童涂色介绍+益处，内链到 party、gift-tags，外链 /origami/ 动物教程(青蛙/猫)
-- [ ] party | keyword: "free printable party decorations" | url: /printables/party/ | file: src/content/printables/party.md | emoji: ✂️ | order: 6 | 要点: 派对装饰(横幅/杯垫/纸环)介绍，内链到 cards、gift-tags、coloring，外链 /templates/
+- [x] coloring | keyword: "free printable coloring pages for kids" | url: /printables/coloring/ | file: src/content/printables/coloring.md | emoji: ✂️ | order: 5 | 要点: 儿童涂色介绍+益处，内链到 party、gift-tags，外链 /origami/ 动物教程(青蛙/猫)
+- [x] party | keyword: "free printable party decorations" | url: /printables/party/ | file: src/content/printables/party.md | emoji: ✂️ | order: 6 | 要点: 派对装饰(横幅/杯垫/纸环)介绍，内链到 cards、gift-tags、coloring，外链 /templates/
 - [ ] origami-paper | keyword: "free printable origami paper" | url: /printables/origami-paper/ | file: src/content/printables/origami-paper.md | emoji: ✂️ | order: 7 | 要点: 可打印折纸图案纸(双色/图案)介绍，内链到 /learn/make-origami-paper/、types-of-origami-paper，外链 /origami/
 
 ---
