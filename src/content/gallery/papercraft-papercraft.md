@@ -12,3 +12,7 @@ This lowpoly design of "papercraft" was created with koPaper's [AI papercraft ge
 ![AI-generated lowpoly papercraft of papercraft.](/images/gallery/papercraft-papercraft-mt3u4785elhv.jpg)
 
 *AI-generated lowpoly papercraft of papercraft.*
+
+![AI-generated fantasy papercraft of papercraft.](/images/gallery/papercraft-papercraft-mt4j7ddgoxr0.jpg)
+
+*AI-generated fantasy papercraft of papercraft.*
