@@ -94,7 +94,7 @@ function resolveProvider(requested: string | undefined, env: Record<string, any>
 }
 
 function buildPrompt(idea: string, stylePhrase: string): string {
-  return `${stylePhrase} papercraft of ${idea}, paper art sculpture, cut and fold paper model, clean light background, high detail`;
+  return `${stylePhrase} papercraft of ${idea}, paper art sculpture, cut and fold paper model, clean light background, high detail, no text, no watermark, no signature`;
 }
 
 function sleep(ms: number): Promise<void> {

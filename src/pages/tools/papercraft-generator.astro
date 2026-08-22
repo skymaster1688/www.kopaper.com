@@ -21,20 +21,20 @@ const description = 'Describe an idea, pick a style, and preview papercraft desi
       <aside class="gen-side">
         <div class="field">
           <label for="prompt">Describe your idea</label>
-          <input type="text" id="prompt" placeholder="a cute panda, a fantasy castle, a robot toy" autocomplete="off" />
+          <div class="prompt-row">
+            <input type="text" id="prompt" placeholder="a cute panda, a fantasy castle, a robot toy" autocomplete="off" />
+            <button class="btn btn-ghost btn-sm" id="polishBtn" type="button" title="Expand and clean up your idea">AI polish</button>
+          </div>
+          <p class="prompt-preview" id="promptPreview" aria-live="polite"></p>
         </div>
         <div class="field">
-          <label for="styleSel">Style</label>
-          <select id="styleSel">
-            <option value="cute">Cute</option>
-            <option value="lowpoly">Low Poly</option>
-            <option value="pixel">Pixel</option>
-            <option value="fantasy">Fantasy</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="size">Size <span id="sizeVal">80</span> px</label>
-          <input type="range" id="size" min="48" max="160" value="80" step="4" />
+          <label>Style <span class="field-hint">adds a papercraft look</span></label>
+          <div class="style-chips" id="styleChips" role="group" aria-label="Style">
+            <button type="button" class="style-chip" data-style="cute" aria-pressed="true">Cute<span>round kawaii forms</span></button>
+            <button type="button" class="style-chip" data-style="lowpoly" aria-pressed="false">Low Poly<span>geometric facets</span></button>
+            <button type="button" class="style-chip" data-style="pixel" aria-pressed="false">Pixel<span>8-bit sprite</span></button>
+            <button type="button" class="style-chip" data-style="fantasy" aria-pressed="false">Fantasy<span>magical glow</span></button>
+          </div>
         </div>
         <div class="field">
           <label>Reference image (planned)</label>
@@ -141,6 +141,17 @@ const description = 'Describe an idea, pick a style, and preview papercraft desi
     .gen-loading p { font-size: 1.08rem; letter-spacing: .02em; }
     .gen-loading .spinner { width: 36px; height: 36px; border: 3px solid var(--border); border-top-color: var(--warm); border-radius: 50%; animation: kp-spin 0.9s linear infinite; }
     @keyframes kp-spin { to { transform: rotate(360deg); } }
+
+    /* Generator input: prompt row, live preview, style chips */
+    .prompt-row { display: flex; gap: 8px; align-items: stretch; }
+    .prompt-row input { flex: 1; min-width: 0; }
+    .btn-sm { padding: 0 14px; font-size: .9rem; white-space: nowrap; }
+    .prompt-preview { margin: 8px 0 0; font-size: .8rem; line-height: 1.5; color: var(--text-muted); font-family: var(--font-mono); background: var(--warm-soft); border: 1px solid var(--warm); border-radius: var(--radius-sm); padding: 8px 10px; word-break: break-word; }
+    .field-hint { font-weight: 400; color: var(--text-muted); font-size: .78rem; margin-left: 4px; }
+    .style-chips { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .style-chip { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding: 9px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface); color: var(--text); font: inherit; font-size: .92rem; cursor: pointer; text-align: left; transition: border-color .15s, background .15s; }
+    .style-chip span { font-size: .72rem; color: var(--text-muted); }
+    .style-chip[aria-pressed="true"] { border-color: var(--warm); background: var(--warm-soft); }
   </style>
 
   <script>
@@ -153,12 +164,57 @@ const description = 'Describe an idea, pick a style, and preview papercraft desi
       pixel:   ['#FFFFFF', '#0A0A0B'],
       fantasy: ['#FFFFFF', '#0A0A0B'],
     };
+    // Style phrases injected into the prompt so "style" is a real hint, not just a label.
+    const STYLE_PHRASES = {
+      cute: 'cute kawaii',
+      lowpoly: 'low poly geometric',
+      pixel: 'pixel art',
+      fantasy: 'fantasy magical',
+    };
+    // Fixed papercraft anchor — kept in sync with the server-side buildPrompt so the
+    // preview mirrors what the model actually receives.
+    const PROMPT_TAIL = 'paper art sculpture, cut and fold paper model, clean light background, high detail';
 
     const $ = (id) => document.getElementById(id);
     const promptEl = $('prompt');
-    const styleEl = $('styleSel');
-    const sizeEl = $('size');
-    const sizeVal = $('sizeVal');
+    const styleChips = $('styleChips');
+    const polishBtn = $('polishBtn');
+    const promptPreview = $('promptPreview');
+
+    function getStyle() {
+      const sel = styleChips && styleChips.querySelector('.style-chip[aria-pressed="true"]');
+      return sel ? sel.dataset.style : 'cute';
+    }
+    function setStyle(style) {
+      if (!styleChips) return;
+      styleChips.querySelectorAll('.style-chip').forEach(c => {
+        c.setAttribute('aria-pressed', String(c.dataset.style === style));
+      });
+      updatePreview();
+    }
+    // Live preview of the exact prompt the model will receive: fixed base + user input + style phrase.
+    function updatePreview() {
+      if (!promptPreview) return;
+      const idea = promptEl.value.trim();
+      const phrase = STYLE_PHRASES[getStyle()] || STYLE_PHRASES.cute;
+      const shown = idea || 'your idea';
+      promptPreview.textContent = `${phrase} papercraft of ${shown}, ${PROMPT_TAIL}`;
+    }
+    // Heuristic, free "AI polish": trims filler, drops leading articles/commands,
+    // capitalizes, and de-duplicates words so a rough idea reads like a clean prompt.
+    function polishPrompt(text) {
+      let t = text.trim().replace(/\s+/g, ' ');
+      t = t.replace(/^(please\s+)?(make|create|generate|give me|i want|i need|a|an|the|some)\s+/i, '');
+      if (t) t = t.charAt(0).toUpperCase() + t.slice(1);
+      const seen = new Set();
+      const uniq = t.split(' ').filter(Boolean).filter(w => {
+        const k = w.toLowerCase();
+        if (seen.has(k)) return false;
+        seen.add(k);
+        return true;
+      });
+      return uniq.join(' ');
+    }
 
     function poly(points) { return points.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' '); }
     function path(points) { return 'M' + points.map(p => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' L') + ' Z'; }
@@ -273,7 +329,7 @@ const description = 'Describe an idea, pick a style, and preview papercraft desi
     // Real AI generation via the serverless endpoint. Falls back to SVG nets on any failure.
     async function generate() {
       const q = promptEl.value.trim() || 'a papercraft';
-      const style = styleEl.value;
+      const style = getStyle();
       const start = Date.now();
       setLoading(true);
       try {
@@ -310,11 +366,11 @@ const description = 'Describe an idea, pick a style, and preview papercraft desi
     // Deterministic, free, printable template nets (first paint + fallback when no API key).
     function generateFallback() {
       const q = promptEl.value.trim();
-      const style = styleEl.value;
+      const style = getStyle();
       const [paper, line] = STYLE_PALETTES[style] || STYLE_PALETTES.cute;
       const matched = pickFromPrompt(q);
       const base = matched || 'cube';
-      const sBase = parseInt(sizeEl.value, 10);
+      const sBase = 80;
       const svgStr = buildCardSVG(base, sBase, true, 'dashed', paper, line, 0);
       currentSVGs = [svgStr];
       currentImages = [];
@@ -327,11 +383,10 @@ const description = 'Describe an idea, pick a style, and preview papercraft desi
 
     function surprise() {
       const styles = Object.keys(STYLE_PALETTES);
-      styleEl.value = styles[Math.floor(Math.random() * styles.length)];
+      setStyle(styles[Math.floor(Math.random() * styles.length)]);
       const ideas = ['a cute panda', 'a fantasy castle', 'a robot toy', 'a gift box', 'a paper fortune teller', 'a low poly pyramid'];
       promptEl.value = ideas[Math.floor(Math.random() * ideas.length)];
-      const size = 48 + Math.floor(Math.random() * 8) * 12;
-      sizeEl.value = size; sizeVal.textContent = size;
+      updatePreview();
       generate();
     }
 
@@ -358,8 +413,12 @@ const description = 'Describe an idea, pick a style, and preview papercraft desi
     // Best-effort: failures are silent so they never interrupt the user. The queue
     // is flushed to the live site once per day via /api/publish-flush (one deploy).
     async function autoPublish() {
-      const q = promptEl.value.trim() || 'a papercraft';
-      const style = styleEl.value;
+      // Only queue designs with a real idea — skip placeholder/empty prompts so
+      // exploratory generates don't flood the daily Gallery queue.
+      const raw = promptEl.value.trim();
+      if (!raw || raw.toLowerCase() === 'a papercraft') return;
+      const q = raw;
+      const style = getStyle();
       const img = currentImages[0];
       const svg = currentSVGs[0];
       const payload = { prompt: q, style };
@@ -382,8 +441,19 @@ const description = 'Describe an idea, pick a style, and preview papercraft desi
     // Wire events
     $('generateBtn').addEventListener('click', generate);
     $('surprise').addEventListener('click', surprise);
-    sizeEl.addEventListener('input', () => { sizeVal.textContent = sizeEl.value; generateFallback(); });
-    styleEl.addEventListener('change', generate);
+    // Style chips select a look (updates the preview) but do NOT auto-generate.
+    if (styleChips) styleChips.addEventListener('click', (e) => {
+      const btn = e.target.closest('.style-chip');
+      if (!btn) return;
+      setStyle(btn.dataset.style);
+    });
+    // AI polish: expand/clean the idea in place, then refresh the preview (no generate).
+    if (polishBtn) polishBtn.addEventListener('click', () => {
+      const p = polishPrompt(promptEl.value);
+      if (p) promptEl.value = p;
+      updatePreview();
+    });
+    promptEl.addEventListener('input', updatePreview);
     promptEl.addEventListener('keydown', (e) => { if (e.key === 'Enter') generate(); });
     $('resultGrid').querySelectorAll('[data-dl]').forEach(b => b.addEventListener('click', () => downloadAsset(parseInt(b.dataset.dl, 10))));
     $('resultGrid').querySelectorAll('[data-print]').forEach(b => b.addEventListener('click', () => window.print()));
@@ -393,7 +463,8 @@ const description = 'Describe an idea, pick a style, and preview papercraft desi
     // Prefill from URL (?q=...&style=...)
     const params = new URLSearchParams(window.location.search);
     if (params.get('q')) promptEl.value = params.get('q');
-    if (params.get('style') && STYLE_PALETTES[params.get('style')]) styleEl.value = params.get('style');
+    if (params.get('style') && STYLE_PALETTES[params.get('style')]) setStyle(params.get('style'));
+    updatePreview();
 
     // First paint: free printable nets (no API cost). If arriving from the homepage
     // composer with a pre-filled idea, run real generation right away.
