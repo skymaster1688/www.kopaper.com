@@ -161,6 +161,11 @@ export async function ghPut(env: Record<string, string>, path: string, contentB6
 }
 
 // ---- GitHub bulk commit via Git Data API: one tree + one commit + one ref update => ONE deploy ----
+// IMPORTANT: the Git Data tree endpoint's `content` field expects raw UTF-8 text, NOT base64.
+// Binary files (images) cannot be sent as UTF-8 text, so we upload every file as a blob
+// (the blobs API's `content`/`encoding:base64` is the correct base64 channel), then reference
+// the blob by SHA in the tree. This keeps text + binary uniform and avoids writing base64
+// strings into the repo (which is what the previous buggy version did).
 export async function ghCommitAll(
   env: Record<string, string>,
   files: { path: string; contentBase64: string }[],
@@ -180,8 +185,20 @@ export async function ghCommitAll(
   if (!refRes.ok) throw new Error(`GitHub ref ${refRes.status}: ${(await refRes.text()).slice(0, 200)}`);
   const baseSha = (await refRes.json()).object.sha as string;
 
-  // 2) build a tree on top of the current one (unchanged files are preserved)
-  const tree = files.map(f => ({ path: f.path, mode: '100644', type: 'blob', content: f.contentBase64 }));
+  // 2) create a blob for each file (base64-encoded binary or text, GitHub stores the real bytes)
+  const tree: { path: string; mode: string; type: string; sha: string }[] = [];
+  for (const f of files) {
+    const blobRes = await fetch(`${API}/repos/${repo}/git/blobs`, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({ content: f.contentBase64, encoding: 'base64' }),
+    });
+    if (!blobRes.ok) throw new Error(`GitHub blob ${blobRes.status} (${f.path}): ${(await blobRes.text()).slice(0, 200)}`);
+    const blobSha = (await blobRes.json()).sha as string;
+    tree.push({ path: f.path, mode: '100644', type: 'blob', sha: blobSha });
+  }
+
+  // 3) build a tree on top of the current HEAD (base_tree preserves unchanged files)
   const treeRes = await fetch(`${API}/repos/${repo}/git/trees`, {
     method: 'POST',
     headers,
@@ -190,7 +207,7 @@ export async function ghCommitAll(
   if (!treeRes.ok) throw new Error(`GitHub tree ${treeRes.status}: ${(await treeRes.text()).slice(0, 200)}`);
   const newTreeSha = (await treeRes.json()).sha as string;
 
-  // 3) commit
+  // 4) commit
   const commitRes = await fetch(`${API}/repos/${repo}/git/commits`, {
     method: 'POST',
     headers,
@@ -199,7 +216,7 @@ export async function ghCommitAll(
   if (!commitRes.ok) throw new Error(`GitHub commit ${commitRes.status}: ${(await commitRes.text()).slice(0, 200)}`);
   const newCommitSha = (await commitRes.json()).sha as string;
 
-  // 4) move the branch ref
+  // 5) move the branch ref
   const updRes = await fetch(`${API}/repos/${repo}/git/refs/heads/${branch}`, {
     method: 'PATCH',
     headers,
