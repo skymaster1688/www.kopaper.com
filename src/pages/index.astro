@@ -15,6 +15,13 @@ const letterPapers = (await getCollection('letterPaper', ({ data }) => !data.dra
 const learnArticles = (await getCollection('learn', ({ data }) => !data.draft))
   .sort((a, b) => a.data.order - b.data.order);
 
+// Gallery: AI-generated papercraft showcase. No timestamp in frontmatter, so
+// approximate "latest" by reverse slug order (newer slugs sort later alphabetically
+// in practice; if you want true chronological, add an `updated` field to gallery).
+const galleryItems = (await getCollection('gallery', ({ data }) => !data.draft))
+  .sort((a, b) => b.slug.localeCompare(a.slug))
+  .slice(0, 4);
+
 const faqs = [
   { q: 'What is koPaper?', a: 'koPaper is an AI papercraft creator. Describe an idea and it generates papercraft designs you can print, cut, fold, and build at home.' },
   { q: 'Do I need special paper?', a: 'No. Most designs work with standard A4 or Letter size printer paper. For sturdier 3D models, cardstock (160 to 220 gsm) gives the best result.' },
@@ -219,6 +226,30 @@ const faqSchema = {
         <div class="step"><div class="idx">03 &mdash; BUILD</div><h3>Assemble</h3><p>Print, cut along the lines, fold, and glue. Your idea is now a real paper model.</p></div>
       </div>
     </section>
+
+    <!-- 2c. Gallery: real AI-generated designs -->
+    {galleryItems.length > 0 && (
+      <section class="sec">
+        <div class="sec-head">
+          <span class="label">Gallery</span>
+          <h2 class="display">Fresh from the generator</h2>
+          <p>Papercraft designs created with the AI generator, ready to print and build.</p>
+        </div>
+        <div class="grid-4">
+          {galleryItems.map(g => (
+            <CraftCard
+              href={`/gallery/${g.slug}/`}
+              emoji={g.data.emoji}
+              title={g.data.title}
+              description={g.data.description}
+            />
+          ))}
+        </div>
+        <div class="reveal" style="text-align:center; margin-top:28px">
+          <a href="/gallery/" class="btn btn-outline">View all designs</a>
+        </div>
+      </section>
+    )}
 
     <!-- 3. Explore pillars -->
     <section class="sec">
