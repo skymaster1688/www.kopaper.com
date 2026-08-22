@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CraftCard from '../components/CraftCard.astro';
+import GalleryCard from '../components/GalleryCard.astro';
 
 const tutorials = (await getCollection('tutorials', ({ data }) => !data.draft && data.kind !== 'papercraft'))
   .sort((a, b) => a.data.order - b.data.order);
@@ -237,11 +238,12 @@ const faqSchema = {
         </div>
         <div class="grid-4">
           {galleryItems.map(g => (
-            <CraftCard
+            <GalleryCard
               href={`/gallery/${g.slug}/`}
-              emoji={g.data.emoji}
               title={g.data.title}
               description={g.data.description}
+              body={g.body}
+              emoji={g.data.emoji}
             />
           ))}
         </div>

@@ -1,0 +1,25 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  href: string;
+  title: string;
+  description: string;
+  body?: string;       // raw markdown body — used to extract the first generated image
+  emoji?: string;
+}
+const { href, title, description, body = '', emoji = '🎨' } = Astro.props;
+
+// Pull the first image from the markdown body (e.g. ![alt](/images/gallery/x.jpg)).
+const imgMatch = (body || '').match(/!\[[^\]]*\]\(([^)]+)\)/);
+const img = imgMatch ? imgMatch[1] : '';
+---
+<a href={href} class="gallery-card card reveal">
+  <div class="card-thumb">
+    {img ? <img src={img} alt={title} loading="lazy" /> : <span class="card-emoji">{emoji}</span>}
+  </div>
+  <div class="card-body">
+    <h3>{title}</h3>
+    <p>{description}</p>
+  </div>
+</a>
