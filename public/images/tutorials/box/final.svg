@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 380" role="img" aria-label="Finished origami box">
+  <rect width="420" height="380" fill="#ffffff"/>
+  <path d="M95,140 L325,140 L300,300 L120,300 Z" fill="#fff7ed" stroke="#334155" stroke-width="3"/>
+  <path d="M95,140 L125,110 L295,110 L325,140" fill="none" stroke="#334155" stroke-width="3"/>
+  <path d="M120,300 L150,270 L270,270 L300,300" fill="none" stroke="#334155" stroke-width="3"/>
+  <ellipse cx="210" cy="140" rx="115" ry="24" fill="#fde9d3" stroke="#334155" stroke-width="2"/>
+  <text x="210" y="200" text-anchor="middle" fill="#7c3aed" font-family="system-ui, sans-serif" font-size="34" font-weight="800">📦</text>
+</svg>

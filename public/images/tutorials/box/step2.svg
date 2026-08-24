@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 380" role="img" aria-label="Step 2: four corners folded to the center">
+  <rect width="420" height="380" fill="#ffffff"/>
+  <rect x="70" y="50" width="280" height="280" fill="#fff7ed" stroke="#334155" stroke-width="3"/>
+  <path d="M70,50 L210,190 L210,50 Z" fill="#fde9d3" stroke="#334155" stroke-width="2"/>
+  <path d="M350,50 L210,190 L210,50 Z" fill="#fde9d3" stroke="#334155" stroke-width="2"/>
+  <path d="M70,330 L210,190 L210,330 Z" fill="#fde9d3" stroke="#334155" stroke-width="2"/>
+  <path d="M350,330 L210,190 L210,330 Z" fill="#fde9d3" stroke="#334155" stroke-width="2"/>
+  <rect x="150" y="130" width="120" height="120" fill="none" stroke="#334155" stroke-width="2" stroke-dasharray="5 5"/>
+  <circle cx="40" cy="40" r="22" fill="#7c3aed"/>
+  <text x="40" y="47" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="20" font-weight="700">2</text>
+</svg>

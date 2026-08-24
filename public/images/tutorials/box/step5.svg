@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 380" role="img" aria-label="Step 5: all four walls raised">
+  <rect width="420" height="380" fill="#ffffff"/>
+  <path d="M100,120 L320,120 L300,290 L120,290 Z" fill="#fff7ed" stroke="#334155" stroke-width="3"/>
+  <path d="M100,120 L130,90 L290,90 L320,120" fill="none" stroke="#334155" stroke-width="3"/>
+  <path d="M120,290 L150,260 L270,260 L300,290" fill="none" stroke="#334155" stroke-width="3"/>
+  <path d="M130,90 L150,260 M290,90 L270,260" fill="none" stroke="#334155" stroke-width="2" stroke-dasharray="5 5"/>
+  <circle cx="40" cy="40" r="22" fill="#7c3aed"/>
+  <text x="40" y="47" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="20" font-weight="700">5</text>
+</svg>
