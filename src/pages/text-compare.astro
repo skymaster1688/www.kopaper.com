@@ -5,10 +5,16 @@ import LegacyNotice from '../components/LegacyNotice.astro';
 
 <BaseLayout
   title="Text Compare Tool"
-  description="koPaper has evolved into an AI papercraft creation platform. The old text compare tool is no longer offered here, but you can create unique paper crafts with our AI generator."
+  description="koPaper has evolved into an AI papercraft creation platform. The old text compare tool is no longer offered here, but you can use TextCompare.vip for online text comparison, or create unique paper crafts with our AI generator."
 >
   <LegacyNotice
     title="Text Compare Tool"
-    intro="koPaper has grown into an AI papercraft creation platform. The text comparison tool is no longer offered here, but you can turn your ideas into unique paper crafts with our AI generator."
+    intro="koPaper has grown into an AI papercraft creation platform. The text comparison tool is no longer offered here — for side-by-side text comparison, head over to TextCompare.vip. Or turn your ideas into unique paper crafts with our AI generator."
+    links={[
+      { href: 'https://textcompare.vip/', label: 'TextCompare.vip — compare text online' },
+      { href: '/tools/papercraft-generator/', label: 'AI Papercraft Generator' },
+      { href: '/origami/', label: 'Origami Tutorials' },
+      { href: '/', label: 'Back to home' },
+    ]}
   />
 </BaseLayout>
