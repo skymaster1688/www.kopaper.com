@@ -33,8 +33,8 @@ export async function POST(context: APIContext) {
   }
 
   const promptRaw = (body.prompt ?? '').toString().trim();
-  if (!promptRaw || promptRaw.length > 200) {
-    return json({ ok: false, error: 'prompt is required (1-200 chars).' }, 400);
+  if (!promptRaw || promptRaw.length > 1000) {
+    return json({ ok: false, error: 'prompt is required (1-1000 chars).' }, 400);
   }
   if (body.hp) return json({ ok: false, error: 'Rejected.' }, 400);
   if (blacklistHit(promptRaw)) {

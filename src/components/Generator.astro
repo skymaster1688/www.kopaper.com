@@ -344,11 +344,14 @@ const STYLES = [
     // exploratory generates don't flood the daily Gallery queue.
     const raw = promptEl.value.trim();
     if (!raw || raw.toLowerCase() === 'a papercraft') return;
-    const q = raw;
     const style = getStyle();
     const img = currentImages[0];
     const svg = currentSVGs[0];
-    const payload = { prompt: q, style };
+    // The AI image is generated from the FULL prompt, but the Gallery title/meta
+    // should be a short, clean subject (first clause). This keeps long cinematic
+    // prompts from overflowing the queue char limit or producing garbled titles.
+    const subject = raw.split(/[,.]/)[0].trim() || raw;
+    const payload = { prompt: subject, style };
     if (img && img.b64) {
       Object.assign(payload, { kind: 'raster', b64: img.b64, mediaType: img.mediaType });
     } else if (svg) {
@@ -357,12 +360,17 @@ const STYLES = [
       return;
     }
     try {
-      await fetch('/api/publish-queue', {
+      const r = await fetch('/api/publish-queue', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-    } catch (_) { /* queue is best-effort */ }
+      if (!r.ok) {
+        let msg = '';
+        try { msg = (await r.json()).error || ''; } catch (_) { /* ignore */ }
+        console.warn('[koPaper] gallery queue rejected:', r.status, msg);
+      }
+    } catch (_) { /* queue is best-effort; network errors are non-fatal */ }
   }
 
   // Wire events

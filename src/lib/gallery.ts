@@ -247,7 +247,7 @@ export async function planDraft(
   state: FlushState,
 ): Promise<{ files: { path: string; contentBase64: string }[] } | { error: string }> {
   const promptRaw = (draft.prompt ?? '').toString().trim();
-  if (!promptRaw || promptRaw.length > 200) return { error: 'prompt is required (1-200 chars).' };
+  if (!promptRaw || promptRaw.length > 1000) return { error: 'prompt is required (1-1000 chars).' };
   if (blacklistHit(promptRaw)) return { error: 'Contains a protected brand or character name and cannot be published.' };
 
   const kind = (draft.kind ?? 'raster').toString();
