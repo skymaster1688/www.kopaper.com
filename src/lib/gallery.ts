@@ -89,10 +89,76 @@ export interface Generated {
   slug: string;
 }
 
+// ---- rich gallery article generation (replaces boilerplate) ----
+type Subject = { category: string; label: string; article: string };
+function detectSubject(prompt: string): Subject {
+  const p = prompt.toLowerCase();
+  const has = (...k: string[]) => k.some(x => p.includes(x));
+  if (has('dragon')) return { category: 'dragon', label: 'dragon', article: 'a' };
+  if (has('cat','dog','bear','fox','rabbit','panda','bird','owl','eagle','fish','shark','elephant','tiger','lion','wolf','horse','cow','pig','snake','deer','frog','penguin','butterfly','bee','crab','octopus','whale','mouse','monkey','koala','unicorn')) return { category: 'animal', label: 'animal', article: 'an' };
+  if (has('car','truck','vehicle','bike','motorcycle','plane','airplane','ship','boat','train','bus','tank','helicopter')) return { category: 'vehicle', label: 'vehicle', article: 'a' };
+  if (has('castle','house','home','building','temple','tower','church','statue','pyramid','cottage','cabin','skyscraper')) return { category: 'building', label: 'building', article: 'a' };
+  if (has('robot','knight','warrior','soldier','mecha','ninja','princess','queen','king','wizard','golem')) return { category: 'character', label: 'character', article: 'a' };
+  if (has('flower','plant','tree','rose','succulent','leaf','bloom','cactus')) return { category: 'plant', label: 'plant', article: 'a' };
+  if (has('food','cake','burger','fruit','pizza','cookie','cupcake','donut','bread')) return { category: 'food', label: 'food', article: 'a' };
+  if (has('box','gift','heart','star','cube','sphere','geometric','diamond','crystal','lantern','ornament')) return { category: 'object', label: 'object', article: 'an' };
+  return { category: 'abstract', label: 'papercraft', article: 'a' };
+}
+function styleNote(style: string): string {
+  switch (style) {
+    case 'cute': return 'The cute style leans into soft, rounded shapes and friendly proportions, so the finished piece reads as charming and approachable rather than realistic.';
+    case 'lowpoly': return 'The low-poly style breaks the form into flat geometric facets, giving the model a modern, angular look that catches light from different angles.';
+    case 'pixel': return 'The pixel style renders the subject as a blocky, retro grid — 8-bit art you can hold, with clean edges that are satisfying to cut.';
+    case 'fantasy': return 'The fantasy style pushes dramatic detail: scales, wings, glow, and atmosphere, so the model feels like a creature pulled from a storybook.';
+    default: return 'The design keeps a clean, printable look that works well as a cut-and-fold papercraft.';
+  }
+}
+function paperWeight(subject: Subject, style: string): string {
+  if (subject.category === 'dragon' || subject.category === 'building') return '200–250 gsm cardstock';
+  if (subject.category === 'vehicle' || subject.category === 'character') return '180–220 gsm cardstock';
+  if (style === 'pixel' || style === 'cute') return '160–200 gsm cardstock';
+  return '180–220 gsm cardstock';
+}
+function estimate(prompt: string, subject: Subject): { difficulty: string; minutes: string } {
+  const words = prompt.split(/\s+/).length;
+  let score = 0;
+  if (subject.category === 'dragon' || subject.category === 'vehicle' || subject.category === 'building') score += 2;
+  else if (subject.category === 'character' || subject.category === 'animal') score += 1;
+  if (words > 12) score += 1;
+  if (score >= 3) return { difficulty: 'Hard', minutes: '45–90 minutes' };
+  if (score === 2) return { difficulty: 'Medium', minutes: '25–45 minutes' };
+  return { difficulty: 'Easy', minutes: '15–30 minutes' };
+}
+function subjectTip(subject: Subject): string {
+  switch (subject.category) {
+    case 'dragon': return 'Dragons have long tails and wings that like to droop — score the fold lines crisply and consider a small base or stand so the model stays upright on a shelf.';
+    case 'animal': return 'Four-legged and winged subjects look best when the legs and joints are glued firmly; a heavier cardstock helps the figure stand on its own.';
+    case 'vehicle': return 'Vehicles depend on clean, straight cuts along the body panels — a steel ruler and a fresh blade make the difference between a toy that looks crisp and one that looks rough.';
+    case 'building': return 'Towers and castles read better with sharp creases at every corner; fold toward yourself and run a bone folder along each edge for a solid, architectural finish.';
+    case 'character': return 'Characters carry a lot of small parts — assemble the torso first, then attach limbs and head so the proportions stay balanced as you build.';
+    case 'plant': return 'Petals and leaves curve nicely if you curl them gently around a pencil after cutting, adding a little life to an otherwise flat sheet.';
+    case 'food': return 'Layered treats like cakes look best built bottom-up; let each tier dry before adding the next so the stack stays straight.';
+    case 'object': return 'Simple geometric objects are a great first project — precise cutting and a dab of glue at each tab is all it takes for a clean result.';
+    default: return 'Start with the largest pieces to set the silhouette, then fill in the smaller details last.';
+  }
+}
+function buildIntro(prompt: string, subject: Subject, style: string, styleWord: string): string {
+  const para1 = `This ${styleWord ? styleWord + ' ' : ''}${subject.label} papercraft is based on the idea "${prompt}", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.`;
+  const para2 = styleNote(style);
+  const weight = paperWeight(subject, style);
+  const para3 = `What you'll need: ${weight}, a pair of sharp scissors or a craft knife, a cutting mat, a ruler, a bone folder (or the back of a spoon), and a good PVA or glue stick. Print at 100% scale on a dry, flat sheet so the tabs line up.`;
+  const para4 = `Steps: (1) print the template; (2) cut along the solid outlines; (3) score every dashed fold line; (4) fold toward the printed side for clean edges; (5) apply glue to the tabs and assemble from the largest piece outward. Take your time on the folds — crisp creases are what make the model hold its shape.`;
+  const para5 = subjectTip(subject);
+  const { difficulty, minutes } = estimate(prompt, subject);
+  const para6 = `Difficulty: ${difficulty}. Plan for about ${minutes} from first cut to finished model. If you enjoy this one, browse the [origami tutorials](/origami/) for fold-along projects or the [free printable templates](/templates/) for more ready-to-build sheets. Want a different look? Run the same idea through the [AI papercraft generator](/) in another style.`;
+  return [para1, para2, para3, para4, para5, para6].join('\n\n');
+}
+
 export function buildMeta(promptRaw: string, styleRaw: string): Generated {
   const style = (styleRaw || 'cute').toString().toLowerCase();
   const prompt = stripArticle(promptRaw.trim());
-  const titleBase = capitalizeWords(prompt) || 'Papercraft';
+  const subject = detectSubject(prompt);
+  const titleBase = prompt.length <= 40 ? capitalizeWords(prompt) : capitalizeWords(subject.label);
   let title = `${titleBase} Papercraft`;
   while (title.length > 60) {
     const words = title.split(' ');
@@ -102,15 +168,13 @@ export function buildMeta(promptRaw: string, styleRaw: string): Generated {
   }
   const styleWord = style && !title.toLowerCase().includes(style) ? style : '';
   const descriptionCore = styleWord
-    ? `A ${styleWord} papercraft design of ${prompt}`
-    : `A papercraft design of ${prompt}`;
-  let description = `${descriptionCore}, made with koPaper's free AI papercraft generator. Download and build it at home.`;
-  if (description.length > 160) description = description.slice(0, 157).trimEnd() + '...';
+    ? `Make ${subject.article} ${styleWord} ${subject.label} papercraft from "${prompt}"`
+    : `Make ${subject.article} ${subject.label} papercraft from "${prompt}"`;
+  let description = `${descriptionCore} — free printable template with paper, tools, and folding tips.`;
+  if (description.length > 160) description = `${descriptionCore}, with step-by-step folding tips.`.slice(0, 157).trimEnd() + '...';
 
   const caption = `AI-generated ${styleWord ? styleWord + ' ' : ''}papercraft of ${prompt}.`;
-  const intro = `This ${styleWord || 'papercraft'} design of "${prompt}" was created with koPaper's [AI papercraft generator](/). `
-    + `Describe any idea, pick a style, and preview a printable papercraft you can cut, fold, and build at home. `
-    + `Every design is free to generate, download, and print — and you can explore more in the [origami tutorials](/origami/) and [free printable templates](/templates/).`;
+  const intro = buildIntro(prompt, subject, style, styleWord);
 
   return {
     prompt, style, title, description, caption, intro,

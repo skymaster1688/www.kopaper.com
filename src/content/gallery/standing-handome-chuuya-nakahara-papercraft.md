@@ -1,14 +1,24 @@
 ---
 title: "Standing Handome Chuuya Nakahara Papercraft"
-description: "A pixel papercraft design of Standing handome Chuuya Nakahara, made with koPaper's free AI papercraft generator. Download and build it at home."
+description: "Make a pixel papercraft papercraft from \"Standing Handome Chuuya Nakahara\" — free printable template with paper, tools, and folding tips."Standing handome Chuuya Nakahara\" — free printable template with paper, tools, and folding tips."
 emoji: "🎨"
 style: "pixel"
 order: 99
 draft: false
 ---
 
-This pixel design of "Standing handome Chuuya Nakahara" was created with koPaper's [AI papercraft generator](/). Describe any idea, pick a style, and preview a printable papercraft you can cut, fold, and build at home. Every design is free to generate, download, and print — and you can explore more in the [origami tutorials](/origami/) and [free printable templates](/templates/).
+This pixel papercraft papercraft is based on the idea "Standing Handome Chuuya Nakahara", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.
 
-![AI-generated pixel papercraft of Standing handome Chuuya Nakahara.](/images/gallery/standing-handome-chuuya-nakahara-papercraft-mt5tcau6pcdn.jpg)
+The pixel style renders the subject as a blocky, retro grid — 8-bit art you can hold, with clean edges that are satisfying to cut.
 
-*AI-generated pixel papercraft of Standing handome Chuuya Nakahara.*
+What you'll need: 160–200 gsm cardstock, a pair of sharp scissors or a craft knife, a cutting mat, a ruler, a bone folder (or the back of a spoon), and a good PVA or glue stick. Print at 100% scale on a dry, flat sheet so the tabs line up.
+
+Steps: (1) print the template; (2) cut along the solid outlines; (3) score every dashed fold line; (4) fold toward the printed side for clean edges; (5) apply glue to the tabs and assemble from the largest piece outward. Take your time on the folds — crisp creases are what make the model hold its shape.
+
+Start with the largest pieces to set the silhouette, then fill in the smaller details last.
+
+Difficulty: Easy. Plan for about 15–30 minutes from first cut to finished model. If you enjoy this one, browse the [origami tutorials](/origami/) for fold-along projects or the [free printable templates](/templates/) for more ready-to-build sheets. Want a different look? Run the same idea through the [AI papercraft generator](/) in another style.
+
+![AI-generated pixel papercraft of Standing Handome Chuuya Nakahara.](/images/gallery/standing-handome-chuuya-nakahara-papercraft-mt5tcau6pcdn.jpg)
+
+*AI-generated pixel papercraft of Standing Handome Chuuya Nakahara.*

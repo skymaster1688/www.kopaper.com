@@ -1,14 +1,22 @@
 ---
 title: "Pixel Style Papercraft Standing [Bungou Stray Dogs] Chuuya"
-description: "A papercraft design of pixel style papercraft standing [Bungou Stray Dogs] Chuuya Nakahara, made with koPaper's free AI papercraft generator. Download and bu..."
+description: "Make an animal papercraft from \"Pixel Style Papercraft Standing [Bungou Stray Dogs] Chuuya\" — free printable template with paper, tools, and folding tips."pixel style papercraft standing [Bungou Stray Dogs] Chuuya Nakahara\", with step-by-step folding tips...."
 emoji: "🐶"
 style: "pixel"
 order: 99
 draft: false
 ---
 
-This papercraft design of "pixel style papercraft standing [Bungou Stray Dogs] Chuuya Nakahara" was created with koPaper's [AI papercraft generator](/). Describe any idea, pick a style, and preview a printable papercraft you can cut, fold, and build at home. Every design is free to generate, download, and print — and you can explore more in the [origami tutorials](/origami/) and [free printable templates](/templates/).
+This animal papercraft is based on the idea "Pixel Style Papercraft Standing [Bungou Stray Dogs] Chuuya", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.
 
-![AI-generated papercraft of pixel style papercraft standing Bungou Stray Dogs Chuuya Nakahara.](/images/gallery/pixel-style-papercraft-standing-bungou-stray-dogs-chuuya-mt5tcb3mv43o.jpg)
+The pixel style renders the subject as a blocky, retro grid — 8-bit art you can hold, with clean edges that are satisfying to cut.
 
-*AI-generated papercraft of pixel style papercraft standing [Bungou Stray Dogs] Chuuya Nakahara.*
+What you'll need: 160–200 gsm cardstock, a pair of sharp scissors or a craft knife, a cutting mat, a ruler, a bone folder (or the back of a spoon), and a good PVA or glue stick. Print at 100% scale on a dry, flat sheet so the tabs line up.
+
+Steps: (1) print the template; (2) cut along the solid outlines; (3) score every dashed fold line; (4) fold toward the printed side for clean edges; (5) apply glue to the tabs and assemble from the largest piece outward. Take your time on the folds — crisp creases are what make the model hold its shape.
+
+Four-legged and winged subjects look best when the legs and joints are glued firmly; a heavier cardstock helps the figure stand on its own.
+
+Difficulty: Easy. Plan for about 15–30 minutes from first cut to finished model. If you enjoy this one, browse the [origami tutorials](/origami/) for fold-along projects or the [free printable templates](/templates/) for more ready-to-build sheets. Want a different look? Run the same idea through the [AI papercraft generator](/) in another style.
+
+
