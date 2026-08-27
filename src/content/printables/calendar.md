@@ -49,7 +49,7 @@ Keeping supplies in one box turns "I should put up a calendar" from a project in
 
 ## When a template is not enough
 
-Sometimes you want a calendar that is not January-to-December, or one dated for a school term, a planting season, or a habit tracker with custom headers. A generic free printable calendar 2026 covers the standard year, but a generator fills the gap. The [papercraft generator](/tools/papercraft-generator/) lets you describe the layout you want — a weekly grid with a notes column, a month with a habit row, a yearly strip — and produces a printable sheet you can fold or trim the same afternoon, no design software required.
+Sometimes you want a calendar that is not January-to-December, or one dated for a school term, a planting season, or a habit tracker with custom headers. A generic free printable calendar 2026 covers the standard year, but a generator fills the gap. The [papercraft generator](/) lets you describe the layout you want — a weekly grid with a notes column, a month with a habit row, a yearly strip — and produces a printable sheet you can fold or trim the same afternoon, no design software required.
 
 For a coordinated desk setup, pair your calendar with a [free printable planner](/printables/planner/) so the wall overview and the day-to-day page share one style. Browse the full [printable collection](/printables/) to mix and match everything your space needs.
 

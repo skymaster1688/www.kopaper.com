@@ -68,7 +68,7 @@ The pattern is simple: lighter papers teach you the basics, heavier and specialt
 - **Learning a new fold** → kami, every time.
 - **A gift or shelf model** → tant for clean edges, washi for organic texture.
 - **A shiny showpiece** → foil, once the folds are comfortable.
-- **A custom pattern sheet** → the [AI papercraft generator](/tools/papercraft-generator/) turns an idea into a printable craft sheet you can cut and fold the same afternoon.
+- **A custom pattern sheet** → the [AI papercraft generator](/) turns an idea into a printable craft sheet you can cut and fold the same afternoon.
 
 ## Keep exploring
 

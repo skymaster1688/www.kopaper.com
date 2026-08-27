@@ -108,7 +108,7 @@ export function buildMeta(promptRaw: string, styleRaw: string): Generated {
   if (description.length > 160) description = description.slice(0, 157).trimEnd() + '...';
 
   const caption = `AI-generated ${styleWord ? styleWord + ' ' : ''}papercraft of ${prompt}.`;
-  const intro = `This ${styleWord || 'papercraft'} design of "${prompt}" was created with koPaper's [AI papercraft generator](/tools/papercraft-generator/). `
+  const intro = `This ${styleWord || 'papercraft'} design of "${prompt}" was created with koPaper's [AI papercraft generator](/). `
     + `Describe any idea, pick a style, and preview a printable papercraft you can cut, fold, and build at home. `
     + `Every design is free to generate, download, and print — and you can explore more in the [origami tutorials](/origami/) and [free printable templates](/templates/).`;
 

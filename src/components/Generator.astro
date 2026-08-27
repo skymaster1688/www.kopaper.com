@@ -1,0 +1,402 @@
+---
+interface Props {
+  defaultStyle?: 'cute' | 'lowpoly' | 'pixel' | 'fantasy';
+  defaultPrompt?: string;
+}
+const { defaultStyle = 'cute', defaultPrompt = '' } = Astro.props;
+
+const STYLES = [
+  { id: 'cute', label: 'Cute', hint: 'round kawaii forms' },
+  { id: 'lowpoly', label: 'Low Poly', hint: 'geometric facets' },
+  { id: 'pixel', label: 'Pixel', hint: '8-bit sprite' },
+  { id: 'fantasy', label: 'Fantasy', hint: 'magical glow' },
+];
+---
+
+<!-- Generator app — reusable on the homepage and on /tools/<style>/ pages. -->
+<section class="gen-app reveal" aria-label="Papercraft generator" data-default-style={defaultStyle}>
+  <aside class="gen-side">
+    <div class="field">
+      <label for="prompt">Describe your idea</label>
+      <div class="prompt-row">
+        <input type="text" id="prompt" placeholder="a cute panda, a fantasy castle, a robot toy" autocomplete="off" />
+        <button class="btn btn-ghost btn-sm" id="polishBtn" type="button" title="Expand and clean up your idea">AI polish</button>
+      </div>
+      <p class="prompt-preview" id="promptPreview" aria-live="polite"></p>
+    </div>
+    <div class="field">
+      <label>Style <span class="field-hint">adds a papercraft look</span></label>
+      <div class="style-chips" id="styleChips" role="group" aria-label="Style">
+        {STYLES.map((s) => (
+          <button type="button" class="style-chip" data-style={s.id} aria-pressed={s.id === defaultStyle}>
+            {s.label}<span>{s.hint}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+    <div class="field">
+      <label>Reference image (planned)</label>
+      <label class="upload-btn" for="upload">Upload image</label>
+      <input type="file" id="upload" accept="image/*" hidden />
+    </div>
+    <div class="gen-actions">
+      <button class="btn btn-ghost" id="surprise" type="button">Surprise me</button>
+      <button class="btn btn-primary btn-large" id="generateBtn" type="button">Generate</button>
+    </div>
+  </aside>
+
+  <div class="gen-stage">
+    <div class="stage-frame">
+      <div class="result-grid" id="resultGrid">
+        <div class="result-card" data-i="0">
+          <div class="thumb"></div>
+          <div class="meta"><span class="title">Your design</span><span class="actions"><button class="mini" data-dl="0">SVG</button><button class="mini" data-print="0">Print</button></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="gen-loading" id="genLoading" hidden>
+      <div class="spinner" aria-hidden="true"></div>
+      <p>Generating your design…</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Generator input: prompt row, live preview, style chips */
+  .prompt-row { display: flex; gap: 8px; align-items: stretch; }
+  .prompt-row input { flex: 1; min-width: 0; }
+  .btn-sm { padding: 0 14px; font-size: .9rem; white-space: nowrap; }
+  .prompt-preview { margin: 8px 0 0; font-size: .8rem; line-height: 1.5; color: var(--text-muted); font-family: var(--font-mono); background: var(--warm-soft); border: 1px solid var(--warm); border-radius: var(--radius-sm); padding: 8px 10px; word-break: break-word; }
+  .field-hint { font-weight: 400; color: var(--text-muted); font-size: .78rem; margin-left: 4px; }
+  .style-chips { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .style-chip { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding: 9px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface); color: var(--text); font: inherit; font-size: .92rem; cursor: pointer; text-align: left; transition: border-color .15s, background .15s; }
+  .style-chip span { font-size: .72rem; color: var(--text-muted); }
+  .style-chip[aria-pressed="true"] { border-color: var(--warm); background: var(--warm-soft); }
+
+  .gen-stage { position: relative; }
+  .gen-loading { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; color: var(--text-muted); background: var(--surface); }
+  .gen-loading[hidden] { display: none; }
+  .gen-loading p { font-size: 1.08rem; letter-spacing: .02em; }
+  .gen-loading .spinner { width: 36px; height: 36px; border: 3px solid var(--border); border-top-color: var(--warm); border-radius: 50%; animation: kp-spin 0.9s linear infinite; }
+  @keyframes kp-spin { to { transform: rotate(360deg); } }
+</style>
+
+<script define:vars={{ defaultStyle, defaultPrompt }}>
+  const SHAPES = ['cube', 'pyramid', 'prism', 'toy'];
+  const TYPE_LABEL = { cube: 'Cube', pyramid: 'Pyramid', prism: 'Prism', toy: 'Paper Toy', bookmark: 'Bookmark' };
+  // Monochrome line-art output: white paper, ink lines (printable + on-brand).
+  const STYLE_PALETTES = {
+    cute:    ['#FFFFFF', '#0A0A0B'],
+    lowpoly: ['#FFFFFF', '#0A0A0B'],
+    pixel:   ['#FFFFFF', '#0A0A0B'],
+    fantasy: ['#FFFFFF', '#0A0A0B'],
+  };
+  // Style phrases injected into the prompt so "style" is a real hint, not just a label.
+  const STYLE_PHRASES = {
+    cute: 'cute kawaii',
+    lowpoly: 'low poly geometric',
+    pixel: 'pixel art',
+    fantasy: 'fantasy magical',
+  };
+  // Fixed papercraft anchor — kept in sync with the server-side buildPrompt so the
+  // preview mirrors what the model actually receives.
+  const PROMPT_TAIL = 'paper art sculpture, cut and fold paper model, clean light background, high detail';
+
+  const $ = (id) => document.getElementById(id);
+  const promptEl = $('prompt');
+  const styleChips = $('styleChips');
+  const polishBtn = $('polishBtn');
+  const promptPreview = $('promptPreview');
+
+  function getStyle() {
+    const sel = styleChips && styleChips.querySelector('.style-chip[aria-pressed="true"]');
+    return sel ? sel.dataset.style : (defaultStyle || 'cute');
+  }
+  function setStyle(style) {
+    if (!styleChips) return;
+    styleChips.querySelectorAll('.style-chip').forEach(c => {
+      c.setAttribute('aria-pressed', String(c.dataset.style === style));
+    });
+    updatePreview();
+  }
+  // Live preview of the exact prompt the model will receive: fixed base + user input + style phrase.
+  function updatePreview() {
+    if (!promptPreview) return;
+    const idea = promptEl.value.trim();
+    const phrase = STYLE_PHRASES[getStyle()] || STYLE_PHRASES.cute;
+    const shown = idea || 'your idea';
+    promptPreview.textContent = `${phrase} papercraft of ${shown}, ${PROMPT_TAIL}`;
+  }
+  // Heuristic, free "AI polish": trims filler, drops leading articles/commands,
+  // capitalizes, and de-duplicates words so a rough idea reads like a clean prompt.
+  function polishPrompt(text) {
+    let t = text.trim().replace(/\s+/g, ' ');
+    t = t.replace(/^(please\s+)?(make|create|generate|give me|i want|i need|a|an|the|some)\s+/i, '');
+    if (t) t = t.charAt(0).toUpperCase() + t.slice(1);
+    const seen = new Set();
+    const uniq = t.split(' ').filter(Boolean).filter(w => {
+      const k = w.toLowerCase();
+      if (seen.has(k)) return false;
+      seen.add(k);
+      return true;
+    });
+    return uniq.join(' ');
+  }
+
+  function poly(points) { return points.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' '); }
+  function path(points) { return 'M' + points.map(p => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' L') + ' Z'; }
+  function seg(a, b) { return `M${a[0].toFixed(1)} ${a[1].toFixed(1)} L${b[0].toFixed(1)} ${b[1].toFixed(1)}`; }
+
+  // --- Net builders (geometry, reused from the template engine) ---
+  function cubeNet(s, tabs) {
+    const P = [[-1,0],[0,0],[0,-1],[1,-1],[1,0],[2,0],[3,0],[3,1],[2,1],[1,1],[1,2],[0,2],[0,1],[-1,1]];
+    const outline = P.map(([x,y]) => [x*s, y*s]);
+    const folds = [ seg([0,0],[s,0]), seg([0,s],[s,s]), seg([0,0],[0,s]), seg([s,0],[s,s]), seg([2*s,0],[2*s,s]) ];
+    const t = s * 0.22;
+    const tabPolys = tabs ? [
+      [[0.2*s,-s],[0.8*s,-s],[0.9*s,-s-t],[0.1*s,-s-t]],
+      [[-s,0.2*s],[-s,0.8*s],[-s-t,0.9*s],[-s-t,0.1*s]],
+      [[0.2*s,2*s],[0.8*s,2*s],[0.9*s,2*s+t],[0.1*s,2*s+t]],
+      [[3*s,0.2*s],[3*s,0.8*s],[3*s+t,0.9*s],[3*s+t,0.1*s]],
+    ] : [];
+    return { outline, folds, tabs: tabPolys };
+  }
+  function pyramidNet(s, tabs) {
+    const h = s * 1.25;
+    const apexTop = [s/2, -h], apexRight = [s + h, s/2], apexBot = [s/2, s + h], apexLeft = [-h, s/2];
+    const outline = [ apexTop, [s,0], apexRight, [s,s], apexBot, [0,s], apexLeft, [0,0] ].map(([x,y]) => [x, y]);
+    const folds = [ seg([0,0],[s,0]), seg([s,0],[s,s]), seg([s,s],[0,s]), seg([0,s],[0,0]) ];
+    const t = s * 0.22;
+    const tabPolys = tabs ? [
+      [[s,0],[s/2,-h],[s/2 - t*0.3,-h - t],[s + t*0.3,-h - t]],
+      [[s,s],[s+h,s/2],[s+h+t,s/2 - t*0.3],[s+h+t,s/2 + t*0.3]],
+    ] : [];
+    return { outline, folds, tabs: tabPolys };
+  }
+  function prismNet(s, tabs) {
+    const h = s * 0.9;
+    const outline = [ [0,0],[3*s,0],[3*s + h, s/2],[3*s,s],[0,s],[-h, s/2] ].map(([x,y]) => [x, y]);
+    const folds = [ seg([s,0],[s,s]), seg([2*s,0],[2*s,s]), seg([0,0],[0,s]), seg([3*s,0],[3*s,s]) ];
+    const t = s * 0.22;
+    const tabPolys = tabs ? [
+      [[-h, s/2],[0,0],[0 - t*0.4, 0 - t],[ -h - t, s/2 - t*0.4]],
+      [[3*s + h, s/2],[3*s,s],[3*s + t*0.4, s + t],[3*s + h + t, s/2 + t*0.4]],
+    ] : [];
+    return { outline, folds, tabs: tabPolys };
+  }
+  function toyNet(s) {
+    const outline = [[0,0],[s,0],[s,s],[0,s]].map(([x,y]) => [x, y]);
+    const folds = [ seg([0, s/2],[s, s/2]), seg([s/2, 0],[s/2, s]), seg([0,0],[s,s]), seg([s,0],[0,s]) ];
+    const f = s * 0.32;
+    const tabs = [
+      [[0,0],[f,f],[0, 2*f]], [[s,0],[s-f,f],[s, 2*f]],
+      [[0,s],[f, s-f],[0, s-2*f]], [[s,s],[s-f, s-f],[s, s-2*f]],
+    ];
+    return { outline, folds, tabs };
+  }
+  function buildNet(type, s, tabsOn) {
+    switch (type) {
+      case 'pyramid': return pyramidNet(s, tabsOn);
+      case 'prism': return prismNet(s, tabsOn);
+      case 'toy': return toyNet(s);
+      default: return cubeNet(s, tabsOn);
+    }
+  }
+
+  function netMarkup(type, s, tabsOn, foldStyle, paper, line) {
+    const net = buildNet(type, s, tabsOn);
+    const pts = net.outline.concat(net.tabs.flat());
+    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+    pts.forEach(([x,y]) => { minX=Math.min(minX,x); minY=Math.min(minY,y); maxX=Math.max(maxX,x); maxY=Math.max(maxY,y); });
+    const pad = 14; minX -= pad; minY -= pad; maxX += pad; maxY += pad;
+    const vb = `${minX.toFixed(1)} ${minY.toFixed(1)} ${(maxX-minX).toFixed(1)} ${(maxY-minY).toFixed(1)}`;
+    const cut = `<path d="${path(net.outline)}" fill="${paper}" stroke="${line}" stroke-width="1.6" stroke-linejoin="round"/>`;
+    const foldDash = foldStyle === 'dashed' ? ' stroke-dasharray="6 5"' : '';
+    const folds = (foldStyle === 'none' ? [] : net.folds).map(f => `<path d="${f}" fill="none" stroke="${line}" stroke-width="1.2"${foldDash}/>`).join('');
+    const tabs = net.tabs.map(t => `<polygon points="${poly(t)}" fill="${paper}" stroke="${line}" stroke-width="1.4" stroke-linejoin="round"/>`).join('');
+    return { vb, inner: cut + folds + tabs };
+  }
+  function buildCardSVG(type, s, tabsOn, foldStyle, paper, line, i) {
+    const { vb, inner } = netMarkup(type, s, tabsOn, foldStyle, paper, line);
+    return `<svg viewBox="${vb}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Papercraft design ${i+1}">${inner}</svg>`;
+  }
+
+  function pickFromPrompt(text) {
+    const q = text.toLowerCase();
+    if (/(blocky|voxel|cube|cubic|box|die|dice|gift)/.test(q)) return 'cube';
+    if (/(pyramid|egypt|tent|triangular)/.test(q)) return 'pyramid';
+    if (/(prism|roof|triangle)/.test(q)) return 'prism';
+    if (/(toy|fortune|chatter|cootie|kids|kid|play|panda|animal|robot|castle|dragon)/.test(q)) return 'toy';
+    return null;
+  }
+
+  let currentSVGs = [];
+  let currentImages = [];
+
+  function setLoading(on) {
+    const btn = $('generateBtn');
+    if (btn) { btn.disabled = on; btn.textContent = on ? 'Generating…' : 'Generate'; }
+    const grid = $('resultGrid');
+    if (grid) grid.classList.toggle('loading', on);
+    const loading = $('genLoading');
+    if (loading) loading.hidden = !on;
+  }
+
+  function renderImages(images, style) {
+    const label = style.charAt(0).toUpperCase() + style.slice(1);
+    const img = images[0];
+    const card = document.querySelector('.result-card[data-i="0"]');
+    if (card && img) {
+      card.querySelector('.thumb').innerHTML =
+        `<img class="gen-img" alt="${label} AI papercraft design" src="data:${img.mediaType};base64,${img.b64}">`;
+      card.querySelector('.title').textContent = `${label} AI design`;
+    }
+  }
+
+  // Real AI generation via the serverless endpoint. Falls back to SVG nets on any failure.
+  async function generate() {
+    const q = promptEl.value.trim() || 'a papercraft';
+    const style = getStyle();
+    const start = Date.now();
+    setLoading(true);
+    try {
+      const res = await fetch('/api/generate-image', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt: q, style, n: 1 }),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.ok && data.images && data.images.length) {
+          currentImages = data.images;
+          currentSVGs = [];
+          renderImages(data.images, style);
+          await minDelay(start);
+          setLoading(false);
+          autoPublish();
+          return;
+        }
+      }
+    } catch (_) { /* fall through to SVG */ }
+    generateFallback();
+    await minDelay(start);
+    setLoading(false);
+    autoPublish();
+  }
+
+  // Keep the "Generating your design" state on screen briefly so it never just flashes.
+  function minDelay(start, ms = 3000) {
+    const elapsed = Date.now() - start;
+    return elapsed < ms ? new Promise(r => setTimeout(r, ms - elapsed)) : Promise.resolve();
+  }
+
+  // Deterministic, free, printable template nets (first paint + fallback when no API key).
+  function generateFallback() {
+    const q = promptEl.value.trim();
+    const style = getStyle();
+    const [paper, line] = STYLE_PALETTES[style] || STYLE_PALETTES.cute;
+    const matched = pickFromPrompt(q);
+    const base = matched || 'cube';
+    const sBase = 80;
+    const svgStr = buildCardSVG(base, sBase, true, 'dashed', paper, line, 0);
+    currentSVGs = [svgStr];
+    currentImages = [];
+    const card = document.querySelector('.result-card[data-i="0"]');
+    if (card) {
+      card.querySelector('.thumb').innerHTML = svgStr;
+      card.querySelector('.title').textContent = `${style.charAt(0).toUpperCase() + style.slice(1)} ${TYPE_LABEL[base]}`;
+    }
+  }
+
+  function surprise() {
+    const styles = Object.keys(STYLE_PALETTES);
+    setStyle(styles[Math.floor(Math.random() * styles.length)]);
+    const ideas = ['a cute panda', 'a fantasy castle', 'a robot toy', 'a gift box', 'a paper fortune teller', 'a low poly pyramid'];
+    promptEl.value = ideas[Math.floor(Math.random() * ideas.length)];
+    updatePreview();
+    generate();
+  }
+
+  function downloadAsset(i) {
+    const img = currentImages[i];
+    if (img && img.b64) {
+      const a = document.createElement('a');
+      a.href = `data:${img.mediaType};base64,${img.b64}`;
+      a.download = `kopaper-design-${i + 1}.png`;
+      a.click();
+      return;
+    }
+    const data = currentSVGs[i];
+    if (!data) return;
+    const blob = new Blob(['<?xml version="1.0" encoding="UTF-8"?>\n' + data], { type: 'image/svg+xml' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = `kopaper-design-${i + 1}.svg`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  // Stage the current design into the daily Gallery queue (KV) in the background.
+  // Best-effort: failures are silent so they never interrupt the user. The queue
+  // is flushed to the live site once per day via /api/publish-flush (one deploy).
+  async function autoPublish() {
+    // Only queue designs with a real idea — skip placeholder/empty prompts so
+    // exploratory generates don't flood the daily Gallery queue.
+    const raw = promptEl.value.trim();
+    if (!raw || raw.toLowerCase() === 'a papercraft') return;
+    const q = raw;
+    const style = getStyle();
+    const img = currentImages[0];
+    const svg = currentSVGs[0];
+    const payload = { prompt: q, style };
+    if (img && img.b64) {
+      Object.assign(payload, { kind: 'raster', b64: img.b64, mediaType: img.mediaType });
+    } else if (svg) {
+      Object.assign(payload, { kind: 'svg', svg });
+    } else {
+      return;
+    }
+    try {
+      await fetch('/api/publish-queue', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+    } catch (_) { /* queue is best-effort */ }
+  }
+
+  // Wire events
+  $('generateBtn').addEventListener('click', generate);
+  $('surprise').addEventListener('click', surprise);
+  // Style chips select a look (updates the preview) but do NOT auto-generate.
+  if (styleChips) styleChips.addEventListener('click', (e) => {
+    const btn = e.target.closest('.style-chip');
+    if (!btn) return;
+    setStyle(btn.dataset.style);
+  });
+  // AI polish: expand/clean the idea in place, then refresh the preview (no generate).
+  if (polishBtn) polishBtn.addEventListener('click', () => {
+    const p = polishPrompt(promptEl.value);
+    if (p) promptEl.value = p;
+    updatePreview();
+  });
+  promptEl.addEventListener('input', updatePreview);
+  promptEl.addEventListener('keydown', (e) => { if (e.key === 'Enter') generate(); });
+  $('resultGrid').querySelectorAll('[data-dl]').forEach(b => b.addEventListener('click', () => downloadAsset(parseInt(b.dataset.dl, 10))));
+  $('resultGrid').querySelectorAll('[data-print]').forEach(b => b.addEventListener('click', () => window.print()));
+  const upload = $('upload');
+  if (upload) upload.addEventListener('change', () => { alert('Image to papercraft is planned. For now, describe your idea in the text box and generate.'); upload.value = ''; });
+
+  // Prefill from URL (?q=...&style=...) or component default.
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('q')) promptEl.value = params.get('q');
+  else if (defaultPrompt) promptEl.value = defaultPrompt;
+  if (params.get('style') && STYLE_PALETTES[params.get('style')]) setStyle(params.get('style'));
+  else if (defaultStyle && STYLE_PALETTES[defaultStyle]) setStyle(defaultStyle);
+  updatePreview();
+
+  // First paint: free printable nets (no API cost). If arriving with a pre-filled idea,
+  // run real generation right away.
+  if (params.get('q')) generate();
+  else generateFallback();
+</script>

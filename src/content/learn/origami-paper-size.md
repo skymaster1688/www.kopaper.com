@@ -81,4 +81,4 @@ If you are unsure, start at 15 cm. It is the standard for good reason.
 - New to materials? See [what paper to use for origami](/learn/what-paper-for-origami/) for a breakdown by project type.
 - Want the best sheets for finished models? Read our [best origami paper for beginners](/learn/best-origami-paper/) guide.
 - Try a fold that shows off a clean square: the [origami heart](/origami/heart/) is a quick, satisfying project.
-- Need a custom printable sheet? The [papercraft generator](/tools/papercraft-generator/) lets you design your own template at home.
+- Need a custom printable sheet? The [papercraft generator](/) lets you design your own template at home.

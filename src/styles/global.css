@@ -467,5 +467,12 @@ ul { list-style: none; }
 @media print {
   body:has(.generator-page) .site-header,
   body:has(.generator-page) .site-footer,
-  body:has(.generator-page) .to-top { display: none !important; }
+  body:has(.generator-page) .to-top,
+  body:has(.generator-page) .gen-side,
+  body:has(.generator-page) .generator-head,
+  body:has(.generator-page) .gen-info,
+  body:has(.generator-page) .reveal { display: none !important; }
+  body:has(.generator-page) .gen-app { box-shadow: none; border: none; padding: 0; display: block; }
+  body:has(.generator-page) .gen-stage .stage-frame { border: none; background: #fff; min-height: auto; padding: 0; }
+  body:has(.generator-page) .result-card { break-inside: avoid; }
 }

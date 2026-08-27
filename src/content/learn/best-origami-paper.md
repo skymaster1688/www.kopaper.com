@@ -67,7 +67,7 @@ Notice that weight and size move together. Heavier paper in a small 7.5 cm squar
 
 Buy one pack of 15 cm kami in assorted colors. It is inexpensive, forgiving, and enough to fold every model in our [origami collection](/origami/). Add a small pack of tant once you want gift-quality results, and keep foil for special pieces. You do not need washi on day one.
 
-When you want a pattern or two-tone sheet that shops do not carry, the [AI papercraft generator](/tools/papercraft-generator/) turns an idea into a printable craft sheet, and our [free printable origami paper](/printables/) collection offers patterns you can cut and fold the same afternoon.
+When you want a pattern or two-tone sheet that shops do not carry, the [AI papercraft generator](/) turns an idea into a printable craft sheet, and our [free printable origami paper](/printables/) collection offers patterns you can cut and fold the same afternoon.
 
 ## How much to buy
 

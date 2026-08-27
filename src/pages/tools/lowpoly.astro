@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Generator from '../../components/Generator.astro';
+
+const title = 'Low Poly Papercraft Generator — Geometric AI Paper Models';
+const description = 'Create faceted low poly papercraft with the free low poly papercraft generator. Turn a fox, gem, or idea into a printable geometric cut-and-fold template.';
+---
+
+<BaseLayout title={title} description={description} ogType="website">
+  <article class="container generator-page">
+    <header class="generator-head reveal">
+      <p class="eyebrow"><span class="label">Low Poly Papercraft Generator</span></p>
+      <h1>Generate low poly papercraft</h1>
+      <p class="lede">
+        Faceted, modern forms with clean geometric edges. Describe an idea, pick the Low Poly style,
+        and preview a printable papercraft template you can build at home.
+      </p>
+    </header>
+
+    <!-- Generator app (pre-set to the Low Poly style) -->
+    <Generator defaultStyle="lowpoly" defaultPrompt="a low poly fox" />
+
+    <!-- SEO content -->
+    <section class="gen-info reveal">
+      <h2>What you can make in the Low Poly style</h2>
+      <p>
+        The low poly papercraft generator is built for angular, faceted shapes — gems, foxes, and
+        geometric models with crisp edges. Tell it <strong>a low poly fox</strong>,
+        <strong>a crystal</strong>, or <strong>a blocky robot</strong>, and it returns a modern papercraft
+        design you can print, cut, and fold. Every design is a real cut and fold template.
+      </p>
+
+      <h2>How to use a generated design</h2>
+      <ol class="gen-steps">
+        <li><strong>Describe</strong> a geometric idea above (or just press Generate for a fox), then pick the Low Poly style.</li>
+        <li><strong>Download</strong> any design as an SVG, or press <em>Print</em> and choose "Save as PDF".</li>
+        <li><strong>Print</strong> on cardstock for a sturdy model, or normal paper for a quick decoration.</li>
+        <li><strong>Cut</strong> along solid lines, <strong>fold</strong> along dashed lines, and glue the tabs.</li>
+      </ol>
+
+      <h2>Other styles to try</h2>
+      <p>
+        Want a different look? The same idea renders differently in
+        <a href="/tools/cute/">Cute</a>, <a href="/tools/pixel/">Pixel</a>, or
+        <a href="/tools/fantasy/">Fantasy</a>. Browse them all on the
+        <a href="/tools/">papercraft generators hub</a>.
+      </p>
+
+      <h2>Frequently asked questions</h2>
+      <div class="gen-faq">
+        <details>
+          <summary>Is the low poly generator free?</summary>
+          <p>Yes. Every low poly papercraft design is free to generate, download, and print. No account required.</p>
+        </details>
+        <details>
+          <summary>What file do I get?</summary>
+          <p>You get a scalable SVG you can open in any browser or vector editor, or a PDF via the print button.</p>
+        </details>
+        <details>
+          <summary>Can I make blocky cube models?</summary>
+          <p>Describe a cube, gem, or blocky character and the generator produces a geometric net you can decorate with flat facets.</p>
+        </details>
+        <details>
+          <summary>What paper should I use?</summary>
+          <p>Cardstock (160 to 220 gsm) gives the best 3D results. Printer paper works for flat toys and bookmarks.</p>
+        </details>
+      </div>
+    </section>
+  </article>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'koPaper Low Poly Papercraft Generator',
+    applicationCategory: 'DesignApplication',
+    operatingSystem: 'Any',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    description: 'Free online tool to generate low poly geometric papercraft designs and 3D paper models from a text idea.',
+  })}></script>
+</BaseLayout>

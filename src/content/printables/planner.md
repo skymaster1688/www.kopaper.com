@@ -50,7 +50,7 @@ With supplies in one spot, "refill the planner" becomes a two-minute job instead
 
 ## When a template is not enough
 
-Standard pages cover most weeks, but some goals need a custom grid: a planting log with weather columns, a training plan with sets and reps, a budget page with categories your app does not have. A generic free printable planner gives you the skeleton; a generator fills the custom gap. The [papercraft generator](/tools/papercraft-generator/) lets you describe the layout you want — a weekly grid with a habit strip, a daily page with a water tracker, a refill with three project boxes — and returns a printable sheet you can trim and punch the same afternoon, no design software required.
+Standard pages cover most weeks, but some goals need a custom grid: a planting log with weather columns, a training plan with sets and reps, a budget page with categories your app does not have. A generic free printable planner gives you the skeleton; a generator fills the custom gap. The [papercraft generator](/) lets you describe the layout you want — a weekly grid with a habit strip, a daily page with a water tracker, a refill with three project boxes — and returns a printable sheet you can trim and punch the same afternoon, no design software required.
 
 For a coordinated system, pair your planner with a [free printable calendar](/printables/calendar/) on the wall and browse the full [printable collection](/printables/) to mix and match every page your routine needs.
 

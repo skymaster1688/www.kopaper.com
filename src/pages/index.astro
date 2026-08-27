@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CraftCard from '../components/CraftCard.astro';
 import GalleryCard from '../components/GalleryCard.astro';
+import Generator from '../components/Generator.astro';
 
 const tutorials = (await getCollection('tutorials', ({ data }) => !data.draft && data.kind !== 'papercraft'))
   .sort((a, b) => a.data.order - b.data.order);
@@ -101,19 +102,7 @@ const faqSchema = {
         <p class="eyebrow"><span class="label">AI Papercraft Generator</span></p>
         <h1 class="display">Create Your Own <span class="mark">Papercraft</span> with AI</h1>
         <p class="sub">Turn your ideas into unique paper craft designs.</p>
-        <form class="composer" id="homeComposer" action="/tools/papercraft-generator/" method="get">
-          <textarea name="q" id="homePrompt" placeholder="Describe your idea &mdash; e.g. a cute dragon" aria-label="Describe your idea"></textarea>
-          <input type="hidden" name="style" id="homeStyle" value="cute" />
-          <div class="composer-bar">
-            <div class="chips" id="homeChips">
-              <button type="button" class="chip on" data-style="cute" data-q="a cute papercraft character">Cute</button>
-              <button type="button" class="chip" data-style="lowpoly" data-q="a low poly papercraft model">Low Poly</button>
-              <button type="button" class="chip" data-style="pixel" data-q="a pixel style papercraft">Pixel</button>
-              <button type="button" class="chip" data-style="fantasy" data-q="a fantasy papercraft creature">Fantasy</button>
-            </div>
-            <button type="submit" class="gen">Generate &rarr;</button>
-          </div>
-        </form>
+        <p class="sub">Describe anything below &mdash; the generator runs right here on this page.</p>
       </div>
 
       <div class="right">
@@ -157,6 +146,10 @@ const faqSchema = {
       </div>
     </div>
   </section>
+
+  <div class="wrap">
+    <Generator />
+  </div>
 
   <div class="wrap">
     <div class="stats">
@@ -207,7 +200,7 @@ const faqSchema = {
           <p>Want paper toys, paper art, or a one of a kind gift? The papercraft generator helps you create papercraft that matches your own idea instead of copying someone else's. Pick Cute, Low Poly, Pixel, or Fantasy, then generate, refine, and download your favorite as an SVG or PDF.</p>
           <h3>Why use an AI papercraft generator?</h3>
           <p>A papercraft generator is fastest when you already know what you want but cannot draw it. Describe the subject, set the style, and let the tool handle the artwork. You stay in control of the idea; the generator handles the rendering, so you can move from thought to paper in minutes.</p>
-          <p class="gen-cta"><a class="btn btn-primary" href="/tools/papercraft-generator/">Open the generator &rarr;</a></p>
+          <p class="gen-cta"><a class="btn btn-primary" href="/tools/">Browse style generators &rarr;</a></p>
         </div>
       </div>
     </section>
@@ -398,29 +391,10 @@ const faqSchema = {
         <h2 class="display">What will you create?</h2>
         <p>Open the studio and turn your first idea into papercraft.</p>
       </div>
-      <a href="/tools/papercraft-generator/" class="btn btn-onwarm">Open Generator &rarr;</a>
+      <a href="/tools/" class="btn btn-onwarm">Browse style generators &rarr;</a>
     </section>
   </div>
 
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
-  <script>
-    const input = document.getElementById('homePrompt');
-    const chips = document.getElementById('homeChips');
-    const styleInput = document.getElementById('homeStyle');
-
-    // The homepage does NOT generate images. It only captures the idea + style and
-    // submits (GET) to the generator tool, where generation actually happens.
-    if (input && chips) {
-      chips.querySelectorAll('.chip').forEach(chip => {
-        chip.addEventListener('click', () => {
-          chips.querySelectorAll('.chip').forEach(c => c.classList.remove('on'));
-          chip.classList.add('on');
-          input.value = chip.getAttribute('data-q') || '';
-          if (styleInput) styleInput.value = chip.getAttribute('data-style') || 'cute';
-          input.focus();
-        });
-      });
-    }
-  </script>
 </BaseLayout>

@@ -53,7 +53,7 @@ Keeping these in one box turns "I need a card" from a chore into a five-minute t
 
 ## Make your own design when templates are not enough
 
-Sometimes the occasion is specific — a housewarming, a new baby, a quirky inside joke — and no template fits. That is where a generator earns its place. The [papercraft generator](/tools/papercraft-generator/) lets you describe a card idea and get a printable sheet you can fold the same afternoon, no design software required.
+Sometimes the occasion is specific — a housewarming, a new baby, a quirky inside joke — and no template fits. That is where a generator earns its place. The [papercraft generator](/) lets you describe a card idea and get a printable sheet you can fold the same afternoon, no design software required.
 
 For a coordinated look across an event, pair your cards with [free printable gift tags](/printables/gift-tags/) so the wrapping, the tag, and the card all share one style. Browse the full [printable collection](/printables/) to mix and match everything you need.
 

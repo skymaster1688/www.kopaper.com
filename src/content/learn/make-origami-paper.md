@@ -53,7 +53,7 @@ The result behaves like kami: you get a clear "front" and "back" that makes comp
 
 ## When homemade paper is enough — and when it is not
 
-Homemade paper is perfect for practice, custom colors, and kids' projects. For display-quality models, though, machine-made kami and tant give more uniform results. If you want a pattern you cannot easily paint — say a repeating motif or a photo-based design — the [AI papercraft generator](/tools/papercraft-generator/) turns an idea into a printable craft sheet you can cut and fold the same afternoon, and our [free printable origami paper](/printables/origami-paper/) collection offers ready-made patterns.
+Homemade paper is perfect for practice, custom colors, and kids' projects. For display-quality models, though, machine-made kami and tant give more uniform results. If you want a pattern you cannot easily paint — say a repeating motif or a photo-based design — the [AI papercraft generator](/) turns an idea into a printable craft sheet you can cut and fold the same afternoon, and our [free printable origami paper](/printables/origami-paper/) collection offers ready-made patterns.
 
 ## Next steps
 

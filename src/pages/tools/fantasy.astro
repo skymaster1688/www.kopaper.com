@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Generator from '../../components/Generator.astro';
+
+const title = 'Fantasy Papercraft Generator — Magical AI Paper Crafts';
+const description = 'Summon magical fantasy papercraft with the free fantasy papercraft generator. Describe a castle, dragon, or creature and get a printable enchanted template.';
+---
+
+<BaseLayout title={title} description={description} ogType="website">
+  <article class="container generator-page">
+    <header class="generator-head reveal">
+      <p class="eyebrow"><span class="label">Fantasy Papercraft Generator</span></p>
+      <h1>Generate fantasy papercraft</h1>
+      <p class="lede">
+        Glowing, magical forms for castles, creatures, and quests. Describe an idea, pick the Fantasy style,
+        and preview a printable papercraft template you can build at home.
+      </p>
+    </header>
+
+    <!-- Generator app (pre-set to the Fantasy style) -->
+    <Generator defaultStyle="fantasy" defaultPrompt="a fantasy castle" />
+
+    <!-- SEO content -->
+    <section class="gen-info reveal">
+      <h2>What you can make in the Fantasy style</h2>
+      <p>
+        The fantasy papercraft generator is built for enchanted, otherworldly shapes — castles, dragons, and
+        magical creatures. Tell it <strong>a fantasy castle</strong>, <strong>a dragon</strong>, or
+        <strong>a wizard hat</strong>, and it returns a magical papercraft design you can print, cut, and fold.
+        Every design is a real cut and fold template with a storybook feel.
+      </p>
+
+      <h2>How to use a generated design</h2>
+      <ol class="gen-steps">
+        <li><strong>Describe</strong> a magical idea above (or just press Generate for a castle), then pick the Fantasy style.</li>
+        <li><strong>Download</strong> any design as an SVG, or press <em>Print</em> and choose "Save as PDF".</li>
+        <li><strong>Print</strong> on cardstock for a sturdy model, or normal paper for a quick decoration.</li>
+        <li><strong>Cut</strong> along solid lines, <strong>fold</strong> along dashed lines, and glue the tabs.</li>
+      </ol>
+
+      <h2>Other styles to try</h2>
+      <p>
+        Want a different look? The same idea renders differently in
+        <a href="/tools/cute/">Cute</a>, <a href="/tools/lowpoly/">Low Poly</a>, or
+        <a href="/tools/pixel/">Pixel</a>. Browse them all on the
+        <a href="/tools/">papercraft generators hub</a>.
+      </p>
+
+      <h2>Frequently asked questions</h2>
+      <div class="gen-faq">
+        <details>
+          <summary>Is the fantasy generator free?</summary>
+          <p>Yes. Every fantasy papercraft design is free to generate, download, and print. No account required.</p>
+        </details>
+        <details>
+          <summary>What file do I get?</summary>
+          <p>You get a scalable SVG you can open in any browser or vector editor, or a PDF via the print button.</p>
+        </details>
+        <details>
+          <summary>Can I make castles and dragons?</summary>
+          <p>Describe a castle, dragon, or any creature and the generator produces a printable net you can decorate with glow and detail.</p>
+        </details>
+        <details>
+          <summary>What paper should I use?</summary>
+          <p>Cardstock (160 to 220 gsm) gives the best 3D results. Printer paper works for flat toys and bookmarks.</p>
+        </details>
+      </div>
+    </section>
+  </article>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'koPaper Fantasy Papercraft Generator',
+    applicationCategory: 'DesignApplication',
+    operatingSystem: 'Any',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    description: 'Free online tool to generate fantasy magical papercraft designs and paper toys from a text idea.',
+  })}></script>
+</BaseLayout>

@@ -56,7 +56,7 @@ When everything shares a palette, even a modest present looks like it came from 
 
 ## Design custom tags when templates fall short
 
-Store-bought and templated tags eventually hit a limit — a themed baby shower, a brand color, a joke only your friend understands. For those moments, the [papercraft generator](/tools/papercraft-generator/) turns a short description into a printable sheet you can punch and fold the same day, no graphic-design experience needed.
+Store-bought and templated tags eventually hit a limit — a themed baby shower, a brand color, a joke only your friend understands. For those moments, the [papercraft generator](/) turns a short description into a printable sheet you can punch and fold the same day, no graphic-design experience needed.
 
 You can also browse ready-made [paper craft templates](/templates/) for 3D pieces that pair nicely with a wrapped gift, and explore the full [printable collection](/printables/) to pull tags, cards, and decorations from one place.
 

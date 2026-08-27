@@ -50,3 +50,6 @@
 # Old Hindi edition subpages -> Hindi transition page (consolidate link equity)
 /hi/generate*    /hi/    301
 /hi/category/*   /hi/    301
+
+# Old AI papercraft generator page (the generator now lives on the homepage + /tools/)
+/tools/papercraft-generator/*  /  301

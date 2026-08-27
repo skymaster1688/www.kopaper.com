@@ -49,7 +49,7 @@ You do not need a huge inventory. A practical starter shelf looks like this:
 - A few sheets of foil for curves and experiments.
 - Optional printed [origami paper you can print at home](/printables/) for two-tone effects.
 
-When you want something truly custom — a pattern, a colorway, or a shape that no shop sells — the [AI papercraft generator](/tools/papercraft-generator/) turns an idea into a printable craft sheet in minutes.
+When you want something truly custom — a pattern, a colorway, or a shape that no shop sells — the [AI papercraft generator](/) turns an idea into a printable craft sheet in minutes.
 
 ## Common mistakes to avoid
 

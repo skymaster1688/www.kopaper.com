@@ -75,7 +75,7 @@ Save your fine patterns for these and use plain sheets for practice runs.
 
 ## When you want a pattern that does not exist
 
-A stack of free printable origami paper covers the common cases. It does not cover the sheet you have in your head for a specific project: a particular palette for a wedding, a pattern to match a party theme, or a set of coordinated sheets nobody sells. The [papercraft generator](/tools/papercraft-generator/) is built for exactly that gap. Describe the look you want and it produces a clean, print-ready sheet, no design software and no subscription involved.
+A stack of free printable origami paper covers the common cases. It does not cover the sheet you have in your head for a specific project: a particular palette for a wedding, a pattern to match a party theme, or a set of coordinated sheets nobody sells. The [papercraft generator](/) is built for exactly that gap. Describe the look you want and it produces a clean, print-ready sheet, no design software and no subscription involved.
 
 ## Keep exploring
 

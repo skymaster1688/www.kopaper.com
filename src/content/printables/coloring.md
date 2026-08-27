@@ -62,7 +62,7 @@ Most "homemade" looking prints come from one setting, not one printer.
 
 ## When a template is not enough
 
-A folder full of free printable coloring pages for kids covers most afternoons. But sometimes a child wants something that does not exist in any pack — a particular mix of animals, a birthday sheet with a specific name, or a themed page to match a party. The [papercraft generator](/tools/papercraft-generator/) fills that gap: describe the scene you want and it draws a clean line-art sheet ready to print and color, with no design software in the loop.
+A folder full of free printable coloring pages for kids covers most afternoons. But sometimes a child wants something that does not exist in any pack — a particular mix of animals, a birthday sheet with a specific name, or a themed page to match a party. The [papercraft generator](/) fills that gap: describe the scene you want and it draws a clean line-art sheet ready to print and color, with no design software in the loop.
 
 For a coordinated afternoon, pair coloring sheets with a [free printable gift tags](/printables/gift-tags/) sheet so a child can color a tag for a present at the same sitting, or with a [free printable party decorations](/printables/party/) set when a birthday is coming up. Browse the full [printable collection](/printables/) to assemble a kit that matches the season.
 

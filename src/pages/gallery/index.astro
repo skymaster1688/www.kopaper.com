@@ -17,7 +17,7 @@ const items = (await getCollection('gallery', ({ data }) => !data.draft))
 
   <section class="section container" style="padding-top:20px">
     {items.length === 0 ? (
-      <p style="color:var(--text-muted)">No designs published yet. Open the <a href="/tools/papercraft-generator/">generator</a> and hit <strong>Publish</strong> on your first creation.</p>
+      <p style="color:var(--text-muted)">No designs published yet. Open the <a href="/">generator</a> and hit <strong>Publish</strong> on your first creation.</p>
     ) : (
       <div class="grid-4" style="margin-top:20px">
         {items.map(g => (

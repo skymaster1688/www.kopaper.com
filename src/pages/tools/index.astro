@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'Papercraft Generators — Cute, Low Poly, Pixel & Fantasy';
+const description = 'Explore koPaper\'s free AI papercraft generators. Pick a style — cute, low poly, pixel, or fantasy — and turn any idea into a printable papercraft template.';
+
+const generators = [
+  {
+    href: '/tools/cute/',
+    fig: 'FIG. A',
+    tag: 'KAWAII',
+    title: 'Cute Generator',
+    desc: 'Round, friendly kawaii forms for characters, animals, and gifts.',
+  },
+  {
+    href: '/tools/lowpoly/',
+    fig: 'FIG. B',
+    tag: 'GEOMETRIC',
+    title: 'Low Poly Generator',
+    desc: 'Faceted, modern shapes with crisp geometric edges and clean lines.',
+  },
+  {
+    href: '/tools/pixel/',
+    fig: 'FIG. C',
+    tag: '8-BIT',
+    title: 'Pixel Generator',
+    desc: 'Chunky retro 8-bit sprites with a nostalgic pixel look.',
+  },
+  {
+    href: '/tools/fantasy/',
+    fig: 'FIG. D',
+    tag: 'MAGICAL',
+    title: 'Fantasy Generator',
+    desc: 'Glowing, storybook forms for castles, dragons, and creatures.',
+  },
+];
+
+const faqs = [
+  { q: 'What is a papercraft generator?', a: 'It turns a short sentence into a printable papercraft design. Describe an idea, pick a style, and get a cut-and-fold template you can build at home.' },
+  { q: 'How many styles are there?', a: 'Four: Cute, Low Poly, Pixel, and Fantasy. The same idea renders differently in each, so you can match the look to your project.' },
+  { q: 'Are the generators free?', a: 'Yes. Every design is free to generate, download as an SVG, or print to PDF. No account required.' },
+  { q: 'Can I use the designs commercially?', a: 'Designs are free to make and use for personal projects. For anything beyond personal use, check the license of any AI-rendered artwork and keep within fair use.' },
+];
+---
+
+<BaseLayout title={title} description={description} ogType="website">
+  <article class="container generator-page">
+    <header class="generator-head reveal">
+      <p class="eyebrow"><span class="label">Papercraft Generators</span></p>
+      <h1>Pick a style, generate papercraft</h1>
+      <p class="lede">
+        Four free AI papercraft generators, one idea. Choose a look — cute, low poly, pixel, or fantasy —
+        and turn any sentence into a printable papercraft template.
+      </p>
+    </header>
+
+    <section class="explore reveal" aria-label="Style generators">
+      {generators.map(g => (
+        <a href={g.href} class="ecard">
+          <div class="top"><span class="fig">{g.fig}</span><span class="fig">{g.tag}</span></div>
+          <div class="body">
+            <h3>{g.title}</h3>
+            <p>{g.desc}</p>
+            <span class="go">Open <span class="ar"></span></span>
+          </div>
+        </a>
+      ))}
+    </section>
+
+    <section class="gen-info reveal">
+      <h2>How a papercraft generator works</h2>
+      <ol class="gen-steps">
+        <li><strong>Choose a style</strong> — open Cute, Low Poly, Pixel, or Fantasy.</li>
+        <li><strong>Describe</strong> an idea, or just press Generate for a starter prompt.</li>
+        <li><strong>Download</strong> the design as an SVG, or press Print and save as PDF.</li>
+        <li><strong>Build</strong> it: cut along solid lines, fold along dashed lines, glue the tabs.</li>
+      </ol>
+
+      <h2>Which style should I use?</h2>
+      <p>
+        Go <a href="/tools/cute/">Cute</a> for toys and gifts, <a href="/tools/lowpoly/">Low Poly</a> for modern decor and
+        geometric models, <a href="/tools/pixel/">Pixel</a> for retro game sprites, and
+        <a href="/tools/fantasy/">Fantasy</a> for castles, dragons, and storybook scenes. Not sure? Start on the
+        <a href="/">homepage generator</a> and switch styles with the chips.
+      </p>
+
+      <h2>Frequently asked questions</h2>
+      <div class="gen-faq">
+        {faqs.map(f => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+  </article>
+</BaseLayout>

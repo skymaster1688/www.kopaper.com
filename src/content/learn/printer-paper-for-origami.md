@@ -81,4 +81,4 @@ If you like the convenience of printer paper but want a bit more character, try 
 
 - Learn the standard [origami paper size](/learn/origami-paper-size/) and why 15 cm squares became the norm.
 - Browse all [origami tutorials](/origami/) for step by step projects sorted by difficulty.
-- Want a custom sheet instead? Try the [papercraft generator](/tools/papercraft-generator/) to design your own printable template.
+- Want a custom sheet instead? Try the [papercraft generator](/) to design your own printable template.

@@ -53,7 +53,7 @@ A single coordinated set, printed across two weights of paper, is what separates
 
 ## Build a party papercraft
 
-Sometimes the right decoration is a small three-dimensional object — a paper favor box, a folded standing figure, a tiny vehicle for a vehicle-themed birthday. The [papercraft generator](/tools/papercraft-generator/) lets you describe the object you want and produces a clean cut-and-fold sheet that fits the same party palette. For ready-made options, the [templates collection](/templates/) has standing paper models you can print, cut, and glue into a centerpiece or a favor.
+Sometimes the right decoration is a small three-dimensional object — a paper favor box, a folded standing figure, a tiny vehicle for a vehicle-themed birthday. The [papercraft generator](/) lets you describe the object you want and produces a clean cut-and-fold sheet that fits the same party palette. For ready-made options, the [templates collection](/templates/) has standing paper models you can print, cut, and glue into a centerpiece or a favor.
 
 For a personal touch at each place setting, fold a small [paper heart](/origami/heart/) from a square of matching paper — it takes one minute per seat and ties the table back to the banner's palette. Browse the full [printable collection](/printables/) to assemble everything the room needs — banners, tags, cards, and coloring sheets — from one matching set.
 

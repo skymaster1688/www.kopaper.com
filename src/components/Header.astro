@@ -1,7 +1,7 @@
 ---
 const currentPath = Astro.url.pathname;
 const navItems = [
-  { label: 'Generator', href: '/tools/papercraft-generator/', match: '/tools' },
+  { label: 'Generator', href: '/tools/', match: '/tools' },
   { label: 'Crafts', href: '/origami/', match: '/origami' },
   { label: 'Templates', href: '/templates/', match: '/templates' },
   { label: 'Gallery', href: '/gallery/', match: '/gallery' },
@@ -24,7 +24,7 @@ const navItems = [
 
     <div class="header-actions">
       <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">&#127769;</button>
-      <a href="/tools/papercraft-generator/" class="btn btn-primary">Open Generator &rarr;</a>
+      <a href="/" class="btn btn-primary">Open Generator &rarr;</a>
       <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">&#9776;</button>
     </div>
   </div>

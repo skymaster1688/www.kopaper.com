@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Generator from '../../components/Generator.astro';
+
+const title = 'Cute Papercraft Generator — Kawaii AI Paper Crafts';
+const description = 'Make adorable kawaii papercraft with the free cute papercraft generator. Describe a panda, cat, or any idea and get a printable cut-and-fold template.';
+---
+
+<BaseLayout title={title} description={description} ogType="website">
+  <article class="container generator-page">
+    <header class="generator-head reveal">
+      <p class="eyebrow"><span class="label">Cute Papercraft Generator</span></p>
+      <h1>Generate cute kawaii papercraft</h1>
+      <p class="lede">
+        Round, friendly forms for characters, animals, and gifts. Describe an idea,
+        pick the Cute style, and preview a printable papercraft template you can build at home.
+      </p>
+    </header>
+
+    <!-- Generator app (pre-set to the Cute style) -->
+    <Generator defaultStyle="cute" defaultPrompt="a cute panda" />
+
+    <!-- SEO content -->
+    <section class="gen-info reveal">
+      <h2>What you can make in the Cute style</h2>
+      <p>
+        The cute papercraft generator is built for soft, kawaii shapes — round bodies, big eyes, and
+        gentle curves. Tell it <strong>a cute panda</strong>, <strong>a chubby cat</strong>, or
+        <strong>a smiling robot</strong>, and it returns a friendly papercraft design you can print, cut, and fold.
+        Every design is a real cut and fold template, so the result is a paper toy you can actually hold.
+      </p>
+
+      <h2>How to use a generated design</h2>
+      <ol class="gen-steps">
+        <li><strong>Describe</strong> a cute idea above (or just press Generate for a panda), then pick the Cute style.</li>
+        <li><strong>Download</strong> any design as an SVG, or press <em>Print</em> and choose "Save as PDF".</li>
+        <li><strong>Print</strong> on cardstock for a sturdy toy, or normal paper for a quick gift.</li>
+        <li><strong>Cut</strong> along solid lines, <strong>fold</strong> along dashed lines, and glue the tabs.</li>
+      </ol>
+
+      <h2>Other styles to try</h2>
+      <p>
+        Want a different look? The same idea renders differently in
+        <a href="/tools/lowpoly/">Low Poly</a>, <a href="/tools/pixel/">Pixel</a>, or
+        <a href="/tools/fantasy/">Fantasy</a>. Browse them all on the
+        <a href="/tools/">papercraft generators hub</a>.
+      </p>
+
+      <h2>Frequently asked questions</h2>
+      <div class="gen-faq">
+        <details>
+          <summary>Is the cute generator free?</summary>
+          <p>Yes. Every cute papercraft design is free to generate, download, and print. No account required.</p>
+        </details>
+        <details>
+          <summary>What file do I get?</summary>
+          <p>You get a scalable SVG you can open in any browser or vector editor, or a PDF via the print button.</p>
+        </details>
+        <details>
+          <summary>Can I make round characters?</summary>
+          <p>Describe a panda, cat, or any round character and the generator produces a printable net you can decorate with faces and colors.</p>
+        </details>
+        <details>
+          <summary>What paper should I use?</summary>
+          <p>Cardstock (160 to 220 gsm) gives the best 3D results. Printer paper works for flat toys and bookmarks.</p>
+        </details>
+      </div>
+    </section>
+  </article>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'koPaper Cute Papercraft Generator',
+    applicationCategory: 'DesignApplication',
+    operatingSystem: 'Any',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    description: 'Free online tool to generate cute kawaii papercraft designs and paper toys from a text idea.',
+  })}></script>
+</BaseLayout>

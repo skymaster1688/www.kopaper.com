@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Generator from '../../components/Generator.astro';
+
+const title = 'Pixel Papercraft Generator — 8-bit AI Paper Crafts';
+const description = 'Build retro 8-bit papercraft with the free pixel papercraft generator. Describe a heart, sprite, or icon and get a printable pixel-style template.';
+---
+
+<BaseLayout title={title} description={description} ogType="website">
+  <article class="container generator-page">
+    <header class="generator-head reveal">
+      <p class="eyebrow"><span class="label">Pixel Papercraft Generator</span></p>
+      <h1>Generate pixel art papercraft</h1>
+      <p class="lede">
+        Blocky 8-bit sprites with a retro feel. Describe an idea, pick the Pixel style,
+        and preview a printable papercraft template you can build at home.
+      </p>
+    </header>
+
+    <!-- Generator app (pre-set to the Pixel style) -->
+    <Generator defaultStyle="pixel" defaultPrompt="a pixel heart" />
+
+    <!-- SEO content -->
+    <section class="gen-info reveal">
+      <h2>What you can make in the Pixel style</h2>
+      <p>
+        The pixel papercraft generator is built for chunky 8-bit shapes — hearts, sprites, and
+        retro icons. Tell it <strong>a pixel heart</strong>, <strong>a game character</strong>, or
+        <strong>a blocky ghost</strong>, and it returns a retro papercraft design you can print, cut, and fold.
+        Every design is a real cut and fold template with a nostalgic pixel look.
+      </p>
+
+      <h2>How to use a generated design</h2>
+      <ol class="gen-steps">
+        <li><strong>Describe</strong> a retro idea above (or just press Generate for a heart), then pick the Pixel style.</li>
+        <li><strong>Download</strong> any design as an SVG, or press <em>Print</em> and choose "Save as PDF".</li>
+        <li><strong>Print</strong> on cardstock for a sturdy model, or normal paper for a quick decoration.</li>
+        <li><strong>Cut</strong> along solid lines, <strong>fold</strong> along dashed lines, and glue the tabs.</li>
+      </ol>
+
+      <h2>Other styles to try</h2>
+      <p>
+        Want a different look? The same idea renders differently in
+        <a href="/tools/cute/">Cute</a>, <a href="/tools/lowpoly/">Low Poly</a>, or
+        <a href="/tools/fantasy/">Fantasy</a>. Browse them all on the
+        <a href="/tools/">papercraft generators hub</a>.
+      </p>
+
+      <h2>Frequently asked questions</h2>
+      <div class="gen-faq">
+        <details>
+          <summary>Is the pixel generator free?</summary>
+          <p>Yes. Every pixel papercraft design is free to generate, download, and print. No account required.</p>
+        </details>
+        <details>
+          <summary>What file do I get?</summary>
+          <p>You get a scalable SVG you can open in any browser or vector editor, or a PDF via the print button.</p>
+        </details>
+        <details>
+          <summary>Can I make 8-bit sprites?</summary>
+          <p>Describe a heart, ghost, or game icon and the generator produces a blocky net you can color in pixel by pixel.</p>
+        </details>
+        <details>
+          <summary>What paper should I use?</summary>
+          <p>Cardstock (160 to 220 gsm) gives the best 3D results. Printer paper works for flat toys and bookmarks.</p>
+        </details>
+      </div>
+    </section>
+  </article>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'koPaper Pixel Papercraft Generator',
+    applicationCategory: 'DesignApplication',
+    operatingSystem: 'Any',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    description: 'Free online tool to generate pixel art 8-bit papercraft designs and paper toys from a text idea.',
+  })}></script>
+</BaseLayout>
