@@ -1,0 +1,49 @@
+# Gallery daily flush — runs once a day.
+#
+# What it does:
+#   Calls the already-deployed, auth-protected endpoint POST /api/publish-flush
+#   on kopaper.com. That endpoint reads every draft staged in Workers KV by
+#   /api/publish-queue (i.e. images users generated on the homepage + /tools/
+#   style generators), bulk-commits them to the repo in ONE Git commit, and
+#   clears the queue. Cloudflare's Git integration then builds & deploys the
+#   new gallery items automatically.
+#
+# Required GitHub secret (Settings -> Secrets and variables -> Actions):
+#   PUBLISH_FLUSH_KEY  — must equal the PUBLISH_FLUSH_KEY secret set in the
+#                        Cloudflare dashboard for the www-kopaper-com Worker.
+#                        (The endpoint compares the sent key to its own env key;
+#                         a mismatch returns 401 and this step fails loudly.)
+#
+# Schedule: 07 14 * * *  = 14:07 UTC = ~22:07 Beijing time, once daily.
+# `workflow_dispatch` lets you trigger it manually from the Actions tab.
+
+name: Gallery daily flush
+
+on:
+  schedule:
+    - cron: '7 14 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  flush:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Trigger gallery flush
+        env:
+          FLUSH_KEY: ${{ secrets.PUBLISH_FLUSH_KEY }}
+        run: |
+          if [ -z "$FLUSH_KEY" ]; then
+            echo "::error::PUBLISH_FLUSH_KEY secret is not set. Add it in Settings -> Secrets and variables -> Actions."
+            exit 1
+          fi
+          echo "Calling https://kopaper.com/api/publish-flush ..."
+          curl -fsS -X POST "https://kopaper.com/api/publish-flush" \
+            -H "x-flush-key: ${FLUSH_KEY}" \
+            -H "Content-Type: application/json" \
+            -d '{}' \
+            -w "\nHTTP %{http_code}\n"
+          echo "Flush request finished."
