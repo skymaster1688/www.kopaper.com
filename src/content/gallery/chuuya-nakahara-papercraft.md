@@ -1,6 +1,6 @@
 ---
 title: "Chuuya Nakahara Papercraft"
-description: "Make a pixel papercraft papercraft from \"Chuuya Nakahara\" — free printable template with paper, tools, and folding tips."Chuuya Nakahara\" — free printable template with paper, tools, and folding tips."
+description: "Make a pixel papercraft papercraft from \"Chuuya Nakahara\" — free printable template with paper, tools, and folding tips."
 emoji: "🎨"
 style: "pixel"
 order: 99

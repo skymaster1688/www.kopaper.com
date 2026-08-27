@@ -1,5 +1,5 @@
 ---
-title: "Foldable GTA V Bravado Buffalo Papercraft Car Papercraft"
+title: "Vehicle Papercraft"
 description: "Make a fantasy vehicle papercraft from \"Foldable GTA V Bravado Buffalo papercraft car\" — free printable template with paper, tools, and folding tips."
 emoji: "🚗"
 style: "fantasy"

@@ -1,6 +1,6 @@
 ---
 title: "Bungou Stray Dogs] Chuuya Nakahara Papercraft"
-description: "Make an fantasy animal papercraft from \"Bungou Stray Dogs] Chuuya Nakahara\" — free printable template with paper, tools, and folding tips."Bungou Stray Dogs] Chuuya Nakahara\" — free printable template with paper, tools, and folding tips."
+description: "Make an fantasy animal papercraft from \"Bungou Stray Dogs] Chuuya Nakahara\" — free printable template with paper, tools, and folding tips."
 emoji: "🐶"
 style: "fantasy"
 order: 99
@@ -18,5 +18,3 @@ Steps: (1) print the template; (2) cut along the solid outlines; (3) score every
 Four-legged and winged subjects look best when the legs and joints are glued firmly; a heavier cardstock helps the figure stand on its own.
 
 Difficulty: Easy. Plan for about 15–30 minutes from first cut to finished model. If you enjoy this one, browse the [origami tutorials](/origami/) for fold-along projects or the [free printable templates](/templates/) for more ready-to-build sheets. Want a different look? Run the same idea through the [AI papercraft generator](/) in another style.
-
-

@@ -1,6 +1,6 @@
 ---
-title: "Quiero El Modelo De La Rueda De La Fortuna Papercraft"
-description: "Make a cute papercraft papercraft from \"Quiero El Modelo De La Rueda De La Fortuna\" — free printable template with paper, tools, and folding tips."quiero el modelo de la rueda de la fortuna\" — free printable template with paper, tools, and folding tips."
+title: "Papercraft Papercraft"
+description: "Make a cute papercraft papercraft from \"Quiero El Modelo De La Rueda De La Fortuna\" — free printable template with paper, tools, and folding tips."
 emoji: "🎨"
 style: "cute"
 order: 99

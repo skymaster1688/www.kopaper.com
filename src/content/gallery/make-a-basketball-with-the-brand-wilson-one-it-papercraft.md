@@ -1,5 +1,5 @@
 ---
-title: "Make A Basketball With The Brand Wilson One It Papercraft"
+title: "Papercraft Papercraft"
 description: "Make a pixel papercraft papercraft from \"Make a basketball with the brand wilson one it\" — free printable template with paper, tools, and folding tips."
 emoji: "🎨"
 style: "pixel"

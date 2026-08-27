@@ -1,6 +1,6 @@
 ---
-title: "برای چرخه آب نیاز به یک کاردستی مناسب برای فعالیت های دست"
-description: "Make a cute papercraft papercraft from \"برای چرخه آب نیاز به یک کاردستی مناسب برای فعالیت های دست\", with step-by-step folding tips...."برای چرخه آب نیاز به یک کاردستی مناسب برای فعالیت های دست ورزی دارم. یک کاردستی خوب معرفی کن.\", with step-by-step fol..."
+title: "Papercraft Papercraft"
+description: "Make a cute papercraft papercraft from \"برای چرخه آب نیاز به یک کاردستی مناسب برای فعالیت های دست\", with step-by-step folding tips...."
 emoji: "🎨"
 style: "cute"
 order: 99

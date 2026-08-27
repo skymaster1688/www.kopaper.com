@@ -1,6 +1,6 @@
 ---
-title: "Low Poly Papercraft Model De Un Gato Color Gris Con Verde"
-description: "Make a lowpoly papercraft papercraft from \"Low Poly Papercraft Model De Un Gato Color Gris Con Verde\", with step-by-step folding tips...."low poly papercraft model de un gato color gris con verde tabi muy cute\", with step-by-step folding tips...."
+title: "Papercraft Papercraft"
+description: "Make a lowpoly papercraft papercraft from \"Low Poly Papercraft Model De Un Gato Color Gris Con Verde\", with step-by-step folding tips...."
 emoji: "🎨"
 style: "lowpoly"
 order: 99

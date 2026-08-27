@@ -1,5 +1,5 @@
 ---
-title: "Foldable GTA V Bravado Buffalo Interceptor Template"
+title: "Papercraft Papercraft"
 description: "Make a fantasy papercraft papercraft from \"Foldable GTA V Bravado Buffalo Interceptor template\" — free printable template with paper, tools, and folding tips."
 emoji: "🎨"
 style: "fantasy"

@@ -1,13 +1,13 @@
 ---
-title: "Fantasy Papercraft Creature Medieval Castle With Vegetable"
-description: "Make a building papercraft from \"fantasy papercraft creature Medieval castle with vegetable garden and fruit trees\", with step-by-step folding tips...."
+title: "Building Papercraft"
+description: "Make a fantasy building papercraft from \"fantasy papercraft creature Medieval castle with vegetable garden and fruit trees\", with step-by-step folding tips...."
 emoji: "🏰"
 style: "fantasy"
 order: 99
 draft: false
 ---
 
-This building papercraft is based on the idea "fantasy papercraft creature Medieval castle with vegetable garden and fruit trees", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.
+This fantasy building papercraft is based on the idea "fantasy papercraft creature Medieval castle with vegetable garden and fruit trees", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.
 
 The fantasy style pushes dramatic detail: scales, wings, glow, and atmosphere, so the model feels like a creature pulled from a storybook.
 

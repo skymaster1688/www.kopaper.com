@@ -1,6 +1,6 @@
 ---
 title: "Mf Doom Mask Papercraft"
-description: "Make a cute papercraft papercraft from \"Mf Doom Mask\" — free printable template with paper, tools, and folding tips."Mf doom mask\" — free printable template with paper, tools, and folding tips."
+description: "Make a cute papercraft papercraft from \"Mf Doom Mask\" — free printable template with paper, tools, and folding tips."
 emoji: "🎨"
 style: "cute"
 order: 99

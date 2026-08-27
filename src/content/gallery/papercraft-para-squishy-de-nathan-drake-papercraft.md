@@ -1,6 +1,6 @@
 ---
 title: "Papercraft Para Squishy De Nathan Drake Papercraft"
-description: "Make a fantasy papercraft papercraft from \"Papercraft Para Squishy De Nathan Drake\" — free printable template with paper, tools, and folding tips."Papercraft para squishy de Nathan Drake\" — free printable template with paper, tools, and folding tips."
+description: "Make a fantasy papercraft papercraft from \"Papercraft Para Squishy De Nathan Drake\" — free printable template with paper, tools, and folding tips."
 emoji: "🎨"
 style: "fantasy"
 order: 99

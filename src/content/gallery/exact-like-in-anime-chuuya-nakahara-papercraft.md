@@ -1,6 +1,6 @@
 ---
 title: "Exact Like In Anime , Chuuya Nakahara Papercraft"
-description: "Make a cute papercraft papercraft from \"Exact Like In Anime , Chuuya Nakahara\" — free printable template with paper, tools, and folding tips."Exact like in anime , Chuuya Nakahara\" — free printable template with paper, tools, and folding tips."
+description: "Make a cute papercraft papercraft from \"Exact Like In Anime , Chuuya Nakahara\" — free printable template with paper, tools, and folding tips."
 emoji: "🎨"
 style: "cute"
 order: 99

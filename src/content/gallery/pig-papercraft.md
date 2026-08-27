@@ -1,6 +1,6 @@
 ---
 title: "Pig Papercraft"
-description: "Make an pixel animal papercraft from \"Pig\" — free printable template with paper, tools, and folding tips."pig\" — free printable template with paper, tools, and folding tips."
+description: "Make an pixel animal papercraft from \"Pig\" — free printable template with paper, tools, and folding tips."
 emoji: "🎨"
 style: "pixel"
 order: 99

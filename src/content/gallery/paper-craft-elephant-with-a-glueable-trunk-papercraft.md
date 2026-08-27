@@ -1,6 +1,6 @@
 ---
-title: "Paper Craft Elephant With A Glueable Trunk Papercraft"
-description: "Make an pixel animal papercraft from \"Paper Craft Elephant With A Glueable Trunk\" — free printable template with paper, tools, and folding tips."paper craft elephant with a glueable trunk\" — free printable template with paper, tools, and folding tips."
+title: "Animal Papercraft"
+description: "Make an pixel animal papercraft from \"Paper Craft Elephant With A Glueable Trunk\" — free printable template with paper, tools, and folding tips."
 emoji: "🐘"
 style: "pixel"
 order: 99

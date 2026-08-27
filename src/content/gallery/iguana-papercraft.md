@@ -1,6 +1,6 @@
 ---
 title: "Iguana Papercraft"
-description: "Make a lowpoly papercraft papercraft from \"Iguana\" — free printable template with paper, tools, and folding tips."Iguana\" — free printable template with paper, tools, and folding tips."
+description: "Make a lowpoly papercraft papercraft from \"Iguana\" — free printable template with paper, tools, and folding tips."
 emoji: "🎨"
 style: "lowpoly"
 order: 99

@@ -1,6 +1,6 @@
 ---
 title: "Standing Handome Chuuya Nakahara Papercraft"
-description: "Make a pixel papercraft papercraft from \"Standing Handome Chuuya Nakahara\" — free printable template with paper, tools, and folding tips."Standing handome Chuuya Nakahara\" — free printable template with paper, tools, and folding tips."
+description: "Make a pixel papercraft papercraft from \"Standing Handome Chuuya Nakahara\" — free printable template with paper, tools, and folding tips."
 emoji: "🎨"
 style: "pixel"
 order: 99

@@ -1,6 +1,6 @@
 ---
 title: "Papercraft Papercraft"
-description: "Make a lowpoly papercraft papercraft from \"Papercraft\" — free printable template with paper, tools, and folding tips."papercraft\" — free printable template with paper, tools, and folding tips."
+description: "Make a lowpoly papercraft papercraft from \"Papercraft\" — free printable template with paper, tools, and folding tips."
 emoji: "🎨"
 style: "lowpoly"
 order: 99
