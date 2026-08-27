@@ -14,7 +14,7 @@ export async function OPTIONS() {
   return new Response(null, {
     headers: {
       'access-control-allow-origin': '*',
-      'access-control-allow-methods': 'POST, OPTIONS',
+      'access-control-allow-methods': 'POST, GET, OPTIONS',
       'access-control-allow-headers': 'content-type',
     },
   });
@@ -56,5 +56,29 @@ export async function POST(context: APIContext) {
     return json({ ok: true, queued: true });
   } catch (e) {
     return json({ ok: false, error: 'Queue failed', detail: String((e as Error)?.message ?? e) }, 500);
+  }
+}
+
+// Read-only diagnostic: how many drafts are staged in KV right now, and their
+// subject/style. Never returns image bytes. Handy to confirm generation->KV works.
+// Route: GET /api/gallery-status
+export async function GET(context: APIContext) {
+  const env = getRuntimeEnv(context);
+  const kv = env.GALLERY_KV;
+  if (!kv) return json({ ok: false, error: 'GALLERY_KV not configured.' }, 500);
+  try {
+    const list = await kv.list({ prefix: 'draft:' });
+    const items: { prompt: string; style: string }[] = [];
+    for (const k of list.keys) {
+      const raw = await kv.get(k.name);
+      if (!raw) continue;
+      try {
+        const d = JSON.parse(raw);
+        items.push({ prompt: String(d.prompt ?? '').slice(0, 40), style: String(d.style ?? '') });
+      } catch { /* skip unparsable */ }
+    }
+    return json({ ok: true, drafts: list.keys.length, items });
+  } catch (e) {
+    return json({ ok: false, error: 'list failed', detail: String((e as Error)?.message ?? e) }, 500);
   }
 }
