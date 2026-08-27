@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "astro dev --port 4321",
     "build": "astro build",
+    "prebuild": "node scripts/validate-gallery.mjs",
     "preview": "astro preview --port 4321"
   },
   "engines": {

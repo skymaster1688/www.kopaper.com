@@ -74,6 +74,36 @@ export function yamlStr(s: string): string {
   const cleaned = String(s).replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\r/g, ' ').replace(/\n/g, ' ');
   return `"${cleaned}"`;
 }
+// Dependency-free frontmatter sanity check. Catches the two failure modes that
+// previously crashed `astro build`: unbalanced double-quotes and a duplicated
+// value spliced AFTER the closing quote (e.g. `description: "a"."b"`).
+// Returns true only when every `key: value` line is structurally valid YAML
+// for the simple shapes this module emits (quoted strings + scalar true/false/number).
+export function validateFrontmatter(md: string): boolean {
+  const m = md.match(/^---\n([\s\S]*?)\n---/);
+  if (!m) return false;
+  for (const line of m[1].split('\n')) {
+    const t = line.trim();
+    if (!t) continue;
+    const idx = t.indexOf(': ');
+    if (idx === -1) return false;
+    const val = t.slice(idx + 2).trim();
+    if (val.startsWith('"')) {
+      let i = 1;
+      let closed = -1;
+      while (i < val.length) {
+        if (val[i] === '\\') { i += 2; continue; }
+        if (val[i] === '"') { closed = i; break; }
+        i++;
+      }
+      if (closed === -1) return false; // no closing quote
+      if (val.slice(closed + 1).trim().length > 0) return false; // trailing junk after closing quote
+    } else if (!/^(true|false|\d+(\.\d+)?)$/.test(val)) {
+      return false;
+    }
+  }
+  return true;
+}
 function mdAlt(caption: string): string {
   return caption.replace(/[\[\]]/g, '');
 }
@@ -360,6 +390,12 @@ export async function planDraft(
       mdContent = `---\n${fm}\n---\n\n${meta.intro}${imageLine(imgUrl, meta.caption)}\n`;
     }
     state.mdAccum.set(meta.slug, mdContent);
+  }
+  // Defensive: never stage a markdown file with broken frontmatter into the repo.
+  // If the generated frontmatter fails the self-check, skip this draft (it is
+  // dropped from the queue by the caller) instead of corrupting the gallery.
+  if (!validateFrontmatter(mdContent)) {
+    return { error: 'generated frontmatter failed self-check; draft skipped to avoid corrupting gallery.' };
   }
   files.push({ path: mdRepoPath, contentBase64: utf8ToBase64(mdContent) });
   return { files };
