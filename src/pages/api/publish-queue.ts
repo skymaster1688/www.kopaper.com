@@ -68,6 +68,7 @@ export async function POST(context: APIContext) {
 // subject/style. Never returns image bytes. Handy to confirm generation->KV works.
 // Route: GET /api/gallery-status
 export async function GET(context: APIContext) {
+  try {
   const origin = context.request.headers.get('origin');
   const env = getRuntimeEnv(context);
   const kv = env.GALLERY_KV;
@@ -86,5 +87,8 @@ export async function GET(context: APIContext) {
     return json({ ok: true, drafts: list.keys.length, items }, 200, {}, origin);
   } catch (e) {
     return json({ ok: false, error: 'list failed', detail: String((e as Error)?.message ?? e) }, 500, {}, origin);
+  }
+  } catch (outer) {
+    return json({ ok: false, error: 'publish-queue GET crashed', detail: String((outer as Error)?.message ?? outer), stack: String((outer as Error)?.stack ?? '') }, 500);
   }
 }

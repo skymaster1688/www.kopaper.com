@@ -15,6 +15,7 @@ export async function POST(context: APIContext) { return flush(context); }
 export async function GET(context: APIContext) { return flush(context); }
 
 async function flush(context: APIContext) {
+  try {
   const origin = context.request.headers.get('origin');
   const env = getRuntimeEnv(context);
   const kv = env.GALLERY_KV;
@@ -85,6 +86,9 @@ async function flush(context: APIContext) {
       errors: [...failed, `commit failed: ${String((e as Error)?.message ?? e)}`],
       error: 'Bulk commit failed; drafts retained for retry.',
     }, 500, {}, origin);
+  }
+  } catch (outer) {
+    return json({ ok: false, error: 'publish-flush crashed', detail: String((outer as Error)?.message ?? outer), stack: String((outer as Error)?.stack ?? '') }, 500);
   }
 }
 
