@@ -453,7 +453,11 @@ export async function planDraft(
     }
     prev = state.existingCache.get(meta.slug)!;
     if (prev) {
-      mdContent = prev + imageLine(imgUrl, meta.caption);
+      // Appending a new image: bump `updated` to today so the post surfaces
+      // at the top of time-sorted lists (matches "newest first" ordering).
+      const todayBump = new Date().toISOString().slice(0, 10);
+      const prevBumped = prev.replace(/^(updated:\s*)("?)[^"\r\n]*("?)$/m, `$1"${todayBump}"`);
+      mdContent = prevBumped + imageLine(imgUrl, meta.caption);
     } else {
       const today = new Date().toISOString().slice(0, 10);
       const fm = [
