@@ -20,31 +20,31 @@ export async function POST(context: APIContext) {
   const ip = clientIp(context);
   if (env.GALLERY_KV) {
     const rl = await checkRateLimit(env.GALLERY_KV, 'queue', ip, 60);
-    if (!rl.ok) return json({ ok: false, error: 'Daily publish limit reached (' + rl.limit + '). Try again tomorrow.', remaining: rl.remaining }, 429, {}, origin);
+    if (!rl.ok) return json({ ok: false, error: 'Daily publish limit reached (' + rl.limit + '). Try again tomorrow.', remaining: rl.remaining }, 429, origin);
   }
   const kv = env.GALLERY_KV;
-  if (!kv) return json({ ok: false, error: 'GALLERY_KV not configured.' }, 500, {}, origin);
+  if (!kv) return json({ ok: false, error: 'GALLERY_KV not configured.' }, 500, origin);
 
   let body: Record<string, unknown>;
   try {
     body = (await context.request.json()) as Record<string, unknown>;
   } catch {
-    return json({ ok: false, error: 'Invalid JSON body.' }, 400, {}, origin);
+    return json({ ok: false, error: 'Invalid JSON body.' }, 400, origin);
   }
 
   const promptRaw = (body.prompt ?? '').toString().trim();
   if (!promptRaw || promptRaw.length > 1000) {
-    return json({ ok: false, error: 'prompt is required (1-1000 chars).' }, 400, {}, origin);
+    return json({ ok: false, error: 'prompt is required (1-1000 chars).' }, 400, origin);
   }
-  if (body.hp) return json({ ok: false, error: 'Rejected.' }, 400, {}, origin);
+  if (body.hp) return json({ ok: false, error: 'Rejected.' }, 400, origin);
   if (blacklistHit(promptRaw)) {
-    return json({ ok: false, error: 'Contains a protected brand or character name and cannot be published.' }, 400, {}, origin);
+    return json({ ok: false, error: 'Contains a protected brand or character name and cannot be published.' }, 400, origin);
   }
 
   const b64 = (body.b64 ?? '').toString();
   const svg = (body.svg ?? '').toString();
-  if (b64.length > 4_000_000) return json({ ok: false, error: 'b64 too large (max 4MB base64).' }, 400, {}, origin);
-  if (svg.length > 200_000) return json({ ok: false, error: 'svg too large (max 200KB).' }, 400, {}, origin);
+  if (b64.length > 4_000_000) return json({ ok: false, error: 'b64 too large (max 4MB base64).' }, 400, origin);
+  if (svg.length > 200_000) return json({ ok: false, error: 'svg too large (max 200KB).' }, 400, origin);
 
   const draft = {
     prompt: promptRaw,
@@ -58,9 +58,9 @@ export async function POST(context: APIContext) {
 
   try {
     await kv.put(key, JSON.stringify(draft));
-    return json({ ok: true, queued: true }, 200, {}, origin);
+    return json({ ok: true, queued: true }, 200, origin);
   } catch (e) {
-    return json({ ok: false, error: 'Queue failed', detail: String((e as Error)?.message ?? e) }, 500, {}, origin);
+    return json({ ok: false, error: 'Queue failed', detail: String((e as Error)?.message ?? e) }, 500, origin);
   }
 }
 
@@ -72,7 +72,7 @@ export async function GET(context: APIContext) {
   const origin = context.request.headers.get('origin');
   const env = getRuntimeEnv(context);
   const kv = env.GALLERY_KV;
-  if (!kv) return json({ ok: false, error: 'GALLERY_KV not configured.' }, 500, {}, origin);
+  if (!kv) return json({ ok: false, error: 'GALLERY_KV not configured.' }, 500, origin);
   try {
     const list = await kv.list({ prefix: 'draft:' });
     const items: { prompt: string; style: string }[] = [];
@@ -84,9 +84,9 @@ export async function GET(context: APIContext) {
         items.push({ prompt: String(d.prompt ?? '').slice(0, 40), style: String(d.style ?? '') });
       } catch { /* skip unparsable */ }
     }
-    return json({ ok: true, drafts: list.keys.length, items }, 200, {}, origin);
+    return json({ ok: true, drafts: list.keys.length, items }, 200, origin);
   } catch (e) {
-    return json({ ok: false, error: 'list failed', detail: String((e as Error)?.message ?? e) }, 500, {}, origin);
+    return json({ ok: false, error: 'list failed', detail: String((e as Error)?.message ?? e) }, 500, origin);
   }
   } catch (outer) {
     return json({ ok: false, error: 'publish-queue GET crashed', detail: String((outer as Error)?.message ?? outer), stack: String((outer as Error)?.stack ?? '') }, 500);

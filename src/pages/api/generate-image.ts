@@ -241,18 +241,18 @@ export async function POST(context: APIContext) {
   const kv = env.GALLERY_KV as any;
   if (kv) {
     const rl = await checkRateLimit(kv, 'gen', ip, 30);
-    if (!rl.ok) return json({ ok: false, error: 'Daily generation limit reached (' + rl.limit + '). Try again tomorrow.', remaining: rl.remaining }, 429, {}, origin);
+    if (!rl.ok) return json({ ok: false, error: 'Daily generation limit reached (' + rl.limit + '). Try again tomorrow.', remaining: rl.remaining }, 429, origin);
   }
   let body: GenerateBody;
   try {
     body = (await context.request.json()) as GenerateBody;
   } catch {
-    return json({ ok: false, error: 'Invalid JSON body.' }, 400, {}, origin);
+    return json({ ok: false, error: 'Invalid JSON body.' }, 400, origin);
   }
 
   const idea = (body.prompt ?? '').toString().trim();
   if (!idea || idea.length > 500) {
-    return json({ ok: false, error: 'prompt is required and must be 1-500 characters.' }, 400, {}, origin);
+    return json({ ok: false, error: 'prompt is required and must be 1-500 characters.' }, 400, origin);
   }
 
   const styleKey = (body.style ?? 'cute').toString().toLowerCase();
@@ -290,11 +290,11 @@ export async function POST(context: APIContext) {
           : (POLLINATIONS_STYLE_MODELS[styleKey] ?? POLLINATIONS_DEFAULT_MODEL);
         result = await generatePollinations(prompt, model, n, controller.signal);
       }
-      return json({ ok: true, provider: p, model: result.model, images: result.images }, 200, {}, origin);
+      return json({ ok: true, provider: p, model: result.model, images: result.images }, 200, origin);
     } catch (e) {
       const err = e as Error;
       if (err?.name === 'AbortError') {
-        return json({ ok: false, error: 'Generation timed out.' }, 504, {}, origin);
+        return json({ ok: false, error: 'Generation timed out.' }, 504, origin);
       }
       lastErr = err;
       lastProvider = p;
@@ -303,5 +303,5 @@ export async function POST(context: APIContext) {
     }
   }
   const err = lastErr as Error | null;
-  return json({ ok: false, error: 'Server error', detail: lastProvider + ': ' + String(err?.message ?? err) }, 500, {}, origin);
+  return json({ ok: false, error: 'Server error', detail: lastProvider + ': ' + String(err?.message ?? err) }, 500, origin);
 }
