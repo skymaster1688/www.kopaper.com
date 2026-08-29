@@ -66,8 +66,10 @@ const gallery = defineCollection({
     description: z.string(),
     emoji: z.string().default('🎨'),
     style: z.string().optional(),
+    updated: z.string().optional(),
     order: z.number().default(99),
     draft: z.boolean().default(false),
+    noindex: z.boolean().optional(),
   }),
 });
 

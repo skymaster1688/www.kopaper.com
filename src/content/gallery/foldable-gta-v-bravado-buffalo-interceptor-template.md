@@ -5,6 +5,8 @@ emoji: "🎨"
 style: "fantasy"
 order: 99
 draft: false
+noindex: true
+updated: "2026-08-27"
 ---
 
 This fantasy papercraft papercraft is based on the idea "Foldable GTA V Bravado Buffalo Interceptor template", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.

@@ -5,6 +5,8 @@ emoji: "🎨"
 style: "pixel"
 order: 99
 draft: false
+noindex: true
+updated: "2026-08-27"
 ---
 
 This pixel papercraft papercraft is based on the idea "basketball with the brand wilson one it", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.

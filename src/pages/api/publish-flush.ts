@@ -9,21 +9,22 @@
 export const prerender = false;
 
 import type { APIContext } from 'astro';
-import { getRuntimeEnv, json, planDraft, ghCommitAll } from '../../lib/gallery';
+import { getRuntimeEnv, json, planDraft, ghCommitAll, corsPreflightHeaders } from '../../lib/gallery';
 
 export async function POST(context: APIContext) { return flush(context); }
 export async function GET(context: APIContext) { return flush(context); }
 
 async function flush(context: APIContext) {
+  const origin = context.request.headers.get('origin');
   const env = getRuntimeEnv(context);
   const kv = env.GALLERY_KV;
-  if (!kv) return json({ ok: false, error: 'GALLERY_KV not configured.' }, 500);
+  if (!kv) return json({ ok: false, error: 'GALLERY_KV not configured.' }, 500, {}, origin);
 
   const flushKey = env.PUBLISH_FLUSH_KEY;
-  if (!flushKey) return json({ ok: false, error: 'PUBLISH_FLUSH_KEY not set on server.' }, 500);
+  if (!flushKey) return json({ ok: false, error: 'PUBLISH_FLUSH_KEY not set on server.' }, 500, {}, origin);
   const url = new URL(context.request.url);
   const provided = (context.request.headers.get('x-flush-key') || url.searchParams.get('key') || '');
-  if (provided !== flushKey) return json({ ok: false, error: 'Unauthorized.' }, 401);
+  if (provided !== flushKey) return json({ ok: false, error: 'Unauthorized.' }, 401, {}, origin);
 
   const gh = {
     GITHUB_TOKEN: env.GITHUB_TOKEN,
@@ -31,7 +32,7 @@ async function flush(context: APIContext) {
     GITHUB_BRANCH: env.GITHUB_BRANCH || 'main',
   };
   if (!gh.GITHUB_TOKEN || !gh.GITHUB_REPO) {
-    return json({ ok: false, error: 'GitHub env missing.' }, 500);
+    return json({ ok: false, error: 'GitHub env missing.' }, 500, {}, origin);
   }
 
   let listed: { name: string }[] = [];
@@ -39,9 +40,9 @@ async function flush(context: APIContext) {
     const r = await kv.list();
     listed = (r.keys || []).map((k: any) => ({ name: k.name }));
   } catch (e) {
-    return json({ ok: false, error: 'KV list failed', detail: String((e as Error)?.message ?? e) }, 500);
+    return json({ ok: false, error: 'KV list failed', detail: String((e as Error)?.message ?? e) }, 500, {}, origin);
   }
-  if (!listed.length) return json({ ok: true, published: 0, failed: 0, errors: [], message: 'Queue is empty.' });
+  if (!listed.length) return json({ ok: true, published: 0, failed: 0, errors: [], message: 'Queue is empty.' }, 200, {}, origin);
 
   const state = { existingCache: new Map<string, string>(), mdAccum: new Map<string, string>() };
   const allFiles: { path: string; contentBase64: string }[] = [];
@@ -61,14 +62,14 @@ async function flush(context: APIContext) {
   }
 
   if (!allFiles.length) {
-    return json({ ok: true, published: 0, failed: failed.length, errors: failed, message: 'Nothing valid to publish.' });
+    return json({ ok: true, published: 0, failed: failed.length, errors: failed, message: 'Nothing valid to publish.' }, 200, {}, origin);
   }
 
   try {
     await ghCommitAll(gh, allFiles, `Publish ${published} gallery item(s) (bulk flush)`, gh.GITHUB_BRANCH);
     // Commit succeeded -> drafts are now in the repo, safe to clear the queue.
     for (const k of listed) { await safeDelete(kv, k.name); }
-    return json({ ok: true, published, failed: failed.length, errors: failed });
+    return json({ ok: true, published, failed: failed.length, errors: failed }, 200, {}, origin);
   } catch (e) {
     // Commit failed: keep the drafts so they can be retried on the next flush.
     return json({
@@ -77,7 +78,7 @@ async function flush(context: APIContext) {
       failed: published,
       errors: [...failed, `commit failed: ${String((e as Error)?.message ?? e)}`],
       error: 'Bulk commit failed; drafts retained for retry.',
-    }, 500);
+    }, 500, {}, origin);
   }
 }
 

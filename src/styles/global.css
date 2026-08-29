@@ -17,6 +17,8 @@
   --warm: #E0532B;                  /* the single warm accent */
   --warm-dark: #C8431F;
   --warm-soft: rgba(224,83,43,.10);
+  --primary: #E0532B;               /* semantic alias of --warm (steps/badges) */
+  --secondary: #C8431F;             /* semantic alias of --warm-dark (icons) */
   --radius: 4px;                    /* micro radius */
   --radius-sm: 3px;
   --radius-lg: 8px;
@@ -44,6 +46,8 @@
   --warm: #FF6B40;
   --warm-dark: #FF8460;
   --warm-soft: rgba(255,107,64,.14);
+  --primary: #FF6B40;               /* semantic alias of --warm (steps/badges) */
+  --secondary: #FF8460;             /* semantic alias of --warm-dark (icons) */
   --shadow-hover: 0 14px 34px rgba(0,0,0,.5);
   --shadow-lg: 0 24px 60px rgba(0,0,0,.5);
 }

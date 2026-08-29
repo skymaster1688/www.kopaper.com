@@ -15,6 +15,9 @@ export const IP_BLOCKLIST = [
   'among us', 'barbie', 'taylor swift', 'genshin', 'lol', 'league of legends',
   'call of duty', 'minions', 'frozen', 'elsa', 'totoro', 'studio ghibli',
   'spongebob', 'tom and jerry', 'mickey', 'winnie the pooh', 'doraemon', 'powerpuff',
+  // added 2026-08-29 after audit of indexed gallery URLs
+  'gta', 'grand theft auto', 'one piece', 'mf doom', 'royal enfield', 'wilson',
+  'nathan drake', 'uncharted', 'bungou', 'stray dogs', 'chuuya', 'bravado',
 ];
 
 export const EMOJI_MAP: Record<string, string> = {
@@ -30,11 +33,61 @@ export function getRuntimeEnv(context: APIContext): Record<string, any> {
   return runtime?.env ?? {};
 }
 
-export function json(data: unknown, status = 200): Response {
-  return new Response(JSON.stringify(data), {
-    status,
-    headers: { 'content-type': 'application/json', 'access-control-allow-origin': '*' },
-  });
+export function json(data: unknown, status = 200, origin?: string | null): Response {
+  const headers: Record<string, string> = { 'content-type': 'application/json' };
+  const ao = resolveCorsOrigin(origin);
+  if (ao) headers['access-control-allow-origin'] = ao;
+  return new Response(JSON.stringify(data), { status, headers });
+}
+
+// ---- CORS: only koPaper origins (plus local dev hosts) may read API responses ----
+export const ALLOWED_ORIGINS = [
+  'https://kopaper.com',
+  'https://www.kopaper.com',
+  'http://localhost:4321',
+  'http://127.0.0.1:4321',
+];
+
+export function resolveCorsOrigin(origin?: string | null): string | null {
+  if (!origin) return '*'; // non-browser callers (curl, server-side) are fine
+  const o = origin.toLowerCase();
+  if (o === 'null') return '*';
+  return ALLOWED_ORIGINS.includes(o) ? origin : null; // null => header omitted => browser blocks
+}
+
+export function corsPreflightHeaders(origin?: string | null): Record<string, string> {
+  const headers: Record<string, string> = {
+    'access-control-allow-methods': 'POST, GET, OPTIONS',
+    'access-control-allow-headers': 'content-type, x-flush-key',
+  };
+  const ao = resolveCorsOrigin(origin);
+  if (ao) headers['access-control-allow-origin'] = ao;
+  return headers;
+}
+
+export function clientIp(context: APIContext): string {
+  const h = context.request.headers as any;
+  const ip = h?.get?.('cf-connecting-ip') || h?.get?.('x-forwarded-for') || 'unknown';
+  return String(ip).slice(0, 64);
+}
+
+// ---- IP-based daily rate limit backed by the KV binding ----
+export async function checkRateLimit(
+  kv: any,
+  prefix: string,
+  ip: string,
+  limit: number,
+): Promise<{ ok: boolean; used: number; limit: number; remaining: number }> {
+  const today = new Date().toISOString().slice(0, 10);
+  const key = `usage:${prefix}:${ip}:${today}`;
+  let used = 0;
+  try { used = Number(await kv.get(key)) || 0; } catch { /* read failure -> allow */ }
+  if (used >= limit) return { ok: false, used, limit, remaining: 0 };
+  try {
+    await kv.put(key, String(used + 1), { expirationTtl: 60 * 60 * 24 * 2 }); // 2-day safety TTL
+    used += 1;
+  } catch { /* write failure -> still allow this request */ }
+  return { ok: true, used, limit, remaining: limit - used };
 }
 
 // ---- UTF-8 safe base64 (Workers `btoa` only handles Latin1) ----
@@ -172,15 +225,38 @@ function subjectTip(subject: Subject): string {
     default: return 'Start with the largest pieces to set the silhouette, then fill in the smaller details last.';
   }
 }
+function strHash(s: string): number {
+  let h = 0;
+  for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
+  return h;
+}
 function buildIntro(prompt: string, subject: Subject, style: string, styleWord: string): string {
-  const para1 = `This ${styleWord ? styleWord + ' ' : ''}${subject.label} papercraft is based on the idea "${prompt}", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.`;
+  const styleLabel = styleWord ? styleWord + ' ' : '';
+  const h = strHash(prompt);
+  // Varied opening/step/ending phrasings keep same-category posts from being
+  // word-for-word identical (scaled-content risk). Selection is deterministic
+  // per prompt so a repeated idea still produces stable copy.
+  const openers = [
+    `This ${styleLabel}${subject.label} papercraft is based on the idea "${prompt}", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.`,
+    `${capitalizeWords(subject.label)} from paper? That's exactly what this ${styleLabel}${subject.label} papercraft is — the idea "${prompt}" turned into a printable template by koPaper's AI generator. Cut it out, fold along the lines, and it's ready to display.`,
+    `Turn the idea "${prompt}" into a hands-on project with this ${styleLabel}${subject.label} papercraft from koPaper's AI generator. Everything you need to build it is on the printable sheet below — no special tools required.`,
+  ];
+  const para1 = openers[h % openers.length];
   const para2 = styleNote(style);
   const weight = paperWeight(subject, style);
   const para3 = `What you'll need: ${weight}, a pair of sharp scissors or a craft knife, a cutting mat, a ruler, a bone folder (or the back of a spoon), and a good PVA or glue stick. Print at 100% scale on a dry, flat sheet so the tabs line up.`;
-  const para4 = `Steps: (1) print the template; (2) cut along the solid outlines; (3) score every dashed fold line; (4) fold toward the printed side for clean edges; (5) apply glue to the tabs and assemble from the largest piece outward. Take your time on the folds — crisp creases are what make the model hold its shape.`;
+  const stepSets = [
+    `Steps: (1) print the template; (2) cut along the solid outlines; (3) score every dashed fold line; (4) fold toward the printed side for clean edges; (5) apply glue to the tabs and assemble from the largest piece outward. Take your time on the folds — crisp creases are what make the model hold its shape.`,
+    `Steps: print at 100% scale, cut the solid outlines with a craft knife or scissors, score the dashed lines, fold each tab, then assemble the largest parts first with glue. Gentle pressure on each fold gives the sharpest, cleanest edges.`,
+  ];
+  const para4 = stepSets[h % stepSets.length];
   const para5 = subjectTip(subject);
   const { difficulty, minutes } = estimate(prompt, subject);
-  const para6 = `Difficulty: ${difficulty}. Plan for about ${minutes} from first cut to finished model. If you enjoy this one, browse the [origami tutorials](/origami/) for fold-along projects or the [free printable templates](/templates/) for more ready-to-build sheets. Want a different look? Run the same idea through the [AI papercraft generator](/) in another style.`;
+  const endings = [
+    `Difficulty: ${difficulty}. Plan for about ${minutes} from first cut to finished model. If you enjoy this one, browse the [origami tutorials](/origami/) for fold-along projects or the [free printable templates](/templates/) for more ready-to-build sheets. Want a different look? Run the same idea through the [AI papercraft generator](/) in another style.`,
+    `Difficulty: ${difficulty} — expect around ${minutes} from start to finish. Made something you like? The [origami tutorials](/origami/) teach folding by hand, and the [free printable templates](/templates/) offer more ready-to-build sheets. For another look, regenerate the same idea with the [AI papercraft generator](/) in a different style.`,
+  ];
+  const para6 = endings[h % endings.length];
   return [para1, para2, para3, para4, para5, para6].join('\n\n');
 }
 
@@ -379,11 +455,13 @@ export async function planDraft(
     if (prev) {
       mdContent = prev + imageLine(imgUrl, meta.caption);
     } else {
+      const today = new Date().toISOString().slice(0, 10);
       const fm = [
         `title: ${yamlStr(meta.title)}`,
         `description: ${yamlStr(meta.description)}`,
         `emoji: ${yamlStr(meta.emoji)}`,
         meta.style ? `style: ${yamlStr(meta.style)}` : null,
+        `updated: ${today}`,
         `order: 99`,
         `draft: false`,
       ].filter(Boolean).join('\n');

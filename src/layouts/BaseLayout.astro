@@ -62,17 +62,20 @@ const ADSENSE_ID = 'ca-pub-6279178382144076';
     })();
   </script>
 
-  <!-- GA4 -->
-  <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
-  <script is:inline define:vars={{ GA_ID }}>
+  <!-- GA4: stub only; gtag.js is loaded after consent (see consent script in body) -->
+  <script is:inline>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', GA_ID);
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      functionality_storage: 'granted',
+      personalization_storage: 'denied',
+      security_storage: 'granted',
+    });
   </script>
-
-  <!-- AdSense -->
-  <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`} crossorigin="anonymous"></script>
 </head>
 <body>
   <Header />
@@ -82,6 +85,60 @@ const ADSENSE_ID = 'ca-pub-6279178382144076';
   <Footer />
 
   <button class="to-top" id="toTop" aria-label="Back to top">&#8593;</button>
+
+  <!-- Cookie consent banner (GDPR): GA4 + AdSense load only after consent -->
+  <div id="consentBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--surface);border-top:1px solid var(--border);padding:14px 20px;font-family:var(--font-mono);font-size:.82rem;color:var(--text);box-shadow:var(--shadow-lg);">
+    <div style="max-width:var(--max-width);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+      <span>We use cookies for analytics and to show relevant ads. <a href="/privacy/" style="color:var(--warm);text-decoration:underline;">Privacy</a></span>
+      <div style="display:flex;gap:10px;">
+        <button id="consentDecline" style="padding:8px 14px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--bg);color:var(--text);cursor:pointer;">Decline</button>
+        <button id="consentAccept" style="padding:8px 14px;border:none;border-radius:var(--radius-sm);background:var(--warm);color:#fff;cursor:pointer;">Accept</button>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline define:vars={{ GA_ID, ADSENSE_ID }}>
+    (function() {
+      const KEY = 'koPaper_consent';
+      let stored = null;
+      try { stored = localStorage.getItem(KEY); } catch (e) {}
+      function loadThirdParty() {
+        const s1 = document.createElement('script');
+        s1.async = true;
+        s1.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+        document.head.appendChild(s1);
+        gtag('js', new Date());
+        gtag('config', GA_ID);
+        const s2 = document.createElement('script');
+        s2.async = true;
+        s2.crossOrigin = 'anonymous';
+        s2.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + ADSENSE_ID;
+        document.head.appendChild(s2);
+      }
+      function decide(v) {
+        try { localStorage.setItem(KEY, v); } catch (e) {}
+        if (v === 'granted') {
+          gtag('consent', 'update', {
+            ad_storage: 'granted', ad_user_data: 'granted',
+            ad_personalization: 'granted', analytics_storage: 'granted',
+          });
+          loadThirdParty();
+        }
+        const b = document.getElementById('consentBanner');
+        if (b) b.style.display = 'none';
+      }
+      if (stored === 'granted') {
+        loadThirdParty();
+      } else if (stored !== 'denied') {
+        const b = document.getElementById('consentBanner');
+        const ok = document.getElementById('consentAccept');
+        const no = document.getElementById('consentDecline');
+        if (b) b.style.display = 'block';
+        if (ok) ok.addEventListener('click', () => decide('granted'));
+        if (no) no.addEventListener('click', () => decide('denied'));
+      }
+    })();
+  </script>
 
   <script is:inline>
     // Theme toggle

@@ -5,6 +5,7 @@ emoji: "🏰"
 style: "fantasy"
 order: 99
 draft: false
+updated: "2026-08-27"
 ---
 
 This fantasy building papercraft is based on the idea "fantasy papercraft creature Medieval castle with vegetable garden and fruit trees", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.

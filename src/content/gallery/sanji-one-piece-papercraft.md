@@ -5,6 +5,8 @@ emoji: "🎨"
 style: "cute"
 order: 99
 draft: false
+noindex: true
+updated: "2026-08-27"
 ---
 
 This cute papercraft papercraft is based on the idea "Sanji  one piece", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.

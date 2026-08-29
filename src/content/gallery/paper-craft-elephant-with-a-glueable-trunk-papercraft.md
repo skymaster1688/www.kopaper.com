@@ -5,6 +5,7 @@ emoji: "🐘"
 style: "pixel"
 order: 99
 draft: false
+updated: "2026-08-27"
 ---
 
 This pixel animal papercraft is based on the idea "Paper Craft Elephant With A Glueable Trunk", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.

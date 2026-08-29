@@ -13,8 +13,7 @@
     "node": ">=18.17.1"
   },
   "dependencies": {
-    "astro": "^5.13.0",
-    "@astrojs/sitemap": "^3.6.0",
-    "@astrojs/cloudflare": "^12.6.12"
+    "@astrojs/cloudflare": "^12.6.12",
+    "astro": "^5.13.0"
   }
 }

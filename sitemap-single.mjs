@@ -1,4 +1,4 @@
-import { writeFile, readdir } from 'node:fs/promises';
+import { writeFile, readdir, readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { join, relative } from 'node:path';
 
@@ -7,12 +7,14 @@ import { join, relative } from 'node:path';
 // 因此对任意 Astro 5.x 子版本都稳健。
 export function singleSitemap() {
   let site = '';
+  let srcRoot = '';
 
   return {
     name: 'single-sitemap',
     hooks: {
       'astro:config:done': ({ config }) => {
         site = (config.site || '').replace(/\/$/, '');
+        try { srcRoot = fileURLToPath(config.root); } catch { srcRoot = ''; }
       },
       'astro:build:done': async ({ dir }) => {
         if (!site) {
@@ -45,6 +47,25 @@ export function singleSitemap() {
         }
         await walk(root);
 
+        // lastmod 映射：从画廊文章的 `updated` frontmatter 读出，注入 <lastmod>。
+        // noindex 文章从 sitemap 排除（双保险，与页面 noindex 一致）。
+        const lastmod = new Map();
+        const excluded = new Set();
+        if (srcRoot) {
+          const galleryDir = join(srcRoot, 'src', 'content', 'gallery');
+          try {
+            const files = await readdir(galleryDir);
+            for (const f of files) {
+              if (!f.endsWith('.md')) continue;
+              const raw = await readFile(join(galleryDir, f), 'utf8');
+              const slug = '/gallery/' + f.replace(/\.md$/, '') + '/';
+              const m = raw.match(/^updated:\s*["']?([\d-]+)/m);
+              if (m) lastmod.set(slug, m[1]);
+              if (/^noindex:\s*true/m.test(raw)) excluded.add(slug);
+            }
+          } catch { /* 无画廊目录时忽略 */ }
+        }
+
         const urls = htmlFiles
           .map((f) => {
             // 转成相对站点的目录式路径
@@ -54,9 +75,16 @@ export function singleSitemap() {
           })
           // 排除 404 / sitemap 等非内容页
           .filter((path) => !path.startsWith('/404') && !path.includes('sitemap'))
+          // 排除 noindex 内容页
+          .filter((path) => !excluded.has(path))
           // 去重
           .filter((path, i, arr) => arr.indexOf(path) === i)
-          .map((path) => `    <url><loc>${site}${path}</loc></url>`)
+          .map((path) => {
+            const lm = lastmod.get(path);
+            return lm
+              ? `    <url><loc>${site}${path}</loc><lastmod>${lm}</lastmod></url>`
+              : `    <url><loc>${site}${path}</loc></url>`;
+          })
           .join('\n');
 
         const xml =

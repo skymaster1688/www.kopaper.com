@@ -173,8 +173,6 @@ const templateSchema = {
     }
     /* Print-friendly: hide nav, buttons, related when saving as PDF */
     @media print {
-      .site-header, .to-top, .breadcrumb, .template-actions,
-      .tutorial-meta, .tutorial-content h2, section { }
       .template-actions, .to-top, .site-header { display: none !important; }
       .tutorial-content h2 { display: none; }
       .breadcrumb { display: none; }

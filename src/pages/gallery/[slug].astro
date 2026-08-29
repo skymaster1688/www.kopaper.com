@@ -17,21 +17,30 @@ const { Content } = await item.render();
 const all = await getCollection('gallery', ({ data }) => !data.draft);
 const related = all
   .filter(g => g.slug !== item.slug)
-  .sort((a, b) => a.data.order - b.data.order)
+  .sort((a, b) => (b.data.updated || `0-${b.slug}`).localeCompare(a.data.updated || `0-${a.slug}`))
   .slice(0, 3);
 
-const articleSchema = {
+const articleSchema: Record<string, unknown> = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: item.data.title,
   description: item.data.description,
   mainEntityOfPage: new URL(Astro.url.pathname, Astro.site).href,
+  author: { '@type': 'Organization', name: 'koPaper', url: Astro.site.href },
+  publisher: { '@type': 'Organization', name: 'koPaper', url: Astro.site.href },
 };
+if (item.data.updated) {
+  articleSchema.datePublished = item.data.updated;
+  articleSchema.dateModified = item.data.updated;
+}
+const imgMatch = item.body.match(/!\[[^\]]*\]\((\/[^)\s]+)\)/);
+if (imgMatch) articleSchema.image = new URL(imgMatch[1], Astro.site).href;
 ---
 <BaseLayout
   title={item.data.title}
   description={item.data.description}
   ogType="article"
+  noindex={item.data.noindex}
 >
   <article class="container" style="max-width:820px; padding-top:40px">
     <nav class="breadcrumb">

@@ -20,6 +20,7 @@
 export const prerender = false;
 
 import type { APIContext } from 'astro';
+import { getRuntimeEnv, resolveCorsOrigin, corsPreflightHeaders, clientIp, checkRateLimit } from '../../lib/gallery';
 
 const DEFAULT_PROVIDER = 'workersai';
 const DEFAULT_N = 4;
@@ -52,15 +53,11 @@ interface GenerateBody {
   provider?: string;
 }
 
-function json(data: unknown, status = 200, extra: Record<string, string> = {}) {
-  return new Response(JSON.stringify(data), {
-    status,
-    headers: {
-      'content-type': 'application/json',
-      'access-control-allow-origin': '*',
-      ...extra,
-    },
-  });
+function json(data: unknown, status = 200, extra: Record<string, string> = {}, origin?: string | null) {
+  const headers: Record<string, string> = { 'content-type': 'application/json', ...extra };
+  const ao = resolveCorsOrigin(origin);
+  if (ao) headers['access-control-allow-origin'] = ao;
+  return new Response(JSON.stringify(data), { status, headers });
 }
 
 function arrayBufferToBase64(buf: ArrayBuffer | Uint8Array): string {
@@ -73,24 +70,22 @@ function arrayBufferToBase64(buf: ArrayBuffer | Uint8Array): string {
   return btoa(binary);
 }
 
-// Cloudflare env is injected by @astrojs/cloudflare into locals.runtime.env.
-// Typed loosely (any) so both string secrets (OPENROUTER_API_KEY) and the AI binding object are accessible.
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function getEnv(context: APIContext): Record<string, any> {
-  const runtime = (context.locals as { runtime?: { env?: Record<string, any> } }).runtime;
-  return runtime?.env ?? {};
-}
-
 type Provider = 'workersai' | 'pollinations' | 'openrouter';
 
-function resolveProvider(requested: string | undefined, env: Record<string, any>): Provider {
+function resolveProviderChain(requested: string | undefined, env: Record<string, any>): Provider[] {
   const known: Provider[] = ['workersai', 'pollinations', 'openrouter'];
   let preferred = (requested || env?.IMAGE_PROVIDER || DEFAULT_PROVIDER).toString().toLowerCase() as Provider;
   if (!known.includes(preferred)) preferred = DEFAULT_PROVIDER;
-  // Fallbacks when the chosen provider's dependency is missing.
-  if (preferred === 'workersai' && !env?.AI) return 'pollinations';
-  if (preferred === 'openrouter' && !env?.OPENROUTER_API_KEY) return env?.AI ? 'workersai' : 'pollinations';
-  return preferred;
+  // Chain starts with the preferred provider, then the remaining providers
+  // whose dependencies are configured. Used for auto-fallback on failure.
+  const chain: Provider[] = [preferred];
+  for (const p of known) {
+    if (p === preferred) continue;
+    if (p === 'workersai' && !env?.AI) continue;
+    if (p === 'openrouter' && !env?.OPENROUTER_API_KEY) continue;
+    chain.push(p);
+  }
+  return chain;
 }
 
 function buildPrompt(idea: string, stylePhrase: string): string {
@@ -235,27 +230,29 @@ async function generateOpenRouter(
   return { model, images };
 }
 
-export async function OPTIONS() {
-  return new Response(null, {
-    headers: {
-      'access-control-allow-origin': '*',
-      'access-control-allow-methods': 'POST, OPTIONS',
-      'access-control-allow-headers': 'content-type',
-    },
-  });
+export async function OPTIONS(context: APIContext) {
+  return new Response(null, { headers: corsPreflightHeaders(context.request.headers.get('origin')) });
 }
 
 export async function POST(context: APIContext) {
+  const origin = context.request.headers.get('origin');
+  const env = getRuntimeEnv(context);
+  const ip = clientIp(context);
+  const kv = env.GALLERY_KV as any;
+  if (kv) {
+    const rl = await checkRateLimit(kv, 'gen', ip, 30);
+    if (!rl.ok) return json({ ok: false, error: 'Daily generation limit reached (' + rl.limit + '). Try again tomorrow.', remaining: rl.remaining }, 429, {}, origin);
+  }
   let body: GenerateBody;
   try {
     body = (await context.request.json()) as GenerateBody;
   } catch {
-    return json({ ok: false, error: 'Invalid JSON body.' }, 400);
+    return json({ ok: false, error: 'Invalid JSON body.' }, 400, {}, origin);
   }
 
   const idea = (body.prompt ?? '').toString().trim();
   if (!idea || idea.length > 500) {
-    return json({ ok: false, error: 'prompt is required and must be 1-500 characters.' }, 400);
+    return json({ ok: false, error: 'prompt is required and must be 1-500 characters.' }, 400, {}, origin);
   }
 
   const styleKey = (body.style ?? 'cute').toString().toLowerCase();
@@ -263,39 +260,48 @@ export async function POST(context: APIContext) {
   const n = Math.min(Math.max(parseInt(String(body.n ?? DEFAULT_N), 10) || DEFAULT_N, 1), 4);
   const prompt = buildPrompt(idea, stylePhrase);
 
-  const env = getEnv(context);
-  const provider = resolveProvider(body.provider, env);
   const apiKey = env?.OPENROUTER_API_KEY;
 
   // Artificial backend latency: hold the response 10-15s so the "generating"
-  // UX feels real. This is placed BEFORE the ai.run() call on purpose: if the
-  // client aborts during the wait (tab closed / navigated away), we exit early
-  // and never spend the inference. A sleep does NOT consume any AI quota.
+  // UX feels real. This is placed BEFORE the first ai.run() call on purpose: if
+  // the client aborts during the wait (tab closed / navigated away), we exit
+  // early and never spend the inference. A sleep does NOT consume any AI quota.
   await sleep(10_000 + Math.floor(Math.random() * 5_000));
 
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
-  try {
-    let result: { model: string; images: Array<{ b64: string; mediaType: string }> };
-    if (provider === 'workersai' && env.AI) {
-      result = await generateWorkersAI(prompt, env.AI, n);
-    } else if (provider === 'openrouter' && apiKey) {
-      const model = body.model && SAFE_SLUG.test(body.model) ? body.model : OPENROUTER_DEFAULT_MODEL;
-      result = await generateOpenRouter(prompt, apiKey, model, n, controller.signal);
-    } else {
-      const model = body.model && SAFE_SLUG.test(body.model)
-        ? body.model
-        : (POLLINATIONS_STYLE_MODELS[styleKey] ?? POLLINATIONS_DEFAULT_MODEL);
-      result = await generatePollinations(prompt, model, n, controller.signal);
+  // Provider chain: try the preferred provider first; on failure (e.g. the free
+  // Workers AI daily quota is exhausted) automatically fall back to the next
+  // available provider before giving up.
+  const chain = resolveProviderChain(body.provider, env);
+  let lastErr: Error | null = null;
+  let lastProvider = '';
+  for (const p of chain) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
+    try {
+      let result: { model: string; images: Array<{ b64: string; mediaType: string }> };
+      if (p === 'workersai' && env.AI) {
+        result = await generateWorkersAI(prompt, env.AI, n);
+      } else if (p === 'openrouter' && apiKey) {
+        const model = body.model && SAFE_SLUG.test(body.model) ? body.model : OPENROUTER_DEFAULT_MODEL;
+        result = await generateOpenRouter(prompt, apiKey, model, n, controller.signal);
+      } else {
+        const model = body.model && SAFE_SLUG.test(body.model)
+          ? body.model
+          : (POLLINATIONS_STYLE_MODELS[styleKey] ?? POLLINATIONS_DEFAULT_MODEL);
+        result = await generatePollinations(prompt, model, n, controller.signal);
+      }
+      return json({ ok: true, provider: p, model: result.model, images: result.images }, 200, {}, origin);
+    } catch (e) {
+      const err = e as Error;
+      if (err?.name === 'AbortError') {
+        return json({ ok: false, error: 'Generation timed out.' }, 504, {}, origin);
+      }
+      lastErr = err;
+      lastProvider = p;
+    } finally {
+      clearTimeout(timer);
     }
-    return json({ ok: true, provider, model: result.model, images: result.images });
-  } catch (e) {
-    const err = e as Error;
-    if (err?.name === 'AbortError') {
-      return json({ ok: false, error: 'Generation timed out.' }, 504);
-    }
-    return json({ ok: false, error: 'Server error', detail: String(err?.message ?? err) }, 500);
-  } finally {
-    clearTimeout(timer);
   }
+  const err = lastErr as Error | null;
+  return json({ ok: false, error: 'Server error', detail: lastProvider + ': ' + String(err?.message ?? err) }, 500, {}, origin);
 }

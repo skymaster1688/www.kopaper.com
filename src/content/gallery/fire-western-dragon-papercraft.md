@@ -5,6 +5,7 @@ emoji: "🐉"
 style: "cute"
 order: 99
 draft: false
+updated: "2026-08-27"
 ---
 
 This cute dragon papercraft is based on the idea "Fire Western Dragon", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.
