@@ -5,7 +5,7 @@ emoji: "🎨"
 style: "fantasy"
 order: 99
 draft: false
-updated: "2026-08-28"
+updated: "2026-08-29"
 ---
 
 This fantasy character papercraft is based on the idea "i want to creat a dangerious looking dinosor full body", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.
@@ -23,3 +23,8 @@ Difficulty: Easy. Plan for about 15–30 minutes from first cut to finished mode
 ![AI-generated fantasy papercraft of i want to creat a dangerious looking dinosor full body.](/images/gallery/character-papercraft-mtcyvqbbtman.jpg)
 
 *AI-generated fantasy papercraft of i want to creat a dangerious looking dinosor full body.*
+
+
+![AI-generated lowpoly papercraft of 3d model of a robotic triceratops zord head.](/images/gallery/character-papercraft-mtergemwn686.jpg)
+
+*AI-generated lowpoly papercraft of 3d model of a robotic triceratops zord head.*

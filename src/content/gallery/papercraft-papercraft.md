@@ -5,7 +5,7 @@ emoji: "🎨"
 style: "lowpoly"
 order: 99
 draft: false
-updated: "2026-08-27"
+updated: "2026-08-29"
 ---
 
 This lowpoly papercraft papercraft is based on the idea "Papercraft", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.
@@ -27,3 +27,12 @@ Difficulty: Easy. Plan for about 15–30 minutes from first cut to finished mode
 ![AI-generated lowpoly papercraft of Papercraft.](/images/gallery/papercraft-papercraft-mt4j7ddgoxr0.jpg)
 
 *AI-generated lowpoly papercraft of Papercraft.*
+
+
+![AI-generated lowpoly papercraft of exact replica of the might morphin power rangers triceratops zords head.](/images/gallery/papercraft-papercraft-mtergezxhrwn.jpg)
+
+*AI-generated lowpoly papercraft of exact replica of the might morphin power rangers triceratops zords head.*
+
+![AI-generated lowpoly papercraft of exact replica of the might morphin power rangers triceratops zords head.](/images/gallery/papercraft-papercraft-mtergf7xt3i9.jpg)
+
+*AI-generated lowpoly papercraft of exact replica of the might morphin power rangers triceratops zords head.*
