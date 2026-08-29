@@ -5,7 +5,7 @@ emoji: "🎨"
 style: "cute"
 order: 99
 draft: false
-updated: "2026-08-27"
+updated: "2026-08-29"
 ---
 
 This cute papercraft papercraft is based on the idea "برای چرخه آب نیاز به یک کاردستی مناسب برای فعالیت های دست", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.
@@ -27,3 +27,8 @@ Difficulty: Easy. Plan for about 15–30 minutes from first cut to finished mode
 ![AI-generated cute papercraft of برای چرخه آب نیاز به یک کاردستی مناسب برای فعالیت های دست.](/images/gallery/papercraft-mt5tc9m3c0du.jpg)
 
 *AI-generated cute papercraft of برای چرخه آب نیاز به یک کاردستی مناسب برای فعالیت های دست.*
+
+
+![AI-generated fantasy papercraft of Аниме девочка.](/images/gallery/papercraft-mtemk2y9h9g9.jpg)
+
+*AI-generated fantasy papercraft of Аниме девочка.*
