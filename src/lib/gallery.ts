@@ -116,7 +116,12 @@ function capitalizeWords(s: string): string {
 }
 function slugify(s: string): string {
   const out = s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').replace(/-{2,}/g, '-');
-  return out || 'papercraft';
+  if (out) return out;
+  // Non-ASCII prompt (e.g. Cyrillic): use a stable hash so the slug never
+  // collides with the existing generic "papercraft" post.
+  let h = 0;
+  for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
+  return 'papercraft-' + h.toString(36);
 }
 function pickEmoji(prompt: string): string {
   const p = prompt.toLowerCase();

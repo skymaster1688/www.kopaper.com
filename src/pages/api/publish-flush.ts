@@ -55,7 +55,13 @@ async function flush(context: APIContext) {
     if (!raw) continue;
     let draft: any;
     try { draft = JSON.parse(raw); } catch { await safeDelete(kv, k.name); failed.push(`${k.name}: bad json`); continue; }
-    const res = await planDraft(gh, draft, state);
+    let res;
+    try {
+      res = await planDraft(gh, draft, state);
+    } catch (e) {
+      failed.push(`${k.name}: planDraft crashed: ${String((e as Error)?.message ?? e)}`);
+      continue;
+    }
     if ('error' in res) { await safeDelete(kv, k.name); failed.push(`${k.name}: ${res.error}`); continue; }
     allFiles.push(...res.files);
     published++;
