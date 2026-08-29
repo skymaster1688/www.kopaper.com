@@ -75,6 +75,7 @@ export async function POST(context: APIContext) {
         `description: ${yamlStr(meta.description)}`,
         `emoji: ${yamlStr(meta.emoji)}`,
         meta.style ? `style: ${yamlStr(meta.style)}` : null,
+        `updated: "${new Date().toISOString().slice(0, 10)}"`,
         `order: 99`,
         `draft: false`,
       ].filter(Boolean).join('\n');

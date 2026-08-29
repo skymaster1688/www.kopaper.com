@@ -461,7 +461,7 @@ export async function planDraft(
         `description: ${yamlStr(meta.description)}`,
         `emoji: ${yamlStr(meta.emoji)}`,
         meta.style ? `style: ${yamlStr(meta.style)}` : null,
-        `updated: ${today}`,
+        `updated: "${today}"`,
         `order: 99`,
         `draft: false`,
       ].filter(Boolean).join('\n');

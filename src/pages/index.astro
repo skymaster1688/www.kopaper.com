@@ -17,11 +17,9 @@ const letterPapers = (await getCollection('letterPaper', ({ data }) => !data.dra
 const learnArticles = (await getCollection('learn', ({ data }) => !data.draft))
   .sort((a, b) => a.data.order - b.data.order);
 
-// Gallery: AI-generated papercraft showcase. No timestamp in frontmatter, so
-// approximate "latest" by reverse slug order (newer slugs sort later alphabetically
-// in practice; if you want true chronological, add an `updated` field to gallery).
-const galleryItems = (await getCollection('gallery', ({ data }) => !data.draft))
-  .sort((a, b) => b.slug.localeCompare(a.slug))
+// Gallery: AI-generated papercraft showcase, newest first (driven by `updated`).
+const galleryItems = (await getCollection('gallery', ({ data }) => !data.draft && !data.noindex))
+  .sort((a, b) => (b.data.updated || '').localeCompare(a.data.updated || ''))
   .slice(0, 4);
 
 const faqs = [

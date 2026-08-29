@@ -4,7 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import GalleryCard from '../../components/GalleryCard.astro';
 
 export async function getStaticPaths() {
-  const items = await getCollection('gallery', ({ data }) => !data.draft);
+  const items = await getCollection('gallery', ({ data }) => !data.draft && !data.noindex);
   return items.map(g => ({
     params: { slug: g.slug },
     props: { item: g },
@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 const { item } = Astro.props;
 const { Content } = await item.render();
 
-const all = await getCollection('gallery', ({ data }) => !data.draft);
+const all = await getCollection('gallery', ({ data }) => !data.draft && !data.noindex);
 const related = all
   .filter(g => g.slug !== item.slug)
   .sort((a, b) => (b.data.updated || `0-${b.slug}`).localeCompare(a.data.updated || `0-${a.slug}`))
