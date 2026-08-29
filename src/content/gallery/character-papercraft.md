@@ -5,6 +5,7 @@ emoji: "🎨"
 style: "fantasy"
 order: 99
 draft: false
+updated: "2026-08-28"
 ---
 
 This fantasy character papercraft is based on the idea "i want to creat a dangerious looking dinosor full body", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.

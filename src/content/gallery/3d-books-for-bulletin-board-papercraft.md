@@ -5,6 +5,7 @@ emoji: "📖"
 style: "cute"
 order: 99
 draft: false
+updated: "2026-08-28"
 ---
 
 This cute papercraft papercraft is based on the idea "3d books for bulletin board", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.
