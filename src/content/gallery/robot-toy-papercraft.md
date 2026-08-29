@@ -5,7 +5,7 @@ emoji: "🤖"
 style: "pixel"
 order: 99
 draft: false
-updated: "2026-08-27"
+updated: "2026-08-29"
 ---
 
 This pixel character papercraft is based on the idea "robot toy", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.
@@ -28,3 +28,11 @@ Difficulty: Easy. Plan for about 15–30 minutes from first cut to finished mode
 ![AI-generated fantasy papercraft of robot toy.](/images/gallery/robot-toy-papercraft-mtcyvq4qin02.jpg)
 
 *AI-generated fantasy papercraft of robot toy.*
+
+![AI-generated lowpoly papercraft of robot toy.](/images/gallery/robot-toy-papercraft-mtepxa0wsj37.jpg)
+
+*AI-generated lowpoly papercraft of robot toy.*
+
+![AI-generated lowpoly papercraft of robot toy.](/images/gallery/robot-toy-papercraft-mtepxa8ge1ng.jpg)
+
+*AI-generated lowpoly papercraft of robot toy.*
