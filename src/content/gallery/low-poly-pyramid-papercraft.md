@@ -27,3 +27,8 @@ Difficulty: Medium. Plan for about 25–45 minutes from first cut to finished mo
 ![AI-generated cute papercraft of low poly pyramid.](/images/gallery/low-poly-pyramid-papercraft-mt8nk2wlrbeg.jpg)
 
 *AI-generated cute papercraft of low poly pyramid.*
+
+
+![AI-generated pixel papercraft of low poly pyramid.](/images/gallery/low-poly-pyramid-papercraft-mteiv32omgie.jpg)
+
+*AI-generated pixel papercraft of low poly pyramid.*

@@ -36,3 +36,11 @@ Difficulty: Medium. Plan for about 25–45 minutes from first cut to finished mo
 ![AI-generated papercraft of fantasy castle.](/images/gallery/fantasy-castle-papercraft-mtcyvqtaisn2.jpg)
 
 *AI-generated papercraft of fantasy castle.*
+
+![AI-generated lowpoly papercraft of fantasy castle.](/images/gallery/fantasy-castle-papercraft-mteiv0r95eqg.jpg)
+
+*AI-generated lowpoly papercraft of fantasy castle.*
+
+![AI-generated lowpoly papercraft of fantasy castle.](/images/gallery/fantasy-castle-papercraft-mteiv3a7x2lu.jpg)
+
+*AI-generated lowpoly papercraft of fantasy castle.*
