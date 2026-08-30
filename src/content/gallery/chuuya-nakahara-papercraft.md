@@ -1,6 +1,6 @@
 ---
-title: "Chuuya Nakahara Papercraft"
-description: "Make a pixel papercraft papercraft from \"Chuuya Nakahara\" — free printable template with paper, tools, and folding tips."
+title: "Chuuya Nakahara Papercraft Template — Free Printable"
+description: "Free printable pixel papercraft template. Download, cut, fold, and assemble at home with step-by-step folding tips and tool recommendations."
 emoji: "🎨"
 style: "pixel"
 order: 99
@@ -9,7 +9,7 @@ noindex: true
 updated: "2026-08-27"
 ---
 
-This pixel papercraft papercraft is based on the idea "Chuuya Nakahara", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.
+This pixel papercraft is based on the idea "Chuuya Nakahara", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.
 
 The pixel style renders the subject as a blocky, retro grid — 8-bit art you can hold, with clean edges that are satisfying to cut.
 

@@ -1,6 +1,6 @@
 ---
-title: "Object Papercraft"
-description: "Make an lowpoly object papercraft from \"Create a functional printable paper template for a collapsible kinetic twisted cube\", with step-by-step folding tips...."
+title: "Object Papercraft Template — Free Printable"
+description: "Free printable lowpoly object papercraft template. Download, cut, fold, and assemble at home with step-by-step folding tips and tool recommendations."
 emoji: "🎨"
 style: "lowpoly"
 updated: "2026-08-30"

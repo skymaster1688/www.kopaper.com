@@ -1,6 +1,6 @@
 ---
-title: "EUSTACE BAGGE Papercraft"
-description: "Make a lowpoly papercraft papercraft from \"EUSTACE BAGGE\" — free printable template with paper, tools, and folding tips."
+title: "EUSTACE BAGGE Papercraft Template — Free Printable"
+description: "Free printable lowpoly papercraft template. Download, cut, fold, and assemble at home with step-by-step folding tips and tool recommendations."
 emoji: "🎨"
 style: "lowpoly"
 updated: "2026-08-30"
@@ -8,7 +8,7 @@ order: 99
 draft: false
 ---
 
-Papercraft from paper? That's exactly what this lowpoly papercraft papercraft is — the idea "EUSTACE BAGGE" turned into a printable template by koPaper's AI generator. Cut it out, fold along the lines, and it's ready to display.
+Papercraft from paper? That's exactly what this lowpoly papercraft is — the idea "EUSTACE BAGGE" turned into a printable template by koPaper's AI generator. Cut it out, fold along the lines, and it's ready to display.
 
 The low-poly style breaks the form into flat geometric facets, giving the model a modern, angular look that catches light from different angles.
 

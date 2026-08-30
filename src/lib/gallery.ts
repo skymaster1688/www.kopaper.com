@@ -235,31 +235,66 @@ function strHash(s: string): number {
   for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
   return h;
 }
+function toolList(subject: Subject, style: string): string {
+  const weight = paperWeight(subject, style);
+  const base = `${weight}, sharp scissors or a craft knife, a cutting mat, a ruler, and a bone folder (or the back of a spoon)`;
+  const glue = subject.category === 'building' || subject.category === 'vehicle'
+    ? 'PVA glue for strong structural bonds'
+    : 'a glue stick or PVA glue';
+  const extras: Record<string, string> = {
+    dragon: 'tweezers for small wing and tail details',
+    animal: 'tweezers for small leg and ear parts',
+    vehicle: 'a steel ruler for straight body-panel cuts',
+    building: 'a bone folder for sharp architectural creases',
+    character: 'tweezers for small facial and limb details',
+    plant: 'a pencil for curling petals and leaves',
+    food: 'a small brush for even glue on tiers',
+    object: 'a clean, flat workspace for precise assembly',
+  };
+  const extra = extras[subject.category] || 'a clean, flat workspace';
+  return `What you'll need: ${base}, ${glue}, and ${extra}. Print at 100% scale on a dry, flat sheet so the tabs line up.`;
+}
+
+function commonMistake(subject: Subject): string {
+  const tips: Record<string, string> = {
+    dragon: 'Common mistake: rushing the wing folds. Wings scored unevenly will droop or twist — score every line twice, once from each side, before folding.',
+    animal: 'Common mistake: gluing legs before the body is dry. Let the torso set for 5 minutes, then attach limbs so the figure stands straight.',
+    vehicle: 'Common mistake: cutting body panels with dull scissors. A fresh blade gives clean edges — rough cuts show on straight vehicle bodies.',
+    building: 'Common mistake: folding corners without scoring. Unscored folds create rounded edges — score every corner line for a sharp, architectural finish.',
+    character: 'Common mistake: attaching the head before the torso is stable. Build the body first, let it dry, then add the head so proportions stay balanced.',
+    plant: 'Common mistake: curling petals too aggressively. Gentle curls around a pencil look natural — tight creases make petals look stiff.',
+    food: 'Common mistake: stacking tiers before glue dries. Let each tier set 3-5 minutes before adding the next, or the stack will lean.',
+    object: 'Common mistake: using too much glue. A thin, even layer on each tab is enough — excess glue warps paper and shows through.',
+  };
+  return tips[subject.category] || 'Common mistake: rushing the glue stage. A thin, even layer and 10 seconds of pressure gives cleaner results than a thick blob.';
+}
+
 function buildIntro(prompt: string, subject: Subject, style: string, styleWord: string): string {
   const styleLabel = styleWord ? styleWord + ' ' : '';
   const h = strHash(prompt);
-  // Varied opening/step/ending phrasings keep same-category posts from being
-  // word-for-word identical (scaled-content risk). Selection is deterministic
-  // per prompt so a repeated idea still produces stable copy.
   const openers = [
     `This ${styleLabel}${subject.label} papercraft is based on the idea "${prompt}", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.`,
     `${capitalizeWords(subject.label)} from paper? That's exactly what this ${styleLabel}${subject.label} papercraft is — the idea "${prompt}" turned into a printable template by koPaper's AI generator. Cut it out, fold along the lines, and it's ready to display.`,
     `Turn the idea "${prompt}" into a hands-on project with this ${styleLabel}${subject.label} papercraft from koPaper's AI generator. Everything you need to build it is on the printable sheet below — no special tools required.`,
+    `Looking for a ${styleLabel}${subject.label} papercraft? This printable template, based on the idea "${prompt}", was generated with koPaper's AI papercraft maker. Just print, cut, and fold — the whole project comes together on your desk.`,
+    `The idea "${prompt}" becomes a buildable ${styleLabel}${subject.label} papercraft in this free printable template from koPaper. Score the fold lines, cut the tabs, and assemble at home — a satisfying afternoon project with everyday tools.`,
   ];
   const para1 = openers[h % openers.length];
   const para2 = styleNote(style);
-  const weight = paperWeight(subject, style);
-  const para3 = `What you'll need: ${weight}, a pair of sharp scissors or a craft knife, a cutting mat, a ruler, a bone folder (or the back of a spoon), and a good PVA or glue stick. Print at 100% scale on a dry, flat sheet so the tabs line up.`;
+  const para3 = toolList(subject, style);
   const stepSets = [
-    `Steps: (1) print the template; (2) cut along the solid outlines; (3) score every dashed fold line; (4) fold toward the printed side for clean edges; (5) apply glue to the tabs and assemble from the largest piece outward. Take your time on the folds — crisp creases are what make the model hold its shape.`,
-    `Steps: print at 100% scale, cut the solid outlines with a craft knife or scissors, score the dashed lines, fold each tab, then assemble the largest parts first with glue. Gentle pressure on each fold gives the sharpest, cleanest edges.`,
+    `Steps: (1) print the template at 100% scale; (2) cut along the solid outlines; (3) score every dashed fold line; (4) fold toward the printed side for clean edges; (5) apply glue to the tabs and assemble from the largest piece outward. Take your time on the folds — crisp creases are what make the model hold its shape.`,
+    `Steps: print at 100% scale, cut the solid outlines with a craft knife or scissors, score the dashed lines, fold each tab, then assemble the largest parts first with glue. Gentle pressure on each fold gives the sharpest, cleanest edges and helps the model stand on its own.`,
+    `Steps: start by printing the full sheet at 100%. Cut out each piece along solid lines, then score the dashed fold lines with a bone folder. Fold each tab inward, apply a thin layer of glue, and press firmly for 10 seconds. Build from the largest structural piece outward, adding smaller details last.`,
+    `Steps: print the template, then cut out all pieces carefully — solid lines are cuts, dashed lines are folds. Score every dashed line before folding to prevent tearing. Apply glue sparingly to each tab, assemble the main body first, then attach smaller parts. Let the glue set for a few minutes before handling the finished model.`,
   ];
   const para4 = stepSets[h % stepSets.length];
-  const para5 = subjectTip(subject);
+  const para5 = subjectTip(subject) + ' ' + commonMistake(subject);
   const { difficulty, minutes } = estimate(prompt, subject);
   const endings = [
     `Difficulty: ${difficulty}. Plan for about ${minutes} from first cut to finished model. If you enjoy this one, browse the [origami tutorials](/origami/) for fold-along projects or the [free printable templates](/templates/) for more ready-to-build sheets. Want a different look? Run the same idea through the [AI papercraft generator](/) in another style.`,
     `Difficulty: ${difficulty} — expect around ${minutes} from start to finish. Made something you like? The [origami tutorials](/origami/) teach folding by hand, and the [free printable templates](/templates/) offer more ready-to-build sheets. For another look, regenerate the same idea with the [AI papercraft generator](/) in a different style.`,
+    `This is a ${difficulty.toLowerCase()} project — set aside roughly ${minutes}. When you're done, display it on a shelf or desk, and try the [origami tutorials](/origami/) or [printable templates](/templates/) for your next project. You can also generate a new design from any idea using the [AI papercraft generator](/).`,
   ];
   const para6 = endings[h % endings.length];
   return [para1, para2, para3, para4, para5, para6].join('\n\n');
@@ -269,20 +304,25 @@ export function buildMeta(promptRaw: string, styleRaw: string): Generated {
   const style = (styleRaw || 'cute').toString().toLowerCase();
   const prompt = stripArticle(promptRaw.trim());
   const subject = detectSubject(prompt);
-  const titleBase = prompt.length <= 40 ? capitalizeWords(prompt) : capitalizeWords(subject.label);
-  let title = `${titleBase} Papercraft`;
-  while (title.length > 60) {
-    const words = title.split(' ');
-    if (words.length <= 2) break;
-    words.pop();
-    title = words.join(' ');
-  }
+  // Title: every title carries high-intent keywords "papercraft template" + "free printable"
+  const promptTitle = capitalizeWords(prompt);
+  const subjectTitle = capitalizeWords(subject.label);
+  const titleCandidates = [
+    `${promptTitle} Papercraft Template — Free Printable`,
+    `${promptTitle} Papercraft — Free Printable Template`,
+    `${subjectTitle} Papercraft Template — Free Printable`,
+    `${subjectTitle} Papercraft — Free Printable`,
+  ];
+  let title = titleCandidates.find(t => t.length <= 60) || titleCandidates[3].slice(0, 57).trimEnd() + `...`;
   const styleWord = style && !title.toLowerCase().includes(style) ? style : '';
-  const descriptionCore = styleWord
-    ? `Make ${subject.article} ${styleWord} ${subject.label} papercraft from "${prompt}"`
-    : `Make ${subject.article} ${subject.label} papercraft from "${prompt}"`;
-  let description = `${descriptionCore} — free printable template with paper, tools, and folding tips.`;
-  if (description.length > 160) description = `${descriptionCore}, with step-by-step folding tips.`.slice(0, 157).trimEnd() + '...';
+  // Description: natural keyword integration, <= 160 chars
+  const styleDesc = styleWord ? styleWord + ' ' : '';
+  const descCandidates = [
+    `Free printable ${styleDesc}${subject.label} papercraft template of "${prompt}". Download, cut, fold, and assemble at home — paper weight, tools, and step-by-step tips included.`,
+    `Free printable ${styleDesc}${subject.label} papercraft template. Download, cut, fold, and assemble at home with step-by-step folding tips and tool recommendations.`,
+    `Printable ${styleDesc}${subject.label} papercraft template — cut, fold, and assemble at home. Step-by-step tips, paper weight, and tools included.`,
+  ];
+  let description = descCandidates.find(d => d.length <= 160) || descCandidates[2].slice(0, 157).trimEnd() + `...`;
 
   const caption = `AI-generated ${styleWord ? styleWord + ' ' : ''}papercraft of ${prompt}.`;
   const intro = buildIntro(prompt, subject, style, styleWord);

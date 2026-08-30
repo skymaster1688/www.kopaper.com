@@ -1,6 +1,6 @@
 ---
-title: "Cut Dragon Papercraft"
-description: "Make a cute dragon papercraft from \"cut dragon\" — free printable template with paper, tools, and folding tips."
+title: "Cut Dragon Papercraft Template — Free Printable"
+description: "Free printable cute dragon papercraft template of \"cut dragon\". Download, cut, fold, and assemble at home — paper weight, tools, and step-by-step tips included."
 emoji: "🐉"
 style: "cute"
 order: 99

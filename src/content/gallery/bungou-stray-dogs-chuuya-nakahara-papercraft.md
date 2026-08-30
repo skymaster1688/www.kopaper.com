@@ -1,6 +1,6 @@
 ---
-title: "Bungou Stray Dogs] Chuuya Nakahara Papercraft"
-description: "Make an fantasy animal papercraft from \"Bungou Stray Dogs] Chuuya Nakahara\" — free printable template with paper, tools, and folding tips."
+title: "Animal Papercraft Template — Free Printable"
+description: "Free printable fantasy animal papercraft template. Download, cut, fold, and assemble at home with step-by-step folding tips and tool recommendations."
 emoji: "🐶"
 style: "fantasy"
 order: 99

@@ -1,6 +1,6 @@
 ---
-title: "Of A Robotic Triceratops Zord Head Papercraft"
-description: "Make a lowpoly character papercraft from \"of a robotic triceratops zord head\" — free printable template with paper, tools, and folding tips."
+title: "Character Papercraft Template — Free Printable"
+description: "Free printable lowpoly character papercraft template. Download, cut, fold, and assemble at home with step-by-step folding tips and tool recommendations."
 emoji: "🤖"
 style: "lowpoly"
 updated: "2026-08-29"

@@ -1,6 +1,6 @@
 ---
-title: "Fire Western Dragon Papercraft"
-description: "Make a cute dragon papercraft from \"Fire Western Dragon\" — free printable template with paper, tools, and folding tips."
+title: "Fire Western Dragon Papercraft Template — Free Printable"
+description: "Free printable cute dragon papercraft template. Download, cut, fold, and assemble at home with step-by-step folding tips and tool recommendations."
 emoji: "🐉"
 style: "cute"
 order: 99

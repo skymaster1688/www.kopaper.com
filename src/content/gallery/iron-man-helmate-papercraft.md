@@ -1,6 +1,6 @@
 ---
-title: "Iron Man Helmate Papercraft"
-description: "Make a cute papercraft papercraft from \"iron man helmate\" — free printable template with paper, tools, and folding tips."
+title: "Iron Man Helmate Papercraft Template — Free Printable"
+description: "Free printable cute papercraft template. Download, cut, fold, and assemble at home with step-by-step folding tips and tool recommendations."
 emoji: "🎨"
 style: "cute"
 updated: "2026-08-30"
@@ -8,7 +8,7 @@ order: 99
 draft: false
 ---
 
-Papercraft from paper? That's exactly what this cute papercraft papercraft is — the idea "iron man helmate" turned into a printable template by koPaper's AI generator. Cut it out, fold along the lines, and it's ready to display.
+Papercraft from paper? That's exactly what this cute papercraft is — the idea "iron man helmate" turned into a printable template by koPaper's AI generator. Cut it out, fold along the lines, and it's ready to display.
 
 The cute style leans into soft, rounded shapes and friendly proportions, so the finished piece reads as charming and approachable rather than realistic.
 

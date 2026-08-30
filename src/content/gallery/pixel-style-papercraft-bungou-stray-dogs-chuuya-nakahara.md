@@ -1,6 +1,6 @@
 ---
-title: "Animal Papercraft"
-description: "Make an pixel animal papercraft from \"Pixel Style Papercraft Bungou Stray Dogs] Chuuya Nakahara\" — free printable template with paper, tools, and folding tips."
+title: "Animal Papercraft Template — Free Printable"
+description: "Free printable pixel animal papercraft template. Download, cut, fold, and assemble at home with step-by-step folding tips and tool recommendations."
 emoji: "🐶"
 style: "pixel"
 order: 99

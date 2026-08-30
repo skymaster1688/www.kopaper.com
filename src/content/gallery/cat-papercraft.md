@@ -1,6 +1,6 @@
 ---
-title: "Cat Papercraft"
-description: "Make an fantasy animal papercraft from \"Cat\" — free printable template with paper, tools, and folding tips."
+title: "Cat Papercraft Template — Free Printable"
+description: "Free printable fantasy animal papercraft template of \"Cat\". Download, cut, fold, and assemble at home — paper weight, tools, and step-by-step tips included."
 emoji: "🐱"
 style: "fantasy"
 order: 99

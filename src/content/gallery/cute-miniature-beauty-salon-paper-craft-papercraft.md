@@ -1,6 +1,6 @@
 ---
-title: "Cute Miniature Beauty Salon Paper Craft Papercraft"
-description: "Make a papercraft papercraft from \"Cute miniature beauty salon paper craft\" — free printable template with paper, tools, and folding tips."
+title: "Papercraft Template — Free Printable"
+description: "Free printable cute papercraft template. Download, cut, fold, and assemble at home with step-by-step folding tips and tool recommendations."
 emoji: "🎨"
 style: "cute"
 order: 99
@@ -8,7 +8,7 @@ draft: false
 updated: "2026-08-28"
 ---
 
-This papercraft papercraft is based on the idea "Cute miniature beauty salon paper craft", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.
+This papercraft is based on the idea "Cute miniature beauty salon paper craft", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.
 
 The cute style leans into soft, rounded shapes and friendly proportions, so the finished piece reads as charming and approachable rather than realistic.
 

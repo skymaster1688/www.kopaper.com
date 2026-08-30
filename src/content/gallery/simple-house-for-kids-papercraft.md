@@ -1,6 +1,6 @@
 ---
-title: "Simple House For Kids Papercraft"
-description: "Make a cute building papercraft from \"simple house for kids\" — free printable template with paper, tools, and folding tips."
+title: "Simple House For Kids Papercraft Template — Free Printable"
+description: "Free printable cute building papercraft template. Download, cut, fold, and assemble at home with step-by-step folding tips and tool recommendations."
 emoji: "🏠"
 style: "cute"
 order: 99

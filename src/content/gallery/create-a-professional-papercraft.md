@@ -1,6 +1,6 @@
 ---
-title: "Create A PROFESSIONAL Papercraft"
-description: "Make a fantasy papercraft papercraft from \"Create a PROFESSIONAL\" — free printable template with paper, tools, and folding tips."
+title: "Create A PROFESSIONAL Papercraft Template — Free Printable"
+description: "Free printable fantasy papercraft template. Download, cut, fold, and assemble at home with step-by-step folding tips and tool recommendations."
 emoji: "🎨"
 style: "fantasy"
 order: 99
@@ -8,7 +8,7 @@ draft: false
 updated: "2026-08-28"
 ---
 
-This fantasy papercraft papercraft is based on the idea "Create a PROFESSIONAL", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.
+This fantasy papercraft is based on the idea "Create a PROFESSIONAL", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.
 
 The fantasy style pushes dramatic detail: scales, wings, glow, and atmosphere, so the model feels like a creature pulled from a storybook.
 

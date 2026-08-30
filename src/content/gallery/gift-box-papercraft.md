@@ -1,6 +1,6 @@
 ---
-title: "Gift Box Papercraft"
-description: "Make an pixel object papercraft from \"Gift Box\" — free printable template with paper, tools, and folding tips."
+title: "Gift Box Papercraft Template — Free Printable"
+description: "Free printable pixel object papercraft template of \"Gift Box\". Download, cut, fold, and assemble at home — paper weight, tools, and step-by-step tips included."
 emoji: "🎁"
 style: "pixel"
 order: 99

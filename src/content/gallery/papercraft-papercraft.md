@@ -1,6 +1,6 @@
 ---
-title: "Papercraft Papercraft"
-description: "Make a lowpoly papercraft papercraft from \"Papercraft\" — free printable template with paper, tools, and folding tips."
+title: "Papercraft Template — Free Printable"
+description: "Free printable lowpoly papercraft template. Download, cut, fold, and assemble at home with step-by-step folding tips and tool recommendations."
 emoji: "🎨"
 style: "lowpoly"
 order: 99
@@ -8,7 +8,7 @@ draft: false
 updated: "2026-08-29"
 ---
 
-This lowpoly papercraft papercraft is based on the idea "Papercraft", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.
+This lowpoly papercraft is based on the idea "Papercraft", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.
 
 The low-poly style breaks the form into flat geometric facets, giving the model a modern, angular look that catches light from different angles.
 

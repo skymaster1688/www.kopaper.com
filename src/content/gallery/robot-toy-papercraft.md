@@ -1,6 +1,6 @@
 ---
-title: "Robot Toy Papercraft"
-description: "Make a pixel character papercraft from \"robot toy\" — free printable template with paper, tools, and folding tips."
+title: "Robot Toy Papercraft Template — Free Printable"
+description: "Free printable pixel character papercraft template. Download, cut, fold, and assemble at home with step-by-step folding tips and tool recommendations."
 emoji: "🤖"
 style: "pixel"
 order: 99

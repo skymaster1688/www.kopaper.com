@@ -1,6 +1,6 @@
 ---
-title: "3d Model Of A Robotic Triceratops Head Papercraft"
-description: "Make a lowpoly character papercraft from \"3d model of a robotic triceratops head\" — free printable template with paper, tools, and folding tips."
+title: "Character Papercraft Template — Free Printable"
+description: "Free printable lowpoly character papercraft template. Download, cut, fold, and assemble at home with step-by-step folding tips and tool recommendations."
 emoji: "🤖"
 style: "lowpoly"
 updated: "2026-08-29"

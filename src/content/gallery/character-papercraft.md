@@ -1,6 +1,6 @@
 ---
-title: "Character Papercraft"
-description: "Make a fantasy character papercraft from \"i want to creat a dangerious looking dinosor full body\" — free printable template with paper, tools, and folding tips."
+title: "Character Papercraft Template — Free Printable"
+description: "Free printable fantasy character papercraft template. Download, cut, fold, and assemble at home with step-by-step folding tips and tool recommendations."
 emoji: "🎨"
 style: "fantasy"
 order: 99

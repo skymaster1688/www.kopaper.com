@@ -1,6 +1,6 @@
 ---
-title: "Building Papercraft"
-description: "Make a fantasy building papercraft from \"fantasy papercraft creature Medieval castle with vegetable garden and fruit trees\", with step-by-step folding tips...."
+title: "Building Papercraft Template — Free Printable"
+description: "Free printable fantasy building papercraft template. Download, cut, fold, and assemble at home with step-by-step folding tips and tool recommendations."
 emoji: "🏰"
 style: "fantasy"
 order: 99

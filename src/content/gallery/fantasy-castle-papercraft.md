@@ -1,6 +1,6 @@
 ---
-title: "Fantasy Castle Papercraft"
-description: "Make a lowpoly building papercraft from \"fantasy castle\" — free printable template with paper, tools, and folding tips."
+title: "Fantasy Castle Papercraft Template — Free Printable"
+description: "Free printable lowpoly building papercraft template. Download, cut, fold, and assemble at home with step-by-step folding tips and tool recommendations."
 emoji: "🏰"
 style: "lowpoly"
 order: 99

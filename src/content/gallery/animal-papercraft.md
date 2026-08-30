@@ -1,6 +1,6 @@
 ---
-title: "Animal Papercraft"
-description: "Make an lowpoly animal papercraft from \"Eustace Bagge from Courage the Cowardly Dog\" — free printable template with paper, tools, and folding tips."
+title: "Animal Papercraft Template — Free Printable"
+description: "Free printable lowpoly animal papercraft template. Download, cut, fold, and assemble at home with step-by-step folding tips and tool recommendations."
 emoji: "🐶"
 style: "lowpoly"
 updated: "2026-08-30"

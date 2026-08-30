@@ -1,6 +1,6 @@
 ---
-title: "Vehicle Papercraft"
-description: "Make a fantasy vehicle papercraft from \"Foldable GTA V Bravado Buffalo papercraft car\" — free printable template with paper, tools, and folding tips."
+title: "Vehicle Papercraft Template — Free Printable"
+description: "Free printable fantasy vehicle papercraft template. Download, cut, fold, and assemble at home with step-by-step folding tips and tool recommendations."
 emoji: "🚗"
 style: "fantasy"
 order: 99

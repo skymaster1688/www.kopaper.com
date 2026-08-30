@@ -1,6 +1,6 @@
 ---
-title: "Papercraft Papercraft"
-description: "Make a cute papercraft papercraft from \"Quiero El Modelo De La Rueda De La Fortuna\" — free printable template with paper, tools, and folding tips."
+title: "Papercraft Template — Free Printable"
+description: "Free printable cute papercraft template. Download, cut, fold, and assemble at home with step-by-step folding tips and tool recommendations."
 emoji: "🎨"
 style: "cute"
 order: 99
@@ -9,7 +9,7 @@ noindex: true
 updated: "2026-08-27"
 ---
 
-This cute papercraft papercraft is based on the idea "Quiero El Modelo De La Rueda De La Fortuna", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.
+This cute papercraft is based on the idea "Quiero El Modelo De La Rueda De La Fortuna", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.
 
 The cute style leans into soft, rounded shapes and friendly proportions, so the finished piece reads as charming and approachable rather than realistic.
 

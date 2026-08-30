@@ -1,6 +1,6 @@
 ---
-title: "Statue Of Liberty Papercraft"
-description: "Make a pixel building papercraft from \"Statue of liberty\" — free printable template with paper, tools, and folding tips."
+title: "Statue Of Liberty Papercraft Template — Free Printable"
+description: "Free printable pixel building papercraft template. Download, cut, fold, and assemble at home with step-by-step folding tips and tool recommendations."
 emoji: "🎨"
 style: "pixel"
 order: 99
