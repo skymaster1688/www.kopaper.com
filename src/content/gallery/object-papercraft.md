@@ -3,7 +3,7 @@ title: "Object Papercraft"
 description: "Make an lowpoly object papercraft from \"Create a functional printable paper template for a collapsible kinetic twisted cube\", with step-by-step folding tips...."
 emoji: "🎨"
 style: "lowpoly"
-updated: "2026-08-29"
+updated: "2026-08-30"
 order: 99
 draft: false
 ---
@@ -28,3 +28,7 @@ Difficulty: Easy — expect around 15–30 minutes from start to finish. Made so
 ![AI-generated cute papercraft of Create a functional printable paper template for a collapsible kinetic twisted cube.](/images/gallery/object-papercraft-mtemk3b9mvc1.svg)
 
 *AI-generated cute papercraft of Create a functional printable paper template for a collapsible kinetic twisted cube.*
+
+![AI-generated lowpoly papercraft of , very easy beginner papercraft, simple geometric shapes, few pieces, large glue tabs, printable A4 template, clear cut lines and fold lines.”.](/images/gallery/object-papercraft-mtf6bveurlt9.jpg)
+
+*AI-generated lowpoly papercraft of , very easy beginner papercraft, simple geometric shapes, few pieces, large glue tabs, printable A4 template, clear cut lines and fold lines.”.*

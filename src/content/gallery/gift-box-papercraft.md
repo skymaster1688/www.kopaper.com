@@ -5,7 +5,7 @@ emoji: "🎁"
 style: "pixel"
 order: 99
 draft: false
-updated: "2026-08-27"
+updated: "2026-08-30"
 ---
 
 This pixel object papercraft is based on the idea "Gift Box", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.
@@ -23,3 +23,8 @@ Difficulty: Easy. Plan for about 15–30 minutes from first cut to finished mode
 ![AI-generated pixel papercraft of Gift Box.](/images/gallery/gift-box-papercraft-mt5tc9rqeiaq.jpg)
 
 *AI-generated pixel papercraft of Gift Box.*
+
+
+![AI-generated cute papercraft of gift box.](/images/gallery/gift-box-papercraft-mtf6buq3l62c.jpg)
+
+*AI-generated cute papercraft of gift box.*
