@@ -106,38 +106,41 @@ const faqSchema = {
       <div class="right">
         <div class="hero-fox" aria-hidden="true">
           <svg viewBox="0 0 460 420" preserveAspectRatio="xMidYMid meet" fill="none">
-            <!-- faint blueprint grid -->
-            <g style="stroke: var(--text)" stroke-width="0.5" opacity="0.06">
-              <line x1="0" y1="90"  x2="460" y2="90"/><line x1="0" y1="170" x2="460" y2="170"/>
-              <line x1="0" y1="250" x2="460" y2="250"/><line x1="0" y1="330" x2="460" y2="330"/>
-              <line x1="80"  y1="0" x2="80"  y2="420"/><line x1="200" y1="0" x2="200" y2="420"/>
-              <line x1="320" y1="0" x2="320" y2="420"/><line x1="420" y1="0" x2="420" y2="420"/>
-            </g>
-            <!-- fox line-art (papercraft blueprint) -->
-            <g style="stroke: var(--text)" stroke-width="1.4" opacity="0.38" stroke-linejoin="round" fill="none">
-              <!-- tail -->
-              <polygon points="30,320 55,180 150,250 120,380"/>
-              <line x1="58" y1="248" x2="128" y2="372" stroke-dasharray="6 5"/>
-              <!-- body -->
-              <polygon points="150,250 310,235 330,400 150,400"/>
-              <!-- hind + front legs -->
-              <polygon points="150,400 150,322 182,322 182,400"/>
-              <polygon points="288,400 288,322 320,322 320,400"/>
-              <!-- head -->
-              <polygon points="310,235 350,110 415,150 400,260 330,265"/>
-              <!-- ears -->
-              <polygon points="350,110 330,30 378,100"/>
-              <polygon points="415,150 438,55 452,150"/>
-              <!-- face crease -->
-              <line x1="352" y1="112" x2="398" y2="262" stroke-dasharray="6 5"/>
-              <!-- eye -->
-              <circle cx="372" cy="186" r="7"/>
-            </g>
-            <!-- warm focus: ear interiors + nose -->
-            <g style="stroke: var(--warm)" stroke-width="1.6" stroke-linejoin="round" fill="none">
-              <polygon points="350,110 338,56 370,102"/>
-              <polygon points="415,150 433,76 449,148"/>
-              <polygon points="388,248 408,248 398,266"/>
+            <defs>
+              <radialGradient id="heroGlow" cx="50%" cy="45%" r="55%">
+                <stop offset="0%" stop-color="#F5A623" stop-opacity="0.12"/>
+                <stop offset="100%" stop-color="#F5A623" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="foxOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#F5A623"/>
+                <stop offset="100%" stop-color="#E8740C"/>
+              </linearGradient>
+              <linearGradient id="foxCream" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#FFF5E6"/>
+                <stop offset="100%" stop-color="#FFE8CC"/>
+              </linearGradient>
+            </defs>
+            <circle cx="230" cy="200" r="180" fill="url(#heroGlow)"/>
+            <polygon points="40,340 70,190 160,260 130,395" fill="url(#foxOrange)" opacity="0.92"/>
+            <polygon points="70,190 100,230 130,395 160,260" fill="url(#foxCream)" opacity="0.7"/>
+            <polygon points="155,255 320,240 340,400 155,400" fill="url(#foxOrange)"/>
+            <polygon points="155,320 340,310 340,400 155,400" fill="url(#foxCream)" opacity="0.5"/>
+            <polygon points="160,400 160,325 192,325 192,400" fill="#D9650A"/>
+            <polygon points="295,400 295,325 327,325 327,400" fill="#D9650A"/>
+            <polygon points="315,235 355,115 420,155 405,265 335,270" fill="url(#foxOrange)"/>
+            <polygon points="355,115 335,35 383,105" fill="#E8740C"/>
+            <polygon points="420,155 443,60 457,155" fill="#E8740C"/>
+            <polygon points="355,115 343,62 375,107" fill="url(#foxCream)"/>
+            <polygon points="420,155 438,65 450,152" fill="url(#foxCream)"/>
+            <polygon points="355,180 400,170 410,250 360,255" fill="url(#foxCream)"/>
+            <circle cx="375" cy="190" r="6" fill="#2A1A0A"/>
+            <circle cx="400" cy="188" r="6" fill="#2A1A0A"/>
+            <circle cx="377" cy="188" r="2" fill="#fff" opacity="0.6"/>
+            <circle cx="402" cy="186" r="2" fill="#fff" opacity="0.6"/>
+            <polygon points="388,248 408,248 398,266" fill="#2A1A0A"/>
+            <g stroke="#fff" stroke-width="0.8" opacity="0.15">
+              <line x1="155" y1="255" x2="340" y2="240"/>
+              <line x1="315" y1="235" x2="405" y2="265"/>
             </g>
           </svg>
         </div>
@@ -168,29 +171,26 @@ const faqSchema = {
       </div>
       <div class="gen-grid">
         <aside class="gen-visual" aria-label="A papercraft-style fox design">
-          <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Origami paper fox">
-            <!-- warm accents: ear inner + snout -->
-            <g style="stroke: var(--warm)" stroke-width="1.8" stroke-linejoin="round" fill="none">
-              <polygon points="120,140 95,60 175,135"/>
-              <polygon points="200,286 186,262 214,262"/>
-            </g>
-            <!-- main outline (solid) -->
-            <g style="stroke: var(--text)" stroke-width="1.8" stroke-linejoin="round" fill="#fff">
-              <polygon points="120,140 95,60 175,135"/>
-              <polygon points="280,140 305,60 225,135"/>
-              <polygon points="120,140 280,140 200,300"/>
-            </g>
-            <!-- fold creases (dashed) -->
-            <g style="stroke: var(--text)" stroke-width="1" stroke-dasharray="6 5" opacity="0.5">
-              <line x1="200" y1="140" x2="200" y2="300"/>
-              <line x1="175" y1="135" x2="200" y2="205"/>
-              <line x1="225" y1="135" x2="200" y2="205"/>
-              <line x1="120" y1="140" x2="200" y2="205"/>
-              <line x1="280" y1="140" x2="200" y2="205"/>
-            </g>
-            <!-- eyes (solid) -->
-            <polygon points="158,198 182,208 160,214" style="fill: var(--text)" stroke="none"/>
-            <polygon points="242,198 218,208 240,214" style="fill: var(--text)" stroke="none"/>
+          <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Papercraft fox design">
+            <defs>
+              <linearGradient id="genFoxOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#F5A623"/><stop offset="100%" stop-color="#E8740C"/>
+              </linearGradient>
+              <linearGradient id="genFoxCream" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#FFF5E6"/><stop offset="100%" stop-color="#FFE8CC"/>
+              </linearGradient>
+            </defs>
+            <polygon points="120,140 95,55 178,135" fill="#E8740C"/>
+            <polygon points="280,140 305,55 222,135" fill="#E8740C"/>
+            <polygon points="120,140 280,140 200,310" fill="url(#genFoxOrange)"/>
+            <polygon points="145,175 255,175 200,290" fill="url(#genFoxCream)"/>
+            <circle cx="165" cy="195" r="7" fill="#2A1A0A"/>
+            <circle cx="235" cy="195" r="7" fill="#2A1A0A"/>
+            <circle cx="167" cy="193" r="2.5" fill="#fff" opacity="0.6"/>
+            <circle cx="237" cy="193" r="2.5" fill="#fff" opacity="0.6"/>
+            <polygon points="190,240 210,240 200,258" fill="#2A1A0A"/>
+            <path d="M200 258 Q195 268 188 265" stroke="#2A1A0A" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M200 258 Q205 268 212 265" stroke="#2A1A0A" stroke-width="2" fill="none" stroke-linecap="round"/>
           </svg>
         </aside>
         <div class="gen-copy">
