@@ -50,7 +50,7 @@ const STYLES = [
       <div class="result-grid" id="resultGrid">
         <div class="result-card" data-i="0">
           <div class="thumb"></div>
-          <div class="meta"><span class="title">Your design</span><span class="actions"><button class="mini" data-dl="0">SVG</button><button class="mini" data-print="0">Print</button></span></div>
+          <div class="meta"><span class="title">Your design</span></div>
           <p class="design-note">AI-generated papercraft design for inspiration and creative exploration.</p>
         </div>
       </div>
@@ -392,8 +392,6 @@ const STYLES = [
   });
   promptEl.addEventListener('input', updatePreview);
   promptEl.addEventListener('keydown', (e) => { if (e.key === 'Enter') generate(); });
-  $('resultGrid').querySelectorAll('[data-dl]').forEach(b => b.addEventListener('click', () => downloadAsset(parseInt(b.dataset.dl, 10))));
-  $('resultGrid').querySelectorAll('[data-print]').forEach(b => b.addEventListener('click', () => window.print()));
   const upload = $('upload');
   if (upload) upload.addEventListener('change', () => { alert('Image to papercraft is planned. For now, describe your idea in the text box and generate.'); upload.value = ''; });
 
