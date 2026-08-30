@@ -23,6 +23,16 @@ export async function getStaticPaths() {
 const { template, heroImage } = Astro.props;
 const { Content } = await template.render();
 
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: Astro.site.href },
+    { '@type': 'ListItem', position: 2, name: 'Templates', item: new URL('/templates/', Astro.site).href },
+    { '@type': 'ListItem', position: 3, name: template.data.title },
+  ],
+};
+
 const allTemplates = await getCollection('tutorials', ({ data }) => !data.draft && data.kind === 'papercraft');
 const related = allTemplates
   .filter(t => t.slug !== template.slug)
@@ -194,4 +204,5 @@ const templateSchema = {
       printBtn.addEventListener('click', () => window.print());
     }
   </script>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 </BaseLayout>

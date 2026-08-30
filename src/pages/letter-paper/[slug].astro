@@ -12,6 +12,29 @@ export async function getStaticPaths() {
 
 const { paper } = Astro.props;
 const { Content } = await paper.render();
+
+const articleSchema: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: paper.data.title,
+  description: paper.data.description,
+  mainEntityOfPage: new URL(Astro.url.pathname, Astro.site).href,
+  author: { '@type': 'Organization', name: 'koPaper', url: Astro.site.href },
+  publisher: { '@type': 'Organization', name: 'koPaper', url: Astro.site.href },
+};
+if (paper.data.updated) {
+  articleSchema.datePublished = paper.data.updated;
+  articleSchema.dateModified = paper.data.updated;
+}
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: Astro.site.href },
+    { '@type': 'ListItem', position: 2, name: 'Letter Paper', item: new URL('/letter-paper/', Astro.site).href },
+    { '@type': 'ListItem', position: 3, name: paper.data.title },
+  ],
+};
 ---
 
 <BaseLayout
@@ -44,4 +67,7 @@ const { Content } = await paper.render();
       <Content />
     </div>
   </article>
+
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 </BaseLayout>
