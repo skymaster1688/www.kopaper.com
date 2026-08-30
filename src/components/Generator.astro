@@ -41,7 +41,7 @@ const STYLES = [
     </div>
     <div class="gen-actions">
       <button class="btn btn-ghost" id="surprise" type="button">Surprise me</button>
-      <button class="btn btn-primary btn-large" id="generateBtn" type="button">Generate</button>
+      <button class="btn btn-primary btn-large" id="generateBtn" type="button">Generate Design</button>
     </div>
   </aside>
 
@@ -51,6 +51,7 @@ const STYLES = [
         <div class="result-card" data-i="0">
           <div class="thumb"></div>
           <div class="meta"><span class="title">Your design</span><span class="actions"><button class="mini" data-dl="0">SVG</button><button class="mini" data-print="0">Print</button></span></div>
+          <p class="design-note">AI-generated papercraft design for inspiration and creative exploration.</p>
         </div>
       </div>
     </div>
@@ -79,6 +80,7 @@ const STYLES = [
   .gen-loading p { font-size: 1.08rem; letter-spacing: .02em; }
   .gen-loading .spinner { width: 36px; height: 36px; border: 3px solid var(--border); border-top-color: var(--warm); border-radius: 50%; animation: kp-spin 0.9s linear infinite; }
   @keyframes kp-spin { to { transform: rotate(360deg); } }
+  .design-note { margin: 8px 0 0; font-size: .75rem; color: var(--text-muted); text-align: center; font-style: italic; }
 </style>
 
 <script define:vars={{ defaultStyle, defaultPrompt }}>
@@ -235,7 +237,7 @@ const STYLES = [
 
   function setLoading(on) {
     const btn = $('generateBtn');
-    if (btn) { btn.disabled = on; btn.textContent = on ? 'Generating…' : 'Generate'; }
+    if (btn) { btn.disabled = on; btn.textContent = on ? 'Generating…' : 'Generate Design'; }
     const grid = $('resultGrid');
     if (grid) grid.classList.toggle('loading', on);
     const loading = $('genLoading');
