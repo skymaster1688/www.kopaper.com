@@ -14,7 +14,7 @@ The pixel style renders the subject as a blocky, retro grid — 8-bit art with c
 
 Use this character design as a concept art reference, a cosplay inspiration, or a starting point for an original character.
 
-How to use this design: Save the image for your personal reference, use it as inspiration for a hand-drawn or painted artwork, or describe the same idea to the AI generator in a different style to explore alternative visual directions. The design is a creative concept, not a printable template.
+How to use this design: Save the image for your personal reference, use it as inspiration for a hand-drawn or painted artwork, or describe the same idea to the AI generator in a different style to explore alternative visual directions..
 
 Creative tip: Turn this character design into a full concept — generate different poses, expressions, and outfits to build a complete character sheet.
 

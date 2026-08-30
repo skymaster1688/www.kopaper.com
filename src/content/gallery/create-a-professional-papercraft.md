@@ -8,7 +8,7 @@ draft: false
 updated: "2026-08-28"
 ---
 
-This fantasy character papercraft design is based on the idea "Create a PROFESSIONAL", generated with koPaper's AI papercraft design studio. It's a papercraft-style artwork created for inspiration, creative exploration, and visual reference — not a printable template or assembly guide.
+This fantasy character papercraft design is based on the idea "Create a PROFESSIONAL", generated with koPaper's AI papercraft design studio. It's a papercraft-style artwork created for inspiration, creative exploration, and visual reference.
 
 The fantasy style pushes dramatic detail: scales, wings, glow, and atmosphere, so the design feels like a creature pulled from a storybook.
 

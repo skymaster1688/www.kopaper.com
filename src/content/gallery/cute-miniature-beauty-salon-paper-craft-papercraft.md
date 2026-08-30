@@ -14,7 +14,7 @@ The cute style leans into soft, rounded shapes and friendly proportions, so the 
 
 This building design is perfect for architecture inspiration, a fantasy map landmark, or a model-building reference.
 
-How to use this design: Save the image for your personal reference, use it as inspiration for a hand-drawn or painted artwork, or describe the same idea to the AI generator in a different style to explore alternative visual directions. The design is a creative concept, not a printable template.
+How to use this design: Save the image for your personal reference, use it as inspiration for a hand-drawn or painted artwork, or describe the same idea to the AI generator in a different style to explore alternative visual directions..
 
 Creative tip: Use this building design as architectural inspiration — try sketching it from different angles or adding your own structural details.
 

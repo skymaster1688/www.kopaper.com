@@ -267,7 +267,7 @@ function buildIntro(prompt: string, subject: Subject, style: string, styleWord: 
   const styleLabel = styleWord ? styleWord + ' ' : '';
   const h = strHash(prompt);
   const openers = [
-    `This ${styleLabel}${subject.label} papercraft design is based on the idea "${prompt}", generated with koPaper's AI papercraft design studio. It's a papercraft-style artwork created for inspiration, creative exploration, and visual reference — not a printable template or assembly guide.`,
+    `This ${styleLabel}${subject.label} papercraft design is based on the idea "${prompt}", generated with koPaper's AI papercraft design studio. It's a papercraft-style artwork created for inspiration, creative exploration, and visual reference.`,
     `${capitalizeWords(subject.label)} in papercraft style? That's exactly what this ${styleLabel}${subject.label} design is — the idea "${prompt}" turned into a beautiful papercraft-style artwork by koPaper's AI generator. Use it as inspiration, a design reference, or a starting point for your own creative project.`,
     `Turn the idea "${prompt}" into a visual concept with this ${styleLabel}${subject.label} papercraft design from koPaper's AI generator. The artwork captures the papercraft aesthetic — geometric facets, paper textures, and handcrafted visual style — perfect for creative exploration.`,
     `Looking for ${styleLabel}${subject.label} papercraft inspiration? This design, based on the idea "${prompt}", was generated with koPaper's AI papercraft design studio. Use it as a visual reference, a creative starting point, or inspiration for your next art or craft project.`,
@@ -277,7 +277,7 @@ function buildIntro(prompt: string, subject: Subject, style: string, styleWord: 
   const para2 = styleNote(style);
   const para3 = designUses(subject);
   const howToUse = [
-    `How to use this design: Save the image for your personal reference, use it as inspiration for a hand-drawn or painted artwork, or describe the same idea to the AI generator in a different style to explore alternative visual directions. The design is a creative concept, not a printable template.`,
+    `How to use this design: Save the image for your personal reference, use it as inspiration for a hand-drawn or painted artwork, or describe the same idea to the AI generator in a different style to explore alternative visual directions.`,
     `How to use this design: Use it as a visual reference for your own creative projects, try recreating it in your preferred medium, or generate variations by changing the style or adding details in the AI generator. Each design is a unique creative concept worth exploring.`,
     `How to use this design: Save it to your inspiration collection, use it as a reference for proportions and styling, or use the AI generator to create a whole series based on the same idea in different styles. The papercraft aesthetic is versatile and works across many creative contexts.`,
     `How to use this design: Treat it as a starting point for creative exploration — sketch your own version, use it as color palette inspiration, or generate related designs by describing variations to the AI generator. Every design is a unique creative concept.`,

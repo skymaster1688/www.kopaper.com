@@ -8,7 +8,7 @@ draft: false
 updated: "2026-08-27"
 ---
 
-This pixel vehicle papercraft design is based on the idea "Make a basketball with the brand wilson one it", generated with koPaper's AI papercraft design studio. It's a papercraft-style artwork created for inspiration, creative exploration, and visual reference — not a printable template or assembly guide.
+This pixel vehicle papercraft design is based on the idea "Make a basketball with the brand wilson one it", generated with koPaper's AI papercraft design studio. It's a papercraft-style artwork created for inspiration, creative exploration, and visual reference.
 
 The pixel style renders the subject as a blocky, retro grid — 8-bit art with clean edges and a nostalgic, game-inspired aesthetic.
 

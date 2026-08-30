@@ -8,7 +8,7 @@ draft: false
 updated: "2026-08-28"
 ---
 
-This cute vehicle papercraft design is based on the idea "freestanding children's carnival entrance", generated with koPaper's AI papercraft design studio. It's a papercraft-style artwork created for inspiration, creative exploration, and visual reference — not a printable template or assembly guide.
+This cute vehicle papercraft design is based on the idea "freestanding children's carnival entrance", generated with koPaper's AI papercraft design studio. It's a papercraft-style artwork created for inspiration, creative exploration, and visual reference.
 
 The cute style leans into soft, rounded shapes and friendly proportions, so the design reads as charming and approachable rather than realistic.
 

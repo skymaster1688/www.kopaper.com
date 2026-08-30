@@ -14,7 +14,7 @@ The low-poly style breaks the form into flat geometric facets, giving the design
 
 This geometric object design is great for abstract art inspiration, a minimalist decoration concept, or a design reference.
 
-How to use this design: Save the image for your personal reference, use it as inspiration for a hand-drawn or painted artwork, or describe the same idea to the AI generator in a different style to explore alternative visual directions. The design is a creative concept, not a printable template.
+How to use this design: Save the image for your personal reference, use it as inspiration for a hand-drawn or painted artwork, or describe the same idea to the AI generator in a different style to explore alternative visual directions..
 
 Creative tip: Experiment with the same geometric object in different color palettes and styles to create a cohesive art series.
 

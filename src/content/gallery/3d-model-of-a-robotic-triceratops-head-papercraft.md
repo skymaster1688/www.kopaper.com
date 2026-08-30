@@ -14,7 +14,7 @@ The low-poly style breaks the form into flat geometric facets, giving the design
 
 Use this dragon design as inspiration for a fantasy craft project, a D&D mini concept, or a dragon-themed party decoration.
 
-How to use this design: Save the image for your personal reference, use it as inspiration for a hand-drawn or painted artwork, or describe the same idea to the AI generator in a different style to explore alternative visual directions. The design is a creative concept, not a printable template.
+How to use this design: Save the image for your personal reference, use it as inspiration for a hand-drawn or painted artwork, or describe the same idea to the AI generator in a different style to explore alternative visual directions..
 
 Creative tip: Try generating the same dragon in different styles — a cute dragon for kids, a low-poly dragon for modern decor, a fantasy dragon for epic art.
 

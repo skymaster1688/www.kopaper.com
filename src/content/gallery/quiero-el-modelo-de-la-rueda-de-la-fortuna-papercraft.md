@@ -14,7 +14,7 @@ The cute style leans into soft, rounded shapes and friendly proportions, so the 
 
 Use this design as inspiration for your next paper craft, art project, or creative exploration.
 
-How to use this design: Save the image for your personal reference, use it as inspiration for a hand-drawn or painted artwork, or describe the same idea to the AI generator in a different style to explore alternative visual directions. The design is a creative concept, not a printable template.
+How to use this design: Save the image for your personal reference, use it as inspiration for a hand-drawn or painted artwork, or describe the same idea to the AI generator in a different style to explore alternative visual directions..
 
 Creative tip: Try generating the same idea in different styles to explore multiple visual directions.
 

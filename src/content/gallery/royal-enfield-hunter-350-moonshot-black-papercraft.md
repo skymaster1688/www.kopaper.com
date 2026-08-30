@@ -14,7 +14,7 @@ The cute style leans into soft, rounded shapes and friendly proportions, so the 
 
 Use this vehicle design as a starting point for a toy prototype sketch, a transportation-themed art project, or a custom car concept.
 
-How to use this design: Save the image for your personal reference, use it as inspiration for a hand-drawn or painted artwork, or describe the same idea to the AI generator in a different style to explore alternative visual directions. The design is a creative concept, not a printable template.
+How to use this design: Save the image for your personal reference, use it as inspiration for a hand-drawn or painted artwork, or describe the same idea to the AI generator in a different style to explore alternative visual directions..
 
 Creative tip: Generate the same vehicle in multiple styles to compare aesthetics — pixel art for retro, low poly for modern, cute for playful.
 

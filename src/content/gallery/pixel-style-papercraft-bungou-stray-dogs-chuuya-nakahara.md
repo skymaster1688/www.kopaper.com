@@ -14,7 +14,7 @@ The pixel style renders the subject as a blocky, retro grid — 8-bit art with c
 
 This animal design works great as a reference for a kids craft project, a nursery illustration, or a cute character concept.
 
-How to use this design: Save the image for your personal reference, use it as inspiration for a hand-drawn or painted artwork, or describe the same idea to the AI generator in a different style to explore alternative visual directions. The design is a creative concept, not a printable template.
+How to use this design: Save the image for your personal reference, use it as inspiration for a hand-drawn or painted artwork, or describe the same idea to the AI generator in a different style to explore alternative visual directions..
 
 Creative tip: Use this animal design as a starting point and add your own details — different colors, accessories, or a custom background scene.
 
