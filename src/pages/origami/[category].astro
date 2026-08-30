@@ -20,7 +20,7 @@ export async function getStaticPaths() {
 
 const { cat } = Astro.props;
 
-const items = (await getCollection('tutorials', ({ data }) => !data.draft && data.category === cat.key))
+const items = (await getCollection('tutorials', ({ data }) => !data.draft && data.kind !== 'papercraft' && data.category === cat.key))
   .sort((a, b) => a.data.order - b.data.order);
 ---
 

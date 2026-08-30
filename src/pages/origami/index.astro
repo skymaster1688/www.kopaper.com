@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CraftCard from '../../components/CraftCard.astro';
 
-const tutorials = (await getCollection('tutorials', ({ data }) => !data.draft))
+const tutorials = (await getCollection('tutorials', ({ data }) => !data.draft && data.kind !== 'papercraft'))
   .sort((a, b) => a.data.order - b.data.order);
 
 const categories = [

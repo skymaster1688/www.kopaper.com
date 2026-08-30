@@ -45,7 +45,7 @@ Swap the stack every few weeks so a tired sheet does not get colored again out o
 
 Coloring and folding pair well because they use the same paper but opposite hands. A child colors a sheet, then folds it into something to keep. A few easy options from our tutorials:
 
-- Color first, then fold along the [origami cat](/origami/cat/) creases to make a patterned pet.
+- Color first, then fold along the [origami cat](/templates/cat/) creases to make a patterned pet.
 - Color a sheet of squares and fold a [paper boat](/origami/boat/) from it for bath-time.
 
 The shift from two-dimensional coloring to three-dimensional folding is a small but satisfying step for a young maker.

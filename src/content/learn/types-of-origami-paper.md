@@ -28,7 +28,7 @@ Tant is slightly heavier than kami, around 80–90 gsm, and is dyed the same col
 - **Folds:** holds a sharper, longer-lasting crease than kami; resists springing open on complex steps.
 - **Best for:** animals, display pieces, and models where a white back would look unfinished.
 
-Tant is the natural next step once kami feels too light. It is the paper we recommend for a [folded dragon](/origami/dragon/) you plan to keep on a shelf, because the heavier sheet keeps the sculpted shape.
+Tant is the natural next step once kami feels too light. It is the paper we recommend for a [folded dragon](/templates/dragon/) you plan to keep on a shelf, because the heavier sheet keeps the sculpted shape.
 
 ## Washi — the traditional fiber paper
 
@@ -72,4 +72,4 @@ The pattern is simple: lighter papers teach you the basics, heavier and specialt
 
 ## Keep exploring
 
-Now that you can tell the main **types of origami paper** apart, pair this glossary with our [best origami paper for beginners](/learn/best-origami-paper/) pick and the [what paper to use for origami](/learn/what-paper-for-origami/) project matcher. Then put the knowledge to work on a [dragon](/origami/dragon/) or a [flower](/origami/flower/), or browse [printable paper craft templates](/templates/) for 3D builds that use a sturdier sheet.
+Now that you can tell the main **types of origami paper** apart, pair this glossary with our [best origami paper for beginners](/learn/best-origami-paper/) pick and the [what paper to use for origami](/learn/what-paper-for-origami/) project matcher. Then put the knowledge to work on a [dragon](/templates/dragon/) or a [flower](/origami/flower/), or browse [printable paper craft templates](/templates/) for 3D builds that use a sturdier sheet.

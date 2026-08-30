@@ -57,7 +57,7 @@ const breadcrumbSchema = {
   ],
 };
 
-const allTutorials = await getCollection('tutorials', ({ data }) => !data.draft);
+const allTutorials = await getCollection('tutorials', ({ data }) => !data.draft && data.kind !== 'papercraft');
 const related = allTutorials
   .filter(t => t.slug !== tutorial.slug && t.data.category === tutorial.data.category)
   .slice(0, 3);
