@@ -61,6 +61,15 @@ const templateSchema = {
 
     <h1 style="margin-bottom:12px">{template.data.title}</h1>
     <p style="font-size:1.15rem; color:var(--text-muted); margin-bottom:20px">{template.data.description}</p>
+    <div style="display:flex; align-items:center; gap:12px; font-size:0.88rem; color:var(--text-muted); margin-bottom:28px; flex-wrap:wrap">
+      <span style="display:flex; align-items:center; gap:7px">
+        <span style="width:26px; height:26px; border-radius:50%; background:var(--warm); color:#fff; display:inline-flex; align-items:center; justify-content:center; font-size:0.68rem; font-weight:700">kP</span>
+        <a href="/about/" style="color:var(--text); font-weight:600; text-decoration:none">koPaper Team</a>
+      </span>
+      {template.data.updated && <><span style="color:var(--border)">•</span><span>Published ${template.data.updated}</span></>}
+      <span style="color:var(--border)">•</span>
+      <span>3 min read</span>
+    </div>
 
     <div class="tutorial-meta">
       <span><span class={`badge ${badgeClass}`}>{template.data.difficulty}</span></span>

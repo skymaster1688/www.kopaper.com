@@ -178,8 +178,8 @@ export interface Generated {
 }
 
 // ---- rich gallery article generation (replaces boilerplate) ----
-type Subject = { category: string; label: string; article: string };
-function detectSubject(prompt: string): Subject {
+export type Subject = { category: string; label: string; article: string };
+export function detectSubject(prompt: string): Subject {
   const p = prompt.toLowerCase();
   const has = (...k: string[]) => k.some(x => p.includes(x));
   if (has('dragon')) return { category: 'dragon', label: 'dragon', article: 'a' };

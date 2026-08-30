@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GalleryCard from '../../components/GalleryCard.astro';
+import { detectSubject } from '../../lib/gallery';
 
 export async function getStaticPaths() {
   const items = await getCollection('gallery', ({ data }) => !data.draft && !data.noindex);
@@ -15,10 +16,16 @@ const { item } = Astro.props;
 const { Content } = await item.render();
 
 const all = await getCollection('gallery', ({ data }) => !data.draft && !data.noindex);
-const related = all
-  .filter(g => g.slug !== item.slug)
-  .sort((a, b) => (b.data.updated || `0-${b.slug}`).localeCompare(a.data.updated || `0-${a.slug}`))
-  .slice(0, 3);
+// Extract prompt from description (quoted string) or fall back to title
+function promptOf(d: any): string {
+  const m = (d.description || '').match(/"([^"]+)"/);
+  return m ? m[1] : (d.title || '');
+}
+const currentCat = detectSubject(promptOf(item.data)).category;
+const byDate = (a: any, b: any) => (b.data.updated || `0-${b.slug}`).localeCompare(a.data.updated || `0-${a.slug}`);
+const sameCat = all.filter(g => g.slug !== item.slug && detectSubject(promptOf(g.data)).category === currentCat).sort(byDate);
+const otherCat = all.filter(g => g.slug !== item.slug && detectSubject(promptOf(g.data)).category !== currentCat).sort(byDate);
+const related = [...sameCat, ...otherCat].slice(0, 3);
 
 const articleSchema: Record<string, unknown> = {
   '@context': 'https://schema.org',
