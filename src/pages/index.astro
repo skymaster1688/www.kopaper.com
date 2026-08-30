@@ -23,10 +23,10 @@ const galleryItems = (await getCollection('gallery', ({ data }) => !data.draft &
   .slice(0, 4);
 
 const faqs = [
-  { q: 'What is koPaper?', a: 'koPaper is an AI papercraft creator. Describe an idea and it generates papercraft designs you can print, cut, fold, and build at home.' },
-  { q: 'Do I need special paper?', a: 'No. Most designs work with standard A4 or Letter size printer paper. For sturdier 3D models, cardstock (160 to 220 gsm) gives the best result.' },
+  { q: 'What is koPaper?', a: 'koPaper is an AI papercraft design studio. Describe an idea and it generates beautiful papercraft-style designs for inspiration, creative exploration, and visual reference.' },
+  { q: 'Do I need special paper?', a: 'No special equipment needed. The AI generator creates papercraft-style designs you can view, save, and use as creative reference. For hands-on paper craft projects, browse our origami tutorials.' },
   { q: 'Are these suitable for kids?', a: 'Yes. Easy tutorials are perfect for ages 6 plus with minimal adult help, and the generator needs no design skills at all.' },
-  { q: 'Can I download printable templates?', a: 'Yes. Use the AI generator to create a papercraft template, then download the SVG or print it straight to PDF and assemble at home.' },
+  { q: 'Can I download printable templates?', a: 'Yes. Use the AI generator to create a custom papercraft design from any idea. Choose from four visual styles — Cute, Low Poly, Pixel, and Fantasy — and generate unique designs for inspiration and creative exploration.' },
   { q: 'How do I print the letter paper designs?', a: 'Open any letter paper design page, then use your browser print function (Ctrl+P or Cmd+P). Set margins to None and choose Letter or A4 for best results.' },
 ];
 
@@ -42,8 +42,8 @@ const faqSchema = {
 ---
 
 <BaseLayout
-  title="AI Papercraft Generator Create Custom Paper Crafts"
-  description="Use the AI Papercraft Generator to create custom paper crafts from your ideas. Generate paper toys, paper art and unique designs, then print and build."
+  title="AI Papercraft Design Studio — Create Papercraft Designs with AI"
+  description="koPaper is an AI papercraft design studio. Turn your ideas into beautiful papercraft-style designs — perfect for inspiration, creative exploration, and visual reference."
 >
   <!-- 1. Hero — full width, 3D wireframe bleeds edge to edge -->
   <section class="hero-line">
@@ -99,8 +99,8 @@ const faqSchema = {
       <div class="left">
         <p class="eyebrow"><span class="label">AI Papercraft Generator</span></p>
         <h1 class="display">Create Your Own <span class="mark">Papercraft</span> with AI</h1>
-        <p class="sub">Turn your ideas into unique paper craft designs.</p>
-        <p class="sub">Describe anything below &mdash; the generator runs right here on this page.</p>
+        <p class="sub">Turn your ideas into beautiful papercraft designs.</p>
+        <p class="sub">Describe anything below &mdash; the AI design generator runs right here on this page.</p>
       </div>
 
       <div class="right">
@@ -164,10 +164,10 @@ const faqSchema = {
       <div class="sec-head">
         <span class="label">The generator</span>
         <h2 class="display">Meet the AI Papercraft Generator</h2>
-        <p>The AI Papercraft Generator turns a short sentence into original papercraft designs you can print and build at home.</p>
+        <p>The AI Papercraft Generator turns a short sentence into original papercraft-style designs for inspiration and creative exploration.</p>
       </div>
       <div class="gen-grid">
-        <aside class="gen-visual" aria-label="A folded paper fox you can build from a net">
+        <aside class="gen-visual" aria-label="A papercraft-style fox design">
           <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Origami paper fox">
             <!-- warm accents: ear inner + snout -->
             <g style="stroke: var(--warm)" stroke-width="1.8" stroke-linejoin="round" fill="none">
@@ -194,10 +194,10 @@ const faqSchema = {
           </svg>
         </aside>
         <div class="gen-copy">
-          <p>Type an idea like <em>a cute dragon</em> or <em>a low poly castle</em>, and the AI Papercraft Generator returns a custom papercraft design in your chosen style. Each one is drawn as clean line art you can print, cut, fold, and glue into a real paper model. No templates to hunt and no folding diagrams to decode.</p>
-          <p>Want paper toys, paper art, or a one of a kind gift? The papercraft generator helps you create papercraft that matches your own idea instead of copying someone else's. Pick Cute, Low Poly, Pixel, or Fantasy, then generate, refine, and download your favorite as an SVG or PDF.</p>
+          <p>Type an idea like <em>a cute dragon</em> or <em>a low poly castle</em>, and the AI Papercraft Generator returns a custom papercraft design in your chosen style. Each one is rendered as a beautiful papercraft-style artwork — perfect for inspiration, reference, and creative exploration. No design skills needed.</p>
+          <p>Want paper art, character designs, or unique visual concepts? The papercraft generator helps you create designs that match your own idea instead of copying someone else's. Pick Cute, Low Poly, Pixel, or Fantasy, then generate, refine, and save your favorite designs.</p>
           <h3>Why use an AI papercraft generator?</h3>
-          <p>A papercraft generator is fastest when you already know what you want but cannot draw it. Describe the subject, set the style, and let the tool handle the artwork. You stay in control of the idea; the generator handles the rendering, so you can move from thought to paper in minutes.</p>
+          <p>A papercraft design generator is fastest when you already know what you want but cannot draw it. Describe the subject, set the style, and let the AI handle the artwork. You stay in control of the idea; the generator handles the rendering, so you can move from thought to visual in seconds.</p>
           <p class="gen-cta"><a class="btn btn-primary" href="/tools/">Browse style generators &rarr;</a></p>
         </div>
       </div>
@@ -209,13 +209,13 @@ const faqSchema = {
     <section class="sec">
       <div class="sec-head">
         <span class="label">How it works</span>
-        <h2 class="display">From idea to paper in three steps</h2>
-        <p>No templates to hunt, no folding diagrams to decode. Just describe and build.</p>
+        <h2 class="display">From idea to design in three steps</h2>
+        <p>No design skills needed, no software to install. Just describe and create.</p>
       </div>
       <div class="steps">
         <div class="step"><div class="idx">01 &mdash; INPUT</div><h3>Describe</h3><p>Type what you imagine &mdash; a fox, a castle, a gift box. Pick a style if you like.</p></div>
         <div class="step"><div class="idx">02 &mdash; RENDER</div><h3>Generate</h3><p>koPaper draws an original papercraft design you can preview instantly.</p></div>
-        <div class="step"><div class="idx">03 &mdash; BUILD</div><h3>Assemble</h3><p>Print, cut along the lines, fold, and glue. Your idea is now a real paper model.</p></div>
+        <div class="step"><div class="idx">03 &mdash; EXPLORE</div><h3>Get Inspired</h3><p>Save your favorite designs, use them as creative reference, or try new styles and ideas. Your imagination is the limit.</p></div>
       </div>
     </section>
 
@@ -225,7 +225,7 @@ const faqSchema = {
         <div class="sec-head">
           <span class="label">Gallery</span>
           <h2 class="display">Fresh from the generator</h2>
-          <p>Papercraft designs created with the AI generator, ready to print and build.</p>
+          <p>Papercraft designs created with the AI generator — explore, get inspired, and create your own.</p>
         </div>
         <div class="grid-4">
           {galleryItems.map(g => (

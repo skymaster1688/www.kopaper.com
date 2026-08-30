@@ -1,6 +1,6 @@
 ---
-title: "Create A PROFESSIONAL Papercraft Template — Free Printable"
-description: "Free printable fantasy papercraft template. Download, cut, fold, and assemble at home with step-by-step folding tips and tool recommendations."
+title: "Create A Professional Papercraft Design — AI Generated"
+description: "AI-generated fantasy character papercraft design. Papercraft-style artwork for inspiration, design reference, and creative exploration."
 emoji: "🎨"
 style: "fantasy"
 order: 99
@@ -8,17 +8,17 @@ draft: false
 updated: "2026-08-28"
 ---
 
-This fantasy papercraft is based on the idea "Create a PROFESSIONAL", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.
+This fantasy character papercraft design is based on the idea "Create a PROFESSIONAL", generated with koPaper's AI papercraft design studio. It's a papercraft-style artwork created for inspiration, creative exploration, and visual reference — not a printable template or assembly guide.
 
-The fantasy style pushes dramatic detail: scales, wings, glow, and atmosphere, so the model feels like a creature pulled from a storybook.
+The fantasy style pushes dramatic detail: scales, wings, glow, and atmosphere, so the design feels like a creature pulled from a storybook.
 
-What you'll need: 180–220 gsm cardstock, a pair of sharp scissors or a craft knife, a cutting mat, a ruler, a bone folder (or the back of a spoon), and a good PVA or glue stick. Print at 100% scale on a dry, flat sheet so the tabs line up.
+Use this character design as a concept art reference, a cosplay inspiration, or a starting point for an original character.
 
-Steps: (1) print the template; (2) cut along the solid outlines; (3) score every dashed fold line; (4) fold toward the printed side for clean edges; (5) apply glue to the tabs and assemble from the largest piece outward. Take your time on the folds — crisp creases are what make the model hold its shape.
+How to use this design: Save it to your inspiration collection, use it as a reference for proportions and styling, or use the AI generator to create a whole series based on the same idea in different styles. The papercraft aesthetic is versatile and works across many creative contexts.
 
-Start with the largest pieces to set the silhouette, then fill in the smaller details last.
+Creative tip: Turn this character design into a full concept — generate different poses, expressions, and outfits to build a complete character sheet.
 
-Difficulty: Easy. Plan for about 15–30 minutes from first cut to finished model. If you enjoy this one, browse the [origami tutorials](/origami/) for fold-along projects or the [free printable templates](/templates/) for more ready-to-build sheets. Want a different look? Run the same idea through the [AI papercraft generator](/) in another style.
+This design is one of many AI-generated papercraft concepts in the [gallery](/gallery/). Use the [AI papercraft generator](/) to create your own unique designs from any idea. For hands-on paper craft projects, browse the [origami tutorials](/origami/) and [printables](/printables/) collections.
 
 ![AI-generated fantasy papercraft of Create a PROFESSIONAL.](/images/gallery/create-a-professional-papercraft-mtcyvqu225j0.svg)
 

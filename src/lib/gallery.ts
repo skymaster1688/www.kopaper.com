@@ -198,7 +198,7 @@ function styleNote(style: string): string {
     case 'lowpoly': return 'The low-poly style breaks the form into flat geometric facets, giving the model a modern, angular look that catches light from different angles.';
     case 'pixel': return 'The pixel style renders the subject as a blocky, retro grid — 8-bit art you can hold, with clean edges that are satisfying to cut.';
     case 'fantasy': return 'The fantasy style pushes dramatic detail: scales, wings, glow, and atmosphere, so the model feels like a creature pulled from a storybook.';
-    default: return 'The design keeps a clean, printable look that works well as a cut-and-fold papercraft.';
+    default: return 'The design keeps a clean, geometric look that reads clearly as a papercraft-style artwork.'
   }
 }
 function paperWeight(subject: Subject, style: string): string {
@@ -235,66 +235,59 @@ function strHash(s: string): number {
   for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
   return h;
 }
-function toolList(subject: Subject, style: string): string {
-  const weight = paperWeight(subject, style);
-  const base = `${weight}, sharp scissors or a craft knife, a cutting mat, a ruler, and a bone folder (or the back of a spoon)`;
-  const glue = subject.category === 'building' || subject.category === 'vehicle'
-    ? 'PVA glue for strong structural bonds'
-    : 'a glue stick or PVA glue';
-  const extras: Record<string, string> = {
-    dragon: 'tweezers for small wing and tail details',
-    animal: 'tweezers for small leg and ear parts',
-    vehicle: 'a steel ruler for straight body-panel cuts',
-    building: 'a bone folder for sharp architectural creases',
-    character: 'tweezers for small facial and limb details',
-    plant: 'a pencil for curling petals and leaves',
-    food: 'a small brush for even glue on tiers',
-    object: 'a clean, flat workspace for precise assembly',
+function designUses(subject: Subject): string {
+  const uses: Record<string, string> = {
+    dragon: 'Use this dragon design as inspiration for a fantasy craft project, a D&D mini concept, or a dragon-themed party decoration.',
+    animal: 'This animal design works great as a reference for a kids craft project, a nursery illustration, or a cute character concept.',
+    vehicle: 'Use this vehicle design as a starting point for a toy prototype sketch, a transportation-themed art project, or a custom car concept.',
+    building: 'This building design is perfect for architecture inspiration, a fantasy map landmark, or a model-building reference.',
+    character: 'Use this character design as a concept art reference, a cosplay inspiration, or a starting point for an original character.',
+    plant: 'This plant design works well as a botanical illustration reference, a garden art project, or a nature-themed decoration idea.',
+    food: 'Use this food design as inspiration for a food-themed art project, a restaurant menu illustration, or a cute kitchen decoration.',
+    object: 'This geometric object design is great for abstract art inspiration, a minimalist decoration concept, or a design reference.',
   };
-  const extra = extras[subject.category] || 'a clean, flat workspace';
-  return `What you'll need: ${base}, ${glue}, and ${extra}. Print at 100% scale on a dry, flat sheet so the tabs line up.`;
+  return uses[subject.category] || 'Use this design as inspiration for your next paper craft, art project, or creative exploration.';
 }
 
-function commonMistake(subject: Subject): string {
+function creativeTips(subject: Subject): string {
   const tips: Record<string, string> = {
-    dragon: 'Common mistake: rushing the wing folds. Wings scored unevenly will droop or twist — score every line twice, once from each side, before folding.',
-    animal: 'Common mistake: gluing legs before the body is dry. Let the torso set for 5 minutes, then attach limbs so the figure stands straight.',
-    vehicle: 'Common mistake: cutting body panels with dull scissors. A fresh blade gives clean edges — rough cuts show on straight vehicle bodies.',
-    building: 'Common mistake: folding corners without scoring. Unscored folds create rounded edges — score every corner line for a sharp, architectural finish.',
-    character: 'Common mistake: attaching the head before the torso is stable. Build the body first, let it dry, then add the head so proportions stay balanced.',
-    plant: 'Common mistake: curling petals too aggressively. Gentle curls around a pencil look natural — tight creases make petals look stiff.',
-    food: 'Common mistake: stacking tiers before glue dries. Let each tier set 3-5 minutes before adding the next, or the stack will lean.',
-    object: 'Common mistake: using too much glue. A thin, even layer on each tab is enough — excess glue warps paper and shows through.',
+    dragon: 'Creative tip: Try generating the same dragon in different styles — a cute dragon for kids, a low-poly dragon for modern decor, a fantasy dragon for epic art.',
+    animal: 'Creative tip: Use this animal design as a starting point and add your own details — different colors, accessories, or a custom background scene.',
+    vehicle: 'Creative tip: Generate the same vehicle in multiple styles to compare aesthetics — pixel art for retro, low poly for modern, cute for playful.',
+    building: 'Creative tip: Use this building design as architectural inspiration — try sketching it from different angles or adding your own structural details.',
+    character: 'Creative tip: Turn this character design into a full concept — generate different poses, expressions, and outfits to build a complete character sheet.',
+    plant: 'Creative tip: Combine this plant design with other botanical elements to create a pattern, a wreath, or a nature-themed composition.',
+    food: 'Creative tip: Use this food design as a menu illustration, a kitchen decoration, or inspiration for a food-themed art series.',
+    object: 'Creative tip: Experiment with the same geometric object in different color palettes and styles to create a cohesive art series.',
   };
-  return tips[subject.category] || 'Common mistake: rushing the glue stage. A thin, even layer and 10 seconds of pressure gives cleaner results than a thick blob.';
+  return tips[subject.category] || 'Creative tip: Try generating the same idea in different styles to explore multiple visual directions.';
 }
 
 function buildIntro(prompt: string, subject: Subject, style: string, styleWord: string): string {
   const styleLabel = styleWord ? styleWord + ' ' : '';
   const h = strHash(prompt);
   const openers = [
-    `This ${styleLabel}${subject.label} papercraft is based on the idea "${prompt}", generated with koPaper's free AI papercraft generator. It's a printable design you can cut, fold, and assemble at home — no special printer or software required.`,
-    `${capitalizeWords(subject.label)} from paper? That's exactly what this ${styleLabel}${subject.label} papercraft is — the idea "${prompt}" turned into a printable template by koPaper's AI generator. Cut it out, fold along the lines, and it's ready to display.`,
-    `Turn the idea "${prompt}" into a hands-on project with this ${styleLabel}${subject.label} papercraft from koPaper's AI generator. Everything you need to build it is on the printable sheet below — no special tools required.`,
-    `Looking for a ${styleLabel}${subject.label} papercraft? This printable template, based on the idea "${prompt}", was generated with koPaper's AI papercraft maker. Just print, cut, and fold — the whole project comes together on your desk.`,
-    `The idea "${prompt}" becomes a buildable ${styleLabel}${subject.label} papercraft in this free printable template from koPaper. Score the fold lines, cut the tabs, and assemble at home — a satisfying afternoon project with everyday tools.`,
+    `This ${styleLabel}${subject.label} papercraft design is based on the idea "${prompt}", generated with koPaper's AI papercraft design studio. It's a papercraft-style artwork created for inspiration, creative exploration, and visual reference — not a printable template or assembly guide.`,
+    `${capitalizeWords(subject.label)} in papercraft style? That's exactly what this ${styleLabel}${subject.label} design is — the idea "${prompt}" turned into a beautiful papercraft-style artwork by koPaper's AI generator. Use it as inspiration, a design reference, or a starting point for your own creative project.`,
+    `Turn the idea "${prompt}" into a visual concept with this ${styleLabel}${subject.label} papercraft design from koPaper's AI generator. The artwork captures the papercraft aesthetic — geometric facets, paper textures, and handcrafted visual style — perfect for creative exploration.`,
+    `Looking for ${styleLabel}${subject.label} papercraft inspiration? This design, based on the idea "${prompt}", was generated with koPaper's AI papercraft design studio. Use it as a visual reference, a creative starting point, or inspiration for your next art or craft project.`,
+    `The idea "${prompt}" becomes a stunning ${styleLabel}${subject.label} papercraft design in this AI-generated artwork from koPaper. The papercraft style — with its geometric structure and paper-like textures — makes it perfect for design inspiration, creative reference, and visual exploration.`,
   ];
   const para1 = openers[h % openers.length];
   const para2 = styleNote(style);
-  const para3 = toolList(subject, style);
-  const stepSets = [
-    `Steps: (1) print the template at 100% scale; (2) cut along the solid outlines; (3) score every dashed fold line; (4) fold toward the printed side for clean edges; (5) apply glue to the tabs and assemble from the largest piece outward. Take your time on the folds — crisp creases are what make the model hold its shape.`,
-    `Steps: print at 100% scale, cut the solid outlines with a craft knife or scissors, score the dashed lines, fold each tab, then assemble the largest parts first with glue. Gentle pressure on each fold gives the sharpest, cleanest edges and helps the model stand on its own.`,
-    `Steps: start by printing the full sheet at 100%. Cut out each piece along solid lines, then score the dashed fold lines with a bone folder. Fold each tab inward, apply a thin layer of glue, and press firmly for 10 seconds. Build from the largest structural piece outward, adding smaller details last.`,
-    `Steps: print the template, then cut out all pieces carefully — solid lines are cuts, dashed lines are folds. Score every dashed line before folding to prevent tearing. Apply glue sparingly to each tab, assemble the main body first, then attach smaller parts. Let the glue set for a few minutes before handling the finished model.`,
+  const para3 = designUses(subject);
+  const howToUse = [
+    `How to use this design: Save the image for your personal reference, use it as inspiration for a hand-drawn or painted artwork, or describe the same idea to the AI generator in a different style to explore alternative visual directions. The design is a creative concept, not a printable template.`,
+    `How to use this design: Use it as a visual reference for your own creative projects, try recreating it in your preferred medium, or generate variations by changing the style or adding details in the AI generator. Each design is a unique creative concept worth exploring.`,
+    `How to use this design: Save it to your inspiration collection, use it as a reference for proportions and styling, or use the AI generator to create a whole series based on the same idea in different styles. The papercraft aesthetic is versatile and works across many creative contexts.`,
+    `How to use this design: Treat it as a starting point for creative exploration — sketch your own version, use it as color palette inspiration, or generate related designs by describing variations to the AI generator. Every design is a unique creative concept.`,
   ];
-  const para4 = stepSets[h % stepSets.length];
-  const para5 = subjectTip(subject) + ' ' + commonMistake(subject);
-  const { difficulty, minutes } = estimate(prompt, subject);
+  const para4 = howToUse[h % howToUse.length];
+  const para5 = subjectTip(subject) + ' ' + creativeTips(subject);
   const endings = [
-    `Difficulty: ${difficulty}. Plan for about ${minutes} from first cut to finished model. If you enjoy this one, browse the [origami tutorials](/origami/) for fold-along projects or the [free printable templates](/templates/) for more ready-to-build sheets. Want a different look? Run the same idea through the [AI papercraft generator](/) in another style.`,
-    `Difficulty: ${difficulty} — expect around ${minutes} from start to finish. Made something you like? The [origami tutorials](/origami/) teach folding by hand, and the [free printable templates](/templates/) offer more ready-to-build sheets. For another look, regenerate the same idea with the [AI papercraft generator](/) in a different style.`,
-    `This is a ${difficulty.toLowerCase()} project — set aside roughly ${minutes}. When you're done, display it on a shelf or desk, and try the [origami tutorials](/origami/) or [printable templates](/templates/) for your next project. You can also generate a new design from any idea using the [AI papercraft generator](/).`,
+    `Want to explore more? Browse the [gallery](/gallery/) for other AI-generated papercraft designs, or try the [AI papercraft generator](/) with your own idea. You can also check out the [origami tutorials](/origami/) for hands-on folding projects or the [printables](/printables/) for printable craft templates.`,
+    `Inspired by this design? Run the same idea through the [AI papercraft generator](/) in a different style — Cute, Low Poly, Pixel, or Fantasy — to explore alternative visual directions. Browse the [gallery](/gallery/) for more AI-generated designs, or try the [origami tutorials](/origami/) for hands-on paper craft projects.`,
+    `This design is one of many AI-generated papercraft concepts in the [gallery](/gallery/). Use the [AI papercraft generator](/) to create your own unique designs from any idea. For hands-on paper craft projects, browse the [origami tutorials](/origami/) and [printables](/printables/) collections.`,
   ];
   const para6 = endings[h % endings.length];
   return [para1, para2, para3, para4, para5, para6].join('\n\n');
@@ -304,23 +297,23 @@ export function buildMeta(promptRaw: string, styleRaw: string): Generated {
   const style = (styleRaw || 'cute').toString().toLowerCase();
   const prompt = stripArticle(promptRaw.trim());
   const subject = detectSubject(prompt);
-  // Title: every title carries high-intent keywords "papercraft template" + "free printable"
+  // Title: every title carries high-intent keywords "papercraft design" + "AI generated"
   const promptTitle = capitalizeWords(prompt);
   const subjectTitle = capitalizeWords(subject.label);
   const titleCandidates = [
-    `${promptTitle} Papercraft Template — Free Printable`,
-    `${promptTitle} Papercraft — Free Printable Template`,
-    `${subjectTitle} Papercraft Template — Free Printable`,
-    `${subjectTitle} Papercraft — Free Printable`,
+    `${promptTitle} Papercraft Design — AI Generated`,
+    `${promptTitle} Papercraft — AI Design`,
+    `${subjectTitle} Papercraft Design — AI Generated`,
+    `${subjectTitle} Papercraft — AI Design`,
   ];
   let title = titleCandidates.find(t => t.length <= 60) || titleCandidates[3].slice(0, 57).trimEnd() + `...`;
   const styleWord = style && !title.toLowerCase().includes(style) ? style : '';
-  // Description: natural keyword integration, <= 160 chars
+  // Description: natural keyword integration, <= 160 chars — design focus, not template
   const styleDesc = styleWord ? styleWord + ' ' : '';
   const descCandidates = [
-    `Free printable ${styleDesc}${subject.label} papercraft template of "${prompt}". Download, cut, fold, and assemble at home — paper weight, tools, and step-by-step tips included.`,
-    `Free printable ${styleDesc}${subject.label} papercraft template. Download, cut, fold, and assemble at home with step-by-step folding tips and tool recommendations.`,
-    `Printable ${styleDesc}${subject.label} papercraft template — cut, fold, and assemble at home. Step-by-step tips, paper weight, and tools included.`,
+    `AI-generated ${styleDesc}${subject.label} papercraft design of "${prompt}". Papercraft-style artwork for inspiration, creative exploration, and visual reference.`,
+    `AI-generated ${styleDesc}${subject.label} papercraft design. Papercraft-style artwork for inspiration, design reference, and creative exploration.`,
+    `${capitalizeWords(styleDesc)}${subject.label} papercraft design — AI generated artwork for inspiration, creative reference, and visual exploration.`,
   ];
   let description = descCandidates.find(d => d.length <= 160) || descCandidates[2].slice(0, 157).trimEnd() + `...`;
 

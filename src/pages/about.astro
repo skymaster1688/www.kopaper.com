@@ -5,19 +5,19 @@ const aboutSchema = {
   '@context': 'https://schema.org',
   '@type': 'AboutPage',
   headline: 'About koPaper — AI Papercraft Studio',
-  description: 'koPaper is a team of papercraft enthusiasts and AI engineers building free printable papercraft templates, origami tutorials, and an AI papercraft generator.',
+  description: 'koPaper is an AI papercraft design studio. We create AI-generated papercraft designs, origami tutorials, and printable crafts for inspiration and creative exploration.',
   mainEntityOfPage: new URL(Astro.url.pathname, Astro.site).href,
   about: {
     '@type': 'Organization',
     name: 'koPaper',
     url: Astro.site.href,
-    description: 'AI papercraft studio creating free printable templates and origami guides.',
+    description: 'koPaper is an AI papercraft design studio. We create AI-generated papercraft designs, origami tutorials, and printable crafts for inspiration and creative exploration.',
   },
 };
 ---
 <BaseLayout
   title="About koPaper — AI Papercraft Studio"
-  description="koPaper is a team of papercraft enthusiasts and AI engineers building free printable papercraft templates, origami tutorials, and an AI papercraft generator."
+  description="koPaper is an AI papercraft design studio. We create AI-generated papercraft designs, origami tutorials, and printable crafts for inspiration and creative exploration."
 >
   <article class="container" style="max-width:820px; padding-top:40px; padding-bottom:60px">
     <nav class="breadcrumb">
@@ -34,10 +34,10 @@ const aboutSchema = {
     <section style="margin-bottom:40px">
       <h2 style="font-size:1.4rem; margin-bottom:14px">What we do</h2>
       <p style="color:var(--text-muted); line-height:1.8; margin-bottom:14px">
-        koPaper combines AI image generation with traditional papercraft techniques. Our free <a href="/">AI papercraft generator</a> turns any idea into a printable craft design. Every template in our <a href="/gallery/">gallery</a> is generated, reviewed, and formatted for at-home printing — just cut, fold, and assemble.
+        koPaper combines AI image generation with papercraft aesthetics. Our free <a href="/">AI papercraft generator</a> turns any idea into a beautiful papercraft-style design. Every design in our <a href="/gallery/">gallery</a> is AI-generated and human-reviewed — created for inspiration, creative exploration, and visual reference.
       </p>
       <p style="color:var(--text-muted); line-height:1.8">
-        We also publish step-by-step <a href="/origami/">origami tutorials</a>, <a href="/templates/">printable templates</a>, and <a href="/letter-paper/">letter paper</a> for crafters of all ages and skill levels.
+        We also publish step-by-step <a href="/origami/">origami tutorials</a>, <a href="/printables/">printable crafts</a>, and <a href="/letter-paper/">letter paper</a> for crafters of all ages and skill levels.
       </p>
     </section>
 
