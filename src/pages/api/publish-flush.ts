@@ -38,7 +38,7 @@ async function flush(context: APIContext) {
 
   let listed: { name: string }[] = [];
   try {
-    const r = await kv.list();
+    const r = await kv.list({ prefix: 'draft:' });
     listed = (r.keys || []).map((k: any) => ({ name: k.name }));
   } catch (e) {
     return json({ ok: false, error: 'KV list failed', detail: String((e as Error)?.message ?? e) }, 500, origin);
