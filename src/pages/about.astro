@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const aboutSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  headline: 'About koPaper — AI Papercraft Studio',
+  description: 'koPaper is a team of papercraft enthusiasts and AI engineers building free printable papercraft templates, origami tutorials, and an AI papercraft generator.',
+  mainEntityOfPage: new URL(Astro.url.pathname, Astro.site).href,
+  about: {
+    '@type': 'Organization',
+    name: 'koPaper',
+    url: Astro.site.href,
+    description: 'AI papercraft studio creating free printable templates and origami guides.',
+  },
+};
+---
+<BaseLayout
+  title="About koPaper — AI Papercraft Studio"
+  description="koPaper is a team of papercraft enthusiasts and AI engineers building free printable papercraft templates, origami tutorials, and an AI papercraft generator."
+>
+  <article class="container" style="max-width:820px; padding-top:40px; padding-bottom:60px">
+    <nav class="breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      <span>About</span>
+    </nav>
+
+    <h1 style="margin-bottom:16px">About koPaper</h1>
+    <p style="font-size:1.15rem; color:var(--text-muted); margin-bottom:36px">
+      We're a small team of papercraft enthusiasts and AI engineers on a mission to make paper crafting accessible to everyone — free, printable, and fun.
+    </p>
+
+    <section style="margin-bottom:40px">
+      <h2 style="font-size:1.4rem; margin-bottom:14px">What we do</h2>
+      <p style="color:var(--text-muted); line-height:1.8; margin-bottom:14px">
+        koPaper combines AI image generation with traditional papercraft techniques. Our free <a href="/">AI papercraft generator</a> turns any idea into a printable craft design. Every template in our <a href="/gallery/">gallery</a> is generated, reviewed, and formatted for at-home printing — just cut, fold, and assemble.
+      </p>
+      <p style="color:var(--text-muted); line-height:1.8">
+        We also publish step-by-step <a href="/origami/">origami tutorials</a>, <a href="/templates/">printable templates</a>, and <a href="/letter-paper/">letter paper</a> for crafters of all ages and skill levels.
+      </p>
+    </section>
+
+    <section style="margin-bottom:40px">
+      <h2 style="font-size:1.4rem; margin-bottom:14px">Our craft process</h2>
+      <p style="color:var(--text-muted); line-height:1.8; margin-bottom:14px">
+        Every papercraft template goes through a hands-on review process before it reaches the gallery:
+      </p>
+      <ol style="color:var(--text-muted); line-height:2; padding-left:22px">
+        <li><strong>Ideation</strong> — prompts are submitted by our community and team, covering animals, characters, vehicles, buildings, and more.</li>
+        <li><strong>AI generation</strong> — our generator produces a printable-style design with clean outlines and fold-friendly geometry.</li>
+        <li><strong>Human review</strong> — a team member checks each design for printability, cut complexity, and structural soundness.</li>
+        <li><strong>Test build</strong> — selected templates are printed and assembled in-house to verify the instructions work and the model stands.</li>
+        <li><strong>Publication</strong> — approved templates are published with difficulty ratings, estimated build time, and tool recommendations.</li>
+      </ol>
+    </section>
+
+    <section style="margin-bottom:40px">
+      <h2 style="font-size:1.4rem; margin-bottom:14px">Tools and materials we use</h2>
+      <p style="color:var(--text-muted); line-height:1.8; margin-bottom:14px">
+        We test every recommendation ourselves. Our standard toolkit includes:
+      </p>
+      <ul style="color:var(--text-muted); line-height:2; padding-left:22px">
+        <li><strong>Paper</strong> — 160–250 gsm cardstock (heavier for structural models like dragons and buildings)</li>
+        <li><strong>Cutting</strong> — Fiskars precision scissors, OLFA craft knife, self-healing cutting mat, steel ruler</li>
+        <li><strong>Scoring</strong> — bone folder (or the back of a spoon for beginners)</li>
+        <li><strong>Glue</strong> — PVA glue for strong bonds, glue stick for quick tabs, tweezers for small parts</li>
+        <li><strong>Printer</strong> — any standard inkjet or laser printer at 100% scale</li>
+      </ul>
+    </section>
+
+    <section style="margin-bottom:40px">
+      <h2 style="font-size:1.4rem; margin-bottom:14px">Our commitment</h2>
+      <p style="color:var(--text-muted); line-height:1.8; margin-bottom:14px">
+        <strong>Free forever.</strong> All templates, tutorials, and the AI generator are free to use. We believe creativity shouldn't have a paywall.
+      </p>
+      <p style="color:var(--text-muted); line-height:1.8; margin-bottom:14px">
+        <strong>Printable at home.</strong> Every template is designed for standard 8.5×11 or A4 paper — no special equipment needed.
+      </p>
+      <p style="color:var(--text-muted); line-height:1.8">
+        <strong>Community-driven.</strong> Many of our gallery designs come from user-submitted prompts. Have an idea? <a href="/">Try the generator</a> and your design could be featured.
+      </p>
+    </section>
+
+    <section style="padding:24px 28px; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)">
+      <h2 style="font-size:1.2rem; margin-bottom:10px">Get in touch</h2>
+      <p style="color:var(--text-muted); margin-bottom:0">
+        Questions, feedback, or collaboration ideas? Reach out at <a href="mailto:hello@kopaper.com" style="color:var(--warm); text-decoration:underline">hello@kopaper.com</a>. We read every message.
+      </p>
+    </section>
+  </article>
+
+  <script type="application/ld+json" set:html={JSON.stringify(aboutSchema)} />
+</BaseLayout>

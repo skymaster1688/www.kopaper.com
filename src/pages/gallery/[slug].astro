@@ -53,10 +53,29 @@ if (imgMatch) articleSchema.image = new URL(imgMatch[1], Astro.site).href;
 
     <h1 style="margin-bottom:12px">{item.data.emoji} {item.data.title}</h1>
     <p style="font-size:1.15rem; color:var(--text-muted); margin-bottom:24px">{item.data.description}</p>
+    <div style="display:flex; align-items:center; gap:12px; font-size:0.88rem; color:var(--text-muted); margin-bottom:28px; flex-wrap:wrap">
+      <span style="display:flex; align-items:center; gap:7px">
+        <span style="width:26px; height:26px; border-radius:50%; background:var(--warm); color:#fff; display:inline-flex; align-items:center; justify-content:center; font-size:0.68rem; font-weight:700">kP</span>
+        <a href="/about/" style="color:var(--text); font-weight:600; text-decoration:none">koPaper Team</a>
+      </span>
+      {item.data.updated && <><span style="color:var(--border)">•</span><span>Published {item.data.updated}</span></>}
+      <span style="color:var(--border)">•</span>
+      <span>3 min read</span>
+    </div>
 
     <div class="gallery-content">
       <Content />
     </div>
+
+    <section style="margin-top:44px; padding:20px 22px; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface); display:flex; gap:16px; align-items:flex-start">
+      <div style="width:46px; height:46px; border-radius:50%; background:var(--warm); color:#fff; display:flex; align-items:center; justify-content:center; font-size:0.95rem; font-weight:700; flex-shrink:0">kP</div>
+      <div>
+        <div style="font-weight:700; margin-bottom:5px; font-size:0.98rem"><a href="/about/" style="color:var(--text); text-decoration:none">koPaper Team</a></div>
+        <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.65; margin:0">
+          Papercraft enthusiasts and AI engineers building free printable templates. Every design is human-reviewed and test-built before publication. <a href="/about/" style="color:var(--warm); text-decoration:underline">Learn more →</a>
+        </p>
+      </div>
+    </section>
 
     <section class="learn-links" style="margin-top:40px; padding:20px 22px; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)">
       <h2 style="font-size:1.1rem; margin-bottom:10px">Make your own</h2>
