@@ -8,18 +8,15 @@ draft: false
 updated: "2026-08-28"
 ---
 
-This fantasy character papercraft design is based on the idea "Create a PROFESSIONAL", generated with koPaper's AI papercraft design studio. It's a papercraft-style artwork created for inspiration, creative exploration, and visual reference.
+AI-generated fantasy papercraft design from the idea "Create a PROFESSIONAL", created with koPaper's AI papercraft studio.
 
-The fantasy style pushes dramatic detail: scales, wings, glow, and atmosphere, so the design feels like a creature pulled from a storybook.
+## Ways to take this further
 
-Use this character design as a concept art reference, a cosplay inspiration, or a starting point for an original character.
+1. **Cozy scene** — Warm lamp light, plants and a cozy corner that tells a story.
+2. **Extra detail** — Intricate folds, visible paper texture and delicate cut lines.
+3. **Cuter look** — Big sparkling eyes and chubby, rounded proportions.
+4. **Fantasy glow** — Soft sparkles and gentle light rays for a magical feel.
 
-How to use this design: Save it to your inspiration collection, use it as a reference for proportions and styling, or use the AI generator to create a whole series based on the same idea in different styles. The papercraft aesthetic is versatile and works across many creative contexts.
-
-Creative tip: Turn this character design into a full concept — generate different poses, expressions, and outfits to build a complete character sheet.
-
-This design is one of many AI-generated papercraft concepts in the [gallery](/gallery/). Use the [AI papercraft generator](/) to create your own unique designs from any idea. For hands-on paper craft projects, browse the [origami tutorials](/origami/) and [printables](/printables/) collections.
+Open the [AI papercraft generator](/) and describe one of these directions to see where the idea goes.
 
 ![AI-generated fantasy papercraft of Create a PROFESSIONAL.](/images/gallery/create-a-professional-papercraft-mtcyvqu225j0.svg)
-
-*AI-generated fantasy papercraft of Create a PROFESSIONAL.*

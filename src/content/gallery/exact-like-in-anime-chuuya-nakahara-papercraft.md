@@ -8,22 +8,15 @@ draft: false
 updated: "2026-08-27"
 ---
 
-Turn the idea "Exact Like In Anime , Chuuya Nakahara" into a visual concept with this cute character papercraft design from koPaper's AI generator. The artwork captures the papercraft aesthetic — geometric facets, paper textures, and handcrafted visual style — perfect for creative exploration.
+AI-generated cute papercraft design from the idea "Exact Like In Anime , Chuuya Nakahara", created with koPaper's AI papercraft studio.
 
-The cute style leans into soft, rounded shapes and friendly proportions, so the design reads as charming and approachable rather than realistic.
+## Ways to take this further
 
-Use this character design as a concept art reference, a cosplay inspiration, or a starting point for an original character.
+1. **Cozy scene** — Warm lamp light, plants and a cozy corner that tells a story.
+2. **Extra detail** — Intricate folds, visible paper texture and delicate cut lines.
+3. **Cuter look** — Big sparkling eyes and chubby, rounded proportions.
+4. **Fantasy glow** — Soft sparkles and gentle light rays for a magical feel.
 
-How to use this design: Use it as a visual reference for your own creative projects, try recreating it in your preferred medium, or generate variations by changing the style or adding details in the AI generator. Each design is a unique creative concept worth exploring.
-
-Creative tip: Turn this character design into a full concept — generate different poses, expressions, and outfits to build a complete character sheet.
-
-This design is one of many AI-generated papercraft concepts in the [gallery](/gallery/). Use the [AI papercraft generator](/) to create your own unique designs from any idea. For hands-on paper craft projects, browse the [origami tutorials](/origami/) and [printables](/printables/) collections.
+Open the [AI papercraft generator](/) and describe one of these directions to see where the idea goes.
 
 ![AI-generated cute papercraft of Exact Like In Anime , Chuuya Nakahara.](/images/gallery/exact-like-in-anime-chuuya-nakahara-papercraft-mt5tcbjvp3zh.jpg)
-
-*AI-generated cute papercraft of Exact Like In Anime , Chuuya Nakahara.*
-
-![AI-generated cute papercraft of Exact Like In Anime , Chuuya Nakahara.](/images/gallery/exact-like-in-anime-chuuya-nakahara-papercraft-mt5tcbtgmvlx.jpg)
-
-*AI-generated cute papercraft of Exact Like In Anime , Chuuya Nakahara.*

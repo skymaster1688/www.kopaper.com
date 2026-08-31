@@ -8,23 +8,15 @@ order: 99
 draft: false
 ---
 
-Looking for lowpoly papercraft papercraft inspiration? This design, based on the idea "panher", was generated with koPaper's AI papercraft design studio. Use it as a visual reference, a creative starting point, or inspiration for your next art or craft project.
+AI-generated lowpoly papercraft design from the idea "panher", created with koPaper's AI papercraft studio.
 
-The low-poly style breaks the form into flat geometric facets, giving the model a modern, angular look that catches light from different angles.
+## Ways to take this further
 
-Use this design as inspiration for your next paper craft, art project, or creative exploration.
+1. **Cozy scene** — Warm lamp light, plants and a cozy corner that tells a story.
+2. **Extra detail** — Intricate folds, visible paper texture and delicate cut lines.
+3. **Cuter look** — Big sparkling eyes and chubby, rounded proportions.
+4. **Fantasy glow** — Soft sparkles and gentle light rays for a magical feel.
 
-How to use this design: Save the image for your personal reference, use it as inspiration for a hand-drawn or painted artwork, or describe the same idea to the AI generator in a different style to explore alternative visual directions.
-
-Start with the largest pieces to set the silhouette, then fill in the smaller details last. Creative tip: Try generating the same idea in different styles to explore multiple visual directions.
-
-This design is one of many AI-generated papercraft concepts in the [gallery](/gallery/). Use the [AI papercraft generator](/) to create your own unique designs from any idea. For hands-on paper craft projects, browse the [origami tutorials](/origami/) and [printables](/printables/) collections.
+Open the [AI papercraft generator](/) and describe one of these directions to see where the idea goes.
 
 ![AI-generated lowpoly papercraft of panher.](/images/gallery/panher-papercraft-design-ai-generated-mtglugtwrqu4.jpg)
-
-*AI-generated lowpoly papercraft of panher.*
-
-
-![AI-generated lowpoly papercraft of panher.](/images/gallery/panher-papercraft-design-ai-generated-mtgluh249o69.jpg)
-
-*AI-generated lowpoly papercraft of panher.*

@@ -8,23 +8,15 @@ order: 99
 draft: false
 ---
 
-This fantasy object papercraft design is based on the idea "gift box", generated with koPaper's AI papercraft design studio. It's a papercraft-style artwork created for inspiration, creative exploration, and visual reference.
+AI-generated fantasy object papercraft design from the idea "gift box", created with koPaper's AI papercraft studio.
 
-The fantasy style pushes dramatic detail: scales, wings, glow, and atmosphere, so the model feels like a creature pulled from a storybook.
+## Ways to take this further
 
-This geometric object design is great for abstract art inspiration, a minimalist decoration concept, or a design reference.
+1. **Cozy scene** — Warm lamp light, plants and a cozy corner that tells a story.
+2. **Extra detail** — Intricate folds, visible paper texture and delicate cut lines.
+3. **Cuter look** — Big sparkling eyes and chubby, rounded proportions.
+4. **Fantasy glow** — Soft sparkles and gentle light rays for a magical feel.
 
-How to use this design: Treat it as a starting point for creative exploration — sketch your own version, use it as color palette inspiration, or generate related designs by describing variations to the AI generator. Every design is a unique creative concept.
-
-Simple geometric objects are a great first project — precise cutting and a dab of glue at each tab is all it takes for a clean result. Creative tip: Experiment with the same geometric object in different color palettes and styles to create a cohesive art series.
-
-Want to explore more? Browse the [gallery](/gallery/) for other AI-generated papercraft designs, or try the [AI papercraft generator](/) with your own idea. You can also check out the [origami tutorials](/origami/) for hands-on folding projects or the [printables](/printables/) for printable craft templates.
+Open the [AI papercraft generator](/) and describe one of these directions to see where the idea goes.
 
 ![AI-generated fantasy papercraft of gift box.](/images/gallery/gift-box-papercraft-design-ai-generated-mtglui5auzc0.jpg)
-
-*AI-generated fantasy papercraft of gift box.*
-
-
-![AI-generated pixel papercraft of gift box.](/images/gallery/gift-box-papercraft-design-ai-generated-mtgluilypmgt.jpg)
-
-*AI-generated pixel papercraft of gift box.*

@@ -266,8 +266,10 @@ function creativeTips(subject: Subject): string {
 
 function buildIntro(prompt: string, subject: Subject, style: string, styleWord: string): string {
   const styleLabel = styleWord ? styleWord + ' ' : '';
+  // Avoid a redundant "papercraft papercraft" when the subject label is the default.
+  const subjectLabel = subject.label === 'papercraft' ? '' : subject.label + ' ';
   // Lead-in: one short, factual sentence built from the user's own idea (no boilerplate).
-  const lead = `AI-generated ${styleLabel}${subject.label} papercraft design from the idea "${prompt}", created with koPaper's AI papercraft studio.`;
+  const lead = `AI-generated ${styleLabel}${subjectLabel}papercraft design from the idea "${prompt}", created with koPaper's AI papercraft studio.`;
   // Directions: 3-5 concrete ways to take the same idea further (content, not filler).
   const dirs = pickDirections(prompt, 4);
   const lines = [
