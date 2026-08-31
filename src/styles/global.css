@@ -419,6 +419,13 @@ ul { list-style: none; }
 .result-card .thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .result-grid.loading .thumb { padding: 0; background: var(--surface-2); animation: genPulse 1.1s ease-in-out infinite; }
 .result-card .dir-tag { font-size: .72rem; color: var(--warm); background: var(--warm-soft); border: 1px solid var(--warm); border-radius: 999px; padding: 3px 10px; white-space: nowrap; font-family: var(--font-mono); }
+.dir-panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+.dir-panel .dir-heading { font-size: 1rem; font-weight: 600; font-family: var(--font-display); margin: 0; }
+.dir-panel .dir-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.dir-panel .dir-item { display: flex; flex-direction: column; gap: 5px; padding-bottom: 12px; border-bottom: 1px dashed var(--border); }
+.dir-panel .dir-item:last-child { border-bottom: 0; padding-bottom: 0; }
+.dir-panel .dir-item .dir-tag { align-self: flex-start; }
+.dir-panel .dir-item p { margin: 0; font-size: .84rem; line-height: 1.5; color: var(--text-muted); }
 @media (max-width: 640px) { .result-grid { grid-template-columns: 1fr; } }
 @keyframes genPulse { 0%, 100% { opacity: .45; } 50% { opacity: 1; } }
 .btn-primary:disabled { opacity: .6; cursor: progress; }
