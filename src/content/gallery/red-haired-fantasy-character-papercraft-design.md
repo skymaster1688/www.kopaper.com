@@ -1,14 +1,14 @@
 ---
-title: "Character Papercraft Design — AI Generated"
+title: "Red-Haired Fantasy Character Papercraft Design — AI Generated"
 description: "AI-generated fantasy character papercraft design. Papercraft-style artwork for inspiration, design reference, and creative exploration."
 emoji: "🎨"
 style: "fantasy"
 order: 99
 draft: false
-updated: "2026-08-27"
+updated: "2026-08-31"
 ---
 
-AI-generated fantasy papercraft design from the idea "Papercraft Para Squishy De Nathan Drake", created with koPaper's AI papercraft studio.
+AI-generated fantasy papercraft design from the idea "a stylish red-haired fantasy character", created with koPaper's AI papercraft studio.
 
 ## Ways to take this further
 
@@ -18,5 +18,3 @@ AI-generated fantasy papercraft design from the idea "Papercraft Para Squishy De
 4. **Fantasy glow** — Soft sparkles and gentle light rays for a magical feel.
 
 Open the [AI papercraft generator](/) and describe one of these directions to see where the idea goes.
-
-![AI-generated fantasy papercraft of Papercraft Para Squishy De Nathan Drake.](/images/gallery/papercraft-para-squishy-de-nathan-drake-papercraft-mt78f4iaowhi.jpg)

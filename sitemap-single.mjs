@@ -66,7 +66,15 @@ export function singleSitemap() {
           } catch { /* 无画廊目录时忽略 */ }
         }
 
-        const urls = htmlFiles
+        // 排除 noindex 页面（与页面 robots meta 一致）：过渡/占位页不占用索引。
+        const indexedHtml = [];
+        for (const f of htmlFiles) {
+          const head = await readFile(f, 'utf8').catch(() => '');
+          if (/name="robots"\s+content="noindex/i.test(head)) continue;
+          indexedHtml.push(f);
+        }
+
+        const urls = indexedHtml
           .map((f) => {
             // 转成相对站点的目录式路径
             let rel = relative(root, f).split('\\').join('/'); // 兼容 Windows 分隔符

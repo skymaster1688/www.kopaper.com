@@ -1,14 +1,14 @@
 ---
-title: "Exact Like In Anime , Chuuya Nakahara Papercraft — AI Design"
+title: "Cute Anime Red-Haired Character Papercraft Design — AI Generated"
 description: "AI-generated cute character papercraft design. Papercraft-style artwork for inspiration, design reference, and creative exploration."
 emoji: "🎨"
 style: "cute"
 order: 99
 draft: false
-updated: "2026-08-27"
+updated: "2026-08-31"
 ---
 
-AI-generated cute papercraft design from the idea "Exact Like In Anime , Chuuya Nakahara", created with koPaper's AI papercraft studio.
+AI-generated cute papercraft design from the idea "a cute anime-style red-haired character", created with koPaper's AI papercraft studio.
 
 ## Ways to take this further
 
@@ -19,4 +19,6 @@ AI-generated cute papercraft design from the idea "Exact Like In Anime , Chuuya 
 
 Open the [AI papercraft generator](/) and describe one of these directions to see where the idea goes.
 
-![AI-generated cute papercraft of Exact Like In Anime , Chuuya Nakahara.](/images/gallery/exact-like-in-anime-chuuya-nakahara-papercraft-mt5tcbjvp3zh.jpg)
+![AI-generated cute papercraft of a cute anime-style red-haired character.](/images/gallery/cute-anime-red-haired-character-papercraft-design-mt5tcbjvp3zh.jpg)
+
+*AI-generated cute papercraft of a cute anime-style red-haired character.*

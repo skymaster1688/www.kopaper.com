@@ -53,3 +53,17 @@
 
 # Old AI papercraft generator page (the generator now lives on the homepage + /tools/)
 /tools/papercraft-generator/*  /  301
+
+# Rewritten brand-name gallery articles (2026-08-31): renamed to original safe slugs, 301 to new URLs
+/gallery/basketball-with-the-brand-wilson-one-it-papercraft*  /gallery/classic-basketball-papercraft-design/  301
+/gallery/make-a-basketball-with-the-brand-wilson-one-it-papercraft*  /gallery/pixel-basketball-papercraft-design/  301
+/gallery/bungou-stray-dogs-chuuya-nakahara-papercraft*  /gallery/red-haired-fantasy-character-papercraft-design/  301
+/gallery/exact-like-in-anime-chuuya-nakahara-papercraft*  /gallery/cute-anime-red-haired-character-papercraft-design/  301
+/gallery/foldable-gta-v-bravado-buffalo-interceptor-template*  /gallery/black-muscle-car-papercraft-design/  301
+/gallery/foldable-gta-v-bravado-buffalo-papercraft-car-papercraft*  /gallery/classic-muscle-car-papercraft-design/  301
+/gallery/of-a-robotic-triceratops-zord-head-papercraft*  /gallery/robotic-triceratops-head-papercraft-design/  301
+/gallery/papercraft-para-squishy-de-nathan-drake-papercraft*  /gallery/adventure-explorer-character-papercraft-design/  301
+/gallery/pixel-style-papercraft-bungou-stray-dogs-chuuya-nakahara*  /gallery/pixel-red-haired-character-papercraft-design/  301
+/gallery/pixel-style-papercraft-standing-bungou-stray-dogs-chuuya*  /gallery/standing-pixel-red-haired-character-papercraft-design/  301
+/gallery/royal-enfield-hunter-350-moonshot-black-papercraft*  /gallery/cute-black-vintage-motorcycle-papercraft-design/  301
+/gallery/standing-handome-chuuya-nakahara-papercraft*  /gallery/handsome-red-haired-character-papercraft-design/  301

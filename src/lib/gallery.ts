@@ -51,6 +51,7 @@ export const ALLOWED_ORIGINS = [
 
 export function resolveCorsOrigin(origin?: string | null): string | null {
   if (!origin) return '*'; // non-browser callers (curl, server-side) are fine
+  if (typeof origin !== 'string') return null; // defensive: non-string input -> omit header (browser blocks)
   const o = origin.toLowerCase();
   if (o === 'null') return '*';
   return ALLOWED_ORIGINS.includes(o) ? origin : null; // null => header omitted => browser blocks

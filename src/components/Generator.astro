@@ -84,8 +84,6 @@ const STYLES = [
 
 <script define:vars={{ defaultStyle, defaultPrompt }}>
   import { pickDirections } from '../../lib/directions';
-  const SHAPES = ['cube', 'pyramid', 'prism', 'toy'];
-  const TYPE_LABEL = { cube: 'Cube', pyramid: 'Pyramid', prism: 'Prism', toy: 'Paper Toy', bookmark: 'Bookmark' };
   // Monochrome line-art output: white paper, ink lines (printable + on-brand).
   const STYLE_PALETTES = {
     cute:    ['#FFFFFF', '#0A0A0B'],
@@ -143,84 +141,6 @@ const STYLES = [
       return true;
     });
     return uniq.join(' ');
-  }
-
-  function poly(points) { return points.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' '); }
-  function path(points) { return 'M' + points.map(p => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' L') + ' Z'; }
-  function seg(a, b) { return `M${a[0].toFixed(1)} ${a[1].toFixed(1)} L${b[0].toFixed(1)} ${b[1].toFixed(1)}`; }
-
-  // --- Net builders (geometry, reused from the template engine) ---
-  function cubeNet(s, tabs) {
-    const P = [[-1,0],[0,0],[0,-1],[1,-1],[1,0],[2,0],[3,0],[3,1],[2,1],[1,1],[1,2],[0,2],[0,1],[-1,1]];
-    const outline = P.map(([x,y]) => [x*s, y*s]);
-    const folds = [ seg([0,0],[s,0]), seg([0,s],[s,s]), seg([0,0],[0,s]), seg([s,0],[s,s]), seg([2*s,0],[2*s,s]) ];
-    const t = s * 0.22;
-    const tabPolys = tabs ? [
-      [[0.2*s,-s],[0.8*s,-s],[0.9*s,-s-t],[0.1*s,-s-t]],
-      [[-s,0.2*s],[-s,0.8*s],[-s-t,0.9*s],[-s-t,0.1*s]],
-      [[0.2*s,2*s],[0.8*s,2*s],[0.9*s,2*s+t],[0.1*s,2*s+t]],
-      [[3*s,0.2*s],[3*s,0.8*s],[3*s+t,0.9*s],[3*s+t,0.1*s]],
-    ] : [];
-    return { outline, folds, tabs: tabPolys };
-  }
-  function pyramidNet(s, tabs) {
-    const h = s * 1.25;
-    const apexTop = [s/2, -h], apexRight = [s + h, s/2], apexBot = [s/2, s + h], apexLeft = [-h, s/2];
-    const outline = [ apexTop, [s,0], apexRight, [s,s], apexBot, [0,s], apexLeft, [0,0] ].map(([x,y]) => [x, y]);
-    const folds = [ seg([0,0],[s,0]), seg([s,0],[s,s]), seg([s,s],[0,s]), seg([0,s],[0,0]) ];
-    const t = s * 0.22;
-    const tabPolys = tabs ? [
-      [[s,0],[s/2,-h],[s/2 - t*0.3,-h - t],[s + t*0.3,-h - t]],
-      [[s,s],[s+h,s/2],[s+h+t,s/2 - t*0.3],[s+h+t,s/2 + t*0.3]],
-    ] : [];
-    return { outline, folds, tabs: tabPolys };
-  }
-  function prismNet(s, tabs) {
-    const h = s * 0.9;
-    const outline = [ [0,0],[3*s,0],[3*s + h, s/2],[3*s,s],[0,s],[-h, s/2] ].map(([x,y]) => [x, y]);
-    const folds = [ seg([s,0],[s,s]), seg([2*s,0],[2*s,s]), seg([0,0],[0,s]), seg([3*s,0],[3*s,s]) ];
-    const t = s * 0.22;
-    const tabPolys = tabs ? [
-      [[-h, s/2],[0,0],[0 - t*0.4, 0 - t],[ -h - t, s/2 - t*0.4]],
-      [[3*s + h, s/2],[3*s,s],[3*s + t*0.4, s + t],[3*s + h + t, s/2 + t*0.4]],
-    ] : [];
-    return { outline, folds, tabs: tabPolys };
-  }
-  function toyNet(s) {
-    const outline = [[0,0],[s,0],[s,s],[0,s]].map(([x,y]) => [x, y]);
-    const folds = [ seg([0, s/2],[s, s/2]), seg([s/2, 0],[s/2, s]), seg([0,0],[s,s]), seg([s,0],[0,s]) ];
-    const f = s * 0.32;
-    const tabs = [
-      [[0,0],[f,f],[0, 2*f]], [[s,0],[s-f,f],[s, 2*f]],
-      [[0,s],[f, s-f],[0, s-2*f]], [[s,s],[s-f, s-f],[s, s-2*f]],
-    ];
-    return { outline, folds, tabs };
-  }
-  function buildNet(type, s, tabsOn) {
-    switch (type) {
-      case 'pyramid': return pyramidNet(s, tabsOn);
-      case 'prism': return prismNet(s, tabsOn);
-      case 'toy': return toyNet(s);
-      default: return cubeNet(s, tabsOn);
-    }
-  }
-
-  function netMarkup(type, s, tabsOn, foldStyle, paper, line) {
-    const net = buildNet(type, s, tabsOn);
-    const pts = net.outline.concat(net.tabs.flat());
-    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
-    pts.forEach(([x,y]) => { minX=Math.min(minX,x); minY=Math.min(minY,y); maxX=Math.max(maxX,x); maxY=Math.max(maxY,y); });
-    const pad = 14; minX -= pad; minY -= pad; maxX += pad; maxY += pad;
-    const vb = `${minX.toFixed(1)} ${minY.toFixed(1)} ${(maxX-minX).toFixed(1)} ${(maxY-minY).toFixed(1)}`;
-    const cut = `<path d="${path(net.outline)}" fill="${paper}" stroke="${line}" stroke-width="1.6" stroke-linejoin="round"/>`;
-    const foldDash = foldStyle === 'dashed' ? ' stroke-dasharray="6 5"' : '';
-    const folds = (foldStyle === 'none' ? [] : net.folds).map(f => `<path d="${f}" fill="none" stroke="${line}" stroke-width="1.2"${foldDash}/>`).join('');
-    const tabs = net.tabs.map(t => `<polygon points="${poly(t)}" fill="${paper}" stroke="${line}" stroke-width="1.4" stroke-linejoin="round"/>`).join('');
-    return { vb, inner: cut + folds + tabs };
-  }
-  function buildCardSVG(type, s, tabsOn, foldStyle, paper, line, i) {
-    const { vb, inner } = netMarkup(type, s, tabsOn, foldStyle, paper, line);
-    return `<svg viewBox="${vb}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Papercraft design ${i+1}">${inner}</svg>`;
   }
 
   function pickFromPrompt(text) {

@@ -1,14 +1,14 @@
 ---
-title: "Standing Handome Chuuya Nakahara Papercraft — AI Design"
+title: "Standing Pixel Red-Haired Character Papercraft Design — AI Generated"
 description: "AI-generated pixel character papercraft design. Papercraft-style artwork for inspiration, design reference, and creative exploration."
 emoji: "🎨"
 style: "pixel"
 order: 99
 draft: false
-updated: "2026-08-27"
+updated: "2026-08-31"
 ---
 
-AI-generated pixel papercraft design from the idea "Standing Handome Chuuya Nakahara", created with koPaper's AI papercraft studio.
+AI-generated pixel papercraft design from the idea "a standing pixel-style red-haired character", created with koPaper's AI papercraft studio.
 
 ## Ways to take this further
 
@@ -18,5 +18,3 @@ AI-generated pixel papercraft design from the idea "Standing Handome Chuuya Naka
 4. **Fantasy glow** — Soft sparkles and gentle light rays for a magical feel.
 
 Open the [AI papercraft generator](/) and describe one of these directions to see where the idea goes.
-
-![AI-generated pixel papercraft of Standing Handome Chuuya Nakahara.](/images/gallery/standing-handome-chuuya-nakahara-papercraft-mt5tcau6pcdn.jpg)

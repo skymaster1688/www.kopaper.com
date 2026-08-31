@@ -1,14 +1,14 @@
 ---
-title: "Vehicle Papercraft Design — AI Generated"
+title: "Classic Muscle Car Papercraft Design — AI Generated"
 description: "AI-generated fantasy vehicle papercraft design. Papercraft-style artwork for inspiration, design reference, and creative exploration."
 emoji: "🚗"
 style: "fantasy"
 order: 99
 draft: false
-updated: "2026-08-27"
+updated: "2026-08-31"
 ---
 
-AI-generated fantasy vehicle papercraft design from the idea "Foldable GTA V Bravado Buffalo papercraft car", created with koPaper's AI papercraft studio.
+AI-generated fantasy papercraft design from the idea "a classic muscle car", created with koPaper's AI papercraft studio.
 
 ## Ways to take this further
 
@@ -19,4 +19,6 @@ AI-generated fantasy vehicle papercraft design from the idea "Foldable GTA V Bra
 
 Open the [AI papercraft generator](/) and describe one of these directions to see where the idea goes.
 
-![AI-generated fantasy papercraft of Foldable GTA V Bravado Buffalo papercraft car.](/images/gallery/foldable-gta-v-bravado-buffalo-papercraft-car-papercraft-mta2otdtoy0v.svg)
+![AI-generated fantasy papercraft of a classic muscle car.](/images/gallery/classic-muscle-car-papercraft-design-mta2otdtoy0v.svg)
+
+*AI-generated fantasy papercraft of a classic muscle car.*

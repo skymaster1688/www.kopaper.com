@@ -1,14 +1,14 @@
 ---
-title: "Animal Papercraft Design — AI Generated"
-description: "AI-generated pixel animal papercraft design. Papercraft-style artwork for inspiration, design reference, and creative exploration."
-emoji: "🐶"
+title: "Pixel Red-Haired Character Papercraft Design — AI Generated"
+description: "AI-generated pixel character papercraft design. Papercraft-style artwork for inspiration, design reference, and creative exploration."
+emoji: "🎨"
 style: "pixel"
 order: 99
 draft: false
-updated: "2026-08-27"
+updated: "2026-08-31"
 ---
 
-AI-generated pixel animal papercraft design from the idea "Pixel Style Papercraft Bungou Stray Dogs] Chuuya Nakahara", created with koPaper's AI papercraft studio.
+AI-generated pixel papercraft design from the idea "a pixel-style red-haired character", created with koPaper's AI papercraft studio.
 
 ## Ways to take this further
 

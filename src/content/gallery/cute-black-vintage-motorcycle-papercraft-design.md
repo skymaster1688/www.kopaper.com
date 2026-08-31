@@ -1,14 +1,14 @@
 ---
-title: "Vehicle Papercraft Design — AI Generated"
+title: "Cute Black Vintage Motorcycle Papercraft Design — AI Generated"
 description: "AI-generated cute vehicle papercraft design. Papercraft-style artwork for inspiration, design reference, and creative exploration."
-emoji: "🌙"
+emoji: "🏍️"
 style: "cute"
 order: 99
 draft: false
-updated: "2026-08-27"
+updated: "2026-08-31"
 ---
 
-AI-generated cute papercraft design from the idea "Royal Enfield hunter 350 moonshot black", created with koPaper's AI papercraft studio.
+AI-generated cute papercraft design from the idea "a cute black vintage motorcycle", created with koPaper's AI papercraft studio.
 
 ## Ways to take this further
 
@@ -19,4 +19,6 @@ AI-generated cute papercraft design from the idea "Royal Enfield hunter 350 moon
 
 Open the [AI papercraft generator](/) and describe one of these directions to see where the idea goes.
 
-![AI-generated cute papercraft of Royal Enfield hunter 350 moonshot black.](/images/gallery/royal-enfield-hunter-350-moonshot-black-papercraft-mt8nk4rd4u23.jpg)
+![AI-generated cute papercraft of a cute black vintage motorcycle.](/images/gallery/cute-black-vintage-motorcycle-papercraft-design-mt8nk4rd4u23.jpg)
+
+*AI-generated cute papercraft of a cute black vintage motorcycle.*
