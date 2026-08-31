@@ -5,6 +5,7 @@
 //   - /api/publish-flush  (bulk-commit all staged drafts via Git Data API => ONE deploy)
 
 import type { APIContext } from 'astro';
+import { pickDirections } from './directions';
 
 const API = 'https://api.github.com';
 
@@ -265,32 +266,20 @@ function creativeTips(subject: Subject): string {
 
 function buildIntro(prompt: string, subject: Subject, style: string, styleWord: string): string {
   const styleLabel = styleWord ? styleWord + ' ' : '';
-  const h = strHash(prompt);
-  const openers = [
-    `This ${styleLabel}${subject.label} papercraft design is based on the idea "${prompt}", generated with koPaper's AI papercraft design studio. It's a papercraft-style artwork created for inspiration, creative exploration, and visual reference.`,
-    `${capitalizeWords(subject.label)} in papercraft style? That's exactly what this ${styleLabel}${subject.label} design is — the idea "${prompt}" turned into a beautiful papercraft-style artwork by koPaper's AI generator. Use it as inspiration, a design reference, or a starting point for your own creative project.`,
-    `Turn the idea "${prompt}" into a visual concept with this ${styleLabel}${subject.label} papercraft design from koPaper's AI generator. The artwork captures the papercraft aesthetic — geometric facets, paper textures, and handcrafted visual style — perfect for creative exploration.`,
-    `Looking for ${styleLabel}${subject.label} papercraft inspiration? This design, based on the idea "${prompt}", was generated with koPaper's AI papercraft design studio. Use it as a visual reference, a creative starting point, or inspiration for your next art or craft project.`,
-    `The idea "${prompt}" becomes a stunning ${styleLabel}${subject.label} papercraft design in this AI-generated artwork from koPaper. The papercraft style — with its geometric structure and paper-like textures — makes it perfect for design inspiration, creative reference, and visual exploration.`,
+  // Lead-in: one short, factual sentence built from the user's own idea (no boilerplate).
+  const lead = `AI-generated ${styleLabel}${subject.label} papercraft design from the idea "${prompt}", created with koPaper's AI papercraft studio.`;
+  // Directions: 3-5 concrete ways to take the same idea further (content, not filler).
+  const dirs = pickDirections(prompt, 4);
+  const lines = [
+    lead,
+    '',
+    '## Ways to take this further',
+    '',
+    ...dirs.map((d, i) => `${i + 1}. **${d.title}** — ${d.hint}`),
+    '',
+    'Open the [AI papercraft generator](/) and describe one of these directions to see where the idea goes.',
   ];
-  const para1 = openers[h % openers.length];
-  const para2 = styleNote(style);
-  const para3 = designUses(subject);
-  const howToUse = [
-    `How to use this design: Save the image for your personal reference, use it as inspiration for a hand-drawn or painted artwork, or describe the same idea to the AI generator in a different style to explore alternative visual directions.`,
-    `How to use this design: Use it as a visual reference for your own creative projects, try recreating it in your preferred medium, or generate variations by changing the style or adding details in the AI generator. Each design is a unique creative concept worth exploring.`,
-    `How to use this design: Save it to your inspiration collection, use it as a reference for proportions and styling, or use the AI generator to create a whole series based on the same idea in different styles. The papercraft aesthetic is versatile and works across many creative contexts.`,
-    `How to use this design: Treat it as a starting point for creative exploration — sketch your own version, use it as color palette inspiration, or generate related designs by describing variations to the AI generator. Every design is a unique creative concept.`,
-  ];
-  const para4 = howToUse[h % howToUse.length];
-  const para5 = subjectTip(subject) + ' ' + creativeTips(subject);
-  const endings = [
-    `Want to explore more? Browse the [gallery](/gallery/) for other AI-generated papercraft designs, or try the [AI papercraft generator](/) with your own idea. You can also check out the [origami tutorials](/origami/) for hands-on folding projects or the [printables](/printables/) for printable craft templates.`,
-    `Inspired by this design? Run the same idea through the [AI papercraft generator](/) in a different style — Cute, Low Poly, Pixel, or Fantasy — to explore alternative visual directions. Browse the [gallery](/gallery/) for more AI-generated designs, or try the [origami tutorials](/origami/) for hands-on paper craft projects.`,
-    `This design is one of many AI-generated papercraft concepts in the [gallery](/gallery/). Use the [AI papercraft generator](/) to create your own unique designs from any idea. For hands-on paper craft projects, browse the [origami tutorials](/origami/) and [printables](/printables/) collections.`,
-  ];
-  const para6 = endings[h % endings.length];
-  return [para1, para2, para3, para4, para5, para6].join('\n\n');
+  return lines.join('\n');
 }
 
 export function buildMeta(promptRaw: string, styleRaw: string): Generated {
