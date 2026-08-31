@@ -50,8 +50,7 @@ const STYLES = [
       <div class="result-grid" id="resultGrid">
         <div class="result-card" data-i="0">
           <div class="thumb"></div>
-          <div class="meta"><span class="title">Your design</span></div>
-          <p class="design-note">AI-generated papercraft design for inspiration and creative exploration.</p>
+          <div class="meta"><span class="title">Your design</span><span class="dir-tag"></span></div>
         </div>
       </div>
     </div>
@@ -234,6 +233,7 @@ const STYLES = [
 
   let currentSVGs = [];
   let currentImages = [];
+  let currentDirs = [];
 
   function setLoading(on) {
     const btn = $('generateBtn');
@@ -244,46 +244,84 @@ const STYLES = [
     if (loading) loading.hidden = !on;
   }
 
-  function renderImages(images, style) {
-    const label = style.charAt(0).toUpperCase() + style.slice(1);
-    const img = images[0];
-    const card = document.querySelector('.result-card[data-i="0"]');
-    if (card && img) {
-      card.querySelector('.thumb').innerHTML =
-        `<img class="gen-img" alt="${label} AI papercraft design" src="data:${img.mediaType};base64,${img.b64}">`;
-      card.querySelector('.title').textContent = `${label} AI design`;
-    }
+  // 3-5 creative directions derived from the user's idea, each a different way to
+  // develop it. Every direction gets its own generated image inserted into the card.
+  const DIRECTION_RULES = [
+    { id: 'scene',  title: 'Cozy scene',     test: /(room|desk|home|kitchen|garden|forest|table|window|coffee)/, build: (q) => q + ', placed in a cozy warm scene with soft lamp light and a few plants' },
+    { id: 'detail', title: 'Extra detail',   test: /(detail|intricate|complex|ornate|texture)/,                      build: (q) => q + ', with intricate paper folds, visible paper texture and delicate cut details' },
+    { id: 'cute',   title: 'Cuter look',     test: /(cute|kawaii|adorable|chubby|baby|tiny)/,                       build: (q) => q + ', with big sparkling eyes, chubby rounded proportions and kawaii charm' },
+    { id: 'glow',   title: 'Fantasy glow',   test: /(magic|fantasy|dream|glow|sparkl|fairy|dragon|wizard)/,        build: (q) => q + ', glowing softly in a magical scene with sparkles and gentle light rays' },
+    { id: 'studio', title: 'Minimal studio', test: /(minimal|clean|modern|simple|elegant)/,                         build: (q) => q + ', minimalist clean studio product shot on a soft cream background' },
+    { id: 'vivid',  title: 'Vivid colors',   test: /(color|colour|vivid|bright|vibrant|rainbow|bold)/,             build: (q) => q + ', with a vivid saturated color palette and playful composition' },
+  ];
+  // Pick 4 directions: keyword matches first, then fill by default order.
+  function pickDirections(q) {
+    const text = ' ' + (q || '').toLowerCase() + ' ';
+    const matched = DIRECTION_RULES.filter((d) => d.test.test(text));
+    const rest = DIRECTION_RULES.filter((d) => !matched.includes(d));
+    return matched.concat(rest).slice(0, 4);
+  }
+  // Clear the grid and render one card per direction with its generated image.
+  function renderCards(cards, style) {
+    const grid = $('resultGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    cards.forEach((c, i) => {
+      const img = c.img;
+      const card = document.createElement('div');
+      card.className = 'result-card';
+      card.dataset.i = String(i);
+      const src = img && img.b64
+        ? 'data:' + img.mediaType + ';base64,' + img.b64
+        : c.src;
+      card.innerHTML =
+        '<div class="thumb">' +
+          (img && img.b64
+            ? '<img class="gen-img" alt="' + c.title + ' papercraft design" src="' + src + '" loading="lazy" decoding="async">'
+            : '<img class="gen-img" alt="' + c.title + ' papercraft design" src="' + src + '" width="400" height="400" loading="lazy" decoding="async">') +
+        '</div>' +
+        '<div class="meta"><span class="title">' + c.title + '</span>' +
+        '<span class="actions"><button type="button" class="mini" data-i="' + i + '">Download</button></span></div>';
+      grid.appendChild(card);
+    });
+    grid.querySelectorAll('.mini').forEach((btn) => {
+      btn.addEventListener('click', () => downloadAsset(parseInt(btn.dataset.i, 10)));
+    });
   }
 
-  // Real AI generation via the serverless endpoint. Falls back to SVG nets on any failure.
+  // Real AI generation: for each direction, call the serverless endpoint with the
+  // direction-specific prompt, then show every returned image on its own card.
   async function generate() {
     const q = promptEl.value.trim() || 'a papercraft';
     const style = getStyle();
     const start = Date.now();
     setLoading(true);
+    const dirs = pickDirections(q);
+    let any = false;
     try {
-      const res = await fetch('/api/generate-image', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt: q, style, n: 1 }),
-      });
-      if (res.ok) {
-        const data = await res.json();
-        if (data && data.ok && data.images && data.images.length) {
-          currentImages = data.images;
-          currentSVGs = [];
-          renderImages(data.images, style);
-          await minDelay(start);
-          setLoading(false);
-          autoPublish();
-          return;
-        }
+      const results = await Promise.all(dirs.map((d) =>
+        fetch('/api/generate-image', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt: d.build(q), style, n: 1 }),
+        })
+          .then((r) => (r.ok ? r.json() : null))
+          .then((j) => (j && j.ok && j.images && j.images[0]) ? { ...d, img: j.images[0] } : null)
+          .catch(() => null),
+      ));
+      const okCards = results.filter(Boolean);
+      if (okCards.length) {
+        any = true;
+        currentImages = okCards.map((c) => c.img);
+        currentDirs = okCards.map((c) => c.title);
+        currentSVGs = [];
+        renderCards(okCards, style);
       }
-    } catch (_) { /* fall through to SVG */ }
-    generateFallback();
+    } catch (_) { /* fall through to fallback images */ }
+    if (!any) generateFallback(dirs);
     await minDelay(start);
     setLoading(false);
-    autoPublish();
+    if (any) autoPublish();
   }
 
   // Keep the "Generating your design" state on screen briefly so it never just flashes.
@@ -292,11 +330,10 @@ const STYLES = [
     return elapsed < ms ? new Promise(r => setTimeout(r, ms - elapsed)) : Promise.resolve();
   }
 
-  // Deterministic fallback: geometric papercraft-style designs by category (not printable nets).
-  // Deterministic fallback: pre-generated AI papercraft designs by category.
-  function generateFallback() {
+  // Fallback when the API is unavailable: reuse the pre-generated AI category
+  // images so the grid still shows 4 direction cards (no network / quota cost).
+  function generateFallback(dirs) {
     const q = promptEl.value.trim();
-    const style = getStyle();
     const matched = pickFromPrompt(q);
     const base = matched || 'object';
     const imgMap = {
@@ -305,16 +342,14 @@ const STYLES = [
       animal: '/assets/ai/cat-animal.jpg',
       fantasy: '/assets/ai/cat-fantasy.jpg',
     };
-    const src = imgMap[base] || imgMap.object;
-    const label = base.charAt(0).toUpperCase() + base.slice(1);
-    const html = '<img class="gen-img" src="' + src + '" alt="' + label + ' papercraft design" width="400" height="400" loading="lazy" decoding="async">';
+    const list = (dirs && dirs.length ? dirs : pickDirections(q || 'a papercraft'));
+    const cards = list.map((d, i) => ({
+      title: d.title,
+      src: imgMap[['object', 'person', 'animal', 'fantasy'][i]] || imgMap.object,
+    }));
     currentSVGs = [];
     currentImages = [];
-    const card = document.querySelector('.result-card[data-i="0"]');
-    if (card) {
-      card.querySelector('.thumb').innerHTML = html;
-      card.querySelector('.title').textContent = style.charAt(0).toUpperCase() + style.slice(1) + ' Papercraft Design';
-    }
+    renderCards(cards, getStyle());
   }
 
   function surprise() {
