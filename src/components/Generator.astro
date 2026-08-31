@@ -293,91 +293,27 @@ const STYLES = [
   }
 
   // Deterministic fallback: geometric papercraft-style designs by category (not printable nets).
+  // Deterministic fallback: pre-generated AI papercraft designs by category.
   function generateFallback() {
     const q = promptEl.value.trim();
     const style = getStyle();
-    const palettes = {
-      cute:    { light: '#F7B95A', mid: '#F5A623', dark: '#E8740C', cream: '#FFF5E6' },
-      lowpoly: { light: '#6BA8E8', mid: '#4A90D9', dark: '#2E6BB5', cream: '#E8F0FA' },
-      pixel:   { light: '#7DD17D', mid: '#5BBF5B', dark: '#3D9E3D', cream: '#F0FAE8' },
-      fantasy: { light: '#B07CC4', mid: '#9B59B6', dark: '#7D3C98', cream: '#F5EAF8' },
-    };
-    const c = palettes[style] || palettes.cute;
     const matched = pickFromPrompt(q);
     const base = matched || 'object';
-    const gid = 'fb' + Date.now();
-    let shape = '';
-    if (base === 'person') {
-      shape = `
-        <circle cx="200" cy="130" r="42" fill="${c.mid}"/>
-        <circle cx="200" cy="130" r="42" fill="${c.cream}" opacity="0.25"/>
-        <circle cx="186" cy="125" r="5" fill="#2A1A0A"/>
-        <circle cx="214" cy="125" r="5" fill="#2A1A0A"/>
-        <path d="M190 145 Q200 153 210 145" stroke="#2A1A0A" stroke-width="3" fill="none" stroke-linecap="round"/>
-        <polygon points="160,175 240,175 260,290 140,290" fill="${c.dark}"/>
-        <polygon points="160,175 240,175 230,220 170,220" fill="${c.light}" opacity="0.6"/>
-        <polygon points="140,185 160,180 150,260 125,255" fill="${c.mid}"/>
-        <polygon points="260,180 240,185 250,255 275,260" fill="${c.mid}"/>
-        <polygon points="155,290 185,290 180,360 150,360" fill="${c.dark}"/>
-        <polygon points="215,290 245,290 250,360 220,360" fill="${c.dark}"/>`;
-    } else if (base === 'animal') {
-      shape = `
-        <polygon points="140,170 115,80 200,165" fill="${c.dark}"/>
-        <polygon points="260,170 285,80 200,165" fill="${c.dark}"/>
-        <polygon points="140,170 260,170 200,330" fill="${c.mid}"/>
-        <polygon points="160,200 240,200 200,310" fill="${c.cream}"/>
-        <circle cx="175" cy="220" r="7" fill="#2A1A0A"/>
-        <circle cx="225" cy="220" r="7" fill="#2A1A0A"/>
-        <polygon points="192,265 208,265 200,280" fill="#2A1A0A"/>
-        <polygon points="155,330 175,330 175,360 155,360" fill="${c.dark}"/>
-        <polygon points="225,330 245,330 245,360 225,360" fill="${c.dark}"/>`;
-    } else if (base === 'fantasy') {
-      shape = `
-        <polygon points="100,340 300,340 300,200 100,200" fill="${c.mid}"/>
-        <polygon points="100,200 300,200 200,140" fill="${c.dark}"/>
-        <polygon points="80,200 120,200 120,120 80,120" fill="${c.dark}"/>
-        <polygon points="80,120 120,120 100,80" fill="${c.light}"/>
-        <polygon points="280,200 320,200 320,120 280,120" fill="${c.dark}"/>
-        <polygon points="280,120 320,120 300,80" fill="${c.light}"/>
-        <polygon points="175,340 225,340 225,260 175,260" fill="${c.cream}"/>
-        <polygon points="175,260 225,260 200,230" fill="${c.dark}"/>
-        <rect x="140" y="230" width="22" height="30" fill="${c.cream}" opacity="0.7"/>
-        <rect x="238" y="230" width="22" height="30" fill="${c.cream}" opacity="0.7"/>
-        <polygon points="200,80 210,50 220,80" fill="${c.light}"/>
-        <circle cx="210" cy="45" r="6" fill="${c.cream}"/>`;
-    } else {
-      shape = `
-        <polygon points="90,280 290,280 280,320 100,320" fill="${c.dark}"/>
-        <polygon points="90,280 290,280 275,240 105,240" fill="${c.mid}"/>
-        <polygon points="105,240 275,240 290,280 90,280" fill="${c.light}" opacity="0.5"/>
-        <line x1="120" y1="255" x2="260" y2="255" stroke="${c.cream}" stroke-width="2" opacity="0.6"/>
-        <line x1="120" y1="268" x2="240" y2="268" stroke="${c.cream}" stroke-width="2" opacity="0.4"/>
-        <polygon points="200,100 230,100 245,240 185,240" fill="${c.mid}"/>
-        <polygon points="200,100 230,100 215,70" fill="${c.dark}"/>
-        <polygon points="185,240 245,240 240,260 190,260" fill="${c.cream}"/>
-        <polygon points="215,70 225,70 220,50" fill="${c.dark}"/>
-        <circle cx="255" cy="180" r="38" fill="${c.light}"/>
-        <path d="M255 142 L255 218" stroke="${c.cream}" stroke-width="2" opacity="0.5"/>
-        <path d="M217 180 L293 180" stroke="${c.cream}" stroke-width="2" opacity="0.5"/>`;
-    }
-    const svgStr = `<svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Papercraft design">
-      <defs>
-        <radialGradient id="${gid}" cx="50%" cy="40%" r="55%">
-          <stop offset="0%" stop-color="${c.mid}" stop-opacity="0.15"/><stop offset="100%" stop-color="${c.mid}" stop-opacity="0"/>
-        </radialGradient>
-      </defs>
-      <circle cx="200" cy="200" r="170" fill="url(#${gid})"/>${shape}
-      <g stroke="#fff" stroke-width="0.8" opacity="0.1">
-        <line x1="0" y1="100" x2="400" y2="100"/><line x1="0" y1="200" x2="400" y2="200"/><line x1="0" y1="300" x2="400" y2="300"/>
-        <line x1="100" y1="0" x2="100" y2="400"/><line x1="200" y1="0" x2="200" y2="400"/><line x1="300" y1="0" x2="300" y2="400"/>
-      </g>
-    </svg>`;
-    currentSVGs = [svgStr];
+    const imgMap = {
+      object: '/assets/ai/cat-object.jpg',
+      person: '/assets/ai/cat-person.jpg',
+      animal: '/assets/ai/cat-animal.jpg',
+      fantasy: '/assets/ai/cat-fantasy.jpg',
+    };
+    const src = imgMap[base] || imgMap.object;
+    const label = base.charAt(0).toUpperCase() + base.slice(1);
+    const html = '<img class="gen-img" src="' + src + '" alt="' + label + ' papercraft design" width="400" height="400" loading="lazy" decoding="async">';
+    currentSVGs = [];
     currentImages = [];
     const card = document.querySelector('.result-card[data-i="0"]');
     if (card) {
-      card.querySelector('.thumb').innerHTML = svgStr;
-      card.querySelector('.title').textContent = `${style.charAt(0).toUpperCase() + style.slice(1)} Papercraft Design`;
+      card.querySelector('.thumb').innerHTML = html;
+      card.querySelector('.title').textContent = style.charAt(0).toUpperCase() + style.slice(1) + ' Papercraft Design';
     }
   }
 
