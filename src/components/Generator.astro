@@ -225,10 +225,10 @@ const STYLES = [
 
   function pickFromPrompt(text) {
     const q = text.toLowerCase();
-    if (/(blocky|voxel|cube|cubic|box|die|dice|gift)/.test(q)) return 'cube';
-    if (/(pyramid|egypt|tent|triangular)/.test(q)) return 'pyramid';
-    if (/(prism|roof|triangle)/.test(q)) return 'prism';
-    if (/(toy|fortune|chatter|cootie|kids|kid|play|panda|animal|robot|castle|dragon)/.test(q)) return 'toy';
+    if (/(person|man|woman|boy|girl|child|kid|people|teacher|doctor|astronaut|soldier|player|character|human|face|head)/.test(q)) return 'person';
+    if (/(animal|fox|cat|dog|bear|panda|rabbit|lion|tiger|elephant|bird|fish|owl|deer|wolf|monkey|frog|turtle|butterfly|dragon|unicorn)/.test(q)) return 'animal';
+    if (/(castle|spaceship|spacecraft|rocket|ship|boat|airplane|plane|ufo|alien|monster|fairy|wizard|magic|fantasy|dream|future|sci-fi|scifi|mecha|giant)/.test(q)) return 'fantasy';
+    if (/(pen|pencil|book|desk|eraser|ruler|notebook|paper|stationery|school|ball|bat|racket|helmet|whistle|basketball|football|soccer|tennis|baseball|sport|cup|bottle|clock|phone|camera|lamp|chair|table|guitar|piano|umbrella|hat|shoe|bag|gift|box|toy|car|truck|bike|bicycle|train|bus)/.test(q)) return 'object';
     return null;
   }
 
@@ -292,7 +292,7 @@ const STYLES = [
     return elapsed < ms ? new Promise(r => setTimeout(r, ms - elapsed)) : Promise.resolve();
   }
 
-  // Deterministic fallback: geometric 3D-view papercraft-style shapes (not printable nets).
+  // Deterministic fallback: geometric papercraft-style designs by category (not printable nets).
   function generateFallback() {
     const q = promptEl.value.trim();
     const style = getStyle();
@@ -304,22 +304,23 @@ const STYLES = [
     };
     const c = palettes[style] || palettes.cute;
     const matched = pickFromPrompt(q);
-    const base = matched || 'cube';
+    const base = matched || 'object';
     const gid = 'fb' + Date.now();
     let shape = '';
-    if (base === 'pyramid') {
+    if (base === 'person') {
       shape = `
-        <polygon points="200,80 100,300 300,300" fill="${c.mid}"/>
-        <polygon points="200,80 300,300 200,320" fill="${c.dark}"/>
-        <polygon points="200,80 100,300 200,320" fill="${c.light}" opacity="0.7"/>
-        <polygon points="100,300 300,300 200,320" fill="${c.dark}" opacity="0.5"/>`;
-    } else if (base === 'prism') {
-      shape = `
-        <polygon points="120,140 200,100 280,140 280,280 200,320 120,280" fill="${c.mid}"/>
-        <polygon points="200,100 280,140 280,280 200,320" fill="${c.dark}"/>
-        <polygon points="120,140 200,100 200,320 120,280" fill="${c.light}" opacity="0.7"/>
-        <polygon points="120,140 200,100 280,140 200,180" fill="${c.cream}" opacity="0.5"/>`;
-    } else if (base === 'toy') {
+        <circle cx="200" cy="130" r="42" fill="${c.mid}"/>
+        <circle cx="200" cy="130" r="42" fill="${c.cream}" opacity="0.25"/>
+        <circle cx="186" cy="125" r="5" fill="#2A1A0A"/>
+        <circle cx="214" cy="125" r="5" fill="#2A1A0A"/>
+        <path d="M190 145 Q200 153 210 145" stroke="#2A1A0A" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <polygon points="160,175 240,175 260,290 140,290" fill="${c.dark}"/>
+        <polygon points="160,175 240,175 230,220 170,220" fill="${c.light}" opacity="0.6"/>
+        <polygon points="140,185 160,180 150,260 125,255" fill="${c.mid}"/>
+        <polygon points="260,180 240,185 250,255 275,260" fill="${c.mid}"/>
+        <polygon points="155,290 185,290 180,360 150,360" fill="${c.dark}"/>
+        <polygon points="215,290 245,290 250,360 220,360" fill="${c.dark}"/>`;
+    } else if (base === 'animal') {
       shape = `
         <polygon points="140,170 115,80 200,165" fill="${c.dark}"/>
         <polygon points="260,170 285,80 200,165" fill="${c.dark}"/>
@@ -330,12 +331,34 @@ const STYLES = [
         <polygon points="192,265 208,265 200,280" fill="#2A1A0A"/>
         <polygon points="155,330 175,330 175,360 155,360" fill="${c.dark}"/>
         <polygon points="225,330 245,330 245,360 225,360" fill="${c.dark}"/>`;
+    } else if (base === 'fantasy') {
+      shape = `
+        <polygon points="100,340 300,340 300,200 100,200" fill="${c.mid}"/>
+        <polygon points="100,200 300,200 200,140" fill="${c.dark}"/>
+        <polygon points="80,200 120,200 120,120 80,120" fill="${c.dark}"/>
+        <polygon points="80,120 120,120 100,80" fill="${c.light}"/>
+        <polygon points="280,200 320,200 320,120 280,120" fill="${c.dark}"/>
+        <polygon points="280,120 320,120 300,80" fill="${c.light}"/>
+        <polygon points="175,340 225,340 225,260 175,260" fill="${c.cream}"/>
+        <polygon points="175,260 225,260 200,230" fill="${c.dark}"/>
+        <rect x="140" y="230" width="22" height="30" fill="${c.cream}" opacity="0.7"/>
+        <rect x="238" y="230" width="22" height="30" fill="${c.cream}" opacity="0.7"/>
+        <polygon points="200,80 210,50 220,80" fill="${c.light}"/>
+        <circle cx="210" cy="45" r="6" fill="${c.cream}"/>`;
     } else {
       shape = `
-        <polygon points="120,160 200,120 280,160 200,200" fill="${c.light}"/>
-        <polygon points="120,160 120,280 200,320 200,200" fill="${c.mid}"/>
-        <polygon points="280,160 280,280 200,320 200,200" fill="${c.dark}"/>
-        <polygon points="120,160 200,200 280,160 200,120" fill="${c.cream}" opacity="0.3"/>`;
+        <polygon points="90,280 290,280 280,320 100,320" fill="${c.dark}"/>
+        <polygon points="90,280 290,280 275,240 105,240" fill="${c.mid}"/>
+        <polygon points="105,240 275,240 290,280 90,280" fill="${c.light}" opacity="0.5"/>
+        <line x1="120" y1="255" x2="260" y2="255" stroke="${c.cream}" stroke-width="2" opacity="0.6"/>
+        <line x1="120" y1="268" x2="240" y2="268" stroke="${c.cream}" stroke-width="2" opacity="0.4"/>
+        <polygon points="200,100 230,100 245,240 185,240" fill="${c.mid}"/>
+        <polygon points="200,100 230,100 215,70" fill="${c.dark}"/>
+        <polygon points="185,240 245,240 240,260 190,260" fill="${c.cream}"/>
+        <polygon points="215,70 225,70 220,50" fill="${c.dark}"/>
+        <circle cx="255" cy="180" r="38" fill="${c.light}"/>
+        <path d="M255 142 L255 218" stroke="${c.cream}" stroke-width="2" opacity="0.5"/>
+        <path d="M217 180 L293 180" stroke="${c.cream}" stroke-width="2" opacity="0.5"/>`;
     }
     const svgStr = `<svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Papercraft design">
       <defs>
