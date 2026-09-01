@@ -285,6 +285,84 @@ function buildIntro(prompt: string, subject: Subject, style: string, styleWord: 
   return lines.join('\n');
 }
 
+// ---- AI-personalized "ways to take it further" (replaces fixed-template directions) ----
+const DIRECTION_LLM_MODEL = '@cf/meta/llama-3.1-8b-instruct';
+
+function withTimeout<T>(p: Promise<T>, ms: number): Promise<T> {
+  return new Promise((resolve, reject) => {
+    const t = setTimeout(() => reject(new Error('timeout')), ms);
+    p.then(
+      (v) => { clearTimeout(t); resolve(v); },
+      (e) => { clearTimeout(t); reject(e); },
+    );
+  });
+}
+
+// Parse the LLM's JSON array of directions, tolerating code fences / stray prose.
+function parseDirectionJson(text: string): { title: string; prompt: string }[] | null {
+  if (!text) return null;
+  let t = text.trim().replace(/^```[a-zA-Z]*\s*/i, '').replace(/\s*```$/m, '');
+  const start = t.indexOf('[');
+  const end = t.lastIndexOf(']');
+  if (start === -1 || end === -1 || end <= start) return null;
+  try {
+    const arr = JSON.parse(t.slice(start, end + 1));
+    if (!Array.isArray(arr)) return null;
+    const out = arr
+      .filter((x: any) => x && typeof x.title === 'string' && typeof x.prompt === 'string' && x.title.trim() && x.prompt.trim())
+      .map((x: any) => ({ title: x.title.trim(), prompt: x.prompt.trim() }));
+    return out.length ? out : null;
+  } catch {
+    return null;
+  }
+}
+
+// Ask the Workers AI text LLM to analyze the user's idea and propose 3-5 concrete
+// directions, each with a ready-to-use generation prompt. Returns null on any
+// failure so callers fall back to the deterministic template (publish never breaks).
+export async function generateAiDirections(prompt: string, ai: any, timeoutMs = 15000): Promise<{ title: string; prompt: string }[] | null> {
+  if (!ai || typeof ai.run !== 'function' || !prompt) return null;
+  const user = `Analyze this papercraft idea: "${prompt}"
+
+Propose 3 to 5 concrete directions to take this idea further. Each direction must be specific to the idea itself (never generic filler such as "add more detail" or "cozy scene"), with a short title and a self-contained image-generation prompt (~15-30 words) that keeps the papercraft style.
+
+Respond ONLY with a JSON array, no markdown, no code fences:
+[{"title":"Direction title","prompt":"Full image prompt for this direction"}]`;
+  try {
+    const result: any = await withTimeout(ai.run(DIRECTION_LLM_MODEL, {
+      messages: [
+        { role: 'system', content: 'You are a papercraft art director. Output JSON only.' },
+        { role: 'user', content: user },
+      ],
+    }), timeoutMs);
+    const text = typeof result?.response === 'string'
+      ? result.response
+      : typeof result?.result?.response === 'string'
+        ? result.result.response
+        : typeof result === 'string'
+          ? result
+          : '';
+    const dirs = parseDirectionJson(text);
+    return dirs && dirs.length >= 3 ? dirs.slice(0, 5) : null;
+  } catch {
+    return null;
+  }
+}
+
+function buildAiIntro(prompt: string, styleWord: string, dirs: { title: string; prompt: string }[]): string {
+  const styleLabel = styleWord ? styleWord + ' ' : '';
+  const lead = `AI-generated ${styleLabel}papercraft design from the idea "${prompt}", created with koPaper's AI papercraft studio.`;
+  return [
+    lead,
+    '',
+    '## Ways to take this further',
+    '',
+    ...dirs.map((d, i) => `${i + 1}. **${d.title}** — ${d.prompt}`),
+    '',
+    'Copy one of the prompts above into the [AI papercraft generator](/) to explore that direction.',
+  ].join('\n');
+}
+
 export function buildMeta(promptRaw: string, styleRaw: string): Generated {
   const style = (styleRaw || 'cute').toString().toLowerCase();
   const prompt = stripArticle(promptRaw.trim());
@@ -464,6 +542,14 @@ export async function planDraft(
   const ext = kind === 'svg' ? 'svg' : mediaExt((draft.mediaType ?? 'image/png').toString());
 
   const meta = buildMeta(promptRaw, (draft.style ?? 'cute').toString());
+  // AI-personalized directions: analyze the idea for 3-5 concrete directions, each
+  // with a ready-to-use generation prompt. Falls back to the deterministic intro
+  // if the LLM is unavailable, times out, or returns unparseable output.
+  let intro = meta.intro;
+  try {
+    const aiDirs = await generateAiDirections(meta.prompt, (env as any)?.AI);
+    if (aiDirs) intro = buildAiIntro(meta.prompt, meta.style, aiDirs);
+  } catch { /* keep deterministic intro */ }
   const fileName = `${meta.slug}-${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}.${ext}`;
   const imgRepoPath = `public/images/gallery/${fileName}`;
   const imgUrl = `/images/gallery/${fileName}`;
@@ -499,7 +585,7 @@ export async function planDraft(
         `order: 99`,
         `draft: false`,
       ].filter(Boolean).join('\n');
-      mdContent = `---\n${fm}\n---\n\n${meta.intro}${imageLine(imgUrl, meta.caption)}\n`;
+      mdContent = `---\n${fm}\n---\n\n${intro}${imageLine(imgUrl, meta.caption)}\n`;
     }
     state.mdAccum.set(meta.slug, mdContent);
   }

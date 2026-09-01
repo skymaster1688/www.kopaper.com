@@ -58,7 +58,7 @@ async function flush(context: APIContext) {
     try { draft = JSON.parse(raw); } catch { await safeDelete(kv, k.name); failed.push(`${k.name}: bad json`); continue; }
     let res;
     try {
-      res = await planDraft(gh, draft, state);
+      res = await planDraft({ ...gh, AI: (env as any)?.AI }, draft, state);
     } catch (e) {
       failed.push(`${k.name}: planDraft crashed: ${String((e as Error)?.message ?? e)}`);
       continue;
