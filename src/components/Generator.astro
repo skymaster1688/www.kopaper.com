@@ -14,7 +14,7 @@ const STYLES = [
 ---
 
 <!-- Generator app — reusable on the homepage and on /tools/<style>/ pages. -->
-<section class="gen-app reveal" aria-label="Papercraft generator" data-default-style={defaultStyle}>
+<section class="gen-app reveal" aria-label="Papercraft generator" data-default-style={defaultStyle} data-default-prompt={defaultPrompt}>
   <aside class="gen-side">
     <div class="field">
       <label for="prompt">Describe your idea</label>
@@ -94,8 +94,15 @@ const STYLES = [
   .idea-chip:hover { border-color: var(--warm); color: var(--warm); }
 </style>
 
-<script define:vars={{ defaultStyle, defaultPrompt }}>
-  import { pickDirections } from '../../lib/directions';
+<script>
+  import { pickDirections } from '../lib/directions';
+  // Read component defaults from data attributes instead of define:vars.
+  // define:vars forces inline scripts, and an inline <script> cannot use `import`
+  // (browser throws "Cannot use import statement outside a module"), which killed
+  // every button handler on this page.
+  const genApp = document.querySelector('.gen-app');
+  const defaultStyle = (genApp && genApp.dataset.defaultStyle) || 'cute';
+  const defaultPrompt = (genApp && genApp.dataset.defaultPrompt) || '';
   // Monochrome line-art output: white paper, ink lines (printable + on-brand).
   const STYLE_PALETTES = {
     cute:    ['#FFFFFF', '#0A0A0B'],
