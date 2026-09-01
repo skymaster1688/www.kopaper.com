@@ -6,6 +6,7 @@ style: "pixel"
 order: 99
 draft: false
 updated: "2026-08-31"
+noindex: true
 ---
 
 AI-generated pixel papercraft design from the idea "a standing pixel-style red-haired character", created with koPaper's AI papercraft studio.

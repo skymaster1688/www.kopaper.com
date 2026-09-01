@@ -6,6 +6,7 @@ style: "fantasy"
 order: 99
 draft: false
 updated: "2026-08-31"
+noindex: true
 ---
 
 AI-generated fantasy papercraft design from the idea "a classic muscle car", created with koPaper's AI papercraft studio.

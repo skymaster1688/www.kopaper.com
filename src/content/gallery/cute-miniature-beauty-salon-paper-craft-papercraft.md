@@ -1,6 +1,6 @@
 ---
-title: "Building Papercraft Design — AI Generated"
-description: "AI-generated cute building papercraft design. Papercraft-style artwork for inspiration, design reference, and creative exploration."
+title: "Miniature Beauty Salon Papercraft — Free Cute Design"
+description: "Free cute papercraft of a miniature beauty salon storefront. Try an open sign, cozy interior, styling chair, night glow or flower shop crossover — copy any prompt."
 emoji: "🎨"
 style: "cute"
 order: 99
@@ -8,15 +8,12 @@ draft: false
 updated: "2026-08-28"
 ---
 
-AI-generated cute papercraft design from the idea "Cute miniature beauty salon paper craft", created with koPaper's AI papercraft studio.
+A cute miniature beauty salon — a tiny storefront with a pink awning, big friendly windows and everything scaled down to kawaii size. Made with koPaper's free AI papercraft generator.
 
 ## Ways to take this further
 
-1. **Cuter look** — Big sparkling eyes and chubby, rounded proportions.
-2. **Cozy scene** — Warm lamp light, plants and a cozy corner that tells a story.
-3. **Extra detail** — Intricate folds, visible paper texture and delicate cut lines.
-4. **Fantasy glow** — Soft sparkles and gentle light rays for a magical feel.
+Hi! This little salon is too cute. If you want it open for business, describe "a miniature beauty salon storefront with a glowing OPEN sign and warm light spilling out". For a peek inside, try "the same tiny salon cut open to reveal a styling chair, mirror and shelves of bottles". Want a centerpiece? Go with "a tiny styling chair in the middle of the miniature salon with scissors and a comb on a paper counter". A night glow — "the miniature beauty salon lit up at night with a crescent moon above and soft window light". And for a crossover, "a miniature beauty salon next to a tiny flower shop with a shared awning and a paper bicycle parked outside".
 
-Open the [AI papercraft generator](/) and describe one of these directions to see where the idea goes.
+Open the AI papercraft generator and paste any of these to see where the idea goes.
 
 ![AI-generated papercraft of Cute miniature beauty salon paper craft.](/images/gallery/cute-miniature-beauty-salon-paper-craft-papercraft-mtcyvps8lqe2.jpg)

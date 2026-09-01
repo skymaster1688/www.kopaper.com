@@ -6,7 +6,7 @@
 
 import type { APIContext } from 'astro';
 import { pickDirections } from './directions';
-import { generateAiDirections } from './directions-ai';
+import { generateArticleContent } from './directions-ai';
 
 const API = 'https://api.github.com';
 
@@ -286,20 +286,6 @@ function buildIntro(prompt: string, subject: Subject, style: string, styleWord: 
   return lines.join('\n');
 }
 
-function buildAiIntro(prompt: string, styleWord: string, dirs: { title: string; prompt: string }[]): string {
-  const styleLabel = styleWord ? styleWord + ' ' : '';
-  const lead = `AI-generated ${styleLabel}papercraft design from the idea "${prompt}", created with koPaper's AI papercraft studio.`;
-  return [
-    lead,
-    '',
-    '## Ways to take this further',
-    '',
-    ...dirs.map((d, i) => `${i + 1}. **${d.title}** — ${d.prompt}`),
-    '',
-    'Copy one of the prompts above into the [AI papercraft generator](/) to explore that direction.',
-  ].join('\n');
-}
-
 export function buildMeta(promptRaw: string, styleRaw: string): Generated {
   const style = (styleRaw || 'cute').toString().toLowerCase();
   const prompt = stripArticle(promptRaw.trim());
@@ -483,10 +469,16 @@ export async function planDraft(
   // with a ready-to-use generation prompt. Falls back to the deterministic intro
   // if the LLM is unavailable, times out, or returns unparseable output.
   let intro = meta.intro;
+  let description = meta.description;
+  let title = meta.title;
   try {
-    const aiDirs = await generateAiDirections(meta.prompt, (env as any)?.AI);
-    if (aiDirs) intro = buildAiIntro(meta.prompt, meta.style, aiDirs);
-  } catch { /* keep deterministic intro */ }
+    const ai = await generateArticleContent(meta.prompt, (env as any)?.AI);
+    if (ai) {
+      intro = ai.intro;
+      if (ai.description) description = ai.description;
+      if (ai.title) title = ai.title;
+    }
+  } catch { /* keep deterministic fallback */ }
   const fileName = `${meta.slug}-${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}.${ext}`;
   const imgRepoPath = `public/images/gallery/${fileName}`;
   const imgUrl = `/images/gallery/${fileName}`;
@@ -514,8 +506,8 @@ export async function planDraft(
     } else {
       const today = new Date().toISOString().slice(0, 10);
       const fm = [
-        `title: ${yamlStr(meta.title)}`,
-        `description: ${yamlStr(meta.description)}`,
+        `title: ${yamlStr(title)}`,
+        `description: ${yamlStr(description)}`,
         `emoji: ${yamlStr(meta.emoji)}`,
         meta.style ? `style: ${yamlStr(meta.style)}` : null,
         `updated: "${today}"`,

@@ -1,6 +1,6 @@
 ---
-title: "Robotic Triceratops Head Papercraft Design — AI Generated"
-description: "AI-generated lowpoly character papercraft design. Papercraft-style artwork for inspiration, design reference, and creative exploration."
+title: "Robotic Triceratops Head Papercraft — Free Low Poly"
+description: "Free low-poly papercraft of a robotic triceratops head with mechanical facets. Try red alert, museum, neon, desk buddy or desert scan — copy any prompt."
 emoji: "🤖"
 style: "lowpoly"
 order: 99
@@ -8,16 +8,13 @@ draft: false
 updated: "2026-08-31"
 ---
 
-AI-generated lowpoly papercraft design from the idea "a robotic triceratops head", created with koPaper's AI papercraft studio.
+A robotic triceratops head in low-poly style — mechanical frill, angular plates and glowing seams that give it a living-machine feel. Made with koPaper's free AI papercraft generator.
 
 ## Ways to take this further
 
-1. **Cozy scene** — Warm lamp light, plants and a cozy corner that tells a story.
-2. **Extra detail** — Intricate folds, visible paper texture and delicate cut lines.
-3. **Cuter look** — Big sparkling eyes and chubby, rounded proportions.
-4. **Fantasy glow** — Soft sparkles and gentle light rays for a magical feel.
+Hi! This robot dino head is awesome. If you want it on alert, describe "a low-poly robotic triceratops head with red glowing eyes and raised frill spikes". For a museum mode, try "the robotic triceratops head on a display stand with soft lighting and a small plaque". Feeling cyberpunk? Go with "a low-poly robotic triceratops head with neon purple and teal accents and holographic particles". A desk buddy — "a miniature robotic triceratops head on a desk with a tiny power light and cable". And for a desert scan, "a robotic triceratops head scanning the dunes with a beam of light and dust particles".
 
-Open the [AI papercraft generator](/) and describe one of these directions to see where the idea goes.
+Open the AI papercraft generator and paste any of these to see where the idea goes.
 
 ![AI-generated lowpoly papercraft of a robotic triceratops head.](/images/gallery/robotic-triceratops-head-papercraft-design-mterget1hvjk.jpg)
 

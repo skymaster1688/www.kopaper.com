@@ -6,6 +6,7 @@ style: "cute"
 order: 99
 draft: false
 updated: "2026-08-29"
+noindex: true
 ---
 
 AI-generated cute papercraft design from the idea "برای چرخه آب نیاز به یک کاردستی مناسب برای فعالیت های دست", created with koPaper's AI papercraft studio.

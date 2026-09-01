@@ -1,6 +1,6 @@
 ---
-title: "Classic Basketball Papercraft Design — AI Generated"
-description: "AI-generated pixel basketball papercraft design. Papercraft-style artwork for inspiration, design reference, and creative exploration."
+title: "Classic Basketball Papercraft — Free Pixel Design"
+description: "Free pixel papercraft of a classic basketball with retro edges. Try a bounce pose, court scene, tiny trophy, night game or mascot — copy any prompt."
 emoji: "🏀"
 style: "pixel"
 order: 99
@@ -8,16 +8,13 @@ draft: false
 updated: "2026-08-31"
 ---
 
-AI-generated pixel papercraft design from the idea "a classic basketball", created with koPaper's AI papercraft studio.
+A classic basketball in the pixel style — clean 8-bit edges, that familiar orange with the black seams, retro all the way. Made with koPaper's free AI papercraft generator.
 
 ## Ways to take this further
 
-1. **Cozy scene** — Warm lamp light, plants and a cozy corner that tells a story.
-2. **Extra detail** — Intricate folds, visible paper texture and delicate cut lines.
-3. **Cuter look** — Big sparkling eyes and chubby, rounded proportions.
-4. **Fantasy glow** — Soft sparkles and gentle light rays for a magical feel.
+Hi! This ball has game. If you want it mid-action, describe "a pixel papercraft basketball frozen mid-bounce on a glossy court floor with motion lines". For a full court scene, try "a pixel basketball resting on a retro court with a hoop and a scoreboard in the background". Feeling tiny and cute? Go with "a miniature pixel basketball sitting on a giant desk next to a tiny paper trophy". A night game vibe — "a pixel basketball glowing under stadium lights with confetti falling". And for a mascot moment, "a pixel basketball with a happy face and little arms, cheering like a team mascot".
 
-Open the [AI papercraft generator](/) and describe one of these directions to see where the idea goes.
+Open the AI papercraft generator and paste any of these to see where the idea goes.
 
 ![AI-generated pixel papercraft of a classic basketball.](/images/gallery/classic-basketball-papercraft-design-mtappow7kds6.jpg)
 

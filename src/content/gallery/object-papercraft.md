@@ -6,6 +6,7 @@ style: "lowpoly"
 order: 99
 draft: false
 updated: "2026-08-30"
+noindex: true
 ---
 
 AI-generated lowpoly object papercraft design from the idea "Create a functional printable paper template for a collapsible kinetic twisted cube", created with koPaper's AI papercraft studio.
