@@ -34,11 +34,6 @@ const STYLES = [
         ))}
       </div>
     </div>
-    <div class="field">
-      <label>Reference image (planned)</label>
-      <label class="upload-btn" for="upload">Upload image</label>
-      <input type="file" id="upload" accept="image/*" hidden />
-    </div>
     <div class="gen-actions">
       <button class="btn btn-ghost" id="surprise" type="button">Surprise me</button>
       <button class="btn btn-primary btn-large" id="generateBtn" type="button">Generate Design</button>
@@ -48,9 +43,16 @@ const STYLES = [
   <div class="gen-stage">
     <div class="stage-frame">
       <div class="result-grid" id="resultGrid">
-        <div class="result-card" data-i="0">
-          <div class="thumb"></div>
-          <div class="meta"><span class="title">Your design</span><span class="dir-tag"></span></div>
+        <div class="gen-empty" data-empty>
+          <img class="gen-empty-img" src="/assets/ai/gen-fox.jpg" alt="Example papercraft fox design" width="360" height="360" loading="eager" decoding="async" />
+          <h3 class="gen-empty-title">Turn any idea into papercraft</h3>
+          <p class="gen-empty-sub">Type what you imagine, pick a style, and hit <em>Generate Design</em>.</p>
+          <div class="gen-ideas">
+            <button type="button" class="idea-chip" data-idea="a cute panda">a cute panda</button>
+            <button type="button" class="idea-chip" data-idea="a low poly fox">a low poly fox</button>
+            <button type="button" class="idea-chip" data-idea="a fantasy castle">a fantasy castle</button>
+            <button type="button" class="idea-chip" data-idea="a pixel heart">a pixel heart</button>
+          </div>
         </div>
       </div>
     </div>
@@ -80,6 +82,16 @@ const STYLES = [
   .gen-loading .spinner { width: 36px; height: 36px; border: 3px solid var(--border); border-top-color: var(--warm); border-radius: 50%; animation: kp-spin 0.9s linear infinite; }
   @keyframes kp-spin { to { transform: rotate(360deg); } }
   .design-note { margin: 8px 0 0; font-size: .75rem; color: var(--text-muted); text-align: center; font-style: italic; }
+
+  /* Empty / first-paint state: friendly guide instead of a blank canvas */
+  .gen-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; text-align: center; padding: 20px; max-width: 460px; margin: 0 auto; }
+  .gen-empty-img { width: min(64%, 320px); border-radius: 18px; border: 1px solid var(--border); box-shadow: 0 12px 32px rgba(15,23,42,.12); background: #fff; }
+  .gen-empty-title { margin: 6px 0 0; font-size: 1.25rem; font-weight: 600; font-family: var(--font-display); }
+  .gen-empty-sub { margin: 0; font-size: .9rem; color: var(--text-muted); line-height: 1.6; }
+  .gen-empty-sub em { font-style: normal; color: var(--warm); font-weight: 600; }
+  .gen-ideas { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 8px; }
+  .idea-chip { padding: 7px 14px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface); color: var(--text-muted); font-size: .82rem; font-family: var(--font-mono); cursor: pointer; transition: border-color .15s, color .15s; }
+  .idea-chip:hover { border-color: var(--warm); color: var(--warm); }
 </style>
 
 <script define:vars={{ defaultStyle, defaultPrompt }}>
@@ -352,8 +364,14 @@ const STYLES = [
   });
   promptEl.addEventListener('input', updatePreview);
   promptEl.addEventListener('keydown', (e) => { if (e.key === 'Enter') generate(); });
-  const upload = $('upload');
-  if (upload) upload.addEventListener('change', () => { alert('Image to papercraft is planned. For now, describe your idea in the text box and generate.'); upload.value = ''; });
+  // Quick-idea chips on the empty state: fill the prompt and generate right away.
+  document.querySelectorAll('.idea-chip').forEach((c) => {
+    c.addEventListener('click', () => {
+      promptEl.value = c.dataset.idea || '';
+      updatePreview();
+      generate();
+    });
+  });
 
   // Prefill from URL (?q=...&style=...) or component default.
   const params = new URLSearchParams(window.location.search);
@@ -363,8 +381,7 @@ const STYLES = [
   else if (defaultStyle && STYLE_PALETTES[defaultStyle]) setStyle(defaultStyle);
   updatePreview();
 
-  // First paint: free printable nets (no API cost). If arriving with a pre-filled idea,
-  // run real generation right away.
+  // If arriving with a pre-filled idea via URL (?q=...), run generation right away.
+  // Otherwise keep the friendly empty-state guide until the user hits Generate.
   if (params.get('q')) generate();
-  else generateFallback();
 </script>
