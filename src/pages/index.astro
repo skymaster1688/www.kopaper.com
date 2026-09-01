@@ -11,9 +11,6 @@ const tutorials = (await getCollection('tutorials', ({ data }) => !data.draft &&
 const featured = tutorials.filter(t => t.data.featured).slice(0, 4);
 const beginners = tutorials.filter(t => t.data.difficulty === 'Easy').slice(0, 3);
 
-const letterPapers = (await getCollection('letterPaper', ({ data }) => !data.draft))
-  .sort((a, b) => a.data.order - b.data.order).slice(0, 3);
-
 const learnArticles = (await getCollection('learn', ({ data }) => !data.draft))
   .sort((a, b) => a.data.order - b.data.order);
 
@@ -24,10 +21,11 @@ const galleryItems = (await getCollection('gallery', ({ data }) => !data.draft &
 
 const faqs = [
   { q: 'What is koPaper?', a: 'koPaper is an AI papercraft design studio. Describe an idea and it generates beautiful papercraft-style designs for inspiration, creative exploration, and visual reference.' },
-  { q: 'Do I need special paper?', a: 'No special equipment needed. The AI generator creates papercraft-style designs you can view, save, and use as creative reference. For hands-on paper craft projects, browse our origami tutorials.' },
-  { q: 'Are these suitable for kids?', a: 'Yes. Easy tutorials are perfect for ages 6 plus with minimal adult help, and the generator needs no design skills at all.' },
-  { q: 'Can I download printable templates?', a: 'Yes. Use the AI generator to create a custom papercraft design from any idea. Choose from four visual styles — Cute, Low Poly, Pixel, and Fantasy — and generate unique designs for inspiration and creative exploration.' },
-  { q: 'How do I print the letter paper designs?', a: 'Open any letter paper design page, then use your browser print function (Ctrl+P or Cmd+P). Set margins to None and choose Letter or A4 for best results.' },
+  { q: 'Is the AI generator free?', a: 'Yes — 100% free, no sign-up, no account needed. Generate as many designs as you like, in any of the four styles.' },
+  { q: 'What styles can I choose?', a: 'Four visual styles: Cute, Low Poly, Pixel, and Fantasy. The same idea renders differently in each, so you can match the look to your project.' },
+  { q: 'Can I save or reuse the designs?', a: 'Yes. Save your favorite designs and use them as creative reference, inspiration, or a starting point for your own paper project.' },
+  { q: 'Do I need design skills or special paper?', a: 'No. The generator needs no design skills and no special equipment — it creates papercraft-style artwork you can view and save on screen. For hands-on folding, browse our origami tutorials.' },
+  { q: 'Are these suitable for kids?', a: 'Yes. The generator needs no design skills at all, and easy tutorials are perfect for ages 6 plus with minimal adult help.' },
 ];
 
 const faqSchema = {
@@ -192,24 +190,24 @@ const faqSchema = {
       <div class="sec-head">
         <span class="label">Explore</span>
         <h2 class="display">Start from a crafted starting point</h2>
-        <p>Prefer a manual project? Browse our guided tutorials and printable templates.</p>
+        <p>Pick a style, browse real designs, or follow a guided paper craft.</p>
       </div>
       <div class="explore">
+        <a href="/tools/" class="ecard">
+          <div class="top"><span class="fig">FIG. A</span><span class="fig">STYLE</span></div>
+          <div class="body"><h3>Style Generators</h3><p>Four visual styles — Cute, Low Poly, Pixel &amp; Fantasy. Pick one and generate.</p><span class="go">Browse <span class="ar"></span></span></div>
+        </a>
+        <a href="/gallery/" class="ecard">
+          <div class="top"><span class="fig">FIG. B</span><span class="fig">GALLERY</span></div>
+          <div class="body"><h3>Gallery</h3><p>Real AI-generated papercraft designs from real ideas.</p><span class="go">Explore <span class="ar"></span></span></div>
+        </a>
         <a href="/origami/" class="ecard">
-          <div class="top"><span class="fig">FIG. A</span><span class="fig">MAKE</span></div>
+          <div class="top"><span class="fig">FIG. C</span><span class="fig">MAKE</span></div>
           <div class="body"><h3>Tutorials</h3><p>Step-by-step origami and paper crafts for all ages.</p><span class="go">Browse <span class="ar"></span></span></div>
-        </a>
-        <a href="/templates/" class="ecard">
-          <div class="top"><span class="fig">FIG. B</span><span class="fig">PRINT</span></div>
-          <div class="body"><h3>Templates</h3><p>Printable paper craft templates and origami-style sheets.</p><span class="go">Browse <span class="ar"></span></span></div>
-        </a>
-        <a href="/letter-paper/" class="ecard">
-          <div class="top"><span class="fig">FIG. C</span><span class="fig">WRITE</span></div>
-          <div class="body"><h3>Letter Paper</h3><p>Free printable letter paper designs for notes.</p><span class="go">Browse <span class="ar"></span></span></div>
         </a>
         <a href="/learn/" class="ecard">
           <div class="top"><span class="fig">FIG. D</span><span class="fig">LEARN</span></div>
-          <div class="body"><h3>Learn</h3><p>Paper basics &amp; guides — choose the right sheet for every fold and cut.</p><span class="go">Browse <span class="ar"></span></span></div>
+          <div class="body"><h3>Learn</h3><p>Paper basics &amp; guides — how to choose the right sheet for every project.</p><span class="go">Browse <span class="ar"></span></span></div>
         </a>
       </div>
     </section>
@@ -259,28 +257,6 @@ const faqSchema = {
         </div>
         <div class="reveal" style="text-align:center; margin-top:28px">
           <a href="/origami/" class="btn btn-outline">View all crafts</a>
-        </div>
-      </section>
-    )}
-
-    <!-- 6. Letter paper gallery (SEO entry) -->
-    {letterPapers.length > 0 && (
-      <section class="sec">
-        <div class="sec-head">
-          <span class="label">Stationery</span>
-          <h2 class="display">Beautiful Letter Paper Designs</h2>
-          <p>Free printable letter paper for every occasion.</p>
-        </div>
-        <div class="grid-4">
-          {letterPapers.map(p => (
-            <a href={`/letter-paper/${p.slug}/`} class="craft-card card reveal">
-              <div class="card-emoji">{p.data.emoji}</div>
-              <div class="card-body">
-                <h3>{p.data.title}</h3>
-                <p>{p.data.description}</p>
-              </div>
-            </a>
-          ))}
         </div>
       </section>
     )}
