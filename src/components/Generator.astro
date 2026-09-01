@@ -56,7 +56,7 @@ const STYLES = [
     </div>
     <div class="gen-loading" id="genLoading" hidden>
       <div class="spinner" aria-hidden="true"></div>
-      <p>Generating your design…</p>
+      <p id="genStatus">Planning content elements…</p>
     </div>
   </div>
 </section>
@@ -156,6 +156,31 @@ const STYLES = [
   let currentImages = [];
   let currentDirs = [];
 
+  const GEN_STATUS = [
+    'Planning content elements…',
+    'Generating style…',
+    'Refining image details…',
+    'Rendering final look…',
+    'Finalizing details…',
+    'Finalizing style…',
+  ];
+  let statusTimer = null;
+  let statusIdx = 0;
+  function startStatus() {
+    const el = $('genStatus');
+    if (!el) return;
+    statusIdx = 0;
+    el.textContent = GEN_STATUS[0];
+    if (statusTimer) clearInterval(statusTimer);
+    statusTimer = setInterval(() => {
+      statusIdx = Math.min(statusIdx + 1, GEN_STATUS.length - 1);
+      el.textContent = GEN_STATUS[statusIdx];
+    }, 2500);
+  }
+  function stopStatus() {
+    if (statusTimer) { clearInterval(statusTimer); statusTimer = null; }
+  }
+
   function setLoading(on) {
     const btn = $('generateBtn');
     if (btn) { btn.disabled = on; btn.textContent = on ? 'Generating…' : 'Generate Design'; }
@@ -163,6 +188,7 @@ const STYLES = [
     if (grid) grid.classList.toggle('loading', on);
     const loading = $('genLoading');
     if (loading) loading.hidden = !on;
+    if (on) startStatus(); else stopStatus();
   }
 
   // Render the grid: one main card with the generated image, plus a directions
@@ -188,7 +214,7 @@ const STYLES = [
     panel.innerHTML =
       '<h3 class="dir-heading">Ways to take it further</h3>' +
       '<ul class="dir-list">' +
-      dirs.map((d) => '<li class="dir-item"><span class="dir-tag">' + d.title + '</span><p>' + d.hint + '</p></li>').join('') +
+      dirs.map((d) => '<li class="dir-item"><span class="dir-tag">' + d.title + '</span><p>' + (d.prompt || d.hint) + '</p></li>').join('') +
       '</ul>';
     grid.appendChild(panel);
   }
@@ -211,10 +237,11 @@ const STYLES = [
       if (res.ok) {
         const data = await res.json();
         if (data && data.ok && data.images && data.images.length) {
+          const aiDirs = (data.directions && data.directions.length) ? data.directions : dirs;
           currentImages = data.images;
           currentSVGs = [];
-          currentDirs = dirs.map((d) => d.title);
-          renderResult(data.images[0], dirs);
+          currentDirs = aiDirs.map((d) => d.title);
+          renderResult(data.images[0], aiDirs);
           ok = true;
         }
       }

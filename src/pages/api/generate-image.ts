@@ -21,6 +21,7 @@ export const prerender = false;
 
 import type { APIContext } from 'astro';
 import { getRuntimeEnv, resolveCorsOrigin, corsPreflightHeaders, clientIp, checkRateLimit } from '../../lib/gallery';
+import { generateAiDirections } from '../../lib/directions-ai';
 
 const DEFAULT_PROVIDER = 'workersai';
 const DEFAULT_N = 4;
@@ -266,6 +267,14 @@ export async function POST(context: APIContext) {
   // UX feels real. This is placed BEFORE the first ai.run() call on purpose: if
   // the client aborts during the wait (tab closed / navigated away), we exit
   // early and never spend the inference. A sleep does NOT consume any AI quota.
+    // Artificial backend latency: hold the response 10-15s so the "generating"
+  // UX feels real. This is placed BEFORE the first ai.run() call on purpose: if
+  // the client aborts during the wait (tab closed / navigated away), we exit
+  // early and never spend the inference. A sleep does NOT consume any AI quota.
+  // The AI "ways to take it further" directions are fired in parallel with this
+  // wait so they add no wall-clock time on top of the hold.
+  const directionsPromise = generateAiDirections(idea, env.AI, 12000)
+    .catch(() => null as { title: string; prompt: string }[] | null);
   await sleep(10_000 + Math.floor(Math.random() * 5_000));
 
   // Provider chain: try the preferred provider first; on failure (e.g. the free
@@ -290,7 +299,8 @@ export async function POST(context: APIContext) {
           : (POLLINATIONS_STYLE_MODELS[styleKey] ?? POLLINATIONS_DEFAULT_MODEL);
         result = await generatePollinations(prompt, model, n, controller.signal);
       }
-      return json({ ok: true, provider: p, model: result.model, images: result.images }, 200, origin);
+            const directions = await directionsPromise;
+      return json({ ok: true, provider: p, model: result.model, images: result.images, directions: directions || undefined }, 200, origin);
     } catch (e) {
       const err = e as Error;
       if (err?.name === 'AbortError') {
