@@ -1,6 +1,6 @@
 ---
-title: "Low Poly Fox Papercraft Design — AI Generated"
-description: "AI-generated cute animal papercraft design of \"low poly fox\". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
+title: "Low Poly Fox Papercraft — Free AI Paper Art"
+description: "A geometric low-poly fox with sharp folded facets and a bright orange coat. Try an aurora fox, arctic fox, golden fox or tiny fox cub — copy any prompt."
 emoji: "🦊"
 style: "cute"
 updated: "2026-09-02"
@@ -8,16 +8,13 @@ order: 99
 draft: false
 ---
 
-AI-generated cute animal papercraft design from the idea "low poly fox", created with koPaper's AI papercraft studio.
+A low-poly fox built from sharp folded facets — bright orange paper planes catching the light, a white chest and a watchful amber gaze. The geometry makes it feel like it stepped out of a game. Made with koPaper's free AI papercraft generator.
 
 ## Ways to take this further
 
-1. **Cozy scene** — Warm lamp light, plants and a cozy corner that tells a story.
-2. **Extra detail** — Intricate folds, visible paper texture and delicate cut lines.
-3. **Cuter look** — Big sparkling eyes and chubby, rounded proportions.
-4. **Fantasy glow** — Soft sparkles and gentle light rays for a magical feel.
+This fox looks great in different worlds. If you want it under the northern lights, describe "a low-poly fox standing on a snowy paper ridge under swirling green aurora, stars in the sky". For a colder version, try "an arctic white fox with icy blue facets curled in a paper snow cave". Want something richer? "a golden fox with warm amber paper planes perched on a stack of autumn leaves" is a lovely take. If you'd rather keep it tiny and playful, "a baby fox cub chasing a paper butterfly across a mossy log" is adorable. And for a mystical mood, "a forest fox with glowing runes along its paper body, standing in a moonlit glade" adds real magic.
 
-Open the [AI papercraft generator](/) and describe one of these directions to see where the idea goes.
+Open the AI papercraft generator and paste any of these to see where the idea goes.
 
 ![AI-generated cute papercraft of low poly fox.](/images/gallery/low-poly-fox-papercraft-design-ai-generated-mtjdm8d1ous3.jpg)
 
