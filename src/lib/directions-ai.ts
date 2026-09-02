@@ -58,13 +58,23 @@ async function runLlm(ai: any, messages: { role: string; content: string }[], ti
   for (const model of [DIRECTION_LLM_MODEL, DIRECTION_LLM_FALLBACK]) {
     try {
       const result: any = await withTimeout(ai.run(model, { messages }), timeoutMs);
+      // Workers AI returns different shapes depending on the model/compat mode:
+      //  - { response: "..." }              (classic Workers AI text models)
+      //  - { choices:[{message:{content}}] } (OpenAI-compatible chat format,
+      //    currently returned by the fp8-fast model)
+      //  - { choices:[{text:"..."}] }       (some completion-style models)
+      //  - plain string
       const text = typeof result?.response === 'string'
         ? result.response
         : typeof result?.result?.response === 'string'
           ? result.result.response
-          : typeof result === 'string'
-            ? result
-            : '';
+          : typeof result?.choices?.[0]?.message?.content === 'string'
+            ? result.choices[0].message.content
+            : typeof result?.choices?.[0]?.text === 'string'
+              ? result.choices[0].text
+              : typeof result === 'string'
+                ? result
+                : '';
       if (text && text.trim()) return text;
     } catch { /* try next model */ }
   }
