@@ -271,17 +271,20 @@ function buildIntro(prompt: string, subject: Subject, style: string, styleWord: 
   // Avoid a redundant "papercraft papercraft" when the subject label is the default.
   const subjectLabel = subject.label === 'papercraft' ? '' : subject.label + ' ';
   // Lead-in: one short, factual sentence built from the user's own idea (no boilerplate).
-  const lead = `AI-generated ${styleLabel}${subjectLabel}papercraft design from the idea "${prompt}", created with koPaper's AI papercraft studio.`;
-  // Directions: 3-5 concrete ways to take the same idea further (content, not filler).
+  const lead = 'A ' + styleLabel + subjectLabel + 'papercraft design of "' + prompt + '" — clean paper folds, crisp geometry and a soft light background, generated in seconds with koPaper\'s AI papercraft studio.';
+  // Directions: 3-5 concrete ways to take the same idea further, woven into natural
+  // sentences (fallback only; the AI path writes fully original copy).
   const dirs = pickDirections(prompt, 4);
   const lines = [
     lead,
     '',
     '## Ways to take this further',
     '',
-    ...dirs.map((d, i) => `${i + 1}. **${d.title}** — ${d.hint}`),
+    'It is easy to keep exploring from here. ' + dirs.map((d, i) => {
+      const opener = i === 0 ? 'Describe ' : 'Or describe ';
+      return opener + '"' + d.prompt + '" to give it a ' + d.title.toLowerCase() + ' feel.';
+    }).join(' ') + ' Paste whichever feels right into the generator and see where it goes.',
     '',
-    'Open the [AI papercraft generator](/) and describe one of these directions to see where the idea goes.',
   ];
   return lines.join('\n');
 }
@@ -294,19 +297,19 @@ export function buildMeta(promptRaw: string, styleRaw: string): Generated {
   const promptTitle = capitalizeWords(prompt);
   const subjectTitle = capitalizeWords(subject.label);
   const titleCandidates = [
-    `${promptTitle} Papercraft Design — AI Generated`,
-    `${promptTitle} Papercraft — AI Design`,
-    `${subjectTitle} Papercraft Design — AI Generated`,
-    `${subjectTitle} Papercraft — AI Design`,
+    `${promptTitle} Papercraft Design`,
+    `${promptTitle} — Free Papercraft Design`,
+    `${subjectTitle} Papercraft Design`,
+    `${subjectTitle} — Free Papercraft Design`,
   ];
   let title = titleCandidates.find(t => t.length <= 60) || titleCandidates[3].slice(0, 57).trimEnd() + `...`;
   const styleWord = style && !title.toLowerCase().includes(style) ? style : '';
   // Description: natural keyword integration, <= 160 chars — design focus, not template
   const styleDesc = styleWord ? styleWord + ' ' : '';
   const descCandidates = [
-    `AI-generated ${styleDesc}${subject.label} papercraft design of "${prompt}". Papercraft-style artwork for inspiration, creative exploration, and visual reference.`,
-    `AI-generated ${styleDesc}${subject.label} papercraft design. Papercraft-style artwork for inspiration, design reference, and creative exploration.`,
-    `${capitalizeWords(styleDesc)}${subject.label} papercraft design — AI generated artwork for inspiration, creative reference, and visual exploration.`,
+    `Free ${styleDesc}${subject.label} papercraft design of "${prompt}" — AI-generated artwork with ready-to-use prompts to try next.`,
+    `A ${styleDesc}${subject.label} papercraft design of "${prompt}", created free with koPaper's AI papercraft studio.`,
+    `${capitalizeWords(styleDesc)}${subject.label} papercraft design — free AI-generated artwork, with prompts to keep exploring.`,
   ];
   let description = descCandidates.find(d => d.length <= 160) || descCandidates[2].slice(0, 157).trimEnd() + `...`;
 

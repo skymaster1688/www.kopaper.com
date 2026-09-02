@@ -273,7 +273,7 @@ export async function POST(context: APIContext) {
   // early and never spend the inference. A sleep does NOT consume any AI quota.
   // The AI "ways to take it further" directions are fired in parallel with this
   // wait so they add no wall-clock time on top of the hold.
-  const directionsPromise = generateAiDirections(idea, env.AI, 12000)
+  const directionsPromise = generateAiDirections(idea, env.AI, 18000)
     .catch(() => null as { title: string; prompt: string }[] | null);
   await sleep(10_000 + Math.floor(Math.random() * 5_000));
 

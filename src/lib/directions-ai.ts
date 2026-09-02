@@ -6,7 +6,11 @@
 // on any failure so callers fall back to the deterministic template — publishing /
 // generating never breaks.
 
-const DIRECTION_LLM_MODEL = '@cf/meta/llama-3.1-8b-instruct';
+// @cf/meta/llama-3.1-8b-instruct was deprecated by Cloudflare on 2026-05-30 and
+// no longer runs reliably, which silently dropped every auto-published article
+// to the old templated fallback. The -fp8-fast variant is the current free tier.
+const DIRECTION_LLM_MODEL = '@cf/meta/llama-3.1-8b-instruct-fp8-fast';
+const DIRECTION_LLM_FALLBACK = '@cf/meta/llama-3.1-8b-instruct';
 
 export type Direction = { title: string; prompt: string };
 
@@ -46,9 +50,30 @@ export function parseDirectionJson(text: string): Direction[] | null {
   }
 }
 
+// Run the text LLM across the preferred model then the fallback, so a single
+// model being deprecated/rate-limited never silently drops the article to the
+// templated fallback.
+async function runLlm(ai: any, messages: { role: string; content: string }[], timeoutMs: number): Promise<string> {
+  if (!ai || typeof ai.run !== 'function') return '';
+  for (const model of [DIRECTION_LLM_MODEL, DIRECTION_LLM_FALLBACK]) {
+    try {
+      const result: any = await withTimeout(ai.run(model, { messages }), timeoutMs);
+      const text = typeof result?.response === 'string'
+        ? result.response
+        : typeof result?.result?.response === 'string'
+          ? result.result.response
+          : typeof result === 'string'
+            ? result
+            : '';
+      if (text && text.trim()) return text;
+    } catch { /* try next model */ }
+  }
+  return '';
+}
+
 // Analyze the user's idea with the Workers AI text LLM. Returns null on any
 // failure so callers can fall back to the deterministic template.
-export async function generateAiDirections(prompt: string, ai: any, timeoutMs = 15000): Promise<Direction[] | null> {
+export async function generateAiDirections(prompt: string, ai: any, timeoutMs = 20000): Promise<Direction[] | null> {
   if (!ai || typeof ai.run !== 'function' || !prompt) return null;
   const user = `Analyze this papercraft idea: "${prompt}"
 
@@ -56,25 +81,13 @@ Propose 3 to 5 concrete directions to take this idea further. Each direction mus
 
 Respond ONLY with a JSON array, no markdown, no code fences:
 [{"title":"Direction title","prompt":"Full image prompt for this direction"}]`;
-  try {
-    const result: any = await withTimeout(ai.run(DIRECTION_LLM_MODEL, {
-      messages: [
-        { role: 'system', content: 'You are a papercraft art director. Output JSON only.' },
-        { role: 'user', content: user },
-      ],
-    }), timeoutMs);
-    const text = typeof result?.response === 'string'
-      ? result.response
-      : typeof result?.result?.response === 'string'
-        ? result.result.response
-        : typeof result === 'string'
-          ? result
-          : '';
-    const dirs = parseDirectionJson(text);
-    return dirs && dirs.length >= 3 ? dirs.slice(0, 5) : null;
-  } catch {
-    return null;
-  }
+  const text = await runLlm(ai, [
+    { role: 'system', content: 'You are a papercraft art director. Output JSON only.' },
+    { role: 'user', content: user },
+  ], timeoutMs);
+  if (!text) return null;
+  const dirs = parseDirectionJson(text);
+  return dirs && dirs.length >= 3 ? dirs.slice(0, 5) : null;
 }
 
 // Parse the LLM's JSON object (title / intro / description / directions),
@@ -104,7 +117,7 @@ export function parseArticleJson(text: string): ArticleContent | null {
 
 // Generate original (never reused-phrasing) article content for the given idea.
 // Returns null on any failure so callers can fall back to the deterministic template.
-export async function generateArticleContent(prompt: string, ai: any, timeoutMs = 25000): Promise<ArticleContent | null> {
+export async function generateArticleContent(prompt: string, ai: any, timeoutMs = 45000): Promise<ArticleContent | null> {
   if (!ai || typeof ai.run !== 'function' || !prompt) return null;
   const user = `A user asked an AI to turn this idea into papercraft-style artwork: "${prompt}"
 
@@ -117,22 +130,9 @@ Write the full content for the published article about the result. Everything mu
 
 Respond ONLY with a JSON object, no markdown, no code fences:
 {"title":"...","intro":"...","description":"...","directions":[{"title":"...","prompt":"..."}]}`;
-  try {
-    const result: any = await withTimeout(ai.run(DIRECTION_LLM_MODEL, {
-      messages: [
-        { role: 'system', content: 'You are a papercraft art director and SEO copywriter. Output JSON only. Every article you write must read human and original.' },
-        { role: 'user', content: user },
-      ],
-    }), timeoutMs);
-    const text = typeof result?.response === 'string'
-      ? result.response
-      : typeof result?.result?.response === 'string'
-        ? result.result.response
-        : typeof result === 'string'
-          ? result
-          : '';
-    return parseArticleJson(text);
-  } catch {
-    return null;
-  }
+  const text = await runLlm(ai, [
+    { role: 'system', content: 'You are a papercraft art director and SEO copywriter. Output JSON only. Every article you write must read human and original.' },
+    { role: 'user', content: user },
+  ], timeoutMs);
+  return parseArticleJson(text);
 }
