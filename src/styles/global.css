@@ -394,7 +394,7 @@ ul { list-style: none; }
 .gen-actions { display: flex; gap: 10px; margin-top: 4px; }
 .gen-actions .btn { flex: 1; justify-content: center; }
 .gen-stage { min-width: 0; }
-.gen-stage .stage-frame { background-image: radial-gradient(var(--line-soft) 1px, transparent 1px); background-size: 16px 16px; background-color: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); min-height: 560px; padding: 20px; display: flex; align-items: center; justify-content: center; }
+.gen-stage .stage-frame { background-image: radial-gradient(var(--line-soft) 1px, transparent 1px); background-size: 16px 16px; background-color: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); min-height: 620px; padding: 20px; display: flex; align-items: center; justify-content: center; }
 
 .gen-info { max-width: 880px; margin: 48px auto 0; }
 .gen-info h2 { font-size: 1.5rem; margin: 32px 0 12px; }
