@@ -273,8 +273,22 @@ export async function POST(context: APIContext) {
   // early and never spend the inference. A sleep does NOT consume any AI quota.
   // The AI "ways to take it further" directions are fired in parallel with this
   // wait so they add no wall-clock time on top of the hold.
-  const directionsPromise = generateAiDirections(idea, env.AI, 18000)
-    .catch(() => null as { title: string; prompt: string }[] | null);
+  // TEMP DIAGNOSTIC: probe the text LLM with a minimal call and capture the
+  // real directions result/error so we can see why directions fall back.
+  const llmDiag: any = { probeOk: false, probeRaw: '', probeErr: '', dirsOk: false, dirsErr: '' };
+  const directionsPromise = (async () => {
+    try {
+      const probe = await env.AI.run('@cf/meta/llama-3.1-8b-instruct-fp8-fast', { messages: [{ role: 'user', content: 'Reply with the single word: ok' }] });
+      llmDiag.probeOk = true;
+      llmDiag.probeRaw = JSON.stringify(probe).slice(0, 140);
+    } catch (e) { llmDiag.probeErr = String((e as Error)?.message ?? e); }
+    try {
+      const d = await generateAiDirections(idea, env.AI, 20000);
+      llmDiag.dirsOk = !!d;
+      if (!d) llmDiag.dirsErr = 'generateAiDirections returned null';
+      return d;
+    } catch (e) { llmDiag.dirsErr = String((e as Error)?.message ?? e); return null; }
+  })();
   await sleep(10_000 + Math.floor(Math.random() * 5_000));
 
   // Provider chain: try the preferred provider first; on failure (e.g. the free
@@ -300,7 +314,7 @@ export async function POST(context: APIContext) {
         result = await generatePollinations(prompt, model, n, controller.signal);
       }
             const directions = await directionsPromise;
-      return json({ ok: true, provider: p, model: result.model, images: result.images, directions: directions || undefined }, 200, origin);
+      return json({ ok: true, provider: p, model: result.model, images: result.images, directions: directions || undefined, directionsDiag: llmDiag }, 200, origin);
     } catch (e) {
       const err = e as Error;
       if (err?.name === 'AbortError') {
