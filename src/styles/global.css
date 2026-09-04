@@ -487,3 +487,5 @@ ul { list-style: none; }
   body:has(.generator-page) .gen-stage .stage-frame { border: none; background: #fff; min-height: auto; padding: 0; }
   body:has(.generator-page) .result-card { break-inside: avoid; }
 }
+
+/* Generic data tables (tools pages, learn articles) */\r\ntable { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 0.9rem; }\r\nth, td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; vertical-align: top; }\r\nth { background: var(--warm-soft); font-weight: 600; }\r\n

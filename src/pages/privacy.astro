@@ -12,7 +12,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <article class="policy">
       <span class="eyebrow">Legal</span>
       <h1>Privacy Policy</h1>
-      <p class="updated">Last updated: August 13, 2026</p>
+      <p class="updated">Last updated: September 4, 2026</p>
 
       <section>
         <h2>Introduction</h2>
@@ -20,12 +20,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </section>
 
       <section>
-        <h2>What We Collect</h2>
-        <p>We do not require an account, and we do not store the things you create.</p>
+        <h2>What We Collect &amp; Store</h2>
+        <p>We do not require an account, and we do not collect names, email addresses, or payment details through the site.</p>
         <ul>
-          <li>The <strong>AI papercraft generator</strong> runs entirely in your browser. Your settings and generated designs are never uploaded to our servers. Your settings and the generated SVG are never uploaded to our servers.</li>
-          <li>The <strong>AI image generator</strong> sends the text prompt you type to a third-party image-generation API so it can create your images. We do not store your prompts or the images they produce.</li>
-          <li>We do not collect names, emails, or payment details through the site itself.</li>
+          <li><strong>Prompt text for generation</strong> — the idea you type is sent to our image-generation provider (Cloudflare Workers AI, with Pollinations or OpenRouter as fallbacks) to create your design. It is not otherwise stored.</li>
+          <li><strong>Designs you choose to share</strong> — when you generate a design, it may be queued for optional display in our public Gallery along with a short subject line. If your design is published, it becomes visible to other visitors; you can request removal at any time via <a href="mailto:privacy@kopaper.com">privacy@kopaper.com</a>.</li>
+          <li><strong>Usage analytics</strong> — we use Google Analytics (GA4) to measure anonymous, aggregated site usage.</li>
         </ul>
       </section>
 
@@ -41,8 +41,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </section>
 
       <section>
-        <h2>Cookies and Analytics</h2>
-        <p>Google Analytics and Google AdSense may store cookies in your browser. You can block or delete cookies in your browser settings at any time; doing so will not break the core tools.</p>
+        <h2>Cookies, Advertising &amp; Consent</h2>
+        <p>We show a consent banner before loading analytics and advertising scripts. With your consent, Google AdSense and Google Analytics may store cookies and use them to serve and measure personalized ads. You can decline at any time; the core tools keep working. You can also manage or delete cookies in your browser settings.</p>
+      </section>
+
+      <section>
+        <h2>Data Retention</h2>
+        <p>Generated designs that are not published are not stored by us. Published Gallery designs are retained until removed; removal requests are honored within a reasonable timeframe. Analytics data is retained according to Google's retention settings.</p>
+      </section>
+
+      <section>
+        <h2>Your Rights</h2>
+        <p>Depending on your location (including under GDPR and CCPA/CPRA), you may have rights to access, correct, export, or delete personal data we hold, and to opt out of advertising personalization and the sale or sharing of personal information. We do not sell personal information. To exercise any right, email <a href="mailto:privacy@kopaper.com">privacy@kopaper.com</a>.</p>
       </section>
 
       <section>

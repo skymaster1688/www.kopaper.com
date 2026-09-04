@@ -4,13 +4,118 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import CraftCard from '../../components/CraftCard.astro';
 
 export async function getStaticPaths() {
-  const categoryMeta = [
-    { key: 'classic', label: 'Classic Origami', emoji: '✈️', description: 'Timeless folds like the paper airplane and crane-inspired classics. Beginner-friendly and endlessly satisfying.' },
-    { key: 'animals', label: 'Origami Animals', emoji: '🐰', description: 'Fold cats, frogs, foxes, fish, and more. Cute paper pets for kids and collectors alike.' },
-    { key: 'flowers', label: 'Origami Flowers', emoji: '🌸', description: 'Paper blooms and plants that never wilt. Perfect for gifts, decor, and handmade cards.' },
-    { key: 'vehicles', label: 'Paper Vehicles', emoji: '🚗', description: 'Airplanes, boats, and cars you can fold and play with. Great for quick, rewarding wins.' },
-    { key: 'models', label: '3D Paper Models', emoji: '🗽', description: 'Printable 3D paper craft templates, dragons, houses, robots. Download, cut, and assemble at home.' },
-    { key: 'holiday', label: 'Holiday Crafts', emoji: '🎄', description: 'Seasonal paper crafts and ornaments for celebrations all year round.' },
+  const guides = {
+  classic: `<h2>Classic Origami: The Folds Everyone Should Know</h2>
+<p>Classic origami is where most folders start — and where most stay, because the basics unlock everything else. With just a square of paper and a few standard folds, you can make a paper airplane that flies, a crane that stands on its own, and a box that actually holds things.</p>
+<h3>What you need to begin</h3>
+<p>You only need three things: a square sheet of paper (15 x 15 cm origami paper, or any paper cut into a square), a flat surface, and a little patience. Folding on a hard surface gives crisper creases than folding in mid-air, and crisp creases are the secret to clean results.</p>
+<h3>The five basic folds to learn first</h3>
+<ul>
+<li><strong>Valley fold</strong> — fold the paper toward you, creating a crease that dips like a valley.</li>
+<li><strong>Mountain fold</strong> — fold the paper away from you, so the crease rises like a ridge.</li>
+<li><strong>Inside reverse fold</strong> — push a section inward along existing creases; used in cranes and many animals.</li>
+<li><strong>Outside reverse fold</strong> — pull a section outward instead; gives necks and wings their shape.</li>
+<li><strong>Squash fold</strong> — open a pocket and flatten it; the basis for the traditional bird base.</li>
+</ul>
+<h3>Start with these projects</h3>
+<p>The beginner-friendly tutorials below each build on the folds above. Start with the paper airplane for an instant win, move to the box to practice precise creases, then try the crane — the classic that every folder should complete once.</p>
+<h3>Common beginner mistakes (and fixes)</h3>
+<ul>
+<li><strong>Creases that drift</strong> — align corners to the edge, not the center, and pinch the fold before pressing flat.</li>
+<li><strong>Wrinkled paper</strong> — fold on a hard surface and use a bone folder or the back of a fingernail for sharp lines.</li>
+<li><strong>Tears at the corners</strong> — use thinner paper (origami paper, not printer card) for your first attempts.</li>
+</ul>
+<h3>Classic origami FAQ</h3>
+<p><strong>Is classic origami hard?</strong> No — every classic project here is rated Beginner or Easy.<br>
+<strong>What paper should I use?</strong> See our <a href="/learn/best-origami-paper/">guide to origami paper</a>. Standard 15 cm kami paper is perfect.<br>
+<strong>Can kids fold these?</strong> Yes — start with the airplane and the boat, which need only a few folds each.</p>`,
+  animals: `<h2>Origami Animals: Paper Pets You Can Fold</h2>
+<p>Origami animals are the most popular way to learn folding — they look impressive, they make great gifts and classroom projects, and each one teaches a new technique. From a simple cat face to a frog that actually hops, animal folds reward patience with charming results.</p>
+<h3>Best paper for animal folds</h3>
+<p>Use standard 15 x 15 cm origami paper (kami) for most animals. Double-sided paper (white on one side, colored on the other) is ideal for foxes, cats, and frogs because you can use the contrast for ears, tails, and bellies. For your first few attempts, use plain colored paper — pattern on the paper makes reading the folds harder.</p>
+<h3>Where to start</h3>
+<p>Start with flat or two-dimensional animals — the <strong>cat</strong> and <strong>fish</strong> are quick wins. Then move to <strong>fox</strong> and <strong>frog</strong>, which introduce inside reverse folds. Save the <strong>dragon</strong> for later; it combines most of the techniques and takes the longest.</p>
+<h3>Tips for neater animals</h3>
+<ul>
+<li>Crease sharply — every fold should be pressed flat before moving on.</li>
+<li>Work on a hard surface, not on your lap.</li>
+<li>If a step looks wrong, unfold and re-read the diagram; most mistakes come from a single misaligned corner.</li>
+<li>Add life at the end — a tiny dot for an eye, a fold that curves an ear, or a pulled-out tail tip.</li>
+</ul>
+<h3>Origami animals FAQ</h3>
+<p><strong>Why does my animal look lopsided?</strong> One corner drifted during an early fold — go back to the step before and realign edges carefully.<br>
+<strong>Can I use printer paper?</strong> Yes, but cut it into a perfect square first; kami paper is thinner and folds crisper.<br>
+<strong>How do I make animals stand?</strong> See our guide on <a href="/learn/how-to-make-papercraft-stand-up/">making papercraft stand up</a>.</p>`,
+  flowers: `<h2>Origami Flowers: Paper Blooms That Never Wilt</h2>
+<p>Origami flowers are perfect for gifts, table decor, wedding favors, and handmade cards. They are also among the most forgiving folds for beginners — if a petal is slightly off, the flower still looks lovely. With a handful of blooms you can build a bouquet that lasts forever.</p>
+<h3>Choosing paper for flowers</h3>
+<p>Lightweight kami paper folds the cleanest petals. For a more natural look, try slightly textured paper or washi. Crepe paper and tissue paper work for soft, layered flowers but are harder to fold precisely — save them for projects where you are willing to improvise.</p>
+<h3>Make a few, then combine</h3>
+<p>Each tutorial below gives you one bloom. Fold several in different sizes and colors, then group them into a bouquet, glue them to card fronts, or attach stems made from green paper or floral wire. Different paper sizes (7.5 cm, 15 cm, 20 cm) create petals at different scales.</p>
+<h3>Keeping blooms neat</h3>
+<ul>
+<li>Use a bone folder to sharpen creases on thick paper.</li>
+<li>For glued layers, apply a tiny dot of glue — too much will stain light paper.</li>
+<li>Let finished flowers dry flat under a book for a minute before shaping petals.</li>
+</ul>
+<h3>Origami flowers FAQ</h3>
+<p><strong>Do these work as real decoration?</strong> Yes — finished flowers hold their shape well and can be displayed for months.<br>
+<strong>Which flower is easiest?</strong> Start with the simplest bloom in our <strong>flower</strong> tutorial, then add the <strong>butterfly</strong> as a companion accent.</p>`,
+  vehicles: `<h2>Paper Vehicles: Toys That Fold, Fly, and Float</h2>
+<p>Paper vehicles are the most playful kind of origami — the airplane really flies, the boat really floats, and the car folds into a chunky toy. They are quick, satisfying, and perfect for kids' parties, rainy afternoons, and classrooms.</p>
+<h3>What makes vehicles different</h3>
+<p>Unlike decorative folds, vehicles need sturdy, balanced shapes. Use regular kami paper for the airplane (lighter flies better), but switch to slightly heavier paper for the car and boat so they hold their structure. Fold on a hard surface and press every crease firmly.</p>
+<h3>Fold order for best results</h3>
+<p>Start with the <strong>paper airplane</strong> — it has the fewest steps and gives an instant flying toy. Next try the <strong>boat</strong>, which teaches a classic folding sequence and floats in water. Finish with the <strong>car</strong>, a three-dimensional build that introduces 3D shaping.</p>
+<h3>Make it your own</h3>
+<ul>
+<li>Add paper wheels to the car, or draw windows with colored pencil.</li>
+<li>Adjust the airplane's wing angle to change how it flies — up for loops, level for distance.</li>
+<li>Use two-tone paper so the vehicle looks painted on top and bottom.</li>
+</ul>
+<h3>Paper vehicles FAQ</h3>
+<p><strong>Why doesn't my airplane fly far?</strong> Wings that are creased unevenly cause it to stall — make sure both wings are folded to the same angle.<br>
+<strong>Will the boat sink?</strong> Kami paper floats for a while but soaks through eventually; use coated or waxed paper for longer floating.</p>`,
+  models: `<h2>3D Paper Models: Cut, Fold, and Assemble</h2>
+<p>3D paper models (also called papercraft) go one step beyond origami: instead of folding a single sheet, you assemble several pieces into a standing structure. Houses, robots, and fantasy builds are the most rewarding projects, and they introduce a whole new toolkit of skills.</p>
+<h3>Tools and materials</h3>
+<ul>
+<li><strong>Cardstock</strong> (200-250 gsm) — heavy enough to stand, light enough to cut.</li>
+<li><strong>Cutting mat, craft knife, and metal ruler</strong> — for clean, straight cuts.</li>
+<li><strong>White glue or a glue stick</strong> — PVA for strong joints, glue stick for quick tabs.</li>
+<li><strong>Bone folder or scoring tool</strong> — to score fold lines so panels bend crisply.</li>
+</ul>
+<h3>How to get the best result</h3>
+<p>Work in this order: cut all pieces, score every fold line, fold everything, then assemble. Cutting everything first keeps you in one rhythm; scoring before folding prevents torn cardstock. Glue tabs one at a time and let each dry before handling the next.</p>
+<h3>Where to begin</h3>
+<p>Start with a simple geometric build like the <strong>box</strong> to practice scoring and tab gluing. Then move to a <strong>house</strong>, which adds walls, a roof, and a base. Try the <strong>robot</strong> once you are comfortable — it is our most detailed build and a fantastic display piece. For inspiration and design ideas, browse our <a href="/gallery/">gallery of AI-generated papercraft designs</a>.</p>
+<h3>3D models FAQ</h3>
+<p><strong>Why won't my model stand?</strong> The base needs to be flat and the tabs need full contact with glue — press firmly for a few seconds.<br>
+<strong>Can I print these models?</strong> These tutorials are step-by-step folding guides; for printable template sheets, see our <a href="/printables/">free printables</a>.</p>`,
+  holiday: `<h2>Holiday Crafts: Paper Decorations for Every Season</h2>
+<p>Holiday paper crafts turn any celebration into something handmade and personal. Christmas ornaments, Halloween decorations, party banners, and seasonal cards are quick to make, budget-friendly, and a great way to involve kids in preparing for a celebration.</p>
+<h3>Plan your holiday craft table</h3>
+<p>Set aside paper in festive colors, a cutting mat, scissors or a craft knife, and glue. Most holiday projects reuse the same core skills — cutting, folding, and layering — so once you have one decoration down, the rest come quickly.</p>
+<h3>Good first projects</h3>
+<p>Start with flat decorations (cards, tags, banners) because they build confidence fast, then move to standing or hanging pieces. Combine paper crafts with the folds from our <a href="/origami/classic/">classic origami</a> page to make ornaments from origami stars, cranes, and flowers.</p>
+<h3>Tips for clean, durable decorations</h3>
+<ul>
+<li>Use cardstock for anything that hangs or stands — it won't flop or tear.</li>
+<li>Layering two shades of the same color adds instant depth to flat cutouts.</li>
+<li>Store finished pieces flat between books so they keep their shape for next year.</li>
+</ul>
+<h3>Holiday crafts FAQ</h3>
+<p><strong>Are these safe for kids?</strong> Yes — use safety scissors and pre-cut tricky shapes for younger children.<br>
+<strong>What if I only have printer paper?</strong> It works for flat cards and tags; upgrade to cardstock for hanging decorations.</p>`
+};
+
+const categoryMeta = [
+    { key: 'classic', label: 'Classic Origami', emoji: '✈️', description: 'Timeless folds like the paper airplane and crane-inspired classics. Beginner-friendly and endlessly satisfying.', guide: guides.classic },
+    { key: 'animals', label: 'Origami Animals', emoji: '🐰', description: 'Fold cats, frogs, foxes, fish, and more. Cute paper pets for kids and collectors alike.', guide: guides.animals },
+    { key: 'flowers', label: 'Origami Flowers', emoji: '🌸', description: 'Paper blooms and plants that never wilt. Perfect for gifts, decor, and handmade cards.', guide: guides.flowers },
+    { key: 'vehicles', label: 'Paper Vehicles', emoji: '🚗', description: 'Airplanes, boats, and cars you can fold and play with. Great for quick, rewarding wins.', guide: guides.vehicles },
+    { key: 'models', label: '3D Paper Models', emoji: '🗽', description: 'Printable 3D paper craft templates, dragons, houses, robots. Download, cut, and assemble at home.', guide: guides.models },
+    { key: 'holiday', label: 'Holiday Crafts', emoji: '🎄', description: 'Seasonal paper crafts and ornaments for celebrations all year round.', guide: guides.holiday },
   ];
   return categoryMeta.map(cat => ({
     params: { category: cat.key },
@@ -56,5 +161,8 @@ const items = (await getCollection('tutorials', ({ data }) => !data.draft && dat
     <div style="text-align:center; margin-top:32px" class="reveal">
       <a href="/origami/" class="btn btn-outline">← All origami tutorials</a>
     </div>
+    {cat.guide && (
+      <div class="cat-guide" set:html={cat.guide} style="margin-top:44px; padding-top:36px; border-top:1px solid var(--border); max-width:760px; margin-left:auto; margin-right:auto" />
+    )}
   </section>
 </BaseLayout>
