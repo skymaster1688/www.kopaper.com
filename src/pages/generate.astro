@@ -1,20 +1,187 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import LegacyNotice from '../components/LegacyNotice.astro';
+
+const title = 'AI Papercraft Design Ideas & Free Prompts | koPaper';
+const description = 'Browse 56+ free papercraft design ideas with copy-ready AI prompts — animals, characters, fantasy, vehicles, holidays and more. Find your next papercraft inspiration and generate it free.';
+
+type Idea = { t: string; p: string; d: string };
+type Group = { cat: string; tag: string; items: Idea[] };
+
+const groups: Group[] = [
+  { cat: 'Animals', tag: 'cute, low poly', items: [
+    { t: 'Folded-paper fox', p: 'a cute papercraft fox with layered geometric folds', d: 'A classic first project with sharp, angular ears.' },
+    { t: 'Round panda', p: 'a round papercraft panda sitting and holding a bamboo stick', d: 'Soft shapes, high contrast — reads instantly.' },
+    { t: 'Reading hedgehog', p: 'a papercraft hedgehog reading a tiny book', d: 'Adds charm with a single prop.' },
+    { t: 'Sleepy owl', p: 'a sleepy papercraft owl perched on a branch', d: 'Great for gentle, whimsical scenes.' },
+    { t: 'Bunny with carrot', p: 'a papercraft bunny holding a big carrot', d: 'Simple silhouette, kid-friendly.' },
+    { t: 'Swimming turtle', p: 'a papercraft turtle swimming with a small fish', d: 'Test the style with smooth shell facets.' },
+    { t: 'Friendly whale', p: 'a friendly papercraft whale splashing in the sea', d: 'Big smooth surfaces show off paper texture.' },
+    { t: 'Sitting cat', p: 'a minimalist papercraft cat sitting with tail curled', d: 'Clean lines, strong negative space.' },
+  ]},
+  { cat: 'Fantasy & Mythical', tag: 'fantasy, low poly', items: [
+    { t: 'Fire dragon', p: 'a papercraft dragon breathing fire with folded wings', d: 'Sharp scales and a long tail make it dramatic.' },
+    { t: 'Castle on a hill', p: 'a papercraft fantasy castle on a hill with towers and flags', d: 'Layered towers give depth and scale.' },
+    { t: 'Wizard tower', p: 'a papercraft wizard tower with a glowing window', d: 'A single building can carry a whole scene.' },
+    { t: 'Unicorn head', p: 'a papercraft unicorn head with a spiral horn', d: 'Bold profile, easy to frame.' },
+    { t: 'Baby dinosaur', p: 'a cute papercraft baby dinosaur hatching from an egg', d: 'Round shapes make it extra friendly.' },
+    { t: 'Mermaid tail', p: 'a papercraft mermaid tail with layered scales', d: 'Perfect for testing folded scale textures.' },
+    { t: 'Phoenix', p: 'a papercraft phoenix with spread wings and flame feathers', d: 'High-impact wingspan for posters.' },
+    { t: 'Enchanted mushroom', p: 'a papercraft glowing mushroom house with a tiny door', d: 'Whimsical and full of detail.' },
+  ]},
+  { cat: 'Characters', tag: 'pixel, cute', items: [
+    { t: 'Astronaut', p: 'a papercraft astronaut floating in space', d: 'Clean suit shapes, great with a starry background.' },
+    { t: 'Friendly robot', p: 'a papercraft robot toy with big round eyes', d: 'Blocky geometry suits the paper look.' },
+    { t: 'Pirate captain', p: 'a papercraft pirate captain with a hat and eyepatch', d: 'Distinct silhouette, fun accessories.' },
+    { t: 'Ninja', p: 'a papercraft ninja in a crouching pose', d: 'Minimal color, strong shape.' },
+    { t: 'Detective', p: 'a papercraft detective with a magnifying glass', d: 'One prop tells the whole story.' },
+    { t: 'Chef with hat', p: 'a papercraft chef holding a whisk and bowl', d: 'Whites and simple folds read well.' },
+    { t: 'Cowboy', p: 'a papercraft cowboy with a lasso', d: 'Hat and boots make it recognizable.' },
+    { t: 'Pixel hero', p: 'a pixel-style papercraft hero with a cape', d: 'Blocky pixel facets for a retro feel.' },
+  ]},
+  { cat: 'Objects & Everyday', tag: 'cute, geometric', items: [
+    { t: 'Gift box', p: 'a papercraft gift box with a ribbon bow', d: 'Instant classic — sharp folds, festive.' },
+    { t: 'Teacup with steam', p: 'a papercraft teacup with a curl of steam', d: 'Small and charming, great for desk scenes.' },
+    { t: 'Retro camera', p: 'a papercraft retro camera with a round lens', d: 'Geometric facets make it pop.' },
+    { t: 'Table lamp', p: 'a papercraft table lamp glowing warmly', d: 'Soft shapes and a warm accent.' },
+    { t: 'Stack of books', p: 'a papercraft stack of books with a tiny plant on top', d: 'Easy to group into a cozy scene.' },
+    { t: 'Headphones', p: 'a papercraft pair of headphones resting on a table', d: 'Smooth curves contrast with folded paper.' },
+    { t: 'Potted cactus', p: 'a papercraft potted cactus with a flower', d: 'Desk-friendly subject, clean silhouette.' },
+    { t: 'Alarm clock', p: 'a papercraft alarm clock with bells on top', d: 'Retro shape, instantly familiar.' },
+  ]},
+  { cat: 'Vehicles', tag: 'low poly, pixel', items: [
+    { t: 'Rocket launch', p: 'a papercraft rocket launching with a flame trail', d: 'Vertical composition, great for posters.' },
+    { t: 'Paper airplane', p: 'a papercraft airplane flying above clouds', d: 'A natural fit for folded paper.' },
+    { t: 'Sailboat', p: 'a papercraft sailboat with two white sails', d: 'Sails show off clean folds.' },
+    { t: 'Hot air balloon', p: 'a papercraft hot air balloon with a striped envelope', d: 'Round envelope, tiny basket — charming.' },
+    { t: 'Steam train', p: 'a papercraft steam train with a puff of smoke', d: 'Lots of small parts for a detailed build.' },
+    { t: 'City bus', p: 'a papercraft city bus with big windows', d: 'Simple boxy shape, easy to scale.' },
+    { t: 'Helicopter', p: 'a papercraft helicopter with a spinning rotor', d: 'Distinct tail and rotor shapes.' },
+    { t: 'Bicycle', p: 'a papercraft bicycle leaning against a wall', d: 'Thin frame is a fun geometry test.' },
+  ]},
+  { cat: 'Holiday & Seasonal', tag: 'cute, festive', items: [
+    { t: 'Jack-o-lantern', p: 'a papercraft jack-o-lantern with a glowing face', d: 'Carved facets make it look lit.' },
+    { t: 'Snowman', p: 'a papercraft snowman with a scarf and carrot nose', d: 'Three stacked spheres, instant charm.' },
+    { t: 'Christmas tree', p: 'a papercraft christmas tree with a star on top', d: 'Tiered layers give it real depth.' },
+    { t: 'Reindeer', p: 'a papercraft reindeer with antlers and a red nose', d: 'Antlers are a fun fold challenge.' },
+    { t: 'Easter egg', p: 'a papercraft easter egg with geometric patterns', d: 'Patterns show off folded surfaces.' },
+    { t: 'Valentine heart', p: 'a papercraft heart with a tiny arrow', d: 'Simple, sweet, universal.' },
+    { t: 'Ghost trio', p: 'three papercraft ghosts in different sizes', d: 'Grouping adds a playful rhythm.' },
+    { t: 'Fireworks', p: 'papercraft fireworks bursting over a city skyline', d: 'Great for celebration-themed boards.' },
+  ]},
+  { cat: 'Buildings & Places', tag: 'low poly, geometric', items: [
+    { t: 'Cozy cottage', p: 'a papercraft cottage with a chimney and a garden', d: 'Roof and chimney read instantly.' },
+    { t: 'Lighthouse', p: 'a papercraft lighthouse on a rocky shore', d: 'Tall stripes give it character.' },
+    { t: 'Treehouse', p: 'a papercraft treehouse tucked among leaves', d: 'Foliage layers create depth.' },
+    { t: 'Windmill', p: 'a papercraft windmill with turning blades', d: 'Blades add movement to a still scene.' },
+    { t: 'Small shop', p: 'a papercraft corner shop with an awning', d: 'Awnings make it look lived-in.' },
+    { t: 'School house', p: 'a papercraft schoolhouse with a bell', d: 'Simple blocky form, nostalgic.' },
+    { t: 'Red barn', p: 'a papercraft red barn with a silo', d: 'Strong color and simple shapes.' },
+    { t: 'City skyline', p: 'a papercraft city skyline at sunset', d: 'Perfect for a wide banner.' },
+  ]},
+];
+
+const total = groups.reduce((n, g) => n + g.items.length, 0);
+const catCount = groups.length;
 ---
 
-<BaseLayout
-  title="Paper Craft Generator"
-  description="koPaper's AI Papercraft Generator turns your ideas into beautiful papercraft-style designs. Describe an idea and generate unique artwork for inspiration and creative exploration."
->
-  <LegacyNotice
-    badge="Now: AI Papercraft Generator"
-    title="Paper Craft Generator"
-    intro="Our paper craft generator has become the AI Papercraft Design Studio. Describe an idea, pick a style, and generate beautiful papercraft designs for inspiration, reference, and creative exploration."
-    links={[
-      { href: '/', label: 'Open the AI Papercraft Generator' },
-      { href: '/origami/', label: 'Browse origami tutorials' },
-      { href: '/', label: 'Back to home' },
-    ]}
-  />
+<BaseLayout title={title} description={description} ogType="website">
+  <article class="container generator-page">
+    <header class="generator-head reveal">
+      <p class="eyebrow"><span class="label">Papercraft Design Ideas</span></p>
+      <h1>AI Papercraft Design Ideas &amp; Free Prompts</h1>
+      <p class="lede">
+        {total}+ ready-to-use prompts across {catCount} categories. Pick an idea, copy the prompt, and
+        generate it for free in the <a href="/">koPaper AI papercraft generator</a> — then tweak the words to make it yours.
+      </p>
+    </header>
+
+    <section class="gen-info reveal">
+      <h2>How to use these prompts</h2>
+      <ol class="gen-steps">
+        <li><strong>Pick an idea</strong> from any category below — or mix two together (e.g. "a dragon reading a book").</li>
+        <li><strong>Copy the prompt</strong> and paste it into the generator on our <a href="/">homepage</a>.</li>
+        <li><strong>Choose a style</strong> — the same idea looks different in Cute, Low Poly, Pixel, or Fantasy.</li>
+        <li><strong>Add your own twist</strong> — colors, props, poses, and scenes make each design unique.</li>
+      </ol>
+    </section>
+
+    {groups.map((g) => (
+      <section class="ideas-block reveal">
+        <h2>{g.cat} papercraft ideas</h2>
+        <p class="ideas-tag">Try the {g.tag} styles</p>
+        <div class="ideas-grid">
+          {g.items.map((it) => (
+            <div class="idea-card">
+              <h3>{it.t}</h3>
+              <p class="idea-desc">{it.d}</p>
+              <code class="idea-prompt">{it.p}</code>
+              <a class="idea-try" href="/" title="Open the AI papercraft generator">Try it free &rarr;</a>
+            </div>
+          ))}
+        </div>
+      </section>
+    ))}
+
+    <section class="gen-info reveal">
+      <h2>Frequently asked questions</h2>
+      <div class="gen-faq">
+        <details>
+          <summary>Are these papercraft ideas free to use?</summary>
+          <p>Yes. Every prompt and every generated design is free — generate as many as you like with no account.</p>
+        </details>
+        <details>
+          <summary>How do I turn an idea into a papercraft design?</summary>
+          <p>Copy a prompt into the AI papercraft generator, pick a style, and generate. The result is original papercraft-style artwork for inspiration and creative exploration.</p>
+        </details>
+        <details>
+          <summary>Can I mix ideas from different categories?</summary>
+          <p>Absolutely. Combining two ideas — like a fox astronaut or a dragon train — often produces the most interesting designs.</p>
+        </details>
+        <details>
+          <summary>What styles work best?</summary>
+          <p>Cute suits animals and characters, Low Poly suits buildings and vehicles, Pixel suits retro icons, and Fantasy suits dragons and castles. Try the same prompt in two styles to compare.</p>
+        </details>
+      </div>
+    </section>
+  </article>
 </BaseLayout>
+
+<style>
+  .ideas-block { padding-top: 8px; margin: 34px 0 10px; }
+  .ideas-block h2 { font-family: var(--font-display); font-size: 1.45rem; margin: 0 0 4px; }
+  .ideas-tag { color: var(--text-muted); font-size: .85rem; margin: 0 0 16px; }
+  .ideas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+  .idea-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 14px 16px;
+    background: var(--surface);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .idea-card h3 { font-size: 1rem; margin: 0; }
+  .idea-desc { color: var(--text-muted); font-size: .88rem; margin: 0; line-height: 1.5; }
+  .idea-prompt {
+    font-family: var(--font-mono);
+    font-size: .78rem;
+    color: var(--text);
+    background: var(--warm-soft);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 10px;
+    line-height: 1.5;
+    word-break: break-word;
+  }
+  .idea-try {
+    margin-top: auto;
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--warm);
+    text-decoration: none;
+  }
+  .idea-try:hover { text-decoration: underline; }
+  @media (max-width: 560px) {
+    .ideas-grid { grid-template-columns: 1fr; }
+  }
+</style>
