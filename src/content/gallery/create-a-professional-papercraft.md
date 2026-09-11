@@ -6,7 +6,6 @@ style: "fantasy"
 order: 99
 draft: false
 updated: "2026-08-28"
-noindex: true
 ---
 
 AI-generated fantasy papercraft design from the idea "Create a PROFESSIONAL", created with koPaper's AI papercraft studio.
