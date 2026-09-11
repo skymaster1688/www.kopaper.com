@@ -1,12 +1,13 @@
 ---
 title: "Gift Box Papercraft Design — AI Generated"
-description: "AI-generated pixel object papercraft design of "Gift Box". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
+description: "AI-generated pixel object papercraft design of \"Gift Box\". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
 emoji: "🎁"
 style: "pixel"
 order: 99
 draft: false
 updated: "2026-08-30"
 ---
+
 
 Object in papercraft style? That's exactly what this pixel object design is — the idea "Gift Box" turned into a beautiful papercraft-style artwork by koPaper's AI generator. Use it as inspiration, a design reference, or a starting point for your own creative project.
 

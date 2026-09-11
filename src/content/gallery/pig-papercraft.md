@@ -1,12 +1,13 @@
 ---
 title: "Pig Papercraft Design — AI Generated"
-description: "AI-generated pixel animal papercraft design of "Pig". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
+description: "AI-generated pixel animal papercraft design of \"Pig\". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
 emoji: "🎨"
 style: "pixel"
 order: 99
 draft: false
 updated: "2026-08-27"
 ---
+
 
 Looking for pixel animal papercraft inspiration? This design, based on the idea "Pig", was generated with koPaper's AI papercraft design studio. Use it as a visual reference, a creative starting point, or inspiration for your next art or craft project.
 

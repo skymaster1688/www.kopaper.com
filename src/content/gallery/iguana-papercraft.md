@@ -1,12 +1,13 @@
 ---
 title: "Iguana Papercraft Design — AI Generated"
-description: "AI-generated lowpoly animal papercraft design of "Iguana". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
+description: "AI-generated lowpoly animal papercraft design of \"Iguana\". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
 emoji: "🎨"
 style: "lowpoly"
 order: 99
 draft: false
 updated: "2026-08-27"
 ---
+
 
 Turn the idea "Iguana" into a visual concept with this lowpoly animal papercraft design from koPaper's AI generator. The artwork captures the papercraft aesthetic — geometric facets, paper textures, and handcrafted visual style — perfect for creative exploration.
 

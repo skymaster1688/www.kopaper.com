@@ -1,16 +1,17 @@
 ---
-title: "Eustace Bagge Papercraft Design — AI Generated"
-description: "AI-generated lowpoly character papercraft design of "EUSTACE BAGGE". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
+title: "Mf Doom Mask Papercraft Design — AI Generated"
+description: "AI-generated cute character papercraft design of \"Mf Doom Mask\". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
 emoji: "🎨"
-style: "lowpoly"
+style: "cute"
 order: 99
 draft: false
-updated: "2026-08-30"
+updated: "2026-08-27"
 ---
 
-This lowpoly character papercraft design is based on the idea "EUSTACE BAGGE", generated with koPaper's AI papercraft design studio. It's a papercraft-style artwork created for inspiration, creative exploration, and visual reference — not a printable template or assembly guide.
 
-The low-poly style breaks the form into flat geometric facets, giving the design a modern, angular look that catches light from different angles.
+Character in papercraft style? That's exactly what this cute character design is — the idea "Mf Doom Mask" turned into a beautiful papercraft-style artwork by koPaper's AI generator. Use it as inspiration, a design reference, or a starting point for your own creative project.
+
+The cute style leans into soft, rounded shapes and friendly proportions, so the design reads as charming and approachable rather than realistic.
 
 Use this character design as a concept art reference, a cosplay inspiration, or a starting point for an original character.
 
@@ -20,6 +21,6 @@ Creative tip: Turn this character design into a full concept — generate differ
 
 Inspired by this design? Run the same idea through the [AI papercraft generator](/) in a different style — Cute, Low Poly, Pixel, or Fantasy — to explore alternative visual directions. Browse the [gallery](/gallery/) for more AI-generated designs, or try the [origami tutorials](/origami/) for hands-on paper craft projects.
 
-![AI-generated lowpoly papercraft of EUSTACE BAGGE.](/images/gallery/eustace-bagge-papercraft-mtf6bvpbw97r.jpg)
+![AI-generated cute papercraft of Mf Doom Mask.](/images/gallery/mf-doom-mask-papercraft-mt78f522ju3h.jpg)
 
-*AI-generated lowpoly papercraft of EUSTACE BAGGE.*
+*AI-generated cute papercraft of Mf Doom Mask.*

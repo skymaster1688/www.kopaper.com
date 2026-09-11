@@ -1,12 +1,13 @@
 ---
 title: "Simple House For Kids Papercraft Design — AI Generated"
-description: "AI-generated cute building papercraft design of "simple house for kids". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
+description: "AI-generated cute building papercraft design of \"simple house for kids\". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
 emoji: "🏠"
 style: "cute"
 order: 99
 draft: false
 updated: "2026-08-27"
 ---
+
 
 Turn the idea "simple house for kids" into a visual concept with this cute building papercraft design from koPaper's AI generator. The artwork captures the papercraft aesthetic — geometric facets, paper textures, and handcrafted visual style — perfect for creative exploration.
 

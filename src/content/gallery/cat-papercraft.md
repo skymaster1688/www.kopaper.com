@@ -1,12 +1,13 @@
 ---
 title: "Cat Papercraft Design — AI Generated"
-description: "AI-generated fantasy animal papercraft design of "Cat". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
+description: "AI-generated fantasy animal papercraft design of \"Cat\". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
 emoji: "🐱"
 style: "fantasy"
 order: 99
 draft: false
 updated: "2026-08-27"
 ---
+
 
 This fantasy animal papercraft design is based on the idea "Cat", generated with koPaper's AI papercraft design studio. It's a papercraft-style artwork created for inspiration, creative exploration, and visual reference — not a printable template or assembly guide.
 

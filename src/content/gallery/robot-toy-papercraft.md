@@ -1,12 +1,13 @@
 ---
 title: "Robot Toy Papercraft Design — AI Generated"
-description: "AI-generated pixel vehicle papercraft design of "robot toy". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
+description: "AI-generated pixel vehicle papercraft design of \"robot toy\". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
 emoji: "🤖"
 style: "pixel"
 order: 99
 draft: false
 updated: "2026-08-29"
 ---
+
 
 This pixel vehicle papercraft design is based on the idea "robot toy", generated with koPaper's AI papercraft design studio. It's a papercraft-style artwork created for inspiration, creative exploration, and visual reference — not a printable template or assembly guide.
 

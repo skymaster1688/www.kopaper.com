@@ -1,12 +1,13 @@
 ---
 title: "Low Poly Pyramid Papercraft Design — AI Generated"
-description: "AI-generated cute building papercraft design of "low poly pyramid". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
+description: "AI-generated cute building papercraft design of \"low poly pyramid\". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
 emoji: "🎨"
 style: "cute"
 order: 99
 draft: false
 updated: "2026-08-29"
 ---
+
 
 Building in papercraft style? That's exactly what this cute building design is — the idea "low poly pyramid" turned into a beautiful papercraft-style artwork by koPaper's AI generator. Use it as inspiration, a design reference, or a starting point for your own creative project.
 

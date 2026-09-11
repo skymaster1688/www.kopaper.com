@@ -1,16 +1,17 @@
 ---
-title: "Chuuya Nakahara Papercraft Design — AI Generated"
-description: "AI-generated pixel character papercraft design of "Chuuya Nakahara". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
+title: "Eustace Bagge Papercraft Design — AI Generated"
+description: "AI-generated lowpoly character papercraft design of \"EUSTACE BAGGE\". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
 emoji: "🎨"
-style: "pixel"
+style: "lowpoly"
 order: 99
 draft: false
-updated: "2026-08-27"
+updated: "2026-08-30"
 ---
 
-This pixel character papercraft design is based on the idea "Chuuya Nakahara", generated with koPaper's AI papercraft design studio. It's a papercraft-style artwork created for inspiration, creative exploration, and visual reference — not a printable template or assembly guide.
 
-The pixel style renders the subject as a blocky, retro grid — 8-bit art with clean edges and a nostalgic, game-inspired aesthetic.
+This lowpoly character papercraft design is based on the idea "EUSTACE BAGGE", generated with koPaper's AI papercraft design studio. It's a papercraft-style artwork created for inspiration, creative exploration, and visual reference — not a printable template or assembly guide.
+
+The low-poly style breaks the form into flat geometric facets, giving the design a modern, angular look that catches light from different angles.
 
 Use this character design as a concept art reference, a cosplay inspiration, or a starting point for an original character.
 
@@ -20,6 +21,6 @@ Creative tip: Turn this character design into a full concept — generate differ
 
 Inspired by this design? Run the same idea through the [AI papercraft generator](/) in a different style — Cute, Low Poly, Pixel, or Fantasy — to explore alternative visual directions. Browse the [gallery](/gallery/) for more AI-generated designs, or try the [origami tutorials](/origami/) for hands-on paper craft projects.
 
-![AI-generated pixel papercraft of Chuuya Nakahara.](/images/gallery/chuuya-nakahara-papercraft-mt5tcc0xsvit.jpg)
+![AI-generated lowpoly papercraft of EUSTACE BAGGE.](/images/gallery/eustace-bagge-papercraft-mtf6bvpbw97r.jpg)
 
-*AI-generated pixel papercraft of Chuuya Nakahara.*
+*AI-generated lowpoly papercraft of EUSTACE BAGGE.*

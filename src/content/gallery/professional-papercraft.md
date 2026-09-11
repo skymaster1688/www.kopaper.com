@@ -1,12 +1,13 @@
 ---
 title: "Professional Papercraft Design — AI Generated"
-description: "AI-generated fantasy character papercraft design of "PROFESSIONAL". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
+description: "AI-generated fantasy character papercraft design of \"PROFESSIONAL\". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
 emoji: "🎨"
 style: "fantasy"
 order: 99
 draft: false
 updated: "2026-08-28"
 ---
+
 
 The idea "PROFESSIONAL" becomes a stunning fantasy character papercraft design in this AI-generated artwork from koPaper. The papercraft style — with its geometric structure and paper-like textures — makes it perfect for design inspiration, creative reference, and visual exploration.
 
