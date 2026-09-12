@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content';
+import GalleryCard from './GalleryCard.astro';
+
+interface Props {
+  style: string;        // gallery frontmatter style value (cute / lowpoly / pixel / fantasy / minecraft)
+  label?: string;       // display name for the heading, e.g. "Cute"
+  limit?: number;
+}
+const { style, label = style, limit = 8 } = Astro.props;
+
+const items = (await getCollection('gallery', ({ data }) => data.style === style && !data.draft && !data.noindex))
+  .sort((a, b) => (b.data.updated || '').localeCompare(a.data.updated || ''))
+  .slice(0, limit);
+---
+
+{items.length > 0 && (
+  <section class="gen-info reveal" style="padding-top:36px">
+    <h2>Recent {label} designs</h2>
+    <p>
+      Papercraft designs made with the {label} generator — real examples of what this style looks like.
+      Generate your own above and publish it to add to the collection.
+    </p>
+    <div class="grid-4" style="margin-top:20px">
+      {items.map(g => (
+        <GalleryCard
+          href={`/gallery/${g.slug}/`}
+          title={g.data.title}
+          description={g.data.description}
+          body={g.body}
+          emoji={g.data.emoji}
+        />
+      ))}
+    </div>
+    <p style="margin-top:18px"><a href="/gallery/">Browse all designs in the gallery →</a></p>
+  </section>
+)}

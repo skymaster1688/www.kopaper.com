@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Generator from '../../components/Generator.astro';
+import StyleGallery from '../../components/StyleGallery.astro';
 
 const title = 'Low Poly Papercraft Generator — Free 3D Papercraft Designs';
 const description = 'Create faceted low poly papercraft designs with the free low poly papercraft generator. Turn a fox, gem, or idea into a geometric AI-generated papercraft design.';
@@ -18,6 +19,8 @@ const description = 'Create faceted low poly papercraft designs with the free lo
 
     <!-- Generator app (pre-set to the Low Poly style) -->
     <Generator defaultStyle="lowpoly" defaultPrompt="a low poly fox" />
+
+    <StyleGallery style="lowpoly" label="Low Poly" />
 
     <!-- SEO content -->
     <section class="gen-info reveal">

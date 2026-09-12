@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Generator from '../../components/Generator.astro';
+import StyleGallery from '../../components/StyleGallery.astro';
 
 const title = 'Fantasy Papercraft Generator — Free Fantasy Papercraft Designs';
 const description = 'Create magical fantasy papercraft designs with the free fantasy papercraft generator. Describe a dragon, wizard, or idea and get an epic AI-generated papercraft design.';
@@ -18,6 +19,8 @@ const description = 'Create magical fantasy papercraft designs with the free fan
 
     <!-- Generator app (pre-set to the Fantasy style) -->
     <Generator defaultStyle="fantasy" defaultPrompt="a fantasy castle" />
+
+    <StyleGallery style="fantasy" label="Fantasy" />
 
     <!-- SEO content -->
     <section class="gen-info reveal">

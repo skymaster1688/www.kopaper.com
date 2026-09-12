@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Generator from '../../components/Generator.astro';
+import StyleGallery from '../../components/StyleGallery.astro';
 
 const title = 'Minecraft Papercraft Generator — Free Blocky Papercraft Designs';
 const description = 'Generate free Minecraft-style papercraft designs with the blocky voxel papercraft generator. Describe a creeper, pickaxe, or blocky scene and get an AI papercraft design.';
@@ -19,6 +20,8 @@ const description = 'Generate free Minecraft-style papercraft designs with the b
 
     <!-- Generator app (pre-set to the Minecraft style) -->
     <Generator defaultStyle="minecraft" defaultPrompt="a blocky creeper face" />
+
+    <StyleGallery style="minecraft" label="Minecraft" />
 
     <!-- SEO content -->
     <section class="gen-info reveal">
