@@ -1,6 +1,6 @@
 ---
 interface Props {
-  defaultStyle?: 'cute' | 'lowpoly' | 'pixel' | 'fantasy';
+  defaultStyle?: 'cute' | 'lowpoly' | 'pixel' | 'fantasy' | 'minecraft';
   defaultPrompt?: string;
 }
 const { defaultStyle = 'cute', defaultPrompt = '' } = Astro.props;
@@ -10,6 +10,7 @@ const STYLES = [
   { id: 'lowpoly', label: 'Low Poly', hint: 'geometric facets' },
   { id: 'pixel', label: 'Pixel', hint: '8-bit sprite' },
   { id: 'fantasy', label: 'Fantasy', hint: 'magical glow' },
+{ id: 'minecraft', label: 'Minecraft', hint: 'blocky voxel cubes' },
 ];
 ---
 
@@ -109,6 +110,7 @@ const STYLES = [
     lowpoly: ['#FFFFFF', '#0A0A0B'],
     pixel:   ['#FFFFFF', '#0A0A0B'],
     fantasy: ['#FFFFFF', '#0A0A0B'],
+    minecraft: ['#FFFFFF', '#0A0A0B'],
   };
   // Style phrases injected into the prompt so "style" is a real hint, not just a label.
   const STYLE_PHRASES = {
@@ -116,6 +118,7 @@ const STYLES = [
     lowpoly: 'low poly geometric',
     pixel: 'pixel art',
     fantasy: 'fantasy magical',
+    minecraft: 'blocky voxel cube',
   };
   // Fixed papercraft anchor — kept in sync with the server-side buildPrompt so the
   // preview mirrors what the model actually receives.

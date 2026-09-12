@@ -32,6 +32,7 @@ const STYLE_PHRASES: Record<string, string> = {
   lowpoly: 'low poly geometric',
   pixel: 'pixel art',
   fantasy: 'fantasy magical',
+  minecraft: 'blocky voxel cube',
 };
 
 const POLLINATIONS_DEFAULT_MODEL = 'flux';
@@ -40,6 +41,7 @@ const POLLINATIONS_STYLE_MODELS: Record<string, string> = {
   lowpoly: 'flux',
   pixel: 'sdxl',
   fantasy: 'flux',
+  minecraft: 'flux',
 };
 const OPENROUTER_DEFAULT_MODEL = 'bytedance-seed/seedream-4.5';
 const WORKERSAI_MODEL = '@cf/black-forest-labs/flux-1-schnell';

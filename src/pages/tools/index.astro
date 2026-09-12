@@ -1,8 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const title = 'Free Papercraft Generators — Cute, Low Poly, Pixel & Fantasy';
-const description = 'Explore free AI papercraft design generators. Pick a style — cute, low poly, pixel, or fantasy — and turn any idea into a beautiful papercraft design.';
+const title = 'Free Papercraft Generators — Cute, Low Poly, Pixel, Fantasy & Minecraft';
+const description = 'Explore free AI papercraft design generators. Pick a style — cute, low poly, pixel, fantasy, or minecraft — and turn any idea into a beautiful papercraft design.';
 
 const generators = [
   {
@@ -33,11 +33,18 @@ const generators = [
     title: 'Fantasy Generator',
     desc: 'Glowing, storybook forms for castles, dragons, and creatures.',
   },
+  {
+    href: '/tools/minecraft/',
+    fig: 'FIG. E',
+    tag: 'VOXEL',
+    title: 'Minecraft Generator',
+    desc: 'Blocky voxel cubes and game-inspired shapes with a chunky pixel look.',
+  },
 ];
 
 const faqs = [
   { q: 'What is a papercraft generator?', a: 'It turns a short sentence into a beautiful papercraft-style design. Describe an idea, pick a style, and get a unique AI-generated artwork for inspiration and creative exploration.' },
-  { q: 'How many styles are there?', a: 'Four: Cute, Low Poly, Pixel, and Fantasy. The same idea renders differently in each, so you can match the look to your project.' },
+  { q: 'How many styles are there?', a: 'Five: Cute, Low Poly, Pixel, Fantasy, and Minecraft. The same idea renders differently in each, so you can match the look to your project.' },
   { q: 'Are the generators free?', a: 'Yes. Every design is free to generate and save for personal use. No account required, no sign-up, no hidden fees.' },
   { q: 'Can I use the designs commercially?', a: 'Designs are free to make and use for personal projects. For anything beyond personal use, check the license of any AI-rendered artwork and keep within fair use.' },
 ];
@@ -49,8 +56,8 @@ const faqs = [
       <p class="eyebrow"><span class="label">Papercraft Generators</span></p>
       <h1>Pick a style, generate papercraft</h1>
       <p class="lede">
-        Four free AI papercraft generators, one idea. Choose a look — cute, low poly, pixel, or fantasy —
-        and turn any idea into a beautiful papercraft design.
+        Five free AI papercraft generators, one idea. Choose a look — cute, low poly, pixel, fantasy, or
+        minecraft — and turn any idea into a beautiful papercraft design.
       </p>
     </header>
 
@@ -79,7 +86,8 @@ const faqs = [
       <h2>Which style should I use?</h2>
       <p>
         Go <a href="/tools/cute/">Cute</a> for toys and gifts, <a href="/tools/lowpoly/">Low Poly</a> for modern decor and
-        geometric models, <a href="/tools/pixel/">Pixel</a> for retro game sprites, and
+        geometric models, <a href="/tools/pixel/">Pixel</a> for retro game sprites,
+        <a href="/tools/minecraft/">Minecraft</a> for blocky voxel and game-inspired shapes, and
         <a href="/tools/fantasy/">Fantasy</a> for castles, dragons, and storybook scenes. Not sure? Start on the
         <a href="/">homepage generator</a> and switch styles with the chips.
       </p>
