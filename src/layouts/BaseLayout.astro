@@ -82,6 +82,10 @@ const ADSENSE_ID = 'ca-pub-6279178382144076';
   <main>
     <slot />
   </main>
+
+  <!-- Ad slot (third-party network): filled after consent -->
+  <div id="container-04bba4fddad31c9c102b34f4c1c7ad04" style="margin:28px auto;max-width:var(--max-width);min-height:90px;display:flex;align-items:center;justify-content:center;padding:0 20px;box-sizing:border-box;"></div>
+
   <Footer />
 
   <button class="to-top" id="toTop" aria-label="Back to top">&#8593;</button>
@@ -114,6 +118,11 @@ const ADSENSE_ID = 'ca-pub-6279178382144076';
         s2.crossOrigin = 'anonymous';
         s2.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + ADSENSE_ID;
         document.head.appendChild(s2);
+        const s3 = document.createElement('script');
+        s3.async = true;
+        s3.setAttribute('data-cfasync', 'false');
+        s3.src = 'https://pl31324343.profitableratecpmnetwork.com/04bba4fddad31c9c102b34f4c1c7ad04/invoke.js';
+        document.head.appendChild(s3);
       }
       function decide(v) {
         try { localStorage.setItem(KEY, v); } catch (e) {}
