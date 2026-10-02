@@ -3,7 +3,7 @@ title: "Low Poly Pyramid Papercraft Design"
 description: "Free lowpoly building papercraft design of \"low poly pyramid\" — AI-generated artwork with ready-to-use prompts to try next."
 emoji: "🎨"
 style: "lowpoly"
-updated: "2026-09-18"
+updated: "2026-10-02"
 order: 99
 draft: false
 ---
@@ -18,3 +18,8 @@ It is easy to keep exploring from here. Describe "undefined" to give it a cozy s
 ![AI-generated lowpoly papercraft of low poly pyramid.](/images/gallery/low-poly-pyramid-papercraft-design-mu67vu8wg5ib.jpg)
 
 *AI-generated lowpoly papercraft of low poly pyramid.*
+
+
+![AI-generated pixel papercraft of low poly pyramid.](/images/gallery/low-poly-pyramid-papercraft-design-muq9804pyzaq.jpg)
+
+*AI-generated pixel papercraft of low poly pyramid.*
