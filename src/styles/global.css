@@ -353,7 +353,7 @@ ul { list-style: none; }
 .step p { color: var(--text-muted); font-size: .95rem; }
 
 /* explore */
-.explore { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
+.explore { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: 18px; }
 .ecard { border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); display: flex; flex-direction: column; min-height: 200px; transition: .18s; overflow: hidden; }
 .ecard:hover { border-color: var(--text); transform: translateY(-3px); }
 .ecard .top { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; border-bottom: 1px solid var(--border); }
