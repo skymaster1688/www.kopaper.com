@@ -33,3 +33,8 @@ GITHUB_REPO = "skymaster1688/www.kopaper.com"
 [[kv_namespaces]]
 binding = "GALLERY_KV"
 id = "54d2e5ea278844d49225ad8c7095e89c"
+
+# Raise the per-invocation subrequest cap (default 50) so a bulk flush of many
+# gallery drafts fits in one invocation: each draft costs 1 GitHub GET during
+# planning, then ~2 blob uploads + 4 Git-data calls during the bulk commit.
+limits = { subrequest = 1000 }
