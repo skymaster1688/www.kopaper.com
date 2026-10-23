@@ -8,6 +8,13 @@
 
 export const prerender = false;
 
+// One Worker invocation may only issue 50 subrequests by default (fetch calls).
+// Each draft costs 1 GitHub GET while planning + 2 blob uploads during the commit,
+// and the bulk commit itself costs 4 calls (ref GET, tree POST, commit POST, ref PATCH),
+// so 3*N + 4 must stay well below 50. 12 drafts => 40 subrequests, leaving headroom.
+// Drafts beyond the batch stay in KV and are published by the next flush.
+const MAX_PER_FLUSH = 12;
+
 import type { APIContext } from 'astro';
 import { getRuntimeEnv, json, planDraft, ghCommitAll, corsPreflightHeaders } from '../../lib/gallery';
 
@@ -47,10 +54,12 @@ async function flush(context: APIContext) {
 
   const state = { existingCache: new Map<string, string>(), mdAccum: new Map<string, string>() };
   const allFiles: { path: string; contentBase64: string }[] = [];
+  const handledKeys: string[] = [];
   const failed: string[] = [];
   let published = 0;
 
   for (const k of listed) {
+    if (handledKeys.length >= MAX_PER_FLUSH) break;
     let raw: string | null = null;
     try { raw = await kv.get(k.name); } catch { continue; }
     if (!raw) continue;
@@ -65,6 +74,7 @@ async function flush(context: APIContext) {
     }
     if ('error' in res) { await safeDelete(kv, k.name); failed.push(`${k.name}: ${res.error}`); continue; }
     allFiles.push(...res.files);
+    handledKeys.push(k.name);
     published++;
   }
 
@@ -74,9 +84,10 @@ async function flush(context: APIContext) {
 
   try {
     await ghCommitAll(gh, allFiles, `Publish ${published} gallery item(s) (bulk flush)`, gh.GITHUB_BRANCH);
-    // Commit succeeded -> drafts are now in the repo, safe to clear the queue.
-    for (const k of listed) { await safeDelete(kv, k.name); }
-    return json({ ok: true, published, failed: failed.length, errors: failed }, 200, origin);
+    // Commit succeeded -> these drafts are now in the repo, safe to clear them.
+    for (const k of handledKeys) { await safeDelete(kv, k); }
+    const remaining = listed.length - handledKeys.length;
+    return json({ ok: true, published, remaining, failed: failed.length, errors: failed }, 200, origin);
   } catch (e) {
     // Commit failed: keep the drafts so they can be retried on the next flush.
     return json({
