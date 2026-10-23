@@ -27,3 +27,7 @@ It is easy to keep exploring from here. Describe "undefined" to give it a cozy s
 ![AI-generated lowpoly papercraft of low poly fox.](/images/gallery/low-poly-fox-papercraft-design-mvl26vxnysel.jpg)
 
 *AI-generated lowpoly papercraft of low poly fox.*
+
+![AI-generated lowpoly papercraft of low poly fox.](/images/gallery/low-poly-fox-papercraft-design-mvl28bznj6mq.jpg)
+
+*AI-generated lowpoly papercraft of low poly fox.*

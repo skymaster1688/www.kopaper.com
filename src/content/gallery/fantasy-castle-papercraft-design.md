@@ -18,3 +18,12 @@ It is easy to keep exploring from here. Describe "undefined" to give it a fantas
 ![AI-generated lowpoly papercraft of fantasy castle.](/images/gallery/fantasy-castle-papercraft-design-mvl26xp80mo1.jpg)
 
 *AI-generated lowpoly papercraft of fantasy castle.*
+
+
+![AI-generated papercraft of fantasy castle.](/images/gallery/fantasy-castle-papercraft-design-mvl281n686yw.jpg)
+
+*AI-generated papercraft of fantasy castle.*
+
+![AI-generated lowpoly papercraft of fantasy castle.](/images/gallery/fantasy-castle-papercraft-design-mvl289mft2zz.jpg)
+
+*AI-generated lowpoly papercraft of fantasy castle.*
