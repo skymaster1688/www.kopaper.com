@@ -3,7 +3,7 @@ title: "Blocky Creeper Face Papercraft Design"
 description: "Free minecraft papercraft papercraft design of \"Blocky creeper face\" — AI-generated artwork with ready-to-use prompts to try next."
 emoji: "🎨"
 style: "minecraft"
-updated: "2026-09-13"
+updated: "2026-10-23"
 order: 99
 draft: false
 ---
@@ -16,5 +16,10 @@ It is easy to keep exploring from here. Describe "undefined" to give it a cozy s
 
 
 ![AI-generated minecraft papercraft of Blocky creeper face.](/images/gallery/blocky-creeper-face-papercraft-design-mtzsddwcw47a.jpg)
+
+*AI-generated minecraft papercraft of Blocky creeper face.*
+
+
+![AI-generated minecraft papercraft of Blocky creeper face.](/images/gallery/blocky-creeper-face-papercraft-design-mvl26q88sv8p.jpg)
 
 *AI-generated minecraft papercraft of Blocky creeper face.*
