@@ -3,7 +3,7 @@ title: "Animal Papercraft Design"
 description: "Cuteanimal papercraft design — free AI-generated artwork, with prompts to keep exploring."
 emoji: "🎨"
 style: "cute"
-updated: "2026-09-28"
+updated: "2026-10-25"
 order: 99
 draft: false
 ---
@@ -23,3 +23,7 @@ It is easy to keep exploring from here. Describe "undefined" to give it a cozy s
 ![AI-generated cute papercraft of Cute simple 3D paper craft cow for children.](/images/gallery/animal-papercraft-design-mul6dss2ubot.jpg)
 
 *AI-generated cute papercraft of Cute simple 3D paper craft cow for children.*
+
+![AI-generated fantasy papercraft of Catgirl with orange top sleeveless blue shorts eyes shoes happy.](/images/gallery/animal-papercraft-design-mvnrj4x54ixv.jpg)
+
+*AI-generated fantasy papercraft of Catgirl with orange top sleeveless blue shorts eyes shoes happy.*
