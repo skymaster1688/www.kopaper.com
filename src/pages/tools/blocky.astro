@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Generator from '../../components/Generator.astro';
+import StyleGallery from '../../components/StyleGallery.astro';
+
+const title = 'Blocky Papercraft Generator: Free Voxel Cube Designs';
+const description = 'Generate free blocky voxel papercraft designs from a text idea. Describe a cube face, a chunky pickaxe, or a voxel house and get an AI papercraft design.';
+---
+
+<BaseLayout title={title} description={description} ogType="website">
+  <article class="container generator-page">
+    <header class="generator-head reveal">
+      <p class="eyebrow"><span class="label">Blocky Papercraft Generator</span></p>
+      <h1>Generate blocky voxel papercraft</h1>
+      <p class="lede">
+        Chunky cubes and clean voxel geometry. Describe an idea, pick the Blocky style, and get a
+        cube-based papercraft design you can use for inspiration and creative exploration.
+      </p>
+    </header>
+
+    <!-- Generator app (pre-set to the blocky voxel style) -->
+    <Generator defaultStyle="minecraft" defaultPrompt="a blocky cube-face character" />
+
+    <StyleGallery style="minecraft" label="Blocky Voxel" />
+
+    <!-- SEO content -->
+    <section class="gen-info reveal">
+      <h2>What you can make in the blocky voxel style</h2>
+      <p>
+        The blocky papercraft generator is built for chunky cube shapes — cube-face characters, chunky
+        tools, swords, voxel houses, and block-built animals. Tell it <strong>a cube-face character</strong>,
+        <strong>a chunky pickaxe</strong>, or <strong>a voxel village house</strong>, and it returns a
+        cube-based papercraft-style design you can use for inspiration.
+        Every design is original papercraft-style artwork with a blocky voxel look.
+      </p>
+
+      <h2>How to use a generated design</h2>
+      <ol class="gen-steps">
+        <li><strong>Describe</strong> an idea above (or just press Generate for a suggestion), then pick your preferred style.</li>
+        <li><strong>Generate</strong> your papercraft design — the AI creates a unique cube-style artwork in seconds.</li>
+        <li><strong>Save</strong> your favorite designs for personal reference, inspiration, or creative exploration.</li>
+        <li><strong>Explore</strong> different styles and variations — the same idea renders differently in Cute, Low Poly, Pixel, Fantasy, or Blocky.</li>
+      </ol>
+
+      <h2>Other styles to try</h2>
+      <p>
+        Want a different look? The same idea renders differently in
+        <a href="/tools/cute/">Cute</a>, <a href="/tools/lowpoly/">Low Poly</a>,
+        <a href="/tools/pixel/">Pixel</a>, or <a href="/tools/fantasy/">Fantasy</a>. Browse them all on
+        the <a href="/tools/">papercraft generators hub</a>.
+      </p>
+
+      <h2>Frequently asked questions</h2>
+      <div class="gen-faq">
+        <details>
+          <summary>Is the blocky generator free?</summary>
+          <p>Yes. Every blocky papercraft design is free to generate and download. No account required.</p>
+        </details>
+        <details>
+          <summary>What file do I get?</summary>
+          <p>You get a high-resolution papercraft design image, ready to save and reuse as inspiration.</p>
+        </details>
+        <details>
+          <summary>Can I make cube characters or chunky tools?</summary>
+          <p>Describe a cube face, a pickaxe, a sword, a block-built animal, or a voxel scene and the generator renders it as a blocky papercraft-style artwork.</p>
+        </details>
+        <details>
+          <summary>What is voxel art?</summary>
+          <p>Voxel art builds a shape from small cubes instead of polygons or lines — the same idea behind 3D pixel art. Any subject with a strong, simple silhouette reads well as a voxel build, which is why cube faces, tools, and small buildings look so sharp in this style.</p>
+        </details>
+      </div>
+
+      <h2>The blocky voxel style, explained</h2>
+      <p>
+        The blocky style renders your idea as a voxel papercraft artwork — chunky cubes, visible face
+        facets, and a crisp grid look that reads like folded paper built from small boxes.
+        It works best for subjects with strong, simple silhouettes: cube faces, tools, weapons,
+        block-built animals, buildings, and anything that suits cube geometry.
+      </p>
+
+      <h2>Example prompts that work well</h2>
+      <ul class="gen-steps">
+        <li><strong>a cube-face character</strong> — the classic, great first try</li>
+        <li><strong>a chunky pickaxe</strong> — clean, instantly recognizable shape</li>
+        <li><strong>a voxel village house</strong> — layered cubes, great depth</li>
+        <li><strong>a blocky sword</strong> — bold silhouette, high contrast</li>
+        <li><strong>a cube-built cow</strong> — fun, chunky, easy to read</li>
+        <li><strong>a voxel cave with glowing ore</strong> — strong light and shade, great for game-style projects</li>
+      </ul>
+
+      <h2>What the blocky style is best for</h2>
+      <p>
+        Use blocky voxel papercraft designs for: party decorations, YouTube thumbnails and channel art,
+        cube-style room decor, classroom themes, and sticker or badge inspiration.
+        Because the look is geometric and chunky, cube designs also translate well to card and poster layouts.
+      </p>
+
+      <h2>Blocky vs. other styles at a glance</h2>
+      <table class="gen-compare">
+        <tr><th>Style</th><th>Look</th><th>Best for</th></tr>
+        <tr><td>Blocky voxel</td><td>chunky cubes, 3D grid, visible facets</td><td>game-style characters, tools, voxel scenes</td></tr>
+        <tr><td>Pixel</td><td>flat 8-bit sprite, single grid plane</td><td>retro icons, sprite characters, chunky subjects</td></tr>
+        <tr><td>Cute</td><td>round, kawaii, soft</td><td>kids' crafts, gifts, friendly mascots</td></tr>
+        <tr><td>Low Poly</td><td>angular, geometric facets</td><td>architectural shapes, animals, modern decor</td></tr>
+        <tr><td>Fantasy</td><td>magical, luminous, ornate</td><td>castles, dragons, wizards, dream scenes</td></tr>
+      </table>
+
+      <h2>Blocky vs. pixel: which one do you want?</h2>
+      <p>
+        They look related but behave differently. <a href="/tools/pixel/">Pixel</a> flattens your subject
+        onto a single 8-bit grid, so it reads like a sprite from a 16-bit game. Blocky voxel keeps the
+        subject three-dimensional — the cubes turn away from the viewer, so you see a top, a side, and a
+        front face. If you want a flat retro icon, choose Pixel. If you want something that looks like a
+        physical object built from boxes, choose Blocky.
+      </p>
+
+      <h2>Tips for better blocky results</h2>
+      <ul class="gen-steps">
+        <li>Keep your subject to one main object — crowded prompts blur the cube look.</li>
+        <li>Name a clear subject ("a cube-face character") before adding extras like colors or poses.</li>
+        <li>Try the same idea in multiple styles to compare — each style changes the mood completely.</li>
+      </ul>
+
+      <h2>More frequently asked questions</h2>
+      <div class="gen-faq">
+        <details>
+          <summary>Do blocky designs work as printable templates?</summary>
+          <p>Blocky voxel papercraft designs are inspiration artwork, not cut-and-fold templates. For printable sheet templates, see our <a href="/printables/">free printables library</a>.</p>
+        </details>
+        <details>
+          <summary>Can I use a blocky design commercially?</summary>
+          <p>Generated designs are for personal inspiration and creative exploration; commercial reuse of the generator output should be checked against our <a href="/terms/">Terms of Service</a>.</p>
+        </details>
+        <details>
+          <summary>Does the generator run on my phone?</summary>
+          <p>Yes — the blocky generator works in any modern browser on desktop and mobile, with no account needed.</p>
+        </details>
+      </div>
+    </section>
+  </article>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'koPaper Blocky Papercraft Generator',
+    applicationCategory: 'DesignApplication',
+    operatingSystem: 'Any',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    description: 'Free online tool to generate blocky voxel cube-style papercraft designs from a text idea.',
+  })}></script>
+</BaseLayout>

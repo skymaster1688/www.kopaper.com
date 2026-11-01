@@ -1,6 +1,6 @@
 ---
 title: "K808 Wheeled Armored Personnel Carrier Papercraft Design"
-description: "Free lowpoly vehicle papercraft design of \"k808 wheeled armored personnel carrier\" — AI-generated artwork with ready-to-use prompts to try next."
+description: "Free low poly vehicle papercraft design of \"k808 wheeled armored personnel carrier\" — AI-generated artwork with ready-to-use prompts to try next."
 emoji: "🚗"
 style: "lowpoly"
 updated: "2026-09-21"

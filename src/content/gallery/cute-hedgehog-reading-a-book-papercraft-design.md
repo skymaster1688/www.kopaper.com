@@ -1,6 +1,6 @@
 ---
 title: "Cute Hedgehog Reading A Book Papercraft Design"
-description: "Free papercraft papercraft design of \"cute hedgehog reading a book\" — AI-generated artwork with ready-to-use prompts to try next."
+description: "Free papercraft design of \"cute hedgehog reading a book\" — AI-generated artwork with ready-to-use prompts to try next."
 emoji: "📖"
 style: "cute"
 updated: "2026-09-02"

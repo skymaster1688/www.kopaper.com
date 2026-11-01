@@ -4,16 +4,20 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const letterPapers = (await getCollection('letter-paper', ({ data }) => !data.draft))
   .sort((a, b) => a.data.order - b.data.order);
+
+const title = 'Free Printable Letter Paper: 15 Designs to Print';
+const description = 'Print free letter paper at home — 15 designs from botanical to space, sized for A4 and US Letter. Download, print at 100%, and write.';
 ---
 
-<BaseLayout
-  title="Free Printable Letter Paper Designs koPaper"
-  description="This section is being refreshed. Meanwhile, turn any idea into a papercraft design with koPaper's free AI generator."
-
-  noindex>
+<BaseLayout {title} {description}>
   <section class="hero container" style="padding-bottom:20px">
-    <h1 class="reveal">Letter Paper Designs</h1>
-    <p class="reveal">This section is being refreshed. Meanwhile, design your own papercraft with the free AI generator.</p>
+    <p class="eyebrow reveal"><span class="label">Letter Paper</span></p>
+    <h1 class="reveal">Printable Letter Paper Designs</h1>
+    <p class="reveal">
+      {letterPapers.length} free letter paper designs you can print at home on A4 or US Letter —
+      botanical, geometric, space, retro, watercolor and more. Pick a sheet, print at 100% scale,
+      and write. No account, no watermark, no email wall.
+    </p>
   </section>
 
   <section class="section container" style="padding-top:20px">
@@ -27,6 +31,74 @@ const letterPapers = (await getCollection('letter-paper', ({ data }) => !data.dr
           </div>
         </a>
       ))}
+    </div>
+  </section>
+
+  <section class="section container">
+    <h2>How to print letter paper that looks good</h2>
+    <p>
+      Letter paper lives or dies on the print, not the design. Three settings do most of the work:
+      print at <strong>100% scale</strong> — "fit to page" shrinks the sheet and pushes the
+      margins in, so your lines of writing end up off-centre; choose <strong>best or high quality</strong>
+      rather than draft, because soft washes and gradients band badly on draft; and use
+      <strong>matte paper around 100–120 gsm</strong>, which is heavy enough to take fountain pen ink
+      without ghosting through, but light enough to fold for an envelope.
+    </p>
+    <p>
+      Leave your printer's default margins alone. Letter paper reads as stationery when the design
+      runs to the edge of the printable area — if you want a true borderless sheet, check that your
+      printer supports borderless printing first, otherwise the design will be cropped slightly.
+      Let the ink dry for a minute before writing, especially on coated or glossy stock.
+      For envelopes that match, see our <a href="/printables/envelopes/">printable envelope
+      templates</a>.
+    </p>
+
+    <h2>What each design is good for</h2>
+    <p>
+      Every sheet in the collection is a full-page design with a quiet centre, so handwriting stays
+      readable. Botanical, watercolor and floral designs suit personal letters, thank-you notes and
+      journaling; geometric, minimal and retro designs work better for planning pages, project notes
+      and pen-pal letters that lean modern; starry-night, space and ocean designs are the ones people
+      print for creative writing, poetry drafts and scrapbook backgrounds.
+    </p>
+    <p>
+      If you are printing a matching set, the <a href="/printables/stationery-set/">printable
+      stationery set</a> pairs a sheet, an envelope and a note card in one download, and the
+      <a href="/printables/">full printables library</a> covers cards, gift tags, bookmarks and
+      planner inserts in the same paper weights.
+    </p>
+
+    <h2>Design your own instead</h2>
+    <p>
+      These {letterPapers.length} designs are fixed sheets. If none of them match what you had in
+      mind, the <a href="/">AI papercraft generator</a> turns a sentence into a papercraft-style
+      design you can use as a cover, a gift card front, or a background — describe a look, pick a
+      style, and generate. It produces inspiration artwork rather than a print-ready ruled sheet,
+      so treat it as a starting point for something custom.
+    </p>
+
+    <h2>Letter paper questions</h2>
+    <div class="gen-faq">
+      <details>
+        <summary>Is this letter paper really free?</summary>
+        <p>Yes — every design on this page is free to print for personal use. There is no account, no download limit, and no watermark on the sheet.</p>
+      </details>
+      <details>
+        <summary>What size is the letter paper?</summary>
+        <p>Each design prints on both A4 (210 × 297 mm) and US Letter (8.5 × 11 in). Print at 100% scale and the layout fills the page on either size; the margins shift by a few millimetres, which is not visible once you are writing on it.</p>
+      </details>
+      <details>
+        <summary>Can I print these in black and white?</summary>
+        <p>Yes. The minimalist, geometric and line-based designs hold up well in greyscale. Wash-heavy designs — watercolor, ocean, starry night — lose most of their character in mono, so keep those in colour.</p>
+      </details>
+      <details>
+        <summary>Do these use a lot of ink?</summary>
+        <p>The minimalist, geometric and vintage designs use very little. Full-bleed washes and dark backgrounds (starry night, space) use much more, so print one sheet first before committing to a batch.</p>
+      </details>
+      <details>
+        <summary>Can I write on them with a fountain pen?</summary>
+        <p>On 100–120 gsm matte paper, yes. On plain 80 gsm copier paper, fountain pen ink will feather and ghost through — use a gel pen or print on heavier stock instead.</p>
+      </details>
     </div>
   </section>
 </BaseLayout>

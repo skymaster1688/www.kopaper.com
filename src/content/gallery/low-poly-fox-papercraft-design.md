@@ -1,6 +1,6 @@
 ---
 title: "Low Poly Fox Papercraft Design"
-description: "Free lowpoly animal papercraft design of \"low poly fox\" — AI-generated artwork with ready-to-use prompts to try next."
+description: "Free low poly animal papercraft design of \"low poly fox\" — AI-generated artwork with ready-to-use prompts to try next."
 emoji: "🦊"
 style: "lowpoly"
 updated: "2026-09-28"

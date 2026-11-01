@@ -1,6 +1,6 @@
 ---
 title: "Dinosaur Character Papercraft Design"
-description: "Free fantasy papercraft of a fierce full-body dinosaur with a spiky silhouette. Try a volcano lair, alpha pose, battle roar, hatchling or armor — copy any prompt."
+description: "Free fantasy papercraft of a fierce full-body dinosaur with a spiky silhouette. Try a volcano lair, alpha pose, or battle roar — copy any prompt."
 emoji: "🎨"
 style: "fantasy"
 order: 99

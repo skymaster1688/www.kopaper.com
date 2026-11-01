@@ -1,6 +1,6 @@
 ---
 title: "Airplane Of Mercado Pago Papercraft Design"
-description: "Free lowpoly vehicle papercraft design of \"Airplane of mercado pago\" — AI-generated artwork with ready-to-use prompts to try next."
+description: "Free low poly vehicle papercraft design of \"Airplane of mercado pago\" — AI-generated artwork with ready-to-use prompts to try next."
 emoji: "🎨"
 style: "lowpoly"
 updated: "2026-09-07"

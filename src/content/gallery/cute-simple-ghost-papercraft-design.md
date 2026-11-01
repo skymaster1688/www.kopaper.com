@@ -1,6 +1,6 @@
 ---
 title: "Cute Simple Ghost Papercraft Design"
-description: "Free lowpoly papercraft papercraft design of \"cute simple ghost\" — AI-generated artwork with ready-to-use prompts to try next."
+description: "Free low poly papercraft design of \"cute simple ghost\" — AI-generated artwork with ready-to-use prompts to try next."
 emoji: "👻"
 style: "lowpoly"
 updated: "2026-09-04"

@@ -1,6 +1,6 @@
 ---
 title: "Statue Of Liberty Papercraft Design — AI Generated"
-description: "AI-generated pixel papercraft papercraft design of \"Statue of liberty\". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
+description: "AI-generated pixel papercraft design of \"Statue of liberty\". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
 emoji: "🎨"
 style: "pixel"
 order: 99
@@ -10,7 +10,7 @@ updated: "2026-08-27"
 ---
 
 
-The idea "Statue of liberty" becomes a stunning pixel papercraft papercraft design in this AI-generated artwork from koPaper. The papercraft style — with its geometric structure and paper-like textures — makes it perfect for design inspiration, creative reference, and visual exploration.
+The idea "Statue of liberty" becomes a stunning pixel papercraft design in this AI-generated artwork from koPaper. The papercraft style — with its geometric structure and paper-like textures — makes it perfect for design inspiration, creative reference, and visual exploration.
 
 The pixel style renders the subject as a blocky, retro grid — 8-bit art with clean edges and a nostalgic, game-inspired aesthetic.
 

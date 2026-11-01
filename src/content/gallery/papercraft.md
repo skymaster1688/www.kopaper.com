@@ -1,6 +1,6 @@
 ---
 title: "Papercraft Papercraft Design — AI Generated"
-description: "AI-generated cute papercraft papercraft design. Papercraft-style artwork for inspiration, design reference, and creative exploration."
+description: "AI-generated cute papercraft design. Papercraft-style artwork for inspiration, design reference, and creative exploration."
 emoji: "🎨"
 style: "cute"
 order: 99

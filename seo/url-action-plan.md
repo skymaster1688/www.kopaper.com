@@ -31,7 +31,7 @@
 | `/tools/lowpoly/` | 唯一有明确 CTR 信号的风格页 | **保留·加固**：加示例 Prompt 集、FAQ、与 Gallery 低多边形作品的双向内链 |
 | `/tools/pixel/` | 有曝光无点击 | **保留·改意图匹配**：明确写「生成的是 pixel 风格设计图，非可打印展开图」，降低跳出 |
 | `/tools/cute/` `/tools/fantasy/` | 无独立数据 | **保留·观察**，暂不额外投入 |
-| `/tools/minecraft/` | **IP 风险页** | **待决策 D1**：改造成 `Blocky Voxel Papercraft Generator`（去 IP 化保留流量），或下线 |
+| `/tools/minecraft/` | **已改造** → `/tools/blocky/`（301） | **已处理 D1**：品牌中立 Blocky Voxel，页面保留 |
 
 ### 2.2 图库家族（97 条 URL —— 全站最大风险池）
 
@@ -82,7 +82,7 @@
 | 项 | 现状 | 决策 |
 | --- | --- | --- |
 | `/letter-paper/` 索引 | **noindex** | 矛盾点 |
-| `/letter-paper/*`（15 条） | **全部进索引，但父级 noindex、且不在任何导航** | **待决策 D2**：要么恢复索引父级并入导航，要么整族 noindex |
+| `/letter-paper/*`（15 条） | 父级已恢复索引并重写为 hub 页；子页加互链 | **已处理 D2**：整族保留，接入页脚 + printables 交叉链接 |
 
 ### 2.7 旧内容（已处理，仅 1 处遗留）
 
@@ -109,17 +109,24 @@
 
 ---
 
-## 四、待 Summer 决策（两件，不自行处理）
+## 四、Summer 已决策（2026-11-01）：两条都是「保留页面 + 改造」
 
-**D1 — `/tools/minecraft/` 怎么办？**
-现状：页面在线、标题含 Minecraft、有独立 URL 进 sitemap。与 `IP_BLOCKLIST` 的策略自相矛盾。
-- 选项 A：改为 `Blocky Voxel Papercraft Generator`，Body 不出现 Minecraft 字样，保留「方块风」流量。风险低，不丢词。
-- 选项 B：`noindex` + 从 `/tools/` 入口移除。最彻底，但放弃已有曝光。
+**D1 — `/tools/minecraft/` → 已改造成品牌中立的 Blocky Voxel 页**
+决策：保留这条 URL 的流量价值，但不留 IP 痕迹。落地方式：
+- 新页 `/tools/blocky/`（`src/pages/tools/blocky.astro`），Title `Blocky Papercraft Generator: Free Voxel Cube Designs`
+- 全页不出现 Minecraft / Mojang / creeper 字样；新增「Blocky vs Pixel 该选哪个」区分段
+- 旧 URL `/tools/minecraft/*` → `/tools/blocky/` **301**（页面仍在，只是换了不带商标的地址）
+- 展示标签统一改「Blocky」：`Generator.astro` 风格 chip、首页 3 处文案、`/tools/` 索引页 Title/卡片/FAQ/正文
+- 内部 style id 仍为 `minecraft`（图库 2 条作品与前端 localStorage 依赖它，改 id 属无效迁移）
 
-**D2 — `/letter-paper/` 家族（15 页）去留？**
-现状：子页全部进索引，父页 noindex，且不在导航里 —— 典型的孤儿页群，白占索引预算。
-- 选项 A：恢复父页索引 + 加进 `/printables/` 交叉链接，变成正式子族。
-- 选项 B：整族 noindex，只留文件不占索引。
+**D2 — `/letter-paper/` 家族（15 页）→ 恢复父页索引，变成正式子族**
+决策：不 noindex、不删。落地方式：
+- 父页去掉 `noindex`，换真实 Title `Free Printable Letter Paper: 15 Designs to Print` + 正文
+- 父页补四段真实内容：打印设置（100% 缩放 / 100–120 gsm / 哑面）、设计用途分类、自造替代方案、5 条 FAQ
+- 子页 Title 修掉 `... Free Printable koPaper` 断句，改 `Free Printable {title}`
+- 子页新增「Print settings for this sheet」+「More letter paper designs」（4 条同族互链）
+- 打通出口：页脚 Crafts 栏加 Letter Paper；`/printables/` 索引加回链；父页链到 envelopes / stationery-set / printables / 生成器
+- 子页 description 3 条超 160 字符已压缩（vintage / retro-diner / geometric）
 
 ---
 
@@ -143,7 +150,12 @@
 | 扩充 `/learn/best-glue-for-papercraft/`：新增加速决策表、干燥时间表、PVA vs 胶棒对照、low poly 专用、薄纸专用、不留皱四节 | `src/content/learn/best-glue-for-papercraft.md` | 905 → **1822 词**，4 张表 |
 | **修 CSS bug**：`global.css` 结尾 4 处换行被写成字面量 `\r\n`，导致全站 markdown 表格的 `th` 选择器损坏（变成 `rnth`） | `src/styles/global.css` | 构建的 css-syntax 警告消失，产物为正常 `th,td{…}` |
 
-**sitemap 总量：178 → 126**（剔掉 58 个低质图库页，新增 4 个分类页 + 1 个枢纽页 + 1 个改名页，移除 1 个旧页）。
+| **D1 落地**：`/tools/minecraft/` → `/tools/blocky/`，Title/正文全去 IP（Minecraft / Mojang / creeper 零残留），旧 URL 301 | `src/pages/tools/blocky.astro`、`public/_redirects`、`tools/index.astro`、`index.astro`、`Generator.astro` | 产物 `<title>Blocky Papercraft Generator…`；`dist/tools/minecraft/` 已不存在；`dist/_redirects` 含 301 |
+| **D2 落地**：`/letter-paper/` 父页恢复索引（真实 Title/Desc/正文/FAQ）+ 子页互链 + 页脚与 printables 交叉链接 | `src/pages/letter-paper/index.astro`、`[slug].astro`、`Footer.astro`、`printables/index.astro` | sitemap letter-paper 16 条；父页无 noindex；子页渲染 4 条相关推荐 |
+| 图库描述质量修复：32 条去掉 `papercraft papercraft` 重复词、`Free lowpoly` → `Free low poly`、索引页里的 minecraft 字样清零 | `src/content/gallery/*.md` | 残留 0；索引页描述全部 ≤160 字符 |
+| `IP_BLOCKLIST` 补 `creeper`（此前只拦 minecraft，漏掉这个角色名） | `src/lib/gallery.ts` | 后续发布会拦 |
+
+**sitemap 总量：178 → 127**（剔 58 个低质图库页；新增 4 个分类页、1 个枢纽页、1 个改名页 `/papercraft-ideas/`、1 个 blocky 页、1 个 letter-paper 父页；移除 minecraft 旧路由）。
 
 ---
 

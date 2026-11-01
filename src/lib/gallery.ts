@@ -11,7 +11,7 @@ import { generateArticleContent } from './directions-ai';
 const API = 'https://api.github.com';
 
 export const IP_BLOCKLIST = [
-  'minecraft', 'pokemon', 'roblox', 'fnaf', 'five nights', 'disney', 'hello kitty',
+  'minecraft', 'creeper', 'pokemon', 'roblox', 'fnaf', 'five nights', 'disney', 'hello kitty',
   'sanrio', 'star wars', 'marvel', 'dc comics', 'harry potter', 'peppa', 'paw patrol',
   'spiderman', 'batman', 'simpsons', 'nintendo', 'zelda', 'mario', 'sonic', 'fortnite',
   'among us', 'barbie', 'taylor swift', 'genshin', 'lol', 'league of legends',

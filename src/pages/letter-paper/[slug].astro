@@ -13,6 +13,13 @@ export async function getStaticPaths() {
 const { paper } = Astro.props;
 const { Content } = await paper.render();
 
+const allPapers = (await getCollection('letter-paper', ({ data }) => !data.draft))
+  .sort((a, b) => a.data.order - b.data.order);
+const idx = allPapers.findIndex(p => p.slug === paper.slug);
+const related = [...allPapers.slice(idx + 1), ...allPapers.slice(0, idx)]
+  .filter(p => p.slug !== paper.slug)
+  .slice(0, 4);
+
 const articleSchema: Record<string, unknown> = {
   '@context': 'https://schema.org',
   '@type': 'Article',
@@ -38,7 +45,7 @@ const breadcrumbSchema = {
 ---
 
 <BaseLayout
-  title={`${paper.data.title} Free Printable koPaper`}
+  title={`Free Printable ${paper.data.title}`}
   description={paper.data.description}
   ogType="article"
 
@@ -67,6 +74,37 @@ const breadcrumbSchema = {
     <div class="tutorial-content">
       <Content />
     </div>
+
+    <section style="margin-top:44px">
+      <h2>Print settings for this sheet</h2>
+      <p>
+        Print at <strong>100% scale</strong> on A4 or US Letter — "fit to page" shifts the margins and
+        makes handwritten lines drift. Use matte paper around 100–120 gsm if you write with a fountain
+        pen; plain 80 gsm copier paper feathers and ghosts. Keep colour designs in colour, and give the
+        ink a minute to dry before writing.
+      </p>
+      <p>
+        To build a matching set, pair this sheet with the
+        <a href="/printables/envelopes/">printable envelopes</a> or the
+        <a href="/printables/stationery-set/">stationery set</a>, then browse the rest of the
+        <a href="/letter-paper/">letter paper collection</a>.
+      </p>
+    </section>
+
+    <section style="margin-top:44px">
+      <h2>More letter paper designs</h2>
+      <div class="grid-4" style="margin-top:18px">
+        {related.map(p => (
+          <a href={`/letter-paper/${p.slug}/`} class="craft-card card">
+            <div class="card-emoji">{p.data.emoji}</div>
+            <div class="card-body">
+              <h3>{p.data.title}</h3>
+              <p>{p.data.description}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
   </article>
 
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />

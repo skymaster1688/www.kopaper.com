@@ -1,6 +1,6 @@
 ---
 title: "Gir Papercraft Design"
-description: "Free pixel papercraft papercraft design of \"Gir\" — AI-generated artwork with ready-to-use prompts to try next."
+description: "Free pixel papercraft design of \"Gir\" — AI-generated artwork with ready-to-use prompts to try next."
 emoji: "🎨"
 style: "pixel"
 updated: "2026-10-18"

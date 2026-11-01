@@ -70,3 +70,6 @@
 
 # /generate/ had no keyword in the URL — renamed to /papercraft-ideas/ (2026-11-01)
 /generate*    /papercraft-ideas/    301
+
+# /tools/minecraft/ was an IP-trademark page — retargeted to brand-neutral blocky voxel (2026-11-01)
+/tools/minecraft*    /tools/blocky/    301

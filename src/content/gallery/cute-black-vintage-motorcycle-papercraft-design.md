@@ -1,6 +1,6 @@
 ---
 title: "Vintage Motorcycle Papercraft Design"
-description: "Free cute papercraft of a black vintage motorcycle with rounded kawaii lines. Try a solo ride, open road, keychain, flower basket or rainy street — copy any prompt."
+description: "Free cute papercraft of a black vintage motorcycle with rounded kawaii lines. Try a solo ride, open road, or keychain — copy any prompt."
 emoji: "🏍️"
 style: "cute"
 order: 99

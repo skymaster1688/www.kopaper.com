@@ -1,6 +1,6 @@
 ---
 title: "Bat In Flight Papercraft Design"
-description: "Free lowpoly papercraft papercraft design of \"bat in flight\" — AI-generated artwork with ready-to-use prompts to try next."
+description: "Free low poly papercraft design of \"bat in flight\" — AI-generated artwork with ready-to-use prompts to try next."
 emoji: "🎨"
 style: "lowpoly"
 updated: "2026-10-11"

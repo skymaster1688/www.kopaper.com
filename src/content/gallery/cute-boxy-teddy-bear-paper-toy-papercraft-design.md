@@ -1,6 +1,6 @@
 ---
 title: "Cute Boxy Teddy Bear Paper Toy Papercraft Design"
-description: "Free minecraft animal papercraft design of \"Cute boxy teddy bear paper toy\" — AI-generated artwork with ready-to-use prompts to try next."
+description: "Free cute animal papercraft design of \"Cute boxy teddy bear paper toy\" — AI-generated artwork with ready-to-use prompts to try next."
 emoji: "🐻"
 style: "minecraft"
 updated: "2026-10-03"

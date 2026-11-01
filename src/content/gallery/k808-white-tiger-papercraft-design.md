@@ -1,6 +1,6 @@
 ---
 title: "K808 White Tiger Papercraft Design"
-description: "Free lowpoly animal papercraft design of \"k808 white tiger\" — AI-generated artwork with ready-to-use prompts to try next."
+description: "Free low poly animal papercraft design of \"k808 white tiger\" — AI-generated artwork with ready-to-use prompts to try next."
 emoji: "🐯"
 style: "lowpoly"
 updated: "2026-09-21"

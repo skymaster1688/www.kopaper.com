@@ -1,6 +1,6 @@
 ---
 title: "Gog Papercraft Design"
-description: "Free cute papercraft papercraft design of \"Gog\" — AI-generated artwork with ready-to-use prompts to try next."
+description: "Free cute papercraft design of \"Gog\" — AI-generated artwork with ready-to-use prompts to try next."
 emoji: "🎨"
 style: "cute"
 updated: "2026-10-02"

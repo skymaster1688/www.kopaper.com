@@ -1,6 +1,6 @@
 ---
 title: "Usina Nuclear Papercraft Design"
-description: "Free fantasy papercraft papercraft design of \"Usina nuclear\" — AI-generated artwork with ready-to-use prompts to try next."
+description: "Free fantasy papercraft design of \"Usina nuclear\" — AI-generated artwork with ready-to-use prompts to try next."
 emoji: "🎨"
 style: "fantasy"
 updated: "2026-09-21"

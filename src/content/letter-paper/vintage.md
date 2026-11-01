@@ -1,6 +1,6 @@
 ---
 title: "Vintage Letter Paper"
-description: "A nostalgic vintage letter paper design with aged paper texture, ornate borders, and classic typography. Free to print for letters, journals, and creative writing."
+description: "A nostalgic vintage letter paper design with aged paper texture, ornate borders, and classic typography. Free to print for letters and journals."
 emoji: "📜"
 order: 6
 ---

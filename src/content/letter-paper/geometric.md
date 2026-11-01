@@ -1,6 +1,6 @@
 ---
 title: "Geometric Letter Paper"
-description: "A modern geometric letter paper design with clean lines, shapes, and minimalist patterns. Free to print for professional letters, notes, and contemporary writing."
+description: "A modern geometric letter paper design with clean lines and minimalist patterns. Free to print for professional letters and notes."
 emoji: "🔷"
 order: 8
 ---
