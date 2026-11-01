@@ -6,6 +6,7 @@ style: "lowpoly"
 updated: "2026-10-23"
 order: 99
 draft: false
+noindex: true
 ---
 
 A lowpoly building papercraft design of "house papaer craft" — clean paper folds, crisp geometry and a soft light background, generated in seconds with koPaper's AI papercraft studio.
