@@ -6,6 +6,7 @@ style: "lowpoly"
 updated: "2026-09-21"
 order: 99
 draft: false
+noindex: true
 ---
 
 A lowpoly vehicle papercraft design of "Low poly geometric papercraft of K808 wheeled armored personnel carrier" — clean paper folds, crisp geometry and a soft light background, generated in seconds with koPaper's AI papercraft studio.

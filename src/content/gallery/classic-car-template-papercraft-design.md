@@ -6,6 +6,7 @@ style: "cute"
 updated: "2026-10-03"
 order: 99
 draft: false
+noindex: true
 ---
 
 A cute vehicle papercraft design of "classic car template" — clean paper folds, crisp geometry and a soft light background, generated in seconds with koPaper's AI papercraft studio.

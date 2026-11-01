@@ -67,3 +67,6 @@
 /gallery/pixel-style-papercraft-standing-bungou-stray-dogs-chuuya*  /gallery/standing-pixel-red-haired-character-papercraft-design/  301
 /gallery/royal-enfield-hunter-350-moonshot-black-papercraft*  /gallery/cute-black-vintage-motorcycle-papercraft-design/  301
 /gallery/standing-handome-chuuya-nakahara-papercraft*  /gallery/handsome-red-haired-character-papercraft-design/  301
+
+# /generate/ had no keyword in the URL — renamed to /papercraft-ideas/ (2026-11-01)
+/generate*    /papercraft-ideas/    301

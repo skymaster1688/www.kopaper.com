@@ -6,6 +6,7 @@ style: "lowpoly"
 updated: "2026-09-04"
 order: 99
 draft: false
+noindex: true
 ---
 
 A lowpoly papercraft design of "Cute simple round happy ghost" — clean paper folds, crisp geometry and a soft light background, generated in seconds with koPaper's AI papercraft studio.

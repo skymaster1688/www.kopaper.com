@@ -6,6 +6,7 @@ style: "lowpoly"
 updated: "2026-09-21"
 order: 99
 draft: false
+noindex: true
 ---
 
 A lowpoly dragon papercraft design of "low poly flying dragon" — clean paper folds, crisp geometry and a soft light background, generated in seconds with koPaper's AI papercraft studio.

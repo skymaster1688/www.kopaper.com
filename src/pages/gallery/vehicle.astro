@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubjectGallery from '../../components/SubjectGallery.astro';
+
+const title = 'Vehicle Papercraft Designs: Cars, Bikes & Armor';
+const description = 'Free AI vehicle papercraft designs — classic cars, muscle cars, motorcycles and armored vehicles. Open a design, copy the prompt, generate your own.';
+
+const siblings = [
+  { href: '/gallery/animal/', label: 'Animals' },
+  { href: '/gallery/dragon/', label: 'Dragons' },
+  { href: '/gallery/vehicle/', label: 'Vehicles' },
+  { href: '/gallery/building/', label: 'Buildings' },
+];
+---
+<BaseLayout title={title} description={description} ogType="website">
+  <section class="hero container" style="padding-bottom:10px">
+    <nav class="breadcrumb" style="margin-bottom:16px">
+      <a href="/">Home</a><span>/</span><a href="/gallery/">Gallery</a><span>/</span><span>Vehicles</span>
+    </nav>
+    <h1 class="reveal">Vehicle Papercraft Designs</h1>
+    <p class="reveal" style="max-width:720px">
+      Vehicles are a test of straight lines. Bodies are made of long flat panels, so a wobbly crease shows
+      immediately, and the silhouette carries almost all of the recognition — a muscle car reads as a muscle
+      car from the roofline alone. That makes vehicles the best subject for practicing clean scoring and
+      crisp folds.
+    </p>
+    <p class="reveal" style="max-width:720px">
+      The designs below run from classic and muscle cars to motorcycles and armored transports. Open any one
+      for its prompt, then swap the body style, color or era to get something different. Heavy cardstock
+      (180–220 gsm) suits vehicles better than thin paper because the panels need to hold themselves flat
+      without glue pulling them into a curve — see
+      <a href="/learn/what-paper-for-origami/">which paper to use</a> for the full weight comparison.
+    </p>
+  </section>
+
+  <SubjectGallery subject="vehicle" heading="Vehicle papercraft designs" intro="" siblings={siblings} />
+</BaseLayout>

@@ -1,5 +1,5 @@
 ---
-title: "Statue of Liberty Papercraft — Free Pixel Cut-Out"
+title: "Statue of Liberty Papercraft"
 description: "Free pixel papercraft of the Statue of Liberty as a cut-out piece. Try a torch glow, harbor scene, souvenir, night skyline or colors — copy any prompt."
 emoji: "🎨"
 style: "pixel"

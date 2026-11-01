@@ -1,8 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const title = 'AI Papercraft Design Ideas & Free Prompts | koPaper';
-const description = 'Browse 56+ free papercraft design ideas with copy-ready AI prompts — animals, characters, fantasy, vehicles, holidays and more. Find your next papercraft inspiration and generate it free.';
+const title = 'Papercraft Ideas: 56+ Free AI Prompts to Copy';
+const description = '56+ papercraft ideas with copy-ready AI prompts — animals, characters, fantasy, vehicles and holidays. Copy one, pick a style, generate it free.';
 
 type Idea = { t: string; p: string; d: string };
 type Group = { cat: string; tag: string; items: Idea[] };
@@ -87,11 +87,12 @@ const catCount = groups.length;
 <BaseLayout title={title} description={description} ogType="website">
   <article class="container generator-page">
     <header class="generator-head reveal">
-      <p class="eyebrow"><span class="label">Papercraft Design Ideas</span></p>
-      <h1>AI Papercraft Design Ideas &amp; Free Prompts</h1>
+      <p class="eyebrow"><span class="label">Papercraft Ideas</span></p>
+      <h1>Papercraft Ideas &amp; Free Prompts to Copy</h1>
       <p class="lede">
-        {total}+ ready-to-use prompts across {catCount} categories. Pick an idea, copy the prompt, and
-        generate it for free in the <a href="/">koPaper AI papercraft generator</a> — then tweak the words to make it yours.
+        {total} ready-to-use prompts across {catCount} categories — from animals and dragons to vehicles and
+        holiday crafts. Pick an idea, copy the prompt, and generate it for free in the
+        <a href="/">koPaper AI papercraft generator</a>, then tweak the words to make it yours.
       </p>
     </header>
 

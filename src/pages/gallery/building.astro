@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubjectGallery from '../../components/SubjectGallery.astro';
+
+const title = 'Building Papercraft Designs: Castles & Houses';
+const description = 'Free AI building papercraft designs — castles, cottages, pyramids and houses. Open a design, copy its prompt, and generate a model of your own.';
+
+const siblings = [
+  { href: '/gallery/animal/', label: 'Animals' },
+  { href: '/gallery/dragon/', label: 'Dragons' },
+  { href: '/gallery/vehicle/', label: 'Vehicles' },
+  { href: '/gallery/building/', label: 'Buildings' },
+];
+---
+<BaseLayout title={title} description={description} ogType="website">
+  <section class="hero container" style="padding-bottom:10px">
+    <nav class="breadcrumb" style="margin-bottom:16px">
+      <a href="/">Home</a><span>/</span><a href="/gallery/">Gallery</a><span>/</span><span>Buildings</span>
+    </nav>
+    <h1 class="reveal">Building Papercraft Designs</h1>
+    <p class="reveal" style="max-width:720px">
+      Buildings reward patience. Roofs are the hard part — a pitched roof is four planes meeting at angles,
+      and every corner has to be square or the whole model looks soft. Corners matter more than decoration:
+      a plain cottage with sharp edges looks better than a detailed one with rounded seams, which is why a
+      bone folder along each edge does more for the finished piece than any extra detail.
+    </p>
+    <p class="reveal" style="max-width:720px">
+      This collection covers castles, cottages, towers and standalone landmarks. Open any design for its
+      prompt, then change the scale — a single cottage, a village street, or a skyline banner all come from
+      the same words with a different modifier. Buildings want heavier stock than animals (200–250 gsm), so
+      check the weight notes in <a href="/learn/what-paper-for-origami/">what paper to use</a> before you
+      print.
+    </p>
+  </section>
+
+  <SubjectGallery subject="building" heading="Building papercraft designs" intro="" siblings={siblings} />
+</BaseLayout>

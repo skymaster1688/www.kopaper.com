@@ -1,5 +1,5 @@
 ---
-title: "Cute Panda Papercraft — Free AI Design"
+title: "Cute Panda Papercraft Design"
 description: "A chubby panda made of soft folded paper, with a gentle smile and bamboo in paw. Copy a cozy panda, panda chef, baby cub or forest scene prompt to keep going."
 emoji: "🐼"
 style: "cute"

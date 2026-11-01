@@ -6,6 +6,7 @@ style: "cute"
 updated: "2026-09-02"
 order: 99
 draft: false
+noindex: true
 ---
 
 A low-poly fox built from sharp folded facets — bright orange paper planes catching the light, a white chest and a watchful amber gaze. The geometry makes it feel like it stepped out of a game. Made with koPaper's free AI papercraft generator.

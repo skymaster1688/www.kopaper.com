@@ -1,5 +1,5 @@
 ---
-title: "Black Muscle Car Papercraft — Free Fantasy Design"
+title: "Black Muscle Car Papercraft"
 description: "Free AI fantasy papercraft of a black muscle car with an aggressive stance. Try a night street, drag strip, garage, racer or showroom — copy any prompt."
 emoji: "🚗"
 style: "fantasy"

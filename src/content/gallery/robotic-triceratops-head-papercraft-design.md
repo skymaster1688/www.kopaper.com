@@ -1,5 +1,5 @@
 ---
-title: "Robotic Triceratops Head Papercraft — Free Low Poly"
+title: "Robotic Triceratops Papercraft Design"
 description: "Free low-poly papercraft of a robotic triceratops head with mechanical facets. Try red alert, museum, neon, desk buddy or desert scan — copy any prompt."
 emoji: "🤖"
 style: "lowpoly"

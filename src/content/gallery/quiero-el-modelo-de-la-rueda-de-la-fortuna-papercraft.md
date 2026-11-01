@@ -1,5 +1,5 @@
 ---
-title: "Ferris Wheel Papercraft — Free Cute Amusement Design"
+title: "Ferris Wheel Papercraft Design"
 description: "Free cute papercraft of a ferris wheel with colorful kawaii cabins. Try a fairground night, spin, tiny carnival, sunrise glow or ticket booth — copy any prompt."
 emoji: "🎨"
 style: "cute"

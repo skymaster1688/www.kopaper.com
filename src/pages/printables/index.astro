@@ -7,13 +7,16 @@ const items = (await getCollection('printables', ({ data }) => !data.draft))
   .sort((a, b) => a.data.order - b.data.order);
 ---
 <BaseLayout
-  title="Free Printable Paper Crafts | Cards, Gift Tags & More | koPaper"
-  description="This section is being refreshed. Meanwhile, turn any idea into a papercraft design with koPaper's free AI generator."
-
-  >
+  title="Free Printable Paper Crafts: Cards, Tags & Templates"
+  description="Print free paper crafts at home — greeting cards, gift tags, envelopes, bookmarks, stickers and more. Pick a project, print it on cardstock, and fold."
+>
   <section class="hero container" style="padding-bottom:20px">
-    <h1 class="reveal">Printables</h1>
-    <p class="reveal">This section is being refreshed. Meanwhile, design your own papercraft with the free AI generator.</p>
+    <h1 class="reveal">Printable Paper Crafts</h1>
+    <p class="reveal">
+      Everything here is designed to print at home on A4 or Letter stock. Pick the project you need —
+      a card, a gift tag, a set of envelopes — print it on 160–200 gsm cardstock, and fold along the guides.
+      No special tools beyond a printer, a ruler, and a bone folder.
+    </p>
   </section>
 
   <section class="section container" style="padding-top:20px">
@@ -27,5 +30,21 @@ const items = (await getCollection('printables', ({ data }) => !data.draft))
         />
       ))}
     </div>
+  </section>
+
+  <section class="section container">
+    <h2>How to print these cleanly</h2>
+    <p>
+      Print at 100% scale — "fit to page" will shrink the template and throw off the fold lines.
+      Use 160–200 gsm cardstock for anything that has to stand up or hold a crease; plain 80 gsm paper
+      is fine for bookmarks and planner inserts. If your printer struggles to feed heavy stock,
+      use its rear or manual feed slot. For a full breakdown of stock weights, see our guide on
+      <a href="/learn/what-paper-for-origami/">what paper to use for paper crafts</a>.
+    </p>
+    <p>
+      Want something that is not in the list? The <a href="/">AI papercraft generator</a> turns a sentence
+      into a papercraft-style design, or you can start from one of the
+      <a href="/templates/">printable papercraft templates</a>.
+    </p>
   </section>
 </BaseLayout>

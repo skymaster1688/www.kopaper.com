@@ -1,5 +1,5 @@
 ---
-title: "🐥 Chick Emoji Simple 2d Papercraft Design"
+title: "Chick Emoji Papercraft Design"
 description: "Free cute papercraft papercraft design of \"🐥 chick emoji simple 2d\" — AI-generated artwork with ready-to-use prompts to try next."
 emoji: "🎨"
 style: "cute"

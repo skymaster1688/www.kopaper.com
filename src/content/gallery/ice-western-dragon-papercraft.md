@@ -1,5 +1,5 @@
 ---
-title: "Ice Western Dragon Papercraft Design — AI Generated"
+title: "Ice Western Dragon Papercraft Design"
 description: "AI-generated cute dragon papercraft design of \"Ice western dragon\". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
 emoji: "🐉"
 style: "cute"

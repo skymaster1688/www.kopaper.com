@@ -1,5 +1,5 @@
 ---
-title: "Pig Papercraft Design — AI Generated"
+title: "Pig Papercraft Design"
 description: "AI-generated pixel animal papercraft design of \"Pig\". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
 emoji: "🎨"
 style: "pixel"

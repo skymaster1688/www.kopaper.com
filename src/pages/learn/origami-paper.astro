@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const guides = [
+  { href: '/learn/best-origami-paper/', title: 'Best Origami Paper for Beginners', desc: 'Kami, tant, washi and foil compared by weight, size and price — with a clear first-pack recommendation.' },
+  { href: '/learn/origami-paper-size/', title: 'Origami Paper Size Guide', desc: 'Every common size in cm and inches, plus how to cut perfect squares from A4 and Letter sheets.' },
+  { href: '/learn/types-of-origami-paper/', title: 'Types of Origami Paper', desc: 'What kami, tant, washi and foil actually are, how each creases, and which models suit them.' },
+  { href: '/learn/what-paper-for-origami/', title: 'What Paper to Use for Origami', desc: 'Match the sheet to the project — simple folds, dense models, wet folding, and kids crafts.' },
+  { href: '/learn/printer-paper-for-origami/', title: 'Can You Use Printer Paper?', desc: 'When 80 gsm copy paper is genuinely fine, and the point where it starts to fight you.' },
+  { href: '/learn/make-origami-paper/', title: 'How to Make Origami Paper', desc: 'Cut, dye and prepare your own squares when you cannot buy the size or color you want.' },
+];
+
+const picks = [
+  { need: 'Absolute beginner, first pack', pick: '15 cm kami, 80 gsm', why: 'Cheap, creases cleanly, holds a fold without cracking.', href: '/learn/best-origami-paper/' },
+  { need: 'Dense, complex model', pick: 'Tant or thin washi, 35–50 gsm', why: 'Many layers stay flat instead of ballooning open.', href: '/learn/types-of-origami-paper/' },
+  { need: 'Miniature or modular units', pick: '7.5 cm kami', why: 'Bulk stays low so layered tips stay sharp.', href: '/learn/origami-paper-size/' },
+  { need: 'Wet folding a sculptural piece', pick: 'Thick tant, 100+ gsm', why: 'Takes moisture, then dries into a rigid shape.', href: '/learn/what-paper-for-origami/' },
+  { need: 'Kids or classroom', pick: '15 cm kami, or cut A4', why: 'Forgiving, replaceable, and easy to pre-cut in bulk.', href: '/learn/printer-paper-for-origami/' },
+  { need: 'A size or color that does not exist', pick: 'Make it yourself', why: 'Cut from larger stock and dye or paint to match.', href: '/learn/make-origami-paper/' },
+];
+---
+
+<BaseLayout
+  title="Origami Paper Guide: Sizes, Types & What to Buy"
+  description="Start here for origami paper: which type to buy, what size to fold, and when printer paper is good enough. Six guides, one decision path."
+>
+  <article class="container" style="max-width:820px">
+    <nav class="breadcrumb">
+      <a href="/learn/">Learn</a>
+      <span>/</span>
+      <span>Origami Paper</span>
+    </nav>
+
+    <section class="hero" style="padding:24px 0 8px">
+      <h1 class="reveal">Origami Paper: The Complete Starting Point</h1>
+      <p class="reveal">
+        Almost every problem beginners blame on their folding is actually a paper problem. Sheets that are
+        too thick crack along a crease, sheets that are too small turn a simple model into a fight, and sheets
+        that are the wrong size for the model make the proportions come out wrong no matter how carefully you fold.
+      </p>
+      <p class="reveal">
+        This page is the entry point to six detailed guides. If you only have one minute, read the
+        <a href="#quick-picks">quick picks table</a> below. If you want to understand why a sheet behaves the
+        way it does, follow the guides in the order listed.
+      </p>
+    </section>
+
+    <section class="section" style="padding:24px 0 0">
+      <h2 id="quick-picks">Quick picks: match the paper to the project</h2>
+      <table>
+        <thead>
+          <tr><th>What you need</th><th>Pick</th><th>Why it works</th></tr>
+        </thead>
+        <tbody>
+          {picks.map(p => (
+            <tr>
+              <td>{p.need}</td>
+              <td><a href={p.href}>{p.pick}</a></td>
+              <td>{p.why}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p>
+        Weights and sizes are the two numbers worth memorizing. Everything else — brand, color, surface finish —
+        is preference once those two are right.
+      </p>
+    </section>
+
+    <section class="section" style="padding:24px 0 0">
+      <h2>Two numbers decide almost everything</h2>
+      <p>
+        <strong>Weight</strong> (measured in gsm) controls how the sheet behaves in layers. Under 60 gsm is thin
+        enough for hundreds of folds in one model; 80 gsm is the everyday middle; above 100 gsm starts to resist
+        sharp creases but gives a finished piece real structure. If you are folding something with a lot of
+        layers at one point — a bird's neck, a dragon's tail — thin paper wins.
+      </p>
+      <p>
+        <strong>Size</strong> controls how much detail you can physically fold. A 15 cm square is the standard
+        because it is comfortable in two hands and still large enough to place a dozen creases. Halve it and
+        you get miniatures; double it and you get display pieces. The
+        <a href="/learn/origami-paper-size/">size guide</a> has the full chart in centimeters and inches,
+        including how to cut a true square from A4 or Letter stock.
+      </p>
+    </section>
+
+    <section class="section" style="padding:24px 0 0">
+      <h2>Read the guides in this order</h2>
+      <div class="grid-4" style="margin-top:16px">
+        {guides.map(g => (
+          <a href={g.href} class="ecard">
+            <div class="body">
+              <h3>{g.title}</h3>
+              <p>{g.desc}</p>
+              <span class="go">Read <span class="ar"></span></span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="section" style="padding:24px 0 0">
+      <h2>Paper for papercraft, not just origami</h2>
+      <p>
+        Folding and papercraft are not the same craft, and they do not want the same stock. Origami needs thin
+        sheets that take hundreds of creases; papercraft models need heavier cardstock that holds a flat panel
+        without curling. If you are building a 3D model — cut panels, fold tabs, glue — start from
+        <a href="/learn/what-paper-for-origami/">what paper to use</a> for the folding side, then read
+        <a href="/learn/best-glue-for-papercraft/">best glue for papercraft</a> for the assembly side.
+      </p>
+      <p>
+        Ready to make something? The <a href="/">AI papercraft generator</a> turns a sentence into a papercraft
+        design, and the <a href="/templates/">printable templates</a> give you a net to cut and fold.
+      </p>
+    </section>
+  </article>
+</BaseLayout>

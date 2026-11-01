@@ -1,5 +1,5 @@
 ---
-title: "Iguana Papercraft Design — AI Generated"
+title: "Iguana Papercraft Design"
 description: "AI-generated lowpoly animal papercraft design of \"Iguana\". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
 emoji: "🎨"
 style: "lowpoly"

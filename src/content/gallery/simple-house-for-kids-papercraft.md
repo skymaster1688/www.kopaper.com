@@ -1,5 +1,5 @@
 ---
-title: "Simple House For Kids Papercraft Design — AI Generated"
+title: "Simple House for Kids Papercraft Design"
 description: "AI-generated cute building papercraft design of \"simple house for kids\". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
 emoji: "🏠"
 style: "cute"

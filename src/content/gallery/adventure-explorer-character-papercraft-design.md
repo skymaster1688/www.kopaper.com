@@ -1,5 +1,5 @@
 ---
-title: "Adventure Explorer Papercraft — Free AI Fantasy Design"
+title: "Adventure Explorer Papercraft Design"
 description: "Free AI papercraft of a rugged adventure explorer. Try an arctic climber, jungle scout, tiny doll, steampunk robot or desert nomad — copy any prompt."
 emoji: "🎨"
 style: "fantasy"

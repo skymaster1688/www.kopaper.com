@@ -1,5 +1,5 @@
 ---
-title: "Un Robot Futurista Papercraft Design"
+title: "Futuristic Robot Papercraft Design"
 description: "Free cute character papercraft design of \"Un robot futurista\" — AI-generated artwork with ready-to-use prompts to try next."
 emoji: "🤖"
 style: "cute"

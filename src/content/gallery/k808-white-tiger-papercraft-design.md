@@ -6,6 +6,7 @@ style: "lowpoly"
 updated: "2026-09-21"
 order: 99
 draft: false
+noindex: true
 ---
 
 A lowpoly animal papercraft design of "k808 white tiger" — clean paper folds, crisp geometry and a soft light background, generated in seconds with koPaper's AI papercraft studio.

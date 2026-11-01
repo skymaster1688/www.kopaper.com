@@ -6,6 +6,7 @@ style: "lowpoly"
 updated: "2026-09-07"
 order: 99
 draft: false
+noindex: true
 ---
 
 A lowpoly vehicle papercraft design of "Airplane of mercado pago" — clean paper folds, crisp geometry and a soft light background, generated in seconds with koPaper's AI papercraft studio.

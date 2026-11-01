@@ -6,6 +6,7 @@ style: "cute"
 updated: "2026-09-02"
 order: 99
 draft: false
+noindex: true
 ---
 
 A papercraft design of "cute hedgehog reading a book" — clean paper folds, crisp geometry and a soft light background, generated in seconds with koPaper's AI papercraft studio.

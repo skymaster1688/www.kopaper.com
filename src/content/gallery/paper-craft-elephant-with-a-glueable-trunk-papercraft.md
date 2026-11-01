@@ -1,5 +1,5 @@
 ---
-title: "Paper Elephant Papercraft — Free Pixel Animal Design"
+title: "Paper Elephant Papercraft Design"
 description: "Free pixel papercraft of an elephant with a poseable trunk. Try a jungle walk, water splash, tiny baby, circus look or sunset herd — copy any prompt."
 emoji: "🐘"
 style: "pixel"

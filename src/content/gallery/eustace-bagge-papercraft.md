@@ -5,6 +5,7 @@ emoji: "🎨"
 style: "lowpoly"
 order: 99
 draft: false
+noindex: true
 updated: "2026-08-30"
 ---
 

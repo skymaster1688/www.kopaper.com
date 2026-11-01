@@ -6,6 +6,7 @@ style: "pixel"
 updated: "2026-10-18"
 order: 99
 draft: false
+noindex: true
 ---
 
 A pixel papercraft design of "Gir" — clean paper folds, crisp geometry and a soft light background, generated in seconds with koPaper's AI papercraft studio.

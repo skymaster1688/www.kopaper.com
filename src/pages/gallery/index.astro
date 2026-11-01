@@ -16,6 +16,13 @@ const items = (await getCollection('gallery', ({ data }) => !data.draft && !data
   </section>
 
   <section class="section container" style="padding-top:20px">
+    <p style="margin-bottom:18px">
+      Filter by subject:
+      <a href="/gallery/animal/">Animals</a> ·
+      <a href="/gallery/dragon/">Dragons</a> ·
+      <a href="/gallery/vehicle/">Vehicles</a> ·
+      <a href="/gallery/building/">Buildings</a>
+    </p>
     {items.length === 0 ? (
       <p style="color:var(--text-muted)">No designs published yet. Open the <a href="/">generator</a> and hit <strong>Publish</strong> on your first creation.</p>
     ) : (

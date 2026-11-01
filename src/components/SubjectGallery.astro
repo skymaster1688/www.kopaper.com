@@ -1,0 +1,58 @@
+---
+// 图库主题分类页的共用渲染体。
+// 分类逻辑与 /gallery/{slug}/ 的相关推荐完全一致（都走 lib/gallery 的 detectSubject），
+// 避免分类页与详情页互相矛盾。
+import { getCollection } from 'astro:content';
+import GalleryCard from './GalleryCard.astro';
+import { detectSubject } from '../lib/gallery';
+
+interface Props {
+  subject: string;
+  heading: string;
+  intro: string;
+  siblings: { href: string; label: string }[];
+}
+
+const { subject, heading, intro, siblings } = Astro.props;
+
+function promptOf(d: any): string {
+  const m = (d.description || '').match(/"([^"]+)"/);
+  return m ? m[1] : d.title || '';
+}
+
+const all = await getCollection('gallery', ({ data }) => !data.draft && !data.noindex);
+const items = all
+  .filter((g) => detectSubject(promptOf(g.data)).category === subject)
+  .sort((a, b) => (b.data.updated || `0-${b.slug}`).localeCompare(a.data.updated || `0-${a.slug}`));
+---
+
+<section class="section container">
+  <div class="grid-4" style="margin-top:20px">
+    {items.map((g) => (
+      <GalleryCard
+        href={`/gallery/${g.slug}/`}
+        title={g.data.title}
+        description={g.data.description}
+        body={g.body}
+        emoji={g.data.emoji}
+      />
+    ))}
+  </div>
+  {items.length === 0 && <p style="color:var(--text-muted)">Nothing here yet — generate one and publish it.</p>}
+</section>
+
+<section class="section container">
+  <h2>Browse other subjects</h2>
+  <p>
+    {siblings.map((s, i) => (
+      <>
+        {i > 0 && ' · '}
+        <a href={s.href}>{s.label}</a>
+      </>
+    ))}
+  </p>
+  <p>
+    Looking for something specific? Describe it in the <a href="/">AI papercraft generator</a> and get a
+    design in seconds, or start from a ready-made prompt in <a href="/papercraft-ideas/">papercraft ideas</a>.
+  </p>
+</section>

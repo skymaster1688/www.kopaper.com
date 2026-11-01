@@ -6,6 +6,7 @@ style: "cute"
 updated: "2026-10-04"
 order: 99
 draft: false
+noindex: true
 ---
 
 A cute vehicle papercraft design of "Simple car" — clean paper folds, crisp geometry and a soft light background, generated in seconds with koPaper's AI papercraft studio.

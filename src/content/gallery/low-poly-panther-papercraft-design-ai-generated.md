@@ -1,5 +1,5 @@
 ---
-title: "Low Poly Panther Papercraft — Free 3D Papercraft Design"
+title: "Low Poly Panther Papercraft Design"
 description: "Free low-poly papercraft of a panther with sleek angular facets. Try a night prowl, mountain ledge, neon silhouette, tiny cub or jungle watch — copy any prompt."
 emoji: "🎨"
 style: "lowpoly"

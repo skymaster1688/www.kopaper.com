@@ -15,16 +15,6 @@ export async function getStaticPaths() {
 const { item } = Astro.props;
 const { Content } = await item.render();
 
-const breadcrumbSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: Astro.site.href },
-    { '@type': 'ListItem', position: 2, name: 'Gallery', item: new URL('/gallery/', Astro.site).href },
-    { '@type': 'ListItem', position: 3, name: item.data.title },
-  ],
-};
-
 const all = await getCollection('gallery', ({ data }) => !data.draft && !data.noindex);
 // Extract prompt from description (quoted string) or fall back to title
 function promptOf(d: any): string {
@@ -32,10 +22,25 @@ function promptOf(d: any): string {
   return m ? m[1] : (d.title || '');
 }
 const currentCat = detectSubject(promptOf(item.data)).category;
+// 只有存在分类页的主体才进面包屑（与 /gallery/{subject}/ 的四个静态页保持一致）
+const CAT_PAGES: Record<string, string> = { animal: 'Animals', dragon: 'Dragons', vehicle: 'Vehicles', building: 'Buildings' };
+const catLabel = CAT_PAGES[currentCat] || '';
+const catUrl = catLabel ? `/gallery/${currentCat}/` : '';
 const byDate = (a: any, b: any) => (b.data.updated || `0-${b.slug}`).localeCompare(a.data.updated || `0-${a.slug}`);
 const sameCat = all.filter(g => g.slug !== item.slug && detectSubject(promptOf(g.data)).category === currentCat).sort(byDate);
 const otherCat = all.filter(g => g.slug !== item.slug && detectSubject(promptOf(g.data)).category !== currentCat).sort(byDate);
 const related = [...sameCat, ...otherCat].slice(0, 3);
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: Astro.site.href },
+    { '@type': 'ListItem', position: 2, name: 'Gallery', item: new URL('/gallery/', Astro.site).href },
+    ...(catLabel ? [{ '@type': 'ListItem', position: 3, name: catLabel, item: new URL(catUrl, Astro.site).href }] : []),
+    { '@type': 'ListItem', position: catLabel ? 4 : 3, name: item.data.title },
+  ],
+};
 
 const articleSchema: Record<string, unknown> = {
   '@context': 'https://schema.org',
@@ -65,6 +70,7 @@ if (imgMatch) articleSchema.image = new URL(imgMatch[1], Astro.site).href;
       <span>/</span>
       <a href="/gallery/">Gallery</a>
       <span>/</span>
+      {catLabel && <><a href={catUrl}>{catLabel}</a><span>/</span></>}
       <span>{item.data.title}</span>
     </nav>
 

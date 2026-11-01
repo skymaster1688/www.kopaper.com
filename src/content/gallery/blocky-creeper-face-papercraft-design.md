@@ -6,6 +6,7 @@ style: "minecraft"
 updated: "2026-09-13"
 order: 99
 draft: false
+noindex: true
 ---
 
 A minecraft papercraft design of "Blocky creeper face" — clean paper folds, crisp geometry and a soft light background, generated in seconds with koPaper's AI papercraft studio.

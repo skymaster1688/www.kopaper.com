@@ -1,5 +1,5 @@
 ---
-title: "Robot Toy Papercraft Design — AI Generated"
+title: "Robot Toy Papercraft Design"
 description: "AI-generated pixel vehicle papercraft design of \"robot toy\". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
 emoji: "🤖"
 style: "pixel"

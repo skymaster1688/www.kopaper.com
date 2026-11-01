@@ -1,12 +1,27 @@
 ---
-title: "Origami Paper Size: Why 15 cm Is the Standard"
-description: "Most origami paper comes in 15 cm squares, with 7.5 cm for tiny models. Learn the common sizes, inch equivalents, and how to cut A4 into squares."
+title: "Origami Paper Size Guide: Standard Sizes in cm & Inches"
+description: "What size is origami paper? Compare standard 15 cm, 6 inch and other origami paper sizes in cm and inches, plus how to cut squares from A4 and Letter."
 emoji: "📄"
 order: 4
 draft: false
 ---
 
 If you have ever bought a pack of origami paper, you have probably noticed that most sheets are the same size: about 15 centimeters square. That is not an accident. The **origami paper size** we call standard exists because it is large enough to hold detail yet small enough to manage in two hands. This guide explains the common sizes, how they convert to inches, and how to cut your own squares from A4 or Letter stock.
+
+## Origami Paper Size Chart
+
+If you only need the numbers, here they are. Every common origami paper size, in centimeters and inches, with the kind of project each one suits.
+
+| Size (cm) | Size (inches) | Typical use |
+| --- | --- | --- |
+| 7.5 x 7.5 cm | 3 x 3 in | Miniature models, modular units, tiny animals |
+| 10 x 10 cm | 4 x 4 in | Small practice folds, simple animals |
+| 15 x 15 cm | 6 x 6 in | The standard — most books and tutorials assume this |
+| 20 x 20 cm | 8 x 8 in | Medium models, beginner-to-intermediate folds |
+| 24 x 24 cm | 9.5 x 9.5 in | Large display pieces, wet folding |
+| 30 x 30 cm | 12 x 12 in | Very large models, group teaching, complex designs |
+
+Metric sizes are nominal. A pack labeled 15 cm may measure 14.8 cm or 15.2 cm, and "6 inch" paper is usually the same 15 cm sheet cut to imperial labeling. Neither difference affects the fold.
 
 ## The Standard: 15 cm Square
 

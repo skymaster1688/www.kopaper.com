@@ -1,5 +1,5 @@
 ---
-title: "Basketball Papercraft Design — AI Generated"
+title: "Basketball Papercraft Design"
 description: "AI-generated cute vehicle papercraft design of \"Basketball\". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
 emoji: "🎨"
 style: "cute"

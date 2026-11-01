@@ -20,6 +20,11 @@ export const IP_BLOCKLIST = [
   // added 2026-08-29 after audit of indexed gallery URLs
   'gta', 'grand theft auto', 'one piece', 'mf doom', 'royal enfield', 'wilson',
   'nathan drake', 'uncharted', 'bungou', 'stray dogs', 'chuuya', 'bravado',
+  // added 2026-11-01 after gallery triage: brands/characters that slipped through
+  'iron man', 'ironman', 'creeper', 'invader zim', 'eustace bagge', 'courage the cowardly',
+  'sanji', 'naruto', 'goku', 'dragon ball', 'attack on titan', 'demon slayer', 'jujutsu',
+  'squid game', 'stranger things', 'angry birds', 'plants vs zombies', 'luffy', 'zoro',
+  'pikachu', 'kirby', 'link zelda', 'master chief', 'halo', 'overwatch', 'genshin impact',
 ];
 
 export const EMOJI_MAP: Record<string, string> = {
@@ -186,10 +191,10 @@ export function detectSubject(prompt: string): Subject {
   const p = prompt.toLowerCase();
   const has = (...k: string[]) => k.some(x => p.includes(x));
   if (has('dragon')) return { category: 'dragon', label: 'dragon', article: 'a' };
-  if (has('cat','dog','bear','fox','rabbit','panda','bird','owl','eagle','fish','shark','elephant','tiger','lion','wolf','horse','cow','pig','snake','deer','frog','penguin','butterfly','bee','crab','octopus','whale','mouse','monkey','koala','unicorn')) return { category: 'animal', label: 'animal', article: 'an' };
+  if (has('cat','dog','bear','fox','rabbit','panda','bird','owl','eagle','fish','shark','elephant','tiger','lion','wolf','horse','cow','pig','snake','deer','frog','penguin','butterfly','bee','crab','octopus','whale','mouse','monkey','koala','unicorn','iguana','triceratops','hedgehog','panther','dolphin','hamster','turtle')) return { category: 'animal', label: 'animal', article: 'an' };
   if (has('car','truck','vehicle','bike','motorcycle','plane','airplane','ship','boat','train','bus','tank','helicopter')) return { category: 'vehicle', label: 'vehicle', article: 'a' };
-  if (has('castle','house','home','building','temple','tower','church','statue','pyramid','cottage','cabin','skyscraper')) return { category: 'building', label: 'building', article: 'a' };
-  if (has('robot','knight','warrior','soldier','mecha','ninja','princess','queen','king','wizard','golem')) return { category: 'character', label: 'character', article: 'a' };
+  if (has('castle','house','home','building','temple','tower','church','statue','pyramid','cottage','cabin','skyscraper','ferris')) return { category: 'building', label: 'building', article: 'a' };
+  if (has('robot','knight','warrior','soldier','mecha','ninja','princess','queen','king','wizard','golem','explorer')) return { category: 'character', label: 'character', article: 'a' };
   if (has('flower','plant','tree','rose','succulent','leaf','bloom','cactus')) return { category: 'plant', label: 'plant', article: 'a' };
   if (has('food','cake','burger','fruit','pizza','cookie','cupcake','donut','bread')) return { category: 'food', label: 'food', article: 'a' };
   if (has('box','gift','heart','star','cube','sphere','geometric','diamond','crystal','lantern','ornament')) return { category: 'object', label: 'object', article: 'an' };
@@ -289,31 +294,43 @@ function buildIntro(prompt: string, subject: Subject, style: string, styleWord: 
   return lines.join('\n');
 }
 
+const STYLE_LABEL: Record<string, string> = {
+  cute: 'Cute', lowpoly: 'Low Poly', pixel: 'Pixel', fantasy: 'Fantasy', minecraft: 'Blocky',
+};
+
 export function buildMeta(promptRaw: string, styleRaw: string): Generated {
   const style = (styleRaw || 'cute').toString().toLowerCase();
   const prompt = stripArticle(promptRaw.trim());
   const subject = detectSubject(prompt);
-  // Title: every title carries high-intent keywords "papercraft design" + "AI generated"
+  // Title: prefer the real prompt (unique per page); fall back to style + subject.
+  // No "— Free X Design" suffix — that pattern made 90+ pages read identically.
+  const styleLabel = STYLE_LABEL[style] || '';
   const promptTitle = capitalizeWords(prompt);
   const subjectTitle = capitalizeWords(subject.label);
   const titleCandidates = [
     `${promptTitle} Papercraft Design`,
-    `${promptTitle} — Free Papercraft Design`,
+    `${styleLabel} ${subjectTitle} Papercraft Design`,
+    `${promptTitle} Papercraft`,
     `${subjectTitle} Papercraft Design`,
-    `${subjectTitle} — Free Papercraft Design`,
-  ];
-  let title = titleCandidates.find(t => t.length <= 60) || titleCandidates[3].slice(0, 57).trimEnd() + `...`;
-  const styleWord = style && !title.toLowerCase().includes(style) ? style : '';
-  // Description: natural keyword integration, <= 160 chars — design focus, not template
-  const styleDesc = styleWord ? styleWord + ' ' : '';
-  const descCandidates = [
-    `Free ${styleDesc}${subject.label} papercraft design of "${prompt}" — AI-generated artwork with ready-to-use prompts to try next.`,
-    `A ${styleDesc}${subject.label} papercraft design of "${prompt}", created free with koPaper's AI papercraft studio.`,
-    `${capitalizeWords(styleDesc)}${subject.label} papercraft design — free AI-generated artwork, with prompts to keep exploring.`,
-  ];
-  let description = descCandidates.find(d => d.length <= 160) || descCandidates[2].slice(0, 157).trimEnd() + `...`;
+  ]
+    .map(t => t.replace(/\s+/g, ' ').trim())
+    .filter(t => t.length > 0 && t.length <= 60);
+  const title = titleCandidates[0] || `${subjectTitle} Papercraft Design`;
 
-  const caption = `AI-generated ${styleWord ? styleWord + ' ' : ''}papercraft of ${prompt}.`;
+  const styleWord = styleLabel ? styleLabel.toLowerCase() + ' ' : '';
+  // Descriptions rotate between four skeletons (picked by a stable hash of the prompt)
+  // so neighbouring pages do not share one sentence pattern.
+  const hash = [...prompt].reduce((a, c) => a + c.charCodeAt(0), 0);
+  const descSkeletons = [
+    `A free ${styleWord}${subject.label} papercraft design of "${prompt}" — AI-generated artwork with the prompt ready to copy and remix.`,
+    `Free ${styleWord}${subject.label} papercraft design: "${prompt}". AI papercraft artwork plus follow-up prompts to try next.`,
+    `"${prompt}" rendered as a ${styleWord}${subject.label} papercraft design. Free AI-generated artwork, no sign-up needed.`,
+    `Turn one sentence into a ${styleWord}${subject.label} papercraft design. This one started from "${prompt}" — free and instant.`,
+  ];
+  const rotated = descSkeletons.map((_, i) => descSkeletons[(hash + i) % descSkeletons.length]);
+  let description = rotated.find(d => d.length <= 160) || descSkeletons[0];
+
+  const caption = `AI-generated ${styleWord ? styleWord : ''}papercraft of ${prompt}.`;
   const intro = buildIntro(prompt, subject, style, styleWord);
 
   return {

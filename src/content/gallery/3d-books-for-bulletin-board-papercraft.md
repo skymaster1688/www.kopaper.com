@@ -1,5 +1,5 @@
 ---
-title: "3D Books Bulletin Board Papercraft — Free Cute Design"
+title: "3D Books Papercraft Design"
 description: "Free cute papercraft of 3D books for bulletin board decor. Try a tiny shelf, classroom, rainbow pile, mini desk or library — copy any prompt."
 emoji: "📖"
 style: "cute"

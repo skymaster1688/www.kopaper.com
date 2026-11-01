@@ -6,6 +6,7 @@ style: "lowpoly"
 updated: "2026-09-18"
 order: 99
 draft: false
+noindex: true
 ---
 
 A lowpoly papercraft design of "Me simple brain papercraft" — clean paper folds, crisp geometry and a soft light background, generated in seconds with koPaper's AI papercraft studio.

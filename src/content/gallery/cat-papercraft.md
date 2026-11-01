@@ -1,5 +1,5 @@
 ---
-title: "Cat Papercraft Design — AI Generated"
+title: "Cat Papercraft Design"
 description: "AI-generated fantasy animal papercraft design of \"Cat\". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
 emoji: "🐱"
 style: "fantasy"

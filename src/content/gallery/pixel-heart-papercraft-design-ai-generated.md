@@ -1,5 +1,5 @@
 ---
-title: "Pixel Heart Papercraft — Free AI Pixel Style"
+title: "Pixel Heart Papercraft Design"
 description: "A glowing pixel heart built from square paper blocks with a happy face. Try a pixel valentine, retro heart, pixel panda or glowing heart — copy any prompt."
 emoji: "❤️"
 style: "cute"

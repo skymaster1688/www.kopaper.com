@@ -1,5 +1,5 @@
 ---
-title: "Fire Western Dragon Papercraft Design — AI Generated"
+title: "Fire Western Dragon Papercraft Design"
 description: "AI-generated cute dragon papercraft design of \"Fire Western Dragon\". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
 emoji: "🐉"
 style: "cute"

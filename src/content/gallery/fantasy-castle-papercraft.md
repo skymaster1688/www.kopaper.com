@@ -1,5 +1,5 @@
 ---
-title: "Fantasy Castle Papercraft Design — AI Generated"
+title: "Fantasy Castle Papercraft Design"
 description: "AI-generated lowpoly building papercraft design of \"fantasy castle\". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
 emoji: "🏰"
 style: "lowpoly"

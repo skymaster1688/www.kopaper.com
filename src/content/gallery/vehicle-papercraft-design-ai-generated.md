@@ -1,5 +1,5 @@
 ---
-title: "Pop-Up Vehicle Papercraft — Free Cute 3D Design"
+title: "Pop Up Vehicle Papercraft Design"
 description: "Free cute papercraft of a pop-up style vehicle that springs from a card. Try a road trip, garage, night drive, race or gift card — copy any prompt."
 emoji: "🚗"
 style: "cute"
