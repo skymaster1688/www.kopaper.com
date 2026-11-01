@@ -1,321 +1,350 @@
 ---
+// koPaper homepage — concept design from kopaper-homepage/, wired to real data:
+// real gallery collection, real style chips, real /api/generate-image endpoint,
+// real internal links. Self-contained layout (does not use BaseLayout).
 import { getCollection } from 'astro:content';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import CraftCard from '../components/CraftCard.astro';
-import GalleryCard from '../components/GalleryCard.astro';
-import Generator from '../components/Generator.astro';
+import { detectSubject } from '../lib/gallery';
+import '../styles/homepage.css';
 
-const tutorials = (await getCollection('tutorials', ({ data }) => !data.draft && data.kind !== 'papercraft'))
-  .sort((a, b) => a.data.order - b.data.order);
+const title = 'AI Papercraft Generator - Create Your Own Paper Art';
+const description = "Turn your ideas into papercraft designs with koPaper's free AI papercraft generator. Explore styles, browse real designs, and start making something wonderful.";
 
-const featured = tutorials.filter(t => t.data.featured).slice(0, 4);
-const beginners = tutorials.filter(t => t.data.difficulty === 'Easy').slice(0, 3);
+const CAT_LABEL: Record<string, string> = { animal: 'Animals', dragon: 'Dragons', vehicle: 'Vehicles', building: 'Buildings' };
+const STYLE_LABEL: Record<string, string> = { lowpoly: 'Low Poly', cute: 'Cute', pixel: 'Pixel', fantasy: 'Fantasy', minecraft: 'Blocky Voxel' };
+const TONES = ['mint', 'blue', 'peach', 'lemon', 'sky', 'pink'];
 
-const learnArticles = (await getCollection('learn', ({ data }) => !data.draft))
-  .sort((a, b) => a.data.order - b.data.order);
+function promptOf(d: any): string {
+  const m = (d.description || '').match(/"([^"]+)"/);
+  return m ? m[1] : (d.title || '');
+}
 
-// Gallery: AI-generated papercraft showcase, newest first (driven by `updated`).
-const galleryItems = (await getCollection('gallery', ({ data }) => !data.draft && !data.noindex))
-  .sort((a, b) => (b.data.updated || '').localeCompare(a.data.updated || ''))
-  .slice(0, 4);
+const indexed = (await getCollection('gallery', ({ data }) => !data.draft && !data.noindex))
+  .sort((a, b) => (b.data.updated || '').localeCompare(a.data.updated || ''));
+
+type Card = { title: string; href: string; img: string; prompt: string; cat: string; tag: string; tone: string };
+const cards: Card[] = [];
+const seen = new Set<string>();
+// Prefer the four subjects that have dedicated category pages, then top up with the rest.
+for (const pass of [true, false]) {
+  for (const g of indexed) {
+    if (cards.length >= 8) break;
+    if (seen.has(g.slug)) continue;
+    const imgMatch = (g.body || '').match(/!\[[^\]]*\]\(([^)]+)\)/);
+    if (!imgMatch) continue;
+    const prompt = promptOf(g.data);
+    const { category } = detectSubject(prompt);
+    const inCat = !!CAT_LABEL[category];
+    if (pass !== inCat) continue;
+    seen.add(g.slug);
+    cards.push({
+      title: g.data.title,
+      href: `/gallery/${g.slug}/`,
+      img: imgMatch[1],
+      prompt,
+      cat: CAT_LABEL[category] || 'Ideas',
+      tag: STYLE_LABEL[g.data.style] || 'Cute',
+      tone: TONES[cards.length % TONES.length],
+    });
+  }
+}
+const categories = ['All', 'Animals', 'Dragons', 'Vehicles', 'Buildings'];
 
 const faqs = [
-  { q: 'What is koPaper?', a: 'koPaper is an AI papercraft design studio. Describe an idea and it generates beautiful papercraft-style designs for inspiration, creative exploration, and visual reference.' },
-  { q: 'Is the AI generator free?', a: 'Yes — 100% free, no sign-up, no account needed. Generate as many designs as you like, in any of the five styles.' },
-  { q: 'What styles can I choose?', a: 'Five visual styles: Cute, Low Poly, Pixel, Fantasy, and Blocky voxel. The same idea renders differently in each, so you can match the look to your project.' },
-  { q: 'Can I save or reuse the designs?', a: 'Yes. Save your favorite designs and use them as creative reference, inspiration, or a starting point for your own paper project.' },
+  { q: 'What is koPaper?', a: 'koPaper is an AI papercraft design studio. Describe an idea and it generates beautiful papercraft-style designs you can use for inspiration, creative exploration, and visual reference.' },
+  { q: 'Is the AI papercraft generator free?', a: 'Yes — 100% free, no sign-up, no account needed. Generate as many designs as you like, in any of the five styles.' },
+  { q: 'Can I save the designs?', a: 'Yes. Save your favorite generated designs and use them as creative reference, inspiration, or a starting point for your own paper project.' },
   { q: 'Do I need design skills or special paper?', a: 'No. The generator needs no design skills and no special equipment — it creates papercraft-style artwork you can view and save on screen. For hands-on folding, browse our origami tutorials.' },
-  { q: 'Are these suitable for kids?', a: 'Yes. The generator needs no design skills at all, and easy tutorials are perfect for ages 6 plus with minimal adult help.' },
 ];
-
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: faqs.map(f => ({
     '@type': 'Question',
     name: f.q,
-    acceptedAnswer: { '@type': 'Answer', text: f.a }
-  }))
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
 };
+
+const GA_ID = 'G-QVKPRKCBW8';
+const ADSENSE_ID = 'ca-pub-6279178382144076';
 ---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fffaf4" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href="https://kopaper.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content="https://kopaper.com/" />
+    <meta property="og:site_name" content="koPaper" />
+    <meta property="og:image" content="https://kopaper.com/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/android-chrome-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/images/android-chrome-512x512.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet" />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+        analytics_storage: 'denied', functionality_storage: 'granted',
+        personalization_storage: 'denied', security_storage: 'granted',
+      });
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="koPaper home"><span class="brand-mark">◆</span><span>kopaper</span></a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#generator">AI Generator</a><a href="/gallery/">Gallery</a><a href="#how-it-works">How It Works</a><a href="/printables/">Templates</a>
+      </nav>
+      <div class="header-actions"><a class="search-link" href="/gallery/">⌕ <span>Explore papercraft...</span></a><a class="button button-small" href="#generator">Start Creating <span>↗</span></a><button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button></div>
+    </header>
 
-<BaseLayout
-  title="AI Papercraft Generator Free Paper Craft Designs"
-  description="Free AI papercraft generator — turn any idea into a papercraft design in seconds. Create animals, characters and fantasy papercraft, no sign-up needed."
->
-  <!-- 1. Hero — full width, 3D wireframe bleeds edge to edge -->
-  <section class="hero-line">
-    <div class="persp" aria-hidden="true">
-      <svg viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid slice">
-        <g fill="none" style="stroke: var(--text)">
-          <g stroke-width="1" opacity="0.08">
-            <line x1="-200" y1="520" x2="820" y2="220"/>
-            <line x1="80"   y1="520" x2="820" y2="220"/>
-            <line x1="360"  y1="520" x2="820" y2="220"/>
-            <line x1="640"  y1="520" x2="820" y2="220"/>
-            <line x1="1000" y1="520" x2="820" y2="220"/>
-            <line x1="1280" y1="520" x2="820" y2="220"/>
-            <line x1="0" y1="520" x2="1200" y2="520"/>
-            <line x1="0" y1="460" x2="1200" y2="460"/>
-            <line x1="0" y1="410" x2="1200" y2="410"/>
-            <line x1="0" y1="370" x2="1200" y2="370"/>
-            <line x1="0" y1="338" x2="1200" y2="338"/>
-            <line x1="0" y1="312" x2="1200" y2="312"/>
-            <line x1="0" y1="292" x2="1200" y2="292"/>
-          </g>
-          <!-- warm wireframe cube: the single warm focus in the field -->
-          <g style="stroke: var(--warm)" stroke-width="1.4" opacity="0.22">
-            <rect x="820" y="300" width="120" height="120"/>
-            <rect x="890" y="278" width="74" height="74"/>
-            <line x1="820" y1="300" x2="890" y2="278"/>
-            <line x1="940" y1="300" x2="964" y2="278"/>
-            <line x1="940" y1="420" x2="964" y2="352"/>
-            <line x1="820" y1="420" x2="890" y2="352"/>
-          </g>
-          <g stroke-width="1.3" opacity="0.16">
-            <polygon points="160,440 280,410 400,440 280,468"/>
-            <line x1="280" y1="410" x2="280" y2="335"/>
-            <line x1="280" y1="335" x2="160" y2="440"/>
-            <line x1="280" y1="335" x2="400" y2="440"/>
-            <line x1="280" y1="335" x2="280" y2="468"/>
-          </g>
-          <g stroke-width="1.3" opacity="0.22">
-            <line x1="90" y1="120" x2="170" y2="120"/><polygon points="170,120 160,116 160,124" style="fill: var(--text)" stroke="none"/>
-            <line x1="90" y1="120" x2="90" y2="48"/><polygon points="90,48 86,58 94,58" style="fill: var(--text)" stroke="none"/>
-            <line x1="90" y1="120" x2="140" y2="160"/><polygon points="140,160 130,155 135,146" style="fill: var(--text)" stroke="none"/>
-          </g>
-          <g font-family="JetBrains Mono, monospace" font-size="12" style="fill: var(--text)" opacity="0.30">
-            <text x="176" y="116">X</text>
-            <text x="80" y="42">Y</text>
-            <text x="146" y="174">Z</text>
-          </g>
-        </g>
-      </svg>
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> YOUR IDEAS, MADE OF PAPER</div>
+          <h1>Make something<br /><span>wonderfully</span> paper.</h1>
+          <p class="hero-text">Turn a little imagination into amazing papercraft art with our free AI papercraft generator. Explore creative ideas, play with styles, and bring your paper world to life.</p>
+          <div class="hero-actions"><a class="button" href="#generator">✦ Create with AI <span>→</span></a><a class="text-button" href="#gallery">Explore Gallery <span>↓</span></a></div>
+          <div class="social-proof"><div class="avatar-stack"><i>🦊</i><i>🐼</i><i>🌷</i><i>🐸</i></div><span><strong>Made for curious creators</strong><br />A little inspiration goes a long way.</span></div>
+        </div>
+        <div class="hero-art" aria-label="Colorful low-poly paper fox in a paper forest" role="img">
+          <div class="sun"></div><div class="cloud cloud-one"></div><div class="mountain mountain-back"></div><div class="mountain mountain-front"></div>
+          <div class="tree tree-left"><b></b><i></i><em></em></div><div class="tree tree-right"><b></b><i></i><em></em></div>
+          <div class="fox"><div class="fox-ear left"></div><div class="fox-ear right"></div><div class="fox-head"><span class="eye eye-left"></span><span class="eye eye-right"></span><span class="snout"></span></div><div class="fox-body"></div><div class="fox-tail"></div><div class="fox-foot one"></div><div class="fox-foot two"></div></div>
+          <div class="sparkle sparkle-one">✦</div><div class="sparkle sparkle-two">✧</div><div class="ground"></div>
+          <div class="art-note"><span>✂</span><div><b>Dream it. Fold it.</b><small>Make it yours.</small></div></div>
+        </div>
+      </section>
+
+      <section class="generator-wrap" id="generator">
+        <div class="section-kicker">THE CREATIVE PLAYGROUND</div>
+        <div class="section-heading"><h2>Your next paper project<br class="mobile-break" /> starts here.</h2><p>Describe your idea. Pick a style. Let your imagination take shape.</p></div>
+        <div class="generator-card">
+          <div class="generator-main">
+            <label class="field-label" for="idea">What would you like to create?</label>
+            <textarea id="idea" maxlength="400" placeholder="A tiny orange fox sitting in a flower garden, made from folded paper... "></textarea>
+            <div class="prompt-footer"><span><span class="tiny-sparkle">✦</span> Be as imaginative as you like</span><span id="char-count">0 / 400</span></div>
+            <div class="generator-options">
+              <div><label class="field-label" for="style">Choose a paper style</label><select id="style"><option>Low Poly</option><option>Cute &amp; Kawaii</option><option>Blocky Voxel</option><option>Pixel Papercraft</option><option>Fantasy 3D</option></select></div>
+              <div><label class="field-label" for="complexity">Detail level</label><select id="complexity"><option>Simple</option><option selected>Balanced</option><option>Highly Detailed</option></select></div>
+            </div>
+            <button class="button generate-button" id="generate">✦ Generate Papercraft <span>→</span></button>
+            <div class="generator-results" id="results" aria-live="polite"></div>
+            <p class="generator-status" id="generator-status" role="status">Your first creation is just a few words away.</p>
+          </div>
+          <div class="generator-aside"><div class="aside-art"><div class="paper-sun"></div><div class="paper-flower">🌼</div><div class="paper-hill"></div><div class="paper-hill second"></div><div class="paper-butterfly">🦋</div></div><h3>A blank page full of possibilities.</h3><p>Start with a simple idea. You can refine your prompt and explore different looks as you go.</p><span class="aside-tip">IDEA TIP <b>Try “a sleepy cat in a teacup”</b></span></div>
+        </div>
+      </section>
+
+      <section class="feature-strip" aria-label="What you can explore">
+        <a class="feature" href="/papercraft-ideas/"><span class="feature-icon purple">✦</span><div><b>AI-Powered Ideas</b><p>Turn words into papercraft inspiration</p></div></a>
+        <a class="feature" href="/gallery/"><span class="feature-icon lilac">▤</span><div><b>Creative Gallery</b><p>Discover styles and fresh ideas</p></div></a>
+        <a class="feature" href="/learn/"><span class="feature-icon peach">✂</span><div><b>Easy Tutorials</b><p>Learn paper crafting step by step</p></div></a>
+        <a class="feature" href="/printables/"><span class="feature-icon blue">♧</span><div><b>Template Library</b><p>Find projects to make by hand</p></div></a>
+      </section>
+
+      <section class="gallery-section" id="gallery">
+        <div class="section-top"><div><div class="section-kicker">A WORLD OF PAPER POSSIBILITIES</div><h2>Popular papercraft ideas</h2><p>Real designs from the koPaper gallery to spark your next big idea.</p></div><a class="text-button desktop-only" href="/gallery/">Explore all designs <span>→</span></a></div>
+        <div class="category-list" role="group" aria-label="Filter gallery">{categories.map((category, i) => <button class:list={["category-chip", { active: i === 0 }]} data-category={category}>{category}</button>)}</div>
+        <div class="gallery-grid" id="gallery-grid">
+          {cards.map((item) => (
+            <article class="gallery-card" data-kind={item.cat}>
+              <a href="#generator" class:list={["gallery-image", item.tone]} data-prompt={item.prompt} aria-label={`Try this idea: ${item.prompt}`}>
+                <img src={item.img} alt={item.title} loading="lazy" />
+                <span class="card-tag">{item.tag}</span>
+                <span class="view-overlay">Try this idea ↗</span>
+              </a>
+              <div class="gallery-meta"><div><h3><a href={item.href}>{item.title}</a></h3><span>{item.cat}</span></div><span class="likes">♡ AI made</span></div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="how-section" id="how-it-works"><div class="how-intro"><div class="section-kicker">FROM IDEA TO PAPER ART</div><h2>Creativity, in<br />three little steps.</h2><p>No fancy tools or design skills needed to get started. Just bring an idea.</p><a class="text-button" href="#generator">Give it a try <span>→</span></a></div><div class="steps"><article class="step"><span class="step-number">01</span><div class="step-icon">💭</div><h3>Imagine it</h3><p>Describe the creature, object, or scene you want to bring to life.</p></article><article class="step"><span class="step-number">02</span><div class="step-icon">🎨</div><h3>Pick your style</h3><p>Explore playful looks, from low-poly shapes to blocky voxel builds.</p></article><article class="step"><span class="step-number">03</span><div class="step-icon">✂️</div><h3>Make it yours</h3><p>Use your design as inspiration for your next paper craft project.</p></article></div></section>
+
+      <section class="home-faq" id="faq">
+        <div class="section-kicker">GOOD TO KNOW</div>
+        <div class="section-heading"><h2>Frequently asked questions</h2></div>
+        <div class="faq-list">
+          {faqs.map(f => (
+            <details><summary>{f.q}</summary><p>{f.a}</p></details>
+          ))}
+        </div>
+      </section>
+
+      <section class="template-banner" id="templates"><div class="banner-illustration">🕊️<span>✦</span></div><div><span class="section-kicker">READY, SET, CREATE</span><h2>Good things come<br />from a little paper.</h2><p>Find your next weekend project in our growing collection of paper craft ideas and tutorials.</p><a class="button" href="/printables/">Explore paper ideas <span>→</span></a></div><div class="banner-decoration">✳</div></section>
+    </main>
+
+    <footer class="site-footer"><a class="brand" href="/"><span class="brand-mark">◆</span><span>kopaper</span></a><p>Make a little room for creativity.</p><div class="footer-links"><a href="/gallery/">Gallery</a><a href="/learn/">Tutorials</a><a href="/printables/">Templates</a><a href="/origami/">Origami</a><a href="/contact/">Contact</a></div><small>© 2026 kopaper.com. Made for curious creators.</small></footer>
+
+    <!-- Ad slot (third-party network): filled after consent -->
+    <div id="container-04bba4fddad31c9c102b34f4c1c7ad04" style="margin:28px auto;max-width:1200px;min-height:90px;display:flex;align-items:center;justify-content:center;padding:0 20px;box-sizing:border-box;"></div>
+
+    <!-- Cookie consent banner (GDPR): GA4 + AdSense load only after consent -->
+    <div id="consentBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;background:#fff;border-top:1px solid var(--line);padding:14px 20px;font-size:.85rem;color:var(--ink);box-shadow:0 -8px 30px rgba(48,35,66,.08);">
+      <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+        <span>We use cookies for analytics and to show relevant ads. <a href="/privacy/" style="color:var(--purple);text-decoration:underline;">Privacy</a></span>
+        <div style="display:flex;gap:10px;">
+          <button id="consentDecline" style="padding:8px 14px;border:1px solid var(--line);border-radius:30px;background:#fff;color:var(--ink);cursor:pointer;">Decline</button>
+          <button id="consentAccept" style="padding:8px 14px;border:none;border-radius:30px;background:var(--purple);color:#fff;cursor:pointer;">Accept</button>
+        </div>
+      </div>
     </div>
 
-    <div class="wrap hero-inner">
-      <div class="left">
-        <p class="eyebrow"><span class="label">AI Papercraft Generator</span></p>
-        <h1 class="display">Create Your Own <span class="mark">Papercraft</span> with AI</h1>
-        <p class="sub">Turn your ideas into beautiful papercraft designs.</p>
-        <p class="sub">Describe anything below &mdash; the AI design generator runs right here on this page.</p>
-      </div>
+    <script is:inline define:vars={{ GA_ID, ADSENSE_ID }}>
+      (function() {
+        const KEY = 'koPaper_consent';
+        let stored = null;
+        try { stored = localStorage.getItem(KEY); } catch (e) {}
+        function loadThirdParty() {
+          const s1 = document.createElement('script');
+          s1.async = true;
+          s1.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+          document.head.appendChild(s1);
+          gtag('js', new Date());
+          gtag('config', GA_ID);
+          const s2 = document.createElement('script');
+          s2.async = true;
+          s2.crossOrigin = 'anonymous';
+          s2.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + ADSENSE_ID;
+          document.head.appendChild(s2);
+          const s3 = document.createElement('script');
+          s3.setAttribute('data-cfasync', 'false');
+          s3.src = 'https://pl31324343.profitableratecpmnetwork.com/04bba4fddad31c9c102b34f4c1c7ad04/invoke.js';
+          document.head.appendChild(s3);
+        }
+        function decide(v) {
+          try { localStorage.setItem(KEY, v); } catch (e) {}
+          if (v === 'granted') {
+            gtag('consent', 'update', {
+              ad_storage: 'granted', ad_user_data: 'granted',
+              ad_personalization: 'granted', analytics_storage: 'granted',
+            });
+            loadThirdParty();
+          }
+          const b = document.getElementById('consentBanner');
+          if (b) b.style.display = 'none';
+        }
+        if (stored === 'granted') {
+          loadThirdParty();
+        } else if (stored !== 'denied') {
+          document.getElementById('consentBanner').style.display = 'block';
+          document.getElementById('consentAccept').addEventListener('click', () => decide('granted'));
+          document.getElementById('consentDecline').addEventListener('click', () => decide('denied'));
+        }
+      })();
+    </script>
 
-      <div class="right">
-        <div class="hero-fox" aria-hidden="true">
-          <img src="/assets/ai/hero-fox.png" alt="AI papercraft fox design" width="460" height="420" loading="eager" decoding="async">
-        </div>
-      </div>
-    </div>
-  </section>
+    <script>
+      // --- prompt box ---
+      const idea = document.querySelector('#idea') as HTMLTextAreaElement;
+      const count = document.querySelector('#char-count')!;
+      const status = document.querySelector('#generator-status')!;
+      const results = document.querySelector('#results') as HTMLElement;
+      const generateBtn = document.querySelector('#generate') as HTMLButtonElement;
+      idea.addEventListener('input', () => count.textContent = `${idea.value.length} / 400`);
 
-  <div class="wrap">
-    <Generator />
-  </div>
+      // --- real generation via /api/generate-image ---
+      const STYLE_IDS: Record<string, string> = {
+        'Low Poly': 'lowpoly', 'Cute & Kawaii': 'cute', 'Blocky Voxel': 'minecraft',
+        'Pixel Papercraft': 'pixel', 'Fantasy 3D': 'fantasy',
+      };
+      const DETAIL: Record<string, string> = {
+        'Simple': 'simple clean shapes, minimal detail',
+        'Balanced': '',
+        'Highly Detailed': 'highly detailed, intricate paper craftsmanship',
+      };
 
-  <div class="wrap">
-    <div class="stats">
-      <div class="stat"><div class="n">01</div><div class="l">design / prompt</div></div>
-      <div class="stat"><div class="n">05</div><div class="l">art styles</div></div>
-      <div class="stat"><div class="n">100%</div><div class="l">free &middot; no sign-up</div></div>
-      <div class="stat"><div class="n">&infin;</div><div class="l">ideas</div></div>
-    </div>
-  </div>
+      async function generate() {
+        const ideaVal = idea.value.trim();
+        if (!ideaVal) {
+          status.textContent = 'Add a little description first — anything you can imagine!';
+          idea.focus();
+          return;
+        }
+        const styleSel = document.querySelector('#style') as HTMLSelectElement;
+        const detailSel = document.querySelector('#complexity') as HTMLSelectElement;
+        const styleId = STYLE_IDS[styleSel.value] || 'cute';
+        const suffix = DETAIL[detailSel.value] || '';
+        const prompt = [ideaVal, suffix].filter(Boolean).join(', ');
 
-  <!-- 2b. AI Papercraft Generator focus (SEO) -->
-  <div class="wrap">
-    <section class="sec">
-      <div class="sec-head">
-        <span class="label">The generator</span>
-        <h2 class="display">Meet the AI Papercraft Generator</h2>
-        <p>The AI Papercraft Generator turns a short sentence into original papercraft-style designs for inspiration and creative exploration.</p>
-      </div>
-      <div class="gen-grid">
-        <aside class="gen-visual" aria-label="A papercraft-style fox design">
-          <img src="/assets/ai/gen-fox.jpg" alt="AI papercraft fox design" width="400" height="400" loading="lazy" decoding="async">
-        </aside>
-        <div class="gen-copy">
-          <p>Type an idea like <em>a cute dragon</em> or <em>a low poly castle</em>, and the AI Papercraft Generator returns a custom papercraft design in your chosen style. Each one is rendered as a beautiful papercraft-style artwork — perfect for inspiration, reference, and creative exploration. No design skills needed.</p>
-          <p>Want paper art, character designs, or unique visual concepts? The papercraft generator helps you create designs that match your own idea instead of copying someone else's. Pick Cute, Low Poly, Pixel, Fantasy, or Blocky, then generate, refine, and save your favorite designs.</p>
-          <h3>Why use an AI papercraft generator?</h3>
-          <p>A papercraft design generator is fastest when you already know what you want but cannot draw it. Describe the subject, set the style, and let the AI handle the artwork. You stay in control of the idea; the generator handles the rendering, so you can move from thought to visual in seconds.</p>
-          <p class="gen-cta"><a class="btn btn-primary" href="/tools/">Browse style generators &rarr;</a></p>
-        </div>
-      </div>
-    </section>
-  </div>
+        generateBtn.disabled = true;
+        status.textContent = 'Folding your paper idea… this can take up to a minute.';
+        results.classList.remove('show');
+        results.innerHTML = '';
+        const payload = JSON.stringify({ prompt, style: styleId });
+        const headers = { 'Content-Type': 'application/json' };
+        let data: any;
+        try {
+          const res = await fetch('/api/generate-image', { method: 'POST', headers, body: payload });
+          if (!res.ok) throw new Error('route unavailable');
+          data = await res.json();
+        } catch (routeErr) {
+          // Local preview / static host has no SSR route — fall back to the
+          // production endpoint (its CORS allowlist covers localhost:4321).
+          const res = await fetch('https://kopaper.com/api/generate-image', { method: 'POST', headers, body: payload });
+          data = await res.json();
+        }
+        try {
+          if (!data || !data.ok || !Array.isArray(data.images) || data.images.length === 0) throw new Error('no images');
+          for (const img of data.images) {
+            const el = document.createElement('img');
+            el.src = `data:${img.mediaType || 'image/png'};base64,${img.b64}`;
+            el.alt = `AI-generated papercraft design of ${ideaVal}`;
+            el.loading = 'lazy';
+            results.appendChild(el);
+          }
+          results.classList.add('show');
+          status.textContent = 'Here it is! Save the ones you like, or tweak the idea and generate again.';
+        } catch (e) {
+          status.innerHTML = 'The generator is taking a break right now. Try again in a moment, or browse the <a href="/gallery/" style="color:var(--purple);text-decoration:underline;">gallery</a> for inspiration.';
+        } finally {
+          generateBtn.disabled = false;
+        }
+      }
+      generateBtn.addEventListener('click', generate);
 
-  <!-- 2. How it works -->
-  <div class="wrap">
-    <section class="sec">
-      <div class="sec-head">
-        <span class="label">How it works</span>
-        <h2 class="display">From idea to design in three steps</h2>
-        <p>No design skills needed, no software to install. Just describe and create.</p>
-      </div>
-      <div class="steps">
-        <div class="step"><div class="idx">01 &mdash; INPUT</div><h3>Describe</h3><p>Type what you imagine &mdash; a fox, a castle, a gift box. Pick a style if you like.</p></div>
-        <div class="step"><div class="idx">02 &mdash; RENDER</div><h3>Generate</h3><p>koPaper draws an original papercraft design you can preview instantly.</p></div>
-        <div class="step"><div class="idx">03 &mdash; EXPLORE</div><h3>Get Inspired</h3><p>Save your favorite designs, use them as creative reference, or try new styles and ideas. Your imagination is the limit.</p></div>
-      </div>
-    </section>
+      // --- gallery category filter ---
+      document.querySelectorAll<HTMLButtonElement>('.category-chip').forEach(button => button.addEventListener('click', () => {
+        document.querySelectorAll('.category-chip').forEach(item => item.classList.remove('active'));
+        button.classList.add('active');
+        const category = button.dataset.category;
+        document.querySelectorAll<HTMLElement>('.gallery-card').forEach(card => card.hidden = category !== 'All' && card.dataset.kind !== category);
+      }));
 
-    <!-- 2c. Gallery: real AI-generated designs -->
-    {galleryItems.length > 0 && (
-      <section class="sec">
-        <div class="sec-head">
-          <span class="label">Gallery</span>
-          <h2 class="display">Fresh from the generator</h2>
-          <p>Papercraft designs created with the AI generator — explore, get inspired, and create your own.</p>
-        </div>
-        <div class="grid-4">
-          {galleryItems.map(g => (
-            <GalleryCard
-              href={`/gallery/${g.slug}/`}
-              title={g.data.title}
-              description={g.data.description}
-              body={g.body}
-              emoji={g.data.emoji}
-            />
-          ))}
-        </div>
-        <div class="reveal" style="text-align:center; margin-top:28px">
-          <a href="/gallery/" class="btn btn-outline">View all designs</a>
-        </div>
-      </section>
-    )}
+      // --- "Try this idea" fills the prompt box ---
+      document.querySelectorAll<HTMLAnchorElement>('.gallery-image[data-prompt]').forEach(link => link.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        idea.value = link.dataset.prompt || '';
+        idea.dispatchEvent(new Event('input'));
+        document.querySelector('#generator')!.scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => idea.focus({ preventScroll: true }), 450);
+      }));
 
-    <!-- 3. Explore pillars -->
-    <section class="sec">
-      <div class="sec-head">
-        <span class="label">Explore</span>
-        <h2 class="display">Start from a crafted starting point</h2>
-        <p>Pick a style, browse real designs, or follow a guided paper craft.</p>
-      </div>
-      <div class="explore">
-        <a href="/tools/" class="ecard">
-          <div class="top"><span class="fig">FIG. A</span><span class="fig">STYLE</span></div>
-          <div class="body"><h3>Style Generators</h3><p>Five visual styles — Cute, Low Poly, Pixel, Fantasy &amp; Blocky. Pick one and generate.</p><span class="go">Browse <span class="ar"></span></span></div>
-        </a>
-        <a href="/papercraft-ideas/" class="ecard">
-          <div class="top"><span class="fig">FIG. B</span><span class="fig">IDEAS</span></div>
-          <div class="body"><h3>Papercraft Ideas</h3><p>Ready-to-use prompts and inspiration — describe one and turn it into a design.</p><span class="go">Get inspired <span class="ar"></span></span></div>
-        </a>
-        <a href="/gallery/" class="ecard">
-          <div class="top"><span class="fig">FIG. C</span><span class="fig">GALLERY</span></div>
-          <div class="body"><h3>Gallery</h3><p>Real AI-generated papercraft designs from real ideas.</p><span class="go">Explore <span class="ar"></span></span></div>
-        </a>
-        <a href="/origami/" class="ecard">
-          <div class="top"><span class="fig">FIG. D</span><span class="fig">MAKE</span></div>
-          <div class="body"><h3>Tutorials</h3><p>Step-by-step origami and paper crafts for all ages.</p><span class="go">Browse <span class="ar"></span></span></div>
-        </a>
-        <a href="/learn/" class="ecard">
-          <div class="top"><span class="fig">FIG. E</span><span class="fig">LEARN</span></div>
-          <div class="body"><h3>Learn</h3><p>Paper basics &amp; guides — how to choose the right sheet for every project.</p><span class="go">Browse <span class="ar"></span></span></div>
-        </a>
-      </div>
-    </section>
-
-    <!-- 4. Beginner tutorials (SEO entry) -->
-    {beginners.length > 0 && (
-      <section class="sec">
-        <div class="sec-head">
-          <span class="label">Getting started</span>
-          <h2 class="display">Start with a tutorial</h2>
-          <p>Easy paper crafts for your very first project.</p>
-        </div>
-        <div class="grid-3">
-          {beginners.map(t => (
-            <CraftCard
-              href={`/origami/${t.slug}/`}
-              emoji={t.data.emoji}
-              title={t.data.title}
-              description={t.data.description}
-              difficulty={t.data.difficulty}
-              time={t.data.time}
-            />
-          ))}
-        </div>
-      </section>
-    )}
-
-    <!-- 5. Popular crafts (SEO entry) -->
-    {featured.length > 0 && (
-      <section class="sec">
-        <div class="sec-head">
-          <span class="label">Most loved</span>
-          <h2 class="display">Popular paper crafts</h2>
-          <p>Most-loved tutorials from Easy to Hard.</p>
-        </div>
-        <div class="grid-4">
-          {featured.map(t => (
-            <CraftCard
-              href={`/origami/${t.slug}/`}
-              emoji={t.data.emoji}
-              title={t.data.title}
-              description={t.data.description}
-              difficulty={t.data.difficulty}
-              time={t.data.time}
-            />
-          ))}
-        </div>
-        <div class="reveal" style="text-align:center; margin-top:28px">
-          <a href="/origami/" class="btn btn-outline">View all crafts</a>
-        </div>
-      </section>
-    )}
-
-    <!-- 6b. Learn guides (SEO entry) -->
-    {learnArticles.length > 0 && (
-      <section class="sec">
-        <div class="sec-head">
-          <span class="label">Learn</span>
-          <h2 class="display">Paper guides &amp; basics</h2>
-          <p>The paper behind every craft — what to use, why it matters, and how to choose right.</p>
-        </div>
-        <div class="grid-4">
-          {learnArticles.slice(0, 4).map(g => (
-            <CraftCard
-              href={`/learn/${g.slug}/`}
-              emoji={g.data.emoji}
-              title={g.data.title}
-              description={g.data.description}
-            />
-          ))}
-        </div>
-        <div class="reveal" style="text-align:center; margin-top:28px">
-          <a href="/learn/" class="btn btn-outline">View all guides</a>
-        </div>
-      </section>
-    )}
-
-    <!-- 7. FAQ -->
-    <section class="sec">
-      <div class="sec-head">
-        <span class="label">FAQ</span>
-        <h2 class="display">Frequently Asked Questions</h2>
-        <p>Everything you need to know to get started.</p>
-      </div>
-      <div class="reveal">
-        {faqs.map(f => (
-          <details class="faq-item">
-            <summary>{f.q}</summary>
-            <p>{f.a}</p>
-          </details>
-        ))}
-      </div>
-    </section>
-
-    <!-- 8. CTA -->
-    <section class="cta">
-      <div>
-        <h2 class="display">What will you create?</h2>
-        <p>Open the studio and turn your first idea into papercraft.</p>
-      </div>
-      <a href="/tools/" class="btn btn-onwarm">Browse style generators &rarr;</a>
-    </section>
-  </div>
-
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
-
-</BaseLayout>
+      // --- mobile menu ---
+      const menu = document.querySelector('.menu-toggle')!;
+      menu.addEventListener('click', () => {
+        const nav = document.querySelector('.main-nav')!;
+        const open = nav.classList.toggle('nav-open');
+        menu.setAttribute('aria-expanded', String(open));
+      });
+    </script>
+  </body>
+</html>
