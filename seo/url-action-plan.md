@@ -154,6 +154,7 @@
 | **D2 落地**：`/letter-paper/` 父页恢复索引（真实 Title/Desc/正文/FAQ）+ 子页互链 + 页脚与 printables 交叉链接 | `src/pages/letter-paper/index.astro`、`[slug].astro`、`Footer.astro`、`printables/index.astro` | sitemap letter-paper 16 条；父页无 noindex；子页渲染 4 条相关推荐 |
 | 图库描述质量修复：32 条去掉 `papercraft papercraft` 重复词、`Free lowpoly` → `Free low poly`、索引页里的 minecraft 字样清零 | `src/content/gallery/*.md` | 残留 0；索引页描述全部 ≤160 字符 |
 | `IP_BLOCKLIST` 补 `creeper`（此前只拦 minecraft，漏掉这个角色名） | `src/lib/gallery.ts` | 后续发布会拦 |
+| **flush 管线与新 buildMeta 对齐**：发布时质量闸门 `promptQuality()`（非英语 prompt / 无具体主体 → frontmatter 写 `noindex: true`），`/api/publish` 与 `planDraft`（publish-queue/flush 共用）同步接入；历史 58 个图库 md 正文的字面量 `"undefined"`（旧版 intro 模板 bug 残留）批量替换为 `"your own idea"` | `src/lib/gallery.ts`、`src/pages/api/publish.ts`、`src/content/gallery/*.md` | 闸门自测 11/11；build 通过；sitemap 仍 127；**后续 flush 无需再人工重跑 triage** |
 
 **sitemap 总量：178 → 127**（剔 58 个低质图库页；新增 4 个分类页、1 个枢纽页、1 个改名页 `/papercraft-ideas/`、1 个 blocky 页、1 个 letter-paper 父页；移除 minecraft 旧路由）。
 
