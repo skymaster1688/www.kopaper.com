@@ -24,10 +24,12 @@ const indexed = (await getCollection('gallery', ({ data }) => !data.draft && !da
 type Card = { title: string; href: string; img: string; prompt: string; cat: string; tag: string; tone: string };
 const cards: Card[] = [];
 const seen = new Set<string>();
+const perCat = new Map<string, number>();
 // Prefer the four subjects that have dedicated category pages, then top up with the rest.
+// Cap each subject at 2 cards so the grid stays visually varied.
 for (const pass of [true, false]) {
   for (const g of indexed) {
-    if (cards.length >= 8) break;
+    if (cards.length >= 6) break;
     if (seen.has(g.slug)) continue;
     const imgMatch = (g.body || '').match(/!\[[^\]]*\]\(([^)]+)\)/);
     if (!imgMatch) continue;
@@ -35,7 +37,10 @@ for (const pass of [true, false]) {
     const { category } = detectSubject(prompt);
     const inCat = !!CAT_LABEL[category];
     if (pass !== inCat) continue;
+    const used = perCat.get(category) || 0;
+    if (used >= (pass ? 1 : 2)) continue;
     seen.add(g.slug);
+    perCat.set(category, used + 1);
     cards.push({
       title: g.data.title,
       href: `/gallery/${g.slug}/`,
@@ -110,7 +115,7 @@ const ADSENSE_ID = 'ca-pub-6279178382144076';
     <header class="site-header">
       <a class="brand" href="/" aria-label="koPaper home"><img class="brand-mark" src="/images/favicon-32x32.png" alt="" width="22" height="22"><span>koPaper</span></a>
       <nav class="main-nav" aria-label="Main navigation">
-        <a href="#generator">AI Generator</a><a href="/gallery/">Gallery</a><a href="#how-it-works">How It Works</a><a href="/printables/">Templates</a>
+        <a href="#generator">AI Generator</a><a href="/gallery/">Gallery</a><a href="/learn/">Tutorials</a><a href="/printables/">Templates</a><a href="/about/">About</a>
       </nav>
       <div class="header-actions"><a class="search-link" href="/gallery/">⌕ <span>Explore papercraft...</span></a><a class="button button-small" href="#generator">Start Creating <span>↗</span></a><button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button></div>
     </header>
@@ -119,16 +124,14 @@ const ADSENSE_ID = 'ca-pub-6279178382144076';
       <section class="hero">
         <div class="hero-copy">
           <div class="eyebrow"><span class="eyebrow-dot"></span> YOUR IDEAS, MADE OF PAPER</div>
-          <h1>Make something<br /><span>wonderfully</span> paper.</h1>
-          <p class="hero-text">Turn a little imagination into amazing papercraft art with our free AI papercraft generator. Explore creative ideas, play with styles, and bring your paper world to life.</p>
-          <div class="hero-actions"><a class="button" href="#generator">✦ Create with AI <span>→</span></a><a class="text-button" href="#gallery">Explore Gallery <span>↓</span></a></div>
-          <div class="social-proof"><div class="avatar-stack"><i>🦊</i><i>🐼</i><i>🌷</i><i>🐸</i></div><span><strong>Made for curious creators</strong><br />A little inspiration goes a long way.</span></div>
+          <h1>AI Papercraft<br /><span>Generator</span></h1>
+          <p class="hero-text">Turn your ideas into amazing paper art. Create, customize and bring paper to life!</p>
+          <div class="hero-actions"><a class="button" href="#generator">✦ Generate Now <span>→</span></a><a class="text-button" href="#gallery">Explore Gallery <span>↓</span></a></div>
         </div>
-        <div class="hero-art" aria-label="Colorful low-poly paper fox in a paper forest" role="img">
-          <div class="sun"></div><div class="cloud cloud-one"></div><div class="mountain mountain-back"></div><div class="mountain mountain-front"></div>
-          <div class="tree tree-left"><b></b><i></i><em></em></div><div class="tree tree-right"><b></b><i></i><em></em></div>
-          <div class="fox"><div class="fox-ear left"></div><div class="fox-ear right"></div><div class="fox-head"><span class="eye eye-left"></span><span class="eye eye-right"></span><span class="snout"></span></div><div class="fox-body"></div><div class="fox-tail"></div><div class="fox-foot one"></div><div class="fox-foot two"></div></div>
-          <div class="sparkle sparkle-one">✦</div><div class="sparkle sparkle-two">✧</div><div class="ground"></div>
+        <div class="hero-art" aria-label="Low-poly paper fox design generated with koPaper" role="img">
+          <div class="sun"></div><div class="cloud cloud-one"></div>
+          <img class="hero-photo" src="/images/gallery/low-poly-fox-papercraft-design-ai-generated-mtjdm8d1ous3.jpg" alt="Low poly papercraft fox design generated with the koPaper AI papercraft generator" loading="eager" fetchpriority="high" />
+          <div class="sparkle sparkle-one">✦</div><div class="sparkle sparkle-two">✧</div>
           <div class="art-note"><span>✂</span><div><b>Dream it. Fold it.</b><small>Make it yours.</small></div></div>
         </div>
       </section>
@@ -154,14 +157,14 @@ const ADSENSE_ID = 'ca-pub-6279178382144076';
       </section>
 
       <section class="feature-strip" aria-label="What you can explore">
-        <a class="feature" href="/papercraft-ideas/"><span class="feature-icon purple">✦</span><div><b>AI-Powered Ideas</b><p>Turn words into papercraft inspiration</p></div></a>
-        <a class="feature" href="/gallery/"><span class="feature-icon lilac">▤</span><div><b>Creative Gallery</b><p>Discover styles and fresh ideas</p></div></a>
-        <a class="feature" href="/learn/"><span class="feature-icon peach">✂</span><div><b>Easy Tutorials</b><p>Learn paper crafting step by step</p></div></a>
-        <a class="feature" href="/printables/"><span class="feature-icon blue">♧</span><div><b>Template Library</b><p>Find projects to make by hand</p></div></a>
+        <a class="feature" href="/papercraft-ideas/"><span class="feature-icon purple">✦</span><div><b>AI-Powered</b><p>Turn text or ideas into papercraft designs</p></div></a>
+        <a class="feature" href="/gallery/"><span class="feature-icon lilac">📖</span><div><b>Rich Gallery</b><p>Discover thousands of paper creations</p></div></a>
+        <a class="feature" href="/learn/"><span class="feature-icon peach">✂️</span><div><b>Easy Tutorials</b><p>Learn step-by-step with simple guides</p></div></a>
+        <a class="feature" href="/printables/"><span class="feature-icon blue">⤓</span><div><b>Free Templates</b><p>Get printable templates and start crafting</p></div></a>
       </section>
 
       <section class="gallery-section" id="gallery">
-        <div class="section-top"><div><div class="section-kicker">A WORLD OF PAPER POSSIBILITIES</div><h2>Popular papercraft ideas</h2><p>Real designs from the koPaper gallery to spark your next big idea.</p></div><a class="text-button desktop-only" href="/gallery/">Explore all designs <span>→</span></a></div>
+        <div class="section-top"><div><div class="section-kicker">A WORLD OF PAPER POSSIBILITIES</div><h2>Popular Papercraft Creations</h2><p>Explore our latest AI-generated designs and community favorites.</p></div><a class="text-button desktop-only" href="/gallery/">View All <span>→</span></a></div>
         <div class="category-list" role="group" aria-label="Filter gallery">{categories.map((category, i) => <button class:list={["category-chip", { active: i === 0 }]} data-category={category}>{category}</button>)}</div>
         <div class="gallery-grid" id="gallery-grid">
           {cards.map((item) => (
@@ -177,6 +180,8 @@ const ADSENSE_ID = 'ca-pub-6279178382144076';
         </div>
       </section>
 
+      <section class="template-banner" id="journey"><div class="banner-illustration">🕊️<span>✦</span></div><div><span class="section-kicker">READY, SET, CREATE</span><h2>Start Your Papercraft<br />Journey Today</h2><p>With kopaper.com, the only limit is your imagination.</p><a class="button" href="#generator">Try AI Generator <span>→</span></a></div><div class="banner-decoration">✳</div></section>
+
       <section class="how-section" id="how-it-works"><div class="how-intro"><div class="section-kicker">FROM IDEA TO PAPER ART</div><h2>Creativity, in<br />three little steps.</h2><p>No fancy tools or design skills needed to get started. Just bring an idea.</p><a class="text-button" href="#generator">Give it a try <span>→</span></a></div><div class="steps"><article class="step"><span class="step-number">01</span><div class="step-icon">💭</div><h3>Imagine it</h3><p>Describe the creature, object, or scene you want to bring to life.</p></article><article class="step"><span class="step-number">02</span><div class="step-icon">🎨</div><h3>Pick your style</h3><p>Explore playful looks, from low-poly shapes to blocky voxel builds.</p></article><article class="step"><span class="step-number">03</span><div class="step-icon">✂️</div><h3>Make it yours</h3><p>Use your design as inspiration for your next paper craft project.</p></article></div></section>
 
       <section class="home-faq" id="faq">
@@ -188,11 +193,9 @@ const ADSENSE_ID = 'ca-pub-6279178382144076';
           ))}
         </div>
       </section>
-
-      <section class="template-banner" id="templates"><div class="banner-illustration">🕊️<span>✦</span></div><div><span class="section-kicker">READY, SET, CREATE</span><h2>Good things come<br />from a little paper.</h2><p>Find your next weekend project in our growing collection of paper craft ideas and tutorials.</p><a class="button" href="/printables/">Explore paper ideas <span>→</span></a></div><div class="banner-decoration">✳</div></section>
     </main>
 
-    <footer class="site-footer"><a class="brand" href="/"><img class="brand-mark" src="/images/favicon-32x32.png" alt="" width="22" height="22"><span>koPaper</span></a><p>Make a little room for creativity.</p><div class="footer-links"><a href="/gallery/">Gallery</a><a href="/learn/">Tutorials</a><a href="/printables/">Templates</a><a href="/origami/">Origami</a><a href="/contact/">Contact</a></div><small>© 2026 kopaper.com. Made for curious creators.</small></footer>
+    <footer class="site-footer"><a class="brand" href="/"><img class="brand-mark" src="/images/favicon-32x32.png" alt="" width="22" height="22"><span>koPaper</span></a><p>Craft a more creative world.</p><div class="footer-links"><a href="/gallery/">Gallery</a><a href="/learn/">Tutorials</a><a href="/printables/">Templates</a><a href="/origami/">Origami</a><a href="/contact/">Contact</a></div><small>© 2026 kopaper.com. Made for curious creators.</small></footer>
 
     <!-- Ad slot (third-party network): filled after consent -->
     <div id="container-04bba4fddad31c9c102b34f4c1c7ad04" style="margin:28px auto;max-width:1200px;min-height:90px;display:flex;align-items:center;justify-content:center;padding:0 20px;box-sizing:border-box;"></div>

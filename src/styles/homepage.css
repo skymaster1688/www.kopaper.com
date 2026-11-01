@@ -34,3 +34,6 @@
 .faq-list summary::after{content:'+';font-size:20px;color:var(--purple);font-weight:700;flex:none}
 .faq-list details[open] summary::after{content:'–'}
 .faq-list details p{margin:10px 0 0;font-size:14px;color:var(--muted);line-height:1.65}
+
+/* --- real low-poly fox photo in the hero (blends into the pastel sky) --- */
+.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 62%;mix-blend-mode:multiply;z-index:2;border-radius:inherit}
