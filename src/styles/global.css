@@ -99,8 +99,8 @@ ul { list-style: none; }
   letter-spacing: -.02em; color: var(--text);
 }
 .logo:hover { color: var(--text); }
-.logo .mk { width: 22px; height: 22px; border: 1.6px solid var(--text); border-radius: 5px; position: relative; flex: none; }
-.logo .mk::after { content: ""; position: absolute; inset: 5px; border: 1.3px solid var(--warm); border-radius: 2px; }
+.logo .mk { width: 22px; height: 22px; border: none; border-radius: 5px; flex: none; display: block; object-fit: cover; }
+
 .nav-links { display: flex; gap: 28px; align-items: center; margin-left: 8px; }
 .nav-links a { color: var(--text-muted); font-size: .95rem; font-weight: 500; }
 .nav-links a:hover, .nav-links a.active { color: var(--text); }
