@@ -13,7 +13,7 @@ A pixel papercraft design of "Invader zim" — clean paper folds, crisp geometry
 
 ## Ways to take this further
 
-It is easy to keep exploring from here. Describe "undefined" to give it a cozy scene feel. Or describe "undefined" to give it a extra detail feel. Or describe "undefined" to give it a cuter look feel. Or describe "undefined" to give it a fantasy glow feel. Paste whichever feels right into the generator and see where it goes.
+It is easy to keep exploring from here. Describe "your own idea" to give it a cozy scene feel. Or describe "your own idea" to give it a extra detail feel. Or describe "your own idea" to give it a cuter look feel. Or describe "your own idea" to give it a fantasy glow feel. Paste whichever feels right into the generator and see where it goes.
 
 
 ![AI-generated pixel papercraft of Invader zim.](/images/gallery/invader-zim-papercraft-design-mvd7oq39l5iy.jpg)

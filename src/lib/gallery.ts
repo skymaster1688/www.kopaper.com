@@ -111,6 +111,63 @@ export function base64ToUtf8(b64: string): string {
   return new TextDecoder().decode(bytes);
 }
 
+// ---- publish-time quality gate (2026-11-02) --------------------------------
+// Aligns automated publishing with the manual gallery-triage standard: a page
+// earns an index slot only when the prompt is English and names a concrete,
+// searchable subject. Weak drafts are still published (the user keeps their
+// creation and its URL) but the generated frontmatter carries `noindex: true`,
+// so a post-flush triage pass is no longer needed. IP/brand prompts are still
+// rejected outright by blacklistHit().
+const ROMANCE_FUNCTION_WORDS = new Set([
+  // Spanish
+  'el', 'los', 'las', 'un', 'una', 'unos', 'unas', 'del', 'al', 'que', 'de', 'en',
+  'con', 'para', 'por', 'como', 'mas', 'pero', 'quiero', 'mi', 'tu', 'su', 'es',
+  'son', 'esta', 'este', 'esto', 'hacer', 'quien', 'donde', 'cuando', 'yo', 'ella',
+  'ellos', 'muy', 'tambien', 'segun', 'sobre', 'entre', 'hasta', 'desde', 'porque',
+  // Portuguese
+  'os', 'as', 'um', 'umas', 'do', 'da', 'dos', 'das', 'na', 'nos', 'nas', 'em',
+  'mais', 'muito', 'quero', 'crie', 'criar', 'fazer', 'isso', 'esse', 'essa',
+  'meu', 'minha', 'sua', 'nao', 'aqui', 'voce', 'voces', 'entao',
+]);
+
+// Words that carry no subject information on their own. A prompt made up only
+// of these has no concrete, searchable subject ("create a professional
+// papercraft") and gets noindexed.
+const GENERIC_WORDS = new Set([
+  'a', 'an', 'the', 'of', 'for', 'with', 'and', 'or', 'in', 'on', 'to', 'at', 'by',
+  'my', 'me', 'i', 'is', 'it', 'its', 'that', 'this', 'these', 'those', 'please',
+  'make', 'making', 'create', 'creating', 'generate', 'generated', 'design',
+  'designs', 'template', 'templates', 'model', 'papercraft', 'paper', 'craft',
+  'crafts', 'art', 'artwork', 'style', 'cute', 'low', 'poly', 'pixel', 'fantasy',
+  'blocky', 'simple', 'easy', 'cool', 'nice', 'best', 'good', 'great', 'free',
+  'new', 'ai', '2d', '3d', 'professional', 'looking', 'look', 'some', 'one',
+  'very', 'really', 'want', 'wanted', 'need', 'needed', 'can', 'you', 'your',
+  'get', 'got', 'from', 'like', 'just', 'version', 'image', 'picture', 'photo',
+]);
+
+export interface PromptQuality {
+  ok: boolean;
+  reason?: string;
+}
+
+export function promptQuality(promptRaw: string): PromptQuality {
+  const p = promptRaw.toLowerCase();
+  const words = p.replace(/[^a-z0-9\s]/g, ' ').split(/\s+/).filter(Boolean);
+  // 1) Non-English prompt: 2+ non-ASCII characters (accents, CJK, Cyrillic)
+  //    or 2+ distinct Spanish/Portuguese function words.
+  const nonAscii = (p.match(/[^ -~]/g) || []).length;
+  if (nonAscii >= 2) return { ok: false, reason: 'non-English prompt' };
+  const romanceHits = new Set(words.filter(w => ROMANCE_FUNCTION_WORDS.has(w)));
+  // Spanish/Portuguese prompts usually open with a Romance article/pronoun
+  // ("un robot futurista", "crie uma pocao...") even when few function words follow.
+  if (words.length > 0 && romanceHits.has(words[0])) return { ok: false, reason: 'non-English prompt' };
+  if (romanceHits.size >= 2) return { ok: false, reason: 'non-English prompt' };
+  // 2) No concrete subject: every word is generic craft/boilerplate vocabulary.
+  const concrete = words.filter(w => w.length >= 2 && !GENERIC_WORDS.has(w));
+  if (concrete.length === 0) return { ok: false, reason: 'no concrete subject' };
+  return { ok: true };
+}
+
 export function blacklistHit(prompt: string): string | undefined {
   const p = prompt.toLowerCase();
   return IP_BLOCKLIST.find(t => p.includes(t));
@@ -183,6 +240,10 @@ export interface Generated {
   intro: string;
   emoji: string;
   slug: string;
+  // Publish-time quality gate (see promptQuality): true => frontmatter gets
+  // `noindex: true` so the page stays accessible but stays out of the index.
+  noindex: boolean;
+  noindexReason?: string;
 }
 
 // ---- rich gallery article generation (replaces boilerplate) ----
@@ -332,10 +393,13 @@ export function buildMeta(promptRaw: string, styleRaw: string): Generated {
 
   const caption = `AI-generated ${styleWord ? styleWord : ''}papercraft of ${prompt}.`;
   const intro = buildIntro(prompt, subject, style, styleWord);
+  const quality = promptQuality(prompt);
 
   return {
     prompt, style, title, description, caption, intro,
     emoji: pickEmoji(prompt), slug: slugify(title),
+    noindex: !quality.ok,
+    noindexReason: quality.reason,
   };
 }
 
@@ -533,6 +597,9 @@ export async function planDraft(
         `updated: "${today}"`,
         `order: 99`,
         `draft: false`,
+        // Quality gate: weak prompts (non-English / no concrete subject) are
+        // published but excluded from the index at the source.
+        meta.noindex ? `noindex: true` : null,
       ].filter(Boolean).join('\n');
       mdContent = `---\n${fm}\n---\n\n${intro}${imageLine(imgUrl, meta.caption)}\n`;
     }

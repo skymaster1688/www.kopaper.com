@@ -78,6 +78,7 @@ export async function POST(context: APIContext) {
         `updated: "${new Date().toISOString().slice(0, 10)}"`,
         `order: 99`,
         `draft: false`,
+        meta.noindex ? `noindex: true` : null,
       ].filter(Boolean).join('\n');
       const content = `---\n${fm}\n---\n\n${meta.intro}${imageLine(imgUrl, meta.caption)}\n`;
       await ghPut(gh, mdRepoPath, utf8ToBase64(content), `Publish gallery: ${meta.title}`, branch);

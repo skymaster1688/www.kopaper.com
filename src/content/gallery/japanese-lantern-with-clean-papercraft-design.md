@@ -13,7 +13,7 @@ A lowpoly object papercraft design of "Japanese lantern with clean" — clean pa
 
 ## Ways to take this further
 
-It is easy to keep exploring from here. Describe "undefined" to give it a minimal studio feel. Or describe "undefined" to give it a cozy scene feel. Or describe "undefined" to give it a extra detail feel. Or describe "undefined" to give it a cuter look feel. Paste whichever feels right into the generator and see where it goes.
+It is easy to keep exploring from here. Describe "your own idea" to give it a minimal studio feel. Or describe "your own idea" to give it a cozy scene feel. Or describe "your own idea" to give it a extra detail feel. Or describe "your own idea" to give it a cuter look feel. Paste whichever feels right into the generator and see where it goes.
 
 
 ![AI-generated lowpoly papercraft of Japanese lantern with clean.](/images/gallery/japanese-lantern-with-clean-papercraft-design-mvl287zg0k42.jpg)
