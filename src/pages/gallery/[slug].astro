@@ -5,7 +5,11 @@ import GalleryCard from '../../components/GalleryCard.astro';
 import { detectSubject } from '../../lib/gallery';
 
 export async function getStaticPaths() {
-  const items = await getCollection('gallery', ({ data }) => !data.draft && !data.noindex);
+  // 注意：这里【不能】过滤 noindex —— noindex 的语义是「页面存在但不进索引」，
+  // 过滤掉会让这些 URL 直接 404（旧 301 与站外入站链接会打到 404）。
+  // 索引层面的排除由三处完成：① 页面输出 robots noindex ② sitemap-single 跳过带 noindex 的 html
+  // ③ gallery/index 与分类页的列表过滤。
+  const items = await getCollection('gallery', ({ data }) => !data.draft);
   return items.map(g => ({
     params: { slug: g.slug },
     props: { item: g },
