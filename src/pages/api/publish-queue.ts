@@ -8,7 +8,7 @@
 export const prerender = false;
 
 import type { APIContext } from 'astro';
-import { getRuntimeEnv, json, blacklistHit, corsPreflightHeaders, clientIp, checkRateLimit } from '../../lib/gallery';
+import { getRuntimeEnv, json, publishRejection, corsPreflightHeaders, clientIp, checkRateLimit } from '../../lib/gallery';
 
 export async function OPTIONS(context: APIContext) {
   return new Response(null, { headers: corsPreflightHeaders(context.request.headers.get('origin')) });
@@ -37,8 +37,9 @@ export async function POST(context: APIContext) {
     return json({ ok: false, error: 'prompt is required (1-1000 chars).' }, 400, origin);
   }
   if (body.hp) return json({ ok: false, error: 'Rejected.' }, 400, origin);
-  if (blacklistHit(promptRaw)) {
-    return json({ ok: false, error: 'Contains a protected brand or character name and cannot be published.' }, 400, origin);
+  const rejected = publishRejection(promptRaw);
+  if (rejected) {
+    return json({ ok: false, error: rejected }, 400, origin);
   }
 
   const b64 = (body.b64 ?? '').toString();

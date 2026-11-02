@@ -73,3 +73,6 @@
 
 # /tools/minecraft/ was an IP-trademark page — retargeted to brand-neutral blocky voxel (2026-11-01)
 /tools/minecraft*    /tools/blocky/    301
+
+# Adult-toned gallery page removed (2026-11-02) — 301 to the gallery hub so inbound links keep value
+/gallery/sexy-girl-papercraft-design*    /gallery/    301

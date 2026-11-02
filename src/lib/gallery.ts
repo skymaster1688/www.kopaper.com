@@ -35,6 +35,12 @@ export const EMOJI_MAP: Record<string, string> = {
   gift: '🎁', crown: '👑', dragon: '🐉', ghost: '👻', cake: '🎂', house: '🏠',
 };
 
+// Content policy: adult-toned subjects are rejected outright at publish time
+// (2026-11-02, after removing the "sexy girl" gallery page).
+const CONTENT_BLOCKLIST = [
+  'sexy', 'nsfw', 'nude', 'naked', 'erotic', 'porn', 'hentai', 'xxx',
+];
+
 export function getRuntimeEnv(context: APIContext): Record<string, any> {
   const runtime = (context.locals as any)?.runtime;
   return runtime?.env ?? {};
@@ -170,7 +176,16 @@ export function promptQuality(promptRaw: string): PromptQuality {
 
 export function blacklistHit(prompt: string): string | undefined {
   const p = prompt.toLowerCase();
-  return IP_BLOCKLIST.find(t => p.includes(t));
+  return IP_BLOCKLIST.find(t => p.includes(t)) || CONTENT_BLOCKLIST.find(t => p.includes(t));
+}
+
+// Publish-time rejection message: distinguishes IP/brand hits from content-policy hits.
+export function publishRejection(prompt: string): string | undefined {
+  const hit = blacklistHit(prompt);
+  if (!hit) return undefined;
+  return CONTENT_BLOCKLIST.includes(hit)
+    ? 'This prompt contains content koPaper cannot publish.'
+    : 'Contains a protected brand or character name and cannot be published.';
 }
 
 function stripArticle(s: string): string {
@@ -533,7 +548,8 @@ export async function planDraft(
 ): Promise<{ files: { path: string; contentBase64: string }[] } | { error: string }> {
   const promptRaw = (draft.prompt ?? '').toString().trim();
   if (!promptRaw || promptRaw.length > 1000) return { error: 'prompt is required (1-1000 chars).' };
-  if (blacklistHit(promptRaw)) return { error: 'Contains a protected brand or character name and cannot be published.' };
+  const rejection = publishRejection(promptRaw);
+  if (rejection) return { error: rejection };
 
   const kind = (draft.kind ?? 'raster').toString();
   let imageB64: string | undefined;

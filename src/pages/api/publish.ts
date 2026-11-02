@@ -9,7 +9,7 @@ export const prerender = false;
 
 import type { APIContext } from 'astro';
 import {
-  getRuntimeEnv, json, utf8ToBase64, blacklistHit, buildMeta, mediaExt,
+  getRuntimeEnv, json, utf8ToBase64, publishRejection, buildMeta, mediaExt,
   ghGet, ghPut, base64ToUtf8, yamlStr, imageLine, corsPreflightHeaders,
 } from '../../lib/gallery';
 
@@ -32,8 +32,9 @@ export async function POST(context: APIContext) {
     return json({ ok: false, error: 'prompt is required (1-1000 chars).' }, 400, origin);
   }
   if (body.hp) return json({ ok: false, error: 'Rejected.' }, 400, origin);
-  if (blacklistHit(promptRaw)) {
-    return json({ ok: false, error: 'Contains a protected brand or character name and cannot be published.' }, 400, origin);
+  const rejected = publishRejection(promptRaw);
+  if (rejected) {
+    return json({ ok: false, error: rejected }, 400, origin);
   }
 
   const gh = {
