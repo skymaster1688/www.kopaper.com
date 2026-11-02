@@ -37,3 +37,89 @@
 
 /* --- real low-poly fox photo in the hero (blends into the pastel sky) --- */
 .hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 62%;mix-blend-mode:multiply;z-index:2;border-radius:inherit}
+
+/* --- module 02: quick prompt chips --- */
+.quick-prompts{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:12px}
+.qp-label{font-size:12px;font-weight:700;color:var(--muted)}
+.quick-prompt{border:1px solid var(--line);background:#fff;border-radius:30px;padding:7px 13px;font-size:12.5px;font-weight:700;color:#3c3949;cursor:pointer;transition:border-color .2s,color .2s,transform .2s}
+.quick-prompt:hover{border-color:var(--purple);color:var(--purple);transform:translateY(-1px)}
+
+/* --- module 03: explore papercraft styles --- */
+.styles-section{max-width:1200px;margin:64px auto 0;padding:0 5.2%}
+.styles-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:26px}
+.style-card{display:flex;flex-direction:column;gap:7px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 18px;transition:transform .2s,box-shadow .2s,border-color .2s}
+.style-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px #30234214;border-color:#d9cff5}
+.style-emoji{font-size:30px;line-height:1}
+.style-card h3{margin:6px 0 0;font:800 15.5px 'Nunito',sans-serif;color:var(--ink)}
+.style-card p{margin:0;font-size:12.5px;line-height:1.55;color:var(--muted);flex:1}
+.style-cta{font-size:12px;font-weight:800;color:var(--purple);margin-top:8px}
+.style-card.mint{background:#f2fbf6}.style-card.blue{background:#f0f6fd}.style-card.peach{background:#fdf3ec}.style-card.lilac{background:#f6f2fd}.style-card.lemon{background:#fdfaf0}
+@media(max-width:900px){.styles-grid{grid-template-columns:repeat(3,1fr)}.styles-section{padding:0 4%}}
+@media(max-width:640px){.styles-section{margin-top:44px;padding:0 18px}.styles-grid{grid-template-columns:1fr 1fr;gap:11px}.style-card{padding:16px 14px}.style-emoji{font-size:25px}.style-card h3{font-size:14px}}
+
+/* --- module 05: subject links under the gallery grid --- */
+.subject-links{margin:26px 0 0;text-align:center;font-size:13.5px;color:var(--muted);font-weight:600}
+.subject-links a{color:var(--purple);font-weight:800;border-bottom:1.5px solid #d9cff5;transition:border-color .2s}
+.subject-links a:hover{border-color:var(--purple)}
+.subject-links span{margin:0 9px;color:var(--line)}
+
+/* --- generated results: click an image to download --- */
+.generator-results a{display:block;border-radius:14px;position:relative}
+.generator-results a::after{content:'⤓ Download';position:absolute;right:8px;bottom:8px;background:#202033cc;color:#fff;font-size:11px;font-weight:700;padding:5px 10px;border-radius:20px;opacity:0;transition:opacity .2s;pointer-events:none}
+.generator-results a:hover::after{opacity:1}
+
+/* --- module 06/07: tutorials & learn --- */
+.create-learn{max-width:1200px;margin:64px auto 0;padding:0 5.2%}
+.cl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px}
+.cl-card{display:flex;align-items:center;gap:13px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:17px 16px;transition:transform .2s,box-shadow .2s,border-color .2s}
+.cl-card:hover{transform:translateY(-3px);box-shadow:0 12px 26px #30234212;border-color:#d9cff5}
+.cl-guide{background:linear-gradient(0deg,#f6f2fd,#f6f2fd)}
+.cl-emoji{font-size:26px;flex:none}
+.cl-body h3{margin:0;font:800 13.5px 'Nunito',sans-serif;color:var(--ink);line-height:1.35}
+.cl-body p{margin:4px 0 0;font-size:11.5px;color:var(--muted);font-weight:600}
+.cl-arrow{margin-left:auto;color:var(--purple);font-weight:800;flex:none}
+@media(max-width:900px){.create-learn{padding:0 4%}.cl-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.create-learn{margin-top:44px;padding:0 18px}.cl-grid{grid-template-columns:1fr;gap:10px}}
+
+/* --- module 02: quick prompt chips --- */
+.quick-prompts{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:12px}
+.qp-label{font-size:12px;font-weight:700;color:var(--muted)}
+.quick-prompt{border:1px solid var(--line);background:#fff;border-radius:30px;padding:7px 13px;font-size:12.5px;font-weight:700;color:#3c3949;cursor:pointer;transition:border-color .2s,color .2s,transform .2s}
+.quick-prompt:hover{border-color:var(--purple);color:var(--purple);transform:translateY(-1px)}
+
+/* --- module 03: explore papercraft styles --- */
+.styles-section{max-width:1200px;margin:64px auto 0;padding:0 5.2%}
+.styles-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:26px}
+.style-card{display:flex;flex-direction:column;gap:7px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 18px;transition:transform .2s,box-shadow .2s,border-color .2s}
+.style-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px #30234214;border-color:#d9cff5}
+.style-emoji{font-size:30px;line-height:1}
+.style-card h3{margin:6px 0 0;font:800 15.5px 'Nunito',sans-serif;color:var(--ink)}
+.style-card p{margin:0;font-size:12.5px;line-height:1.55;color:var(--muted);flex:1}
+.style-cta{font-size:12px;font-weight:800;color:var(--purple);margin-top:8px}
+.style-card.mint{background:#f2fbf6}.style-card.blue{background:#f0f6fd}.style-card.peach{background:#fdf3ec}.style-card.lilac{background:#f6f2fd}.style-card.lemon{background:#fdfaf0}
+@media(max-width:900px){.styles-grid{grid-template-columns:repeat(3,1fr)}.styles-section{padding:0 4%}}
+@media(max-width:640px){.styles-section{margin-top:44px;padding:0 18px}.styles-grid{grid-template-columns:1fr 1fr;gap:11px}.style-card{padding:16px 14px}.style-emoji{font-size:25px}.style-card h3{font-size:14px}}
+
+/* --- module 05: subject links under the gallery grid --- */
+.subject-links{margin:26px 0 0;text-align:center;font-size:13.5px;color:var(--muted);font-weight:600}
+.subject-links a{color:var(--purple);font-weight:800;border-bottom:1.5px solid #d9cff5;transition:border-color .2s}
+.subject-links a:hover{border-color:var(--purple)}
+.subject-links span{margin:0 9px;color:var(--line)}
+
+/* --- generated results: click an image to download --- */
+.generator-results a{display:block;border-radius:14px;position:relative}
+.generator-results a::after{content:'⤓ Download';position:absolute;right:8px;bottom:8px;background:#202033cc;color:#fff;font-size:11px;font-weight:700;padding:5px 10px;border-radius:20px;opacity:0;transition:opacity .2s;pointer-events:none}
+.generator-results a:hover::after{opacity:1}
+
+/* --- module 06/07: tutorials & learn --- */
+.create-learn{max-width:1200px;margin:64px auto 0;padding:0 5.2%}
+.cl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px}
+.cl-card{display:flex;align-items:center;gap:13px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:17px 16px;transition:transform .2s,box-shadow .2s,border-color .2s}
+.cl-card:hover{transform:translateY(-3px);box-shadow:0 12px 26px #30234212;border-color:#d9cff5}
+.cl-guide{background:linear-gradient(0deg,#f6f2fd,#f6f2fd)}
+.cl-emoji{font-size:26px;flex:none}
+.cl-body h3{margin:0;font:800 13.5px 'Nunito',sans-serif;color:var(--ink);line-height:1.35}
+.cl-body p{margin:4px 0 0;font-size:11.5px;color:var(--muted);font-weight:600}
+.cl-arrow{margin-left:auto;color:var(--purple);font-weight:800;flex:none}
+@media(max-width:900px){.create-learn{padding:0 4%}.cl-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.create-learn{margin-top:44px;padding:0 18px}.cl-grid{grid-template-columns:1fr;gap:10px}}
