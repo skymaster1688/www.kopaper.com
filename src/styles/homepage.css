@@ -123,3 +123,31 @@
 .cl-arrow{margin-left:auto;color:var(--purple);font-weight:800;flex:none}
 @media(max-width:900px){.create-learn{padding:0 4%}.cl-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){.create-learn{margin-top:44px;padding:0 18px}.cl-grid{grid-template-columns:1fr;gap:10px}}
+
+/* --- optimized homepage footer (multi-column, mirrors site-wide footer content) --- */
+.home-footer{border-top:1px solid var(--line);background:#fff;margin-top:70px}
+.hf-inner{max-width:1120px;margin:auto;padding:46px 24px 6px;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:34px}
+.hf-brand .brand{font-size:20px;gap:10px}
+.hf-brand .brand-mark{width:19px;height:19px}
+.hf-brand p{margin:12px 0 0;font-size:13px;line-height:1.7;color:var(--muted);max-width:270px}
+.hf-col h3{margin:0 0 13px;font:800 11px 'Nunito',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:#9874e9}
+.hf-col a{display:block;font-size:13.5px;font-weight:700;color:#3c3949;padding:5px 0;transition:color .2s}
+.hf-col a:hover{color:var(--purple)}
+.hf-bottom{max-width:1120px;margin:30px auto 0;padding:18px 24px 30px;border-top:1px solid var(--line)}
+.hf-bottom small{color:#aaa4ae;font-size:11px}
+@media(max-width:800px){.hf-inner{grid-template-columns:1fr 1fr;gap:28px;padding:38px 20px 4px}.hf-bottom{padding:16px 20px 26px}}
+@media(max-width:480px){.hf-inner{grid-template-columns:1fr;gap:22px}}
+
+/* --- optimized homepage footer (multi-column, mirrors site-wide footer content) --- */
+.home-footer{border-top:1px solid var(--line);background:#fff;margin-top:70px}
+.hf-inner{max-width:1120px;margin:auto;padding:46px 24px 6px;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:34px}
+.hf-brand .brand{font-size:20px;gap:10px}
+.hf-brand .brand-mark{width:19px;height:19px}
+.hf-brand p{margin:12px 0 0;font-size:13px;line-height:1.7;color:var(--muted);max-width:270px}
+.hf-col h3{margin:0 0 13px;font:800 11px 'Nunito',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:#9874e9}
+.hf-col a{display:block;font-size:13.5px;font-weight:700;color:#3c3949;padding:5px 0;transition:color .2s}
+.hf-col a:hover{color:var(--purple)}
+.hf-bottom{max-width:1120px;margin:30px auto 0;padding:18px 24px 30px;border-top:1px solid var(--line)}
+.hf-bottom small{color:#aaa4ae;font-size:11px}
+@media(max-width:800px){.hf-inner{grid-template-columns:1fr 1fr;gap:28px;padding:38px 20px 4px}.hf-bottom{padding:16px 20px 26px}}
+@media(max-width:480px){.hf-inner{grid-template-columns:1fr;gap:22px}}

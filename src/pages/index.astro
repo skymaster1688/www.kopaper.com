@@ -106,6 +106,7 @@ const orgSchema = {
 
 const GA_ID = 'G-QVKPRKCBW8';
 const ADSENSE_ID = 'ca-pub-6279178382144076';
+const year = new Date().getFullYear();
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -263,10 +264,40 @@ const ADSENSE_ID = 'ca-pub-6279178382144076';
       </section>
     </main>
 
-    <footer class="site-footer"><a class="brand" href="/"><img class="brand-mark" src="/images/favicon-32x32.png" alt="" width="22" height="22"><span>koPaper</span></a><p>Craft a more creative world.</p><div class="footer-links"><a href="/gallery/">Gallery</a><a href="/learn/">Tutorials</a><a href="/printables/">Templates</a><a href="/origami/">Origami</a><a href="/contact/">Contact</a></div><small>© 2026 kopaper.com. Made for curious creators.</small></footer>
-
     <!-- Ad slot (third-party network): filled after consent -->
     <div id="container-04bba4fddad31c9c102b34f4c1c7ad04" style="margin:28px auto;max-width:1200px;min-height:90px;display:flex;align-items:center;justify-content:center;padding:0 20px;box-sizing:border-box;"></div>
+
+    <footer class="home-footer">
+      <div class="hf-inner">
+        <div class="hf-brand">
+          <a class="brand" href="/"><img class="brand-mark" src="/images/favicon-32x32.png" alt="" width="22" height="22"><span>koPaper</span></a>
+          <p>Free AI papercraft design studio. Turn your ideas into beautiful papercraft-style designs.</p>
+        </div>
+        <div class="hf-col">
+          <h3>Studio</h3>
+          <a href="/#generator">AI Generator</a>
+          <a href="/gallery/">Gallery</a>
+          <a href="/tools/">Style Generators</a>
+          <a href="/papercraft-ideas/">Papercraft Ideas</a>
+        </div>
+        <div class="hf-col">
+          <h3>Crafts</h3>
+          <a href="/origami/">All Crafts</a>
+          <a href="/origami/animals/">Animals</a>
+          <a href="/origami/flowers/">Flowers</a>
+          <a href="/letter-paper/">Letter Paper</a>
+          <a href="/printables/">Printables</a>
+        </div>
+        <div class="hf-col">
+          <h3>Company</h3>
+          <a href="/about/">About</a>
+          <a href="/contact/">Contact</a>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+        </div>
+      </div>
+      <div class="hf-bottom"><small>© {year} kopaper.com — AI Papercraft Studio. Made for curious creators.</small></div>
+    </footer>
 
     <!-- Cookie consent banner (GDPR): GA4 + AdSense load only after consent -->
     <div id="consentBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;background:#fff;border-top:1px solid var(--line);padding:14px 20px;font-size:.85rem;color:var(--ink);box-shadow:0 -8px 30px rgba(48,35,66,.08);">

@@ -6,12 +6,13 @@ interface Props {
 const { defaultStyle = 'cute', defaultPrompt = '' } = Astro.props;
 
 const STYLES = [
-  { id: 'cute', label: 'Cute', hint: 'round kawaii forms' },
-  { id: 'lowpoly', label: 'Low Poly', hint: 'geometric facets' },
-  { id: 'pixel', label: 'Pixel', hint: '8-bit sprite' },
-  { id: 'fantasy', label: 'Fantasy', hint: 'magical glow' },
-{ id: 'minecraft', label: 'Blocky', hint: 'chunky voxel cubes' },
+  { id: 'cute', label: 'Cute', hint: 'round kawaii forms', tone: 'mint' },
+  { id: 'lowpoly', label: 'Low Poly', hint: 'geometric facets', tone: 'blue' },
+  { id: 'pixel', label: 'Pixel', hint: '8-bit sprite', tone: 'peach' },
+  { id: 'fantasy', label: 'Fantasy', hint: 'magical glow', tone: 'lilac' },
+  { id: 'minecraft', label: 'Blocky', hint: 'chunky voxel cubes', tone: 'lemon' },
 ];
+const QUICK_IDEAS = ['a cute panda', 'a low poly fox', 'a fantasy castle', 'a pixel heart'];
 ---
 
 <!-- 728x90 banner ad (highrevenueformat), sits above the generator input -->
@@ -28,50 +29,57 @@ const STYLES = [
   <script is:inline src="https://www.highrevenueformat.com/39da9af78b31d91aa67016760fb128ed/invoke.js"></script>
 </div>
 
-<!-- Generator app — reusable on the homepage and on /tools/<style>/ pages. -->
-<section class="gen-app reveal" aria-label="Papercraft generator" data-default-style={defaultStyle} data-default-prompt={defaultPrompt}>
-  <aside class="gen-side">
-    <div class="field">
-      <label for="prompt">Describe your idea</label>
-      <div class="prompt-row">
-        <input type="text" id="prompt" placeholder="a cute panda, a fantasy castle, a robot toy" autocomplete="off" />
-        <button class="btn btn-ghost btn-sm" id="polishBtn" type="button" title="Expand and clean up your idea">AI polish</button>
-      </div>
-      <p class="prompt-preview" id="promptPreview" aria-live="polite"></p>
+<!-- Generator app — reusable on /tools/<style>/ pages. Visual language mirrors
+     the homepage generator card (cream/purple, rounded, pill buttons). -->
+<section class="pgen reveal" aria-label="Papercraft generator" data-default-style={defaultStyle} data-default-prompt={defaultPrompt}>
+  <div class="pgen-main">
+    <label class="pgen-label" for="prompt">What would you like to create?</label>
+    <textarea id="prompt" rows="4" maxlength="400" placeholder="A tiny orange fox sitting in a flower garden, made from folded paper..." autocomplete="off"></textarea>
+    <div class="pgen-quick" aria-label="Quick prompt ideas">
+      <span class="pgen-quick-label">Try:</span>
+      {QUICK_IDEAS.map((q) => (
+        <button type="button" class="pgen-chip" data-idea={q}>{q}</button>
+      ))}
     </div>
-    <div class="field">
-      <label>Style <span class="field-hint">adds a papercraft look</span></label>
-      <div class="style-chips" id="styleChips" role="group" aria-label="Style">
-        {STYLES.map((s) => (
-          <button type="button" class="style-chip" data-style={s.id} aria-pressed={s.id === defaultStyle}>
-            {s.label}<span>{s.hint}</span>
-          </button>
-        ))}
-      </div>
+    <div class="pgen-styles-label">Choose a paper style <span>adds a papercraft look</span></div>
+    <div class="pgen-chiprow" id="styleChips" role="group" aria-label="Style">
+      {STYLES.map((s) => (
+        <button type="button" class:list={['pgen-style', s.tone]} data-style={s.id} aria-pressed={s.id === defaultStyle}>
+          {s.label}<span>{s.hint}</span>
+        </button>
+      ))}
     </div>
-    <div class="gen-actions">
-      <button class="btn btn-ghost" id="surprise" type="button">Surprise me</button>
-      <button class="btn btn-primary btn-large" id="generateBtn" type="button">Generate Design</button>
+    <div class="pgen-actions">
+      <button class="pgen-btn ghost" id="polishBtn" type="button" title="Expand and clean up your idea">✨ AI polish</button>
+      <button class="pgen-btn ghost" id="surprise" type="button">🎲 Surprise me</button>
+      <button class="pgen-btn primary" id="generateBtn" type="button">✦ Generate Design <span>→</span></button>
     </div>
+    <div class="pgen-foot"><span><span class="pgen-spark">✦</span> Be as imaginative as you like</span></div>
+    <p class="pgen-preview" id="promptPreview" aria-live="polite"></p>
+  </div>
+
+  <aside class="pgen-aside">
+    <div class="pgen-art">
+      <div class="pa-sun"></div><div class="pa-butterfly">🦋</div>
+      <div class="pa-flower">🌼</div>
+      <div class="pa-hill"></div><div class="pa-hill second"></div>
+    </div>
+    <h3>A blank page full of possibilities.</h3>
+    <p>Start with a simple idea. Refine your prompt and explore different looks as you go.</p>
+    <span class="pgen-tip">IDEA TIP <b>Try "a sleepy cat in a teacup"</b></span>
   </aside>
 
-  <div class="gen-stage">
-    <div class="stage-frame">
+  <div class="pgen-stage">
+    <div class="pgen-frame">
       <div class="result-grid" id="resultGrid">
         <div class="gen-empty" data-empty>
           <img class="gen-empty-img" src="/assets/ai/gen-fox.jpg" alt="Example papercraft fox design" width="360" height="360" loading="eager" decoding="async" />
           <h3 class="gen-empty-title">Turn any idea into papercraft</h3>
           <p class="gen-empty-sub">Type what you imagine, pick a style, and hit <em>Generate Design</em>.</p>
-          <div class="gen-ideas">
-            <button type="button" class="idea-chip" data-idea="a cute panda">a cute panda</button>
-            <button type="button" class="idea-chip" data-idea="a low poly fox">a low poly fox</button>
-            <button type="button" class="idea-chip" data-idea="a fantasy castle">a fantasy castle</button>
-            <button type="button" class="idea-chip" data-idea="a pixel heart">a pixel heart</button>
-          </div>
         </div>
       </div>
     </div>
-    <div class="gen-loading" id="genLoading" hidden>
+    <div class="pgen-loading" id="genLoading" hidden>
       <div class="spinner" aria-hidden="true"></div>
       <p id="genStatus">Planning content elements…</p>
     </div>
@@ -79,34 +87,68 @@ const STYLES = [
 </section>
 
 <style>
-  /* Generator input: prompt row, live preview, style chips */
-  .prompt-row { display: flex; gap: 8px; align-items: stretch; }
-  .prompt-row input { flex: 1; min-width: 0; }
-  .btn-sm { padding: 0 14px; font-size: .9rem; white-space: nowrap; }
-  .prompt-preview { margin: 8px 0 0; font-size: .8rem; line-height: 1.5; color: var(--text-muted); font-family: var(--font-mono); background: var(--warm-soft); border: 1px solid var(--warm); border-radius: var(--radius-sm); padding: 8px 10px; word-break: break-word; }
-  .field-hint { font-weight: 400; color: var(--text-muted); font-size: .78rem; margin-left: 4px; }
-  .style-chips { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
-  .style-chip { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding: 9px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface); color: var(--text); font: inherit; font-size: .92rem; cursor: pointer; text-align: left; transition: border-color .15s, background .15s; }
-  .style-chip span { font-size: .72rem; color: var(--text-muted); }
-  .style-chip[aria-pressed="true"] { border-color: var(--warm); background: var(--warm-soft); }
+  /* --- card shell (mirrors the homepage .generator-card) --- */
+  .pgen { display: grid; grid-template-columns: 1.35fr .65fr; gap: 22px; background: #fff; border: 1px solid #f0eae5; border-radius: 25px; padding: 28px; box-shadow: 0 18px 55px rgba(102, 81, 61, .05); }
+  .pgen-stage { grid-column: 1 / -1; position: relative; }
+  .pgen-frame { background: #fdfcff; border: 1px solid #f0eae5; border-radius: 18px; min-height: 480px; padding: 20px; display: flex; align-items: center; justify-content: center; }
 
-  .gen-stage { position: relative; }
-  .gen-loading { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; color: var(--text-muted); background: var(--surface); }
-  .gen-loading[hidden] { display: none; }
-  .gen-loading p { font-size: 1.08rem; letter-spacing: .02em; }
-  .gen-loading .spinner { width: 36px; height: 36px; border: 3px solid var(--border); border-top-color: var(--warm); border-radius: 50%; animation: kp-spin 0.9s linear infinite; }
-  @keyframes kp-spin { to { transform: rotate(360deg); } }
-  .design-note { margin: 8px 0 0; font-size: .75rem; color: var(--text-muted); text-align: center; font-style: italic; }
+  /* --- prompt --- */
+  .pgen-label { display: block; font-size: 13px; font-weight: 800; margin-bottom: 10px; color: var(--text); }
+  .pgen textarea { width: 100%; height: 110px; resize: vertical; border: 1px solid #e9e3ee; border-radius: 14px; padding: 14px; font: inherit; font-size: 14px; line-height: 1.6; outline: none; background: #fdfcff; color: var(--text); transition: border-color .2s, box-shadow .2s; }
+  .pgen textarea:focus { border-color: var(--warm); box-shadow: 0 0 0 3px rgba(118, 80, 233, .10); }
+  .pgen-quick { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .pgen-quick-label { font-size: 12px; font-weight: 700; color: var(--text-muted); }
+  .pgen-chip { border: 1px solid var(--border); background: #fff; border-radius: 30px; padding: 7px 13px; font: inherit; font-size: 12.5px; font-weight: 700; color: var(--text); cursor: pointer; transition: border-color .2s, color .2s, transform .2s; }
+  .pgen-chip:hover { border-color: var(--warm); color: var(--warm); transform: translateY(-1px); }
 
-  /* Empty / first-paint state: friendly guide instead of a blank canvas */
+  /* --- style pills --- */
+  .pgen-styles-label { font-size: 13px; font-weight: 800; margin: 16px 0 10px; color: var(--text); }
+  .pgen-styles-label span { font-weight: 400; color: var(--text-muted); font-size: .78rem; margin-left: 4px; }
+  .pgen-chiprow { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pgen-style { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding: 9px 14px; border: 1px solid var(--border); border-radius: 14px; background: #fff; color: var(--text); font: inherit; font-size: .9rem; font-weight: 700; cursor: pointer; text-align: left; transition: border-color .15s, background .15s, transform .15s; }
+  .pgen-style span { font-size: .72rem; font-weight: 400; color: var(--text-muted); }
+  .pgen-style:hover { transform: translateY(-1px); border-color: #d9cff5; }
+  .pgen-style[aria-pressed="true"] { border-color: var(--warm); background: var(--warm-soft); }
+  .pgen-style[aria-pressed="true"] span { color: var(--warm); }
+
+  /* --- actions --- */
+  .pgen-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+  .pgen-btn { border: 0; border-radius: 30px; padding: 12px 20px; font: inherit; font-weight: 800; font-size: 14px; cursor: pointer; display: inline-flex; align-items: center; gap: 9px; transition: transform .2s, background .2s, box-shadow .2s, border-color .2s, color .2s; }
+  .pgen-btn.ghost { background: #fff; border: 1px solid var(--border); color: var(--text); }
+  .pgen-btn.ghost:hover { border-color: var(--warm); color: var(--warm); }
+  .pgen-btn.primary { background: var(--warm); color: #fff; box-shadow: 0 8px 18px rgba(118, 80, 233, .2); padding: 12px 24px; }
+  .pgen-btn.primary:hover { background: var(--warm-dark); transform: translateY(-2px); }
+  .pgen-btn:disabled { opacity: .6; cursor: wait; transform: none; }
+  .pgen-foot { display: flex; justify-content: space-between; font-size: 11.5px; color: var(--text-muted); margin-top: 12px; }
+  .pgen-spark { color: var(--warm); }
+  .pgen-preview { margin: 8px 0 0; font-size: .78rem; line-height: 1.5; color: var(--text-muted); font-family: var(--font-mono); background: var(--warm-soft); border-radius: 10px; padding: 8px 10px; word-break: break-word; }
+
+  /* --- aside (mirrors the homepage generator-aside) --- */
+  .pgen-aside { border-radius: 18px; background: #f5efff; padding: 18px; display: flex; flex-direction: column; justify-content: center; gap: 8px; }
+  .pgen-art { height: 150px; border-radius: 13px; background: linear-gradient(140deg, #d9e9ff, #fce6d9); position: relative; overflow: hidden; display: grid; place-items: center; }
+  .pa-sun { position: absolute; top: 14px; right: 16px; width: 38px; height: 38px; border-radius: 50%; background: #ffd98a; }
+  .pa-butterfly { font-size: 20px; position: absolute; top: 20px; left: 22%; }
+  .pa-flower { font-size: 22px; position: absolute; left: 16px; bottom: 12px; z-index: 1; }
+  .pa-hill { position: absolute; bottom: -26px; left: -10%; width: 70%; height: 56px; border-radius: 50%; background: #bfe3c8; }
+  .pa-hill.second { left: 45%; background: #a8d9b5; }
+  .pgen-aside h3 { margin: 6px 0 0; font-size: 15px; font-weight: 800; color: var(--text); }
+  .pgen-aside p { margin: 0; font-size: 12.5px; line-height: 1.6; color: var(--text-muted); }
+  .pgen-tip { font-size: 9px; letter-spacing: 1px; color: #9874e9; margin-top: 12px; font-weight: 800; }
+  .pgen-tip b { display: block; margin-top: 3px; font-size: 12px; letter-spacing: 0; color: var(--text); }
+
+  /* --- stage states --- */
+  .pgen-loading { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; color: var(--text-muted); background: rgba(253, 252, 255, .92); border-radius: 18px; z-index: 2; }
+  .pgen-loading[hidden] { display: none; }
+  .pgen-loading p { font-size: 1.05rem; }
+  .pgen-loading .spinner { width: 36px; height: 36px; border: 3px solid var(--border); border-top-color: var(--warm); border-radius: 50%; animation: pgen-spin .9s linear infinite; }
+  @keyframes pgen-spin { to { transform: rotate(360deg); } }
   .gen-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; text-align: center; padding: 18px 14px; max-width: 540px; margin: 0 auto; }
-  .gen-empty-img { width: min(64%, 420px); border-radius: 18px; border: 1px solid var(--border); box-shadow: 0 14px 34px rgba(15,23,42,.12); background: #fff; }
-  .gen-empty-title { margin: 14px 0 0; font-size: 1.35rem; font-weight: 600; font-family: var(--font-display); letter-spacing: -0.01em; }
+  .gen-empty-img { width: min(56%, 380px); border-radius: 18px; border: 1px solid var(--border); box-shadow: 0 14px 34px rgba(15, 23, 42, .12); background: #fff; }
+  .gen-empty-title { margin: 14px 0 0; font-size: 1.3rem; font-weight: 700; color: var(--text); }
   .gen-empty-sub { margin: 0; font-size: .95rem; color: var(--text-muted); line-height: 1.6; max-width: 380px; }
   .gen-empty-sub em { font-style: normal; color: var(--warm); font-weight: 600; }
-  .gen-ideas { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 12px; }
-  .idea-chip { padding: 8px 16px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface); color: var(--text-muted); font-size: .84rem; font-family: var(--font-mono); cursor: pointer; transition: border-color .15s, color .15s; }
-  .idea-chip:hover { border-color: var(--warm); color: var(--warm); }
+
+  @media (max-width: 900px) { .pgen { grid-template-columns: 1fr; padding: 18px; border-radius: 20px; } .pgen-stage { grid-column: auto; } .pgen-frame { min-height: 380px; } }
 </style>
 
 <script>
@@ -115,7 +157,7 @@ const STYLES = [
   // define:vars forces inline scripts, and an inline <script> cannot use `import`
   // (browser throws "Cannot use import statement outside a module"), which killed
   // every button handler on this page.
-  const genApp = document.querySelector('.gen-app');
+  const genApp = document.querySelector('.pgen');
   const defaultStyle = (genApp && genApp.dataset.defaultStyle) || 'cute';
   const defaultPrompt = (genApp && genApp.dataset.defaultPrompt) || '';
   // Monochrome line-art output: white paper, ink lines (printable + on-brand).
@@ -145,12 +187,12 @@ const STYLES = [
   const promptPreview = $('promptPreview');
 
   function getStyle() {
-    const sel = styleChips && styleChips.querySelector('.style-chip[aria-pressed="true"]');
+    const sel = styleChips && styleChips.querySelector('.pgen-style[aria-pressed="true"]');
     return sel ? sel.dataset.style : (defaultStyle || 'cute');
   }
   function setStyle(style) {
     if (!styleChips) return;
-    styleChips.querySelectorAll('.style-chip').forEach(c => {
+    styleChips.querySelectorAll('.pgen-style').forEach(c => {
       c.setAttribute('aria-pressed', String(c.dataset.style === style));
     });
     updatePreview();
@@ -219,7 +261,7 @@ const STYLES = [
 
   function setLoading(on) {
     const btn = $('generateBtn');
-    if (btn) { btn.disabled = on; btn.textContent = on ? 'Generating…' : 'Generate Design'; }
+    if (btn) { btn.disabled = on; btn.innerHTML = on ? '✦ Generating…' : '✦ Generate Design <span>→</span>'; }
     const grid = $('resultGrid');
     if (grid) grid.classList.toggle('loading', on);
     const loading = $('genLoading');
@@ -383,9 +425,9 @@ const STYLES = [
   // Wire events
   $('generateBtn').addEventListener('click', generate);
   $('surprise').addEventListener('click', surprise);
-  // Style chips select a look (updates the preview) but do NOT auto-generate.
+  // Style pills select a look (updates the preview) but do NOT auto-generate.
   if (styleChips) styleChips.addEventListener('click', (e) => {
-    const btn = e.target.closest('.style-chip');
+    const btn = e.target.closest('.pgen-style');
     if (!btn) return;
     setStyle(btn.dataset.style);
   });
@@ -396,13 +438,12 @@ const STYLES = [
     updatePreview();
   });
   promptEl.addEventListener('input', updatePreview);
-  promptEl.addEventListener('keydown', (e) => { if (e.key === 'Enter') generate(); });
-  // Quick-idea chips on the empty state: fill the prompt and generate right away.
-  document.querySelectorAll('.idea-chip').forEach((c) => {
+  // Quick-idea chips: fill the prompt and focus (same interaction as the homepage).
+  document.querySelectorAll('.pgen-chip').forEach((c) => {
     c.addEventListener('click', () => {
       promptEl.value = c.dataset.idea || '';
       updatePreview();
-      generate();
+      promptEl.focus();
     });
   });
 
