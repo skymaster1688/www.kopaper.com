@@ -7,7 +7,7 @@ import { detectSubject } from '../lib/gallery';
 import '../styles/homepage.css';
 
 const title = 'Free AI Papercraft Generator - Create Paper Art';
-const description = 'Create unique papercraft designs with AI. Choose from cute, low poly, pixel, fantasy and more styles to turn your ideas into beautiful paper art for free.';
+const description = 'Use our free AI papercraft generator to turn any idea into papercraft-style art. Choose cute, low poly, pixel, fantasy and more styles - no sign-up needed.';
 
 const CAT_LABEL: Record<string, string> = { animal: 'Animals', dragon: 'Dragons', vehicle: 'Vehicles', building: 'Buildings' };
 const STYLE_LABEL: Record<string, string> = { lowpoly: 'Low Poly', cute: 'Cute', pixel: 'Pixel', fantasy: 'Fantasy', minecraft: 'Blocky Voxel' };
@@ -77,8 +77,12 @@ const quickPrompts = ['A cute baby panda', 'A low poly fox', 'A fantasy castle',
 const faqs = [
   { q: 'What is koPaper?', a: 'koPaper is an AI papercraft design studio. Describe an idea and it generates beautiful papercraft-style designs you can use for inspiration, creative exploration, and visual reference.' },
   { q: 'Is the AI papercraft generator free?', a: 'Yes — 100% free, no sign-up, no account needed. Generate as many designs as you like, in any of the five styles.' },
-  { q: 'Can I save the designs?', a: 'Yes. Save your favorite generated designs and use them as creative reference, inspiration, or a starting point for your own paper project.' },
+  { q: 'What styles can the AI papercraft generator create?', a: 'Five distinct looks: Cute & Kawaii for round, friendly characters; Low Poly for geometric, faceted animals; Pixel for retro game-inspired art; Fantasy for dragons and castles; and Blocky Voxel for cube-built designs. Each style also has its own dedicated generator page.' },
+  { q: 'How does the generator work?', a: 'Type a short description of what you want — a sleepy cat, a castle on a hill, a rocket ship — then pick a style and detail level. The AI renders your idea as papercraft-style artwork in seconds, usually with several variations to choose from.' },
+  { q: 'Can I print the designs?', a: 'Yes. Every design can be downloaded and printed at home. Keep in mind the results are papercraft-style artwork — illustrations of what your idea would look like as a paper model — rather than cut-and-fold templates. For ready-to-print templates, visit our printables section.' },
   { q: 'Do I need design skills or special paper?', a: 'No. The generator needs no design skills and no special equipment — it creates papercraft-style artwork you can view and save on screen. For hands-on folding, browse our origami tutorials.' },
+  { q: 'Can I use the designs in my own projects?', a: 'Absolutely. Save your favorite designs and use them as creative reference, party decorations, classroom activities, or a starting point for your next paper craft project. If you make something wonderful, our gallery of community designs is a great place to find even more inspiration.' },
+  { q: 'Can I save the designs?', a: 'Yes. Save your favorite generated designs and use them as creative reference, inspiration, or a starting point for your own paper project.' },
 ];
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -161,12 +165,12 @@ const year = new Date().getFullYear();
         <div class="hero-copy">
           <div class="eyebrow"><span class="eyebrow-dot"></span> YOUR IDEAS, MADE OF PAPER</div>
           <h1>AI Papercraft<br /><span>Generator</span></h1>
-          <p class="hero-text">Turn your ideas into amazing paper art. Create, customize and bring paper to life!</p>
+          <p class="hero-text">Turn your ideas into amazing papercraft-style art. Describe anything you can imagine, pick one of five styles, and watch the AI papercraft generator bring it to life in seconds — free, no sign-up needed.</p>
           <div class="hero-actions"><a class="button" href="#generator">✦ Generate Now <span>→</span></a><a class="text-button" href="#gallery">Explore Gallery <span>↓</span></a></div>
         </div>
         <div class="hero-art" aria-label="Low-poly paper fox design generated with koPaper" role="img">
           <div class="sun"></div><div class="cloud cloud-one"></div>
-          <img class="hero-photo" src="/images/gallery/low-poly-fox-papercraft-design-ai-generated-mtjdm8d1ous3.jpg" alt="Low poly papercraft fox design generated with the koPaper AI papercraft generator" loading="eager" fetchpriority="high" />
+          <img class="hero-photo" src="/images/gallery/low-poly-fox-papercraft-design-ai-generated-mtjdm8d1ous3.jpg" alt="Low poly papercraft fox design generated with the koPaper AI papercraft generator" width="1024" height="1024" loading="eager" fetchpriority="high" />
           <div class="sparkle sparkle-one">✦</div><div class="sparkle sparkle-two">✧</div>
           <div class="art-note"><span>✂</span><div><b>Dream it. Fold it.</b><small>Make it yours.</small></div></div>
         </div>
@@ -174,7 +178,7 @@ const year = new Date().getFullYear();
 
       <section class="generator-wrap" id="generator">
         <div class="section-kicker">THE CREATIVE PLAYGROUND</div>
-        <div class="section-heading"><h2>Your next paper project<br class="mobile-break" /> starts here.</h2><p>Describe your idea. Pick a style. Let your imagination take shape.</p></div>
+        <div class="section-heading"><h2>Create with the AI papercraft<br class="mobile-break" /> generator</h2><p>Describe your idea. Pick a style. Let your imagination take shape — the generator turns it into papercraft-style artwork you can download in seconds.</p></div>
         <div class="generator-card">
           <div class="generator-main">
             <label class="field-label" for="idea">What would you like to create?</label>
@@ -189,12 +193,12 @@ const year = new Date().getFullYear();
             <div class="generator-results" id="results" aria-live="polite"></div>
             <p class="generator-status" id="generator-status" role="status">Your first creation is just a few words away.</p>
           </div>
-          <div class="generator-aside"><div class="aside-art"><div class="paper-sun"></div><div class="paper-flower">🌼</div><div class="paper-hill"></div><div class="paper-hill second"></div><div class="paper-butterfly">🦋</div></div><h3>A blank page full of possibilities.</h3><p>Start with a simple idea. You can refine your prompt and explore different looks as you go.</p><span class="aside-tip">IDEA TIP <b>Try “a sleepy cat in a teacup”</b></span></div>
+          <div class="generator-aside"><div class="aside-art"><div class="paper-sun"></div><div class="paper-flower">🌼</div><div class="paper-hill"></div><div class="paper-hill second"></div><div class="paper-butterfly">🦋</div></div><h3>A blank page full of possibilities.</h3><p>Start with a simple idea. You can refine your prompt, switch styles, and explore different looks as you go — every generation is free, and there is no limit on how many times you try.</p><span class="aside-tip">IDEA TIP <b>Try “a sleepy cat in a teacup”</b></span></div>
         </div>
       </section>
 
       <section class="styles-section" id="styles">
-        <div class="section-heading"><h2>Explore papercraft styles</h2><p>Five distinct looks, each with its own dedicated generator page.</p></div>
+        <div class="section-heading"><h2>Explore papercraft styles</h2><p>Five distinct looks, each with its own dedicated generator page. Pick the mood that fits your idea — soft and friendly, sharp and geometric, retro, magical, or blocky.</p></div>
         <div class="styles-grid">
           {STYLES.map(s => (
             <a class:list={["style-card", s.tone]} href={s.href}>
@@ -215,13 +219,13 @@ const year = new Date().getFullYear();
       </section>
 
       <section class="gallery-section" id="gallery">
-        <div class="section-top"><div><div class="section-kicker">A WORLD OF PAPER POSSIBILITIES</div><h2>Popular Papercraft Creations</h2><p>Explore our latest AI-generated designs and community favorites.</p></div><a class="text-button desktop-only" href="/gallery/">View All <span>→</span></a></div>
+        <div class="section-top"><div><div class="section-kicker">A WORLD OF PAPER POSSIBILITIES</div><h2>Popular Papercraft Creations</h2><p>Explore our latest AI-generated designs and community favorites. Every card shows the exact prompt behind the design — click Try prompt to reuse it in the generator and put your own spin on it.</p></div><a class="text-button desktop-only" href="/gallery/">View All <span>→</span></a></div>
         <div class="category-list" role="group" aria-label="Filter gallery">{categories.map((category, i) => <button class:list={["category-chip", { active: i === 0 }]} data-category={category}>{category}</button>)}</div>
         <div class="gallery-grid" id="gallery-grid">
           {cards.map((item) => (
             <article class="gallery-card" data-kind={item.cat}>
               <a href={item.href} class:list={["gallery-image", item.tone]} aria-label={`View ${item.title}`}>
-                <img src={item.img} alt={item.title} loading="lazy" />
+                <img src={item.img} alt={item.title} width="1024" height="1024" loading="lazy" />
                 <span class="card-tag">{item.tag}</span>
               </a>
               <div class="gallery-meta"><div><h3><a href={item.href}>{item.title}</a></h3><span>{item.cat}</span></div><button class="try-prompt" type="button" data-prompt={item.prompt} title="Fill the generator with this design's prompt">✦ Try prompt</button></div>
@@ -231,12 +235,18 @@ const year = new Date().getFullYear();
         <p class="subject-links">Explore by subject: <a href="/gallery/animal/">Animals</a><span>·</span><a href="/gallery/dragon/">Dragons</a><span>·</span><a href="/gallery/vehicle/">Vehicles</a><span>·</span><a href="/gallery/building/">Buildings</a><span>·</span><a href="/papercraft-ideas/">More papercraft ideas →</a></p>
       </section>
 
-      <section class="template-banner" id="journey"><div class="banner-illustration">🕊️<span>✦</span></div><div><span class="section-kicker">READY, SET, CREATE</span><h2>Start Your Papercraft<br />Journey Today</h2><p>With kopaper.com, the only limit is your imagination.</p><a class="button" href="#generator">Try AI Generator <span>→</span></a></div><div class="banner-decoration">✳</div></section>
+      <section class="template-banner" id="journey"><div class="banner-illustration">🕊️<span>✦</span></div><div><span class="section-kicker">READY, SET, CREATE</span><h2>Start Your Papercraft<br />Journey Today</h2><p>With kopaper.com, the only limit is your imagination. No downloads, no design experience, no sign-up wall — just type an idea, pick a style, and start creating. Your first papercraft design is thirty seconds away.</p><a class="button" href="#generator">Try AI Generator <span>→</span></a></div><div class="banner-decoration">✳</div></section>
 
-      <section class="how-section" id="how-it-works"><div class="how-intro"><div class="section-kicker">FROM IDEA TO PAPER ART</div><h2>Creativity, in<br />three little steps.</h2><p>No fancy tools or design skills needed to get started. Just bring an idea.</p><a class="text-button" href="#generator">Give it a try <span>→</span></a></div><div class="steps"><article class="step"><span class="step-number">01</span><div class="step-icon">💭</div><h3>Imagine it</h3><p>Describe the creature, object, or scene you want to bring to life.</p></article><article class="step"><span class="step-number">02</span><div class="step-icon">🎨</div><h3>Pick your style</h3><p>Explore playful looks, from low-poly shapes to blocky voxel builds.</p></article><article class="step"><span class="step-number">03</span><div class="step-icon">✂️</div><h3>Make it yours</h3><p>Use your design as inspiration for your next paper craft project.</p></article></div></section>
+      <section class="how-section" id="how-it-works"><div class="how-intro"><div class="section-kicker">FROM IDEA TO PAPER ART</div><h2>How the AI papercraft<br />generator works</h2><p>No fancy tools or design skills needed to get started. Just bring an idea — the three steps below take less than a minute.</p><a class="text-button" href="#generator">Give it a try <span>→</span></a></div><div class="steps"><article class="step"><span class="step-number">01</span><div class="step-icon">💭</div><h3>Imagine it</h3><p>Describe the creature, object, or scene you want to bring to life. A few specific words — colors, mood, setting — help the AI nail your vision.</p></article><article class="step"><span class="step-number">02</span><div class="step-icon">🎨</div><h3>Pick your style</h3><p>Explore playful looks, from low-poly shapes to blocky voxel builds. The same idea feels completely different in each style, so experiment freely.</p></article><article class="step"><span class="step-number">03</span><div class="step-icon">✂️</div><h3>Make it yours</h3><p>Use your design as inspiration for your next paper craft project — print it, share it, or tweak the prompt and generate a fresh variation.</p></article></div></section>
+
+      <section class="ideas-section" id="ideas">
+        <div class="section-kicker">NEED INSPIRATION?</div>
+        <div class="section-heading"><h2>Papercraft ideas to try first</h2><p>Stuck on what to generate? These crowd-pleasers are a great starting point — type one in, tweak it, and make it yours.</p></div>
+        <p class="ideas-text">Animals are the classic choice: a <b>cute panda munching bamboo</b>, a <b>low poly fox</b>, or a tiny hedgehog curled up for a nap. Builders love paper <b>castles</b>, <b>lighthouses</b> and cozy cottages, while fantasy fans can summon a <b>dragon guarding its treasure</b>. Seasonal picks work year-round too — a pixel-art heart for Valentine's Day, a smiling pumpkin for Halloween, or a blocky snowman for winter. Every subject works in every style, so the combinations are nearly endless: a pixel-art whale, a kawaii rocket, a voxel dinosaur. Start with one of these, then follow the <a href="/papercraft-ideas/">papercraft ideas hub</a> for many more, or browse the <a href="/gallery/">gallery</a> to see what other creators have generated. When a look makes you smile, save it — and check back often, because fresh designs land in the gallery every day.</p>
+      </section>
 
       <section class="create-learn" id="tutorials">
-        <div class="section-top"><div><div class="section-kicker">HANDS-ON PAPER CRAFT</div><h2>Tutorials &amp; paper guides</h2><p>Step-by-step folding tutorials, plus the know-how that makes every project turn out better.</p></div><a class="text-button desktop-only" href="/origami/">All tutorials <span>→</span></a></div>
+        <div class="section-top"><div><div class="section-kicker">HANDS-ON PAPER CRAFT</div><h2>Tutorials &amp; paper guides</h2><p>Step-by-step folding tutorials, plus the know-how that makes every project turn out better. Prefer to create with AI first and fold later? Do both — generate a design above, then learn the folding basics below.</p></div><a class="text-button desktop-only" href="/origami/">All tutorials <span>→</span></a></div>
         <div class="cl-grid">
           {TUTORIAL_CARDS.map(t => (
             <a class="cl-card" href={t.href}>
@@ -255,7 +265,7 @@ const year = new Date().getFullYear();
 
       <section class="home-faq" id="faq">
         <div class="section-kicker">GOOD TO KNOW</div>
-        <div class="section-heading"><h2>Frequently asked questions</h2></div>
+        <div class="section-heading"><h2>AI papercraft generator FAQ</h2></div>
         <div class="faq-list">
           {faqs.map(f => (
             <details><summary>{f.q}</summary><p>{f.a}</p></details>
