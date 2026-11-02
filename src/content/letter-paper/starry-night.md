@@ -3,6 +3,7 @@ title: "Starry Night Letter Paper"
 description: "A beautiful letter paper design inspired by a starry night sky. Free to print and use for letters, notes, and journaling."
 emoji: "\uD83C\uDF0C"
 order: 1
+updated: "2026-08-07"
 ---
 
 ## About This Design

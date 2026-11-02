@@ -5,6 +5,7 @@ emoji: "🔖"
 category: "bookmarks"
 order: 8
 draft: false
+updated: "2026-08-30"
 ---
 
 Free printable bookmarks are one of the easiest and most satisfying paper projects. A well-designed bookmark does more than hold your place — it adds a small moment of joy every time you open a book. Whether you prefer minimalist lines, cute characters, or inspirational quotes, printable bookmarks let you customize your reading experience without spending money at a bookstore.

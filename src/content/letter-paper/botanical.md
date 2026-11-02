@@ -3,6 +3,7 @@ title: "Botanical Letter Paper"
 description: "A fresh botanical letter paper design with green leaves, delicate flowers, and natural elements. Free to print for letters, notes, and nature-inspired writing."
 emoji: "🌿"
 order: 7
+updated: "2026-08-30"
 ---
 
 ## About This Design

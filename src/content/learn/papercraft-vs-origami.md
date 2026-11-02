@@ -4,6 +4,7 @@ description: "Papercraft vs origami: compare tools, difficulty, techniques, and 
 emoji: "📐"
 order: 10
 draft: false
+updated: "2026-08-30"
 ---
 **Papercraft vs origami** — if you're new to paper crafts, the difference might seem subtle. Both involve folding paper into three-dimensional shapes. But the tools, techniques, difficulty curve, and finished results are quite different. Understanding these differences helps you choose the right craft for your interests and skill level.
 

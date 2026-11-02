@@ -3,6 +3,7 @@ title: "Floral Letter Paper"
 description: "Elegant floral border letter paper design. Print free for letters, invitations, and special occasion notes."
 emoji: "\uD83C\uDF3A"
 order: 2
+updated: "2026-08-07"
 ---
 
 ## About This Design

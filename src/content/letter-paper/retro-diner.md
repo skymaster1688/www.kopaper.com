@@ -3,6 +3,7 @@ title: "Retro Diner Letter Paper"
 description: "A fun retro diner letter paper design with 1950s motifs, checkered patterns, and vintage Americana. Free to print for letters and notes."
 emoji: "🍔"
 order: 13
+updated: "2026-11-01"
 ---
 
 ## About This Design

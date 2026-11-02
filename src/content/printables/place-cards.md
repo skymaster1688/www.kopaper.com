@@ -5,6 +5,7 @@ emoji: "🍽️"
 category: "place-cards"
 order: 16
 draft: false
+updated: "2026-08-30"
 ---
 
 Free printable place cards add a touch of elegance and organization to any seated event — weddings, dinner parties, holiday meals, conferences, and celebrations. Instead of buying expensive pre-printed place cards or writing names on plain cards, print custom place cards that match your event decor and color scheme. Printable place cards are especially valuable for events with many guests — they help guests find their seats quickly and eliminate the awkward moment of wandering around looking for a place to sit.

@@ -3,6 +3,7 @@ title: "Minimal Letter Paper"
 description: "A clean, minimal letter paper design with subtle lines and modern typography. Free to print for professional and personal use."
 emoji: "\u270F\uFE0F"
 order: 5
+updated: "2026-08-07"
 ---
 
 ## About This Design

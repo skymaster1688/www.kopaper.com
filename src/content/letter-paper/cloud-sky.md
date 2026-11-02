@@ -3,6 +3,7 @@ title: "Cloud Sky Letter Paper"
 description: "A whimsical letter paper design with fluffy clouds on a blue sky. Free to print for letters, notes, and creative writing."
 emoji: "\u2601\uFE0F"
 order: 3
+updated: "2026-08-07"
 ---
 
 ## About This Design

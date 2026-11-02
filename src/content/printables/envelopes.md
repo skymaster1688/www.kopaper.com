@@ -5,6 +5,7 @@ emoji: "✉️"
 category: "envelopes"
 order: 14
 draft: false
+updated: "2026-08-30"
 ---
 
 Free printable envelopes solve the age-old problem of having a beautiful card but no matching envelope. Instead of settling for a plain white envelope that clashes with your handcrafted card, print a custom envelope in any color, pattern, or size you need. Printable envelopes are perfect for greeting cards, invitations, thank-you notes, and personal letters — they add a thoughtful, handmade touch that store-bought envelopes cannot match.

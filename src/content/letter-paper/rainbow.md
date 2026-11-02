@@ -3,6 +3,7 @@ title: "Rainbow Letter Paper"
 description: "A cheerful rainbow letter paper design with bright colors, arcs, and playful patterns. Free to print for letters, kids writing, and joyful correspondence."
 emoji: "🌈"
 order: 14
+updated: "2026-08-30"
 ---
 
 ## About This Design

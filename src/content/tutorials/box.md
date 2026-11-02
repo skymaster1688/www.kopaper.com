@@ -16,6 +16,7 @@ tips:
 tags: ["origami box", "paper box", "easy origami box", "gift box origami"]
 order: 16
 featured: false
+updated: "2026-08-24"
 ---
 
 ## Materials

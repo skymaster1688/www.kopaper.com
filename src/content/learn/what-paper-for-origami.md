@@ -4,6 +4,7 @@ description: "Wondering what paper to use for origami? Match paper to your proje
 emoji: "📄"
 order: 2
 draft: false
+updated: "2026-08-27"
 ---
 
 If you have ever asked **what paper to use for origami**, you are already thinking like a folder who cares about results. The honest answer is "it depends on the model." A sheet that makes a perfect simple flower will fight you on a dense dragon, and vice versa. This guide maps paper to project type so you can grab the right square every time.

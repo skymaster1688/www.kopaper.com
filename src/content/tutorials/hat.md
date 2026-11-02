@@ -16,6 +16,7 @@ tips:
 tags: ["paper hat", "newspaper hat", "easy origami", "kids craft"]
 order: 10
 featured: false
+updated: "2026-08-08"
 ---
 
 ## Materials

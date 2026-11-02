@@ -19,6 +19,7 @@ tags: ["paper robot", "3D paper model", "printable template", "STEM craft"]
 order: 14
 featured: false
 kind: papercraft
+updated: "2026-08-11"
 ---
 
 ## Materials

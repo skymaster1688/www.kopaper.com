@@ -5,6 +5,7 @@ emoji: "🎁"
 category: "gift-boxes"
 order: 13
 draft: false
+updated: "2026-08-30"
 ---
 
 Free printable gift boxes are a creative and budget-friendly alternative to store-bought gift boxes. Instead of buying generic boxes, print a custom design that matches the occasion, the recipients taste, or the gift itself. Printable gift boxes are especially popular for small gifts like jewelry, candy, cosmetics, and handmade items — they add a personal touch that makes even a small gift feel special and thoughtful.

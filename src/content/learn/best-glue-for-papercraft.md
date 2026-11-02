@@ -4,6 +4,7 @@ description: "Best glue for papercraft, compared: PVA vs glue stick, drying time
 emoji: "🧴"
 order: 8
 draft: false
+updated: "2026-11-01"
 ---
 Choosing the **best glue for papercraft** matters more than most beginners realize. The wrong glue warps your cardstock, leaves visible stains, or — worse — fails to hold the model together. The right glue disappears into the seam, dries clear, and holds strong for years.
 

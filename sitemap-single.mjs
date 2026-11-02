@@ -47,23 +47,33 @@ export function singleSitemap() {
         }
         await walk(root);
 
-        // lastmod 映射：从画廊文章的 `updated` frontmatter 读出，注入 <lastmod>。
+        // lastmod 映射：从各内容集合 md 的 `updated` frontmatter 读出，注入 <lastmod>。
         // noindex 文章从 sitemap 排除（双保险，与页面 noindex 一致）。
+        // 目录 → URL 前缀（tutorials 集合的路由是 /origami/<slug>/）。
+        const CONTENT_DIRS = [
+          ['gallery', '/gallery/'],
+          ['learn', '/learn/'],
+          ['printables', '/printables/'],
+          ['tutorials', '/origami/'],
+          ['letter-paper', '/letter-paper/'],
+        ];
         const lastmod = new Map();
         const excluded = new Set();
         if (srcRoot) {
-          const galleryDir = join(srcRoot, 'src', 'content', 'gallery');
-          try {
-            const files = await readdir(galleryDir);
-            for (const f of files) {
-              if (!f.endsWith('.md')) continue;
-              const raw = await readFile(join(galleryDir, f), 'utf8');
-              const slug = '/gallery/' + f.replace(/\.md$/, '') + '/';
-              const m = raw.match(/^updated:\s*["']?([\d-]+)/m);
-              if (m) lastmod.set(slug, m[1]);
-              if (/^noindex:\s*true/m.test(raw)) excluded.add(slug);
-            }
-          } catch { /* 无画廊目录时忽略 */ }
+          for (const [dirName, urlPrefix] of CONTENT_DIRS) {
+            const contentDir = join(srcRoot, 'src', 'content', dirName);
+            try {
+              const files = await readdir(contentDir);
+              for (const f of files) {
+                if (!f.endsWith('.md')) continue;
+                const raw = await readFile(join(contentDir, f), 'utf8');
+                const slug = urlPrefix + f.replace(/\.md$/, '') + '/';
+                const m = raw.match(/^updated:\s*["']?([\d-]+)/m);
+                if (m) lastmod.set(slug, m[1]);
+                if (/^noindex:\s*true/m.test(raw)) excluded.add(slug);
+              }
+            } catch { /* 目录不存在时忽略 */ }
+          }
         }
 
         // 排除 noindex 页面（与页面 robots meta 一致）：过渡/占位页不占用索引。

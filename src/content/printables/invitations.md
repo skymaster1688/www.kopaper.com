@@ -5,6 +5,7 @@ emoji: "💌"
 category: "invitations"
 order: 11
 draft: false
+updated: "2026-08-30"
 ---
 
 Free printable invitations save you money and time while still looking professional. Whether you are planning a birthday party, baby shower, wedding, graduation, or holiday gathering, printable invitations let you create beautiful cards without paying for custom printing or expensive stationery. Print as many as you need — no minimum order, no waiting for shipping, and you can make last-minute changes right up until the day before the party.

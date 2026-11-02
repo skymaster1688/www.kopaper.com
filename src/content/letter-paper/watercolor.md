@@ -3,6 +3,7 @@ title: "Watercolor Letter Paper"
 description: "A dreamy watercolor letter paper design with soft washes, blended colors, and artistic texture. Free to print for letters, art journals, and creative writing."
 emoji: "🎨"
 order: 9
+updated: "2026-08-30"
 ---
 
 ## About This Design

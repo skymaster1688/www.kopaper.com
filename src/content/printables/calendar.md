@@ -5,6 +5,7 @@ emoji: "✂️"
 category: "calendar"
 order: 3
 draft: false
+updated: "2026-08-27"
 ---
 
 A **free printable calendar 2026** is one of the simplest paper projects that quietly improves every room of the house. Hang one by the kettle, pin one inside a school locker, or keep a yearly overview on the fridge so the whole family can see what is coming. This page explains the layouts you can print, how to get a clean result on any home printer, and how to design a calendar that matches your own space when a generic template is not quite right.

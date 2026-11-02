@@ -20,6 +20,7 @@ tags: ["paper dragon", "3D paper model", "printable template", "fantasy craft"]
 order: 12
 featured: true
 kind: papercraft
+updated: "2026-08-11"
 ---
 
 ## Materials

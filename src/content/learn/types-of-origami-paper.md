@@ -4,6 +4,7 @@ description: "A plain-language glossary of origami paper types — kami, tant, w
 emoji: "📄"
 order: 5
 draft: false
+updated: "2026-08-30"
 ---
 
 If you have folded with more than one kind of sheet, you already know that **types of origami paper** are not interchangeable. Each one creases, stretches, and shows its color differently, which quietly decides what models you can make. This glossary walks through the four papers you will meet most often — kami, tant, washi, and foil — describing how each one looks and behaves, with the projects where it shines. Read it alongside our [best origami paper for beginners](/learn/best-origami-paper/) guide and our [what paper to use for origami](/learn/what-paper-for-origami/) breakdown.

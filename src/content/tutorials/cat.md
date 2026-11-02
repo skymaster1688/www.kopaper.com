@@ -19,6 +19,7 @@ tags: ["paper cat", "3D paper model", "animal craft", "kids craft"]
 order: 15
 featured: false
 kind: papercraft
+updated: "2026-08-11"
 ---
 
 ## Materials

@@ -19,6 +19,7 @@ tags: ["paper car", "vehicle craft", "printable template", "kids craft"]
 order: 11
 featured: false
 kind: papercraft
+updated: "2026-08-11"
 ---
 
 ## Materials

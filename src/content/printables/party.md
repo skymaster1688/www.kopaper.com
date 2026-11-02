@@ -5,6 +5,7 @@ emoji: "✂️"
 category: "party"
 order: 6
 draft: false
+updated: "2026-08-27"
 ---
 
 A birthday, a holiday, or a simple end-of-term gathering — most parties come together in the last forty-eight hours, when the invitations are out and the decorations are still not decided. **Free printable party decorations** cut the most stressful part out: you print, cut, and tape, and the room is dressed by the time guests arrive. This page covers the decorations that print well at home, how to assemble them so they survive the whole event, and how to build a coordinated set when a single template is not enough.

@@ -17,6 +17,7 @@ const tutorials = defineCollection({
     featured: z.boolean().default(false),
     draft: z.boolean().default(false),
     kind: z.enum(['origami', 'papercraft']).default('origami'),
+    updated: z.string().optional(),
   }),
 });
 
@@ -28,6 +29,7 @@ const letterPaper = defineCollection({
     emoji: z.string(),
     order: z.number().default(99),
     draft: z.boolean().default(false),
+    updated: z.string().optional(),
   }),
 });
 
@@ -52,6 +54,7 @@ const printables = defineCollection({
     category: z.string().optional(),
     order: z.number().default(99),
     draft: z.boolean().default(false),
+    updated: z.string().optional(),
   }),
 });
 

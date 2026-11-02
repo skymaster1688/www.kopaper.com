@@ -17,6 +17,7 @@ tips:
 tags: ["paper flower", "origami flower", "decorations", "easy origami"]
 order: 6
 featured: true
+updated: "2026-08-07"
 ---
 
 ## Materials

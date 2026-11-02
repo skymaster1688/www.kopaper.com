@@ -3,6 +3,7 @@ title: "Cute Animal Letter Paper"
 description: "Adorable animal-themed letter paper design featuring cute illustrations. Free to print for kids' letters and notes."
 emoji: "\uD83D\uDC30"
 order: 4
+updated: "2026-08-07"
 ---
 
 ## About This Design

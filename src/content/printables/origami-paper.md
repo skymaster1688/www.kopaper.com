@@ -5,6 +5,7 @@ emoji: "✂️"
 category: "origami-paper"
 order: 7
 draft: false
+updated: "2026-08-27"
 ---
 
 Origami paper packs are convenient until you run out mid-project, or until the one pattern you actually wanted turns out to be the one sheet in the pack. Printing your own solves both problems. **Free printable origami paper** gives you unlimited sheets in the patterns you choose, at the size you need, from paper you already have in the printer tray. This page covers which patterns are worth printing, what to print them on, and how to cut a genuinely square sheet so your folds line up.

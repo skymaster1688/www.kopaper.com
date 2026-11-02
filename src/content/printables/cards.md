@@ -5,6 +5,7 @@ emoji: "✂️"
 category: "cards"
 order: 1
 draft: false
+updated: "2026-08-27"
 ---
 
 A stack of **free printable greeting cards** is one of the most useful things to keep in a craft drawer. When a birthday, thank-you, or holiday sneaks up on you, you can print a clean card in minutes, add a handwritten note, and skip the trip to the shop. This page walks through what makes a good printable card, which occasions they suit, how to print and fold them neatly, and how to design a completely custom card when you want something that nobody else has.

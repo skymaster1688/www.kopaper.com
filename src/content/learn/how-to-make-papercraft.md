@@ -4,6 +4,7 @@ description: "Learn how to make papercraft from scratch: tools, materials, step-
 emoji: "✂️"
 order: 7
 draft: false
+updated: "2026-08-30"
 ---
 Learning **how to make papercraft** is one of the most rewarding paper crafts you can pick up. Unlike origami, which uses only folding, papercraft combines cutting, scoring, folding, and gluing to build three-dimensional models from flat printed sheets. With a few basic tools and a free printable template, you can create animals, characters, vehicles, and buildings right on your desk.
 

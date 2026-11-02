@@ -3,6 +3,7 @@ title: "Music Notes Letter Paper"
 description: "A melodic music notes letter paper design with staff lines, notes, and musical patterns. Free to print for letters, songwriting, and music lovers."
 emoji: "🎵"
 order: 15
+updated: "2026-08-30"
 ---
 
 ## About This Design

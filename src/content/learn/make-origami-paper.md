@@ -4,6 +4,7 @@ description: "Learn how to make origami paper by cutting true squares, dyeing pl
 emoji: "📄"
 order: 6
 draft: false
+updated: "2026-08-27"
 ---
 
 You do not need a craft shop to start folding. Learning **how to make origami paper** at home lets you match colors to a project, rescue a sheet that is the wrong size, and build two-tone paper that makes reverse folds easier to read. This guide covers three skills — cutting a true square, dyeing plain paper, and making your own two-tone sheet — using supplies you likely already have. It pairs well with our [origami paper size](/learn/origami-paper-size/) reference and our take on [using printer paper for origami](/learn/printer-paper-for-origami/).

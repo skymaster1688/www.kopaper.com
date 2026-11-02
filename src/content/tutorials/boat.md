@@ -16,6 +16,7 @@ tips:
 tags: ["paper boat", "easy origami", "kids craft", "floating toy"]
 order: 7
 featured: false
+updated: "2026-08-07"
 ---
 
 ## Materials

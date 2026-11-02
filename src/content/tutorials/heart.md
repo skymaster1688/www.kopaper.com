@@ -16,6 +16,7 @@ tips:
 tags: ["origami heart", "valentine craft", "easy origami", "paper heart"]
 order: 3
 featured: true
+updated: "2026-08-07"
 ---
 
 ## Materials

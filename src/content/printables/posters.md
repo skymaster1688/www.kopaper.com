@@ -5,6 +5,7 @@ emoji: "🖼️"
 category: "posters"
 order: 10
 draft: false
+updated: "2026-08-30"
 ---
 
 Free printable posters are an affordable way to decorate any wall — your bedroom, dorm room, office, classroom, or kids playroom. Instead of spending $20–50 on a single poster, print high-quality designs at home for the cost of paper and ink. Printable posters are especially popular with renters who cannot paint walls, students decorating dorms on a budget, and teachers creating engaging classroom environments.

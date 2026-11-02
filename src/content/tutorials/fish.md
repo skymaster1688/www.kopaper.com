@@ -16,6 +16,7 @@ tips:
 tags: ["origami fish", "ocean craft", "easy origami", "kids craft"]
 order: 8
 featured: false
+updated: "2026-08-07"
 ---
 
 ## Materials

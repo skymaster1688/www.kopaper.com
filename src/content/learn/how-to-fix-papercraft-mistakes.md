@@ -4,6 +4,7 @@ description: "Made a papercraft mistake? Learn how to fix crooked cuts, wrong fo
 emoji: "🛠️"
 order: 11
 draft: false
+updated: "2026-08-30"
 ---
 Every papercrafter makes mistakes. The difference between a beginner and a pro isn't avoiding mistakes — it's knowing how to fix them. Whether you've cut a piece wrong, folded in the wrong direction, or ended up with a model that won't stand, most papercraft mistakes are fixable. Here's how to handle the most common ones.
 

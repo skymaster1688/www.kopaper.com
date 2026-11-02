@@ -5,6 +5,7 @@ emoji: "⭐"
 category: "stickers"
 order: 9
 draft: false
+updated: "2026-08-30"
 ---
 
 Free printable stickers are the fastest way to personalize anything — your planner, laptop, water bottle, notebook, or phone case. Instead of buying expensive sticker packs, print exactly the designs you want, in the quantity you need. Printable stickers are especially popular with bullet journal enthusiasts, students, and kids who love decorating their belongings.

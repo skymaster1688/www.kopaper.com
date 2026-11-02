@@ -16,6 +16,7 @@ tips:
 tags: ["paper airplane", "easy origami", "kids craft", "flying toy"]
 order: 1
 featured: true
+updated: "2026-08-07"
 ---
 
 ## Materials

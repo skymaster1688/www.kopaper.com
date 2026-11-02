@@ -5,6 +5,7 @@ emoji: "✂️"
 category: "coloring"
 order: 5
 draft: false
+updated: "2026-08-30"
 ---
 
 A quiet afternoon, a fresh sheet of paper, and a box of crayons is still one of the most reliable ways to settle a child into focused, screen-free time. **Free printable coloring pages for kids** take the cost and the planning out of it — you print, they color, and the same file works for one child on a rainy day or a classroom of thirty. This page explains what to print, how to set up so the result is worth keeping, and how to use koPaper's generator when a generic sheet is not quite enough.

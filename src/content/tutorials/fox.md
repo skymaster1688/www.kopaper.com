@@ -16,6 +16,7 @@ tips:
 tags: ["origami fox", "origami animals", "easy origami", "kids craft"]
 order: 9
 featured: false
+updated: "2026-08-07"
 ---
 
 ## Materials

@@ -4,6 +4,7 @@ description: "Papercraft falling over? Learn 7 pro techniques to make papercraft
 emoji: "🦴"
 order: 9
 draft: false
+updated: "2026-08-30"
 ---
 Nothing is more frustrating than spending an hour building a beautiful papercraft model, only to watch it tip over the second you let go. If your papercraft won't stand up, the problem is almost always one of three things: the base is too narrow, the center of gravity is too high, or the internal structure is too weak.
 

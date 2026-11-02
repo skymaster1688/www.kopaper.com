@@ -4,6 +4,7 @@ description: "Choosing the best origami paper for beginners: compare kami, tant,
 emoji: "📄"
 order: 1
 draft: false
+updated: "2026-08-27"
 ---
 
 Picking the **best origami paper for beginners** is the single decision that most improves your early folds. The right sheet creases cleanly, holds its shape, and hides small mistakes. The wrong one fights you on every step. This guide compares the four papers you will meet most often — kami, tant, washi, and foil — by weight, size, price, and where each one shines, then gives a clear recommendation for a first pack.

@@ -20,6 +20,7 @@ tags: ["paper house", "3D paper model", "printable template", "architecture craf
 order: 13
 featured: false
 kind: papercraft
+updated: "2026-08-11"
 ---
 
 ## Materials

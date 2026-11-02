@@ -16,6 +16,7 @@ tips:
 tags: ["origami crane", "origami animals", "classic origami", "peace crane"]
 order: 2
 featured: true
+updated: "2026-08-07"
 ---
 
 ## Materials

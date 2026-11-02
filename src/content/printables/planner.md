@@ -5,6 +5,7 @@ emoji: "✂️"
 category: "planner"
 order: 4
 draft: false
+updated: "2026-08-27"
 ---
 
 A **free printable planner** is the most flexible paper tool you can keep on a desk. Unlike a bound book, you print exactly the pages you need, swap them when a week is done, and refill the same cover forever. This page covers the layouts worth printing, how to keep refills tidy, and how to design a planner page that fits the way you actually work when a standard template falls short.

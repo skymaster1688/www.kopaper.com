@@ -4,6 +4,7 @@ description: "Plain printer paper works for origami, but it has trade offs. Lear
 emoji: "📄"
 order: 3
 draft: false
+updated: "2026-08-27"
 ---
 
 If you are just starting out and wondering **can you use printer paper for origami**, the short answer is yes. The regular A4 or Letter copy paper sitting in your printer tray is one of the most accessible materials you can fold. Millions of first cranes, boats, and airplanes have been made from it. That said, "it works" and "it is ideal" are not the same thing. This guide walks through what printer paper can and cannot do, where it shines, and where a dedicated sheet will save you frustration.

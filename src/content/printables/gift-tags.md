@@ -5,6 +5,7 @@ emoji: "✂️"
 category: "gift-tags"
 order: 2
 draft: false
+updated: "2026-08-27"
 ---
 
 A handful of **free printable gift tags** turns a plain parcel into a finished present. They are the smallest project on this site, but they punch above their size: a well-cut tag with a name and a short note makes a gift feel considered, and you can print a sheet whenever wrapping season arrives. This page covers what good gift tags look like, where to use them, how to print and attach them without fuss, and how to design custom tags when you want a matching set.

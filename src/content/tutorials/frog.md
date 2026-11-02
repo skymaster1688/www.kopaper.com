@@ -16,6 +16,7 @@ tips:
 tags: ["jumping frog", "origami frog", "fun origami", "kids craft"]
 order: 5
 featured: true
+updated: "2026-08-07"
 ---
 
 ## Materials

@@ -16,6 +16,7 @@ tips:
 tags: ["paper butterfly", "origami butterfly", "spring craft", "easy origami"]
 order: 4
 featured: true
+updated: "2026-08-07"
 ---
 
 ## Materials

@@ -4,6 +4,7 @@ description: "What size is origami paper? Compare standard 15 cm, 6 inch and oth
 emoji: "📄"
 order: 4
 draft: false
+updated: "2026-11-01"
 ---
 
 If you have ever bought a pack of origami paper, you have probably noticed that most sheets are the same size: about 15 centimeters square. That is not an accident. The **origami paper size** we call standard exists because it is large enough to hold detail yet small enough to manage in two hands. This guide explains the common sizes, how they convert to inches, and how to cut your own squares from A4 or Letter stock.
