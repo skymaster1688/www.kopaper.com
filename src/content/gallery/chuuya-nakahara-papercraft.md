@@ -9,18 +9,19 @@ noindex: true
 updated: "2026-08-27"
 ---
 
+"Chuuya Nakahara" was the whole brief behind this pixel papercraft design, and it turned into an idea with visible folds, layered depth and a soft studio background.
 
-This pixel character papercraft design is based on the idea "Chuuya Nakahara", generated with koPaper's AI papercraft design studio. It's a papercraft-style artwork created for inspiration, creative exploration, and visual reference — not a printable template or assembly guide.
+Every edge here is a right angle; the charm is in the staircase outlines and how few colours it takes to read the subject. Abstract shapes benefit from a hard light — the shadow becomes part of the composition.
 
-The pixel style renders the subject as a blocky, retro grid — 8-bit art with clean edges and a nostalgic, game-inspired aesthetic.
+## Ways to take this further
 
-Use this character design as a concept art reference, a cosplay inspiration, or a starting point for an original character.
+Nothing here is final until you stop generating. If the first try feels too safe, try "Chuuya Nakahara, shown in three different paper colourways side by side". For a sharper take, try "Chuuya Nakahara, shown small and large in the same frame for contrast". For a moodier result, try "Chuuya Nakahara, built from kraft, white and tissue paper layers". Want a warmer version? try "Chuuya Nakahara, lit hard from one side so the paper shadow becomes part of the picture". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
 
-How to use this design: Save the image for your personal reference, use it as inspiration for a hand-drawn or painted artwork, or describe the same idea to the AI generator in a different style to explore alternative visual directions. The design is a creative concept, not a printable template.
+## Building it in real paper
 
-Creative tip: Turn this character design into a full concept — generate different poses, expressions, and outfits to build a complete character sheet.
+Build it on a grid: print a light 5 mm grid, count squares rather than eyeballing, and keep a fresh blade in the knife so every step stays square.
 
-Inspired by this design? Run the same idea through the [AI papercraft generator](/) in a different style — Cute, Low Poly, Pixel, or Fantasy — to explore alternative visual directions. Browse the [gallery](/gallery/) for more AI-generated designs, or try the [origami tutorials](/origami/) for hands-on paper craft projects.
+What you see is papercraft-style illustration rather than a printable net, so use it as visual reference. For more of the same subject, Browse [the rest of the gallery](/gallery/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
 
 ![AI-generated pixel papercraft of Chuuya Nakahara.](/images/gallery/chuuya-nakahara-papercraft-mt5tcc0xsvit.jpg)
 

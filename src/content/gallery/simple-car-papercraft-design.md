@@ -9,12 +9,19 @@ draft: false
 noindex: true
 ---
 
-A cute vehicle papercraft design of "Simple car" — clean paper folds, crisp geometry and a soft light background, generated in seconds with koPaper's AI papercraft studio.
+"Simple car" reads differently once it is folded. That is the short version of this cute vehicle papercraft design.
+
+Everything about this one is soft: chubby proportions, wide-set eyes, a pastel palette that keeps the volumes reading as friendly. Keep the body panels flat while the glue dries — a warp of a millimetre shows up badly on a vehicle.
 
 ## Ways to take this further
 
-It is easy to keep exploring from here. Describe "your own idea" to give it a minimal studio feel. Or describe "your own idea" to give it a cozy scene feel. Or describe "your own idea" to give it a extra detail feel. Or describe "your own idea" to give it a cuter look feel. Paste whichever feels right into the generator and see where it goes.
+Most people generate three or four versions before settling on one. If you would rather see it in context, try "Simple car, parked on a strip of paper road with a few paper trees behind it". If the first try feels too safe, try "Simple car, leaning into a turn with paper motion streaks trailing behind". For a sharper take, try "Simple car, presented on a blueprint-style sheet with visible fold marks". For a moodier result, try "Simple car, standing next to a tiny paper figure to show the scale". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
 
+## Building it in real paper
+
+For soft, rounded forms, crease gently over a dowel rather than pressing hard — the paper keeps its curve instead of kinking.
+
+A finished-look reference, not a cut list — worth printing for the palette and silhouette alone. If you would rather start from something finished, Browse [more vehicle papercraft designs](/gallery/vehicle/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
 
 ![AI-generated cute papercraft of Simple car.](/images/gallery/simple-car-papercraft-design-muueukv2t5ju.jpg)
 

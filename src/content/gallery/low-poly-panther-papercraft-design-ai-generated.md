@@ -8,12 +8,18 @@ draft: false
 updated: "2026-08-31"
 ---
 
-A sleek low-poly panther — dark angular facets, a crouching pose and that unmistakable big-cat elegance. Made with koPaper's free AI papercraft generator.
+Paper is an odd medium for a machine to imitate, yet here it is: a low poly animal papercraft design built around "low poly panther".
+
+Facets are the whole idea here — each triangle catches the light at a slightly different angle, so the geometry reads even in a flat image. Four-legged and winged subjects look best when the legs and joints are glued firmly; a heavier cardstock helps the figure stand on its own.
 
 ## Ways to take this further
 
-Hi! A panther is one of the best low-poly builds. If you want it in the dark, describe "a low-poly panther prowling at night with glowing amber eyes under moonlight". For a lookout, try "the same panther crouched on a paper mountain ledge surveying a valley below". A neon vibe — "a low-poly panther silhouette outlined in neon cyan against a dark backdrop". Want it softer? Go with "a tiny low-poly panther cub with oversized ears and a playful pose". And for a jungle scene, "a low-poly panther hidden among oversized paper leaves with shafts of light".
+One generation is a starting point, not a finished piece. For a moodier result, try "low poly panther, caught mid-leap with one paw lifted and a simple paper shadow beneath". Want a warmer version? try "low poly panther, curled up asleep in a shallow paper nest under soft morning light". To push the detail further, try "low poly panther, mounted on a small paper plinth like a gallery piece". When you are ready for a variation, try "low poly panther, as a pair of matching figures, one slightly smaller". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
 
-Open the AI papercraft generator and paste any of these to see where the idea goes.
+## Building it in real paper
+
+Stiffer card is your friend here — 260 gsm or above keeps large planes from flexing once the piece is standing.
+
+Useful as a reference shot of the finished model, though it will not fold itself into one. Not sure where to go next? Browse [more animal papercraft designs](/gallery/animal/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
 
 ![AI-generated lowpoly papercraft of low poly panther.](/images/gallery/low-poly-panther-papercraft-design-ai-generated-mtglugkm6igb.jpg)

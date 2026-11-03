@@ -8,13 +8,19 @@ draft: false
 updated: "2026-08-28"
 ---
 
-These little 3D books were made to live on a bulletin board — neat little volumes with crisp covers and a satisfying paper feel. Made with koPaper's free AI papercraft generator.
+Type "3d books for bulletin board" into the generator and this is what comes back: a cute papercraft design — no brush, no ruler, no cutting mat.
+
+When the idea is abstract, contrast does the work: one bold colour against a quiet background. Round silhouettes and a soft palette do the heavy lifting here — nothing in this design has a sharp corner to hide behind, so the shapes have to be right.
 
 ## Ways to take this further
 
-Hi! A book stack this tidy deserves a few more scenes. If you want them in a reading nook, describe "a stack of 3D paper books on a tiny shelf with a steaming mug of cocoa and a warm lamp". For a classroom vibe, try "the same paper books scattered on a bulletin board next to a giant yellow pencil and a paper apple". Feeling whimsical? Go with "a rainbow pile of 3D paper books, each a different color, with tiny bookmark ribbons". Want them extra tiny and adorable — "miniature 3D paper books sitting on a giant paper desk, one propped open with a tiny bookmark". And for a cozy library feel, "a neat stack of 3D paper books under a paper moon with warm lamplight and a small potted plant nearby".
+Nothing here is final until you stop generating. If you would rather see it in context, try "3d books for bulletin board, shown in three different paper colourways side by side". If the first try feels too safe, try "3d books for bulletin board, shown small and large in the same frame for contrast". For a sharper take, try "3d books for bulletin board, built from kraft, white and tissue paper layers". For a moodier result, try "3d books for bulletin board, lit hard from one side so the paper shadow becomes part of the picture". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
 
-Open the AI papercraft generator and paste any of these to see where the idea goes.
+## Building it in real paper
+
+Heavy cardstock around 200–250 gsm holds rounded shapes without sagging; score the curves lightly with the back of a blade before folding so the paper does not crack.
+
+This page shows the look of the finished piece, not a cutting guide — the fold lines themselves are not included. Hunting for a place to start? Browse [the rest of the gallery](/gallery/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
 
 ![AI-generated cute papercraft of 3d books for bulletin board.](/images/gallery/3d-books-for-bulletin-board-papercraft-mtcyvpyxuc5j.jpg)
 

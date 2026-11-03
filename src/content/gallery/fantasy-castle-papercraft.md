@@ -8,18 +8,19 @@ draft: false
 updated: "2026-08-29"
 ---
 
+Type "fantasy castle" into the generator and this is what comes back: a low poly building papercraft design — no brush, no ruler, no cutting mat.
 
-Building in papercraft style? That's exactly what this lowpoly building design is — the idea "fantasy castle" turned into a beautiful papercraft-style artwork by koPaper's AI generator. Use it as inspiration, a design reference, or a starting point for your own creative project.
+Low poly means the shape is described by a small number of planes, which is exactly what folded paper does naturally. Towers and castles read better with sharp creases at every corner; fold toward yourself and run a bone folder along each edge for a solid, architectural finish.
 
-The low-poly style breaks the form into flat geometric facets, giving the design a modern, angular look that catches light from different angles.
+## Ways to take this further
 
-This building design is perfect for architecture inspiration, a fantasy map landmark, or a model-building reference.
+Nothing here is final until you stop generating. If you would rather see it in context, try "fantasy castle, lit from inside at dusk, warm paper windows glowing". If the first try feels too safe, try "fantasy castle, half overgrown with paper vines and tiny paper leaves". For a sharper take, try "fantasy castle, shown as an open cutaway with the rooms visible inside". For a moodier result, try "fantasy castle, drawn as a flat architectural elevation on graph paper". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
 
-How to use this design: Save it to your inspiration collection, use it as a reference for proportions and styling, or use the AI generator to create a whole series based on the same idea in different styles. The papercraft aesthetic is versatile and works across many creative contexts.
+## Building it in real paper
 
-Creative tip: Use this building design as architectural inspiration — try sketching it from different angles or adding your own structural details.
+Score every fold line against a steel rule before creasing, and use 250–300 gsm card so the facets stay flat instead of bulging.
 
-This design is one of many AI-generated papercraft concepts in the [gallery](/gallery/). Use the [AI papercraft generator](/) to create your own unique designs from any idea. For hands-on paper craft projects, browse the [origami tutorials](/origami/) and [printables](/printables/) collections.
+This page shows the look of the finished piece, not a cutting guide — the fold lines themselves are not included. Hunting for a place to start? Browse [more building papercraft designs](/gallery/building/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
 
 ![AI-generated lowpoly papercraft of fantasy castle.](/images/gallery/fantasy-castle-papercraft-mt8nk3vzv8ox.jpg)
 

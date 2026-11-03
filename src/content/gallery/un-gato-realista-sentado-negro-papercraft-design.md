@@ -9,12 +9,19 @@ draft: false
 noindex: true
 ---
 
-A cute papercraft design of "Un gato realista sentado negro" — clean paper folds, crisp geometry and a soft light background, generated in seconds with koPaper's AI papercraft studio.
+"Un gato realista sentado negro" reads differently once it is folded. That is the short version of this cute papercraft design.
+
+The cute style works by subtraction: fewer planes, rounder edges, and colour doing most of the emotional work. Start with the largest pieces to set the silhouette, then fill in the smaller details last.
 
 ## Ways to take this further
 
-It is easy to keep exploring from here. Describe "your own idea" to give it a cozy scene feel. Or describe "your own idea" to give it a extra detail feel. Or describe "your own idea" to give it a cuter look feel. Or describe "your own idea" to give it a fantasy glow feel. Paste whichever feels right into the generator and see where it goes.
+Worth remembering: every one of these is one sentence away from a different picture. If you would rather see it in context, try "Un gato realista sentado negro, shown in three different paper colourways side by side". If the first try feels too safe, try "Un gato realista sentado negro, shown small and large in the same frame for contrast". For a sharper take, try "Un gato realista sentado negro, built from kraft, white and tissue paper layers". For a moodier result, try "Un gato realista sentado negro, lit hard from one side so the paper shadow becomes part of the picture". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
 
+## Building it in real paper
+
+Rounded paper shapes need a little give: 180–220 gsm card bends cleanly, while anything heavier fights you at every curve.
+
+A finished-look reference, not a cut list — worth printing for the palette and silhouette alone. Curious what else people are making? Browse [the rest of the gallery](/gallery/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
 
 ![AI-generated cute papercraft of Un gato realista sentado negro.](/images/gallery/un-gato-realista-sentado-negro-papercraft-design-mvl2b4n24a32.jpg)
 

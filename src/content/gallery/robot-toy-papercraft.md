@@ -8,23 +8,23 @@ draft: false
 updated: "2026-08-29"
 ---
 
+Nothing was cut, scored or glued to make the picture above — it is a pixel character papercraft design of "robot toy", drawn rather than built.
 
-This pixel vehicle papercraft design is based on the idea "robot toy", generated with koPaper's AI papercraft design studio. It's a papercraft-style artwork created for inspiration, creative exploration, and visual reference — not a printable template or assembly guide.
+The pixel style trades curves for squares, which makes it the most forgiving look to rebuild with a ruler and a blade. Give a character one clear prop or colour accent; without it the figure tends to read as generic.
 
-The pixel style renders the subject as a blocky, retro grid — 8-bit art with clean edges and a nostalgic, game-inspired aesthetic.
+## Ways to take this further
 
-Use this vehicle design as a starting point for a toy prototype sketch, a transportation-themed art project, or a custom car concept.
+One generation is a starting point, not a finished piece. For a sharper take, try "robot toy, holding one simple paper prop that hints at the story". For a moodier result, try "robot toy, wearing an extra layer of folded paper armour over the base". Want a warmer version? try "robot toy, standing on a small paper stage in front of a flat painted backdrop". To push the detail further, try "robot toy, framed as a close-up of the head and shoulders only". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
 
-How to use this design: Save the image for your personal reference, use it as inspiration for a hand-drawn or painted artwork, or describe the same idea to the AI generator in a different style to explore alternative visual directions. The design is a creative concept, not a printable template.
+## Building it in real paper
 
-Creative tip: Generate the same vehicle in multiple styles to compare aesthetics — pixel art for retro, low poly for modern, cute for playful.
+Build it on a grid: print a light 5 mm grid, count squares rather than eyeballing, and keep a fresh blade in the knife so every step stays square.
 
-Want to explore more? Browse the [gallery](/gallery/) for other AI-generated papercraft designs, or try the [AI papercraft generator](/) with your own idea. You can also check out the [origami tutorials](/origami/) for hands-on folding projects or the [printables](/printables/) for printable craft templates.
+The image is the destination, not the map: great for matching proportions, useless as a tracing sheet. If you would rather start from something finished, Browse [the rest of the gallery](/gallery/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
 
 ![AI-generated pixel papercraft of robot toy.](/images/gallery/robot-toy-papercraft-mt8nk1nspzdu.jpg)
 
 *AI-generated pixel papercraft of robot toy.*
-
 
 ![AI-generated fantasy papercraft of robot toy.](/images/gallery/robot-toy-papercraft-mtcyvq4qin02.jpg)
 

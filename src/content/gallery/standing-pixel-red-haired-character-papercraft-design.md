@@ -10,13 +10,16 @@ updated: "2026-08-31"
 
 ---
 
-AI-generated pixel papercraft design from the idea "a standing pixel-style red-haired character", created with koPaper's AI papercraft studio.
+A sentence went in, a pixel papercraft design came out. The sentence was "standing pixel red-haired character papercraft design — ai generated".
+
+The pixel style trades curves for squares, which makes it the most forgiving look to rebuild with a ruler and a blade. When the idea is abstract, contrast does the work: one bold colour against a quiet background.
 
 ## Ways to take this further
 
-1. **Cozy scene** — Warm lamp light, plants and a cozy corner that tells a story.
-2. **Extra detail** — Intricate folds, visible paper texture and delicate cut lines.
-3. **Cuter look** — Big sparkling eyes and chubby, rounded proportions.
-4. **Fantasy glow** — Soft sparkles and gentle light rays for a magical feel.
+Each of these keeps the subject and changes the staging. For a moodier result, try "standing pixel red-haired character papercraft design — ai generated, shown in three different paper colourways side by side". Want a warmer version? try "standing pixel red-haired character papercraft design — ai generated, shown small and large in the same frame for contrast". To push the detail further, try "standing pixel red-haired character papercraft design — ai generated, built from kraft, white and tissue paper layers". When you are ready for a variation, try "standing pixel red-haired character papercraft design — ai generated, lit hard from one side so the paper shadow becomes part of the picture". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
 
-Open the [AI papercraft generator](/) and describe one of these directions to see where the idea goes.
+## Building it in real paper
+
+Work from one corner outwards so the grid squares stay aligned; drift shows up immediately on a pixel silhouette.
+
+The render tells you how the model should read; the geometry behind it is yours to work out. If you would rather start from something finished, Browse [the rest of the gallery](/gallery/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).

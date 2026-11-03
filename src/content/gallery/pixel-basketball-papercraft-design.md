@@ -9,13 +9,19 @@ noindex: true
 updated: "2026-08-31"
 ---
 
-A basketball in the pixel style — bold 8-bit edges, classic orange with black seams, and pure retro energy. Made with koPaper's free AI papercraft generator.
+Half the charm of a paper model is the way it catches light. That is what this pixel papercraft design of "pixel basketball" is leaning on.
+
+The pixel style trades curves for squares, which makes it the most forgiving look to rebuild with a ruler and a blade. Abstract shapes benefit from a hard light — the shadow becomes part of the composition.
 
 ## Ways to take this further
 
-Hi! This ball is pure arcade. If you want action, describe "a pixel basketball going through a hoop with a slam dunk and motion sparks". For a game scene, try "a pixel basketball on a retro court with two players and a scoreboard". Want it tiny? Go with "a miniature pixel basketball hanging as a keychain with a tiny hoop charm". An arcade glow — "a pixel basketball glowing under arcade neon with scanline patterns". And for a mascot, "a pixel basketball with a cheerful face and little arms doing a dance on a court floor".
+Most people generate three or four versions before settling on one. Want a warmer version? try "pixel basketball, shown in three different paper colourways side by side". To push the detail further, try "pixel basketball, shown small and large in the same frame for contrast". When you are ready for a variation, try "pixel basketball, built from kraft, white and tissue paper layers". If you would rather see it in context, try "pixel basketball, lit hard from one side so the paper shadow becomes part of the picture". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
 
-Open the AI papercraft generator and paste any of these to see where the idea goes.
+## Building it in real paper
+
+Squared shapes tolerate copy paper surprisingly well, but 160–200 gsm card holds the stepped edges far better.
+
+Think of this as the before picture — the artwork shows the finished look, the net is still up to you. Hunting for a place to start? Browse [the rest of the gallery](/gallery/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
 
 ![AI-generated pixel papercraft of a pixel basketball.](/images/gallery/pixel-basketball-papercraft-design-mtappoo9zq2k.jpg)
 

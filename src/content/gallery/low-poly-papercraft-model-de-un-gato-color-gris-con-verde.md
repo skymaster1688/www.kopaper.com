@@ -9,12 +9,18 @@ noindex: true
 updated: "2026-08-27"
 ---
 
-A gray cat with green accents in crisp low-poly style — soft facets, pointed ears and a watchful feline pose. Made with koPaper's free AI papercraft generator.
+Paper is an odd medium for a machine to imitate, yet here it is: a low poly papercraft design built around "Low Poly Papercraft Model De Un Gato Color Gris Con Verde".
+
+Low poly means the shape is described by a small number of planes, which is exactly what folded paper does naturally. When the idea is abstract, contrast does the work: one bold colour against a quiet background.
 
 ## Ways to take this further
 
-Hi! This cat has style. If you want it by the window, describe "a low-poly gray cat with green eyes sitting on a windowsill watching falling rain". For playtime, try "the same gray cat batting at a ball of green yarn with a playful paw". A night prowl — "a low-poly gray cat slinking along a moonlit rooftop with green glowing eyes". Want it tiny? Go with "a miniature low-poly kitten version of the gray cat with big ears curled in a bed". And for a cozy scene, "a low-poly gray cat curled on a green cushion with a steaming mug beside it".
+If the first take feels flat, that is normal — the follow-ups are where it gets interesting. For a moodier result, try "Low Poly Papercraft Model De Un Gato Color Gris Con Verde, shown in three different paper colourways side by side". Want a warmer version? try "Low Poly Papercraft Model De Un Gato Color Gris Con Verde, shown small and large in the same frame for contrast". To push the detail further, try "Low Poly Papercraft Model De Un Gato Color Gris Con Verde, built from kraft, white and tissue paper layers". When you are ready for a variation, try "Low Poly Papercraft Model De Un Gato Color Gris Con Verde, lit hard from one side so the paper shadow becomes part of the picture". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
 
-Open the AI papercraft generator and paste any of these to see where the idea goes.
+## Building it in real paper
+
+Score every fold line against a steel rule before creasing, and use 250–300 gsm card so the facets stay flat instead of bulging.
+
+Useful as a reference shot of the finished model, though it will not fold itself into one. Curious what else people are making? Browse [the rest of the gallery](/gallery/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
 
 ![AI-generated lowpoly papercraft of Low Poly Papercraft Model De Un Gato Color Gris Con Verde.](/images/gallery/low-poly-papercraft-model-de-un-gato-color-gris-con-verde-mt5tccabi98m.jpg)

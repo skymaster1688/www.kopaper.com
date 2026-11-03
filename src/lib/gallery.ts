@@ -268,6 +268,8 @@ export function detectSubject(prompt: string): Subject {
   const has = (...k: string[]) => k.some(x => p.includes(x));
   if (has('dragon')) return { category: 'dragon', label: 'dragon', article: 'a' };
   if (has('cat','dog','bear','fox','rabbit','panda','bird','owl','eagle','fish','shark','elephant','tiger','lion','wolf','horse','cow','pig','snake','deer','frog','penguin','butterfly','bee','crab','octopus','whale','mouse','monkey','koala','unicorn','iguana','triceratops','hedgehog','panther','dolphin','hamster','turtle')) return { category: 'animal', label: 'animal', article: 'an' };
+  // Word-boundary so "bath"/"battle" do not count as a bat.
+  if (/\bbats?\b/.test(p)) return { category: 'animal', label: 'animal', article: 'an' };
   if (has('car','truck','vehicle','bike','motorcycle','plane','airplane','ship','boat','train','bus','tank','helicopter')) return { category: 'vehicle', label: 'vehicle', article: 'a' };
   if (has('castle','house','home','building','temple','tower','church','statue','pyramid','cottage','cabin','skyscraper','ferris')) return { category: 'building', label: 'building', article: 'a' };
   if (has('robot','knight','warrior','soldier','mecha','ninja','princess','queen','king','wizard','golem','explorer')) return { category: 'character', label: 'character', article: 'a' };
@@ -347,27 +349,272 @@ function creativeTips(subject: Subject): string {
   return tips[subject.category] || 'Creative tip: Try generating the same idea in different styles to explore multiple visual directions.';
 }
 
-function buildIntro(prompt: string, subject: Subject, style: string, styleWord: string): string {
-  const styleLabel = styleWord ? styleWord + ' ' : '';
-  // Avoid a redundant "papercraft papercraft" when the subject label is the default.
-  const subjectLabel = subject.label === 'papercraft' ? '' : subject.label + ' ';
-  // Lead-in: one short, factual sentence built from the user's own idea (no boilerplate).
-  const lead = 'A ' + styleLabel + subjectLabel + 'papercraft design of "' + prompt + '" — clean paper folds, crisp geometry and a soft light background, generated in seconds with koPaper\'s AI papercraft studio.';
-  // Directions: 3-5 concrete ways to take the same idea further, woven into natural
-  // sentences (fallback only; the AI path writes fully original copy).
-  const dirs = pickDirections(prompt, 4);
-  const lines = [
+// ---- gallery article body ---------------------------------------------------
+// Every article comes from the same two inputs (prompt + style), so the only way
+// to keep 100+ pages from reading alike is to vary sentence shape, vocabulary and
+// section wording by a stable hash of the prompt. The Workers AI path
+// (directions-ai.ts) still writes fully original copy when the binding is
+// available; this deterministic version is the guaranteed fallback and must never
+// read like a filled-in template.
+const STYLE_NOTES: Record<string, string[]> = {
+  cute: [
+    'Round silhouettes and a soft palette do the heavy lifting here — nothing in this design has a sharp corner to hide behind, so the shapes have to be right.',
+    'Everything about this one is soft: chubby proportions, wide-set eyes, a pastel palette that keeps the volumes reading as friendly.',
+    'The cute style works by subtraction: fewer planes, rounder edges, and colour doing most of the emotional work.',
+  ],
+  lowpoly: [
+    'The look comes from flat triangular facets: a tight palette keeps every plane readable, and the hard edges do the modelling instead of shading.',
+    'Facets are the whole idea here — each triangle catches the light at a slightly different angle, so the geometry reads even in a flat image.',
+    'Low poly means the shape is described by a small number of planes, which is exactly what folded paper does naturally.',
+  ],
+  pixel: [
+    'Chunky blocks and a cut-down palette give it the feel of a game sprite that was printed, trimmed and stood up by hand.',
+    'Every edge here is a right angle; the charm is in the staircase outlines and how few colours it takes to read the subject.',
+    'The pixel style trades curves for squares, which makes it the most forgiving look to rebuild with a ruler and a blade.',
+  ],
+  fantasy: [
+    'Layered scenery, a warm light source and a little glow push this one toward illustration rather than studio product shot.',
+    'Fantasy styling brings atmosphere: a low light source, depth layers and a hint of magic around the edges of the subject.',
+    'This one is staged rather than photographed — foreground, subject and backdrop read as separate planes.',
+  ],
+  minecraft: [
+    'Everything is built from cubes here, so it reads as a stack of blocks rather than one folded sheet.',
+    'The voxel style is all right angles and repeated units: big cubes set the silhouette, smaller ones add detail.',
+    'Blocks instead of folds: the shape is assembled from cubes, which is why the edges look so deliberately stepped.',
+  ],
+};
+const STYLE_MATERIALS: Record<string, string[]> = {
+  cute: [
+    'Heavy cardstock around 200–250 gsm holds rounded shapes without sagging; score the curves lightly with the back of a blade before folding so the paper does not crack.',
+    'Rounded paper shapes need a little give: 180–220 gsm card bends cleanly, while anything heavier fights you at every curve.',
+    'For soft, rounded forms, crease gently over a dowel rather than pressing hard — the paper keeps its curve instead of kinking.',
+  ],
+  lowpoly: [
+    'Score every fold line against a steel rule before creasing, and use 250–300 gsm card so the facets stay flat instead of bulging.',
+    'Faceted models only look sharp if the edges are dead straight: cut with a fresh blade, fold over a ruler, and avoid double-creasing.',
+    'Stiffer card is your friend here — 260 gsm or above keeps large planes from flexing once the piece is standing.',
+  ],
+  pixel: [
+    'Build it on a grid: print a light 5 mm grid, count squares rather than eyeballing, and keep a fresh blade in the knife so every step stays square.',
+    'Squared shapes tolerate copy paper surprisingly well, but 160–200 gsm card holds the stepped edges far better.',
+    'Work from one corner outwards so the grid squares stay aligned; drift shows up immediately on a pixel silhouette.',
+  ],
+  fantasy: [
+    'Layer it — foreground, middle ground and background on separate sheets, stacked with foam pads so the depth reads at a glance.',
+    'The depth comes from spacing: mount each layer a few millimetres in front of the last and let the shadows do the rest.',
+    'Use two paper weights — thin sheets for distant layers, heavier card for the subject — so the focus falls where you want it.',
+  ],
+  minecraft: [
+    'Cubes are forgiving: cut identical squares, score all four edges, glue the seams with PVA and weight the assembly while it dries.',
+    'Batch the cubes: cut and score all of one size before folding, and the build goes together twice as fast.',
+    'A cutting mat and a set square matter more than fancy paper here — voxel models live or die on consistent 90° edges.',
+  ],
+};
+// Closing caveat, many wordings — same point, different phrasing, no shared prefix.
+const HONEST_NOTES = [
+  'This page shows the look of the finished piece, not a cutting guide — the fold lines themselves are not included.',
+  'Treat it as concept art for the real thing: it shows how the design should read, not where to cut.',
+  'What you see is papercraft-style illustration rather than a printable net, so use it as visual reference.',
+  'Think of this as the before picture — the artwork shows the finished look, the net is still up to you.',
+  'It is inspiration rather than a template: useful for proportions, colour and staging, not for tracing.',
+  'The render tells you how the model should read; the geometry behind it is yours to work out.',
+  'Useful as a reference shot of the finished model, though it will not fold itself into one.',
+  'A finished-look reference, not a cut list — worth printing for the palette and silhouette alone.',
+  'The image is the destination, not the map: great for matching proportions, useless as a tracing sheet.',
+  'Handy for deciding colour, scale and pose before you commit to card and blade.',
+];
+const DIRECTION_OPENERS = [
+  'Want a warmer version?', 'For a sharper take,', 'If you would rather see it in context,',
+  'To push the detail further,', 'For a moodier result,', 'If the first try feels too safe,',
+  'When you are ready for a variation,',
+];
+// Second-paragraph subject advice, three variants each so neighbouring pages of the
+// same category never share the same sentence.
+const SUBJECT_TIPS: Record<string, string[]> = {
+  animal: [
+    'Four-legged and winged subjects look best when the legs and joints are glued firmly; a heavier cardstock helps the figure stand on its own.',
+    'Animals live or die on the silhouette — get the ears, tail and stance right first, then add surface detail only if the shape already reads.',
+    'If you build the paper version, give it a base: a small strip of card under the paws stops the whole figure from tipping forward.',
+  ],
+  dragon: [
+    'Dragons have long tails and wings that like to droop — score the fold lines crisply and consider a small base or stand so the model stays upright on a shelf.',
+    'Wings are the hard part: cut them as one piece with a fold down the middle so both sides stay symmetrical.',
+    'A dragon reads better with a bit of curve to the neck and tail than with everything held perfectly straight.',
+  ],
+  vehicle: [
+    'Vehicles depend on clean, straight cuts along the body panels — a steel ruler and a fresh blade make the difference between a toy that looks crisp and one that looks rough.',
+    'Wheels are the detail people notice first; cut them last, when the body already holds its shape.',
+    'Keep the body panels flat while the glue dries — a warp of a millimetre shows up badly on a vehicle.',
+  ],
+  building: [
+    'Towers and castles read better with sharp creases at every corner; fold toward yourself and run a bone folder along each edge for a solid, architectural finish.',
+    'Roofs and spires set the scale, so measure those first and work downwards towards the base.',
+    'Architecture is where paper behaves best: straight folds, square corners, and almost no shaping required.',
+  ],
+  character: [
+    'Characters carry a lot of small parts — assemble the torso first, then attach limbs and head so the proportions stay balanced as you build.',
+    'Give a character one clear prop or colour accent; without it the figure tends to read as generic.',
+    'Build the head first and match everything else to it — proportion problems always show up there.',
+  ],
+  plant: [
+    'Petals and leaves curve nicely if you curl them gently around a pencil after cutting, adding a little life to an otherwise flat sheet.',
+    'Stems need wire or a rolled paper core, otherwise they bend as soon as the flower head goes on.',
+    'Keep the vein side of the card facing up on leaves; the texture catches light and stops them looking like flat shapes.',
+  ],
+  food: [
+    'Layered treats like cakes look best built bottom-up; let each tier dry before adding the next so the stack stays straight.',
+    'Food reads through texture more than shape — a light emboss on the surface sells the idea faster than extra detail.',
+    'Small props (a paper plate, a folded napkin) do a lot of the work when the main subject is simple.',
+  ],
+  object: [
+    'Simple geometric objects are a great first project — precise cutting and a dab of glue at each tab is all it takes for a clean result.',
+    'Symmetry is everything with objects; cut one face, use it as the template for the rest.',
+    'Objects photograph well in sets, so a matching trio is often a stronger result than one perfect piece.',
+  ],
+  abstract: [
+    'Start with the largest pieces to set the silhouette, then fill in the smaller details last.',
+    'When the idea is abstract, contrast does the work: one bold colour against a quiet background.',
+    'Abstract shapes benefit from a hard light — the shadow becomes part of the composition.',
+  ],
+};
+// Subject-aware scenes. Generic modifiers ("add more detail", "cozy scene") are
+// exactly what made these articles feel machine-written, so each direction below
+// is a concrete, plausible next step for THIS kind of subject.
+const ARTICLE_SCENES: Record<string, { label: string; suffix: string }[]> = {
+  animal: [
+    { label: 'mid-action', suffix: 'caught mid-leap with one paw lifted and a simple paper shadow beneath' },
+    { label: 'asleep', suffix: 'curled up asleep in a shallow paper nest under soft morning light' },
+    { label: 'display stand', suffix: 'mounted on a small paper plinth like a gallery piece' },
+    { label: 'pair', suffix: 'as a pair of matching figures, one slightly smaller' },
+  ],
+  dragon: [
+    { label: 'on a spire', suffix: 'perched on a jagged paper rock spire with wings half open' },
+    { label: 'flame breath', suffix: 'breathing a stylised flame made of curled paper strips' },
+    { label: 'hoard', suffix: 'coiled protectively around a small paper treasure hoard' },
+    { label: 'in flight', suffix: 'gliding above layered paper clouds, seen from slightly below' },
+  ],
+  vehicle: [
+    { label: 'on a road', suffix: 'parked on a strip of paper road with a few paper trees behind it' },
+    { label: 'in motion', suffix: 'leaning into a turn with paper motion streaks trailing behind' },
+    { label: 'blueprint', suffix: 'presented on a blueprint-style sheet with visible fold marks' },
+    { label: 'scale check', suffix: 'standing next to a tiny paper figure to show the scale' },
+  ],
+  building: [
+    { label: 'at dusk', suffix: 'lit from inside at dusk, warm paper windows glowing' },
+    { label: 'overgrown', suffix: 'half overgrown with paper vines and tiny paper leaves' },
+    { label: 'cutaway', suffix: 'shown as an open cutaway with the rooms visible inside' },
+    { label: 'elevation', suffix: 'drawn as a flat architectural elevation on graph paper' },
+  ],
+  character: [
+    { label: 'with a prop', suffix: 'holding one simple paper prop that hints at the story' },
+    { label: 'layered costume', suffix: 'wearing an extra layer of folded paper armour over the base' },
+    { label: 'on a stage', suffix: 'standing on a small paper stage in front of a flat painted backdrop' },
+    { label: 'close-up', suffix: 'framed as a close-up of the head and shoulders only' },
+  ],
+  plant: [
+    { label: 'single stem', suffix: 'as a single stem in a narrow paper vase' },
+    { label: 'bouquet', suffix: 'grouped into a small bouquet with mixed paper tones' },
+    { label: 'terrarium', suffix: 'inside a paper-cut terrarium with layered foliage' },
+    { label: 'pressed', suffix: 'pressed flat like a botanical specimen on cream paper' },
+  ],
+  food: [
+    { label: 'serving board', suffix: 'arranged on a paper serving board with folded napkins' },
+    { label: 'cross-section', suffix: 'cut in half so the layered paper interior shows' },
+    { label: 'stacked', suffix: 'stacked three high with paper crumbs scattered around' },
+    { label: 'packaged', suffix: 'wrapped in a paper package with a folded label' },
+  ],
+  object: [
+    { label: 'hero shot', suffix: 'centred as a single hero shot on a plain cream sweep' },
+    { label: 'set of three', suffix: 'shown as a set of three in different sizes on a shelf' },
+    { label: 'exploded', suffix: 'exploded into its paper parts, floating slightly apart' },
+    { label: 'hard light', suffix: 'lit hard from one side so the paper shadow becomes part of the picture' },
+  ],
+  abstract: [
+    { label: 'colourways', suffix: 'shown in three different paper colourways side by side' },
+    { label: 'two scales', suffix: 'shown small and large in the same frame for contrast' },
+    { label: 'mixed stock', suffix: 'built from kraft, white and tissue paper layers' },
+    { label: 'hard light', suffix: 'lit hard from one side so the paper shadow becomes part of the picture' },
+  ],
+};
+
+export function buildIntro(prompt: string, subject: Subject, style: string, styleWord: string): string {
+  const h = strHash(prompt + '|' + style);
+  const styleAdj = styleWord ? styleWord : '';                    // e.g. 'low poly '
+  const noun = subject.label === 'papercraft' ? '' : subject.label;
+  const np = styleAdj + (noun ? noun + ' ' : '') + 'papercraft design'; // 'low poly animal papercraft design'
+  const article = styleAdj ? 'a' : subject.article;               // 'a low poly ...' / 'an object ...'
+  const subjectWord = noun || 'idea';
+  const subjArticle = noun ? subject.article : 'an';              // 'an animal' / 'an object' / 'an idea'
+
+  const leadShapes = [
+    `Type "${prompt}" into the generator and this is what comes back: ${article} ${np} — no brush, no ruler, no cutting mat.`,
+    `Some ideas look better in paper than on paper. Rendered as ${article} ${np}, "${prompt}" finally looks like something you could pick up.`,
+    `"${prompt}" was the whole brief behind this ${np}, and it turned into ${subjArticle} ${subjectWord} with visible folds, layered depth and a soft studio background.`,
+    `Half the charm of a paper model is the way it catches light. That is what this ${np} of "${prompt}" is leaning on.`,
+    `Describe "${prompt}", pick a style, and the papercraft generator does the rest — ${article} ${np}, downloaded in seconds.`,
+    `A sentence went in, ${article} ${np} came out. The sentence was "${prompt}".`,
+    `Paper is an odd medium for a machine to imitate, yet here it is: ${article} ${np} built around "${prompt}".`,
+    `"${prompt}" reads differently once it is folded. That is the short version of this ${np}.`,
+    `Nothing was cut, scored or glued to make the picture above — it is ${article} ${np} of "${prompt}", drawn rather than built.`,
+    `One line went into the prompt box. ${subjArticle.charAt(0).toUpperCase() + subjArticle.slice(1)} ${subjectWord} in paper came out, styled as a ${np}.`,
+  ];
+  const lead = leadShapes[h % leadShapes.length];
+
+  const styleNotes = STYLE_NOTES[style] || STYLE_NOTES.cute;
+  const look = styleNotes[h % styleNotes.length];
+  const tips = SUBJECT_TIPS[subject.category] || SUBJECT_TIPS.abstract;
+  const tip = tips[Math.floor(h / 7) % tips.length];
+  const secondPara = h % 3 === 0 ? `${tip} ${look}` : `${look} ${tip}`;
+
+  const scenes = ARTICLE_SCENES[subject.category] || ARTICLE_SCENES.abstract;
+  const dirSentences = scenes.map((scene, i) => {
+    const opener = DIRECTION_OPENERS[(h + i * 3) % DIRECTION_OPENERS.length];
+    return `${opener} try "${prompt}, ${scene.suffix}".`;
+  }).join(' ');
+  const dirIntros = [
+    'The first result is rarely the one you keep.',
+    'Most people generate three or four versions before settling on one.',
+    'One generation is a starting point, not a finished piece.',
+    'The obvious version is easy; the interesting one usually takes a second prompt.',
+    'If the first take feels flat, that is normal — the follow-ups are where it gets interesting.',
+    'Worth remembering: every one of these is one sentence away from a different picture.',
+    'Nothing here is final until you stop generating.',
+    'Each of these keeps the subject and changes the staging.',
+  ];
+
+  const materials = STYLE_MATERIALS[style] || STYLE_MATERIALS.cute;
+  const material = materials[Math.floor(h / 13) % materials.length];
+  const honestNote = HONEST_NOTES[h % HONEST_NOTES.length];
+  const hasCatPage = ['animal', 'dragon', 'vehicle', 'building'].includes(subject.category);
+  const catLink = hasCatPage
+    ? `[more ${subject.category} papercraft designs](/gallery/${subject.category}/)`
+    : '[the rest of the gallery](/gallery/)';
+  const closings = [
+    'Looking for another angle?',
+    'Still deciding on a direction?',
+    'Want to see how other ideas turned out?',
+    'If you would rather start from something finished,',
+    'For more of the same subject,',
+    'Not sure where to go next?',
+    'Hunting for a place to start?',
+    'Curious what else people are making?',
+  ];
+
+  return [
     lead,
+    '',
+    secondPara,
     '',
     '## Ways to take this further',
     '',
-    'It is easy to keep exploring from here. ' + dirs.map((d, i) => {
-      const opener = i === 0 ? 'Describe ' : 'Or describe ';
-      return opener + '"' + d.prompt + '" to give it a ' + d.title.toLowerCase() + ' feel.';
-    }).join(' ') + ' Paste whichever feels right into the generator and see where it goes.',
+    `${dirIntros[h % dirIntros.length]} ${dirSentences} Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.`,
     '',
-  ];
-  return lines.join('\n');
+    '## Building it in real paper',
+    '',
+    `${material}`,
+    '',
+    `${honestNote} ${closings[Math.floor(h / 5) % closings.length]} Browse ${catLink}, grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).`,
+  ].join('\n');
 }
 
 const STYLE_LABEL: Record<string, string> = {

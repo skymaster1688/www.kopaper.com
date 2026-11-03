@@ -9,13 +9,19 @@ draft: false
 noindex: true
 ---
 
-A low-poly fox built from sharp folded facets — bright orange paper planes catching the light, a white chest and a watchful amber gaze. The geometry makes it feel like it stepped out of a game. Made with koPaper's free AI papercraft generator.
+Type "low poly fox" into the generator and this is what comes back: a cute animal papercraft design — no brush, no ruler, no cutting mat.
+
+Everything about this one is soft: chubby proportions, wide-set eyes, a pastel palette that keeps the volumes reading as friendly. If you build the paper version, give it a base: a small strip of card under the paws stops the whole figure from tipping forward.
 
 ## Ways to take this further
 
-This fox looks great in different worlds. If you want it under the northern lights, describe "a low-poly fox standing on a snowy paper ridge under swirling green aurora, stars in the sky". For a colder version, try "an arctic white fox with icy blue facets curled in a paper snow cave". Want something richer? "a golden fox with warm amber paper planes perched on a stack of autumn leaves" is a lovely take. If you'd rather keep it tiny and playful, "a baby fox cub chasing a paper butterfly across a mossy log" is adorable. And for a mystical mood, "a forest fox with glowing runes along its paper body, standing in a moonlit glade" adds real magic.
+The first result is rarely the one you keep. If the first try feels too safe, try "low poly fox, caught mid-leap with one paw lifted and a simple paper shadow beneath". For a sharper take, try "low poly fox, curled up asleep in a shallow paper nest under soft morning light". For a moodier result, try "low poly fox, mounted on a small paper plinth like a gallery piece". Want a warmer version? try "low poly fox, as a pair of matching figures, one slightly smaller". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
 
-Open the AI papercraft generator and paste any of these to see where the idea goes.
+## Building it in real paper
+
+Rounded paper shapes need a little give: 180–220 gsm card bends cleanly, while anything heavier fights you at every curve.
+
+This page shows the look of the finished piece, not a cutting guide — the fold lines themselves are not included. Looking for another angle? Browse [more animal papercraft designs](/gallery/animal/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
 
 ![AI-generated cute papercraft of low poly fox.](/images/gallery/low-poly-fox-papercraft-design-ai-generated-mtjdm8d1ous3.jpg)
 

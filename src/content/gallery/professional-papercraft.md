@@ -9,18 +9,19 @@ noindex: true
 updated: "2026-08-28"
 ---
 
+A sentence went in, a fantasy papercraft design came out. The sentence was "PROFESSIONAL".
 
-The idea "PROFESSIONAL" becomes a stunning fantasy character papercraft design in this AI-generated artwork from koPaper. The papercraft style — with its geometric structure and paper-like textures — makes it perfect for design inspiration, creative reference, and visual exploration.
+When the idea is abstract, contrast does the work: one bold colour against a quiet background. Layered scenery, a warm light source and a little glow push this one toward illustration rather than studio product shot.
 
-The fantasy style pushes dramatic detail: scales, wings, glow, and atmosphere, so the design feels like a creature pulled from a storybook.
+## Ways to take this further
 
-Use this character design as a concept art reference, a cosplay inspiration, or a starting point for an original character.
+Most people generate three or four versions before settling on one. If the first try feels too safe, try "PROFESSIONAL, shown in three different paper colourways side by side". For a sharper take, try "PROFESSIONAL, shown small and large in the same frame for contrast". For a moodier result, try "PROFESSIONAL, built from kraft, white and tissue paper layers". Want a warmer version? try "PROFESSIONAL, lit hard from one side so the paper shadow becomes part of the picture". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
 
-How to use this design: Treat it as a starting point for creative exploration — sketch your own version, use it as color palette inspiration, or generate related designs by describing variations to the AI generator. Every design is a unique creative concept.
+## Building it in real paper
 
-Creative tip: Turn this character design into a full concept — generate different poses, expressions, and outfits to build a complete character sheet.
+The depth comes from spacing: mount each layer a few millimetres in front of the last and let the shadows do the rest.
 
-This design is one of many AI-generated papercraft concepts in the [gallery](/gallery/). Use the [AI papercraft generator](/) to create your own unique designs from any idea. For hands-on paper craft projects, browse the [origami tutorials](/origami/) and [printables](/printables/) collections.
+The render tells you how the model should read; the geometry behind it is yours to work out. Not sure where to go next? Browse [the rest of the gallery](/gallery/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
 
 ![AI-generated fantasy papercraft of PROFESSIONAL.](/images/gallery/professional-papercraft-mtcyvqnehlpk.svg)
 

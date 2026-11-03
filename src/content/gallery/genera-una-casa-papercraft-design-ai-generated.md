@@ -9,12 +9,18 @@ noindex: true
 updated: "2026-08-31"
 ---
 
-A simple house in crisp low-poly style — flat geometric facets that catch light from every angle, built from a single idea. Made with koPaper's free AI papercraft generator.
+Paper is an odd medium for a machine to imitate, yet here it is: a low poly papercraft design built around "Genera una casa".
+
+Facets are the whole idea here — each triangle catches the light at a slightly different angle, so the geometry reads even in a flat image. Abstract shapes benefit from a hard light — the shadow becomes part of the composition.
 
 ## Ways to take this further
 
-Hi! A little house is such a fun build. If you want it cozy, describe "a low-poly house with warm glowing windows and a small chimney smoke plume at dusk". For a tiny cottage, try "a miniature low-poly cottage nestled among paper pines with a winding path". Want a modern look? Go with "a sleek low-poly villa with flat roofs, big glass windows and a minimalist garden". A night scene — "the low-poly house under a starry paper sky with a crescent moon and a lit porch lamp". And for a garden view, "a low-poly house with a fenced garden, fruit trees and a tiny paper watering can out front".
+If the first take feels flat, that is normal — the follow-ups are where it gets interesting. If the first try feels too safe, try "Genera una casa, shown in three different paper colourways side by side". For a sharper take, try "Genera una casa, shown small and large in the same frame for contrast". For a moodier result, try "Genera una casa, built from kraft, white and tissue paper layers". Want a warmer version? try "Genera una casa, lit hard from one side so the paper shadow becomes part of the picture". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
 
-Open the AI papercraft generator and paste any of these to see where the idea goes.
+## Building it in real paper
+
+Stiffer card is your friend here — 260 gsm or above keeps large planes from flexing once the piece is standing.
+
+Useful as a reference shot of the finished model, though it will not fold itself into one. Curious what else people are making? Browse [the rest of the gallery](/gallery/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
 
 ![AI-generated lowpoly papercraft of Genera una casa.](/images/gallery/genera-una-casa-papercraft-design-ai-generated-mtgluhshbjqu.jpg)

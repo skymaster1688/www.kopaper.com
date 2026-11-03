@@ -8,18 +8,19 @@ draft: false
 updated: "2026-08-27"
 ---
 
+"Pig" was the whole brief behind this pixel animal papercraft design, and it turned into an animal with visible folds, layered depth and a soft studio background.
 
-Looking for pixel animal papercraft inspiration? This design, based on the idea "Pig", was generated with koPaper's AI papercraft design studio. Use it as a visual reference, a creative starting point, or inspiration for your next art or craft project.
+Every edge here is a right angle; the charm is in the staircase outlines and how few colours it takes to read the subject. If you build the paper version, give it a base: a small strip of card under the paws stops the whole figure from tipping forward.
 
-The pixel style renders the subject as a blocky, retro grid — 8-bit art with clean edges and a nostalgic, game-inspired aesthetic.
+## Ways to take this further
 
-This animal design works great as a reference for a kids craft project, a nursery illustration, or a cute character concept.
+The first result is rarely the one you keep. If you would rather see it in context, try "Pig, caught mid-leap with one paw lifted and a simple paper shadow beneath". If the first try feels too safe, try "Pig, curled up asleep in a shallow paper nest under soft morning light". For a sharper take, try "Pig, mounted on a small paper plinth like a gallery piece". For a moodier result, try "Pig, as a pair of matching figures, one slightly smaller". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
 
-How to use this design: Save it to your inspiration collection, use it as a reference for proportions and styling, or use the AI generator to create a whole series based on the same idea in different styles. The papercraft aesthetic is versatile and works across many creative contexts.
+## Building it in real paper
 
-Creative tip: Use this animal design as a starting point and add your own details — different colors, accessories, or a custom background scene.
+Build it on a grid: print a light 5 mm grid, count squares rather than eyeballing, and keep a fresh blade in the knife so every step stays square.
 
-Want to explore more? Browse the [gallery](/gallery/) for other AI-generated papercraft designs, or try the [AI papercraft generator](/) with your own idea. You can also check out the [origami tutorials](/origami/) for hands-on folding projects or the [printables](/printables/) for printable craft templates.
+What you see is papercraft-style illustration rather than a printable net, so use it as visual reference. Hunting for a place to start? Browse [more animal papercraft designs](/gallery/animal/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
 
 ![AI-generated pixel papercraft of Pig.](/images/gallery/pig-papercraft-mt4j7ejcslpu.jpg)
 

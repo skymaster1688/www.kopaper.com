@@ -9,18 +9,19 @@ noindex: true
 updated: "2026-08-30"
 ---
 
+Type "EUSTACE BAGGE" into the generator and this is what comes back: a low poly papercraft design — no brush, no ruler, no cutting mat.
 
-This lowpoly character papercraft design is based on the idea "EUSTACE BAGGE", generated with koPaper's AI papercraft design studio. It's a papercraft-style artwork created for inspiration, creative exploration, and visual reference — not a printable template or assembly guide.
+Low poly means the shape is described by a small number of planes, which is exactly what folded paper does naturally. Abstract shapes benefit from a hard light — the shadow becomes part of the composition.
 
-The low-poly style breaks the form into flat geometric facets, giving the design a modern, angular look that catches light from different angles.
+## Ways to take this further
 
-Use this character design as a concept art reference, a cosplay inspiration, or a starting point for an original character.
+If the first take feels flat, that is normal — the follow-ups are where it gets interesting. To push the detail further, try "EUSTACE BAGGE, shown in three different paper colourways side by side". When you are ready for a variation, try "EUSTACE BAGGE, shown small and large in the same frame for contrast". If you would rather see it in context, try "EUSTACE BAGGE, built from kraft, white and tissue paper layers". If the first try feels too safe, try "EUSTACE BAGGE, lit hard from one side so the paper shadow becomes part of the picture". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
 
-How to use this design: Save the image for your personal reference, use it as inspiration for a hand-drawn or painted artwork, or describe the same idea to the AI generator in a different style to explore alternative visual directions. The design is a creative concept, not a printable template.
+## Building it in real paper
 
-Creative tip: Turn this character design into a full concept — generate different poses, expressions, and outfits to build a complete character sheet.
+Stiffer card is your friend here — 260 gsm or above keeps large planes from flexing once the piece is standing.
 
-Inspired by this design? Run the same idea through the [AI papercraft generator](/) in a different style — Cute, Low Poly, Pixel, or Fantasy — to explore alternative visual directions. Browse the [gallery](/gallery/) for more AI-generated designs, or try the [origami tutorials](/origami/) for hands-on paper craft projects.
+This page shows the look of the finished piece, not a cutting guide — the fold lines themselves are not included. For more of the same subject, Browse [the rest of the gallery](/gallery/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
 
 ![AI-generated lowpoly papercraft of EUSTACE BAGGE.](/images/gallery/eustace-bagge-papercraft-mtf6bvpbw97r.jpg)
 
