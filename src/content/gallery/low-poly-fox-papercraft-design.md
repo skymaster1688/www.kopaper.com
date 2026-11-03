@@ -3,7 +3,7 @@ title: "Low Poly Fox Papercraft Design"
 description: "Free low poly animal papercraft design of \"low poly fox\" — AI-generated artwork with ready-to-use prompts to try next."
 emoji: "🦊"
 style: "lowpoly"
-updated: "2026-10-23"
+updated: "2026-11-03"
 order: 99
 draft: false
 ---
@@ -31,3 +31,7 @@ It is easy to keep exploring from here. Describe "your own idea" to give it a co
 ![AI-generated lowpoly papercraft of low poly fox.](/images/gallery/low-poly-fox-papercraft-design-mvl28bznj6mq.jpg)
 
 *AI-generated lowpoly papercraft of low poly fox.*
+
+![AI-generated cute papercraft of low poly fox.](/images/gallery/low-poly-fox-papercraft-design-mw0kdfevraho.jpg)
+
+*AI-generated cute papercraft of low poly fox.*
