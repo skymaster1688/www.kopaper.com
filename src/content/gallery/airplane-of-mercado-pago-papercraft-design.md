@@ -1,28 +1,32 @@
 ---
 title: "Airplane Of Mercado Pago Papercraft Design"
-description: "Free low poly vehicle papercraft design of \"Airplane of mercado pago\" — AI-generated artwork with ready-to-use prompts to try next."
+description: "A low poly take on \"Airplane of mercado pago\", generated with the free AI papercraft generator. Save it or reuse the prompt for your own version."
 emoji: "🎨"
 style: "lowpoly"
-updated: "2026-09-07"
+updated: "2026-11-03"
 order: 99
 draft: false
 noindex: true
 ---
 
-One line went into the prompt box. A vehicle in paper came out, styled as a low poly vehicle papercraft design.
+One prompt, "Airplane of mercado pago", a few seconds of waiting. That gets you here.
 
-Low poly means the shape is described by a small number of planes, which is exactly what folded paper does naturally. Keep the body panels flat while the glue dries — a warp of a millimetre shows up badly on a vehicle.
+Vehicles depend on straight cuts along the body panels. A steel ruler and a fresh blade make the difference between a toy that looks crisp and one that looks rough.
 
-## Ways to take this further
+Facets are the whole idea. Each triangle catches light at a slightly different angle, so the geometry reads even in a flat image.
 
-Worth remembering: every one of these is one sentence away from a different picture. Want a warmer version? try "Airplane of mercado pago, parked on a strip of paper road with a few paper trees behind it". To push the detail further, try "Airplane of mercado pago, leaning into a turn with paper motion streaks trailing behind". When you are ready for a variation, try "Airplane of mercado pago, presented on a blueprint-style sheet with visible fold marks". If you would rather see it in context, try "Airplane of mercado pago, standing next to a tiny paper figure to show the scale". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
+## If you want a different mood
 
-## Building it in real paper
+Small prompt edits move the result further than you would expect. Last one: "Airplane of mercado pago, parked on a strip of paper road with a few paper trees behind it". Also worth generating: "Airplane of mercado pago, leaning into a turn with paper motion streaks trailing behind". One more: "Airplane of mercado pago, presented on a blueprint-style sheet with visible fold marks".
 
-Stiffer card is your friend here — 260 gsm or above keeps large planes from flexing once the piece is standing.
+## Paper and tools
 
-Handy for deciding colour, scale and pose before you commit to card and blade. Not sure where to go next? Browse [more vehicle papercraft designs](/gallery/vehicle/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
+Score every fold line against a steel rule before creasing. 250 to 300 gsm card keeps the facets flat instead of bulging.
 
-![AI-generated lowpoly papercraft of Airplane of mercado pago.](/images/gallery/airplane-of-mercado-pago-papercraft-design-mtqvk817yy1y.jpg)
+Handy for colour, scale and pose. Useless as something to trace.
 
-*AI-generated lowpoly papercraft of Airplane of mercado pago.*
+There are more vehicle designs in [the vehicle gallery](/gallery/vehicle/). Prefer a ready-made net? Try [printable templates](/printables/). Hand folding instead? The [origami tutorials](/origami/) walk through it slowly.
+
+![Low poly papercraft design of Airplane of mercado pago](/images/gallery/airplane-of-mercado-pago-papercraft-design-mtqvk817yy1y.jpg)
+
+*Low poly papercraft design of Airplane of mercado pago*

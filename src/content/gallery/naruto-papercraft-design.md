@@ -1,32 +1,34 @@
 ---
 title: "Naruto Papercraft Design"
-description: "Free cute papercraft papercraft design of \"Naruto\" — AI-generated artwork with ready-to-use prompts to try next."
+description: "Made from one line: \"Naruto\". A free cute papercraft design you can download, plus variations worth generating."
 emoji: "🎨"
 style: "cute"
-updated: "2026-10-23"
+updated: "2026-11-03"
 order: 99
 draft: false
 noindex: true
 ---
 
-Nothing was cut, scored or glued to make the picture above — it is a cute papercraft design of "Naruto", drawn rather than built.
+This started as "Naruto". It ended up as a cute papercraft design.
 
-Abstract shapes benefit from a hard light — the shadow becomes part of the composition. Round silhouettes and a soft palette do the heavy lifting here — nothing in this design has a sharp corner to hide behind, so the shapes have to be right.
+Cute is mostly subtraction. Fewer planes, rounder edges, and colour doing the emotional work.
 
-## Ways to take this further
+Abstract shapes benefit from hard light. The shadow becomes part of the composition.
 
-Nothing here is final until you stop generating. For a moodier result, try "Naruto, shown in three different paper colourways side by side". Want a warmer version? try "Naruto, shown small and large in the same frame for contrast". To push the detail further, try "Naruto, built from kraft, white and tissue paper layers". When you are ready for a variation, try "Naruto, lit hard from one side so the paper shadow becomes part of the picture". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
+## Prompts to try after this one
 
-## Building it in real paper
+Same prompt, different staging, is usually enough. Then there is "Naruto, shown in three different paper colourways side by side". Same subject: "Naruto, shown small and large in the same frame for contrast". Or "Naruto, built from kraft, white and tissue paper layers". Worth an attempt: "Naruto, lit hard from one side so the paper shadow becomes part of the picture".
 
-Heavy cardstock around 200–250 gsm holds rounded shapes without sagging; score the curves lightly with the back of a blade before folding so the paper does not crack.
+## Paper and tools
 
-The image is the destination, not the map: great for matching proportions, useless as a tracing sheet. Curious what else people are making? Browse [the rest of the gallery](/gallery/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
+For soft forms, crease gently over a dowel instead of pressing hard. The paper keeps its curve rather than kinking.
 
-![AI-generated cute papercraft of Naruto.](/images/gallery/naruto-papercraft-design-mvl28emq65qb.jpg)
+Browse [everything else](/gallery/) if this is the look you are after. The [printable templates](/printables/) are worth a look if you would rather fold than design.
 
-*AI-generated cute papercraft of Naruto.*
+![Cute papercraft design of Naruto](/images/gallery/naruto-papercraft-design-mvl28emq65qb.jpg)
 
-![AI-generated minecraft papercraft of Naruto.](/images/gallery/naruto-papercraft-design-mvl28ftonxi9.jpg)
+*Cute papercraft design of Naruto*
 
-*AI-generated minecraft papercraft of Naruto.*
+![Naruto in cute papercraft style](/images/gallery/naruto-papercraft-design-mvl28ftonxi9.jpg)
+
+*Naruto in cute papercraft style*

@@ -1,27 +1,25 @@
 ---
 title: "Old Style House Papercraft Design"
-description: "Free low poly building papercraft design of \"old style house\" — AI-generated artwork with ready-to-use prompts to try next."
+description: "See how \"old style house\" reads as paper. Free low poly building papercraft artwork from koPaper, with the exact prompt included."
 emoji: "🏠"
 style: "lowpoly"
-updated: "2026-10-02"
+updated: "2026-11-03"
 order: 99
 draft: false
 ---
 
-Nothing was cut, scored or glued to make the picture above — it is a low poly building papercraft design of "old style house", drawn rather than built.
+A low poly building papercraft design of "old style house", from one line of text.
 
-Facets are the whole idea here — each triangle catches the light at a slightly different angle, so the geometry reads even in a flat image. Roofs and spires set the scale, so measure those first and work downwards towards the base.
+Facets are the whole idea. Each triangle catches light at a slightly different angle, so the geometry reads even in a flat image.
 
-## Ways to take this further
+Architecture is where paper behaves best. Straight folds, square corners, almost no shaping required.
 
-If the first take feels flat, that is normal — the follow-ups are where it gets interesting. When you are ready for a variation, try "old style house, lit from inside at dusk, warm paper windows glowing". If you would rather see it in context, try "old style house, half overgrown with paper vines and tiny paper leaves". If the first try feels too safe, try "old style house, shown as an open cutaway with the rooms visible inside". For a sharper take, try "old style house, drawn as a flat architectural elevation on graph paper". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
+## Prompts to try after this one
 
-## Building it in real paper
+The obvious version is not always the best one. One more: "old style house, lit from inside at dusk, warm paper windows glowing". Another angle: "old style house, half overgrown with paper vines and tiny paper leaves". If the first one felt off, "old style house, shown as an open cutaway with the rooms visible inside".
 
-Score every fold line against a steel rule before creasing, and use 250–300 gsm card so the facets stay flat instead of bulging.
+There are more building designs in [the building gallery](/gallery/building/). [Printable templates](/printables/) are the shortcut if you want to build today.
 
-The image is the destination, not the map: great for matching proportions, useless as a tracing sheet. Not sure where to go next? Browse [more building papercraft designs](/gallery/building/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
+![Low poly papercraft design of old style house](/images/gallery/old-style-house-papercraft-design-muq9855oe2y6.jpg)
 
-![AI-generated lowpoly papercraft of old style house.](/images/gallery/old-style-house-papercraft-design-muq9855oe2y6.jpg)
-
-*AI-generated lowpoly papercraft of old style house.*
+*Low poly papercraft design of old style house*

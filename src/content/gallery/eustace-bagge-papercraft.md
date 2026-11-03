@@ -1,28 +1,26 @@
 ---
 title: "Eustace Bagge Papercraft Design — AI Generated"
-description: "AI-generated lowpoly character papercraft design of \"EUSTACE BAGGE\". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
+description: "Papercraft design of \"EUSTACE BAGGE\" in low poly style. Free AI artwork, no account needed, and follow-up prompts to try next."
 emoji: "🎨"
 style: "lowpoly"
 order: 99
 draft: false
 noindex: true
-updated: "2026-08-30"
+updated: "2026-11-03"
 ---
 
-Type "EUSTACE BAGGE" into the generator and this is what comes back: a low poly papercraft design — no brush, no ruler, no cutting mat.
+Here is what "EUSTACE BAGGE" looks like once it is described in paper terms.
 
-Low poly means the shape is described by a small number of planes, which is exactly what folded paper does naturally. Abstract shapes benefit from a hard light — the shadow becomes part of the composition.
+Start with the largest pieces to set the silhouette, then fill in the smaller details last.
 
-## Ways to take this further
+Low poly means the shape is described by a small number of planes. Folded paper does that naturally, which is why the style suits it. Flat lighting, soft falloff, no reflections. Paper is easier to read that way.
 
-If the first take feels flat, that is normal — the follow-ups are where it gets interesting. To push the detail further, try "EUSTACE BAGGE, shown in three different paper colourways side by side". When you are ready for a variation, try "EUSTACE BAGGE, shown small and large in the same frame for contrast". If you would rather see it in context, try "EUSTACE BAGGE, built from kraft, white and tissue paper layers". If the first try feels too safe, try "EUSTACE BAGGE, lit hard from one side so the paper shadow becomes part of the picture". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
+## If you want a different mood
 
-## Building it in real paper
+The subject can stay put while everything around it changes. Another angle: "EUSTACE BAGGE, shown in three different paper colourways side by side". If the first one felt off, "EUSTACE BAGGE, shown small and large in the same frame for contrast". One worth a go: "EUSTACE BAGGE, built from kraft, white and tissue paper layers".
 
-Stiffer card is your friend here — 260 gsm or above keeps large planes from flexing once the piece is standing.
+More in [the gallery](/gallery/). Prefer a ready-made net? Try [printable templates](/printables/).
 
-This page shows the look of the finished piece, not a cutting guide — the fold lines themselves are not included. For more of the same subject, Browse [the rest of the gallery](/gallery/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
+![Low poly papercraft design of EUSTACE BAGGE](/images/gallery/eustace-bagge-papercraft-mtf6bvpbw97r.jpg)
 
-![AI-generated lowpoly papercraft of EUSTACE BAGGE.](/images/gallery/eustace-bagge-papercraft-mtf6bvpbw97r.jpg)
-
-*AI-generated lowpoly papercraft of EUSTACE BAGGE.*
+*Low poly papercraft design of EUSTACE BAGGE*

@@ -1,36 +1,38 @@
 ---
 title: "Low Poly Pyramid Papercraft Design — AI Generated"
-description: "AI-generated cute building papercraft design of \"low poly pyramid\". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
+description: "See how \"low poly pyramid\" reads as paper. Free cute building papercraft artwork from koPaper, with the exact prompt included."
 emoji: "🎨"
 style: "cute"
 order: 99
 draft: false
 noindex: true
-updated: "2026-08-29"
+updated: "2026-11-03"
 ---
 
-One line went into the prompt box. A building in paper came out, styled as a cute building papercraft design.
+Nothing was cut or glued to make the picture below. It came from the prompt "low poly pyramid".
 
-Everything about this one is soft: chubby proportions, wide-set eyes, a pastel palette that keeps the volumes reading as friendly. Architecture is where paper behaves best: straight folds, square corners, and almost no shaping required.
+Cute is mostly subtraction. Fewer planes, rounder edges, and colour doing the emotional work.
 
-## Ways to take this further
+Cut the windows before you fold the walls. Doing it afterwards risks crushing the corner you just creased.
 
-Each of these keeps the subject and changes the staging. If the first try feels too safe, try "low poly pyramid, lit from inside at dusk, warm paper windows glowing". For a sharper take, try "low poly pyramid, half overgrown with paper vines and tiny paper leaves". For a moodier result, try "low poly pyramid, shown as an open cutaway with the rooms visible inside". Want a warmer version? try "low poly pyramid, drawn as a flat architectural elevation on graph paper". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
+## Follow-up prompts
 
-## Building it in real paper
+One generation is rarely the end of it. One worth a go: "low poly pyramid, lit from inside at dusk, warm paper windows glowing". A different direction: "low poly pyramid, half overgrown with paper vines and tiny paper leaves".
 
-Rounded paper shapes need a little give: 180–220 gsm card bends cleanly, while anything heavier fights you at every curve.
+## Practical notes
 
-Handy for deciding colour, scale and pose before you commit to card and blade. Curious what else people are making? Browse [more building papercraft designs](/gallery/building/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
+Rounded paper shapes need a little give. 180 to 220 gsm card bends cleanly, and anything heavier fights you at every curve.
 
-![AI-generated cute papercraft of low poly pyramid.](/images/gallery/low-poly-pyramid-papercraft-mt8nk25w3epr.jpg)
+For more building designs, browse [the building gallery](/gallery/building/). The [printable templates](/printables/) are worth a look if you would rather fold than design. If you prefer creases to cuts, the [origami tutorials](/origami/) are the place to start.
 
-*AI-generated cute papercraft of low poly pyramid.*
+![Cute papercraft design of low poly pyramid](/images/gallery/low-poly-pyramid-papercraft-mt8nk25w3epr.jpg)
 
-![AI-generated cute papercraft of low poly pyramid.](/images/gallery/low-poly-pyramid-papercraft-mt8nk2wlrbeg.jpg)
+*Cute papercraft design of low poly pyramid*
 
-*AI-generated cute papercraft of low poly pyramid.*
+![Low poly pyramid in cute papercraft style](/images/gallery/low-poly-pyramid-papercraft-mt8nk2wlrbeg.jpg)
 
-![AI-generated pixel papercraft of low poly pyramid.](/images/gallery/low-poly-pyramid-papercraft-mteiv32omgie.jpg)
+*Low poly pyramid in cute papercraft style*
 
-*AI-generated pixel papercraft of low poly pyramid.*
+![Low poly pyramid, papercraft illustration](/images/gallery/low-poly-pyramid-papercraft-mteiv32omgie.jpg)
+
+*Low poly pyramid, papercraft illustration*

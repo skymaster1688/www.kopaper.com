@@ -1,25 +1,27 @@
 ---
-title: "Standing Pixel Red-Haired Character Papercraft Design — AI Generated"
-description: "AI-generated pixel character papercraft design. Papercraft-style artwork for inspiration, design reference, and creative exploration."
+title: "Standing Pixel Red-Haired Character Papercraft Design"
+description: "See how \"standing pixel red haired character\" reads as paper. Free pixel character papercraft artwork from koPaper, with the exact prompt included."
 emoji: "🎨"
 style: "pixel"
 order: 99
 draft: false
 noindex: true
-updated: "2026-08-31"
+updated: "2026-11-03"
 
 ---
 
-A sentence went in, a pixel papercraft design came out. The sentence was "standing pixel red-haired character papercraft design — ai generated".
+A 5-word prompt, "standing pixel red haired character", and a pixel character papercraft design at the other end.
 
-The pixel style trades curves for squares, which makes it the most forgiving look to rebuild with a ruler and a blade. When the idea is abstract, contrast does the work: one bold colour against a quiet background.
+Pixel art is a grid with opinions. Once the grid is set, the detail is just choosing which squares to fill.
 
-## Ways to take this further
+Characters carry a lot of small parts. Assemble the torso first, then attach limbs and head so the proportions stay balanced as you build.
 
-Each of these keeps the subject and changes the staging. For a moodier result, try "standing pixel red-haired character papercraft design — ai generated, shown in three different paper colourways side by side". Want a warmer version? try "standing pixel red-haired character papercraft design — ai generated, shown small and large in the same frame for contrast". To push the detail further, try "standing pixel red-haired character papercraft design — ai generated, built from kraft, white and tissue paper layers". When you are ready for a variation, try "standing pixel red-haired character papercraft design — ai generated, lit hard from one side so the paper shadow becomes part of the picture". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
+Nothing in the frame competes with the subject, which is most of the reason it works.
 
-## Building it in real paper
+Small prompt edits move the result further than you would expect. "standing pixel red haired character, holding one simple paper prop that hints at the story". Or this: "standing pixel red haired character, wearing an extra layer of folded paper armour over the base". Last one: "standing pixel red haired character, standing on a small paper stage in front of a flat painted backdrop". Also worth generating: "standing pixel red haired character, framed as a close-up of the head and shoulders only".
 
-Work from one corner outwards so the grid squares stay aligned; drift shows up immediately on a pixel silhouette.
+A set square and a self-healing mat do more for a pixel build than expensive paper does.
 
-The render tells you how the model should read; the geometry behind it is yours to work out. If you would rather start from something finished, Browse [the rest of the gallery](/gallery/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
+Treat the artwork as the target, not the pattern.
+
+More in [the gallery](/gallery/).

@@ -1,28 +1,30 @@
 ---
 title: "Un Gato Realista Sentado Negro Papercraft Design"
-description: "Free cute papercraft papercraft design of \"Un gato realista sentado negro\" — AI-generated artwork with ready-to-use prompts to try next."
+description: "See how \"Un gato realista sentado negro\" reads as paper. Free cute papercraft artwork from koPaper, with the exact prompt included."
 emoji: "🎨"
 style: "cute"
-updated: "2026-10-23"
+updated: "2026-11-03"
 order: 99
 draft: false
 noindex: true
 ---
 
-"Un gato realista sentado negro" reads differently once it is folded. That is the short version of this cute papercraft design.
+One prompt, "Un gato realista sentado negro", a few seconds of waiting. That gets you here.
 
-The cute style works by subtraction: fewer planes, rounder edges, and colour doing most of the emotional work. Start with the largest pieces to set the silhouette, then fill in the smaller details last.
+Start with the largest pieces to set the silhouette, then fill in the smaller details last.
 
-## Ways to take this further
+## Other directions
 
-Worth remembering: every one of these is one sentence away from a different picture. If you would rather see it in context, try "Un gato realista sentado negro, shown in three different paper colourways side by side". If the first try feels too safe, try "Un gato realista sentado negro, shown small and large in the same frame for contrast". For a sharper take, try "Un gato realista sentado negro, built from kraft, white and tissue paper layers". For a moodier result, try "Un gato realista sentado negro, lit hard from one side so the paper shadow becomes part of the picture". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
+The first result is usually the safe one. Or "Un gato realista sentado negro, shown in three different paper colourways side by side". Worth an attempt: "Un gato realista sentado negro, shown small and large in the same frame for contrast". Try "Un gato realista sentado negro, built from kraft, white and tissue paper layers".
 
-## Building it in real paper
+## The paper part
 
-Rounded paper shapes need a little give: 180–220 gsm card bends cleanly, while anything heavier fights you at every curve.
+Score curves, do not fold them. Two light passes with a blunt tool beats one hard crease every time.
 
-A finished-look reference, not a cut list — worth printing for the palette and silhouette alone. Curious what else people are making? Browse [the rest of the gallery](/gallery/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
+The render shows how it should read, not where to cut.
 
-![AI-generated cute papercraft of Un gato realista sentado negro.](/images/gallery/un-gato-realista-sentado-negro-papercraft-design-mvl2b4n24a32.jpg)
+More in [the gallery](/gallery/). The [printable templates](/printables/) are worth a look if you would rather fold than design. For plain folding practice, work through the [origami tutorials](/origami/).
 
-*AI-generated cute papercraft of Un gato realista sentado negro.*
+![Cute papercraft design](/images/gallery/un-gato-realista-sentado-negro-papercraft-design-mvl2b4n24a32.jpg)
+
+*Cute papercraft design*

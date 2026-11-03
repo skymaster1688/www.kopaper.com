@@ -1,27 +1,25 @@
 ---
 title: "Cat Papercraft Design"
-description: "AI-generated fantasy animal papercraft design of \"Cat\". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
+description: "A fantasy take on \"Cat\", generated with the free AI papercraft generator. Save it or reuse the prompt for your own version."
 emoji: "🐱"
 style: "fantasy"
 order: 99
 draft: false
-updated: "2026-08-27"
+updated: "2026-11-03"
 ---
 
-"Cat" was the whole brief behind this fantasy animal papercraft design, and it turned into an animal with visible folds, layered depth and a soft studio background.
+A fantasy animal papercraft design of "Cat", from one line of text.
 
-Fantasy styling brings atmosphere: a low light source, depth layers and a hint of magic around the edges of the subject. If you build the paper version, give it a base: a small strip of card under the paws stops the whole figure from tipping forward.
+Fantasy styling brings atmosphere. Low light, depth layers, and a bit of haze around the edges of the subject.
 
-## Ways to take this further
+Fur is not worth chasing in paper. Group the shapes into a few large masses and let the outline say animal. Nothing in the frame competes with the subject, which is most of the reason it works.
 
-The first result is rarely the one you keep. If you would rather see it in context, try "Cat, caught mid-leap with one paw lifted and a simple paper shadow beneath". If the first try feels too safe, try "Cat, curled up asleep in a shallow paper nest under soft morning light". For a sharper take, try "Cat, mounted on a small paper plinth like a gallery piece". For a moodier result, try "Cat, as a pair of matching figures, one slightly smaller". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
+Small prompt edits move the result further than you would expect. Or this: "Cat, caught mid-leap with one paw lifted and a simple paper shadow beneath". Last one: "Cat, curled up asleep in a shallow paper nest under soft morning light". Also worth generating: "Cat, mounted on a small paper plinth like a gallery piece".
 
-## Building it in real paper
+Use two paper weights. Thin sheets for distant layers, heavier card for the subject, so the focus lands where you want it.
 
-The depth comes from spacing: mount each layer a few millimetres in front of the last and let the shadows do the rest.
+For more animal designs, browse [the animal gallery](/gallery/animal/). [Printable templates](/printables/) are the shortcut if you want to build today.
 
-What you see is papercraft-style illustration rather than a printable net, so use it as visual reference. Hunting for a place to start? Browse [more animal papercraft designs](/gallery/animal/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
+![Fantasy papercraft design of Cat](/images/gallery/cat-papercraft-mt4j7drin4yz.jpg)
 
-![AI-generated fantasy papercraft of Cat.](/images/gallery/cat-papercraft-mt4j7drin4yz.jpg)
-
-*AI-generated fantasy papercraft of Cat.*
+*Fantasy papercraft design of Cat*

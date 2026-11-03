@@ -1,26 +1,24 @@
 ---
 title: "Low Poly Panther Papercraft Design — Free 3D Papercraft"
-description: "Free low-poly papercraft of a panther with sleek angular facets. Try a forest stalk, neon outline, mountain watch, tiny cub or moonlit prowl — copy any prompt."
+description: "Made from one line: \"panher\". A free low poly papercraft design you can download, plus variations worth generating."
 emoji: "🎨"
 style: "lowpoly"
 order: 99
 draft: false
 noindex: true
-updated: "2026-08-31"
+updated: "2026-11-03"
 ---
 
-Nothing was cut, scored or glued to make the picture above — it is a low poly papercraft design of "panher", drawn rather than built.
+The prompt was "panher". This is what came back.
 
-Start with the largest pieces to set the silhouette, then fill in the smaller details last. The look comes from flat triangular facets: a tight palette keeps every plane readable, and the hard edges do the modelling instead of shading.
+The look comes from flat triangular facets. A tight palette keeps every plane readable, and the hard edges do the modelling instead of shading.
 
-## Ways to take this further
+Start with the largest pieces to set the silhouette, then fill in the smaller details last.
 
-If the first take feels flat, that is normal — the follow-ups are where it gets interesting. When you are ready for a variation, try "panher, shown in three different paper colourways side by side". If you would rather see it in context, try "panher, shown small and large in the same frame for contrast". If the first try feels too safe, try "panher, built from kraft, white and tissue paper layers". For a sharper take, try "panher, lit hard from one side so the paper shadow becomes part of the picture". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
+## Other directions
 
-## Building it in real paper
+The subject does not have to change for the picture to. Then there is "panher, shown in three different paper colourways side by side". Same subject: "panher, shown small and large in the same frame for contrast". Or "panher, built from kraft, white and tissue paper layers".
 
-Score every fold line against a steel rule before creasing, and use 250–300 gsm card so the facets stay flat instead of bulging.
+[The full gallery](/gallery/) has plenty more like this. There are [printable templates](/printables/) if you want the cutting already worked out.
 
-The image is the destination, not the map: great for matching proportions, useless as a tracing sheet. Not sure where to go next? Browse [the rest of the gallery](/gallery/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
-
-![AI-generated lowpoly papercraft of panher.](/images/gallery/panher-papercraft-design-ai-generated-mtglugtwrqu4.jpg)
+![Low poly papercraft design of panher](/images/gallery/panher-papercraft-design-ai-generated-mtglugtwrqu4.jpg)

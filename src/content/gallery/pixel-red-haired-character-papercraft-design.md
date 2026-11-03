@@ -1,25 +1,27 @@
 ---
-title: "Pixel Red-Haired Character Papercraft Design — AI Generated"
-description: "AI-generated pixel character papercraft design. Papercraft-style artwork for inspiration, design reference, and creative exploration."
+title: "Pixel Red-Haired Character Papercraft Design"
+description: "\"pixel red haired character\" turned into a pixel papercraft design. Free AI generator, instant results, no sign-up."
 emoji: "🎨"
 style: "pixel"
 order: 99
 draft: false
 noindex: true
-updated: "2026-08-31"
+updated: "2026-11-03"
 
 ---
 
-One line went into the prompt box. An idea in paper came out, styled as a pixel papercraft design.
+One prompt, "pixel red haired character", a few seconds of waiting. That gets you here.
 
-Start with the largest pieces to set the silhouette, then fill in the smaller details last. Chunky blocks and a cut-down palette give it the feel of a game sprite that was printed, trimmed and stood up by hand.
+Every edge here is a right angle. The charm is in the staircase outlines and how few colours it takes to read the subject. The palette is narrow on purpose. Three or four tones, no more.
 
-## Ways to take this further
+## Other directions
 
-The obvious version is easy; the interesting one usually takes a second prompt. Want a warmer version? try "pixel red-haired character papercraft design — ai generated, shown in three different paper colourways side by side". To push the detail further, try "pixel red-haired character papercraft design — ai generated, shown small and large in the same frame for contrast". When you are ready for a variation, try "pixel red-haired character papercraft design — ai generated, built from kraft, white and tissue paper layers". If you would rather see it in context, try "pixel red-haired character papercraft design — ai generated, lit hard from one side so the paper shadow becomes part of the picture". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
+The subject does not have to change for the picture to. Another angle: "pixel red haired character, holding one simple paper prop that hints at the story". If the first one felt off, "pixel red haired character, wearing an extra layer of folded paper armour over the base". One worth a go: "pixel red haired character, standing on a small paper stage in front of a flat painted backdrop".
 
-## Building it in real paper
+## Notes for the build
 
-Build it on a grid: print a light 5 mm grid, count squares rather than eyeballing, and keep a fresh blade in the knife so every step stays square.
+Squared shapes tolerate copy paper surprisingly well, though 160 to 200 gsm card holds the stepped edges far better.
 
-Handy for deciding colour, scale and pose before you commit to card and blade. If you would rather start from something finished, Browse [the rest of the gallery](/gallery/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
+You will not be able to print and fold this one. It is a picture of the finished idea.
+
+Browse [everything else](/gallery/) if this is the look you are after. [Printable templates](/printables/) are the shortcut if you want to build today. If you prefer creases to cuts, the [origami tutorials](/origami/) are the place to start.

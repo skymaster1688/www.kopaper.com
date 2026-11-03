@@ -1,28 +1,32 @@
 ---
 title: "Mascara De Burro Papercraft Design"
-description: "Free lowpoly vehicle papercraft design of \"Mascara de burro\" — AI-generated artwork with ready-to-use prompts to try next."
+description: "A low poly take on \"Mascara de burro\", generated with the free AI papercraft generator. Save it or reuse the prompt for your own version."
 emoji: "🚗"
 style: "lowpoly"
-updated: "2026-10-23"
+updated: "2026-11-03"
 order: 99
 draft: false
 noindex: true
 ---
 
-Some ideas look better in paper than on paper. Rendered as a low poly vehicle papercraft design, "Mascara de burro" finally looks like something you could pick up.
+"Mascara de burro" is about as short as a brief gets. The result is a low poly papercraft design.
 
-Facets are the whole idea here — each triangle catches the light at a slightly different angle, so the geometry reads even in a flat image. Wheels are the detail people notice first; cut them last, when the body already holds its shape.
+The look comes from flat triangular facets. A tight palette keeps every plane readable, and the hard edges do the modelling instead of shading.
 
-## Ways to take this further
+When the idea is abstract, contrast does the work. One bold colour against a quiet background.
 
-Worth remembering: every one of these is one sentence away from a different picture. To push the detail further, try "Mascara de burro, parked on a strip of paper road with a few paper trees behind it". When you are ready for a variation, try "Mascara de burro, leaning into a turn with paper motion streaks trailing behind". If you would rather see it in context, try "Mascara de burro, presented on a blueprint-style sheet with visible fold marks". If the first try feels too safe, try "Mascara de burro, standing next to a tiny paper figure to show the scale". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
+## Taking it further
 
-## Building it in real paper
+If you want a different mood, the prompt is the only dial worth turning. Try "Mascara de burro, shown in three different paper colourways side by side". Another variation: "Mascara de burro, shown small and large in the same frame for contrast". "Mascara de burro, built from kraft, white and tissue paper layers".
 
-Faceted models only look sharp if the edges are dead straight: cut with a fresh blade, fold over a ruler, and avoid double-creasing.
+## Building it for real
 
-Treat it as concept art for the real thing: it shows how the design should read, not where to cut. For more of the same subject, Browse [more vehicle papercraft designs](/gallery/vehicle/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
+Faceted models only look sharp if the edges are dead straight. Fresh blade, fold over a ruler, and never crease the same line twice.
 
-![AI-generated lowpoly papercraft of Mascara de burro.](/images/gallery/mascara-de-burro-papercraft-design-mvl286jpkuz3.jpg)
+The render shows how it should read, not where to cut.
 
-*AI-generated lowpoly papercraft of Mascara de burro.*
+[The full gallery](/gallery/) has plenty more like this. [Printable templates](/printables/) are the shortcut if you want to build today. Hand folding instead? The [origami tutorials](/origami/) walk through it slowly.
+
+![Low poly papercraft design of Mascara de burro](/images/gallery/mascara-de-burro-papercraft-design-mvl286jpkuz3.jpg)
+
+*Low poly papercraft design of Mascara de burro*

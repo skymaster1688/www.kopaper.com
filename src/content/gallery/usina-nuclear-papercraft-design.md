@@ -1,28 +1,30 @@
 ---
 title: "Usina Nuclear Papercraft Design"
-description: "Free fantasy papercraft design of \"Usina nuclear\" — AI-generated artwork with ready-to-use prompts to try next."
+description: "A fantasy take on \"Usina nuclear\", generated with the free AI papercraft generator. Save it or reuse the prompt for your own version."
 emoji: "🎨"
 style: "fantasy"
-updated: "2026-09-21"
+updated: "2026-11-03"
 order: 99
 draft: false
 noindex: true
 ---
 
-Describe "Usina nuclear", pick a style, and the papercraft generator does the rest — a fantasy papercraft design, downloaded in seconds.
+The brief behind this one was "Usina nuclear", typed straight into the generator.
 
-Fantasy styling brings atmosphere: a low light source, depth layers and a hint of magic around the edges of the subject. When the idea is abstract, contrast does the work: one bold colour against a quiet background.
+The mood is doing as much work as the model here. Warm light from below, cool shadow behind, and the paper becomes scenery.
 
-## Ways to take this further
+Start with the largest pieces to set the silhouette, then fill in the smaller details last.
 
-Nothing here is final until you stop generating. Want a warmer version? try "Usina nuclear, shown in three different paper colourways side by side". To push the detail further, try "Usina nuclear, shown small and large in the same frame for contrast". When you are ready for a variation, try "Usina nuclear, built from kraft, white and tissue paper layers". If you would rather see it in context, try "Usina nuclear, lit hard from one side so the paper shadow becomes part of the picture". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
+## If you want a different mood
 
-## Building it in real paper
+Small prompt edits move the result further than you would expect. One worth a go: "Usina nuclear, shown in three different paper colourways side by side". A different direction: "Usina nuclear, shown small and large in the same frame for contrast". Then there is "Usina nuclear, built from kraft, white and tissue paper layers". Same subject: "Usina nuclear, lit hard from one side so the paper shadow becomes part of the picture".
 
-Use two paper weights — thin sheets for distant layers, heavier card for the subject — so the focus falls where you want it.
+## The paper part
 
-It is inspiration rather than a template: useful for proportions, colour and staging, not for tracing. Want to see how other ideas turned out? Browse [the rest of the gallery](/gallery/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
+The depth comes from spacing. Mount each layer a few millimetres in front of the last and let the shadows do the rest.
 
-![AI-generated fantasy papercraft of Usina nuclear.](/images/gallery/usina-nuclear-papercraft-design-mualnca5rhdz.jpg)
+More in [the gallery](/gallery/). The [printable templates](/printables/) are worth a look if you would rather fold than design.
 
-*AI-generated fantasy papercraft of Usina nuclear.*
+![Fantasy papercraft design of Usina nuclear](/images/gallery/usina-nuclear-papercraft-design-mualnca5rhdz.jpg)
+
+*Fantasy papercraft design of Usina nuclear*

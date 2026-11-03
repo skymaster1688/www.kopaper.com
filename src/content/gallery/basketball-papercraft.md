@@ -1,27 +1,27 @@
 ---
 title: "Basketball Papercraft Design"
-description: "AI-generated cute vehicle papercraft design of \"Basketball\". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
+description: "Made from one line: \"Basketball\". A free cute papercraft design you can download, plus variations worth generating."
 emoji: "🎨"
 style: "cute"
 order: 99
 draft: false
-updated: "2026-08-27"
+updated: "2026-11-03"
 ---
 
-"Basketball" was the whole brief behind this cute papercraft design, and it turned into an idea with visible folds, layered depth and a soft studio background.
+Short version: a cute papercraft design of "Basketball".
 
-The cute style works by subtraction: fewer planes, rounder edges, and colour doing most of the emotional work. Abstract shapes benefit from a hard light — the shadow becomes part of the composition.
+The cute style leans on proportion more than detail. Big head, small body, rounded everywhere. Nothing here has a sharp corner to hide behind, so the shapes have to be right.
 
-## Ways to take this further
+When the idea is abstract, contrast does the work. One bold colour against a quiet background.
 
-One generation is a starting point, not a finished piece. Want a warmer version? try "Basketball, shown in three different paper colourways side by side". To push the detail further, try "Basketball, shown small and large in the same frame for contrast". When you are ready for a variation, try "Basketball, built from kraft, white and tissue paper layers". If you would rather see it in context, try "Basketball, lit hard from one side so the paper shadow becomes part of the picture". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
+## Taking it further
 
-## Building it in real paper
+One generation is rarely the end of it. Or "Basketball, shown in three different paper colourways side by side". Worth an attempt: "Basketball, shown small and large in the same frame for contrast". Try "Basketball, built from kraft, white and tissue paper layers".
 
-Heavy cardstock around 200–250 gsm holds rounded shapes without sagging; score the curves lightly with the back of a blade before folding so the paper does not crack.
+No cut lines here. The image shows the finished look only.
 
-What you see is papercraft-style illustration rather than a printable net, so use it as visual reference. Looking for another angle? Browse [the rest of the gallery](/gallery/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
+More in [the gallery](/gallery/). The [printable templates](/printables/) are worth a look if you would rather fold than design.
 
-![AI-generated cute papercraft of Basketball.](/images/gallery/basketball-papercraft-mtappp29sipw.jpg)
+![Cute papercraft design of Basketball](/images/gallery/basketball-papercraft-mtappp29sipw.jpg)
 
-*AI-generated cute papercraft of Basketball.*
+*Cute papercraft design of Basketball*

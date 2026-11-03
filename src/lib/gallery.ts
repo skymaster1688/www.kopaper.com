@@ -265,14 +265,19 @@ export interface Generated {
 export type Subject = { category: string; label: string; article: string };
 export function detectSubject(prompt: string): Subject {
   const p = prompt.toLowerCase();
-  const has = (...k: string[]) => k.some(x => p.includes(x));
+  // Whole-word matching. Substring matching sent "card" to vehicles, "catalog" to
+  // animals and, worst of all, "papercraft" to watercraft via "raft".
+  const has = (...k: string[]) => k.some(x => new RegExp(`\\b${x}s?\\b`).test(p));
   if (has('dragon')) return { category: 'dragon', label: 'dragon', article: 'a' };
   if (has('cat','dog','bear','fox','rabbit','panda','bird','owl','eagle','fish','shark','elephant','tiger','lion','wolf','horse','cow','pig','snake','deer','frog','penguin','butterfly','bee','crab','octopus','whale','mouse','monkey','koala','unicorn','iguana','triceratops','hedgehog','panther','dolphin','hamster','turtle')) return { category: 'animal', label: 'animal', article: 'an' };
   // Word-boundary so "bath"/"battle" do not count as a bat.
   if (/\bbats?\b/.test(p)) return { category: 'animal', label: 'animal', article: 'an' };
-  if (has('car','truck','vehicle','bike','motorcycle','plane','airplane','ship','boat','train','bus','tank','helicopter')) return { category: 'vehicle', label: 'vehicle', article: 'a' };
-  if (has('castle','house','home','building','temple','tower','church','statue','pyramid','cottage','cabin','skyscraper','ferris')) return { category: 'building', label: 'building', article: 'a' };
-  if (has('robot','knight','warrior','soldier','mecha','ninja','princess','queen','king','wizard','golem','explorer')) return { category: 'character', label: 'character', article: 'a' };
+  // Watercraft get their own category: reusing the vehicle scenes told ships to
+  // park on a paper road, which is exactly the kind of nonsense a template emits.
+  if (has('ship','boat','sailboat','yacht','canoe','kayak','submarine','galleon','raft','ferry','schooner','vessel')) return { category: 'watercraft', label: 'boat', article: 'a' };
+  if (has('car','truck','vehicle','bike','motorcycle','plane','airplane','train','bus','tank','helicopter')) return { category: 'vehicle', label: 'vehicle', article: 'a' };
+  if (has('castle','house','home','building','temple','tower','church','statue','pyramid','cottage','cabin','skyscraper','ferris','cathedral','bridge','lighthouse','windmill','palace')) return { category: 'building', label: 'building', article: 'a' };
+  if (has('robot','knight','warrior','soldier','mecha','ninja','princess','queen','king','wizard','golem','explorer','character','girl','boy','person','figure','hero','villain','samurai','astronaut','pirate','fairy','elf')) return { category: 'character', label: 'character', article: 'a' };
   if (has('flower','plant','tree','rose','succulent','leaf','bloom','cactus')) return { category: 'plant', label: 'plant', article: 'a' };
   if (has('food','cake','burger','fruit','pizza','cookie','cupcake','donut','bread')) return { category: 'food', label: 'food', article: 'a' };
   if (has('box','gift','heart','star','cube','sphere','geometric','diamond','crystal','lantern','ornament')) return { category: 'object', label: 'object', article: 'an' };
@@ -356,125 +361,150 @@ function creativeTips(subject: Subject): string {
 // (directions-ai.ts) still writes fully original copy when the binding is
 // available; this deterministic version is the guaranteed fallback and must never
 // read like a filled-in template.
+// House style for article bodies. These rules exist because the previous version
+// read unmistakably machine-written, so do not "smooth" them back out:
+//   · short sentences, one idea each. The em dash is banned outright.
+//   · no tricolon flourishes, no closing line that restates the paragraph.
+//   · section count, heading wording, direction count and link count all shift
+//     with the prompt hash, so no two pages share an outline.
 const STYLE_NOTES: Record<string, string[]> = {
   cute: [
-    'Round silhouettes and a soft palette do the heavy lifting here — nothing in this design has a sharp corner to hide behind, so the shapes have to be right.',
-    'Everything about this one is soft: chubby proportions, wide-set eyes, a pastel palette that keeps the volumes reading as friendly.',
-    'The cute style works by subtraction: fewer planes, rounder edges, and colour doing most of the emotional work.',
+    'The cute style leans on proportion more than detail. Big head, small body, rounded everywhere. Nothing here has a sharp corner to hide behind, so the shapes have to be right.',
+    'Soft edges and a pastel palette carry this one. Chubby proportions, wide-set eyes, and very little geometry to get wrong.',
+    'Cute is mostly subtraction. Fewer planes, rounder edges, and colour doing the emotional work.',
+    'Nothing in a cute design is complicated on its own. The difficulty is keeping every soft shape at the same level of round.',
   ],
   lowpoly: [
-    'The look comes from flat triangular facets: a tight palette keeps every plane readable, and the hard edges do the modelling instead of shading.',
-    'Facets are the whole idea here — each triangle catches the light at a slightly different angle, so the geometry reads even in a flat image.',
-    'Low poly means the shape is described by a small number of planes, which is exactly what folded paper does naturally.',
+    'The look comes from flat triangular facets. A tight palette keeps every plane readable, and the hard edges do the modelling instead of shading.',
+    'Facets are the whole idea. Each triangle catches light at a slightly different angle, so the geometry reads even in a flat image.',
+    'Low poly means the shape is described by a small number of planes. Folded paper does that naturally, which is why the style suits it.',
+    'Flat planes, no gradients, and a palette small enough to count on one hand. That is the entire trick.',
   ],
   pixel: [
-    'Chunky blocks and a cut-down palette give it the feel of a game sprite that was printed, trimmed and stood up by hand.',
-    'Every edge here is a right angle; the charm is in the staircase outlines and how few colours it takes to read the subject.',
-    'The pixel style trades curves for squares, which makes it the most forgiving look to rebuild with a ruler and a blade.',
+    'Chunky blocks and a cut-down palette give it the feel of a game sprite that was printed, trimmed, then stood up by hand.',
+    'Every edge here is a right angle. The charm is in the staircase outlines and how few colours it takes to read the subject.',
+    'The pixel style trades curves for squares. That makes it the most forgiving look to rebuild with a ruler and a blade.',
+    'Pixel art is a grid with opinions. Once the grid is set, the detail is just choosing which squares to fill.',
   ],
   fantasy: [
-    'Layered scenery, a warm light source and a little glow push this one toward illustration rather than studio product shot.',
-    'Fantasy styling brings atmosphere: a low light source, depth layers and a hint of magic around the edges of the subject.',
-    'This one is staged rather than photographed — foreground, subject and backdrop read as separate planes.',
+    'Layered scenery, a warm light source and a little glow push this toward illustration rather than studio product shot.',
+    'Fantasy styling brings atmosphere. Low light, depth layers, and a bit of haze around the edges of the subject.',
+    'This one is staged rather than photographed. Foreground, subject and backdrop read as separate planes.',
+    'The mood is doing as much work as the model here. Warm light from below, cool shadow behind, and the paper becomes scenery.',
   ],
   minecraft: [
-    'Everything is built from cubes here, so it reads as a stack of blocks rather than one folded sheet.',
-    'The voxel style is all right angles and repeated units: big cubes set the silhouette, smaller ones add detail.',
-    'Blocks instead of folds: the shape is assembled from cubes, which is why the edges look so deliberately stepped.',
+    'Everything is built from cubes, so it reads as a stack of blocks rather than one folded sheet.',
+    'The voxel style is all right angles and repeated units. Big cubes set the silhouette, smaller ones add detail.',
+    'Blocks instead of folds. The shape is assembled from cubes, which is why the edges look so deliberately stepped.',
+    'Voxel shapes are easy to read and hard to get wrong. The only real decision is how big each cube should be.',
   ],
 };
 const STYLE_MATERIALS: Record<string, string[]> = {
   cute: [
-    'Heavy cardstock around 200–250 gsm holds rounded shapes without sagging; score the curves lightly with the back of a blade before folding so the paper does not crack.',
-    'Rounded paper shapes need a little give: 180–220 gsm card bends cleanly, while anything heavier fights you at every curve.',
-    'For soft, rounded forms, crease gently over a dowel rather than pressing hard — the paper keeps its curve instead of kinking.',
+    'Heavy cardstock, somewhere near 200 to 250 gsm, holds rounded shapes without sagging. Score the curves lightly with the back of a blade before folding so the paper does not crack.',
+    'Rounded paper shapes need a little give. 180 to 220 gsm card bends cleanly, and anything heavier fights you at every curve.',
+    'For soft forms, crease gently over a dowel instead of pressing hard. The paper keeps its curve rather than kinking.',
+    'Score curves, do not fold them. Two light passes with a blunt tool beats one hard crease every time.',
   ],
   lowpoly: [
-    'Score every fold line against a steel rule before creasing, and use 250–300 gsm card so the facets stay flat instead of bulging.',
-    'Faceted models only look sharp if the edges are dead straight: cut with a fresh blade, fold over a ruler, and avoid double-creasing.',
-    'Stiffer card is your friend here — 260 gsm or above keeps large planes from flexing once the piece is standing.',
+    'Score every fold line against a steel rule before creasing. 250 to 300 gsm card keeps the facets flat instead of bulging.',
+    'Faceted models only look sharp if the edges are dead straight. Fresh blade, fold over a ruler, and never crease the same line twice.',
+    'Stiffer card helps here. 260 gsm and up keeps the large planes from flexing once the piece is standing.',
+    'Cut every face before you fold any of them. Faceted builds go together much faster when the parts are already on the table.',
   ],
   pixel: [
-    'Build it on a grid: print a light 5 mm grid, count squares rather than eyeballing, and keep a fresh blade in the knife so every step stays square.',
-    'Squared shapes tolerate copy paper surprisingly well, but 160–200 gsm card holds the stepped edges far better.',
-    'Work from one corner outwards so the grid squares stay aligned; drift shows up immediately on a pixel silhouette.',
+    'Build it on a grid. Print a light 5 mm grid, count squares instead of eyeballing, and keep a fresh blade in the knife so every step stays square.',
+    'Squared shapes tolerate copy paper surprisingly well, though 160 to 200 gsm card holds the stepped edges far better.',
+    'Work outwards from one corner so the grid squares stay aligned. Drift shows up immediately on a pixel silhouette.',
+    'A set square and a self-healing mat do more for a pixel build than expensive paper does.',
   ],
   fantasy: [
-    'Layer it — foreground, middle ground and background on separate sheets, stacked with foam pads so the depth reads at a glance.',
-    'The depth comes from spacing: mount each layer a few millimetres in front of the last and let the shadows do the rest.',
-    'Use two paper weights — thin sheets for distant layers, heavier card for the subject — so the focus falls where you want it.',
+    'Layer it. Foreground, middle ground and background on separate sheets, stacked with foam pads so the depth reads at a glance.',
+    'The depth comes from spacing. Mount each layer a few millimetres in front of the last and let the shadows do the rest.',
+    'Use two paper weights. Thin sheets for distant layers, heavier card for the subject, so the focus lands where you want it.',
+    'Backlight it if you can. A single warm lamp behind the layers sells the scene better than any amount of extra cutting.',
   ],
   minecraft: [
-    'Cubes are forgiving: cut identical squares, score all four edges, glue the seams with PVA and weight the assembly while it dries.',
-    'Batch the cubes: cut and score all of one size before folding, and the build goes together twice as fast.',
-    'A cutting mat and a set square matter more than fancy paper here — voxel models live or die on consistent 90° edges.',
+    'Cubes are forgiving. Cut identical squares, score all four edges, glue the seams with PVA and weight the assembly while it dries.',
+    'Batch the cubes. Cut and score everything of one size before folding, and the build goes together twice as fast.',
+    'A cutting mat and a set square matter more than fancy paper. Voxel models live or die on consistent right angles.',
+    'Keep the cubes slightly under size and the gaps will read as joints. Oversized cubes always look like a mistake.',
   ],
 };
-// Closing caveat, many wordings — same point, different phrasing, no shared prefix.
+// One short, plain caveat. It appears on some pages and not others, because a
+// disclaimer on every single article is itself a tell.
 const HONEST_NOTES = [
-  'This page shows the look of the finished piece, not a cutting guide — the fold lines themselves are not included.',
-  'Treat it as concept art for the real thing: it shows how the design should read, not where to cut.',
-  'What you see is papercraft-style illustration rather than a printable net, so use it as visual reference.',
-  'Think of this as the before picture — the artwork shows the finished look, the net is still up to you.',
-  'It is inspiration rather than a template: useful for proportions, colour and staging, not for tracing.',
-  'The render tells you how the model should read; the geometry behind it is yours to work out.',
-  'Useful as a reference shot of the finished model, though it will not fold itself into one.',
-  'A finished-look reference, not a cut list — worth printing for the palette and silhouette alone.',
-  'The image is the destination, not the map: great for matching proportions, useless as a tracing sheet.',
-  'Handy for deciding colour, scale and pose before you commit to card and blade.',
+  'Worth saying plainly: this is artwork, not a printable net. No fold lines are included.',
+  'No cut lines here. The image shows the finished look only.',
+  'This is a reference image rather than a template. The build is yours to work out.',
+  'You will not be able to print and fold this one. It is a picture of the finished idea.',
+  'Treat the artwork as the target, not the pattern.',
+  'Handy for colour, scale and pose. Useless as something to trace.',
+  'The render shows how it should read, not where to cut.',
+  'Great for matching proportions. Not a cutting guide.',
 ];
-const DIRECTION_OPENERS = [
-  'Want a warmer version?', 'For a sharper take,', 'If you would rather see it in context,',
-  'To push the detail further,', 'For a moodier result,', 'If the first try feels too safe,',
-  'When you are ready for a variation,',
-];
-// Second-paragraph subject advice, three variants each so neighbouring pages of the
-// same category never share the same sentence.
+// Second-paragraph subject advice. Four variants per category, so neighbouring
+// pages of the same category never share a sentence.
 const SUBJECT_TIPS: Record<string, string[]> = {
   animal: [
-    'Four-legged and winged subjects look best when the legs and joints are glued firmly; a heavier cardstock helps the figure stand on its own.',
-    'Animals live or die on the silhouette — get the ears, tail and stance right first, then add surface detail only if the shape already reads.',
-    'If you build the paper version, give it a base: a small strip of card under the paws stops the whole figure from tipping forward.',
+    'Four-legged and winged subjects look best when the legs and joints are glued firmly. Heavier cardstock helps the figure stand on its own.',
+    'Animals live or die on the silhouette. Get the ears, tail and stance right first, then add surface detail if the shape already reads.',
+    'If you build the paper version, give it a base. A small strip of card under the paws stops the whole figure tipping forward.',
+    'Fur is not worth chasing in paper. Group the shapes into a few large masses and let the outline say animal.',
   ],
   dragon: [
-    'Dragons have long tails and wings that like to droop — score the fold lines crisply and consider a small base or stand so the model stays upright on a shelf.',
-    'Wings are the hard part: cut them as one piece with a fold down the middle so both sides stay symmetrical.',
-    'A dragon reads better with a bit of curve to the neck and tail than with everything held perfectly straight.',
+    'Dragons have long tails and wings that like to droop. Score the fold lines crisply and consider a small stand so the model stays upright on a shelf.',
+    'Wings are the hard part. Cut them as one piece with a fold down the middle so both sides stay symmetrical.',
+    'A dragon reads better with a slight curve in the neck and tail than with everything held perfectly straight.',
+    'Tails need either wire or a rolled paper core. Unsupported, they sag within a day.',
   ],
   vehicle: [
-    'Vehicles depend on clean, straight cuts along the body panels — a steel ruler and a fresh blade make the difference between a toy that looks crisp and one that looks rough.',
-    'Wheels are the detail people notice first; cut them last, when the body already holds its shape.',
-    'Keep the body panels flat while the glue dries — a warp of a millimetre shows up badly on a vehicle.',
+    'Vehicles depend on straight cuts along the body panels. A steel ruler and a fresh blade make the difference between a toy that looks crisp and one that looks rough.',
+    'Wheels are the detail people notice first. Cut them last, when the body already holds its shape.',
+    'Keep the body flat while the glue dries. A warp of a millimetre shows up badly on a vehicle.',
+    'Panel gaps are free detail. Leave a hair of space between the body and the wheels and it reads as a real vehicle.',
   ],
   building: [
-    'Towers and castles read better with sharp creases at every corner; fold toward yourself and run a bone folder along each edge for a solid, architectural finish.',
-    'Roofs and spires set the scale, so measure those first and work downwards towards the base.',
-    'Architecture is where paper behaves best: straight folds, square corners, and almost no shaping required.',
+    'Towers and castles read better with sharp creases at every corner. Fold toward yourself and run a bone folder along each edge.',
+    'Roofs and spires set the scale. Measure those first and work downwards toward the base.',
+    'Architecture is where paper behaves best. Straight folds, square corners, almost no shaping required.',
+    'Cut the windows before you fold the walls. Doing it afterwards risks crushing the corner you just creased.',
   ],
   character: [
-    'Characters carry a lot of small parts — assemble the torso first, then attach limbs and head so the proportions stay balanced as you build.',
-    'Give a character one clear prop or colour accent; without it the figure tends to read as generic.',
-    'Build the head first and match everything else to it — proportion problems always show up there.',
+    'Characters carry a lot of small parts. Assemble the torso first, then attach limbs and head so the proportions stay balanced as you build.',
+    'Give a character one clear prop or colour accent. Without it the figure tends to read as generic.',
+    'Build the head first and match everything else to it. Proportion problems always show up there.',
+    'Keep the pose slightly off-centre. A perfectly symmetrical character looks like a paper doll rather than a character.',
   ],
   plant: [
-    'Petals and leaves curve nicely if you curl them gently around a pencil after cutting, adding a little life to an otherwise flat sheet.',
+    'Petals and leaves curve nicely if you curl them gently around a pencil after cutting.',
     'Stems need wire or a rolled paper core, otherwise they bend as soon as the flower head goes on.',
-    'Keep the vein side of the card facing up on leaves; the texture catches light and stops them looking like flat shapes.',
+    'Keep the vein side of the card facing up on leaves. The texture catches light and stops them looking like flat shapes.',
+    'Build flowers in threes or fives. Odd numbers sit together more naturally than pairs do.',
   ],
   food: [
-    'Layered treats like cakes look best built bottom-up; let each tier dry before adding the next so the stack stays straight.',
-    'Food reads through texture more than shape — a light emboss on the surface sells the idea faster than extra detail.',
-    'Small props (a paper plate, a folded napkin) do a lot of the work when the main subject is simple.',
+    'Layered treats like cakes look best built bottom-up. Let each tier dry before adding the next so the stack stays straight.',
+    'Food reads through texture more than shape. A light emboss on the surface sells the idea faster than extra detail.',
+    'Small props help a lot when the main subject is simple. A paper plate or a folded napkin does half the work.',
+    'Keep the palette warm and limited. Paper food goes wrong when the colours get too saturated.',
   ],
   object: [
-    'Simple geometric objects are a great first project — precise cutting and a dab of glue at each tab is all it takes for a clean result.',
-    'Symmetry is everything with objects; cut one face, use it as the template for the rest.',
+    'Simple geometric objects are a good first project. Precise cutting and a dab of glue at each tab is all it takes.',
+    'Symmetry matters with objects. Cut one face, then use it as the template for the rest.',
     'Objects photograph well in sets, so a matching trio is often a stronger result than one perfect piece.',
+    'Hollow shapes need a hidden support. A folded card rib inside keeps a box from denting when you pick it up.',
   ],
   abstract: [
     'Start with the largest pieces to set the silhouette, then fill in the smaller details last.',
-    'When the idea is abstract, contrast does the work: one bold colour against a quiet background.',
-    'Abstract shapes benefit from a hard light — the shadow becomes part of the composition.',
+    'When the idea is abstract, contrast does the work. One bold colour against a quiet background.',
+    'Abstract shapes benefit from hard light. The shadow becomes part of the composition.',
+    'Let the edges stay visible. On abstract work, the cut line is often the most interesting part.',
+  ],
+  watercraft: [
+    'Boats need a flat keel or they will not stand up. Cut the hull as one piece and double the base strip so it holds.',
+    'Sails are the fragile part. Fold them around a thin wire so they keep their shape instead of drooping after a day on the shelf.',
+    'Build the hull first and check it sits level before adding masts. A leaning mast is very hard to correct later.',
+    'Water is easier to fake than to build. A strip of torn tissue under the hull reads as a wake without any cutting.',
   ],
 };
 // Subject-aware scenes. Generic modifiers ("add more detail", "cozy scene") are
@@ -535,6 +565,12 @@ const ARTICLE_SCENES: Record<string, { label: string; suffix: string }[]> = {
     { label: 'mixed stock', suffix: 'built from kraft, white and tissue paper layers' },
     { label: 'hard light', suffix: 'lit hard from one side so the paper shadow becomes part of the picture' },
   ],
+  watercraft: [
+    { label: 'on waves', suffix: 'sitting on layered paper waves with a torn tissue wake' },
+    { label: 'at a pier', suffix: 'docked at a small paper pier with folded bollards' },
+    { label: 'tissue sails', suffix: 'with sails made from folded tissue paper catching low light' },
+    { label: 'deck cutaway', suffix: 'cut open along the hull so the deck and cabin show' },
+  ],
 };
 
 export function buildIntro(prompt: string, subject: Subject, style: string, styleWord: string): string {
@@ -546,75 +582,173 @@ export function buildIntro(prompt: string, subject: Subject, style: string, styl
   const subjectWord = noun || 'idea';
   const subjArticle = noun ? subject.article : 'an';              // 'an animal' / 'an object' / 'an idea'
 
+  const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+  const wordCount = prompt.split(/\s+/).filter(Boolean).length;
+
+  // Opening lines. Short, plain, and never two sentences of scene-setting in a row.
   const leadShapes = [
-    `Type "${prompt}" into the generator and this is what comes back: ${article} ${np} — no brush, no ruler, no cutting mat.`,
-    `Some ideas look better in paper than on paper. Rendered as ${article} ${np}, "${prompt}" finally looks like something you could pick up.`,
-    `"${prompt}" was the whole brief behind this ${np}, and it turned into ${subjArticle} ${subjectWord} with visible folds, layered depth and a soft studio background.`,
-    `Half the charm of a paper model is the way it catches light. That is what this ${np} of "${prompt}" is leaning on.`,
-    `Describe "${prompt}", pick a style, and the papercraft generator does the rest — ${article} ${np}, downloaded in seconds.`,
-    `A sentence went in, ${article} ${np} came out. The sentence was "${prompt}".`,
-    `Paper is an odd medium for a machine to imitate, yet here it is: ${article} ${np} built around "${prompt}".`,
-    `"${prompt}" reads differently once it is folded. That is the short version of this ${np}.`,
-    `Nothing was cut, scored or glued to make the picture above — it is ${article} ${np} of "${prompt}", drawn rather than built.`,
-    `One line went into the prompt box. ${subjArticle.charAt(0).toUpperCase() + subjArticle.slice(1)} ${subjectWord} in paper came out, styled as a ${np}.`,
+    `The prompt was "${prompt}". This is what came back.`,
+    `"${prompt}" is about as short as a brief gets. The result is ${article} ${np}.`,
+    `Short version: ${article} ${np} of "${prompt}".`,
+    `Put "${prompt}" in the box, pick a style, and this is the kind of thing that comes out.`,
+    `${cap(article)} ${np} of "${prompt}", from one line of text.`,
+    `One prompt, "${prompt}", a few seconds of waiting. That gets you here.`,
+    `This started as "${prompt}". It ended up as ${article} ${np}.`,
+    `Nothing was cut or glued to make the picture below. It came from the prompt "${prompt}".`,
+    `Here is what "${prompt}" looks like once it is described in paper terms.`,
+    `A ${wordCount}-word prompt, "${prompt}", and ${article} ${np} at the other end.`,
+    `The brief behind this one was "${prompt}", typed straight into the generator.`,
+    `Type "${prompt}" and the generator reads it as ${article} ${np}. That is the whole setup.`,
   ];
   const lead = leadShapes[h % leadShapes.length];
 
   const styleNotes = STYLE_NOTES[style] || STYLE_NOTES.cute;
-  const look = styleNotes[h % styleNotes.length];
+  const look = styleNotes[Math.floor(h / 3) % styleNotes.length];
   const tips = SUBJECT_TIPS[subject.category] || SUBJECT_TIPS.abstract;
-  const tip = tips[Math.floor(h / 7) % tips.length];
-  const secondPara = h % 3 === 0 ? `${tip} ${look}` : `${look} ${tip}`;
+  const tip = tips[Math.floor(h / 11) % tips.length];
+  // Body varies in shape too: some pages carry only the style note, some only the
+  // build advice, some both in either order. Uniform "style then tip, always" was
+  // half of what made these pages read as one template.
+  const bodyShapes = [look, tip, `${look}\n\n${tip}`, `${tip}\n\n${look}`];
+  const extraNotes = [
+    'The background stays plain, which is what keeps the silhouette readable.',
+    'The palette is narrow on purpose. Three or four tones, no more.',
+    'Look at the shadow under the base. That is what makes it sit on a table rather than float.',
+    'Flat lighting, soft falloff, no reflections. Paper is easier to read that way.',
+    'Nothing in the frame competes with the subject, which is most of the reason it works.',
+  ];
+  const useExtra = h % 5 === 0;
+  const extraNote = extraNotes[Math.floor(h / 17) % extraNotes.length];
 
   const scenes = ARTICLE_SCENES[subject.category] || ARTICLE_SCENES.abstract;
-  const dirSentences = scenes.map((scene, i) => {
-    const opener = DIRECTION_OPENERS[(h + i * 3) % DIRECTION_OPENERS.length];
-    return `${opener} try "${prompt}, ${scene.suffix}".`;
-  }).join(' ');
-  const dirIntros = [
-    'The first result is rarely the one you keep.',
-    'Most people generate three or four versions before settling on one.',
-    'One generation is a starting point, not a finished piece.',
-    'The obvious version is easy; the interesting one usually takes a second prompt.',
-    'If the first take feels flat, that is normal — the follow-ups are where it gets interesting.',
-    'Worth remembering: every one of these is one sentence away from a different picture.',
-    'Nothing here is final until you stop generating.',
-    'Each of these keeps the subject and changes the staging.',
-  ];
-
   const materials = STYLE_MATERIALS[style] || STYLE_MATERIALS.cute;
-  const material = materials[Math.floor(h / 13) % materials.length];
-  const honestNote = HONEST_NOTES[h % HONEST_NOTES.length];
-  const hasCatPage = ['animal', 'dragon', 'vehicle', 'building'].includes(subject.category);
-  const catLink = hasCatPage
-    ? `[more ${subject.category} papercraft designs](/gallery/${subject.category}/)`
-    : '[the rest of the gallery](/gallery/)';
-  const closings = [
-    'Looking for another angle?',
-    'Still deciding on a direction?',
-    'Want to see how other ideas turned out?',
-    'If you would rather start from something finished,',
-    'For more of the same subject,',
-    'Not sure where to go next?',
-    'Hunting for a place to start?',
-    'Curious what else people are making?',
+  const material = materials[Math.floor(h / 19) % materials.length];
+  const honestNote = HONEST_NOTES[Math.floor(h / 29) % HONEST_NOTES.length];
+
+  // Outline variant. A fixed two-heading structure repeated on 117 pages was the
+  // loudest template signal on the site, so heading count, heading wording,
+  // direction count and link count all shift per page.
+  type Shape = { heads: 0 | 1 | 2; dirs: number; build: boolean; links: 1 | 2 | 3; note: boolean };
+  const shapes: Shape[] = [
+    { heads: 0, dirs: 3, build: true, links: 2, note: false },
+    { heads: 0, dirs: 4, build: true, links: 1, note: true },
+    { heads: 1, dirs: 3, build: false, links: 2, note: true },
+    { heads: 1, dirs: 4, build: true, links: 1, note: false },
+    { heads: 1, dirs: 3, build: false, links: 2, note: false },
+    { heads: 2, dirs: 3, build: true, links: 3, note: true },
+    { heads: 2, dirs: 4, build: true, links: 2, note: false },
+    { heads: 2, dirs: 2, build: true, links: 3, note: false },
+  ];
+  const shape = shapes[h % shapes.length];
+
+  // Pages without headings need a little more body to keep the section from
+  // reading as a stub, so they always carry the extra observation.
+  let body = bodyShapes[Math.floor(h / 7) % bodyShapes.length];
+  if (useExtra || shape.heads === 0) body += (h % 3 === 0 ? '\n\n' : ' ') + extraNote;
+
+  const headPrompts = [
+    'Other directions', 'Taking it further', 'Variations worth trying',
+    'Follow-up prompts', 'If you want a different mood', 'Where to go next',
+    'Prompts to try after this one', 'Changing the staging',
+  ];
+  const headBuild = [
+    'Making it in paper', 'If you build it', 'Paper and tools',
+    'Notes for the build', 'Building it for real', 'Before you cut anything',
+    'The paper part', 'Practical notes',
   ];
 
-  return [
-    lead,
-    '',
-    secondPara,
-    '',
-    '## Ways to take this further',
-    '',
-    `${dirIntros[h % dirIntros.length]} ${dirSentences} Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.`,
-    '',
-    '## Building it in real paper',
-    '',
-    `${material}`,
-    '',
-    `${honestNote} ${closings[Math.floor(h / 5) % closings.length]} Browse ${catLink}, grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).`,
-  ].join('\n');
+  // Direction formats rotate inside the paragraph. Fifteen shapes, stride coprime
+  // with 15 so a page never repeats one. Every lead-in stays neutral on purpose:
+  // lines like "swap the background" read as nonsense next to a "caught mid-leap"
+  // suffix, and "pushes it somewhere else entirely" was pure filler.
+  const dirFormats: ((s: { label: string; suffix: string }) => string)[] = [
+    (s) => `"${prompt}, ${s.suffix}".`,
+    (s) => `Try "${prompt}, ${s.suffix}".`,
+    (s) => `Or "${prompt}, ${s.suffix}".`,
+    (s) => `Then there is "${prompt}, ${s.suffix}".`,
+    (s) => `One worth a go: "${prompt}, ${s.suffix}".`,
+    (s) => `Another angle: "${prompt}, ${s.suffix}".`,
+    (s) => `Also worth generating: "${prompt}, ${s.suffix}".`,
+    (s) => `Or this: "${prompt}, ${s.suffix}".`,
+    (s) => `Another variation: "${prompt}, ${s.suffix}".`,
+    (s) => `Worth an attempt: "${prompt}, ${s.suffix}".`,
+    (s) => `Same subject: "${prompt}, ${s.suffix}".`,
+    (s) => `A different direction: "${prompt}, ${s.suffix}".`,
+    (s) => `If the first one felt off, "${prompt}, ${s.suffix}".`,
+    (s) => `One more: "${prompt}, ${s.suffix}".`,
+    (s) => `Last one: "${prompt}, ${s.suffix}".`,
+  ];
+  // Lead-ins must not imply a plural that may not follow (two directions are
+  // common), and must not promise a change the suffix does not make.
+  const dirLeads = [
+    'One generation is rarely the end of it.',
+    'The first result is usually the safe one.',
+    'If you want a different mood, the prompt is the only dial worth turning.',
+    'Another attempt is usually worth the extra minute.',
+    'The subject can stay put while everything around it changes.',
+    'Two or three variations usually beat one perfect prompt.',
+    'Small prompt edits move the result further than you would expect.',
+    'Nothing is fixed until you stop generating.',
+    'The obvious version is not always the best one.',
+    'Same prompt, different staging, is usually enough.',
+    'It is worth seeing the idea in more than one setting.',
+    'The subject does not have to change for the picture to.',
+  ];
+  const dirLines = scenes.slice(0, shape.dirs).map((s, i) => dirFormats[(h + i * 7) % dirFormats.length](s));
+  const dirBlock = `${dirLeads[Math.floor(h / 23) % dirLeads.length]} ${dirLines.join(' ')}`;
+
+  // Outgoing links: 1 to 3, worded differently each time. The old fixed
+  // "Browse X, grab Y, or fold Z" tail ran on every single page.
+  const catName = subject.label === 'papercraft' ? 'paper' : subject.label;
+  const hasCatPage = ['animal', 'dragon', 'vehicle', 'building'].includes(subject.category);
+  const catLinks = hasCatPage
+    ? [
+        `There are more ${catName} designs in [the ${catName} gallery](/gallery/${subject.category}/).`,
+        `For more ${catName} designs, browse [the ${catName} gallery](/gallery/${subject.category}/).`,
+        `[The ${catName} gallery](/gallery/${subject.category}/) has the rest of the set.`,
+      ]
+    : [
+        `[The full gallery](/gallery/) has plenty more like this.`,
+        `More in [the gallery](/gallery/).`,
+        `Browse [everything else](/gallery/) if this is the look you are after.`,
+      ];
+  const printLinks = [
+    'If you would rather have the fold lines drawn for you, start from a [printable template](/printables/).',
+    '[Printable templates](/printables/) are the shortcut if you want to build today.',
+    'Prefer a ready-made net? Try [printable templates](/printables/).',
+    'There are [printable templates](/printables/) if you want the cutting already worked out.',
+    'Ready to build rather than browse? [Printable templates](/printables/) skip the guesswork.',
+    'The [printable templates](/printables/) are worth a look if you would rather fold than design.',
+  ];
+  const origamiLinks = [
+    'And if folding by hand appeals more, the [origami tutorials](/origami/) go step by step.',
+    'For plain folding practice, work through the [origami tutorials](/origami/).',
+    'There are also [origami tutorials](/origami/) if you would rather fold than cut.',
+    'If you prefer creases to cuts, the [origami tutorials](/origami/) are the place to start.',
+    'The [origami tutorials](/origami/) cover the traditional side of paper, one fold at a time.',
+    'Hand folding instead? The [origami tutorials](/origami/) walk through it slowly.',
+  ];
+  const linkPool = [
+    catLinks[Math.floor(h / 31) % catLinks.length],
+    printLinks[Math.floor(h / 37) % printLinks.length],
+    origamiLinks[Math.floor(h / 41) % origamiLinks.length],
+  ];
+  const closeText = linkPool.slice(0, shape.links).join(' ');
+
+  const dirSection = shape.heads >= 1 && !(shape.heads === 1 && shape.build)
+    ? ['## ' + headPrompts[Math.floor(h / 11) % headPrompts.length], '', dirBlock]
+    : [dirBlock];
+  const buildSection = shape.build
+    ? shape.heads === 0
+      ? [material]
+      : ['## ' + headBuild[Math.floor(h / 13) % headBuild.length], '', material]
+    : [];
+
+  const parts: string[] = [lead, '', body, '', ...dirSection];
+  if (buildSection.length) parts.push('', ...buildSection);
+  if (shape.note) parts.push('', honestNote);
+  parts.push('', closeText);
+  return parts.join('\n').replace(/\n{3,}/g, '\n\n').trim();
 }
 
 const STYLE_LABEL: Record<string, string> = {
@@ -623,7 +757,9 @@ const STYLE_LABEL: Record<string, string> = {
 
 export function buildMeta(promptRaw: string, styleRaw: string): Generated {
   const style = (styleRaw || 'cute').toString().toLowerCase();
-  const prompt = stripArticle(promptRaw.trim());
+  // Collapse runs of whitespace: raw prompts sometimes arrive with double spaces,
+  // which then show up inside every quoted prompt on the page.
+  const prompt = stripArticle(promptRaw.trim()).replace(/\s+/g, ' ');
   const subject = detectSubject(prompt);
   // Title: prefer the real prompt (unique per page); fall back to style + subject.
   // No "— Free X Design" suffix — that pattern made 90+ pages read identically.
@@ -641,19 +777,37 @@ export function buildMeta(promptRaw: string, styleRaw: string): Generated {
   const title = titleCandidates[0] || `${subjectTitle} Papercraft Design`;
 
   const styleWord = styleLabel ? styleLabel.toLowerCase() + ' ' : '';
-  // Descriptions rotate between four skeletons (picked by a stable hash of the prompt)
-  // so neighbouring pages do not share one sentence pattern.
+  // Descriptions rotate between skeletons (picked by a stable hash of the prompt)
+  // so neighbouring pages do not share one sentence pattern. They also do not just
+  // restate the title: they say what the visitor can actually do next.
   const hash = [...prompt].reduce((a, c) => a + c.charCodeAt(0), 0);
+  const subj = subject.label === 'papercraft' ? '' : subject.label + ' ';
+  const sw = styleWord ? styleWord.trim() : '';
   const descSkeletons = [
-    `A free ${styleWord}${subject.label} papercraft design of "${prompt}" — AI-generated artwork with the prompt ready to copy and remix.`,
-    `Free ${styleWord}${subject.label} papercraft design: "${prompt}". AI papercraft artwork plus follow-up prompts to try next.`,
-    `"${prompt}" rendered as a ${styleWord}${subject.label} papercraft design. Free AI-generated artwork, no sign-up needed.`,
-    `Turn one sentence into a ${styleWord}${subject.label} papercraft design. This one started from "${prompt}" — free and instant.`,
+    sw
+      ? `A ${sw} take on "${prompt}", generated with the free AI papercraft generator. Save it or reuse the prompt for your own version.`
+      : `"${prompt}" as a papercraft design, generated with the free AI papercraft generator. Save it or reuse the prompt.`,
+    `Papercraft design of "${prompt}"${sw ? ' in ' + sw + ' style' : ''}. Free AI artwork, no account needed, and follow-up prompts to try next.`,
+    `See how "${prompt}" reads as paper. Free ${sw ? sw + ' ' : ''}${subj}papercraft artwork from koPaper, with the exact prompt included.`,
+    `Made from one line: "${prompt}". A free ${sw ? sw + ' ' : ''}papercraft design you can download, plus variations worth generating.`,
+    `"${prompt}" turned into ${sw ? 'a ' + sw + ' ' : 'a '}papercraft design. Free AI generator, instant results, no sign-up.`,
   ];
   const rotated = descSkeletons.map((_, i) => descSkeletons[(hash + i) % descSkeletons.length]);
   let description = rotated.find(d => d.length <= 160) || descSkeletons[0];
+  if (description.length > 160) description = description.slice(0, 157).replace(/[,;\s]+\S*$/, '') + '.';
 
-  const caption = `AI-generated ${styleWord ? styleWord : ''}papercraft of ${prompt}.`;
+  // Alt text: describe the image, do not stuff the raw prompt in. Raw prompts are
+  // often conversational or misspelled, which used to leak straight into alt text.
+  const conversational = /\bi want\b|\bmake me\b|\bplease\b|\bcreat\b/i.test(prompt);
+  const capUsable = !conversational && prompt.split(/\s+/).length <= 12 && promptQuality(prompt).ok;
+  const promptHasStyle = styleLabel
+    ? new RegExp(`\\b${styleLabel.toLowerCase().replace(/\s+/g, '\\s+')}\\b`).test(prompt.toLowerCase())
+    : false;
+  const caption = !capUsable
+    ? `${styleLabel || 'Papercraft'} papercraft design`
+    : promptHasStyle
+      ? `${prompt.charAt(0).toUpperCase() + prompt.slice(1)} papercraft design`
+      : `${styleLabel} papercraft design of ${prompt}`;
   const intro = buildIntro(prompt, subject, style, styleWord);
   const quality = promptQuality(prompt);
 

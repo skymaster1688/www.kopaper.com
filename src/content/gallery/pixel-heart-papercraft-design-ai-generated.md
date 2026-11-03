@@ -1,27 +1,27 @@
 ---
 title: "Pixel Heart Papercraft Design"
-description: "A glowing pixel heart built from square paper blocks with a happy face. Try a pixel valentine, retro heart, pixel panda or glowing heart — copy any prompt."
+description: "A cute take on \"pixel heart\", generated with the free AI papercraft generator. Save it or reuse the prompt for your own version."
 emoji: "❤️"
 style: "cute"
-updated: "2026-09-02"
+updated: "2026-11-03"
 order: 99
 draft: false
 ---
 
-One line went into the prompt box. An object in paper came out, styled as a cute object papercraft design.
+Nothing was cut or glued to make the picture below. It came from the prompt "pixel heart".
 
-Everything about this one is soft: chubby proportions, wide-set eyes, a pastel palette that keeps the volumes reading as friendly. Simple geometric objects are a great first project — precise cutting and a dab of glue at each tab is all it takes for a clean result.
+Cute is mostly subtraction. Fewer planes, rounder edges, and colour doing the emotional work.
 
-## Ways to take this further
+Symmetry matters with objects. Cut one face, then use it as the template for the rest.
 
-The obvious version is easy; the interesting one usually takes a second prompt. For a sharper take, try "pixel heart, centred as a single hero shot on a plain cream sweep". For a moodier result, try "pixel heart, shown as a set of three in different sizes on a shelf". Want a warmer version? try "pixel heart, exploded into its paper parts, floating slightly apart". To push the detail further, try "pixel heart, lit hard from one side so the paper shadow becomes part of the picture". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
+The obvious version is not always the best one. One worth a go: "pixel heart, centred as a single hero shot on a plain cream sweep". A different direction: "pixel heart, shown as a set of three in different sizes on a shelf". Then there is "pixel heart, exploded into its paper parts, floating slightly apart". Same subject: "pixel heart, lit hard from one side so the paper shadow becomes part of the picture".
 
-## Building it in real paper
+## Making it in paper
 
-For soft, rounded forms, crease gently over a dowel rather than pressing hard — the paper keeps its curve instead of kinking.
+For soft forms, crease gently over a dowel instead of pressing hard. The paper keeps its curve rather than kinking.
 
-Handy for deciding colour, scale and pose before you commit to card and blade. If you would rather start from something finished, Browse [the rest of the gallery](/gallery/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
+[The full gallery](/gallery/) has plenty more like this.
 
-![AI-generated cute papercraft of pixel heart.](/images/gallery/pixel-heart-papercraft-design-ai-generated-mtje1lgpu4k8.jpg)
+![Cute papercraft design of pixel heart](/images/gallery/pixel-heart-papercraft-design-ai-generated-mtje1lgpu4k8.jpg)
 
-*AI-generated cute papercraft of pixel heart.*
+*Cute papercraft design of pixel heart*

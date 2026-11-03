@@ -1,28 +1,28 @@
 ---
 title: "Patrulla De Policia Pickup Papercraft Design"
-description: "Free lowpoly papercraft papercraft design of \"Patrulla de policia pickup\" — AI-generated artwork with ready-to-use prompts to try next."
+description: "Made from one line: \"Patrulla de policia pickup\". A free low poly papercraft design you can download, plus variations worth generating."
 emoji: "🎨"
 style: "lowpoly"
-updated: "2026-10-23"
+updated: "2026-11-03"
 order: 99
 draft: false
 noindex: true
 ---
 
-"Patrulla de policia pickup" reads differently once it is folded. That is the short version of this low poly papercraft design.
+Nothing was cut or glued to make the picture below. It came from the prompt "Patrulla de policia pickup".
 
-Facets are the whole idea here — each triangle catches the light at a slightly different angle, so the geometry reads even in a flat image. Abstract shapes benefit from a hard light — the shadow becomes part of the composition.
+Abstract shapes benefit from hard light. The shadow becomes part of the composition.
 
-## Ways to take this further
+Low poly means the shape is described by a small number of planes. Folded paper does that naturally, which is why the style suits it.
 
-The obvious version is easy; the interesting one usually takes a second prompt. If you would rather see it in context, try "Patrulla de policia pickup, shown in three different paper colourways side by side". If the first try feels too safe, try "Patrulla de policia pickup, shown small and large in the same frame for contrast". For a sharper take, try "Patrulla de policia pickup, built from kraft, white and tissue paper layers". For a moodier result, try "Patrulla de policia pickup, lit hard from one side so the paper shadow becomes part of the picture". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
+Same prompt, different staging, is usually enough. Or this: "Patrulla de policia pickup, shown in three different paper colourways side by side". Last one: "Patrulla de policia pickup, shown small and large in the same frame for contrast". Also worth generating: "Patrulla de policia pickup, built from kraft, white and tissue paper layers". One more: "Patrulla de policia pickup, lit hard from one side so the paper shadow becomes part of the picture".
 
-## Building it in real paper
+## If you build it
 
-Faceted models only look sharp if the edges are dead straight: cut with a fresh blade, fold over a ruler, and avoid double-creasing.
+Faceted models only look sharp if the edges are dead straight. Fresh blade, fold over a ruler, and never crease the same line twice.
 
-A finished-look reference, not a cut list — worth printing for the palette and silhouette alone. Not sure where to go next? Browse [the rest of the gallery](/gallery/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
+[The full gallery](/gallery/) has plenty more like this.
 
-![AI-generated lowpoly papercraft of Patrulla de policia pickup.](/images/gallery/patrulla-de-policia-pickup-papercraft-design-mvl2azqsm39p.jpg)
+![Low poly papercraft design of Patrulla de policia pickup](/images/gallery/patrulla-de-policia-pickup-papercraft-design-mvl2azqsm39p.jpg)
 
-*AI-generated lowpoly papercraft of Patrulla de policia pickup.*
+*Low poly papercraft design of Patrulla de policia pickup*

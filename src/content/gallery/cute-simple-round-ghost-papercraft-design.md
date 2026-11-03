@@ -1,28 +1,26 @@
 ---
 title: "Cute Simple Round Ghost Papercraft Design"
-description: "Free low poly papercraft design of \"Cute simple round ghost\" — AI-generated artwork with ready-to-use prompts to try next."
+description: "Made from one line: \"Cute simple round ghost\". A free low poly papercraft design you can download, plus variations worth generating."
 emoji: "👻"
 style: "lowpoly"
-updated: "2026-09-04"
+updated: "2026-11-03"
 order: 99
 draft: false
 noindex: true
 ---
 
-"Cute simple round ghost" was the whole brief behind this low poly papercraft design, and it turned into an idea with visible folds, layered depth and a soft studio background.
+The prompt was "Cute simple round ghost". This is what came back.
 
-When the idea is abstract, contrast does the work: one bold colour against a quiet background. The look comes from flat triangular facets: a tight palette keeps every plane readable, and the hard edges do the modelling instead of shading.
+Let the edges stay visible. On abstract work, the cut line is often the most interesting part.
 
-## Ways to take this further
+Nothing in the frame competes with the subject, which is most of the reason it works.
 
-The first result is rarely the one you keep. If the first try feels too safe, try "Cute simple round ghost, shown in three different paper colourways side by side". For a sharper take, try "Cute simple round ghost, shown small and large in the same frame for contrast". For a moodier result, try "Cute simple round ghost, built from kraft, white and tissue paper layers". Want a warmer version? try "Cute simple round ghost, lit hard from one side so the paper shadow becomes part of the picture". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
+Small prompt edits move the result further than you would expect. If the first one felt off, "Cute simple round ghost, shown in three different paper colourways side by side". One worth a go: "Cute simple round ghost, shown small and large in the same frame for contrast". A different direction: "Cute simple round ghost, built from kraft, white and tissue paper layers".
 
-## Building it in real paper
+Cut every face before you fold any of them. Faceted builds go together much faster when the parts are already on the table.
 
-Score every fold line against a steel rule before creasing, and use 250–300 gsm card so the facets stay flat instead of bulging.
+Browse [everything else](/gallery/) if this is the look you are after. If you would rather have the fold lines drawn for you, start from a [printable template](/printables/).
 
-What you see is papercraft-style illustration rather than a printable net, so use it as visual reference. Hunting for a place to start? Browse [the rest of the gallery](/gallery/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
+![Low poly papercraft design of Cute simple round ghost](/images/gallery/cute-simple-round-ghost-papercraft-design-mtm7r6nwkatn.jpg)
 
-![AI-generated lowpoly papercraft of Cute simple round ghost.](/images/gallery/cute-simple-round-ghost-papercraft-design-mtm7r6nwkatn.jpg)
-
-*AI-generated lowpoly papercraft of Cute simple round ghost.*
+*Low poly papercraft design of Cute simple round ghost*

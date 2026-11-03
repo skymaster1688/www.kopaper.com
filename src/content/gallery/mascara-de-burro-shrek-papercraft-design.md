@@ -1,28 +1,26 @@
 ---
 title: "Mascara De Burro Shrek Papercraft Design"
-description: "Free lowpoly vehicle papercraft design of \"Mascara de burro shrek\" — AI-generated artwork with ready-to-use prompts to try next."
+description: "Made from one line: \"Mascara de burro shrek\". A free low poly papercraft design you can download, plus variations worth generating."
 emoji: "🚗"
 style: "lowpoly"
-updated: "2026-10-23"
+updated: "2026-11-03"
 order: 99
 draft: false
 noindex: true
 ---
 
-Type "Mascara de burro shrek" into the generator and this is what comes back: a low poly vehicle papercraft design — no brush, no ruler, no cutting mat.
+A low poly papercraft design of "Mascara de burro shrek", from one line of text.
 
-Facets are the whole idea here — each triangle catches the light at a slightly different angle, so the geometry reads even in a flat image. Wheels are the detail people notice first; cut them last, when the body already holds its shape.
+Facets are the whole idea. Each triangle catches light at a slightly different angle, so the geometry reads even in a flat image.
 
-## Ways to take this further
+Start with the largest pieces to set the silhouette, then fill in the smaller details last. Nothing in the frame competes with the subject, which is most of the reason it works.
 
-The first result is rarely the one you keep. When you are ready for a variation, try "Mascara de burro shrek, parked on a strip of paper road with a few paper trees behind it". If you would rather see it in context, try "Mascara de burro shrek, leaning into a turn with paper motion streaks trailing behind". If the first try feels too safe, try "Mascara de burro shrek, presented on a blueprint-style sheet with visible fold marks". For a sharper take, try "Mascara de burro shrek, standing next to a tiny paper figure to show the scale". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
+Small prompt edits move the result further than you would expect. Same subject: "Mascara de burro shrek, shown in three different paper colourways side by side". Or "Mascara de burro shrek, shown small and large in the same frame for contrast". Worth an attempt: "Mascara de burro shrek, built from kraft, white and tissue paper layers".
 
-## Building it in real paper
+Faceted models only look sharp if the edges are dead straight. Fresh blade, fold over a ruler, and never crease the same line twice.
 
-Score every fold line against a steel rule before creasing, and use 250–300 gsm card so the facets stay flat instead of bulging.
+Browse [everything else](/gallery/) if this is the look you are after. If you would rather have the fold lines drawn for you, start from a [printable template](/printables/).
 
-This page shows the look of the finished piece, not a cutting guide — the fold lines themselves are not included. Looking for another angle? Browse [more vehicle papercraft designs](/gallery/vehicle/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
+![Low poly papercraft design of Mascara de burro shrek](/images/gallery/mascara-de-burro-shrek-papercraft-design-mvl2854830fj.jpg)
 
-![AI-generated lowpoly papercraft of Mascara de burro shrek.](/images/gallery/mascara-de-burro-shrek-papercraft-design-mvl2854830fj.jpg)
-
-*AI-generated lowpoly papercraft of Mascara de burro shrek.*
+*Low poly papercraft design of Mascara de burro shrek*

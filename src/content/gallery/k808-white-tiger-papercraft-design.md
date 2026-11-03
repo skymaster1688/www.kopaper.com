@@ -1,28 +1,30 @@
 ---
 title: "K808 White Tiger Papercraft Design"
-description: "Free low poly animal papercraft design of \"k808 white tiger\" — AI-generated artwork with ready-to-use prompts to try next."
+description: "A low poly take on \"k808 white tiger\", generated with the free AI papercraft generator. Save it or reuse the prompt for your own version."
 emoji: "🐯"
 style: "lowpoly"
-updated: "2026-09-21"
+updated: "2026-11-03"
 order: 99
 draft: false
 noindex: true
 ---
 
-One line went into the prompt box. An animal in paper came out, styled as a low poly animal papercraft design.
+A 3-word prompt, "k808 white tiger", and a low poly animal papercraft design at the other end.
 
-Four-legged and winged subjects look best when the legs and joints are glued firmly; a heavier cardstock helps the figure stand on its own. The look comes from flat triangular facets: a tight palette keeps every plane readable, and the hard edges do the modelling instead of shading.
+Animals live or die on the silhouette. Get the ears, tail and stance right first, then add surface detail if the shape already reads.
 
-## Ways to take this further
+Flat planes, no gradients, and a palette small enough to count on one hand. That is the entire trick.
 
-Most people generate three or four versions before settling on one. Want a warmer version? try "k808 white tiger, caught mid-leap with one paw lifted and a simple paper shadow beneath". To push the detail further, try "k808 white tiger, curled up asleep in a shallow paper nest under soft morning light". When you are ready for a variation, try "k808 white tiger, mounted on a small paper plinth like a gallery piece". If you would rather see it in context, try "k808 white tiger, as a pair of matching figures, one slightly smaller". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
+Flat lighting, soft falloff, no reflections. Paper is easier to read that way.
 
-## Building it in real paper
+One generation is rarely the end of it. Worth an attempt: "k808 white tiger, caught mid-leap with one paw lifted and a simple paper shadow beneath". Try "k808 white tiger, curled up asleep in a shallow paper nest under soft morning light". Another variation: "k808 white tiger, mounted on a small paper plinth like a gallery piece". "k808 white tiger, as a pair of matching figures, one slightly smaller".
 
-Faceted models only look sharp if the edges are dead straight: cut with a fresh blade, fold over a ruler, and avoid double-creasing.
+Faceted models only look sharp if the edges are dead straight. Fresh blade, fold over a ruler, and never crease the same line twice.
 
-Handy for deciding colour, scale and pose before you commit to card and blade. Still deciding on a direction? Browse [more animal papercraft designs](/gallery/animal/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
+Treat the artwork as the target, not the pattern.
 
-![AI-generated lowpoly papercraft of k808 white tiger.](/images/gallery/k808-white-tiger-papercraft-design-mualndkdqdgv.jpg)
+[The animal gallery](/gallery/animal/) has the rest of the set.
 
-*AI-generated lowpoly papercraft of k808 white tiger.*
+![Low poly papercraft design of k808 white tiger](/images/gallery/k808-white-tiger-papercraft-design-mualndkdqdgv.jpg)
+
+*Low poly papercraft design of k808 white tiger*

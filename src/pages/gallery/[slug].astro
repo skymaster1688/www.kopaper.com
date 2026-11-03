@@ -19,6 +19,14 @@ export async function getStaticPaths() {
 const { item } = Astro.props;
 const { Content } = await item.render();
 
+// Reading time from the actual body. It used to be a hard-coded "3 min read" on
+// every page, which is both wrong and a giveaway that nobody wrote the copy.
+const wordCount = (item.body || '')
+  .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
+  .split(/\s+/)
+  .filter(w => /[a-z0-9]/i.test(w)).length;
+const readMinutes = Math.max(1, Math.round(wordCount / 200));
+
 const all = await getCollection('gallery', ({ data }) => !data.draft && !data.noindex);
 // Extract prompt from description (quoted string) or fall back to title
 function promptOf(d: any): string {
@@ -87,7 +95,7 @@ if (imgMatch) articleSchema.image = new URL(imgMatch[1], Astro.site).href;
       </span>
       {item.data.updated && <><span style="color:var(--border)">•</span><span>Published {item.data.updated}</span></>}
       <span style="color:var(--border)">•</span>
-      <span>3 min read</span>
+      <span>{readMinutes} min read</span>
     </div>
 
     <div class="gallery-content">

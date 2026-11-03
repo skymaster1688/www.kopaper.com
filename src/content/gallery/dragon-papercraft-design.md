@@ -1,27 +1,27 @@
 ---
 title: "Dragon Papercraft Design"
-description: "Free low poly dragon papercraft design of \"low poly flying dragon  with wings spread to sides\" — AI-generated artwork with ready-to-use prompts to try next."
+description: "Made from one line: \"low poly flying dragon with wings spread to sides\". A free low poly papercraft design you can download, plus variations worth generating."
 emoji: "🐉"
 style: "lowpoly"
-updated: "2026-09-21"
+updated: "2026-11-03"
 order: 99
 draft: false
 ---
 
-Describe "low poly flying dragon  with wings spread to sides", pick a style, and the papercraft generator does the rest — a low poly dragon papercraft design, downloaded in seconds.
+The brief behind this one was "low poly flying dragon with wings spread to sides", typed straight into the generator.
 
-Facets are the whole idea here — each triangle catches the light at a slightly different angle, so the geometry reads even in a flat image. Dragons have long tails and wings that like to droop — score the fold lines crisply and consider a small base or stand so the model stays upright on a shelf.
+Flat planes, no gradients, and a palette small enough to count on one hand. That is the entire trick.
 
-## Ways to take this further
+Tails need either wire or a rolled paper core. Unsupported, they sag within a day.
 
-One generation is a starting point, not a finished piece. For a moodier result, try "low poly flying dragon  with wings spread to sides, perched on a jagged paper rock spire with wings half open". Want a warmer version? try "low poly flying dragon  with wings spread to sides, breathing a stylised flame made of curled paper strips". To push the detail further, try "low poly flying dragon  with wings spread to sides, coiled protectively around a small paper treasure hoard". When you are ready for a variation, try "low poly flying dragon  with wings spread to sides, gliding above layered paper clouds, seen from slightly below". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
+## Follow-up prompts
 
-## Building it in real paper
+If you want a different mood, the prompt is the only dial worth turning. One more: "low poly flying dragon with wings spread to sides, perched on a jagged paper rock spire with wings half open". Another angle: "low poly flying dragon with wings spread to sides, breathing a stylised flame made of curled paper strips". If the first one felt off, "low poly flying dragon with wings spread to sides, coiled protectively around a small paper treasure hoard".
 
-Score every fold line against a steel rule before creasing, and use 250–300 gsm card so the facets stay flat instead of bulging.
+No cut lines here. The image shows the finished look only.
 
-It is inspiration rather than a template: useful for proportions, colour and staging, not for tracing. Hunting for a place to start? Browse [more dragon papercraft designs](/gallery/dragon/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
+[The dragon gallery](/gallery/dragon/) has the rest of the set. [Printable templates](/printables/) are the shortcut if you want to build today.
 
-![AI-generated lowpoly papercraft of low poly flying dragon  with wings spread to sides.](/images/gallery/dragon-papercraft-design-mualnb3i23w4.jpg)
+![Low poly flying dragon with wings spread to sides papercraft design](/images/gallery/dragon-papercraft-design-mualnb3i23w4.jpg)
 
-*AI-generated lowpoly papercraft of low poly flying dragon  with wings spread to sides.*
+*Low poly flying dragon with wings spread to sides papercraft design*

@@ -1,26 +1,24 @@
 ---
 title: "Robotic Triceratops Head Papercraft — Free Low Poly"
-description: "Free low-poly papercraft of a 3D robotic triceratops head with angular facets. Try battle-scar, museum, neon, desk-bot or charging — copy any prompt."
+description: "Made from one line: \"3d model of a robotic triceratops head\". A free low poly papercraft design you can download, plus variations worth generating."
 emoji: "🤖"
 style: "lowpoly"
 order: 99
 draft: false
 noindex: true
-updated: "2026-08-29"
+updated: "2026-11-03"
 ---
 
-Paper is an odd medium for a machine to imitate, yet here it is: a low poly animal papercraft design built around "3d model of a robotic triceratops head".
+The prompt was "3d model of a robotic triceratops head". This is what came back.
 
-If you build the paper version, give it a base: a small strip of card under the paws stops the whole figure from tipping forward. The look comes from flat triangular facets: a tight palette keeps every plane readable, and the hard edges do the modelling instead of shading.
+The look comes from flat triangular facets. A tight palette keeps every plane readable, and the hard edges do the modelling instead of shading.
 
-## Ways to take this further
+Look at the shadow under the base. That is what makes it sit on a table rather than float.
 
-The first result is rarely the one you keep. For a moodier result, try "3d model of a robotic triceratops head, caught mid-leap with one paw lifted and a simple paper shadow beneath". Want a warmer version? try "3d model of a robotic triceratops head, curled up asleep in a shallow paper nest under soft morning light". To push the detail further, try "3d model of a robotic triceratops head, mounted on a small paper plinth like a gallery piece". When you are ready for a variation, try "3d model of a robotic triceratops head, as a pair of matching figures, one slightly smaller". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
+The subject can stay put while everything around it changes. Also worth generating: "3d model of a robotic triceratops head, caught mid-leap with one paw lifted and a simple paper shadow beneath". One more: "3d model of a robotic triceratops head, curled up asleep in a shallow paper nest under soft morning light". Another angle: "3d model of a robotic triceratops head, mounted on a small paper plinth like a gallery piece".
 
-## Building it in real paper
+Cut every face before you fold any of them. Faceted builds go together much faster when the parts are already on the table.
 
-Score every fold line against a steel rule before creasing, and use 250–300 gsm card so the facets stay flat instead of bulging.
+For more animal designs, browse [the animal gallery](/gallery/animal/). [Printable templates](/printables/) are the shortcut if you want to build today.
 
-Useful as a reference shot of the finished model, though it will not fold itself into one. If you would rather start from something finished, Browse [more animal papercraft designs](/gallery/animal/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
-
-![AI-generated lowpoly papercraft of 3d model of a robotic triceratops head.](/images/gallery/3d-model-of-a-robotic-triceratops-head-papercraft-mtergeel7lqb.jpg)
+![Low poly papercraft design of 3d model of a robotic triceratops head](/images/gallery/3d-model-of-a-robotic-triceratops-head-papercraft-mtergeel7lqb.jpg)

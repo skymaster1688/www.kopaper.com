@@ -1,28 +1,26 @@
 ---
 title: "Invader Zim Gir Papercraft Design"
-description: "Free low poly papercraft design of \"Invader zim gir\" — AI-generated artwork with ready-to-use prompts to try next."
+description: "A low poly take on \"Invader zim gir\", generated with the free AI papercraft generator. Save it or reuse the prompt for your own version."
 emoji: "🎨"
 style: "lowpoly"
-updated: "2026-10-18"
+updated: "2026-11-03"
 order: 99
 draft: false
 noindex: true
 ---
 
-Some ideas look better in paper than on paper. Rendered as a low poly papercraft design, "Invader zim gir" finally looks like something you could pick up.
+Put "Invader zim gir" in the box, pick a style, and this is the kind of thing that comes out.
 
-Start with the largest pieces to set the silhouette, then fill in the smaller details last. The look comes from flat triangular facets: a tight palette keeps every plane readable, and the hard edges do the modelling instead of shading.
+When the idea is abstract, contrast does the work. One bold colour against a quiet background.
 
-## Ways to take this further
+The subject can stay put while everything around it changes. Also worth generating: "Invader zim gir, shown in three different paper colourways side by side". One more: "Invader zim gir, shown small and large in the same frame for contrast". Another angle: "Invader zim gir, built from kraft, white and tissue paper layers". If the first one felt off, "Invader zim gir, lit hard from one side so the paper shadow becomes part of the picture".
 
-The obvious version is easy; the interesting one usually takes a second prompt. Want a warmer version? try "Invader zim gir, shown in three different paper colourways side by side". To push the detail further, try "Invader zim gir, shown small and large in the same frame for contrast". When you are ready for a variation, try "Invader zim gir, built from kraft, white and tissue paper layers". If you would rather see it in context, try "Invader zim gir, lit hard from one side so the paper shadow becomes part of the picture". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
+## Notes for the build
 
-## Building it in real paper
+Cut every face before you fold any of them. Faceted builds go together much faster when the parts are already on the table.
 
-Score every fold line against a steel rule before creasing, and use 250–300 gsm card so the facets stay flat instead of bulging.
+More in [the gallery](/gallery/).
 
-Treat it as concept art for the real thing: it shows how the design should read, not where to cut. Want to see how other ideas turned out? Browse [the rest of the gallery](/gallery/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
+![Low poly papercraft design of Invader zim gir](/images/gallery/invader-zim-gir-papercraft-design-mvd7oo4iqc11.jpg)
 
-![AI-generated lowpoly papercraft of Invader zim gir.](/images/gallery/invader-zim-gir-papercraft-design-mvd7oo4iqc11.jpg)
-
-*AI-generated lowpoly papercraft of Invader zim gir.*
+*Low poly papercraft design of Invader zim gir*

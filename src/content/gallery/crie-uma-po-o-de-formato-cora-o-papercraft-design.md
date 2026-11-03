@@ -1,28 +1,30 @@
 ---
 title: "Crie Uma Poção De Formato Coração Papercraft Design"
-description: "Free cute papercraft papercraft design of \"Crie uma poção de formato coração\" — AI-generated artwork with ready-to-use prompts to try next."
+description: "Made from one line: \"Crie uma poção de formato coração\". A free cute papercraft design you can download, plus variations worth generating."
 emoji: "🎨"
 style: "cute"
-updated: "2026-10-23"
+updated: "2026-11-03"
 order: 99
 draft: false
 noindex: true
 ---
 
-Describe "Crie uma poção de formato coração", pick a style, and the papercraft generator does the rest — a cute papercraft design, downloaded in seconds.
+The brief behind this one was "Crie uma poção de formato coração", typed straight into the generator.
 
-Everything about this one is soft: chubby proportions, wide-set eyes, a pastel palette that keeps the volumes reading as friendly. Start with the largest pieces to set the silhouette, then fill in the smaller details last.
+When the idea is abstract, contrast does the work. One bold colour against a quiet background.
 
-## Ways to take this further
+Nothing in a cute design is complicated on its own. The difficulty is keeping every soft shape at the same level of round.
 
-Nothing here is final until you stop generating. For a sharper take, try "Crie uma poção de formato coração, shown in three different paper colourways side by side". For a moodier result, try "Crie uma poção de formato coração, shown small and large in the same frame for contrast". Want a warmer version? try "Crie uma poção de formato coração, built from kraft, white and tissue paper layers". To push the detail further, try "Crie uma poção de formato coração, lit hard from one side so the paper shadow becomes part of the picture". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
+## Taking it further
 
-## Building it in real paper
+One generation is rarely the end of it. One worth a go: "Crie uma poção de formato coração, shown in three different paper colourways side by side". A different direction: "Crie uma poção de formato coração, shown small and large in the same frame for contrast". Then there is "Crie uma poção de formato coração, built from kraft, white and tissue paper layers". Same subject: "Crie uma poção de formato coração, lit hard from one side so the paper shadow becomes part of the picture".
 
-Rounded paper shapes need a little give: 180–220 gsm card bends cleanly, while anything heavier fights you at every curve.
+## If you build it
 
-It is inspiration rather than a template: useful for proportions, colour and staging, not for tracing. Want to see how other ideas turned out? Browse [the rest of the gallery](/gallery/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
+Rounded paper shapes need a little give. 180 to 220 gsm card bends cleanly, and anything heavier fights you at every curve.
 
-![AI-generated cute papercraft of Crie uma poção de formato coração.](/images/gallery/crie-uma-po-o-de-formato-cora-o-papercraft-design-mvll12zrwytu.jpg)
+Browse [everything else](/gallery/) if this is the look you are after. [Printable templates](/printables/) are the shortcut if you want to build today.
 
-*AI-generated cute papercraft of Crie uma poção de formato coração.*
+![Cute papercraft design](/images/gallery/crie-uma-po-o-de-formato-cora-o-papercraft-design-mvll12zrwytu.jpg)
+
+*Cute papercraft design*

@@ -1,32 +1,34 @@
 ---
 title: "Cute Simple Ghost Papercraft Design"
-description: "Free low poly papercraft design of \"cute simple ghost\" — AI-generated artwork with ready-to-use prompts to try next."
+description: "Papercraft design of \"cute simple ghost\" in low poly style. Free AI artwork, no account needed, and follow-up prompts to try next."
 emoji: "👻"
 style: "lowpoly"
-updated: "2026-09-04"
+updated: "2026-11-03"
 order: 99
 draft: false
 noindex: true
 ---
 
-Type "cute simple ghost" into the generator and this is what comes back: a low poly papercraft design — no brush, no ruler, no cutting mat.
+This started as "cute simple ghost". It ended up as a low poly papercraft design.
 
-When the idea is abstract, contrast does the work: one bold colour against a quiet background. The look comes from flat triangular facets: a tight palette keeps every plane readable, and the hard edges do the modelling instead of shading.
+Let the edges stay visible. On abstract work, the cut line is often the most interesting part.
 
-## Ways to take this further
+Low poly means the shape is described by a small number of planes. Folded paper does that naturally, which is why the style suits it.
 
-One generation is a starting point, not a finished piece. If the first try feels too safe, try "cute simple ghost, shown in three different paper colourways side by side". For a sharper take, try "cute simple ghost, shown small and large in the same frame for contrast". For a moodier result, try "cute simple ghost, built from kraft, white and tissue paper layers". Want a warmer version? try "cute simple ghost, lit hard from one side so the paper shadow becomes part of the picture". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
+The palette is narrow on purpose. Three or four tones, no more.
 
-## Building it in real paper
+## Changing the staging
 
-Score every fold line against a steel rule before creasing, and use 250–300 gsm card so the facets stay flat instead of bulging.
+Small prompt edits move the result further than you would expect. "cute simple ghost, shown in three different paper colourways side by side". Or this: "cute simple ghost, shown small and large in the same frame for contrast". Last one: "cute simple ghost, built from kraft, white and tissue paper layers".
 
-This page shows the look of the finished piece, not a cutting guide — the fold lines themselves are not included. Want to see how other ideas turned out? Browse [the rest of the gallery](/gallery/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
+Handy for colour, scale and pose. Useless as something to trace.
 
-![AI-generated lowpoly papercraft of cute simple ghost.](/images/gallery/cute-simple-ghost-papercraft-design-mtm7qyr17ksx.jpg)
+Browse [everything else](/gallery/) if this is the look you are after. Ready to build rather than browse? [Printable templates](/printables/) skip the guesswork.
 
-*AI-generated lowpoly papercraft of cute simple ghost.*
+![Low poly papercraft design of cute simple ghost](/images/gallery/cute-simple-ghost-papercraft-design-mtm7qyr17ksx.jpg)
 
-![AI-generated lowpoly papercraft of Cute simple ghost.](/images/gallery/cute-simple-ghost-papercraft-design-mtm7r5572a4r.jpg)
+*Low poly papercraft design of cute simple ghost*
 
-*AI-generated lowpoly papercraft of Cute simple ghost.*
+![Cute simple ghost in low poly papercraft style](/images/gallery/cute-simple-ghost-papercraft-design-mtm7r5572a4r.jpg)
+
+*Cute simple ghost in low poly papercraft style*

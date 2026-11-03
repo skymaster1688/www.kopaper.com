@@ -1,28 +1,28 @@
 ---
 title: "Flish Papercraft Design"
-description: "Free pixel papercraft design of \"Flish\" — AI-generated artwork with ready-to-use prompts to try next."
+description: "See how \"Flish\" reads as paper. Free pixel papercraft artwork from koPaper, with the exact prompt included."
 emoji: "🎨"
 style: "pixel"
-updated: "2026-10-02"
+updated: "2026-11-03"
 order: 99
 draft: false
 noindex: true
 ---
 
-Describe "Flish", pick a style, and the papercraft generator does the rest — a pixel papercraft design, downloaded in seconds.
+The brief behind this one was "Flish", typed straight into the generator.
 
-Every edge here is a right angle; the charm is in the staircase outlines and how few colours it takes to read the subject. Start with the largest pieces to set the silhouette, then fill in the smaller details last.
+Pixel art is a grid with opinions. Once the grid is set, the detail is just choosing which squares to fill.
 
-## Ways to take this further
+Abstract shapes benefit from hard light. The shadow becomes part of the composition.
 
-One generation is a starting point, not a finished piece. For a moodier result, try "Flish, shown in three different paper colourways side by side". Want a warmer version? try "Flish, shown small and large in the same frame for contrast". To push the detail further, try "Flish, built from kraft, white and tissue paper layers". When you are ready for a variation, try "Flish, lit hard from one side so the paper shadow becomes part of the picture". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
+## Variations worth trying
 
-## Building it in real paper
+Nothing is fixed until you stop generating. One worth a go: "Flish, shown in three different paper colourways side by side". A different direction: "Flish, shown small and large in the same frame for contrast". Then there is "Flish, built from kraft, white and tissue paper layers".
 
-Squared shapes tolerate copy paper surprisingly well, but 160–200 gsm card holds the stepped edges far better.
+Handy for colour, scale and pose. Useless as something to trace.
 
-It is inspiration rather than a template: useful for proportions, colour and staging, not for tracing. Hunting for a place to start? Browse [the rest of the gallery](/gallery/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
+[The full gallery](/gallery/) has plenty more like this. Prefer a ready-made net? Try [printable templates](/printables/).
 
-![AI-generated pixel papercraft of Flish.](/images/gallery/flish-papercraft-design-muq981w1ayle.jpg)
+![Pixel papercraft design of Flish](/images/gallery/flish-papercraft-design-muq981w1ayle.jpg)
 
-*AI-generated pixel papercraft of Flish.*
+*Pixel papercraft design of Flish*

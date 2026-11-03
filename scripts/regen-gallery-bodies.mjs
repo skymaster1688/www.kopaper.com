@@ -43,6 +43,7 @@ const fmValue = (fm, key) => {
   return m ? m[1] : '';
 };
 const cleanPrompt = (s) => s.replace(/\\"/g, '"').replace(/\\+$/, '').replace(/^"+|"+$/g, '').trim();
+const yamlStr = (s) => '"' + String(s).replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\r/g, ' ').replace(/\n/g, ' ') + '"';
 
 let touched = 0, skipped = 0;
 const kept = [];
@@ -50,7 +51,7 @@ const kept = [];
 for (const f of readdirSync(DIR)) {
   if (!f.endsWith('.md')) continue;
   const path = join(DIR, f);
-  const src = readFileSync(path, 'utf8');
+  const src = readFileSync(path, 'utf8').replace(/\r\n/g, '\n');
   const close = src.indexOf('---', 3);
   if (close < 0) { skipped++; kept.push(f + ' (no frontmatter)'); continue; }
   const fm = src.slice(0, close);
@@ -72,7 +73,14 @@ for (const f of readdirSync(DIR)) {
   const imgIdx = body.indexOf('![');
   const tail = imgIdx < 0 ? '' : body.slice(imgIdx).replace(/\s+$/, '');
   const meta = buildMeta(prompt, style);
-  const out = src.slice(0, close + 3) + '\n\n' + meta.intro + (tail ? '\n\n' + tail : '') + '\n';
+
+  // Description is regenerated too: leaving the old one in place kept the retired
+  // "AI-generated artwork with ready-to-use prompts" phrasing on every page.
+  const fmFixed = /^description:/m.test(fm)
+    ? fm.replace(/^description: .*$/m, 'description: ' + yamlStr(meta.description))
+    : fm;
+
+  const out = fmFixed + src.slice(close, close + 3) + '\n\n' + meta.intro + (tail ? '\n\n' + tail : '') + '\n';
   if (out !== src) { writeFileSync(path, out); touched++; }
 }
 

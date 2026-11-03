@@ -1,28 +1,28 @@
 ---
 title: "House Papaer Craft Papercraft Design"
-description: "Free lowpoly building papercraft design of \"house papaer craft\" — AI-generated artwork with ready-to-use prompts to try next."
+description: "Made from one line: \"house papaer craft\". A free low poly papercraft design you can download, plus variations worth generating."
 emoji: "🏠"
 style: "lowpoly"
-updated: "2026-10-23"
+updated: "2026-11-03"
 order: 99
 draft: false
 noindex: true
 ---
 
-Some ideas look better in paper than on paper. Rendered as a low poly building papercraft design, "house papaer craft" finally looks like something you could pick up.
+Put "house papaer craft" in the box, pick a style, and this is the kind of thing that comes out.
 
-Roofs and spires set the scale, so measure those first and work downwards towards the base. The look comes from flat triangular facets: a tight palette keeps every plane readable, and the hard edges do the modelling instead of shading.
+Facets are the whole idea. Each triangle catches light at a slightly different angle, so the geometry reads even in a flat image.
 
-## Ways to take this further
+Towers and castles read better with sharp creases at every corner. Fold toward yourself and run a bone folder along each edge.
 
-The obvious version is easy; the interesting one usually takes a second prompt. If the first try feels too safe, try "house papaer craft, lit from inside at dusk, warm paper windows glowing". For a sharper take, try "house papaer craft, half overgrown with paper vines and tiny paper leaves". For a moodier result, try "house papaer craft, shown as an open cutaway with the rooms visible inside". Want a warmer version? try "house papaer craft, drawn as a flat architectural elevation on graph paper". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
+Small prompt edits move the result further than you would expect. Also worth generating: "house papaer craft, lit from inside at dusk, warm paper windows glowing". One more: "house papaer craft, half overgrown with paper vines and tiny paper leaves". Another angle: "house papaer craft, shown as an open cutaway with the rooms visible inside". If the first one felt off, "house papaer craft, drawn as a flat architectural elevation on graph paper".
 
-## Building it in real paper
+## Notes for the build
 
-Stiffer card is your friend here — 260 gsm or above keeps large planes from flexing once the piece is standing.
+Faceted models only look sharp if the edges are dead straight. Fresh blade, fold over a ruler, and never crease the same line twice.
 
-Treat it as concept art for the real thing: it shows how the design should read, not where to cut. Want to see how other ideas turned out? Browse [more building papercraft designs](/gallery/building/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
+[The building gallery](/gallery/building/) has the rest of the set.
 
-![AI-generated lowpoly papercraft of house papaer craft.](/images/gallery/house-papaer-craft-papercraft-design-mvl275k2q8jg.jpg)
+![Low poly papercraft design of house papaer craft](/images/gallery/house-papaer-craft-papercraft-design-mvl275k2q8jg.jpg)
 
-*AI-generated lowpoly papercraft of house papaer craft.*
+*Low poly papercraft design of house papaer craft*

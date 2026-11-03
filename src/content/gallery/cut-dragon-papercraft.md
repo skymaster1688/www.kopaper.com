@@ -1,28 +1,30 @@
 ---
 title: "Cut Dragon Papercraft Design — AI Generated"
-description: "AI-generated cute dragon papercraft design of \"cut dragon\". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
+description: "\"cut dragon\" turned into a cute papercraft design. Free AI generator, instant results, no sign-up."
 emoji: "🐉"
 style: "cute"
 order: 99
 draft: false
 noindex: true
-updated: "2026-08-27"
+updated: "2026-11-03"
 ---
 
-Nothing was cut, scored or glued to make the picture above — it is a cute dragon papercraft design of "cut dragon", drawn rather than built.
+Short version: a cute dragon papercraft design of "cut dragon".
 
-The cute style works by subtraction: fewer planes, rounder edges, and colour doing most of the emotional work. Dragons have long tails and wings that like to droop — score the fold lines crisply and consider a small base or stand so the model stays upright on a shelf.
+A dragon reads better with a slight curve in the neck and tail than with everything held perfectly straight.
 
-## Ways to take this further
+The cute style leans on proportion more than detail. Big head, small body, rounded everywhere. Nothing here has a sharp corner to hide behind, so the shapes have to be right.
 
-Nothing here is final until you stop generating. If the first try feels too safe, try "cut dragon, perched on a jagged paper rock spire with wings half open". For a sharper take, try "cut dragon, breathing a stylised flame made of curled paper strips". For a moodier result, try "cut dragon, coiled protectively around a small paper treasure hoard". Want a warmer version? try "cut dragon, gliding above layered paper clouds, seen from slightly below". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
+## Variations worth trying
 
-## Building it in real paper
+One generation is rarely the end of it. Another variation: "cut dragon, perched on a jagged paper rock spire with wings half open". "cut dragon, breathing a stylised flame made of curled paper strips". Or this: "cut dragon, coiled protectively around a small paper treasure hoard". Last one: "cut dragon, gliding above layered paper clouds, seen from slightly below".
 
-Heavy cardstock around 200–250 gsm holds rounded shapes without sagging; score the curves lightly with the back of a blade before folding so the paper does not crack.
+## Practical notes
 
-The image is the destination, not the map: great for matching proportions, useless as a tracing sheet. Curious what else people are making? Browse [more dragon papercraft designs](/gallery/dragon/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
+Rounded paper shapes need a little give. 180 to 220 gsm card bends cleanly, and anything heavier fights you at every curve.
 
-![AI-generated cute papercraft of cut dragon.](/images/gallery/cut-dragon-papercraft-mtapppksl3lu.jpg)
+[The dragon gallery](/gallery/dragon/) has the rest of the set. The [printable templates](/printables/) are worth a look if you would rather fold than design.
 
-*AI-generated cute papercraft of cut dragon.*
+![Cute papercraft design of cut dragon](/images/gallery/cut-dragon-papercraft-mtapppksl3lu.jpg)
+
+*Cute papercraft design of cut dragon*

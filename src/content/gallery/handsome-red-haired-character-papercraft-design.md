@@ -1,28 +1,30 @@
 ---
 title: "Handsome Red-Haired Character Papercraft — Free Pixel"
-description: "Free pixel papercraft of a handsome red-haired character with retro charm. Try a hero pose, city street, knight look, desk portrait or night neon — copy any prompt."
+description: "Made from one line: \"handsome red-haired character\". A free pixel papercraft design you can download, plus variations worth generating."
 emoji: "🎨"
 style: "pixel"
 order: 99
 draft: false
 noindex: true
-updated: "2026-08-31"
+updated: "2026-11-03"
 ---
 
-Half the charm of a paper model is the way it catches light. That is what this pixel papercraft design of "handsome red-haired character" is leaning on.
+One prompt, "handsome red-haired character", a few seconds of waiting. That gets you here.
 
-The pixel style trades curves for squares, which makes it the most forgiving look to rebuild with a ruler and a blade. Start with the largest pieces to set the silhouette, then fill in the smaller details last.
+Characters carry a lot of small parts. Assemble the torso first, then attach limbs and head so the proportions stay balanced as you build.
 
-## Ways to take this further
+## If you want a different mood
 
-Worth remembering: every one of these is one sentence away from a different picture. If you would rather see it in context, try "handsome red-haired character, shown in three different paper colourways side by side". If the first try feels too safe, try "handsome red-haired character, shown small and large in the same frame for contrast". For a sharper take, try "handsome red-haired character, built from kraft, white and tissue paper layers". For a moodier result, try "handsome red-haired character, lit hard from one side so the paper shadow becomes part of the picture". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
+The subject can stay put while everything around it changes. Another variation: "handsome red-haired character, holding one simple paper prop that hints at the story". "handsome red-haired character, wearing an extra layer of folded paper armour over the base". Or this: "handsome red-haired character, standing on a small paper stage in front of a flat painted backdrop".
 
-## Building it in real paper
+## Notes for the build
 
-Work from one corner outwards so the grid squares stay aligned; drift shows up immediately on a pixel silhouette.
+Work outwards from one corner so the grid squares stay aligned. Drift shows up immediately on a pixel silhouette.
 
-Think of this as the before picture — the artwork shows the finished look, the net is still up to you. Want to see how other ideas turned out? Browse [the rest of the gallery](/gallery/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
+Handy for colour, scale and pose. Useless as something to trace.
 
-![AI-generated pixel papercraft of a handsome red-haired character.](/images/gallery/handsome-red-haired-character-papercraft-design-mt5tcau6pcdn.jpg)
+More in [the gallery](/gallery/). The [printable templates](/printables/) are worth a look if you would rather fold than design. And if folding by hand appeals more, the [origami tutorials](/origami/) go step by step.
 
-*AI-generated pixel papercraft of a handsome red-haired character.*
+![Pixel papercraft design of handsome red-haired character](/images/gallery/handsome-red-haired-character-papercraft-design-mt5tcau6pcdn.jpg)
+
+*Pixel papercraft design of handsome red-haired character*

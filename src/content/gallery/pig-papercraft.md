@@ -1,31 +1,29 @@
 ---
 title: "Pig Papercraft Design"
-description: "AI-generated pixel animal papercraft design of \"Pig\". Papercraft-style artwork for inspiration, creative exploration, and visual reference."
+description: "Made from one line: \"Pig\". A free pixel papercraft design you can download, plus variations worth generating."
 emoji: "🎨"
 style: "pixel"
 order: 99
 draft: false
-updated: "2026-08-27"
+updated: "2026-11-03"
 ---
 
-"Pig" was the whole brief behind this pixel animal papercraft design, and it turned into an animal with visible folds, layered depth and a soft studio background.
+A pixel animal papercraft design of "Pig", from one line of text.
 
-Every edge here is a right angle; the charm is in the staircase outlines and how few colours it takes to read the subject. If you build the paper version, give it a base: a small strip of card under the paws stops the whole figure from tipping forward.
+Every edge here is a right angle. The charm is in the staircase outlines and how few colours it takes to read the subject.
 
-## Ways to take this further
+Four-legged and winged subjects look best when the legs and joints are glued firmly. Heavier cardstock helps the figure stand on its own. Flat lighting, soft falloff, no reflections. Paper is easier to read that way.
 
-The first result is rarely the one you keep. If you would rather see it in context, try "Pig, caught mid-leap with one paw lifted and a simple paper shadow beneath". If the first try feels too safe, try "Pig, curled up asleep in a shallow paper nest under soft morning light". For a sharper take, try "Pig, mounted on a small paper plinth like a gallery piece". For a moodier result, try "Pig, as a pair of matching figures, one slightly smaller". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
+It is worth seeing the idea in more than one setting. Or this: "Pig, caught mid-leap with one paw lifted and a simple paper shadow beneath". Last one: "Pig, curled up asleep in a shallow paper nest under soft morning light". Also worth generating: "Pig, mounted on a small paper plinth like a gallery piece".
 
-## Building it in real paper
+Build it on a grid. Print a light 5 mm grid, count squares instead of eyeballing, and keep a fresh blade in the knife so every step stays square.
 
-Build it on a grid: print a light 5 mm grid, count squares rather than eyeballing, and keep a fresh blade in the knife so every step stays square.
+For more animal designs, browse [the animal gallery](/gallery/animal/). Prefer a ready-made net? Try [printable templates](/printables/).
 
-What you see is papercraft-style illustration rather than a printable net, so use it as visual reference. Hunting for a place to start? Browse [more animal papercraft designs](/gallery/animal/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
+![Pixel papercraft design of Pig](/images/gallery/pig-papercraft-mt4j7ejcslpu.jpg)
 
-![AI-generated pixel papercraft of Pig.](/images/gallery/pig-papercraft-mt4j7ejcslpu.jpg)
+*Pixel papercraft design of Pig*
 
-*AI-generated pixel papercraft of Pig.*
+![Pig in pixel papercraft style](/images/gallery/pig-papercraft-mt4j7es8lw1t.jpg)
 
-![AI-generated pixel papercraft of Pig.](/images/gallery/pig-papercraft-mt4j7es8lw1t.jpg)
-
-*AI-generated pixel papercraft of Pig.*
+*Pig in pixel papercraft style*

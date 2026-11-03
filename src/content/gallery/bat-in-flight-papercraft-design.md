@@ -1,27 +1,25 @@
 ---
 title: "Bat In Flight Papercraft Design"
-description: "Free low poly papercraft design of \"bat in flight\" — AI-generated artwork with ready-to-use prompts to try next."
+description: "Made from one line: \"bat in flight\". A free low poly papercraft design you can download, plus variations worth generating."
 emoji: "🎨"
 style: "lowpoly"
-updated: "2026-10-11"
+updated: "2026-11-03"
 order: 99
 draft: false
 ---
 
-"bat in flight" was the whole brief behind this low poly animal papercraft design, and it turned into an animal with visible folds, layered depth and a soft studio background.
+A low poly animal papercraft design of "bat in flight", from one line of text.
 
-Facets are the whole idea here — each triangle catches the light at a slightly different angle, so the geometry reads even in a flat image. Animals live or die on the silhouette — get the ears, tail and stance right first, then add surface detail only if the shape already reads.
+Facets are the whole idea. Each triangle catches light at a slightly different angle, so the geometry reads even in a flat image.
 
-## Ways to take this further
+Four-legged and winged subjects look best when the legs and joints are glued firmly. Heavier cardstock helps the figure stand on its own.
 
-If the first take feels flat, that is normal — the follow-ups are where it gets interesting. When you are ready for a variation, try "bat in flight, caught mid-leap with one paw lifted and a simple paper shadow beneath". If you would rather see it in context, try "bat in flight, curled up asleep in a shallow paper nest under soft morning light". If the first try feels too safe, try "bat in flight, mounted on a small paper plinth like a gallery piece". For a sharper take, try "bat in flight, as a pair of matching figures, one slightly smaller". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
+## If you want a different mood
 
-## Building it in real paper
+It is worth seeing the idea in more than one setting. Or this: "bat in flight, caught mid-leap with one paw lifted and a simple paper shadow beneath". Last one: "bat in flight, curled up asleep in a shallow paper nest under soft morning light". Also worth generating: "bat in flight, mounted on a small paper plinth like a gallery piece".
 
-Stiffer card is your friend here — 260 gsm or above keeps large planes from flexing once the piece is standing.
+There are more animal designs in [the animal gallery](/gallery/animal/). Ready to build rather than browse? [Printable templates](/printables/) skip the guesswork.
 
-What you see is papercraft-style illustration rather than a printable net, so use it as visual reference. Want to see how other ideas turned out? Browse [more animal papercraft designs](/gallery/animal/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
+![Low poly papercraft design of bat in flight](/images/gallery/bat-in-flight-papercraft-design-mv3vwtyyavbe.jpg)
 
-![AI-generated lowpoly papercraft of bat in flight.](/images/gallery/bat-in-flight-papercraft-design-mv3vwtyyavbe.jpg)
-
-*AI-generated lowpoly papercraft of bat in flight.*
+*Low poly papercraft design of bat in flight*

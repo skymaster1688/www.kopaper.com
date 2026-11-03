@@ -1,27 +1,27 @@
 ---
 title: "Futuristic Robot Papercraft Design"
-description: "Free cute character papercraft design of \"Un robot futurista\" — AI-generated artwork with ready-to-use prompts to try next."
+description: "Made from one line: \"Un robot futurista\". A free cute papercraft design you can download, plus variations worth generating."
 emoji: "🤖"
 style: "cute"
-updated: "2026-10-02"
+updated: "2026-11-03"
 order: 99
 draft: false
 ---
 
-One line went into the prompt box. A character in paper came out, styled as a cute character papercraft design.
+Put "Un robot futurista" in the box, pick a style, and this is the kind of thing that comes out.
 
-Build the head first and match everything else to it — proportion problems always show up there. Round silhouettes and a soft palette do the heavy lifting here — nothing in this design has a sharp corner to hide behind, so the shapes have to be right.
+Soft edges and a pastel palette carry this one. Chubby proportions, wide-set eyes, and very little geometry to get wrong.
 
-## Ways to take this further
+Keep the pose slightly off-centre. A perfectly symmetrical character looks like a paper doll rather than a character.
 
-The obvious version is easy; the interesting one usually takes a second prompt. For a sharper take, try "Un robot futurista, holding one simple paper prop that hints at the story". For a moodier result, try "Un robot futurista, wearing an extra layer of folded paper armour over the base". Want a warmer version? try "Un robot futurista, standing on a small paper stage in front of a flat painted backdrop". To push the detail further, try "Un robot futurista, framed as a close-up of the head and shoulders only". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
+The first result is usually the safe one. Worth an attempt: "Un robot futurista, holding one simple paper prop that hints at the story". Try "Un robot futurista, wearing an extra layer of folded paper armour over the base". Another variation: "Un robot futurista, standing on a small paper stage in front of a flat painted backdrop". "Un robot futurista, framed as a close-up of the head and shoulders only".
 
-## Building it in real paper
+## Before you cut anything
 
-For soft, rounded forms, crease gently over a dowel rather than pressing hard — the paper keeps its curve instead of kinking.
+For soft forms, crease gently over a dowel instead of pressing hard. The paper keeps its curve rather than kinking.
 
-Handy for deciding colour, scale and pose before you commit to card and blade. If you would rather start from something finished, Browse [the rest of the gallery](/gallery/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
+[The full gallery](/gallery/) has plenty more like this.
 
-![AI-generated cute papercraft of Un robot futurista.](/images/gallery/un-robot-futurista-papercraft-design-muq983khsv4o.jpg)
+![Cute papercraft design](/images/gallery/un-robot-futurista-papercraft-design-muq983khsv4o.jpg)
 
-*AI-generated cute papercraft of Un robot futurista.*
+*Cute papercraft design*

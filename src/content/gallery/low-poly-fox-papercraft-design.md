@@ -1,6 +1,6 @@
 ---
 title: "Low Poly Fox Papercraft Design"
-description: "Free low poly animal papercraft design of \"low poly fox\" — AI-generated artwork with ready-to-use prompts to try next."
+description: "See how \"low poly fox\" reads as paper. Free low poly animal papercraft artwork from koPaper, with the exact prompt included."
 emoji: "🦊"
 style: "lowpoly"
 updated: "2026-11-03"
@@ -8,37 +8,37 @@ order: 99
 draft: false
 ---
 
-Half the charm of a paper model is the way it catches light. That is what this low poly animal papercraft design of "low poly fox" is leaning on.
+Put "low poly fox" in the box, pick a style, and this is the kind of thing that comes out.
 
-If you build the paper version, give it a base: a small strip of card under the paws stops the whole figure from tipping forward. The look comes from flat triangular facets: a tight palette keeps every plane readable, and the hard edges do the modelling instead of shading.
+Facets are the whole idea. Each triangle catches light at a slightly different angle, so the geometry reads even in a flat image.
 
-## Ways to take this further
+Animals live or die on the silhouette. Get the ears, tail and stance right first, then add surface detail if the shape already reads.
 
-The obvious version is easy; the interesting one usually takes a second prompt. For a sharper take, try "low poly fox, caught mid-leap with one paw lifted and a simple paper shadow beneath". For a moodier result, try "low poly fox, curled up asleep in a shallow paper nest under soft morning light". Want a warmer version? try "low poly fox, mounted on a small paper plinth like a gallery piece". To push the detail further, try "low poly fox, as a pair of matching figures, one slightly smaller". Paste any of them into the generator and the same idea comes back with a different mood — same subject, different light, different level of detail.
+The subject does not have to change for the picture to. Then there is "low poly fox, caught mid-leap with one paw lifted and a simple paper shadow beneath". Same subject: "low poly fox, curled up asleep in a shallow paper nest under soft morning light". Or "low poly fox, mounted on a small paper plinth like a gallery piece". Worth an attempt: "low poly fox, as a pair of matching figures, one slightly smaller".
 
-## Building it in real paper
+## Practical notes
 
-Score every fold line against a steel rule before creasing, and use 250–300 gsm card so the facets stay flat instead of bulging.
+Faceted models only look sharp if the edges are dead straight. Fresh blade, fold over a ruler, and never crease the same line twice.
 
-Think of this as the before picture — the artwork shows the finished look, the net is still up to you. Looking for another angle? Browse [more animal papercraft designs](/gallery/animal/), grab a [printable template](/printables/) when you want fold lines already drawn, or fold something by hand with the [origami tutorials](/origami/).
+There are more animal designs in [the animal gallery](/gallery/animal/).
 
-![AI-generated lowpoly papercraft of low poly fox.](/images/gallery/low-poly-fox-papercraft-design-mul6dumc7qrg.jpg)
+![Low poly fox papercraft design](/images/gallery/low-poly-fox-papercraft-design-mul6dumc7qrg.jpg)
 
-*AI-generated lowpoly papercraft of low poly fox.*
+*Low poly fox papercraft design*
 
 
-![AI-generated lowpoly papercraft of low poly fox.](/images/gallery/low-poly-fox-papercraft-design-mvl26rgs9pj3.jpg)
+![Low poly fox, papercraft illustration](/images/gallery/low-poly-fox-papercraft-design-mvl26rgs9pj3.jpg)
 
-*AI-generated lowpoly papercraft of low poly fox.*
+*Low poly fox, papercraft illustration*
 
-![AI-generated lowpoly papercraft of low poly fox.](/images/gallery/low-poly-fox-papercraft-design-mvl26vxnysel.jpg)
+![Low poly fox as a paper model](/images/gallery/low-poly-fox-papercraft-design-mvl26vxnysel.jpg)
 
-*AI-generated lowpoly papercraft of low poly fox.*
+*Low poly fox as a paper model*
 
-![AI-generated lowpoly papercraft of low poly fox.](/images/gallery/low-poly-fox-papercraft-design-mvl28bznj6mq.jpg)
+![Papercraft artwork of low poly fox](/images/gallery/low-poly-fox-papercraft-design-mvl28bznj6mq.jpg)
 
-*AI-generated lowpoly papercraft of low poly fox.*
+*Papercraft artwork of low poly fox*
 
-![AI-generated cute papercraft of low poly fox.](/images/gallery/low-poly-fox-papercraft-design-mw0kdfevraho.jpg)
+![Low poly fox, folded paper version](/images/gallery/low-poly-fox-papercraft-design-mw0kdfevraho.jpg)
 
-*AI-generated cute papercraft of low poly fox.*
+*Low poly fox, folded paper version*
