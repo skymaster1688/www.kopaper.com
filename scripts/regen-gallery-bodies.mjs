@@ -10,8 +10,8 @@
 // so without rotation they all read identically. buildIntro() picks sentence
 // shapes, style notes, subject tips, scenes and closing lines by a stable hash of
 // the prompt — this script applies it retroactively to already-published pages.
-import { execFileSync } from 'node:child_process';
-import { readdirSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { build as esbuild } from 'esbuild';
+import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -19,8 +19,13 @@ import { pathToFileURL } from 'node:url';
 const DIR = 'src/content/gallery';
 const ALL = process.argv.includes('--all');
 
+// Bundle gallery.ts so this Node script uses the exact same generator as the Worker.
 const bundle = join(tmpdir(), `kopaper-gallery-${Date.now()}.mjs`);
-execFileSync('npx', ['esbuild', 'src/lib/gallery.ts', '--bundle', '--format=esm', '--platform=node', '--outfile=' + bundle, '--log-level=error'], { stdio: 'inherit' });
+await esbuild({
+  entryPoints: ['src/lib/gallery.ts'],
+  bundle: true, format: 'esm', platform: 'node',
+  outfile: bundle, logLevel: 'error',
+});
 const { buildMeta } = await import(pathToFileURL(bundle).href);
 
 const MARKERS = [
