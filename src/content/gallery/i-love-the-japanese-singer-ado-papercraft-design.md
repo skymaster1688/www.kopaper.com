@@ -32,3 +32,7 @@ More in [the gallery](/gallery/). Ready to build rather than browse? [Printable 
 ![Blocky papercraft design of I love the Japanese singer ado](/images/gallery/i-love-the-japanese-singer-ado-papercraft-design-mw2ubqf4v23y.jpg)
 
 *Blocky papercraft design of I love the Japanese singer ado*
+
+![Blocky papercraft design of I love the Japanese singer ado](/images/gallery/i-love-the-japanese-singer-ado-papercraft-design-mw2xw5tatpwl.jpg)
+
+*Blocky papercraft design of I love the Japanese singer ado*
