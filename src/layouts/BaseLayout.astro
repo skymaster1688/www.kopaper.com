@@ -86,6 +86,26 @@ const ADSENSE_ID = 'ca-pub-6279178382144076';
   <!-- Ad slot (third-party network): filled after consent -->
   <div id="container-04bba4fddad31c9c102b34f4c1c7ad04" style="margin:28px auto;max-width:var(--max-width);min-height:90px;display:flex;align-items:center;justify-content:center;padding:0 20px;box-sizing:border-box;"></div>
 
+  <!-- Adsterra 320x50 — mobile sticky bottom banner (hidden on desktop) -->
+  <div class="ad-mobile-banner">
+    <script is:inline>
+      atOptions = { 'key' : 'eae7cbf1b83e8c1b4e0e3b7cf18beb07', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
+    </script>
+    <script is:inline src="https://bauval.org/22/eae7cbf1b83e8c1b4e0e3b7cf18beb07"></script>
+  </div>
+  <style>
+    .ad-mobile-banner { display: none; }
+    @media (max-width: 767px) {
+      .ad-mobile-banner {
+        display: flex; align-items: center; justify-content: center;
+        position: fixed; bottom: 0; left: 0; right: 0; z-index: 150;
+        background: var(--surface); border-top: 1px solid var(--border);
+        padding: 6px 0; min-height: 62px;
+      }
+      :global(body) { padding-bottom: 62px; }
+    }
+  </style>
+
   <Footer />
 
   <button class="to-top" id="toTop" aria-label="Back to top">&#8593;</button>
@@ -121,7 +141,7 @@ const ADSENSE_ID = 'ca-pub-6279178382144076';
         const s3 = document.createElement('script');
         s3.async = true;
         s3.setAttribute('data-cfasync', 'false');
-        s3.src = 'https://pl31324343.profitableratecpmnetwork.com/04bba4fddad31c9c102b34f4c1c7ad04/invoke.js';
+        s3.src = 'https://bauval.org/21/04bba4fddad31c9c102b34f4c1c7ad04';
         document.head.appendChild(s3);
       }
       function decide(v) {

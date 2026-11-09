@@ -167,3 +167,7 @@
 .ideas-text a{color:var(--purple);font-weight:800;border-bottom:1.5px solid #d9cff5;transition:border-color .2s}
 .ideas-text a:hover{border-color:var(--purple)}
 @media(max-width:640px){.ideas-section{margin-top:44px;padding:0 18px}.ideas-text{font-size:14px;text-align:left}}
+
+/* Adsterra 320x50 mobile sticky banner */
+.ad-mobile-banner{display:none}
+@media(max-width:767px){.ad-mobile-banner{display:flex;align-items:center;justify-content:center;position:fixed;bottom:0;left:0;right:0;z-index:150;background:var(--surface);border-top:1px solid var(--line);padding:6px 0;min-height:62px}body{padding-bottom:62px}}
