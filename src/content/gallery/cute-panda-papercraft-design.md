@@ -3,7 +3,7 @@ title: "Cute Panda Papercraft Design"
 description: "Papercraft design of \"cute panda\" in cute style. Free AI artwork, no account needed, and follow-up prompts to try next."
 emoji: "🐼"
 style: "cute"
-updated: "2026-11-03"
+updated: "2026-11-21"
 order: 99
 draft: false
 noindex: true
@@ -28,3 +28,12 @@ Great for matching proportions. Not a cutting guide.
 ![Cute panda, papercraft illustration](/images/gallery/cute-panda-papercraft-design-mvl28depum1i.jpg)
 
 *Cute panda, papercraft illustration*
+
+
+![Pixel papercraft design of cute panda](/images/gallery/cute-panda-papercraft-design-mwpvq703pr4h.jpg)
+
+*Pixel papercraft design of cute panda*
+
+![Low Poly papercraft design of cute panda](/images/gallery/cute-panda-papercraft-design-mwpvqe02rrvf.jpg)
+
+*Low Poly papercraft design of cute panda*

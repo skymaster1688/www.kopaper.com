@@ -3,7 +3,7 @@ title: "Dragon Papercraft Design"
 description: "Made from one line: \"low poly flying dragon with wings spread to sides\". A free low poly papercraft design you can download, plus variations worth generating."
 emoji: "🐉"
 style: "lowpoly"
-updated: "2026-11-03"
+updated: "2026-11-21"
 order: 99
 draft: false
 ---
@@ -25,3 +25,8 @@ No cut lines here. The image shows the finished look only.
 ![Low poly flying dragon with wings spread to sides papercraft design](/images/gallery/dragon-papercraft-design-mualnb3i23w4.jpg)
 
 *Low poly flying dragon with wings spread to sides papercraft design*
+
+
+![Fantasy papercraft design of dragon](/images/gallery/dragon-papercraft-design-mwpvqlkscjj1.jpg)
+
+*Fantasy papercraft design of dragon*

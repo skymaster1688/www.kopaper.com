@@ -3,7 +3,7 @@ title: "Fantasy Papercraft Papercraft Design"
 description: "A fantasy take on \"cute 3D papercraft face of a little jaguar cub wearing cute round paper glasses\", generated with the free AI papercraft generator. Save."
 emoji: "🎨"
 style: "fantasy"
-updated: "2026-11-05"
+updated: "2026-11-21"
 order: 99
 draft: false
 ---
@@ -32,3 +32,7 @@ The render shows how it should read, not where to cut.
 ![Fantasy papercraft design](/images/gallery/fantasy-papercraft-papercraft-design-mw2ubntzn3lx.jpg)
 
 *Fantasy papercraft design*
+
+![Fantasy papercraft design of "Create a collection of adorable pastel pink and baby handmade jewellery designs](/images/gallery/fantasy-papercraft-papercraft-design-mwpvqcn14uau.jpg)
+
+*Fantasy papercraft design of "Create a collection of adorable pastel pink and baby handmade jewellery designs*

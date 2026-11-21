@@ -3,7 +3,7 @@ title: "Fantasy Castle Papercraft Design"
 description: "Papercraft design of \"fantasy castle\" in low poly style. Free AI artwork, no account needed, and follow-up prompts to try next."
 emoji: "🏰"
 style: "lowpoly"
-updated: "2026-11-03"
+updated: "2026-11-21"
 order: 99
 draft: false
 noindex: true
@@ -34,3 +34,8 @@ Cut every face before you fold any of them. Faceted builds go together much fast
 ![Fantasy castle, papercraft illustration](/images/gallery/fantasy-castle-papercraft-design-mvl289mft2zz.jpg)
 
 *Fantasy castle, papercraft illustration*
+
+
+![Fantasy castle papercraft design](/images/gallery/fantasy-castle-papercraft-design-mwpvqj3b4cm3.jpg)
+
+*Fantasy castle papercraft design*
